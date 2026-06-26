@@ -113,6 +113,19 @@ const server = createServer(async (req, res) => {
     return res.end();
   }
 
+  // Friendly landing so the bare URL doesn't look broken (it's an API, not a site).
+  if (req.method === 'GET' && url.pathname === '/') {
+    res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+    return res.end(
+      '<!doctype html><meta charset="utf-8"><title>Efiko Gateway</title>' +
+      '<body style="font-family:system-ui;background:#0b1120;color:#e2e8f0;text-align:center;padding:60px">' +
+      '<h1 style="color:#14b8a6">Efiko Gateway</h1>' +
+      '<p>The Efiko learning gateway is running. ✓</p>' +
+      '<p style="color:#94a3b8">This is the API server (WhatsApp, SMS, AI). It has no public page.</p>' +
+      '<p><a style="color:#14b8a6" href="/health">/health</a></p></body>'
+    );
+  }
+
   if (url.pathname === '/health') {
     return json(res, 200, { ok: true, live: isLive(), ai: aiConfigured(), voice: voiceConfigured(), sms: smsLive() });
   }
