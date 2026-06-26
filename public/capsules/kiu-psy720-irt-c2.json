@@ -1,0 +1,57 @@
+{
+  "capsuleId": "kiu-psy720-irt-c2",
+  "version": 1,
+  "meta": {
+    "university": "KIU",
+    "course": "PSY720",
+    "topic": "Item Parameters (a, b, c)",
+    "level": "Postgraduate",
+    "sequence": 2,
+    "durationMin": 4
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "sizeKB": 10,
+      "value": "An IRT item is described by up to three parameters. b (difficulty) shifts the curve left or right — higher b means a harder item. a (discrimination) controls the steepness — a steeper curve separates abilities more sharply. c (guessing) is the lower asymptote — the chance a very low-ability person still gets it right."
+    },
+    {
+      "type": "whiteboard",
+      "sizeKB": 4,
+      "src": "/assets/irt-c2-params.svg",
+      "caption": "Shifting b moves the curve: easy items sit left, hard items sit right."
+    },
+    {
+      "type": "voice",
+      "sizeKB": 0,
+      "codec": "opus",
+      "ref": null,
+      "pending": "Stage 6 — Voice Tutor"
+    },
+    {
+      "type": "quiz",
+      "items": [
+        { "q": "A higher b parameter means the item is...", "options": ["Easier", "Harder", "More reliable", "Less biased"], "answer": 1 },
+        { "q": "The a parameter controls the curve's...", "options": ["Steepness (discrimination)", "Lower asymptote", "Colour", "Length"], "answer": 0 },
+        { "q": "The c parameter represents...", "options": ["Difficulty", "Discrimination", "Guessing", "Reliability"], "answer": 2 }
+      ]
+    },
+    {
+      "type": "flashcards",
+      "items": [
+        { "front": "b (difficulty)", "back": "Where the curve crosses P=0.5; higher = harder." },
+        { "front": "a (discrimination)", "back": "Steepness of the curve; higher = separates abilities more sharply." },
+        { "front": "c (guessing)", "back": "Lower asymptote; chance a low-ability person answers correctly." },
+        { "front": "3PL model", "back": "Uses all three parameters: a, b and c." }
+      ]
+    },
+    {
+      "type": "summary",
+      "sizeKB": 3,
+      "value": "b sets difficulty, a sets discrimination (steepness), and c sets the guessing floor. The 3PL model combines all three."
+    }
+  ],
+  "actions": ["QUIZ", "VOICE", "FLASHCARDS", "DOWNLOAD"],
+  "totalSizeKB": 17,
+  "offlineReady": true
+}

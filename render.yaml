@@ -1,0 +1,42 @@
+# Efiko — Render blueprint for the Gateway (the WhatsApp/SMS/AI server).
+# Deploy: Render Dashboard → New → Blueprint → connect this repo.
+# Secrets (sync: false) are entered in the Render dashboard, never committed.
+services:
+  - type: web
+    name: efiko-gateway
+    runtime: node
+    plan: free            # upgrade to "starter" ($7/mo) for always-on (no cold starts)
+    region: frankfurt     # closest to East Africa; or "oregon"/"singapore"
+    buildCommand: npm install
+    startCommand: npm run server
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # --- non-secret config (committed) ---
+      - key: EFIKO_AUTHOR_MODEL
+        value: claude-opus-4-8
+      - key: EFIKO_FAST_MODEL
+        value: claude-haiku-4-5
+      - key: EFIKO_TTS_PROVIDER
+        value: deepgram
+      - key: EFIKO_TTS_VOICE
+        value: aura-asteria-en
+      - key: WHATSAPP_VERIFY_TOKEN
+        value: Efiko-verify
+      - key: WHATSAPP_GRAPH_URL
+        value: https://graph.facebook.com/v19.0
+      - key: SMS_PROVIDER
+        value: mock
+      # --- secrets: set these in the Render dashboard (do NOT commit) ---
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: DEEPGRAM_API_KEY
+        sync: false
+      - key: WHATSAPP_TOKEN
+        sync: false
+      - key: WHATSAPP_PHONE_NUMBER_ID
+        sync: false
+      # Set AFTER first deploy to the service's own URL, e.g.
+      # https://efiko-gateway.onrender.com  (used for voice/whiteboard links)
+      - key: PUBLIC_BASE_URL
+        sync: false

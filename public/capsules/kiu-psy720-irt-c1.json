@@ -1,0 +1,57 @@
+{
+  "capsuleId": "kiu-psy720-irt-c1",
+  "version": 1,
+  "meta": {
+    "university": "KIU",
+    "course": "PSY720",
+    "topic": "Item Response Theory",
+    "level": "Postgraduate",
+    "sequence": 1,
+    "durationMin": 4
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "sizeKB": 11,
+      "value": "Item Response Theory (IRT) models the relationship between a person's latent ability (theta) and the probability that they answer a particular item correctly. Unlike Classical Test Theory, IRT describes each item with its own parameters, so item difficulty and a person's ability are placed on the same scale."
+    },
+    {
+      "type": "whiteboard",
+      "sizeKB": 4,
+      "src": "/assets/irt-c1-icc.svg",
+      "caption": "Item Characteristic Curve: probability of a correct answer rises with ability."
+    },
+    {
+      "type": "voice",
+      "sizeKB": 0,
+      "codec": "opus",
+      "ref": null,
+      "pending": "Stage 6 — Voice Tutor"
+    },
+    {
+      "type": "quiz",
+      "items": [
+        { "q": "In IRT, what does the parameter b typically represent?", "options": ["Item difficulty", "Guessing", "Discrimination", "Reliability"], "answer": 0 },
+        { "q": "IRT places item difficulty and person ability on...", "options": ["Different scales", "The same scale", "A nominal scale", "No scale"], "answer": 1 },
+        { "q": "The S-shaped curve relating ability to P(correct) is the...", "options": ["ROC curve", "Item Characteristic Curve", "Scree plot", "Q-Q plot"], "answer": 1 }
+      ]
+    },
+    {
+      "type": "flashcards",
+      "items": [
+        { "front": "theta", "back": "A person's latent ability." },
+        { "front": "b parameter", "back": "Item difficulty — the ability level where P(correct)=0.5." },
+        { "front": "a parameter", "back": "Item discrimination — how sharply the item separates abilities." },
+        { "front": "ICC", "back": "Item Characteristic Curve relating ability to P(correct)." }
+      ]
+    },
+    {
+      "type": "summary",
+      "sizeKB": 3,
+      "value": "IRT links latent ability (theta) to the probability of a correct response. Each item has parameters — difficulty (b) and discrimination (a) — letting items and people sit on one common scale."
+    }
+  ],
+  "actions": ["QUIZ", "VOICE", "FLASHCARDS", "DOWNLOAD"],
+  "totalSizeKB": 18,
+  "offlineReady": true
+}

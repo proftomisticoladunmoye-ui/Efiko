@@ -1,0 +1,32 @@
+{
+  "name": "efiko-pwa",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Efiko — multi-channel learning ecosystem.",
+  "engines": {
+    "node": ">=20.6.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node server/index.js",
+    "wa:sim": "node server/sim.js",
+    "sms:sim": "node server/sms-sim.js",
+    "ai:smoke": "node server/ai-smoke.js",
+    "voice:smoke": "node server/voice-smoke.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.70.0",
+    "idb": "^8.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.7",
+    "vite-plugin-pwa": "^0.21.1"
+  }
+}

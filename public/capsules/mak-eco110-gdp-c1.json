@@ -1,0 +1,57 @@
+{
+  "capsuleId": "mak-eco110-gdp-c1",
+  "version": 1,
+  "meta": {
+    "university": "MAK",
+    "course": "ECO110",
+    "topic": "Gross Domestic Product",
+    "level": "Undergraduate",
+    "sequence": 1,
+    "durationMin": 4
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "sizeKB": 9,
+      "value": "Gross Domestic Product (GDP) is the total market value of all final goods and services produced within a country in a given period. The expenditure approach adds four components: Consumption (C), Investment (I), Government spending (G), and Net exports — exports minus imports (X - M)."
+    },
+    {
+      "type": "whiteboard",
+      "sizeKB": 4,
+      "src": "/assets/eco110-gdp.svg",
+      "caption": "GDP by expenditure: C + I + G + (X - M)."
+    },
+    {
+      "type": "voice",
+      "sizeKB": 0,
+      "codec": "opus",
+      "ref": null,
+      "pending": "Stage 6 — Voice Tutor"
+    },
+    {
+      "type": "quiz",
+      "items": [
+        { "q": "Which is NOT a component of GDP by expenditure?", "options": ["Consumption", "Investment", "Savings", "Government spending"], "answer": 2 },
+        { "q": "Net exports equals...", "options": ["X + M", "X - M", "M - X", "X x M"], "answer": 1 },
+        { "q": "GDP counts goods that are...", "options": ["Intermediate", "Final", "Imported", "Second-hand"], "answer": 1 }
+      ]
+    },
+    {
+      "type": "flashcards",
+      "items": [
+        { "front": "GDP", "back": "Market value of all final goods and services produced in a country in a period." },
+        { "front": "C", "back": "Household consumption spending." },
+        { "front": "Net exports", "back": "Exports minus imports (X - M)." },
+        { "front": "Final goods", "back": "Goods sold to the end user, not resold as inputs." }
+      ]
+    },
+    {
+      "type": "summary",
+      "sizeKB": 3,
+      "value": "GDP measures final output produced inside a country. By expenditure, GDP = C + I + G + (X - M)."
+    }
+  ],
+  "actions": ["QUIZ", "VOICE", "FLASHCARDS", "DOWNLOAD"],
+  "totalSizeKB": 16,
+  "offlineReady": true
+}

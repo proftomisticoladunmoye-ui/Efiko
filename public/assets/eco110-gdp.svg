@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 260" role="img" aria-label="GDP expenditure components">
+  <rect width="480" height="260" fill="#ffffff"/>
+  <text x="240" y="28" font-size="14" fill="#334155" text-anchor="middle" font-weight="700">GDP = C + I + G + (X - M)</text>
+  <line x1="60" y1="220" x2="440" y2="220" stroke="#334155" stroke-width="2"/>
+  <rect x="80"  y="90"  width="60" height="130" fill="#0f766e"/>
+  <rect x="170" y="140" width="60" height="80"  fill="#15803d"/>
+  <rect x="260" y="120" width="60" height="100" fill="#b45309"/>
+  <rect x="350" y="175" width="60" height="45"  fill="#dc2626"/>
+  <text x="110" y="238" font-size="12" fill="#334155" text-anchor="middle">C</text>
+  <text x="200" y="238" font-size="12" fill="#334155" text-anchor="middle">I</text>
+  <text x="290" y="238" font-size="12" fill="#334155" text-anchor="middle">G</text>
+  <text x="380" y="238" font-size="12" fill="#334155" text-anchor="middle">X-M</text>
+</svg>

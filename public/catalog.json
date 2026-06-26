@@ -1,0 +1,53 @@
+{
+  "catalogVersion": "2026.06.24",
+  "capsules": [
+    {
+      "capsuleId": "kiu-psy720-irt-c1",
+      "version": 1,
+      "university": "KIU",
+      "course": "PSY720",
+      "topic": "Item Response Theory",
+      "sequence": 1,
+      "durationMin": 4,
+      "sizeKB": 18
+    },
+    {
+      "capsuleId": "kiu-psy720-irt-c2",
+      "version": 1,
+      "university": "KIU",
+      "course": "PSY720",
+      "topic": "Item Parameters (a, b, c)",
+      "sequence": 2,
+      "durationMin": 4,
+      "sizeKB": 17
+    },
+    {
+      "capsuleId": "mak-eco110-gdp-c1",
+      "version": 1,
+      "university": "MAK",
+      "course": "ECO110",
+      "topic": "Gross Domestic Product",
+      "sequence": 1,
+      "durationMin": 4,
+      "sizeKB": 16
+    }
+  ],
+  "packs": [
+    {
+      "packId": "kiu-psy720",
+      "title": "PSY720 — Item Response Theory",
+      "university": "KIU",
+      "course": "PSY720",
+      "version": 1,
+      "capsuleIds": ["kiu-psy720-irt-c1", "kiu-psy720-irt-c2"]
+    },
+    {
+      "packId": "mak-eco110",
+      "title": "ECO110 — Macroeconomics",
+      "university": "MAK",
+      "course": "ECO110",
+      "version": 1,
+      "capsuleIds": ["mak-eco110-gdp-c1"]
+    }
+  ]
+}

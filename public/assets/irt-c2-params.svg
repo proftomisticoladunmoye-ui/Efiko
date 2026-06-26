@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 260" role="img" aria-label="Three item curves with different difficulty">
+  <rect width="480" height="260" fill="#ffffff"/>
+  <line x1="60" y1="220" x2="440" y2="220" stroke="#334155" stroke-width="2"/>
+  <line x1="60" y1="220" x2="60" y2="30" stroke="#334155" stroke-width="2"/>
+  <text x="250" y="250" font-size="13" fill="#334155" text-anchor="middle">Ability (theta)</text>
+  <path d="M60 210 C 120 205, 150 60, 300 48" fill="none" stroke="#15803d" stroke-width="3"/>
+  <path d="M60 216 C 200 212, 240 60, 400 46" fill="none" stroke="#0f766e" stroke-width="3"/>
+  <path d="M60 218 C 280 215, 320 70, 440 48" fill="none" stroke="#b45309" stroke-width="3"/>
+  <text x="150" y="40" font-size="11" fill="#15803d">easy (low b)</text>
+  <text x="330" y="42" font-size="11" fill="#b45309">hard (high b)</text>
+</svg>
