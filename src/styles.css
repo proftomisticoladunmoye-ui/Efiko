@@ -221,3 +221,33 @@ body {
 @media (max-width: 480px) {
   .flashcards { grid-template-columns: 1fr; }
 }
+
+/* ALWE — Adaptive Learning Whiteboard Engine player (Batch 2) */
+.alwe-player { display: flex; flex-direction: column; gap: 10px; }
+.alwe-topbar { display: flex; align-items: center; gap: 12px; }
+.alwe-titles { display: flex; flex-direction: column; line-height: 1.2; }
+.alwe-titles strong { font-size: 16px; }
+.alwe-titles span { font-size: 12px; color: var(--muted); }
+.alwe-objective { margin: 0; font-size: 13px; color: var(--brand-2); }
+.alwe-loading { color: var(--muted); padding: 24px 0; }
+
+.alwe-stage { width: 100%; height: auto; aspect-ratio: 540 / 330; border: 1px solid var(--line); border-radius: 14px; background: #0b1220; display: block; }
+.alwe-board { fill: #0b1220; }
+.alwe-axis { stroke: var(--brand-2); stroke-width: 2; fill: none; stroke-linecap: round; }
+.alwe-grid { stroke: var(--line); stroke-width: 1; stroke-dasharray: 4 4; }
+.alwe-stroke { stroke: var(--brand); stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.alwe-text, .alwe-equation { fill: #e7eefc; font-family: inherit; }
+.alwe-equation { font-family: 'Cambria Math', Georgia, serif; }
+.alwe-label { fill: #cfe0ff; font-weight: 600; }
+.alwe-hl text { fill: #fbbf24; }
+.alwe-placeholder { fill: rgba(124,58,237,.12); stroke: var(--line); stroke-dasharray: 5 4; }
+.alwe-placeholder-text { fill: var(--muted); }
+.alwe-tappable { cursor: pointer; }
+.alwe-tappable:hover { filter: brightness(1.25); }
+
+.alwe-caption { min-height: 42px; margin: 0; padding: 10px 12px; background: rgba(13,21,38,.6); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; color: #e7eefc; }
+.alwe-controls { display: flex; align-items: center; gap: 10px; }
+.alwe-play { width: 44px; height: 44px; flex: none; border-radius: 50%; border: 0; background: var(--brand); color: #04231f; font-size: 18px; cursor: pointer; }
+.alwe-scrub { flex: 1; accent-color: var(--brand); }
+.alwe-time { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.alwe-speed { background: #0d1526; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font-size: 13px; }
