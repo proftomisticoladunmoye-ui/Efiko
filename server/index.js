@@ -17,10 +17,20 @@ import { fetchMediaBase64 } from './channels/whatsapp/transport.js';
 import { renderSms } from './channels/sms/render.js';
 import { sendSms, smsLive } from './channels/sms/transport.js';
 import { addPublished, getPublished, listPublished } from './core/published.js';
+import { verifyToken, verifyPassword, signToken } from './core/auth.js';
+import { createInstitution, findByEmail, getOrg, updateBranding, getBranding, publicOrg } from './core/institutions.js';
 
 const PORT = process.env.PORT || 4100;
 const VERIFY_TOKEN = process.env.WHATSAPP_VERIFY_TOKEN || 'Efiko-verify';
 const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || '';
+const ADMIN_MASTER_KEY = process.env.ADMIN_MASTER_KEY || ''; // gate for creating institution accounts
+
+// Resolve the institution behind a Bearer token (Phase B auth).
+async function authedOrg(req) {
+  const h = req.headers['authorization'] || '';
+  const p = verifyToken(h.startsWith('Bearer ') ? h.slice(7) : '');
+  return p?.orgId ? getOrg(p.orgId) : null;
+}
 
 // In-memory sessions (per phone number). Persistence comes in a later stage.
 const sessions = new Map();
@@ -173,6 +183,43 @@ const server = createServer(async (req, res) => {
     const capsule = await getPublished(id);
     if (!capsule) return json(res, 404, { error: 'not found' });
     return json(res, 200, capsule);
+  }
+
+  // --- Institution accounts + white-label branding (Phase B) ---
+  // Onboard an institution (you create accounts — protected by the master key).
+  if (req.method === 'POST' && url.pathname === '/admin/register') {
+    if (!ADMIN_MASTER_KEY || req.headers['x-admin-key'] !== ADMIN_MASTER_KEY) return json(res, 401, { error: 'unauthorized' });
+    const { orgId, institution, email, password, active } = await readBody(req);
+    try {
+      return json(res, 200, { org: await createInstitution({ orgId, institution, email, password, active }) });
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  if (req.method === 'POST' && url.pathname === '/admin/login') {
+    const { email, password } = await readBody(req);
+    const rec = await findByEmail(email || '');
+    if (!rec || !verifyPassword(password || '', rec.passwordHash)) return json(res, 401, { error: 'Invalid email or password' });
+    return json(res, 200, { token: signToken({ orgId: rec.orgId }), org: publicOrg(rec) });
+  }
+  if (req.method === 'GET' && url.pathname === '/admin/me') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'unauthorized' });
+    return json(res, 200, { org: publicOrg(org) });
+  }
+  if (req.method === 'POST' && url.pathname === '/admin/branding') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'unauthorized' });
+    if (!org.active) return json(res, 403, { error: 'Customization is a paid feature. Contact Efiko to activate your institution.' });
+    const branding = await updateBranding(org.orgId, await readBody(req));
+    return json(res, 200, { branding });
+  }
+  // Public branding for the app's white-label theming.
+  if (req.method === 'GET' && url.pathname.startsWith('/tenants/')) {
+    const id = decodeURIComponent(url.pathname.slice('/tenants/'.length));
+    const branding = await getBranding(id);
+    if (!branding) return json(res, 404, { error: 'not found' });
+    return json(res, 200, branding);
   }
 
   // SMS simulator — render the SMS reply for { from, text } (no gateway needed).

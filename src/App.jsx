@@ -11,6 +11,7 @@ import CampusSync from './components/CampusSync.jsx';
 import AskEfiko from './components/AskEfiko.jsx';
 import SnapLearn from './components/SnapLearn.jsx';
 import Studio from './components/Studio.jsx';
+import AdminPanel from './components/AdminPanel.jsx';
 import ExamReadiness from './components/ExamReadiness.jsx';
 import StatusBar from './components/StatusBar.jsx';
 import { computeReadiness } from './exam.js';
@@ -357,11 +358,16 @@ export default function App() {
             publishing={studioPublishing}
           />
         )}
+
+        {view === 'admin' && <AdminPanel onBack={() => setView('library')} />}
       </main>
       <footer className="app-footer">
         {tenant?.institution ? `${tenant.institution} · powered by Efiko` : 'Efiko · multi-channel learning ecosystem'}
-        {view !== 'studio' && (
-          <> · <button className="footer-link" onClick={openStudio}>Lecturer Studio</button></>
+        {view !== 'studio' && view !== 'admin' && (
+          <>
+            {' · '}<button className="footer-link" onClick={openStudio}>Lecturer Studio</button>
+            {' · '}<button className="footer-link" onClick={() => setView('admin')}>Institution Admin</button>
+          </>
         )}
       </footer>
     </div>

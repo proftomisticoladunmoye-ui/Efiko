@@ -143,6 +143,22 @@ body {
 .ready-score.mid { color: var(--brand-2); }
 .ready-score.low { color: #fbbf24; }
 
+/* Institution Admin */
+.admin h2 { font-size: 21px; margin: 6px 0 10px; }
+.admin-sub { color: var(--muted); font-size: 13px; }
+.admin-form { display: flex; flex-direction: column; gap: 10px; max-width: 360px; }
+.admin-btn { background: var(--brand); color: #fff; border: 0; border-radius: 8px; padding: 11px 16px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.admin-btn:disabled { opacity: .5; cursor: default; }
+.admin-panel { display: flex; flex-direction: column; gap: 4px; }
+.admin-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; font-weight: 600; }
+.admin-head .ghost { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 6px 12px; font-size: 12px; cursor: pointer; }
+.badge-paid { font-style: normal; font-size: 11px; background: rgba(21,128,61,.2); color: var(--good); border: 1px solid var(--good); border-radius: 999px; padding: 2px 8px; margin-left: 6px; }
+.badge-free { font-style: normal; font-size: 11px; background: rgba(180,83,9,.18); color: #fbbf24; border: 1px solid var(--warn); border-radius: 999px; padding: 2px 8px; margin-left: 6px; }
+.admin-note { background: rgba(180,83,9,.12); border: 1px solid var(--warn); border-radius: 10px; padding: 10px 12px; color: #fbbf24; font-size: 13px; }
+.admin-color { display: flex; gap: 8px; align-items: center; }
+.admin-color input[type=color] { width: 44px; height: 38px; border: 1px solid var(--line); border-radius: 8px; background: #0d1526; padding: 2px; }
+.admin code { background: #0d1526; border: 1px solid var(--line); border-radius: 5px; padding: 2px 6px; color: var(--brand-2); }
+
 /* Campus Wi-Fi Sync */
 .campus { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: linear-gradient(135deg, rgba(15,118,110,.20), rgba(13,21,38,.4)); border: 1px solid var(--brand); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
 .campus-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
