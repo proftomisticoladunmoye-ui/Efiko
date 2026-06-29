@@ -69,10 +69,31 @@ Then (optional) buy a domain (e.g. `efiko.app`) and point it at the PWA.
 
 ---
 
+## Part 4 — Durable database (recommended before onboarding institutions)
+
+Render's filesystem is **ephemeral**: institution accounts, white-label branding,
+and lecturer-published lessons live in `server/data/*.json` and **reset on every
+redeploy**. Point Efiko at a free hosted Postgres so nothing is lost.
+
+1. Create a free database at **[neon.tech](https://neon.tech)** (project → branch `main`).
+2. Copy the **connection string** (looks like
+   `postgresql://user:pass@ep-xxx.eu-central-1.aws.neon.tech/dbname?sslmode=require`).
+3. In Render → `efiko-gateway` → **Environment**, set **`DATABASE_URL`** to that string and save.
+   Render redeploys; the gateway auto-creates its `efiko_kv` table on first boot.
+
+That's it — no migration step. When `DATABASE_URL` is set the gateway stores everything
+in Postgres; when it's blank (local dev) it falls back to JSON files, so nothing breaks.
+Existing local `server/data` accounts are **not** copied automatically — re-register them
+once against the live gateway (`POST /admin/register` with `x-admin-key`).
+
+> Neon free tier sleeps an idle database; the first request after idle takes ~1s to wake.
+
+---
+
 ## Known limitations to fix before public launch
 - **Free tier sleeps** after ~15 min idle (30–60s cold start) → WhatsApp messages
   can be missed while it wakes. Use the **starter plan** (always-on) for students.
-- **Ephemeral filesystem** → lecturer-published lessons (`server/data/published.json`)
-  reset on each redeploy. Move publishing to a database or a Render **persistent disk**.
+- **Persistence:** set `DATABASE_URL` (Part 4) so accounts/branding/published lessons
+  survive redeploys. Without it, `server/data/*.json` resets on each deploy.
 - WhatsApp **test mode** allows 5 recipients; go through **Business Verification**
   to reach real students.

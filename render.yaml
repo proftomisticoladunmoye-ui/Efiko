@@ -41,6 +41,9 @@ services:
         sync: false
       - key: ADMIN_MASTER_KEY
         sync: false
+      # Persistence — Neon/Postgres connection string (durable accounts/branding/lessons)
+      - key: DATABASE_URL
+        sync: false
       # Set AFTER first deploy to the service's own URL, e.g.
       # https://efiko-gateway.onrender.com  (used for voice/whiteboard links)
       - key: PUBLIC_BASE_URL
