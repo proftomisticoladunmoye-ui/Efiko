@@ -251,3 +251,52 @@ body {
 .alwe-scrub { flex: 1; accent-color: var(--brand); }
 .alwe-time { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .alwe-speed { background: #0d1526; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font-size: 13px; }
+.alwe-bookmark { background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; cursor: pointer; font-size: 15px; }
+
+/* Topbar / progress / navigation */
+.alwe-topbar .alwe-titles { flex: 1; }
+.alwe-outline-toggle { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 6px 10px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+.alwe-progress-dots { display: flex; gap: 4px; flex-wrap: wrap; }
+.alwe-progress-dots .dot { width: 100%; flex: 1; height: 4px; border-radius: 2px; background: var(--line); }
+.alwe-progress-dots .dot.past { background: var(--brand-2); }
+.alwe-progress-dots .dot.on { background: var(--brand); }
+.alwe-nav { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.alwe-nav .ghost { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 8px 12px; font-size: 13px; cursor: pointer; }
+.alwe-nav .ghost:disabled { opacity: .4; cursor: not-allowed; }
+.alwe-next { margin-left: auto; background: var(--brand); color: #04231f; border: 0; border-radius: 8px; padding: 9px 18px; font-size: 14px; font-weight: 600; cursor: pointer; }
+
+/* Structural node cards */
+.alwe-card { background: linear-gradient(135deg, rgba(15,118,110,.16), rgba(13,21,38,.5)); border: 1px solid var(--brand); border-radius: 14px; padding: 18px; }
+.alwe-card-kicker { font-size: 12px; color: var(--brand-2); text-transform: uppercase; letter-spacing: .04em; }
+.alwe-card-title { margin: 6px 0 10px; font-size: 19px; }
+.alwe-card-body { margin: 0; font-size: 15px; line-height: 1.6; color: #dbe6f7; }
+
+/* Quiz node */
+.alwe-quiz { display: flex; flex-direction: column; gap: 14px; }
+.alwe-q-text { margin: 0 0 8px; font-weight: 600; }
+.alwe-q-options { display: flex; flex-direction: column; gap: 6px; }
+.alwe-opt { text-align: left; background: #0d1526; border: 1px solid var(--line); color: var(--text); border-radius: 8px; padding: 10px 12px; font-size: 14px; cursor: pointer; }
+.alwe-opt.chosen { border-color: var(--brand); }
+.alwe-opt.correct { border-color: var(--good); background: rgba(21,128,61,.18); }
+.alwe-opt.wrong { border-color: var(--warn); background: rgba(180,83,9,.18); }
+.alwe-submit { align-self: flex-start; background: var(--brand); color: #04231f; border: 0; border-radius: 8px; padding: 9px 18px; font-weight: 600; cursor: pointer; }
+.alwe-submit:disabled { opacity: .5; cursor: not-allowed; }
+.alwe-score { font-size: 14px; color: var(--muted); }
+.alwe-score.all { color: var(--good); }
+
+/* Outline + bookmarks */
+.alwe-outline { border: 1px solid var(--line); border-radius: 12px; padding: 6px; max-height: 240px; overflow: auto; }
+.alwe-outline ol { list-style: none; margin: 0; padding: 0; }
+.alwe-outline-item { width: 100%; display: flex; align-items: center; gap: 10px; background: transparent; border: 0; color: var(--text); padding: 8px 10px; border-radius: 8px; cursor: pointer; font-size: 13px; text-align: left; }
+.alwe-outline-item:hover { background: rgba(255,255,255,.04); }
+.alwe-outline-item.current { background: rgba(15,118,110,.18); }
+.alwe-outline-mark { width: 22px; height: 22px; flex: none; display: grid; place-items: center; border-radius: 50%; background: #0d1526; border: 1px solid var(--line); font-size: 11px; color: var(--muted); }
+.alwe-outline-item.done .alwe-outline-mark { color: var(--good); border-color: var(--good); }
+.alwe-bookmarks { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.alwe-bookmarks-h { font-size: 12px; color: var(--muted); }
+.alwe-bookmark-chip { background: #0d1526; border: 1px solid var(--line); color: var(--brand-2); border-radius: 999px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+
+/* Resume banner */
+.alwe-resume { background: rgba(15,118,110,.12); border: 1px solid var(--brand); border-radius: 12px; padding: 16px; }
+.alwe-resume-actions { display: flex; gap: 10px; margin-top: 10px; }
+.alwe-resume .ghost { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 9px 16px; cursor: pointer; }

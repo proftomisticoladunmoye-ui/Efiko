@@ -130,6 +130,7 @@ export interface Bookmark {
 
 export interface LessonProgress {
   lessonId: string;
+  lastNodeIndex: number;            // position in manifest.arc (resume point)
   lastSceneId: string;
   lastElapsedMs: number;
   speed: number;
