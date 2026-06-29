@@ -133,7 +133,7 @@ const server = createServer(async (req, res) => {
 
   // CORS — the PWA (a different origin/port) calls /lessons/generate from the browser.
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   if (req.method === 'OPTIONS') {
     res.writeHead(204);

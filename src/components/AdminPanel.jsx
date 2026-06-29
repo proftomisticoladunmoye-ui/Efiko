@@ -1,10 +1,37 @@
 // Efiko — Institution Admin (Phase B). A paid institution logs in and customizes
 // its own branding (name, logo, brand colour, courses). Saving is gated server-side
 // to active (paid) institutions.
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const GATEWAY = import.meta.env.VITE_GATEWAY || 'http://localhost:4100';
 const TOKEN_KEY = 'efiko-admin-token';
+
+// Turn an uploaded image file into a small data URL we can store in the `logo`
+// field (rendered everywhere as <img src>). Raster images are downscaled to
+// maxDim px so the saved value stays tiny; SVGs are kept as-is (already vector).
+function fileToLogoDataUrl(file, maxDim = 256) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('read failed'));
+    reader.onload = () => {
+      const src = reader.result;
+      if (file.type === 'image/svg+xml') { resolve(src); return; }
+      const img = new Image();
+      img.onerror = () => reject(new Error('decode failed'));
+      img.onload = () => {
+        const scale = Math.min(1, maxDim / Math.max(img.width, img.height));
+        const w = Math.max(1, Math.round(img.width * scale));
+        const h = Math.max(1, Math.round(img.height * scale));
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        resolve(canvas.toDataURL('image/png')); // PNG preserves logo transparency
+      };
+      img.src = src;
+    };
+    reader.readAsDataURL(file);
+  });
+}
 
 const brandingForm = (org) => {
   const b = org?.branding || {};
@@ -25,6 +52,21 @@ export default function AdminPanel({ onBack }) {
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState(null);
   const [err, setErr] = useState(null);
+  const fileRef = useRef(null);
+
+  async function onLogoFile(e) {
+    const file = e.target.files?.[0];
+    if (e.target) e.target.value = ''; // let the same file be re-picked
+    if (!file) return;
+    if (!file.type.startsWith('image/')) { setErr('Please choose an image file (PNG, JPG, or SVG).'); return; }
+    if (file.size > 5 * 1024 * 1024) { setErr('That image is over 5 MB — please use a smaller file.'); return; }
+    setErr(null);
+    try {
+      const logo = await fileToLogoDataUrl(file);
+      setForm((f) => ({ ...f, logo }));
+      setMsg('Logo loaded — click “Save branding” to publish it.');
+    } catch { setErr('Could not read that image. Try a PNG or JPG.'); }
+  }
 
   useEffect(() => {
     if (!token) return;
@@ -107,9 +149,21 @@ export default function AdminPanel({ onBack }) {
           <label className="studio-field">Display name
             <input className="ask-input" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} disabled={!org.active} />
           </label>
-          <label className="studio-field">Logo URL
-            <input className="ask-input" placeholder="https://your-university.edu/logo.png" value={form.logo} onChange={(e) => setForm({ ...form, logo: e.target.value })} disabled={!org.active} />
-          </label>
+          <div className="studio-field">Logo
+            <div className="admin-logo-row">
+              <span className="admin-logo-preview">
+                {form.logo
+                  ? <img src={form.logo} alt="Logo preview" onError={(e) => { e.currentTarget.style.visibility = 'hidden'; }} />
+                  : <span className="admin-logo-empty">No logo</span>}
+              </span>
+              <div className="admin-logo-actions">
+                <input ref={fileRef} type="file" accept="image/png,image/jpeg,image/svg+xml,image/webp" hidden onChange={onLogoFile} />
+                <button type="button" className="ghost" onClick={() => fileRef.current?.click()} disabled={!org.active}>Upload image…</button>
+                {form.logo && <button type="button" className="ghost" onClick={() => setForm({ ...form, logo: '' })} disabled={!org.active}>Remove</button>}
+              </div>
+            </div>
+            <input className="ask-input" placeholder="…or paste an image URL (https://your-university.edu/logo.png)" value={form.logo?.startsWith('data:') ? '' : form.logo} onChange={(e) => setForm({ ...form, logo: e.target.value })} disabled={!org.active} />
+          </div>
           <label className="studio-field">Brand colour
             <span className="admin-color">
               <input type="color" value={form.color} onChange={(e) => setForm({ ...form, color: e.target.value })} disabled={!org.active} />
