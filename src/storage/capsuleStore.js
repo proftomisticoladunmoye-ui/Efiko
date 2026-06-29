@@ -7,8 +7,9 @@ const DB_NAME = 'Efiko';
 const CAPS = 'capsules';
 const META = 'meta';
 const AUDIO = 'audio'; // voice-note bytes, for true-offline voice (Stage 11)
+const MASTERY = 'mastery'; // quiz results per capsule, for Exam Mode readiness
 
-const dbPromise = openDB(DB_NAME, 3, {
+const dbPromise = openDB(DB_NAME, 4, {
   upgrade(db) {
     if (!db.objectStoreNames.contains(CAPS)) {
       db.createObjectStore(CAPS, { keyPath: 'capsuleId' });
@@ -18,6 +19,9 @@ const dbPromise = openDB(DB_NAME, 3, {
     }
     if (!db.objectStoreNames.contains(AUDIO)) {
       db.createObjectStore(AUDIO, { keyPath: 'capsuleId' });
+    }
+    if (!db.objectStoreNames.contains(MASTERY)) {
+      db.createObjectStore(MASTERY, { keyPath: 'capsuleId' });
     }
   }
 });
@@ -99,4 +103,26 @@ export async function listAudioIds() {
 
 export async function deleteAudio(capsuleId) {
   return (await dbPromise).delete(AUDIO, capsuleId);
+}
+
+// --- Quiz mastery (Exam Mode) — best score per capsule drives the Readiness Score ---
+export async function recordMastery(capsule, score, total) {
+  const db = await dbPromise;
+  const id = capsule.capsuleId;
+  const pct = Math.round((score / total) * 100);
+  const prev = await db.get(MASTERY, id);
+  await db.put(MASTERY, {
+    capsuleId: id,
+    course: capsule.meta?.course || '',
+    university: capsule.meta?.university || '',
+    topic: capsule.meta?.topic || '',
+    bestPct: Math.max(pct, prev?.bestPct || 0),
+    lastPct: pct,
+    attempts: (prev?.attempts || 0) + 1,
+    lastAt: Date.now()
+  });
+}
+
+export async function listMastery() {
+  return (await dbPromise).getAll(MASTERY);
 }

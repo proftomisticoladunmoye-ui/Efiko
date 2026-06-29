@@ -33,6 +33,23 @@ const sessionFor = (id) => {
 // the browser hits the gateway directly). Falls back to the request host.
 const selfBase = (req) => PUBLIC_BASE_URL || `http://${req.headers.host}`;
 
+// Cost guardrail (free period): cap fresh AI generations per client per day, so a
+// single user (or abuser) can't run up the API bill. Cached/published/catalog
+// lessons are unaffected — only brand-new generations count.
+const DAILY_GEN_LIMIT = Number(process.env.DAILY_GEN_LIMIT || 25);
+const genCounts = new Map(); // "ip|date" -> count
+function genQuotaExceeded(req) {
+  const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'anon').split(',')[0].trim();
+  const today = new Date().toISOString().slice(0, 10);
+  if (genCounts.size > 5000) {
+    for (const k of genCounts.keys()) if (!k.endsWith(today)) genCounts.delete(k);
+  }
+  const key = `${ip}|${today}`;
+  const n = (genCounts.get(key) || 0) + 1;
+  genCounts.set(key, n);
+  return n > DAILY_GEN_LIMIT;
+}
+
 // Snap & Learn over WhatsApp: download the photo, read it with Claude vision.
 async function handleSnap(from, image, caption) {
   if (!aiConfigured()) return { kind: 'text', text: 'Snap & Learn isn’t available right now.' };
@@ -187,6 +204,7 @@ const server = createServer(async (req, res) => {
   // — the PWA, WhatsApp, or any client can call this and render the LearningResponse.
   if (req.method === 'POST' && url.pathname === '/lessons/generate') {
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
+    if (genQuotaExceeded(req)) return json(res, 429, { error: 'Daily lesson limit reached. Open a saved lesson, or try again tomorrow.' });
     const { university, course, topic } = await readBody(req);
     if (!topic) return json(res, 400, { error: 'topic is required' });
     try {
@@ -203,6 +221,7 @@ const server = createServer(async (req, res) => {
   // Snap & Learn (Stage 7): a photo (base64) → Claude vision → capsule.
   if (req.method === 'POST' && url.pathname === '/lessons/snap') {
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
+    if (genQuotaExceeded(req)) return json(res, 429, { error: 'Daily lesson limit reached. Open a saved lesson, or try again tomorrow.' });
     const { image, mediaType, hint } = await readBody(req);
     if (!image) return json(res, 400, { error: 'image (base64) is required' });
     try {

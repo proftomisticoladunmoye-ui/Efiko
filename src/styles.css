@@ -122,6 +122,25 @@ body {
 .pub-topic em { color: var(--muted); font-style: normal; font-size: 12px; }
 .pub-row button { background: var(--brand); color: #fff; border: 0; border-radius: 8px; padding: 7px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
 
+/* Exam Readiness */
+.readiness { background: linear-gradient(135deg, rgba(20,184,166,.14), rgba(13,21,38,.4)); border: 1px solid var(--brand); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
+.readiness h2 { font-size: 18px; margin: 0 0 2px; }
+.readiness-sub { color: var(--muted); font-size: 12px; margin: 0 0 12px; }
+.ready-row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-top: 1px solid var(--line); }
+.ready-row:first-of-type { border-top: 0; }
+.ready-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.ready-course { font-weight: 600; font-size: 14px; }
+.ready-meta { color: var(--muted); font-size: 11px; }
+.ready-bar { height: 7px; background: #0d1526; border-radius: 999px; overflow: hidden; }
+.ready-bar-fill { height: 100%; border-radius: 999px; transition: width .3s ease; }
+.ready-bar-fill.good { background: var(--good); }
+.ready-bar-fill.mid { background: var(--brand-2); }
+.ready-bar-fill.low { background: var(--warn); }
+.ready-score { font-size: 20px; font-weight: 700; min-width: 54px; text-align: right; }
+.ready-score.good { color: var(--good); }
+.ready-score.mid { color: var(--brand-2); }
+.ready-score.low { color: #fbbf24; }
+
 /* Campus Wi-Fi Sync */
 .campus { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: linear-gradient(135deg, rgba(15,118,110,.20), rgba(13,21,38,.4)); border: 1px solid var(--brand); border-radius: 14px; padding: 14px 16px; margin-bottom: 16px; }
 .campus-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }

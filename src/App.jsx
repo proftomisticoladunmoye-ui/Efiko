@@ -11,7 +11,9 @@ import CampusSync from './components/CampusSync.jsx';
 import AskEfiko from './components/AskEfiko.jsx';
 import SnapLearn from './components/SnapLearn.jsx';
 import Studio from './components/Studio.jsx';
+import ExamReadiness from './components/ExamReadiness.jsx';
 import StatusBar from './components/StatusBar.jsx';
+import { computeReadiness } from './exam.js';
 
 // Gateway that hosts the AI Processing Engine. Override with VITE_GATEWAY at build time.
 const GATEWAY = import.meta.env.VITE_GATEWAY || 'http://localhost:4100';
@@ -38,6 +40,7 @@ export default function App() {
   const [campusSyncing, setCampusSyncing] = useState(false);
   const [campusProgress, setCampusProgress] = useState(null);
   const [offlineStat, setOfflineStat] = useState(null);
+  const [readiness, setReadiness] = useState([]);
   const [catalogSource, setCatalogSource] = useState(null);
   const [online, setOnline] = useState(navigator.onLine);
   const [syncing, setSyncing] = useState(false);
@@ -52,6 +55,7 @@ export default function App() {
     setLibrary(await buildLibrary(cat));
     setPacks(await buildPacks(cat));
     setOfflineStat(await offlineStatus(cat));
+    setReadiness(await computeReadiness(cat));
   }, []);
 
   // Boot
@@ -278,6 +282,8 @@ export default function App() {
         {view === 'library' && <AskEfiko onAsk={handleAsk} busy={asking} />}
         {view === 'library' && <SnapLearn onSnap={handleSnap} busy={snapping} />}
 
+        {view === 'library' && <ExamReadiness readiness={readiness} />}
+
         {view === 'library' && (
           <CampusSync
             online={online}
@@ -314,7 +320,7 @@ export default function App() {
 
         {view === 'capsule' && active && (
           <>
-            <button className="back" onClick={() => { setView('library'); setActive(null); }}>
+            <button className="back" onClick={() => { setView('library'); setActive(null); if (catalog) computeReadiness(catalog).then(setReadiness); }}>
               ← My Courses
             </button>
             <CapsuleView capsule={active} />

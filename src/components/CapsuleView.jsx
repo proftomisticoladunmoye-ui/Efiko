@@ -1,7 +1,7 @@
 // Efiko — renders a LearningResponse. An adapter (here, the PWA) only renders the
 // blocks its channel supports; it never contains teaching logic (Stage 1, §3.1).
 import { useState, useEffect, useRef } from 'react';
-import { getAudio } from '../storage/capsuleStore.js';
+import { getAudio, recordMastery } from '../storage/capsuleStore.js';
 
 function TextBlock({ block }) {
   return <p className="capsule-text">{block.value}</p>;
@@ -91,7 +91,8 @@ function WhiteboardBlock({ block }) {
   );
 }
 
-function VoiceBlock({ block, capsuleId }) {
+function VoiceBlock({ block, capsule }) {
+  const capsuleId = capsule?.capsuleId;
   const [src, setSrc] = useState(block.src || block.ref || null);
   const [cached, setCached] = useState(false);
 
@@ -125,13 +126,24 @@ function VoiceBlock({ block, capsuleId }) {
   );
 }
 
-function QuizBlock({ block }) {
+function QuizBlock({ block, capsule }) {
   const [picked, setPicked] = useState({});
+  const recorded = useRef(false);
   const items = block.items;
   const answered = Object.keys(picked).length;
   const allDone = answered === items.length;
   const score = items.reduce((s, it, i) => s + (picked[i] === it.answer ? 1 : 0), 0);
   const pct = Math.round((score / items.length) * 100);
+
+  // Record the result once per attempt → feeds the Exam Mode Readiness Score.
+  useEffect(() => {
+    if (allDone && !recorded.current && capsule) {
+      recorded.current = true;
+      recordMastery(capsule, score, items.length).catch(() => {});
+    }
+  }, [allDone, capsule, score, items.length]);
+
+  const retry = () => { setPicked({}); recorded.current = false; };
 
   return (
     <div className="quiz">
@@ -162,7 +174,7 @@ function QuizBlock({ block }) {
       {allDone && (
         <div className="quiz-result">
           <span>You scored <strong>{score}/{items.length}</strong> ({pct}%) {pct >= 80 ? '🎉' : pct >= 50 ? '👍' : '📚'}</span>
-          <button className="quiz-retry" onClick={() => setPicked({})}>Try again</button>
+          <button className="quiz-retry" onClick={retry}>Try again</button>
         </div>
       )}
     </div>
@@ -230,7 +242,7 @@ export default function CapsuleView({ capsule }) {
         return (
           <section key={i} className={`block block--${block.type}`}>
             {title && <h2 className="block-title">{title}</h2>}
-            <Renderer block={block} capsuleId={capsule.capsuleId} />
+            <Renderer block={block} capsule={capsule} />
           </section>
         );
       })}
