@@ -41,6 +41,16 @@ services:
         sync: false
       - key: ADMIN_MASTER_KEY
         sync: false
+      # First-admin bootstrap (optional) — auto-creates this institution on
+      # startup so you can log in without running any terminal command.
+      - key: SEED_ADMIN_EMAIL
+        sync: false
+      - key: SEED_ADMIN_PASSWORD
+        sync: false
+      - key: SEED_ORG_ID
+        sync: false
+      - key: SEED_INSTITUTION
+        sync: false
       # Persistence — Neon/Postgres connection string (durable accounts/branding/lessons)
       - key: DATABASE_URL
         sync: false

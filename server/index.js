@@ -18,7 +18,7 @@ import { renderSms } from './channels/sms/render.js';
 import { sendSms, smsLive } from './channels/sms/transport.js';
 import { addPublished, getPublished, listPublished } from './core/published.js';
 import { verifyToken, verifyPassword, signToken } from './core/auth.js';
-import { createInstitution, findByEmail, getOrg, updateBranding, getBranding, publicOrg } from './core/institutions.js';
+import { createInstitution, findByEmail, getOrg, updateBranding, getBranding, publicOrg, seedFromEnv } from './core/institutions.js';
 
 const PORT = process.env.PORT || 4100;
 const VERIFY_TOKEN = process.env.WHATSAPP_VERIFY_TOKEN || 'Efiko-verify';
@@ -327,4 +327,6 @@ const server = createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`Efiko Gateway on http://localhost:${PORT}  (WhatsApp ${isLive() ? 'LIVE' : 'MOCK'})`);
+  // Bootstrap the first admin account from env vars (no-op if already present).
+  seedFromEnv().catch((e) => console.error('[seed] failed:', e.message));
 });

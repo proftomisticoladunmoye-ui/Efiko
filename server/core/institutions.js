@@ -64,4 +64,22 @@ export async function getBranding(orgId) {
   return r ? r.branding : null;
 }
 
+// One-time bootstrap: create an admin account from env vars if it doesn't
+// already exist. Lets a non-technical operator onboard the first institution
+// straight from the Render dashboard — no terminal, no master key needed.
+// Set SEED_ADMIN_EMAIL + SEED_ADMIN_PASSWORD (and optionally SEED_ORG_ID /
+// SEED_INSTITUTION). Safe to leave set: it never overwrites an existing account.
+export async function seedFromEnv() {
+  const email = (process.env.SEED_ADMIN_EMAIL || '').trim();
+  const password = (process.env.SEED_ADMIN_PASSWORD || '').trim();
+  if (!email || !password) return null;
+  const orgId = (process.env.SEED_ORG_ID || 'admin').toLowerCase().trim();
+  const institution = (process.env.SEED_INSTITUTION || orgId).trim();
+  if (await getOrg(orgId)) return null;          // already onboarded — leave it
+  if (await findByEmail(email)) return null;     // email taken under another org
+  const org = await createInstitution({ orgId, institution, email, password, active: true });
+  console.log(`[seed] created institution "${orgId}" for ${email}`);
+  return org;
+}
+
 export { publicOrg };
