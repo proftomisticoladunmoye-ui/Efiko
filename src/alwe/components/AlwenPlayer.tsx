@@ -4,7 +4,9 @@
 import { useEffect, useMemo, useReducer, useState, type ReactElement } from 'react';
 import type { LessonPackage, LearningMode, Bookmark } from '../types';
 import { LessonController } from '../engine/LessonController';
-import { savePackage, getPackage, getProgress, saveProgress } from '../store/PackageStore';
+import { savePackage, getPackage, getProgress, saveProgress, getClip, saveClip } from '../store/PackageStore';
+import { clipKeyOf } from '../engine/VoiceSync';
+import { fetchSegmentAudio } from '../net/voice';
 import SceneNode from './SceneNode';
 import NodeCard from './NodeCard';
 import QuizNode from './QuizNode';
@@ -34,7 +36,51 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
   const [resumeConsumedAt, setResumeConsumedAt] = useState(-1);
   const [epoch, setEpoch] = useState(0); // bumped on every navigation to force a fresh SceneNode
 
+  // Offline voice pack: clipKey → object URL of the stored Opus blob.
+  const [clipUrls, setClipUrls] = useState<Map<string, string>>(new Map());
+  const [voiceCount, setVoiceCount] = useState({ have: 0, total: 0 });
+  const [downloading, setDownloading] = useState(false);
+  const [dlProgress, setDlProgress] = useState(0);
+  const [dlError, setDlError] = useState<string | null>(null);
+
   const ctrl = useMemo(() => (pkg ? new LessonController(pkg) : null), [pkg]);
+
+  const allSegments = useMemo(() => (pkg ? pkg.scenes.flatMap((s) => s.segments) : []), [pkg]);
+
+  // Build object URLs for any clips already stored offline; report have/total.
+  async function loadClips(p: LessonPackage): Promise<void> {
+    const segs = p.scenes.flatMap((s) => s.segments);
+    const map = new Map<string, string>();
+    for (const seg of segs) {
+      const key = clipKeyOf(seg);
+      const clip = await getClip(p.manifest.lessonId, key);
+      if (clip) map.set(key, URL.createObjectURL(clip.blob));
+    }
+    setClipUrls((old) => { old.forEach((u) => URL.revokeObjectURL(u)); return map; });
+    setVoiceCount({ have: map.size, total: segs.length });
+  }
+
+  async function downloadVoice(): Promise<void> {
+    if (!pkg) return;
+    setDownloading(true); setDlError(null); setDlProgress(0);
+    try {
+      let done = 0;
+      for (const seg of allSegments) {
+        const key = clipKeyOf(seg);
+        const existing = await getClip(pkg.manifest.lessonId, key);
+        if (!existing && seg.text) {
+          const blob = await fetchSegmentAudio(seg.text);
+          await saveClip(pkg.manifest.lessonId, key, blob, blob.type || 'audio/ogg');
+        }
+        done += 1; setDlProgress(Math.round((done / allSegments.length) * 100));
+      }
+      await loadClips(pkg);
+    } catch (e) {
+      setDlError((e as Error).message);
+    } finally {
+      setDownloading(false);
+    }
+  }
 
   // Load package, then restore any saved progress (offer to resume).
   useEffect(() => {
@@ -42,6 +88,7 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
     loadPackage(lessonId).then(async (p) => {
       if (cancelled) return;
       setPkg(p);
+      await loadClips(p);
       const prog = await getProgress(lessonId);
       if (cancelled) return;
       if (prog) {
@@ -126,6 +173,19 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
         {ctrl.arc.map((_, i) => <span key={i} className={`dot ${i === index ? 'on' : i < index ? 'past' : ''}`} />)}
       </div>
 
+      <div className="alwe-pack">
+        {voiceCount.total > 0 && voiceCount.have >= voiceCount.total ? (
+          <span className="alwe-pack-ready">🔊 Voice ready offline · 📦 lesson saved for offline</span>
+        ) : downloading ? (
+          <span className="alwe-pack-progress">Downloading voice… {dlProgress}%</span>
+        ) : (
+          <button className="alwe-pack-btn" onClick={downloadVoice} disabled={!navigator.onLine}>
+            ⬇ Download voice for offline {voiceCount.total ? `(${voiceCount.have}/${voiceCount.total})` : ''}
+          </button>
+        )}
+        {dlError && <span className="alwe-pack-err">{dlError}</span>}
+      </div>
+
       {outlineOpen && <LessonOutline ctrl={ctrl} currentIndex={index} onJump={go} />}
 
       {bookmarks.length > 0 && outlineOpen && (
@@ -150,6 +210,7 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
           onCompleted={(id) => { ctrl.markCompleted(id); bump(); }}
           onPersist={(ms) => persist(ms)}
           onBookmark={addBookmark}
+          clipUrlFor={(key) => clipUrls.get(key)}
         />
       ) : node.kind === 'miniQuiz' || node.kind === 'finalQuiz' ? (
         <QuizNode title={node.kind === 'finalQuiz' ? 'Final Quiz' : 'Mini Quiz'} quiz={node.quiz || []} />

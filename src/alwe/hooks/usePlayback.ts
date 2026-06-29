@@ -9,6 +9,7 @@ export interface Playback {
   durationMs: number;
   playing: boolean;
   speed: number;
+  seekNonce: number; // bumps on every seek so voice can re-align audio currentTime
   play: () => void;
   pause: () => void;
   toggle: () => void;
@@ -20,6 +21,7 @@ export function usePlayback(engine: TimelineEngine): Playback {
   const [, force] = useReducer((n: number) => n + 1, 0);
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeedState] = useState(engine.speed);
+  const [seekNonce, setSeekNonce] = useState(0);
   const last = useRef(0);
   const raf = useRef(0);
 
@@ -51,8 +53,8 @@ export function usePlayback(engine: TimelineEngine): Playback {
   }, [engine]);
   const pause = useCallback(() => setPlaying(false), []);
   const toggle = useCallback(() => setPlaying((p) => !p), []);
-  const seek = useCallback((ms: number) => { engine.seek(ms); force(); }, [engine]);
+  const seek = useCallback((ms: number) => { engine.seek(ms); setSeekNonce((n) => n + 1); force(); }, [engine]);
   const setSpeed = useCallback((x: number) => { engine.setSpeed(x); setSpeedState(x); }, [engine]);
 
-  return { elapsedMs: engine.elapsedMs, durationMs: engine.durationMs, playing, speed, play, pause, toggle, seek, setSpeed };
+  return { elapsedMs: engine.elapsedMs, durationMs: engine.durationMs, playing, speed, seekNonce, play, pause, toggle, seek, setSpeed };
 }

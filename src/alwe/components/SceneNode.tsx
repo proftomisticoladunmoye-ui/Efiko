@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react';
 import type { Scene, AlweObject } from '../types';
 import { TimelineEngine } from '../engine/TimelineEngine';
 import { usePlayback } from '../hooks/usePlayback';
+import { VoiceSync, segmentAt, offsetSeconds } from '../engine/VoiceSync';
 import SceneStage from './SceneStage';
 
 const SPEEDS = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 2];
@@ -19,14 +20,26 @@ interface Props {
   onCompleted: (sceneId: string) => void;
   onPersist: (elapsedMs: number) => void;
   onBookmark: (sceneId: string, atMs: number) => void;
+  clipUrlFor?: (clipKey: string) => string | undefined;
 }
 
 export default function SceneNode(props: Props): ReactElement {
-  const { scene, initialElapsedMs = 0, speed, autoPlay, onSpeedChange, onCompleted, onPersist, onBookmark } = props;
+  const { scene, initialElapsedMs = 0, speed, autoPlay, onSpeedChange, onCompleted, onPersist, onBookmark, clipUrlFor } = props;
   const engine = useMemo(() => { const e = new TimelineEngine(); e.load(scene); e.setSpeed(speed); if (initialElapsedMs) e.seek(initialElapsedMs); return e; }, [scene]); // eslint-disable-line react-hooks/exhaustive-deps
   const pb = usePlayback(engine);
   const [tapped, setTapped] = useState<string | null>(null);
   const completedRef = useRef(false);
+
+  // Voice: an <audio> element driven by VoiceSync on discrete transitions only.
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const voice = useMemo(() => new VoiceSync((key) => clipUrlFor?.(key)), [clipUrlFor]);
+  const seg = segmentAt(scene, engine.elapsedMs);
+  const segId = seg?.id ?? null;
+  useEffect(() => { voice.attach(audioRef.current); }, [voice]);
+  useEffect(() => { voice.loadSegment(seg, seg ? offsetSeconds(seg, engine.elapsedMs) : 0, pb.playing); }, [segId]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { voice.setPlaying(pb.playing); }, [pb.playing]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { voice.setSpeed(pb.speed); }, [pb.speed]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (seg) voice.seekTo(offsetSeconds(seg, engine.elapsedMs), pb.playing); }, [pb.seekNonce]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-play a freshly entered scene; mark completed once the timeline finishes.
   useEffect(() => { if (autoPlay) pb.play(); }, [scene]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -38,13 +51,13 @@ export default function SceneNode(props: Props): ReactElement {
   useEffect(() => () => onPersist(engine.elapsedMs), []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const states = engine.states();
-  const segId = engine.currentSegmentId();
-  const segText = scene.segments.find((s) => s.id === segId)?.text || '';
+  const segText = seg?.text || '';
   const caption = tapped || segText;
   const onTap = (obj: AlweObject) => setTapped(obj.onTapExplain || obj.explainText || null);
 
   return (
     <>
+      <audio ref={audioRef} preload="auto" hidden />
       <p className="alwe-objective">🎯 {scene.objective}</p>
       <SceneStage scene={scene} states={states} onObjectTap={onTap} />
       <p className="alwe-caption" aria-live="polite">{caption || ' '}</p>

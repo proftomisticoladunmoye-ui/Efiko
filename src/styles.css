@@ -300,3 +300,11 @@ body {
 .alwe-resume { background: rgba(15,118,110,.12); border: 1px solid var(--brand); border-radius: 12px; padding: 16px; }
 .alwe-resume-actions { display: flex; gap: 10px; margin-top: 10px; }
 .alwe-resume .ghost { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 9px 16px; cursor: pointer; }
+
+/* Offline pack / voice download */
+.alwe-pack { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; }
+.alwe-pack-btn { background: transparent; border: 1px solid var(--brand); color: var(--brand-2); border-radius: 999px; padding: 6px 14px; font-size: 12px; cursor: pointer; }
+.alwe-pack-btn:disabled { opacity: .5; cursor: not-allowed; }
+.alwe-pack-ready { color: var(--good); }
+.alwe-pack-progress { color: var(--brand-2); }
+.alwe-pack-err { color: var(--warn); }

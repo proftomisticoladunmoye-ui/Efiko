@@ -13,6 +13,8 @@ import { sendMessages, isLive } from './channels/whatsapp/transport.js';
 import { generateCapsule, generateFromImage, isConfigured as aiConfigured } from './core/ai/lessonGenerator.js';
 import { registerCapsule } from './core/content.js';
 import { getVoiceAudio, attachVoice, isConfigured as voiceConfigured } from './core/voice/voiceTutor.js';
+import { synthesize as ttsSynthesize } from './core/voice/tts.js';
+import { createHash } from 'node:crypto';
 import { fetchMediaBase64 } from './channels/whatsapp/transport.js';
 import { renderSms } from './channels/sms/render.js';
 import { sendSms, smsLive } from './channels/sms/transport.js';
@@ -34,6 +36,8 @@ async function authedOrg(req) {
 
 // In-memory sessions (per phone number). Persistence comes in a later stage.
 const sessions = new Map();
+// ALWE narration cache (text hash → synthesized audio) to dedupe within a session.
+const alweTtsCache = new Map();
 const sessionFor = (id) => {
   if (!sessions.has(id)) sessions.set(id, createSession(id));
   return sessions.get(id);
@@ -241,6 +245,25 @@ const server = createServer(async (req, res) => {
         'Content-Length': audio.audio.length,
         'Cache-Control': 'public, max-age=86400'
       });
+      return res.end(audio.audio);
+    } catch (e) {
+      return json(res, 502, { error: 'tts failed', detail: e.message });
+    }
+  }
+
+  // ALWE voice (Batch 4): synthesize one short narration segment → Opus bytes. The PWA
+  // calls this once per segment when "downloading voice for offline", then stores the
+  // clip in IndexedDB so playback needs zero network. Cached by text hash this session.
+  if (req.method === 'POST' && url.pathname === '/alwe/tts') {
+    if (!voiceConfigured()) return json(res, 503, { error: 'voice not configured (set DEEPGRAM_API_KEY)' });
+    const { text } = await readBody(req);
+    if (!text || !String(text).trim()) return json(res, 400, { error: 'text is required' });
+    try {
+      const key = createHash('sha1').update(String(text)).digest('hex');
+      let audio = alweTtsCache.get(key);
+      if (!audio) { audio = await ttsSynthesize(String(text)); if (audio) alweTtsCache.set(key, audio); }
+      if (!audio) return json(res, 502, { error: 'tts returned no audio' });
+      res.writeHead(200, { 'Content-Type': audio.mime, 'Content-Length': audio.audio.length, 'Cache-Control': 'public, max-age=86400' });
       return res.end(audio.audio);
     } catch (e) {
       return json(res, 502, { error: 'tts failed', detail: e.message });
