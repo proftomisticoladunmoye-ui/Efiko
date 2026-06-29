@@ -9,7 +9,17 @@ const META = 'meta';
 const AUDIO = 'audio'; // voice-note bytes, for true-offline voice (Stage 11)
 const MASTERY = 'mastery'; // quiz results per capsule, for Exam Mode readiness
 
-const dbPromise = openDB(DB_NAME, 4, {
+// ALWE (Adaptive Learning Whiteboard Engine) stores — added in v5. This module is the
+// single migration authority for the Efiko DB; the ALWE engine (src/alwe/store) reuses
+// THIS connection (see `dbPromise` export) so the two never fight over the DB version.
+const ALWE_PACKAGES = 'alwe_packages';   // keyPath lessonId — SceneGraph + manifest
+const ALWE_CLIPS = 'alwe_clips';         // keyPath [lessonId, clipId] — Opus voice blobs
+const ALWE_PROGRESS = 'alwe_progress';   // keyPath lessonId — position, completion, bookmarks
+const ALWE_ANALYTICS = 'alwe_analytics'; // keyPath lessonId — behaviour log (Cognitive Tutor)
+
+export const dbPromise = openDB(DB_NAME, 5, {
+  // `upgrade` runs once for the version the DB is migrating through. Every store is
+  // guarded by `contains` so this is safe whether the user is on a fresh DB or v4→v5.
   upgrade(db) {
     if (!db.objectStoreNames.contains(CAPS)) {
       db.createObjectStore(CAPS, { keyPath: 'capsuleId' });
@@ -22,6 +32,18 @@ const dbPromise = openDB(DB_NAME, 4, {
     }
     if (!db.objectStoreNames.contains(MASTERY)) {
       db.createObjectStore(MASTERY, { keyPath: 'capsuleId' });
+    }
+    if (!db.objectStoreNames.contains(ALWE_PACKAGES)) {
+      db.createObjectStore(ALWE_PACKAGES, { keyPath: 'lessonId' });
+    }
+    if (!db.objectStoreNames.contains(ALWE_CLIPS)) {
+      db.createObjectStore(ALWE_CLIPS, { keyPath: ['lessonId', 'clipId'] });
+    }
+    if (!db.objectStoreNames.contains(ALWE_PROGRESS)) {
+      db.createObjectStore(ALWE_PROGRESS, { keyPath: 'lessonId' });
+    }
+    if (!db.objectStoreNames.contains(ALWE_ANALYTICS)) {
+      db.createObjectStore(ALWE_ANALYTICS, { keyPath: 'lessonId' });
     }
   }
 });

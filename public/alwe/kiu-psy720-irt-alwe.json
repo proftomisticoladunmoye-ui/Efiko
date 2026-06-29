@@ -1,0 +1,130 @@
+{
+  "manifest": {
+    "lessonId": "kiu-psy720-irt-alwe",
+    "format": "alwe",
+    "version": 1,
+    "meta": {
+      "university": "KIU",
+      "course": "PSY720",
+      "topic": "Item Response Theory",
+      "level": "Postgraduate",
+      "sequence": 1
+    },
+    "defaultMode": "normal",
+    "offlineReady": false,
+    "totalBytesEstimate": 24000,
+    "arc": [
+      { "kind": "intro", "title": "Why measure ability with items?", "body": "Two exams can give the same raw score yet mean very different things. Item Response Theory fixes this by putting people and questions on one shared scale. In the next few minutes you'll see how a single S-shaped curve captures an item's difficulty and how sharply it tells strong students from weak ones." },
+      { "kind": "scene", "sceneId": "s1-axes" },
+      { "kind": "scene", "sceneId": "s2-icc" },
+      { "kind": "miniQuiz", "quiz": [
+        { "q": "On the ability axis, moving right means the student is...", "options": ["Less able", "More able", "Guessing", "Unchanged"], "answer": 1, "conceptTags": ["ability-axis"] },
+        { "q": "What does the vertical axis of an ICC show?", "options": ["Item difficulty", "Probability of a correct answer", "Number of items", "Test reliability"], "answer": 1, "conceptTags": ["probability-axis"] }
+      ] },
+      { "kind": "scene", "sceneId": "s3-parameters" },
+      { "kind": "reflection", "title": "Pause and connect", "body": "Think of a past exam question that everyone got right, and one that separated the top students from the rest. In IRT language, the first has low difficulty (b), and the second has high discrimination (a). You have just described two items by their parameters." },
+      { "kind": "summary", "title": "What you now know", "body": "IRT links a latent ability (theta) to the probability of a correct answer through the Item Characteristic Curve. The b parameter is the item's difficulty — the ability where success is 50/50. The a parameter is discrimination — how steeply the curve rises, i.e. how well the item separates abilities. Because items and people share one scale, scores become comparable across different tests." },
+      { "kind": "finalQuiz", "quiz": [
+        { "q": "In a 2-parameter IRT model, b represents...", "options": ["Discrimination", "Item difficulty", "Guessing", "Reliability"], "answer": 1, "conceptTags": ["b-difficulty"] },
+        { "q": "A steeper ICC means the item has higher...", "options": ["Difficulty", "Discrimination", "Guessing", "Bias"], "answer": 1, "conceptTags": ["a-discrimination"] },
+        { "q": "At ability = b, the probability of a correct answer is about...", "options": ["0.0", "0.25", "0.5", "1.0"], "answer": 2, "conceptTags": ["b-difficulty", "probability-axis"] }
+      ] }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "s1-axes",
+      "title": "The stage: ability vs. probability",
+      "objective": "Read the two axes of an Item Characteristic Curve.",
+      "estimatedMs": 45000,
+      "difficulty": "intro",
+      "objects": [
+        { "id": "s1-plane", "type": "coordinatePlane", "props": { "x": 60, "y": 30, "w": 420, "h": 260, "xRange": [-3, 3], "yRange": [0, 1] }, "animation": { "kind": "draw", "startMs": 0, "durationMs": 2500, "easing": "easeInOut" }, "explainText": "Our drawing board: ability across, probability up.", "voiceSegmentId": "s1-seg1", "conceptTags": ["ability-axis", "probability-axis"] },
+        { "id": "s1-xlabel", "type": "label", "props": { "x": 470, "y": 300, "text": "Ability (θ)" }, "animation": { "kind": "appear", "startMs": 2600, "durationMs": 500 }, "explainText": "The horizontal axis is the student's latent ability, theta.", "voiceSegmentId": "s1-seg2", "interactive": true, "onTapExplain": "Theta runs from low ability on the left to high ability on the right. It is not a raw score — it is an estimated position on a hidden scale.", "conceptTags": ["ability-axis"] },
+        { "id": "s1-ylabel", "type": "label", "props": { "x": 20, "y": 24, "text": "P(correct)" }, "animation": { "kind": "appear", "startMs": 3100, "durationMs": 500 }, "explainText": "The vertical axis is the probability of a correct answer, from 0 to 1.", "voiceSegmentId": "s1-seg2", "interactive": true, "onTapExplain": "This is the chance a student at a given ability answers THIS item correctly — between 0 (never) and 1 (always).", "conceptTags": ["probability-axis"] }
+      ],
+      "segments": [
+        { "id": "s1-seg1", "sceneId": "s1-axes", "startMs": 0, "endMs": 12000, "text": "Every item lives on a simple stage. We draw two axes: one for the student's ability, one for the chance of a correct answer.", "clipId": null },
+        { "id": "s1-seg2", "sceneId": "s1-axes", "startMs": 12000, "endMs": 30000, "text": "Across the bottom is ability — we call it theta. Up the side is the probability of getting this item right, from zero to one.", "clipId": null }
+      ],
+      "pausePoints": [
+        { "atMs": 30000, "prompt": "Before we draw the curve: why must ability go on the horizontal axis and probability on the vertical one?", "expectKind": "reflect" }
+      ],
+      "knowledgeCheck": { "q": "The horizontal axis of an ICC represents:", "options": ["Probability of a correct answer", "The student's ability (theta)", "Item difficulty", "The number of items"], "answer": 1, "conceptTags": ["ability-axis"] },
+      "explain": {
+        "simpler": "Two number lines make a graph: how good you are (left-right) and how likely you are to get the question right (up-down).",
+        "detailed": "The ICC is plotted in ability–probability space. Ability (theta) is a latent trait estimated for each person; the y-axis is the conditional probability of a correct response given that ability, bounded in [0,1].",
+        "practicalExample": "Imagine lining up your whole class from weakest to strongest left to right. For one exam question, mark how likely each position is to answer correctly. Those marks trace a rising curve.",
+        "africanContext": "Think of a JAMB or university entrance question answered by thousands of candidates across the country: weaker candidates rarely get it, stronger ones usually do, and the rise between them is exactly this curve.",
+        "realLifeScenario": "A high-jump bar: almost everyone clears a low bar, almost no one clears a very high one, and around your true ability it's a coin toss.",
+        "visualAnalogy": "A ramp, not a step: ability increases smoothly, so the chance of success climbs smoothly too.",
+        "commonMistakes": "Students often put the raw test score on the x-axis. It is ability (theta), an estimated latent trait, not the observed score.",
+        "memoryTip": "ACROSS = Ability, COUNT-UP = Chance correct."
+      }
+    },
+    {
+      "id": "s2-icc",
+      "title": "The Item Characteristic Curve",
+      "objective": "Locate difficulty (b) and discrimination (a) on the curve.",
+      "estimatedMs": 60000,
+      "difficulty": "core",
+      "objects": [
+        { "id": "s2-plane", "type": "coordinatePlane", "props": { "x": 60, "y": 30, "w": 420, "h": 260, "xRange": [-3, 3], "yRange": [0, 1] }, "animation": { "kind": "appear", "startMs": 0, "durationMs": 300 }, "conceptTags": ["ability-axis", "probability-axis"] },
+        { "id": "s2-curve", "type": "graph", "props": { "fn": "logistic", "a": 1.2, "b": 0.5, "stroke": "var(--brand)" }, "animation": { "kind": "draw", "startMs": 300, "durationMs": 3000, "easing": "easeInOut" }, "explainText": "The S-shaped Item Characteristic Curve.", "voiceSegmentId": "s2-seg1", "interactive": true, "onTapExplain": "This whole curve is the item. Its position and steepness tell you everything about how the item behaves.", "conceptTags": ["icc"] },
+        { "id": "s2-b-pointer", "type": "pointer", "props": { "x": 270, "y": 160, "toX": 270, "toY": 290, "label": "b: difficulty (P=0.5)" }, "animation": { "kind": "appear", "startMs": 3500, "durationMs": 600 }, "explainText": "Difficulty b is the ability where the curve passes 50%.", "voiceSegmentId": "s2-seg2", "interactive": true, "onTapExplain": "Drop straight down from where the curve crosses 0.5 probability. That ability value is b — the item's difficulty.", "conceptTags": ["b-difficulty"] },
+        { "id": "s2-slope", "type": "highlight", "props": { "x": 230, "y": 120, "w": 90, "h": 80, "label": "a: discrimination (steepness)" }, "animation": { "kind": "highlight", "startMs": 4200, "durationMs": 800 }, "explainText": "Discrimination a is how steeply the curve rises.", "voiceSegmentId": "s2-seg3", "interactive": true, "onTapExplain": "The steeper the curve at the middle, the better the item separates students just below from just above its difficulty. That steepness is a.", "conceptTags": ["a-discrimination"] }
+      ],
+      "segments": [
+        { "id": "s2-seg1", "sceneId": "s2-icc", "startMs": 0, "endMs": 14000, "text": "Now watch the curve appear. As ability increases left to right, the probability of a correct answer rises in a smooth S-shape. This is the Item Characteristic Curve.", "clipId": null },
+        { "id": "s2-seg2", "sceneId": "s2-icc", "startMs": 14000, "endMs": 30000, "text": "Find where the curve crosses fifty percent. Drop down to the ability axis — that point is b, the item's difficulty.", "clipId": null },
+        { "id": "s2-seg3", "sceneId": "s2-icc", "startMs": 30000, "endMs": 48000, "text": "Now look at how steep the curve is through the middle. A steep rise means the item sharply separates weaker from stronger students. That steepness is a, the discrimination.", "clipId": null }
+      ],
+      "pausePoints": [
+        { "atMs": 30000, "prompt": "Tap the curve where the probability is 0.5. What does the ability value there tell you?", "expectKind": "tapObject" }
+      ],
+      "knowledgeCheck": { "q": "On the ICC, the ability where P(correct) = 0.5 is the item's:", "options": ["Discrimination (a)", "Difficulty (b)", "Guessing (c)", "Reliability"], "answer": 1, "conceptTags": ["b-difficulty"] },
+      "replay": { "prerequisiteSceneId": "s1-axes" },
+      "explain": {
+        "simpler": "The S-curve IS the question. Where it hits halfway = how hard it is. How steep it is = how well it tells students apart.",
+        "detailed": "For the 2-parameter logistic model, P(θ) = 1 / (1 + e^(−a(θ−b))). b shifts the curve horizontally (difficulty); a controls the slope at θ=b (discrimination).",
+        "practicalExample": "Two items can have the same difficulty but different steepness: the steeper one is better at distinguishing a student of ability 0.4 from one of ability 0.6.",
+        "africanContext": "In a national exam, a 'good discriminator' is the question markers love: top candidates get it, borderline ones split, weak ones miss it — exactly a steep ICC.",
+        "realLifeScenario": "A sensitive thermometer (steep) reacts sharply around a target temperature; a dull one (flat) barely changes — same idea as discrimination.",
+        "visualAnalogy": "b moves the slide left or right; a makes the slide steep or gentle.",
+        "commonMistakes": "Confusing a and b. b is WHERE the curve sits (difficulty); a is HOW STEEP it is (discrimination).",
+        "memoryTip": "b = Base position (difficulty). a = Angle of the rise (discrimination)."
+      }
+    },
+    {
+      "id": "s3-parameters",
+      "title": "The formula behind the curve",
+      "objective": "Connect the picture to the 2-parameter logistic equation.",
+      "estimatedMs": 50000,
+      "difficulty": "stretch",
+      "objects": [
+        { "id": "s3-eq", "type": "equation", "props": { "latex": "P(\\theta) = \\dfrac{1}{1 + e^{-a(\\theta - b)}}", "x": 80, "y": 90 }, "animation": { "kind": "appear", "startMs": 0, "durationMs": 800 }, "explainText": "The 2-parameter logistic model.", "voiceSegmentId": "s3-seg1", "interactive": true, "onTapExplain": "P of theta is the probability of a correct answer. e is the exponential. a and b are the item's two parameters.", "conceptTags": ["icc", "a-discrimination", "b-difficulty"] },
+        { "id": "s3-b-label", "type": "label", "props": { "x": 300, "y": 150, "text": "b → difficulty" }, "animation": { "kind": "appear", "startMs": 1000, "durationMs": 500 }, "voiceSegmentId": "s3-seg2", "interactive": true, "onTapExplain": "Subtracting b shifts the whole curve to the item's difficulty.", "conceptTags": ["b-difficulty"] },
+        { "id": "s3-a-label", "type": "label", "props": { "x": 300, "y": 180, "text": "a → discrimination" }, "animation": { "kind": "appear", "startMs": 1600, "durationMs": 500 }, "voiceSegmentId": "s3-seg2", "interactive": true, "onTapExplain": "Multiplying by a controls how steep the curve is at the difficulty.", "conceptTags": ["a-discrimination"] }
+      ],
+      "segments": [
+        { "id": "s3-seg1", "sceneId": "s3-parameters", "startMs": 0, "endMs": 18000, "text": "Here is the formula that draws the curve: the two-parameter logistic model. The probability of a correct answer depends on the gap between ability and difficulty.", "clipId": null },
+        { "id": "s3-seg2", "sceneId": "s3-parameters", "startMs": 18000, "endMs": 38000, "text": "Notice the two letters you already met. b subtracts from ability, so it sets where the curve sits — difficulty. a multiplies that gap, so it sets the steepness — discrimination.", "clipId": null }
+      ],
+      "pausePoints": [
+        { "atMs": 38000, "prompt": "If you increase a while keeping b fixed, what happens to the curve?", "expectKind": "mcq", "answer": { "q": "Increasing a (with b fixed) makes the curve:", "options": ["Shift right", "Steeper", "Flatter", "Shift left"], "answer": 1, "conceptTags": ["a-discrimination"] } }
+      ],
+      "knowledgeCheck": { "q": "In P(θ) = 1 / (1 + e^(−a(θ−b))), the term (θ − b) captures:", "options": ["Guessing", "The gap between ability and difficulty", "Reliability", "The number of items"], "answer": 1, "conceptTags": ["b-difficulty"] },
+      "replay": { "prerequisiteSceneId": "s2-icc" },
+      "explain": {
+        "simpler": "One neat formula. The bottom grows when ability is below difficulty (low chance) and shrinks when ability is above it (high chance).",
+        "detailed": "The logistic link maps the linear predictor a(θ−b) to a probability. At θ=b the exponent is 0, e^0=1, so P=1/2 — confirming b is the 50% point.",
+        "practicalExample": "Plug θ=b into the formula: you get exactly 0.5, matching the picture where the curve crosses the halfway line.",
+        "africanContext": "Exam boards estimate a and b for each item from thousands of past candidates, then reuse well-behaved items across years — the same theta scale lets them compare cohorts fairly.",
+        "realLifeScenario": "Like a credit-score cutoff: the gap between your score and the threshold decides approval odds; steepness decides how sharply odds change near the cutoff.",
+        "visualAnalogy": "a(θ−b) is a dial: b chooses the centre, a chooses the sensitivity.",
+        "commonMistakes": "Forgetting the minus sign: it's e^(−a(θ−b)). Below difficulty the exponent is positive, pushing probability down.",
+        "memoryTip": "At θ = b, the exponent is zero → P = one-half. The picture and the formula agree."
+      }
+    }
+  ]
+}

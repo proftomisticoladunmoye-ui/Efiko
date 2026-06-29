@@ -15,7 +15,9 @@
     "wa:sim": "node server/sim.js",
     "sms:sim": "node server/sms-sim.js",
     "ai:smoke": "node server/ai-smoke.js",
-    "voice:smoke": "node server/voice-smoke.js"
+    "voice:smoke": "node server/voice-smoke.js",
+    "alwe:smoke": "node server/alwe-smoke.js",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.70.0",
@@ -27,6 +29,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.9.3",
     "vite": "^6.0.7",
     "vite-plugin-pwa": "^0.21.1"
   }
