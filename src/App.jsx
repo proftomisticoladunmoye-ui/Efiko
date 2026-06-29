@@ -1,7 +1,7 @@
 // Efiko — Stage 3 app shell: offline-first router over the Offline Engine.
 // Boot: get the catalog (network → cache fallback), seed one capsule on first run
 // so there is offline content, then show "My Courses". Lessons open from IndexedDB.
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import { fetchCatalog, buildLibrary, syncAll, downloadCapsule, buildPacks, downloadPack, removePack, syncCampus, offlineStatus, publishLesson, fetchPublished } from './sync/syncEngine.js';
 import { getCapsule, listCapsules, deleteCapsule, touchViewed, saveCapsule } from './storage/capsuleStore.js';
 import CapsuleView from './components/CapsuleView.jsx';
@@ -14,6 +14,18 @@ import Studio from './components/Studio.jsx';
 import ExamReadiness from './components/ExamReadiness.jsx';
 import StatusBar from './components/StatusBar.jsx';
 import { computeReadiness } from './exam.js';
+import { resolveTenant } from './tenant.js';
+
+// White-label: limit the catalog to an institution's own courses, if configured.
+function filterCatalog(cat, tenant) {
+  const f = tenant?.courseFilter;
+  if (!f || !f.length) return cat;
+  return {
+    ...cat,
+    capsules: (cat.capsules || []).filter((c) => f.includes(c.course)),
+    packs: (cat.packs || []).filter((p) => f.includes(p.course))
+  };
+}
 
 // Gateway that hosts the AI Processing Engine. Override with VITE_GATEWAY at build time.
 const GATEWAY = import.meta.env.VITE_GATEWAY || 'http://localhost:4100';
@@ -41,6 +53,8 @@ export default function App() {
   const [campusProgress, setCampusProgress] = useState(null);
   const [offlineStat, setOfflineStat] = useState(null);
   const [readiness, setReadiness] = useState([]);
+  const [tenant, setTenant] = useState(null);
+  const tenantRef = useRef(null);
   const [catalogSource, setCatalogSource] = useState(null);
   const [online, setOnline] = useState(navigator.onLine);
   const [syncing, setSyncing] = useState(false);
@@ -52,16 +66,20 @@ export default function App() {
   const [error, setError] = useState(null);
 
   const refresh = useCallback(async (cat) => {
-    setLibrary(await buildLibrary(cat));
-    setPacks(await buildPacks(cat));
-    setOfflineStat(await offlineStatus(cat));
-    setReadiness(await computeReadiness(cat));
+    const fcat = filterCatalog(cat, tenantRef.current);
+    setLibrary(await buildLibrary(fcat));
+    setPacks(await buildPacks(fcat));
+    setOfflineStat(await offlineStatus(fcat));
+    setReadiness(await computeReadiness(fcat));
   }, []);
 
   // Boot
   useEffect(() => {
     (async () => {
       try {
+        const t = await resolveTenant();          // white-label branding + theme
+        tenantRef.current = t;
+        setTenant(t);
         const { catalog: cat, source } = await fetchCatalog(GATEWAY);
         setCatalog(cat);
         setCatalogSource(source);
@@ -274,7 +292,8 @@ export default function App() {
     <div className="app">
       <StatusBar source={view === 'capsule' ? 'offline cache (IndexedDB)' : null} />
       <header className="brandbar">
-        <img className="brandbar-logo" src="/logo.png" alt="Efiko" width="180" />
+        <img className="brandbar-logo" src={tenant?.logo || '/logo.png'} alt={tenant?.name || 'Efiko'} width="180" />
+        {tenant?.institution && <span className="brandbar-inst">{tenant.institution}</span>}
       </header>
       <main className="app-main">
         {error && <p className="error">{error}</p>}
@@ -340,7 +359,7 @@ export default function App() {
         )}
       </main>
       <footer className="app-footer">
-        Efiko · multi-channel learning ecosystem
+        {tenant?.institution ? `${tenant.institution} · powered by Efiko` : 'Efiko · multi-channel learning ecosystem'}
         {view !== 'studio' && (
           <> · <button className="footer-link" onClick={openStudio}>Lecturer Studio</button></>
         )}

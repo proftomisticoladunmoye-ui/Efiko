@@ -25,7 +25,9 @@ body {
 
 /* Brand bar */
 .brandbar { display: flex; align-items: center; justify-content: center; padding: 14px 16px 6px; }
+.brandbar { flex-direction: column; gap: 4px; }
 .brandbar-logo { width: 180px; max-width: 64%; height: auto; }
+.brandbar-inst { font-size: 12px; color: var(--brand-2); font-weight: 600; }
 .app-main { padding: 16px; flex: 1; }
 .app-footer { padding: 14px 16px; color: var(--muted); font-size: 12px; text-align: center; border-top: 1px solid var(--line); }
 

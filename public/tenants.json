@@ -1,0 +1,25 @@
+{
+  "default": {
+    "id": "default",
+    "name": "Efiko",
+    "institution": "",
+    "logo": "/logo.png",
+    "color": "#14b8a6"
+  },
+  "kiu": {
+    "id": "kiu",
+    "name": "KIU Efiko",
+    "institution": "Kampala International University",
+    "logo": "/logo.png",
+    "color": "#1d4ed8",
+    "courseFilter": ["PSY720"]
+  },
+  "mak": {
+    "id": "mak",
+    "name": "Makerere Efiko",
+    "institution": "Makerere University",
+    "logo": "/logo.png",
+    "color": "#b45309",
+    "courseFilter": ["ECO110"]
+  }
+}
