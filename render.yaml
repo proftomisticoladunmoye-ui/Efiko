@@ -40,3 +40,15 @@ services:
       # https://efiko-gateway.onrender.com  (used for voice/whiteboard links)
       - key: PUBLIC_BASE_URL
         sync: false
+
+  # --- Efiko PWA: the student web app (static site) ---
+  - type: web
+    name: efiko-pwa
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    autoDeploy: true
+    envVars:
+      # Point the web app at the gateway so AI/voice/snap work from the browser.
+      - key: VITE_GATEWAY
+        value: https://efiko-gateway.onrender.com
