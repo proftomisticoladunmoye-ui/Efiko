@@ -491,22 +491,57 @@ Online, it can escalate to Claude for a bespoke explanation, cached back into th
 
 Each batch is independently shippable and verified in the preview before the next.
 
-| Batch | Deliverable | Why first/next |
+| Batch | Deliverable | Status / why |
 |------|--------------|----------------|
-| **0** | This architecture doc — **review & approve** | Locks the contract |
-| **1** | `types.ts` + `schema.js` validator + `PackageStore` (IndexedDB v5) + **one hand-authored sample lesson** | Foundation; proves the data model end-to-end |
-| **2** | TimelineEngine + SceneRenderer + 4 core objects (text, line/arrow, coordinatePlane, equation) + minimal player → **one scene plays** | The vertical slice; everything else hangs off this |
-| **3** | PlaybackController + TransportControls + TimelineBar + SceneOutline (play/pause/seek/next/prev/speed/continue) | Makes it a real player |
-| **4** | VoiceSync + segmented Opus packaging + captions | Adds narration locked to drawing |
+| **0** | This architecture doc — review & approve | ✅ done |
+| **1** | `types.ts` + `schema.js` validator + `PackageStore` (IndexedDB v5) + one hand-authored sample lesson | ✅ done |
+| **2** | TimelineEngine + SceneRenderer + 4 core objects + minimal player → one scene plays | ✅ done |
+| **3** | LessonController + full player: play/pause/seek/next/prev/speed, scene outline, bookmarks, **continue-from-last** | ✅ done |
+| **4** | VoiceSync + segmented Opus packaging + captions **+ Offline Learning Packs** (DownloadManager: pin JSON + clips, `offlineReady` flips true) | Narration locked to drawing; "download once, learn anywhere" |
 | **5** | Pause points + InteractionLayer (tap-to-explain) + per-scene KnowledgeCheck | Interactivity |
-| **6** | ExplainAgain (offline bundle) + Learning Modes (Fast/Normal/Deep) | Pedagogical depth |
-| **7** | AnalyticsRecorder + Adaptive Replay engine | Behaviour-driven help |
-| **8** | Cognitive Tutor (diagnosis + nudges) | The differentiator |
-| **9** | `sceneGenerator.js` (Claude authoring) + Studio "Publish ALWE lesson" | Scales authoring beyond hand-made |
-| **10** | Accessibility pass + performance hardening + CI budget gate | Production-ready |
+| **6** | ExplainAgain (offline bundle) + Learning Modes (Fast/Normal/Deep — **pacing**) | Pedagogical depth |
+| **7** | AnalyticsRecorder + Adaptive Replay **+ Explain My Mistake** (wrong answer → misconception, via `conceptTags` → ExplainAgain) | Behaviour-driven help |
+| **8** | Cognitive Tutor = **AI Study Coach** (diagnosis + personalised guidance after every assessment) | The differentiator |
+| **9** | **Teach Back Mode** (protégé effect: learner explains, AI evaluates vs a per-scene rubric) | New; deepens mastery |
+| **10** | `sceneGenerator.js` (Claude authoring) + Studio "Publish ALWE lesson" | Scales authoring beyond hand-made |
+| **11** | Accessibility pass + performance hardening + CI budget gate | Production-ready |
 
 Remaining object types (graph, table, chart, flowchart, timeline, triangle, icon,
 highlight/underline/pointer) are filled in across batches 2/5/6 as lessons need them.
+
+### How the five requested features map (none are throwaway; four already planned)
+1. **Adaptive Whiteboard Engine (scenes + replay + pacing)** — this *is* the ALWE spine:
+   scenes (B1–B3 ✅), replay (B7), pacing = speed (B3 ✅) + Learning Modes (B6).
+2. **AI Study Coach (guidance after every assessment)** — Batch 8. The Cognitive Tutor
+   fires after each quiz node with a personalised next step (not just a score).
+3. **Explain My Mistake (feedback linked to misconceptions)** — Batch 7. A wrong quiz
+   answer carries `conceptTags`; we map it to the misconception and surface the matching
+   ExplainAgain variant ("commonMistakes" / "simpler") for exactly that concept.
+4. **Offline Learning Packs (download once, learn anywhere)** — Batch 4. The
+   DownloadManager pins the package JSON + every Opus clip to IndexedDB and flips
+   `offlineReady`; after that the lesson plays with zero network.
+5. **Teach Back Mode** — Batch 9 (see §21). The only genuinely new build.
+
+---
+
+## 20. (reserved)
+
+## 21. Teach Back Mode — the protégé effect (Batch 9)
+
+After a scene (or at the reflection node), the learner is invited to **explain the concept
+in their own words** ("Teach it back to Efiko"). Input is text (and later voice → STT).
+The AI evaluates the explanation against the concept and gives specific, encouraging
+feedback — *what they got right, what's missing, one misconception to fix*.
+
+**Offline-aware design (matches our pre-generate principle):** at publish time each scene
+gets a `teachBack` rubric — `{ prompt, expectedPoints: string[], commonGaps: string[] }`.
+Offline, we can do a lightweight keyword/recall check against `expectedPoints` and show the
+rubric-based hints. Online, Claude grades the free-text explanation against the rubric for
+nuanced feedback, and the result is cached. This keeps the core experience usable on 2G
+while giving a richer evaluation when connected.
+
+Contract addition (when B9 lands): an optional `teachBack?: TeachBackRubric` on `Scene`,
+plus a `TeachBackAttempt` record in `alwe_analytics` (feeds the Study Coach's mastery model).
 
 ---
 
