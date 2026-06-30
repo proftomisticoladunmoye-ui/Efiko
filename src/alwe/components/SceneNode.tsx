@@ -3,13 +3,15 @@
 // clock and ask a question, tap-to-explain that focuses an object, and a per-scene
 // knowledge check after the scene finishes. Owns its own TimelineEngine + VoiceSync.
 import { useEffect, useMemo, useRef, useState, type ReactElement } from 'react';
-import type { Scene, AlweObject, PausePoint } from '../types';
+import type { Scene, AlweObject, PausePoint, LearningMode } from '../types';
 import { TimelineEngine } from '../engine/TimelineEngine';
 import { usePlayback } from '../hooks/usePlayback';
 import { VoiceSync, segmentAt, offsetSeconds } from '../engine/VoiceSync';
+import { showPausePoints, showKnowledgeCheck, showHints, showDeepExtra } from '../modes/learningModes';
 import SceneStage from './SceneStage';
 import PausePrompt from './PausePrompt';
 import MiniCheck from './MiniCheck';
+import ExplainAgainSheet from './ExplainAgainSheet';
 
 const SPEEDS = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 2];
 const fmt = (ms: number): string => { const s = Math.floor(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
@@ -25,10 +27,11 @@ interface Props {
   onBookmark: (sceneId: string, atMs: number) => void;
   onCheckResult?: (sceneId: string, correct: boolean, wrongConceptTags: string[]) => void;
   clipUrlFor?: (clipKey: string) => string | undefined;
+  mode?: LearningMode;
 }
 
 export default function SceneNode(props: Props): ReactElement {
-  const { scene, initialElapsedMs = 0, speed, autoPlay, onSpeedChange, onCompleted, onPersist, onBookmark, onCheckResult, clipUrlFor } = props;
+  const { scene, initialElapsedMs = 0, speed, autoPlay, onSpeedChange, onCompleted, onPersist, onBookmark, onCheckResult, clipUrlFor, mode = 'normal' } = props;
   const engine = useMemo(() => { const e = new TimelineEngine(); e.load(scene); e.setSpeed(speed); if (initialElapsedMs) e.seek(initialElapsedMs); return e; }, [scene]); // eslint-disable-line react-hooks/exhaustive-deps
   const pb = usePlayback(engine);
   const completedRef = useRef(false);
@@ -54,7 +57,7 @@ export default function SceneNode(props: Props): ReactElement {
     const prev = lastTime.current;
     const now = engine.elapsedMs;
     lastTime.current = now;
-    if (!pb.playing || activePause) return;
+    if (!pb.playing || activePause || !showPausePoints(mode)) return;
     const idx = scene.pausePoints.findIndex((pp, i) => pp.atMs > 0 && pp.atMs > prev && pp.atMs <= now && !triggered.current.has(i));
     if (idx >= 0) { triggered.current.add(idx); pb.pause(); setActivePause(scene.pausePoints[idx]); }
   }, [pb.elapsedMs]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -87,13 +90,13 @@ export default function SceneNode(props: Props): ReactElement {
   }
   function continuePause(): void { setActivePause(null); pb.play(); }
 
-  const showCheck = engine.isComplete() && scene.knowledgeCheck;
+  const showCheck = engine.isComplete() && scene.knowledgeCheck && showKnowledgeCheck(mode);
 
   return (
     <>
       <audio ref={audioRef} preload="auto" hidden />
       <p className="alwe-objective">🎯 {scene.objective}</p>
-      <SceneStage scene={scene} states={states} onObjectTap={onTap} focusedId={focused?.id} />
+      <SceneStage scene={scene} states={states} onObjectTap={onTap} focusedId={focused?.id} mode={mode} />
 
       {activePause ? (
         <PausePrompt pause={activePause} onContinue={continuePause} />
@@ -125,8 +128,17 @@ export default function SceneNode(props: Props): ReactElement {
         <button className="alwe-bookmark" onClick={() => onBookmark(scene.id, engine.elapsedMs)} title="Bookmark this moment" aria-label="Bookmark">🔖</button>
       </div>
 
-      {!focused && scene.objects.some((o) => o.interactive) && (
+      {showHints(mode) && !focused && scene.objects.some((o) => o.interactive) && (
         <p className="alwe-hint">💡 Tip: tap a labelled part of the diagram to explore it.</p>
+      )}
+
+      <ExplainAgainSheet explain={scene.explain} />
+
+      {showDeepExtra(mode) && engine.isComplete() && (
+        <div className="alwe-deep">
+          <span className="alwe-kc-h">🌍 Deep dive — African context</span>
+          <p>{scene.explain.africanContext}</p>
+        </div>
       )}
 
       {showCheck && scene.knowledgeCheck && (

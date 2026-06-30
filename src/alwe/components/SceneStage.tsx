@@ -2,24 +2,27 @@
 // per-object render state from the TimelineEngine each frame. Interactive objects are
 // tappable (full tap-to-explain behaviour arrives in Batch 5).
 import type { ReactElement } from 'react';
-import type { Scene, AlweObject } from '../types';
+import type { Scene, AlweObject, LearningMode } from '../types';
 import type { ObjectRenderState } from '../engine/TimelineEngine';
 import { renderObject } from '../objects/renderers';
+import { objectInMode } from '../modes/learningModes';
 
 interface Props {
   scene: Scene;
   states: Map<string, ObjectRenderState>;
   onObjectTap?: (obj: AlweObject) => void;
   focusedId?: string | null;
+  mode?: LearningMode;
 }
 
 const HIDDEN: ObjectRenderState = { visible: false, drawProgress: 0, opacity: 0, highlight: false };
 
-export default function SceneStage({ scene, states, onObjectTap, focusedId }: Props): ReactElement {
+export default function SceneStage({ scene, states, onObjectTap, focusedId, mode = 'normal' }: Props): ReactElement {
   return (
     <svg className="alwe-stage" viewBox="0 0 540 330" role="img" aria-label={scene.title} preserveAspectRatio="xMidYMid meet">
       <rect x={0} y={0} width={540} height={330} className="alwe-board" />
       {scene.objects.map((obj) => {
+        if (!objectInMode(obj, mode)) return null;
         const state = states.get(obj.id) ?? HIDDEN;
         if (!state.visible) return null;
         const tappable = obj.interactive && onObjectTap;

@@ -8,6 +8,7 @@ import { savePackage, getPackage, getProgress, saveProgress, getClip, saveClip }
 import { clipKeyOf } from '../engine/VoiceSync';
 import { fetchSegmentAudio } from '../net/voice';
 import SceneNode from './SceneNode';
+import ModeSwitch from './ModeSwitch';
 import NodeCard from './NodeCard';
 import QuizNode from './QuizNode';
 import LessonOutline from './LessonOutline';
@@ -29,7 +30,7 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
 
   const [index, setIndex] = useState(0);
   const [speed, setSpeed] = useState(1);
-  const [mode] = useState<LearningMode>('normal');
+  const [mode, setMode] = useState<LearningMode>('normal');
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [outlineOpen, setOutlineOpen] = useState(false);
   const [resume, setResume] = useState<{ index: number; elapsedMs: number } | null>(null);
@@ -88,11 +89,13 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
     loadPackage(lessonId).then(async (p) => {
       if (cancelled) return;
       setPkg(p);
+      setMode(p.manifest.defaultMode || 'normal');
       await loadClips(p);
       const prog = await getProgress(lessonId);
       if (cancelled) return;
       if (prog) {
         setSpeed(prog.speed || 1);
+        if (prog.mode) setMode(prog.mode);
         setBookmarks(prog.bookmarks || []);
         if (prog.lastNodeIndex > 0 || prog.lastElapsedMs > 0) setResume({ index: prog.lastNodeIndex, elapsedMs: prog.lastElapsedMs });
       }
@@ -173,6 +176,10 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
         {ctrl.arc.map((_, i) => <span key={i} className={`dot ${i === index ? 'on' : i < index ? 'past' : ''}`} />)}
       </div>
 
+      <div className="alwe-mode-row">
+        <ModeSwitch mode={mode} onChange={setMode} />
+      </div>
+
       <div className="alwe-pack">
         {voiceCount.total > 0 && voiceCount.have >= voiceCount.total ? (
           <span className="alwe-pack-ready">🔊 Voice ready offline · 📦 lesson saved for offline</span>
@@ -211,6 +218,7 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
           onPersist={(ms) => persist(ms)}
           onBookmark={addBookmark}
           clipUrlFor={(key) => clipUrls.get(key)}
+          mode={mode}
         />
       ) : node.kind === 'miniQuiz' || node.kind === 'finalQuiz' ? (
         <QuizNode title={node.kind === 'finalQuiz' ? 'Final Quiz' : 'Mini Quiz'} quiz={node.quiz || []} />

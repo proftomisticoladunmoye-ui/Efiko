@@ -324,3 +324,17 @@ body {
 .alwe-minicheck { display: flex; flex-direction: column; gap: 8px; }
 .alwe-kc { background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
 .alwe-kc-h { font-size: 12px; color: var(--good); text-transform: uppercase; letter-spacing: .04em; }
+
+/* Learning modes + Explain Again (Batch 6) */
+.alwe-mode-row { display: flex; }
+.alwe-modes { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.alwe-mode { background: transparent; border: 0; color: var(--muted); padding: 6px 14px; font-size: 12px; cursor: pointer; }
+.alwe-mode.on { background: var(--brand); color: #04231f; font-weight: 600; }
+.alwe-explain { display: flex; flex-direction: column; gap: 8px; }
+.alwe-explain-toggle { align-self: flex-start; background: transparent; border: 1px solid var(--brand-2); color: var(--brand-2); border-radius: 999px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
+.alwe-explain-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.alwe-chip { background: #0d1526; border: 1px solid var(--line); color: var(--text); border-radius: 999px; padding: 5px 11px; font-size: 12px; cursor: pointer; }
+.alwe-chip.on { border-color: var(--brand-2); color: var(--brand-2); }
+.alwe-explain-text { margin: 0; padding: 10px 12px; background: rgba(13,21,38,.6); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; line-height: 1.5; }
+.alwe-deep { background: rgba(124,58,237,.12); border: 1px solid var(--brand-2); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
+.alwe-deep p { margin: 0; font-size: 14px; line-height: 1.5; }
