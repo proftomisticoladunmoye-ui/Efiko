@@ -242,6 +242,10 @@ body {
 .alwe-hl text { fill: #fbbf24; }
 .alwe-placeholder { fill: rgba(124,58,237,.12); stroke: var(--line); stroke-dasharray: 5 4; }
 .alwe-placeholder-text { fill: var(--muted); }
+.alwe-pointer-line { stroke: var(--brand-2); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.alwe-pointer-dot { fill: var(--brand-2); }
+.alwe-highlight-rect { fill: rgba(251,191,36,.14); stroke: #fbbf24; stroke-width: 1.5; }
+.alwe-shape { fill: none; stroke: var(--brand); stroke-width: 2.5; }
 .alwe-tappable { cursor: pointer; }
 .alwe-tappable:hover { filter: brightness(1.25); }
 
