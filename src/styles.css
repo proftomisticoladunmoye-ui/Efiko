@@ -395,6 +395,8 @@ body {
   .alwe-mode-row { flex-direction: column; align-items: stretch; }
   .alwe-nav { flex-wrap: wrap; }
   .alwe-next { margin-left: 0; }
+  /* Give the scrubber its own row so play/time/speed/bookmark group cleanly below. */
+  .alwe-controls .alwe-scrub { flex-basis: 100%; order: -1; }
 }
 @media (prefers-reduced-motion: reduce) {
   /* Keep content (the timeline) but drop decorative transitions. */
