@@ -1,12 +1,14 @@
 // EFIKO ALWE — lesson player (Batch 3): walks the full arc (Intro → scenes → mini-quiz
 // → reflection → summary → final quiz) with Prev/Next, jump-to-scene outline, replay
 // scene, bookmarks, and continue-from-last-position. Scene playback lives in SceneNode.
-import { useEffect, useMemo, useReducer, useState, type ReactElement } from 'react';
+import { useEffect, useMemo, useReducer, useRef, useState, type ReactElement } from 'react';
 import type { LessonPackage, LearningMode, Bookmark } from '../types';
 import { LessonController } from '../engine/LessonController';
 import { savePackage, getPackage, getProgress, saveProgress, getClip, saveClip } from '../store/PackageStore';
 import { clipKeyOf } from '../engine/VoiceSync';
 import { fetchSegmentAudio } from '../net/voice';
+import { AnalyticsRecorder } from '../engine/AnalyticsRecorder';
+import type { QuizResult } from './QuizNode';
 import SceneNode from './SceneNode';
 import ModeSwitch from './ModeSwitch';
 import NodeCard from './NodeCard';
@@ -45,6 +47,7 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
   const [dlError, setDlError] = useState<string | null>(null);
 
   const ctrl = useMemo(() => (pkg ? new LessonController(pkg) : null), [pkg]);
+  const analytics = useRef<AnalyticsRecorder | null>(null);
 
   const allSegments = useMemo(() => (pkg ? pkg.scenes.flatMap((s) => s.segments) : []), [pkg]);
 
@@ -90,6 +93,7 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
       if (cancelled) return;
       setPkg(p);
       setMode(p.manifest.defaultMode || 'normal');
+      analytics.current = await AnalyticsRecorder.load(lessonId);
       await loadClips(p);
       const prog = await getProgress(lessonId);
       if (cancelled) return;
@@ -121,6 +125,21 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
     const sc = ctrl.sceneOf();
     if (sc) ctrl.markCompleted(sc.id);
     go(ctrl.index + 1);
+  }
+
+  // Adaptive replay: jump straight back to the scene that taught a missed concept.
+  function replayScene(sceneId: string): void {
+    if (!ctrl) return;
+    analytics.current?.recordReplay(sceneId);
+    analytics.current?.recordHelp();
+    const i = ctrl.arc.findIndex((n) => n.sceneId === sceneId);
+    if (i >= 0) { setResume({ index: i, elapsedMs: 0 }); go(i); }
+  }
+  function handleCheckResult(_sceneId: string, correct: boolean, conceptTags: string[]): void {
+    analytics.current?.recordQuiz(conceptTags, correct);
+  }
+  function handleQuizComplete(r: QuizResult): void {
+    r.results.forEach((x) => analytics.current?.recordQuiz(x.conceptTags, x.correct));
   }
 
   function addBookmark(sceneId: string, atMs: number): void {
@@ -214,14 +233,22 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
           autoPlay={!initialElapsedMs}
           speed={speed}
           onSpeedChange={setSpeed}
-          onCompleted={(id) => { ctrl.markCompleted(id); bump(); }}
+          onCompleted={(id) => { ctrl.markCompleted(id); analytics.current?.recordSceneCompleted(id); bump(); }}
           onPersist={(ms) => persist(ms)}
           onBookmark={addBookmark}
+          onCheckResult={handleCheckResult}
+          onReplayScene={replayScene}
           clipUrlFor={(key) => clipUrls.get(key)}
           mode={mode}
         />
       ) : node.kind === 'miniQuiz' || node.kind === 'finalQuiz' ? (
-        <QuizNode title={node.kind === 'finalQuiz' ? 'Final Quiz' : 'Mini Quiz'} quiz={node.quiz || []} />
+        <QuizNode
+          title={node.kind === 'finalQuiz' ? 'Final Quiz' : 'Mini Quiz'}
+          quiz={node.quiz || []}
+          pkg={pkg}
+          onComplete={handleQuizComplete}
+          onReplayScene={replayScene}
+        />
       ) : (
         <NodeCard node={node} />
       )}

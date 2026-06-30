@@ -16,8 +16,7 @@ export default function MiniCheck({ check, onResult }: Props): ReactElement {
   function choose(j: number): void {
     if (answered) return;
     setPicked(j);
-    const correct = j === check.answer;
-    onResult?.(correct, correct ? [] : (check.conceptTags || []));
+    onResult?.(j === check.answer, check.conceptTags || []);
   }
 
   return (

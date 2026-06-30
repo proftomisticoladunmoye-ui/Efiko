@@ -338,3 +338,11 @@ body {
 .alwe-explain-text { margin: 0; padding: 10px 12px; background: rgba(13,21,38,.6); border: 1px solid var(--line); border-radius: 10px; font-size: 14px; line-height: 1.5; }
 .alwe-deep { background: rgba(124,58,237,.12); border: 1px solid var(--brand-2); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; }
 .alwe-deep p { margin: 0; font-size: 14px; line-height: 1.5; }
+
+/* Explain my mistake / adaptive replay (Batch 7) */
+.alwe-mistake { background: rgba(180,83,9,.10); border: 1px solid var(--warn); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; gap: 8px; }
+.alwe-mistake-h { font-size: 12px; color: #fbbf24; text-transform: uppercase; letter-spacing: .04em; }
+.alwe-mistake-item { display: flex; flex-direction: column; gap: 6px; }
+.alwe-mistake-where { margin: 0; font-size: 13px; color: var(--muted); }
+.alwe-mistake-text { margin: 0; font-size: 14px; line-height: 1.5; }
+.alwe-replay-btn { align-self: flex-start; background: transparent; border: 1px solid var(--brand); color: var(--brand-2); border-radius: 999px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
