@@ -12,6 +12,8 @@ import { renderResult } from './channels/whatsapp/render.js';
 import { sendMessages, isLive } from './channels/whatsapp/transport.js';
 import { generateCapsule, generateFromImage, isConfigured as aiConfigured } from './core/ai/lessonGenerator.js';
 import { getClient, FAST_MODEL } from './core/ai/client.js';
+import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alwe/sceneGenerator.js';
+import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
 import { registerCapsule } from './core/content.js';
 import { getVoiceAudio, attachVoice, isConfigured as voiceConfigured } from './core/voice/voiceTutor.js';
 import { synthesize as ttsSynthesize } from './core/voice/tts.js';
@@ -269,6 +271,42 @@ const server = createServer(async (req, res) => {
     } catch (e) {
       return json(res, 502, { error: 'tts failed', detail: e.message });
     }
+  }
+
+  // ALWE authoring (Batch 10): generate a full ALWE lesson with Claude (validated).
+  if (req.method === 'POST' && url.pathname === '/alwe/generate') {
+    if (!alweAuthorConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
+    if (genQuotaExceeded(req)) return json(res, 429, { error: 'Daily generation limit reached. Try again tomorrow.' });
+    const { topic, course, university, level } = await readBody(req);
+    if (!topic) return json(res, 400, { error: 'topic is required' });
+    try {
+      const pkg = await generateLesson({ topic, course, university, level });
+      return json(res, 200, { pkg });
+    } catch (e) {
+      return json(res, 502, { error: e.message });
+    }
+  }
+  // Publish a (reviewed) ALWE lesson so students can open it.
+  if (req.method === 'POST' && url.pathname === '/alwe/publish') {
+    const { pkg } = await readBody(req);
+    if (!pkg?.manifest?.lessonId) return json(res, 400, { error: 'a valid ALWE package is required' });
+    try {
+      const rec = await addAlweLesson(pkg);
+      return json(res, 200, { lessonId: rec.lessonId });
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  // List published ALWE lessons (catalog rows).
+  if (req.method === 'GET' && url.pathname === '/alwe/lessons') {
+    return json(res, 200, { lessons: await listAlweLessons() });
+  }
+  // Fetch one published ALWE lesson package (the PWA opens this).
+  if (req.method === 'GET' && url.pathname.startsWith('/alwe/lesson/')) {
+    const id = decodeURIComponent(url.pathname.slice('/alwe/lesson/'.length));
+    const pkg = await getAlweLesson(id);
+    if (!pkg) return json(res, 404, { error: 'lesson not found' });
+    return json(res, 200, pkg);
   }
 
   // ALWE Cognitive Tutor (Batch 8): optional ONLINE escalation. The offline tutor handles

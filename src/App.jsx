@@ -15,6 +15,7 @@ import AdminPanel from './components/AdminPanel.jsx';
 import ExamReadiness from './components/ExamReadiness.jsx';
 import StatusBar from './components/StatusBar.jsx';
 import AlwenPlayer from './alwe/components/AlwenPlayer.tsx';
+import AlweStudio from './alwe/components/AlweStudio.tsx';
 import { computeReadiness } from './exam.js';
 import { resolveTenant } from './tenant.js';
 
@@ -292,11 +293,19 @@ export default function App() {
 
   // ALWE preview entry point: open ?alwe=<lessonId> to play an Adaptive Learning
   // Whiteboard lesson full-screen (Batch 2 — not yet wired into the product nav).
-  const alweLesson = new URLSearchParams(window.location.search).get('alwe');
+  const params = new URLSearchParams(window.location.search);
+  const alweLesson = params.get('alwe');
   if (alweLesson) {
     return (
       <div className="app">
         <AlwenPlayer lessonId={alweLesson} onExit={() => { window.location.href = window.location.pathname; }} />
+      </div>
+    );
+  }
+  if (params.has('alwe-studio')) {
+    return (
+      <div className="app">
+        <AlweStudio onExit={() => { window.location.href = window.location.pathname; }} />
       </div>
     );
   }

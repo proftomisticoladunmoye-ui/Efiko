@@ -369,3 +369,7 @@ body {
 .alwe-tb-hit, .alwe-tb-missed { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.5; }
 .alwe-tb-hit { color: var(--good); }
 .alwe-tb-missed { color: #fbbf24; }
+
+/* ALWE Studio (Batch 10) */
+.alwe-studio-arc { margin: 8px 0; padding-left: 20px; font-size: 14px; line-height: 1.7; color: #dbe6f7; }
+.alwe-studio .pub-open { background: transparent; border: 1px solid var(--line); color: var(--brand-2); border-radius: 8px; padding: 5px 12px; font-size: 13px; text-decoration: none; }

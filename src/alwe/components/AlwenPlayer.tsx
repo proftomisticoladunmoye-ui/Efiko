@@ -17,12 +17,23 @@ import NodeCard from './NodeCard';
 import QuizNode from './QuizNode';
 import LessonOutline from './LessonOutline';
 
+const GATEWAY = (import.meta.env.VITE_GATEWAY as string) || 'http://localhost:4100';
+
+async function fetchJsonOk(urlStr: string): Promise<LessonPackage | null> {
+  try {
+    const res = await fetch(urlStr);
+    if (!res.ok) return null;
+    const pkg = (await res.json()) as LessonPackage;
+    return pkg?.manifest?.lessonId ? pkg : null;
+  } catch { return null; }
+}
+
 async function loadPackage(lessonId: string): Promise<LessonPackage> {
   const stored = await getPackage(lessonId);
   if (stored) return stored;
-  const res = await fetch(`/alwe/${lessonId}.json`);
-  if (!res.ok) throw new Error(`Lesson "${lessonId}" not found`);
-  const pkg = (await res.json()) as LessonPackage;
+  // Static bundled lessons (e.g. the sample) first, then gateway-published lessons.
+  const pkg = (await fetchJsonOk(`/alwe/${lessonId}.json`)) || (await fetchJsonOk(`${GATEWAY}/alwe/lesson/${encodeURIComponent(lessonId)}`));
+  if (!pkg) throw new Error(`Lesson "${lessonId}" not found`);
   await savePackage(pkg, { pinned: true });
   return pkg;
 }
