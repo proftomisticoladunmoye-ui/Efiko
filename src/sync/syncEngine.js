@@ -34,11 +34,14 @@ export async function fetchCatalog(gatewayBase) {
   }
 }
 
-/** Lecturer Studio (Stage 12): publish a lesson, and list published lessons. */
+/** Lecturer Studio (Stage 12): publish a lesson, and list published lessons.
+ *  Publishing writes to the shared catalog, so it requires an institution login —
+ *  we attach the admin bearer token saved by the Institution Admin panel. */
 export async function publishLesson(gatewayBase, capsule) {
+  const token = (typeof localStorage !== 'undefined' && localStorage.getItem('efiko-admin-token')) || '';
   const res = await fetch(`${gatewayBase}/studio/publish`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
     body: JSON.stringify({ capsule })
   });
   if (!res.ok) {

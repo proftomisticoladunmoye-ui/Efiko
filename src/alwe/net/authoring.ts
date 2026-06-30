@@ -22,8 +22,12 @@ export async function generateLesson(input: { topic: string; course?: string; un
 }
 
 export async function publishLesson(pkg: LessonPackage): Promise<string> {
+  // Publishing requires an institution login (token saved by the Institution Admin panel).
+  const token = localStorage.getItem('efiko-admin-token') || '';
   const res = await fetch(`${GATEWAY}/alwe/publish`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ pkg })
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    body: JSON.stringify({ pkg })
   });
   const { lessonId } = await jsonOrThrow<{ lessonId: string }>(res);
   return lessonId;

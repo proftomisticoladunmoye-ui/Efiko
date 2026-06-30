@@ -194,6 +194,8 @@ const server = createServer(async (req, res) => {
 
   // Lecturer Studio (Stage 12): publish a lesson to the catalog for students.
   if (req.method === 'POST' && url.pathname === '/studio/publish') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'Sign in as your institution (Institution Admin) to publish.' });
     const { capsule } = await readBody(req);
     if (!capsule?.capsuleId || !capsule.meta?.topic) return json(res, 400, { error: 'a capsule with meta.topic is required' });
     const rec = await addPublished(capsule);
@@ -307,9 +309,12 @@ const server = createServer(async (req, res) => {
   }
   // Publish a (reviewed) ALWE lesson so students can open it.
   if (req.method === 'POST' && url.pathname === '/alwe/publish') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'Sign in as your institution (Institution Admin) to publish.' });
     const { pkg } = await readBody(req);
     if (!pkg?.manifest?.lessonId) return json(res, 400, { error: 'a valid ALWE package is required' });
     try {
+      pkg.publishedBy = org.orgId; // provenance
       const rec = await addAlweLesson(pkg);
       return json(res, 200, { lessonId: rec.lessonId });
     } catch (e) {

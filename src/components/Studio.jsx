@@ -38,7 +38,7 @@ export default function Studio({ onGenerate, onPublish, onOpenPublished, onBack,
     setMsg(null); setErr(null);
     const ok = await onPublish(applyEdits(draft, title.trim() || draft.meta.topic, summary));
     if (ok) { setMsg('✓ Published to the catalog — students can now find it.'); setDraft(null); setTopic(''); }
-    else setErr('Publish failed. Is the gateway running?');
+    else setErr('Publish failed. Sign in via Institution Admin first (publishing now requires an institution login), and check the gateway.');
   };
 
   return (
