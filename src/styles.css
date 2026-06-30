@@ -414,3 +414,10 @@ body {
 .alwe-lesson-actions { display: flex; align-items: center; gap: 8px; flex: none; }
 .badge-offline { font-size: 11px; color: var(--good); border: 1px solid var(--good); border-radius: 999px; padding: 2px 8px; }
 .alwe-lesson-open { background: var(--brand); color: #04231f; border: 0; border-radius: 8px; padding: 7px 16px; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+/* Top-level error boundary fallback */
+.boundary { max-width: 420px; margin: 40px auto; text-align: center; background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+.boundary h2 { margin: 0 0 8px; }
+.boundary p { color: var(--muted); font-size: 14px; }
+.boundary-btn { background: var(--brand); color: #04231f; border: 0; border-radius: 8px; padding: 9px 18px; font-weight: 600; cursor: pointer; margin: 12px 8px 0; }
+.boundary-link { background: transparent; border: 0; color: var(--brand-2); cursor: pointer; font-size: 13px; }
