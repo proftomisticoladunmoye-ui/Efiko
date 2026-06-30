@@ -17,6 +17,8 @@ import StatusBar from './components/StatusBar.jsx';
 // ALWE engine is lazy-loaded so it never weighs down the student library bundle.
 const AlwenPlayer = lazy(() => import('./alwe/components/AlwenPlayer.tsx'));
 const AlweStudio = lazy(() => import('./alwe/components/AlweStudio.tsx'));
+// The lightweight lesson list (no engine code) loads with the library.
+import AlweLessons from './alwe/components/AlweLessons.tsx';
 import { computeReadiness } from './exam.js';
 import { resolveTenant } from './tenant.js';
 
@@ -331,6 +333,8 @@ export default function App() {
 
         {view === 'library' && <ExamReadiness readiness={readiness} />}
 
+        {view === 'library' && <AlweLessons />}
+
         {view === 'library' && (
           <CampusSync
             online={online}
@@ -393,6 +397,7 @@ export default function App() {
         {view !== 'studio' && view !== 'admin' && (
           <>
             {' · '}<button className="footer-link" onClick={openStudio}>Lecturer Studio</button>
+            {' · '}<button className="footer-link" onClick={() => { window.location.href = `${window.location.pathname}?alwe-studio`; }}>Whiteboard Studio</button>
             {' · '}<button className="footer-link" onClick={() => setView('admin')}>Institution Admin</button>
           </>
         )}

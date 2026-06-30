@@ -397,3 +397,14 @@ body {
   .alwe-obj.alwe-dimmed, .alwe-tappable:hover { transition: none; }
   .alwe-obj.alwe-focused { filter: none; }
 }
+
+/* Adaptive Whiteboard lessons — Library section (launch) */
+.alwe-lessons-card { background: linear-gradient(135deg, rgba(15,118,110,.16), rgba(124,58,237,.12)); border: 1px solid var(--brand); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+.alwe-lessons-card h2 { font-size: 18px; margin: 0 0 4px; }
+.alwe-lessons-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.alwe-lesson-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.alwe-lesson-meta { display: flex; flex-direction: column; min-width: 0; }
+.alwe-lesson-meta em { font-size: 12px; color: var(--muted); font-style: normal; }
+.alwe-lesson-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.badge-offline { font-size: 11px; color: var(--good); border: 1px solid var(--good); border-radius: 999px; padding: 2px 8px; }
+.alwe-lesson-open { background: var(--brand); color: #04231f; border: 0; border-radius: 8px; padding: 7px 16px; font-size: 13px; font-weight: 600; cursor: pointer; }
