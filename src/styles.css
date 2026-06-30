@@ -373,3 +373,27 @@ body {
 /* ALWE Studio (Batch 10) */
 .alwe-studio-arc { margin: 8px 0; padding-left: 20px; font-size: 14px; line-height: 1.7; color: #dbe6f7; }
 .alwe-studio .pub-open { background: transparent; border: 1px solid var(--line); color: var(--brand-2); border-radius: 8px; padding: 5px 12px; font-size: 13px; text-decoration: none; }
+
+/* Accessibility + responsiveness (Batch 11) */
+.alwe-player button:focus-visible,
+.alwe-player a:focus-visible,
+.alwe-player input:focus-visible,
+.alwe-player select:focus-visible,
+.alwe-player textarea:focus-visible,
+.alwe-stage .alwe-tappable:focus-visible {
+  outline: 3px solid var(--brand-2);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.alwe-controls { flex-wrap: wrap; }
+.alwe-controls .alwe-scrub { min-width: 140px; }
+@media (max-width: 480px) {
+  .alwe-mode-row { flex-direction: column; align-items: stretch; }
+  .alwe-nav { flex-wrap: wrap; }
+  .alwe-next { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  /* Keep content (the timeline) but drop decorative transitions. */
+  .alwe-obj.alwe-dimmed, .alwe-tappable:hover { transition: none; }
+  .alwe-obj.alwe-focused { filter: none; }
+}

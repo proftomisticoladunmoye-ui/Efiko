@@ -1,7 +1,7 @@
 // Efiko — Stage 3 app shell: offline-first router over the Offline Engine.
 // Boot: get the catalog (network → cache fallback), seed one capsule on first run
 // so there is offline content, then show "My Courses". Lessons open from IndexedDB.
-import { useEffect, useState, useCallback, useRef } from 'react';
+import { useEffect, useState, useCallback, useRef, lazy, Suspense } from 'react';
 import { fetchCatalog, buildLibrary, syncAll, downloadCapsule, buildPacks, downloadPack, removePack, syncCampus, offlineStatus, publishLesson, fetchPublished } from './sync/syncEngine.js';
 import { getCapsule, listCapsules, deleteCapsule, touchViewed, saveCapsule } from './storage/capsuleStore.js';
 import CapsuleView from './components/CapsuleView.jsx';
@@ -14,8 +14,9 @@ import Studio from './components/Studio.jsx';
 import AdminPanel from './components/AdminPanel.jsx';
 import ExamReadiness from './components/ExamReadiness.jsx';
 import StatusBar from './components/StatusBar.jsx';
-import AlwenPlayer from './alwe/components/AlwenPlayer.tsx';
-import AlweStudio from './alwe/components/AlweStudio.tsx';
+// ALWE engine is lazy-loaded so it never weighs down the student library bundle.
+const AlwenPlayer = lazy(() => import('./alwe/components/AlwenPlayer.tsx'));
+const AlweStudio = lazy(() => import('./alwe/components/AlweStudio.tsx'));
 import { computeReadiness } from './exam.js';
 import { resolveTenant } from './tenant.js';
 
@@ -295,17 +296,22 @@ export default function App() {
   // Whiteboard lesson full-screen (Batch 2 — not yet wired into the product nav).
   const params = new URLSearchParams(window.location.search);
   const alweLesson = params.get('alwe');
+  const alweFallback = <div className="app"><p className="alwe-loading">Loading…</p></div>;
   if (alweLesson) {
     return (
       <div className="app">
-        <AlwenPlayer lessonId={alweLesson} onExit={() => { window.location.href = window.location.pathname; }} />
+        <Suspense fallback={alweFallback}>
+          <AlwenPlayer lessonId={alweLesson} onExit={() => { window.location.href = window.location.pathname; }} />
+        </Suspense>
       </div>
     );
   }
   if (params.has('alwe-studio')) {
     return (
       <div className="app">
-        <AlweStudio onExit={() => { window.location.href = window.location.pathname; }} />
+        <Suspense fallback={alweFallback}>
+          <AlweStudio onExit={() => { window.location.href = window.location.pathname; }} />
+        </Suspense>
       </div>
     );
   }

@@ -34,6 +34,7 @@ export default function SceneStage({ scene, states, onObjectTap, focusedId, mode
             key={obj.id}
             className={cls.join(' ')}
             onClick={tappable ? () => onObjectTap!(obj) : undefined}
+            onKeyDown={tappable ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onObjectTap!(obj); } } : undefined}
             role={tappable ? 'button' : undefined}
             tabIndex={tappable ? 0 : undefined}
             aria-label={tappable ? (obj.explainText || obj.type) : undefined}

@@ -64,6 +64,11 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
   const ctrl = useMemo(() => (pkg ? new LessonController(pkg) : null), [pkg]);
   const analytics = useRef<AnalyticsRecorder | null>(null);
 
+  // Free clip object URLs when the player unmounts (avoid leaks on low-end devices).
+  const clipUrlsRef = useRef(clipUrls);
+  clipUrlsRef.current = clipUrls;
+  useEffect(() => () => clipUrlsRef.current.forEach((u) => URL.revokeObjectURL(u)), []);
+
   const allSegments = useMemo(() => (pkg ? pkg.scenes.flatMap((s) => s.segments) : []), [pkg]);
 
   // Build object URLs for any clips already stored offline; report have/total.
