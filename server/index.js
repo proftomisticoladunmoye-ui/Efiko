@@ -50,22 +50,28 @@ const sessionFor = (id) => {
 // the browser hits the gateway directly). Falls back to the request host.
 const selfBase = (req) => PUBLIC_BASE_URL || `http://${req.headers.host}`;
 
-// Cost guardrail (free period): cap fresh AI generations per client per day, so a
-// single user (or abuser) can't run up the API bill. Cached/published/catalog
-// lessons are unaffected — only brand-new generations count.
+// Cost guardrail (free period): per-client/day caps so a single user (or abuser) can't
+// run up the API bill. Two buckets: "gen" for expensive fresh generations, "assist" for
+// the cheaper voice/coach/teach-back calls (generous, but still bounded). Cached/published
+// /catalog content is unaffected — only live API calls count.
 const DAILY_GEN_LIMIT = Number(process.env.DAILY_GEN_LIMIT || 25);
-const genCounts = new Map(); // "ip|date" -> count
-function genQuotaExceeded(req) {
-  const ip = String(req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'anon').split(',')[0].trim();
-  const today = new Date().toISOString().slice(0, 10);
-  if (genCounts.size > 5000) {
-    for (const k of genCounts.keys()) if (!k.endsWith(today)) genCounts.delete(k);
-  }
-  const key = `${ip}|${today}`;
-  const n = (genCounts.get(key) || 0) + 1;
-  genCounts.set(key, n);
-  return n > DAILY_GEN_LIMIT;
+const DAILY_ASSIST_LIMIT = Number(process.env.DAILY_ASSIST_LIMIT || 300);
+const rateCounts = new Map(); // "bucket|ip|date" -> count
+
+function clientIp(req) {
+  return String(req.headers['x-forwarded-for'] || req.socket.remoteAddress || 'anon').split(',')[0].trim();
 }
+function rateLimited(req, bucket, limit) {
+  const today = new Date().toISOString().slice(0, 10);
+  if (rateCounts.size > 8000) {
+    for (const k of rateCounts.keys()) if (!k.endsWith(today)) rateCounts.delete(k);
+  }
+  const key = `${bucket}|${clientIp(req)}|${today}`;
+  const n = (rateCounts.get(key) || 0) + 1;
+  rateCounts.set(key, n);
+  return n > limit;
+}
+function genQuotaExceeded(req) { return rateLimited(req, 'gen', DAILY_GEN_LIMIT); }
 
 // Snap & Learn over WhatsApp: download the photo, read it with Claude vision.
 async function handleSnap(from, image, caption) {
@@ -90,13 +96,25 @@ const json = (res, code, obj) => {
   res.end(JSON.stringify(obj));
 };
 
+// Cap request bodies so a huge payload can't exhaust memory. 4 MB comfortably fits the
+// largest valid lesson package (<3 MB) and logo data-URL uploads; bigger is rejected.
+const MAX_BODY_BYTES = Number(process.env.MAX_BODY_BYTES || 4 * 1024 * 1024);
 function readBody(req) {
   return new Promise((resolve) => {
     let data = '';
-    req.on('data', (c) => { data += c; });
+    let size = 0;
+    let aborted = false;
+    req.on('data', (c) => {
+      if (aborted) return;
+      size += c.length;
+      if (size > MAX_BODY_BYTES) { aborted = true; req.destroy(); return; }
+      data += c;
+    });
     req.on('end', () => {
+      if (aborted) return resolve({});
       try { resolve(data ? JSON.parse(data) : {}); } catch { resolve({}); }
     });
+    req.on('error', () => resolve({}));
   });
 }
 
@@ -259,6 +277,7 @@ const server = createServer(async (req, res) => {
   // clip in IndexedDB so playback needs zero network. Cached by text hash this session.
   if (req.method === 'POST' && url.pathname === '/alwe/tts') {
     if (!voiceConfigured()) return json(res, 503, { error: 'voice not configured (set DEEPGRAM_API_KEY)' });
+    if (rateLimited(req, 'assist', DAILY_ASSIST_LIMIT)) return json(res, 429, { error: 'Daily voice limit reached. Try again tomorrow.' });
     const { text } = await readBody(req);
     if (!text || !String(text).trim()) return json(res, 400, { error: 'text is required' });
     try {
@@ -313,6 +332,7 @@ const server = createServer(async (req, res) => {
   // diagnosis + pre-generated explanations; this gives a bespoke fresh take on a concept.
   if (req.method === 'POST' && url.pathname === '/alwe/coach') {
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
+    if (rateLimited(req, 'assist', DAILY_ASSIST_LIMIT)) return json(res, 429, { error: 'Daily coach limit reached. Try again tomorrow.' });
     const client = getClient();
     if (!client) return json(res, 503, { error: 'AI not configured' });
     const { topic = '', concept = '', sceneTitle = '' } = await readBody(req);
@@ -332,6 +352,7 @@ const server = createServer(async (req, res) => {
   // nuanced, encouraging feedback when online.
   if (req.method === 'POST' && url.pathname === '/alwe/teachback') {
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
+    if (rateLimited(req, 'assist', DAILY_ASSIST_LIMIT)) return json(res, 429, { error: 'Daily limit reached. Try again tomorrow.' });
     const client = getClient();
     if (!client) return json(res, 503, { error: 'AI not configured' });
     const { topic = '', sceneTitle = '', objective = '', expectedPoints = [], explanation = '' } = await readBody(req);
