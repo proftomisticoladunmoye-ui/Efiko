@@ -11,6 +11,7 @@ import { createSession, handle } from './core/engine.js';
 import { renderResult } from './channels/whatsapp/render.js';
 import { sendMessages, isLive } from './channels/whatsapp/transport.js';
 import { generateCapsule, generateFromImage, isConfigured as aiConfigured } from './core/ai/lessonGenerator.js';
+import { getClient, FAST_MODEL } from './core/ai/client.js';
 import { registerCapsule } from './core/content.js';
 import { getVoiceAudio, attachVoice, isConfigured as voiceConfigured } from './core/voice/voiceTutor.js';
 import { synthesize as ttsSynthesize } from './core/voice/tts.js';
@@ -267,6 +268,24 @@ const server = createServer(async (req, res) => {
       return res.end(audio.audio);
     } catch (e) {
       return json(res, 502, { error: 'tts failed', detail: e.message });
+    }
+  }
+
+  // ALWE Cognitive Tutor (Batch 8): optional ONLINE escalation. The offline tutor handles
+  // diagnosis + pre-generated explanations; this gives a bespoke fresh take on a concept.
+  if (req.method === 'POST' && url.pathname === '/alwe/coach') {
+    if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
+    const client = getClient();
+    if (!client) return json(res, 503, { error: 'AI not configured' });
+    const { topic = '', concept = '', sceneTitle = '' } = await readBody(req);
+    try {
+      const focus = concept || sceneTitle || topic;
+      const prompt = `A university student in Africa is struggling to understand "${focus}" while studying ${topic || 'this topic'}. Explain it a different, simpler way in 2-3 short sentences, using one concrete everyday or African example. Be warm and encouraging. No preamble, no headings.`;
+      const msg = await client.messages.create({ model: FAST_MODEL, max_tokens: 280, messages: [{ role: 'user', content: prompt }] });
+      const text = (msg.content || []).filter((b) => b.type === 'text').map((b) => b.text).join(' ').trim();
+      return json(res, 200, { text });
+    } catch (e) {
+      return json(res, 502, { error: 'coach failed', detail: e.message });
     }
   }
 

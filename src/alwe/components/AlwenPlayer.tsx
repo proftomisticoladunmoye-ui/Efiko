@@ -8,9 +8,11 @@ import { savePackage, getPackage, getProgress, saveProgress, getClip, saveClip }
 import { clipKeyOf } from '../engine/VoiceSync';
 import { fetchSegmentAudio } from '../net/voice';
 import { AnalyticsRecorder } from '../engine/AnalyticsRecorder';
+import { diagnose, type TutorInsight } from '../engine/CognitiveTutor';
 import type { QuizResult } from './QuizNode';
 import SceneNode from './SceneNode';
 import ModeSwitch from './ModeSwitch';
+import TutorNudge from './TutorNudge';
 import NodeCard from './NodeCard';
 import QuizNode from './QuizNode';
 import LessonOutline from './LessonOutline';
@@ -38,6 +40,8 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
   const [resume, setResume] = useState<{ index: number; elapsedMs: number } | null>(null);
   const [resumeConsumedAt, setResumeConsumedAt] = useState(-1);
   const [epoch, setEpoch] = useState(0); // bumped on every navigation to force a fresh SceneNode
+  const [coachOpen, setCoachOpen] = useState(false);
+  const [coachInsights, setCoachInsights] = useState<TutorInsight[]>([]);
 
   // Offline voice pack: clipKey → object URL of the stored Opus blob.
   const [clipUrls, setClipUrls] = useState<Map<string, string>>(new Map());
@@ -140,6 +144,12 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
   }
   function handleQuizComplete(r: QuizResult): void {
     r.results.forEach((x) => analytics.current?.recordQuiz(x.conceptTags, x.correct));
+    openCoach(); // personalised guidance after every assessment
+  }
+  function openCoach(): void {
+    if (!pkg) return;
+    setCoachInsights(diagnose(analytics.current?.data, pkg));
+    setCoachOpen(true);
   }
 
   function addBookmark(sceneId: string, atMs: number): void {
@@ -197,7 +207,18 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
 
       <div className="alwe-mode-row">
         <ModeSwitch mode={mode} onChange={setMode} />
+        <button className="alwe-coach-btn" onClick={() => (coachOpen ? setCoachOpen(false) : openCoach())} aria-expanded={coachOpen}>🎓 Study Coach</button>
       </div>
+
+      {coachOpen && (
+        <TutorNudge
+          insights={coachInsights}
+          topic={pkg.manifest.meta.topic}
+          onReplayScene={(id) => { setCoachOpen(false); replayScene(id); }}
+          onClose={() => setCoachOpen(false)}
+          onHelp={() => analytics.current?.recordHelp()}
+        />
+      )}
 
       <div className="alwe-pack">
         {voiceCount.total > 0 && voiceCount.have >= voiceCount.total ? (
