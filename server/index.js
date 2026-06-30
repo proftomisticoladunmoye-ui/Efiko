@@ -289,6 +289,35 @@ const server = createServer(async (req, res) => {
     }
   }
 
+  // ALWE Teach Back (Batch 9): grade the learner's own explanation against the rubric.
+  // The protégé effect — explaining to learn. Offline does a recall check; this adds
+  // nuanced, encouraging feedback when online.
+  if (req.method === 'POST' && url.pathname === '/alwe/teachback') {
+    if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
+    const client = getClient();
+    if (!client) return json(res, 503, { error: 'AI not configured' });
+    const { topic = '', sceneTitle = '', objective = '', expectedPoints = [], explanation = '' } = await readBody(req);
+    if (!String(explanation).trim()) return json(res, 400, { error: 'explanation is required' });
+    try {
+      const points = Array.isArray(expectedPoints) ? expectedPoints.map((p) => `- ${p}`).join('\n') : '';
+      const prompt = `You are a warm, encouraging tutor for an African university student studying ${topic || 'this topic'}.
+They were asked to explain "${sceneTitle}" (goal: ${objective}) in their own words.
+
+Key points a strong answer covers:
+${points}
+
+The student wrote:
+"""${String(explanation).slice(0, 1500)}"""
+
+In 3-4 short sentences, give feedback: first what they got right, then the most important thing missing or to fix (at most one misconception), and end with one encouraging line. Plain language, no headings, no preamble.`;
+      const msg = await client.messages.create({ model: FAST_MODEL, max_tokens: 320, messages: [{ role: 'user', content: prompt }] });
+      const feedback = (msg.content || []).filter((b) => b.type === 'text').map((b) => b.text).join(' ').trim();
+      return json(res, 200, { feedback });
+    } catch (e) {
+      return json(res, 502, { error: 'grading failed', detail: e.message });
+    }
+  }
+
   // AI Processing Engine (Stage 5): generate a capsule for any topic. Channel-neutral
   // — the PWA, WhatsApp, or any client can call this and render the LearningResponse.
   if (req.method === 'POST' && url.pathname === '/lessons/generate') {

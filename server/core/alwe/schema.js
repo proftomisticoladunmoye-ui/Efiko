@@ -87,6 +87,13 @@ function validateScene(s, path, errors, segmentIds) {
   });
 
   if (s.knowledgeCheck) validateKnowledgeCheck(s.knowledgeCheck, `${path}.knowledgeCheck`, errors);
+  if (s.teachBack) {
+    const tb = s.teachBack;
+    if (!isStr(tb.prompt)) errors.push(`${path}.teachBack.prompt: required string`);
+    if (!isArr(tb.expectedPoints) || tb.expectedPoints.length === 0 || tb.expectedPoints.some((p) => !isStr(p))) {
+      errors.push(`${path}.teachBack.expectedPoints: need ≥1 string`);
+    }
+  }
   validateExplain(s.explain, `${path}.explain`, errors);
 
   // Objects referencing a voice segment must point at a real one in this scene.

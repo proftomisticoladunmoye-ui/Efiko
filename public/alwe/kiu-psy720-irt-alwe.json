@@ -83,6 +83,15 @@
         { "atMs": 30000, "prompt": "Tap the curve where the probability is 0.5. What does the ability value there tell you?", "expectKind": "tapObject" }
       ],
       "knowledgeCheck": { "q": "On the ICC, the ability where P(correct) = 0.5 is the item's:", "options": ["Discrimination (a)", "Difficulty (b)", "Guessing (c)", "Reliability"], "answer": 1, "conceptTags": ["b-difficulty"] },
+      "teachBack": {
+        "prompt": "In your own words, explain what the difficulty (b) and discrimination (a) tell you about an item — as if teaching a classmate.",
+        "expectedPoints": [
+          "Difficulty b is the ability level where the probability of a correct answer is 0.5",
+          "Discrimination a is how steeply the curve rises, i.e. how well the item separates weaker from stronger students",
+          "A higher b means a harder item; a steeper curve means higher discrimination"
+        ],
+        "commonGaps": ["Confusing a and b", "Forgetting that b is read off the 50% point"]
+      },
       "replay": { "prerequisiteSceneId": "s1-axes" },
       "explain": {
         "simpler": "The S-curve IS the question. Where it hits halfway = how hard it is. How steep it is = how well it tells students apart.",

@@ -13,6 +13,7 @@ import PausePrompt from './PausePrompt';
 import MiniCheck from './MiniCheck';
 import ExplainAgainSheet from './ExplainAgainSheet';
 import ExplainMistake from './ExplainMistake';
+import TeachBack from './TeachBack';
 
 const SPEEDS = [0.25, 0.5, 0.75, 1, 1.25, 1.5, 2];
 const fmt = (ms: number): string => { const s = Math.floor(ms / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; };
@@ -28,12 +29,14 @@ interface Props {
   onBookmark: (sceneId: string, atMs: number) => void;
   onCheckResult?: (sceneId: string, correct: boolean, conceptTags: string[]) => void;
   onReplayScene?: (sceneId: string) => void;
+  onHelp?: () => void;
   clipUrlFor?: (clipKey: string) => string | undefined;
   mode?: LearningMode;
+  topic?: string;
 }
 
 export default function SceneNode(props: Props): ReactElement {
-  const { scene, initialElapsedMs = 0, speed, autoPlay, onSpeedChange, onCompleted, onPersist, onBookmark, onCheckResult, onReplayScene, clipUrlFor, mode = 'normal' } = props;
+  const { scene, initialElapsedMs = 0, speed, autoPlay, onSpeedChange, onCompleted, onPersist, onBookmark, onCheckResult, onReplayScene, onHelp, clipUrlFor, mode = 'normal', topic = '' } = props;
   const engine = useMemo(() => { const e = new TimelineEngine(); e.load(scene); e.setSpeed(speed); if (initialElapsedMs) e.seek(initialElapsedMs); return e; }, [scene]); // eslint-disable-line react-hooks/exhaustive-deps
   const pb = usePlayback(engine);
   const completedRef = useRef(false);
@@ -158,6 +161,10 @@ export default function SceneNode(props: Props): ReactElement {
             />
           )}
         </div>
+      )}
+
+      {engine.isComplete() && scene.teachBack && showKnowledgeCheck(mode) && (
+        <TeachBack rubric={scene.teachBack} topic={topic} sceneTitle={scene.title} objective={scene.objective} onAttempt={onHelp} />
       )}
     </>
   );

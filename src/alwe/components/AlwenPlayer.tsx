@@ -259,8 +259,10 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
           onBookmark={addBookmark}
           onCheckResult={handleCheckResult}
           onReplayScene={replayScene}
+          onHelp={() => analytics.current?.recordHelp()}
           clipUrlFor={(key) => clipUrls.get(key)}
           mode={mode}
+          topic={pkg.manifest.meta.topic}
         />
       ) : node.kind === 'miniQuiz' || node.kind === 'finalQuiz' ? (
         <QuizNode

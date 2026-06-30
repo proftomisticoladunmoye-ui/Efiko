@@ -357,3 +357,15 @@ body {
 .alwe-coach-item:last-child { border-bottom: 0; padding-bottom: 0; }
 .alwe-coach-msg { margin: 0; font-size: 14px; line-height: 1.5; }
 .alwe-coach-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Teach Back (Batch 9) */
+.alwe-teachback { background: rgba(13,21,38,.5); border: 1px solid var(--brand-2); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.alwe-tb-prompt { margin: 0; font-size: 14px; font-weight: 600; }
+.alwe-tb-input { width: 100%; box-sizing: border-box; background: #0d1526; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 10px; font-size: 14px; font-family: inherit; resize: vertical; }
+.alwe-tb-result { display: flex; flex-direction: column; gap: 8px; }
+.alwe-tb-coverage { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--muted); }
+.alwe-tb-bar { flex: 1; height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; }
+.alwe-tb-bar span { display: block; height: 100%; background: var(--good); }
+.alwe-tb-hit, .alwe-tb-missed { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.5; }
+.alwe-tb-hit { color: var(--good); }
+.alwe-tb-missed { color: #fbbf24; }

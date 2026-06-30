@@ -70,6 +70,15 @@ export interface PausePoint {
   answer?: KnowledgeCheck;          // optional gate before resuming
 }
 
+/** Teach Back (protégé effect): the learner explains the concept in their own words and
+ *  the system evaluates it. Pre-generated so an offline recall check works; online, Claude
+ *  grades the free text against this rubric. See ARCHITECTURE §21. */
+export interface TeachBackRubric {
+  prompt: string;                   // "Explain in your own words why b is the difficulty."
+  expectedPoints: string[];         // key ideas a strong answer covers (offline recall check)
+  commonGaps?: string[];            // what learners typically miss (hints)
+}
+
 export interface Scene {
   id: string;
   title: string;
@@ -80,6 +89,7 @@ export interface Scene {
   segments: VoiceSegment[];
   pausePoints: PausePoint[];
   knowledgeCheck?: KnowledgeCheck;
+  teachBack?: TeachBackRubric;
   explain: ExplainBundle;           // scene-level Explain Again
   replay?: { prerequisiteSceneId?: string };
 }
