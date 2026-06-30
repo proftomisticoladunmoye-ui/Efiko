@@ -19,8 +19,8 @@ import { me as fetchMe, logout as authLogout } from './auth.js';
 // ALWE engine is lazy-loaded so it never weighs down the student library bundle.
 const AlwenPlayer = lazy(() => import('./alwe/components/AlwenPlayer.tsx'));
 const AlweStudio = lazy(() => import('./alwe/components/AlweStudio.tsx'));
-// The lightweight lesson list (no engine code) loads with the library.
-import AlweLessons from './alwe/components/AlweLessons.tsx';
+// Unified Courses catalog (capsules + ALWE) — loads with the library, no engine code.
+import Courses from './components/Courses.jsx';
 import { computeReadiness } from './exam.js';
 import { resolveTenant } from './tenant.js';
 
@@ -364,7 +364,7 @@ export default function App() {
 
         {view === 'library' && <ExamReadiness readiness={readiness} />}
 
-        {view === 'library' && <AlweLessons />}
+        {view === 'library' && <Courses onOpenCapsule={openCapsule} />}
 
         {view === 'library' && (
           <CampusSync

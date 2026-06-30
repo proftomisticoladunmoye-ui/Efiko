@@ -415,6 +415,21 @@ body {
 .badge-offline { font-size: 11px; color: var(--good); border: 1px solid var(--good); border-radius: 999px; padding: 2px 8px; }
 .alwe-lesson-open { background: var(--brand); color: #04231f; border: 0; border-radius: 8px; padding: 7px 16px; font-size: 13px; font-weight: 600; cursor: pointer; }
 
+/* Unified Courses catalog (V1.5 F2) */
+.courses-card { background: linear-gradient(135deg, rgba(15,118,110,.16), rgba(124,58,237,.10)); border: 1px solid var(--brand); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+.courses-card h2 { font-size: 18px; margin: 0 0 4px; }
+.courses-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.course-row { background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.course-head { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: transparent; border: 0; color: var(--text); padding: 11px 12px; cursor: pointer; text-align: left; }
+.course-meta { display: flex; flex-direction: column; min-width: 0; }
+.course-meta em { font-size: 12px; color: var(--muted); font-style: normal; }
+.course-tags { display: inline-flex; align-items: center; gap: 8px; flex: none; }
+.badge-adaptive { font-size: 11px; color: var(--brand-2); border: 1px solid var(--brand-2); border-radius: 999px; padding: 2px 8px; }
+.course-caret { color: var(--muted); }
+.course-lessons { list-style: none; margin: 0; padding: 0 12px 10px; display: flex; flex-direction: column; gap: 6px; }
+.course-lesson { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; padding: 6px 0; border-top: 1px solid rgba(255,255,255,.05); }
+.course-open { background: var(--brand); color: #04231f; border: 0; border-radius: 8px; padding: 6px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
+
 /* Account control + auth (V1.5) */
 .brandbar-account { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; }
 .account-name { font-size: 13px; color: var(--muted); }

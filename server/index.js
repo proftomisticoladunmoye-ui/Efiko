@@ -15,6 +15,7 @@ import { getClient, FAST_MODEL } from './core/ai/client.js';
 import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alwe/sceneGenerator.js';
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
 import { createUser, authenticate, getUser, publicUser } from './core/users.js';
+import { listCourses, getCourse } from './core/courses.js';
 import { registerCapsule } from './core/content.js';
 import { getVoiceAudio, attachVoice, isConfigured as voiceConfigured } from './core/voice/voiceTutor.js';
 import { synthesize as ttsSynthesize } from './core/voice/tts.js';
@@ -219,6 +220,17 @@ const server = createServer(async (req, res) => {
     const capsule = await getPublished(id);
     if (!capsule) return json(res, 404, { error: 'not found' });
     return json(res, 200, capsule);
+  }
+
+  // --- Courses (V1.5 F2): unified catalog over capsules + ALWE lessons ---
+  if (req.method === 'GET' && url.pathname === '/courses') {
+    return json(res, 200, { courses: await listCourses() });
+  }
+  if (req.method === 'GET' && url.pathname.startsWith('/courses/')) {
+    const id = decodeURIComponent(url.pathname.slice('/courses/'.length));
+    const course = await getCourse(id);
+    if (!course) return json(res, 404, { error: 'course not found' });
+    return json(res, 200, course);
   }
 
   // --- User accounts (V1.5): student/lecturer signup + login ---
