@@ -14,6 +14,8 @@ import Studio from './components/Studio.jsx';
 import AdminPanel from './components/AdminPanel.jsx';
 import ExamReadiness from './components/ExamReadiness.jsx';
 import StatusBar from './components/StatusBar.jsx';
+import AuthPanel from './components/AuthPanel.jsx';
+import { me as fetchMe, logout as authLogout } from './auth.js';
 // ALWE engine is lazy-loaded so it never weighs down the student library bundle.
 const AlwenPlayer = lazy(() => import('./alwe/components/AlwenPlayer.tsx'));
 const AlweStudio = lazy(() => import('./alwe/components/AlweStudio.tsx'));
@@ -63,6 +65,11 @@ export default function App() {
   const tenantRef = useRef(null);
   const [catalogSource, setCatalogSource] = useState(null);
   const [online, setOnline] = useState(navigator.onLine);
+  const [user, setUser] = useState(null);          // signed-in account (null = visitor)
+  const [authOpen, setAuthOpen] = useState(false);  // sign-in/up panel
+
+  // Restore an existing session on boot (optional login — visitors stay null).
+  useEffect(() => { fetchMe().then((u) => u && setUser(u)); }, []);
   const [syncing, setSyncing] = useState(false);
   const [asking, setAsking] = useState(false);
   const [snapping, setSnapping] = useState(false);
@@ -324,9 +331,33 @@ export default function App() {
       <header className="brandbar">
         <img className="brandbar-logo" src={tenant?.logo || '/logo.png'} alt={tenant?.name || 'Efiko'} width="180" />
         {tenant?.institution && <span className="brandbar-inst">{tenant.institution}</span>}
+        <span className="brandbar-account">
+          {user ? (
+            <>
+              <span className="account-name">Hi, {user.name}</span>
+              <button className="account-btn" onClick={() => { authLogout(); setUser(null); }}>Sign out</button>
+            </>
+          ) : (
+            <button className="account-btn" onClick={() => setAuthOpen(true)}>Sign in</button>
+          )}
+        </span>
       </header>
+
+      {authOpen && (
+        <AuthPanel
+          onAuthed={(u) => { setUser(u); setAuthOpen(false); setView('library'); }}
+          onClose={() => setAuthOpen(false)}
+        />
+      )}
       <main className="app-main">
         {error && <p className="error">{error}</p>}
+
+        {view === 'library' && user && (
+          <div className="efiko-greeting">
+            <h2>👋 Hi {user.name.split(' ')[0]}, what do you want to learn today?</h2>
+            <p>Ask EFIKO AI anything, or pick up a course below.</p>
+          </div>
+        )}
 
         {view === 'library' && <AskEfiko onAsk={handleAsk} busy={asking} />}
         {view === 'library' && <SnapLearn onSnap={handleSnap} busy={snapping} />}

@@ -14,6 +14,7 @@ import { generateCapsule, generateFromImage, isConfigured as aiConfigured } from
 import { getClient, FAST_MODEL } from './core/ai/client.js';
 import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alwe/sceneGenerator.js';
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
+import { createUser, authenticate, getUser, publicUser } from './core/users.js';
 import { registerCapsule } from './core/content.js';
 import { getVoiceAudio, attachVoice, isConfigured as voiceConfigured } from './core/voice/voiceTutor.js';
 import { synthesize as ttsSynthesize } from './core/voice/tts.js';
@@ -35,6 +36,14 @@ async function authedOrg(req) {
   const h = req.headers['authorization'] || '';
   const p = verifyToken(h.startsWith('Bearer ') ? h.slice(7) : '');
   return p?.orgId ? getOrg(p.orgId) : null;
+}
+
+// Resolve the user (student/lecturer) behind a Bearer token (V1.5 identity).
+// User tokens carry {userId}; institution tokens carry {orgId} — they don't collide.
+async function authedUser(req) {
+  const h = req.headers['authorization'] || '';
+  const p = verifyToken(h.startsWith('Bearer ') ? h.slice(7) : '');
+  return p?.userId ? getUser(p.userId) : null;
 }
 
 // In-memory sessions (per phone number). Persistence comes in a later stage.
@@ -210,6 +219,28 @@ const server = createServer(async (req, res) => {
     const capsule = await getPublished(id);
     if (!capsule) return json(res, 404, { error: 'not found' });
     return json(res, 200, capsule);
+  }
+
+  // --- User accounts (V1.5): student/lecturer signup + login ---
+  if (req.method === 'POST' && url.pathname === '/auth/signup') {
+    const { name, email, password } = await readBody(req);
+    try {
+      const u = await createUser({ name, email, password, role: 'student' });
+      return json(res, 200, { token: signToken({ userId: u.userId, role: u.role }), user: publicUser(u) });
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  if (req.method === 'POST' && url.pathname === '/auth/login') {
+    const { email, password } = await readBody(req);
+    const u = await authenticate(email || '', password || '');
+    if (!u) return json(res, 401, { error: 'Invalid email or password' });
+    return json(res, 200, { token: signToken({ userId: u.userId, role: u.role }), user: publicUser(u) });
+  }
+  if (req.method === 'GET' && url.pathname === '/auth/me') {
+    const u = await authedUser(req);
+    if (!u) return json(res, 401, { error: 'unauthorized' });
+    return json(res, 200, { user: publicUser(u) });
   }
 
   // --- Institution accounts + white-label branding (Phase B) ---
