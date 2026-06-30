@@ -10,11 +10,12 @@ interface Props {
   scene: Scene;
   states: Map<string, ObjectRenderState>;
   onObjectTap?: (obj: AlweObject) => void;
+  focusedId?: string | null;
 }
 
 const HIDDEN: ObjectRenderState = { visible: false, drawProgress: 0, opacity: 0, highlight: false };
 
-export default function SceneStage({ scene, states, onObjectTap }: Props): ReactElement {
+export default function SceneStage({ scene, states, onObjectTap, focusedId }: Props): ReactElement {
   return (
     <svg className="alwe-stage" viewBox="0 0 540 330" role="img" aria-label={scene.title} preserveAspectRatio="xMidYMid meet">
       <rect x={0} y={0} width={540} height={330} className="alwe-board" />
@@ -22,10 +23,13 @@ export default function SceneStage({ scene, states, onObjectTap }: Props): React
         const state = states.get(obj.id) ?? HIDDEN;
         if (!state.visible) return null;
         const tappable = obj.interactive && onObjectTap;
+        const cls = ['alwe-obj'];
+        if (tappable) cls.push('alwe-tappable');
+        if (focusedId) cls.push(obj.id === focusedId ? 'alwe-focused' : 'alwe-dimmed');
         return (
           <g
             key={obj.id}
-            className={tappable ? 'alwe-obj alwe-tappable' : 'alwe-obj'}
+            className={cls.join(' ')}
             onClick={tappable ? () => onObjectTap!(obj) : undefined}
             role={tappable ? 'button' : undefined}
             tabIndex={tappable ? 0 : undefined}
