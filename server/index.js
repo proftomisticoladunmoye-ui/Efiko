@@ -18,6 +18,7 @@ import { createUser, authenticate, getUser, publicUser } from './core/users.js';
 import { listCourses, getCourse, courseIdOf } from './core/courses.js';
 import { recordProgress, progressForUsers, getProgress, listProgress } from './core/progress.js';
 import { issueCertificate, listCertificates, verifyBySerial } from './core/certificates.js';
+import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
 import { registerCapsule } from './core/content.js';
@@ -236,6 +237,38 @@ const server = createServer(async (req, res) => {
     const course = await getCourse(id);
     if (!course) return json(res, 404, { error: 'course not found' });
     return json(res, 200, course);
+  }
+
+  // --- Programmes (V2): tracks that group courses ---
+  if (req.method === 'POST' && url.pathname === '/programmes') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'Sign in as your institution (Institution Admin) to create a programme.' });
+    const { title, description, courseIds } = await readBody(req);
+    try {
+      const p = await createProgramme({ ownerOrgId: org.orgId, title, description, courseIds });
+      return json(res, 200, { programmeId: p.programmeId });
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  if (req.method === 'GET' && url.pathname === '/programmes') {
+    return json(res, 200, { programmes: await listProgrammes() });
+  }
+  if (req.method === 'GET' && url.pathname.match(/^\/programmes\/[^/]+$/)) {
+    const id = decodeURIComponent(url.pathname.slice('/programmes/'.length));
+    const p = await getProgrammeResolved(id);
+    if (!p) return json(res, 404, { error: 'programme not found' });
+    return json(res, 200, p);
+  }
+  // Enrol in a programme → enrol in every course it contains.
+  if (req.method === 'POST' && url.pathname.match(/^\/programmes\/[^/]+\/enrol$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to enrol.' });
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    const p = await getProgramme(id);
+    if (!p) return json(res, 404, { error: 'programme not found' });
+    for (const cid of p.courseIds || []) if (await getCourse(cid)) await enrol(user.userId, cid);
+    return json(res, 200, { courseIds: p.courseIds || [] });
   }
 
   // --- Enrolment (V1.5 F3): join a course by code, list my courses ---

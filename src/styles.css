@@ -456,6 +456,14 @@ body {
 .class-progress th { text-align: left; color: var(--muted); font-weight: 600; font-size: 12px; padding: 6px 8px; border-bottom: 1px solid var(--line); }
 .class-progress td { padding: 8px; border-bottom: 1px solid rgba(255,255,255,.05); }
 
+/* Programmes (V2) */
+.programmes-card { background: linear-gradient(135deg, rgba(124,58,237,.14), rgba(13,21,38,.5)); border: 1px solid var(--brand-2); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+.programmes-card h2 { font-size: 18px; margin: 0 0 4px; }
+.prog-course-meta { color: var(--muted); font-style: normal; font-size: 12px; }
+.prog-picker { display: flex; flex-direction: column; gap: 6px; border: 1px solid var(--line); border-radius: 8px; padding: 10px; }
+.prog-pick { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.prog-pick em { color: var(--muted); font-style: normal; font-size: 12px; }
+
 /* Certificates (V2) */
 .certs-card { background: linear-gradient(135deg, rgba(251,191,36,.10), rgba(13,21,38,.5)); border: 1px solid #fbbf24; border-radius: 14px; padding: 16px; margin-bottom: 16px; }
 .certs-card h2 { font-size: 18px; margin: 0 0 8px; }

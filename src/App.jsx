@@ -17,12 +17,15 @@ import StatusBar from './components/StatusBar.jsx';
 import AuthPanel from './components/AuthPanel.jsx';
 import Certificates from './components/Certificates.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
+import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
 import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
+import { enrolProgramme } from './programmes.js';
 // ALWE engine is lazy-loaded so it never weighs down the student library bundle.
 const AlwenPlayer = lazy(() => import('./alwe/components/AlwenPlayer.tsx'));
 const AlweStudio = lazy(() => import('./alwe/components/AlweStudio.tsx'));
 const Classes = lazy(() => import('./components/Classes.jsx'));
+const ProgrammesConsole = lazy(() => import('./components/ProgrammesConsole.jsx'));
 // Unified Courses catalog (capsules + ALWE) — loads with the library, no engine code.
 import Courses from './components/Courses.jsx';
 import { computeReadiness } from './exam.js';
@@ -99,6 +102,13 @@ export default function App() {
     if (!user) { setAuthOpen(true); throw new Error('auth'); }
     if (code) await enrolByCode(code); else await enrolCourse(courseId);
     setEnrolledIds(await fetchEnrolments());
+  }
+  // Enrol a signed-in user in a whole programme (all its courses).
+  async function enrolProgrammeAction(programmeId) {
+    if (!user) { setAuthOpen(true); throw new Error('auth'); }
+    const ids = await enrolProgramme(programmeId);
+    setEnrolledIds(await fetchEnrolments());
+    return ids;
   }
   const [syncing, setSyncing] = useState(false);
   const [asking, setAsking] = useState(false);
@@ -367,6 +377,15 @@ export default function App() {
       </div>
     );
   }
+  if (params.has('programmes')) {
+    return (
+      <div className="app">
+        <Suspense fallback={alweFallback}>
+          <ProgrammesConsole onExit={() => { window.location.href = window.location.pathname; }} />
+        </Suspense>
+      </div>
+    );
+  }
 
   return (
     <div className="app">
@@ -408,6 +427,8 @@ export default function App() {
         {view === 'library' && <ExamReadiness readiness={readiness} />}
 
         {view === 'library' && user && <Certificates />}
+
+        {view === 'library' && <Programmes onEnrolProgramme={enrolProgrammeAction} />}
 
         {view === 'library' && <Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} />}
 
@@ -475,6 +496,7 @@ export default function App() {
             {' · '}<button className="footer-link" onClick={openStudio}>Lecturer Studio</button>
             {' · '}<button className="footer-link" onClick={() => { window.location.href = `${window.location.pathname}?alwe-studio`; }}>Whiteboard Studio</button>
             {' · '}<button className="footer-link" onClick={() => { window.location.href = `${window.location.pathname}?classes`; }}>Classes</button>
+            {' · '}<button className="footer-link" onClick={() => { window.location.href = `${window.location.pathname}?programmes`; }}>Programmes</button>
             {' · '}<button className="footer-link" onClick={() => setView('admin')}>Institution Admin</button>
           </>
         )}
