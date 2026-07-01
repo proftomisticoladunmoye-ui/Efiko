@@ -1,4 +1,5 @@
 // EFIKO — ThinkSpace client (V2 R2). Persistent AI discussions. Needs the user token.
+import { notifyAiUsed } from './aiClient.js';
 const GATEWAY = import.meta.env.VITE_GATEWAY || 'http://localhost:4100';
 const token = () => localStorage.getItem('efiko-user-token') || '';
 const authHeaders = () => (token() ? { Authorization: `Bearer ${token()}` } : {});
@@ -31,6 +32,7 @@ export async function ask(id, text) {
     method: 'POST', headers: { 'Content-Type': 'application/json', ...authHeaders() }, body: JSON.stringify({ text })
   });
   const d = await r.json().catch(() => ({}));
+  notifyAiUsed(); // refresh the credit meter
   if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
   return d; // { message, title }
 }

@@ -1,5 +1,6 @@
 // EFIKO ALWE — Studio authoring API (talks to the gateway).
 import type { LessonPackage } from '../types';
+import { aiHeaders, notifyAiUsed } from '../../aiClient.js';
 
 const GATEWAY = (import.meta.env.VITE_GATEWAY as string) || 'http://localhost:4100';
 
@@ -15,8 +16,9 @@ async function jsonOrThrow<T>(res: Response): Promise<T> {
 
 export async function generateLesson(input: { topic: string; course?: string; university?: string; level?: string }): Promise<LessonPackage> {
   const res = await fetch(`${GATEWAY}/alwe/generate`, {
-    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(input)
+    method: 'POST', headers: { 'Content-Type': 'application/json', ...aiHeaders() } as Record<string, string>, body: JSON.stringify(input)
   });
+  notifyAiUsed();
   const { pkg } = await jsonOrThrow<{ pkg: LessonPackage }>(res);
   return pkg;
 }

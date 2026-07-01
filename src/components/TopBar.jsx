@@ -2,7 +2,7 @@
 // online status, and the account menu. Credits meter arrives in R3.
 import { useState } from 'react';
 
-export default function TopBar({ logo, name, institution, user, online, asking, onAsk, onSignIn, onSignOut, onMenu }) {
+export default function TopBar({ logo, name, institution, user, online, asking, credits, onAsk, onSignIn, onSignOut, onMenu }) {
   const [q, setQ] = useState('');
   function submit(e) {
     e.preventDefault();
@@ -19,6 +19,11 @@ export default function TopBar({ logo, name, institution, user, online, asking, 
         <button className="topbar-ask-btn" type="submit" disabled={asking || !q.trim()}>{asking ? '…' : 'Ask'}</button>
       </form>
       <div className="topbar-account">
+        {credits && (
+          <span className={`credit-meter ${credits.balance <= 0 ? 'out' : ''}`} title={`${credits.balance} of ${credits.dailyGrant} daily AI credits (${credits.tier})`}>
+            ⚡ {credits.balance}
+          </span>
+        )}
         <span className={`topbar-dot ${online ? 'up' : 'down'}`} title={online ? 'Online' : 'Offline'} aria-hidden="true" />
         {institution && <span className="topbar-inst">{institution}</span>}
         {user ? (

@@ -529,6 +529,8 @@ body {
 .topbar-dot.up { background: var(--good); }
 .topbar-dot.down { background: var(--warn); }
 .topbar-inst { font-size: 12px; color: var(--brand-2); }
+.credit-meter { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: #fbbf24; background: rgba(251,191,36,.12); border: 1px solid rgba(251,191,36,.4); border-radius: 999px; padding: 4px 10px; }
+.credit-meter.out { color: var(--warn); border-color: var(--warn); background: rgba(180,83,9,.15); }
 
 .shell-body { display: flex; align-items: flex-start; }
 .sidebar { width: 210px; flex: none; padding: 12px 10px; border-right: 1px solid var(--line); position: sticky; top: 51px; height: calc(100vh - 51px); display: flex; flex-direction: column; overflow-y: auto; }

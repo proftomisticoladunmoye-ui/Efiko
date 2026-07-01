@@ -22,6 +22,7 @@ import Certificates from './components/Certificates.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
+import { aiHeaders, notifyAiUsed, fetchCredits } from './aiClient.js';
 import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 import { enrolProgramme } from './programmes.js';
 // ALWE engine is lazy-loaded so it never weighs down the student library bundle.
@@ -89,9 +90,20 @@ export default function App() {
   const [authOpen, setAuthOpen] = useState(false);  // sign-in/up panel
 
   const [enrolledIds, setEnrolledIds] = useState([]);
+  const [credits, setCredits] = useState(null);
 
   // Restore an existing session on boot (optional login — visitors stay null).
   useEffect(() => { fetchMe().then((u) => u && setUser(u)); }, []);
+
+  // AI credit meter: load for signed-in users, and refresh after any AI action.
+  useEffect(() => {
+    if (user) fetchCredits().then(setCredits); else setCredits(null);
+  }, [user]);
+  useEffect(() => {
+    const onUsed = () => fetchCredits().then(setCredits);
+    window.addEventListener('efiko-ai-used', onUsed);
+    return () => window.removeEventListener('efiko-ai-used', onUsed);
+  }, []);
 
   // Load enrolments whenever the signed-in user changes.
   useEffect(() => {
@@ -210,7 +222,7 @@ export default function App() {
     try {
       const res = await fetch(`${GATEWAY}/lessons/generate`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...aiHeaders() },
         body: JSON.stringify({ topic })
       });
       if (!res.ok) {
@@ -222,9 +234,10 @@ export default function App() {
       setActive(capsule);
       setView('capsule');
     } catch (e) {
-      setError(`Efiko AI couldn’t generate that lesson (${e.message}). Is the gateway running?`);
+      setError(`Efiko AI couldn’t generate that lesson (${e.message}).`);
     } finally {
       setAsking(false);
+      notifyAiUsed();
     }
   }, []);
 
@@ -237,7 +250,7 @@ export default function App() {
       const mediaType = /data:(.*?);/.exec(meta)?.[1] || 'image/jpeg';
       const res = await fetch(`${GATEWAY}/lessons/snap`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...aiHeaders() },
         body: JSON.stringify({ image: b64, mediaType })
       });
       if (!res.ok) {
@@ -249,9 +262,10 @@ export default function App() {
       setActive(capsule);
       setView('capsule');
     } catch (e) {
-      setError(`Snap & Learn couldn’t read that photo (${e.message}). Is the gateway running?`);
+      setError(`Snap & Learn couldn’t read that photo (${e.message}).`);
     } finally {
       setSnapping(false);
+      notifyAiUsed();
     }
   }, []);
 
@@ -471,7 +485,7 @@ export default function App() {
     <div className={`app shell ${navOpen ? 'nav-open' : ''}`}>
       <TopBar
         logo={tenant?.logo} name={tenant?.name} institution={tenant?.institution}
-        user={user} online={online} asking={asking}
+        user={user} online={online} asking={asking} credits={credits}
         onAsk={handleAsk}
         onSignIn={() => setAuthOpen(true)}
         onSignOut={() => { authLogout(); setUser(null); }}

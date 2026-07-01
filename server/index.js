@@ -19,6 +19,7 @@ import { listCourses, getCourse, courseIdOf } from './core/courses.js';
 import { recordProgress, progressForUsers, getProgress, listProgress } from './core/progress.js';
 import { issueCertificate, listCertificates, verifyBySerial } from './core/certificates.js';
 import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDiscussion, recentMessages } from './core/thinkspace.js';
+import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
@@ -89,6 +90,23 @@ function rateLimited(req, bucket, limit) {
   return n > limit;
 }
 function genQuotaExceeded(req) { return rateLimited(req, 'gen', DAILY_GEN_LIMIT); }
+
+// AI Credits (R3). Signed-in users spend per-user daily credits; anonymous visitors fall
+// back to the per-IP rate limiter. Returns { ok, status?, error? }. Never blocks non-AI use.
+const CREDIT_COST_GEN = Number(process.env.CREDIT_COST_GEN || 15);
+const CREDIT_COST_ASSIST = Number(process.env.CREDIT_COST_ASSIST || 3);
+async function chargeAI(req, kind) {
+  const cost = kind === 'gen' ? CREDIT_COST_GEN : CREDIT_COST_ASSIST;
+  const user = await authedUser(req);
+  if (user) {
+    const r = await spend(user.userId, cost);
+    if (r.ok) return { ok: true };
+    return { ok: false, status: 402, error: "You've used today's AI credits. Downloaded lessons still work — credits refresh tomorrow." };
+  }
+  const limit = kind === 'gen' ? DAILY_GEN_LIMIT : DAILY_ASSIST_LIMIT;
+  if (rateLimited(req, kind, limit)) return { ok: false, status: 429, error: 'Daily AI limit reached. Sign in for your own daily credits, or try again tomorrow.' };
+  return { ok: true };
+}
 
 // Snap & Learn over WhatsApp: download the photo, read it with Claude vision.
 async function handleSnap(from, image, caption) {
@@ -253,7 +271,7 @@ const server = createServer(async (req, res) => {
     const user = await authedUser(req);
     if (!user) return json(res, 401, { error: 'Sign in to use ThinkSpace.' });
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured' });
-    if (rateLimited(req, 'assist', DAILY_ASSIST_LIMIT)) return json(res, 429, { error: 'Daily AI limit reached. Try again tomorrow.' });
+    { const ch = await chargeAI(req, 'assist'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
     const id = decodeURIComponent(url.pathname.split('/')[3]);
     const d = await getDiscussion(user.userId, id);
     if (!d) return json(res, 404, { error: 'not found' });
@@ -466,6 +484,13 @@ const server = createServer(async (req, res) => {
     if (!u) return json(res, 401, { error: 'unauthorized' });
     return json(res, 200, { user: publicUser(u) });
   }
+  // AI Credits balance for the meter (R3).
+  if (req.method === 'GET' && url.pathname === '/credits') {
+    const u = await authedUser(req);
+    if (!u) return json(res, 200, { credits: null }); // visitors: no per-user credits
+    const c = await getCredits(u.userId);
+    return json(res, 200, { credits: { balance: c.balance, tier: c.tier, dailyGrant: dailyGrant(c.tier) } });
+  }
 
   // --- Institution accounts + white-label branding (Phase B) ---
   // Onboard an institution (you create accounts — protected by the master key).
@@ -534,7 +559,7 @@ const server = createServer(async (req, res) => {
   // clip in IndexedDB so playback needs zero network. Cached by text hash this session.
   if (req.method === 'POST' && url.pathname === '/alwe/tts') {
     if (!voiceConfigured()) return json(res, 503, { error: 'voice not configured (set DEEPGRAM_API_KEY)' });
-    if (rateLimited(req, 'assist', DAILY_ASSIST_LIMIT)) return json(res, 429, { error: 'Daily voice limit reached. Try again tomorrow.' });
+    { const ch = await chargeAI(req, 'assist'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
     const { text } = await readBody(req);
     if (!text || !String(text).trim()) return json(res, 400, { error: 'text is required' });
     try {
@@ -552,7 +577,7 @@ const server = createServer(async (req, res) => {
   // ALWE authoring (Batch 10): generate a full ALWE lesson with Claude (validated).
   if (req.method === 'POST' && url.pathname === '/alwe/generate') {
     if (!alweAuthorConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
-    if (genQuotaExceeded(req)) return json(res, 429, { error: 'Daily generation limit reached. Try again tomorrow.' });
+    { const ch = await chargeAI(req, 'gen'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
     const { topic, course, university, level } = await readBody(req);
     if (!topic) return json(res, 400, { error: 'topic is required' });
     try {
@@ -592,7 +617,7 @@ const server = createServer(async (req, res) => {
   // diagnosis + pre-generated explanations; this gives a bespoke fresh take on a concept.
   if (req.method === 'POST' && url.pathname === '/alwe/coach') {
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
-    if (rateLimited(req, 'assist', DAILY_ASSIST_LIMIT)) return json(res, 429, { error: 'Daily coach limit reached. Try again tomorrow.' });
+    { const ch = await chargeAI(req, 'assist'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
     const client = getClient();
     if (!client) return json(res, 503, { error: 'AI not configured' });
     const { topic = '', concept = '', sceneTitle = '' } = await readBody(req);
@@ -612,7 +637,7 @@ const server = createServer(async (req, res) => {
   // nuanced, encouraging feedback when online.
   if (req.method === 'POST' && url.pathname === '/alwe/teachback') {
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
-    if (rateLimited(req, 'assist', DAILY_ASSIST_LIMIT)) return json(res, 429, { error: 'Daily limit reached. Try again tomorrow.' });
+    { const ch = await chargeAI(req, 'assist'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
     const client = getClient();
     if (!client) return json(res, 503, { error: 'AI not configured' });
     const { topic = '', sceneTitle = '', objective = '', expectedPoints = [], explanation = '' } = await readBody(req);
@@ -641,7 +666,7 @@ In 3-4 short sentences, give feedback: first what they got right, then the most 
   // — the PWA, WhatsApp, or any client can call this and render the LearningResponse.
   if (req.method === 'POST' && url.pathname === '/lessons/generate') {
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
-    if (genQuotaExceeded(req)) return json(res, 429, { error: 'Daily lesson limit reached. Open a saved lesson, or try again tomorrow.' });
+    { const ch = await chargeAI(req, 'gen'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
     const { university, course, topic } = await readBody(req);
     if (!topic) return json(res, 400, { error: 'topic is required' });
     try {
@@ -658,7 +683,7 @@ In 3-4 short sentences, give feedback: first what they got right, then the most 
   // Snap & Learn (Stage 7): a photo (base64) → Claude vision → capsule.
   if (req.method === 'POST' && url.pathname === '/lessons/snap') {
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
-    if (genQuotaExceeded(req)) return json(res, 429, { error: 'Daily lesson limit reached. Open a saved lesson, or try again tomorrow.' });
+    { const ch = await chargeAI(req, 'gen'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
     const { image, mediaType, hint } = await readBody(req);
     if (!image) return json(res, 400, { error: 'image (base64) is required' });
     try {
