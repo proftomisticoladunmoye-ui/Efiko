@@ -18,6 +18,7 @@ import { createUser, authenticate, getUser, publicUser } from './core/users.js';
 import { listCourses, getCourse, courseIdOf } from './core/courses.js';
 import { recordProgress, progressForUsers, getProgress, listProgress } from './core/progress.js';
 import { issueCertificate, listCertificates, verifyBySerial } from './core/certificates.js';
+import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDiscussion, recentMessages } from './core/thinkspace.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
@@ -226,6 +227,56 @@ const server = createServer(async (req, res) => {
     const capsule = await getPublished(id);
     if (!capsule) return json(res, 404, { error: 'not found' });
     return json(res, 200, capsule);
+  }
+
+  // --- ThinkSpace (V2 R2): persistent AI discussions with memory ---
+  if (req.method === 'POST' && url.pathname === '/thinkspace/discussions') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to use ThinkSpace.' });
+    const body = await readBody(req);
+    return json(res, 200, { discussion: await createDiscussion(user.userId, body) });
+  }
+  if (req.method === 'GET' && url.pathname === '/thinkspace/discussions') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { discussions: [] });
+    return json(res, 200, { discussions: await listDiscussions(user.userId) });
+  }
+  if (req.method === 'GET' && url.pathname.match(/^\/thinkspace\/discussions\/[^/]+$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'unauthorized' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    const d = await getDiscussion(user.userId, id);
+    if (!d) return json(res, 404, { error: 'not found' });
+    return json(res, 200, { discussion: d });
+  }
+  if (req.method === 'POST' && url.pathname.match(/^\/thinkspace\/discussions\/[^/]+\/ask$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to use ThinkSpace.' });
+    if (!aiConfigured()) return json(res, 503, { error: 'AI not configured' });
+    if (rateLimited(req, 'assist', DAILY_ASSIST_LIMIT)) return json(res, 429, { error: 'Daily AI limit reached. Try again tomorrow.' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    const d = await getDiscussion(user.userId, id);
+    if (!d) return json(res, 404, { error: 'not found' });
+    const { text } = await readBody(req);
+    if (!text || !String(text).trim()) return json(res, 400, { error: 'text is required' });
+    await addMessage(id, 'user', String(text));
+    try {
+      const client = getClient();
+      // History = memory. Trim any leading assistant turn so it starts with 'user'.
+      let history = (await recentMessages(id, 12)).map((m) => ({ role: m.role === 'ai' ? 'assistant' : 'user', content: m.text }));
+      while (history.length && history[0].role === 'assistant') history.shift();
+      const ctx = d.context?.course ? ` The learner is studying ${d.context.course}${d.context.topic ? ` (${d.context.topic})` : ''}.` : '';
+      const system = `You are Efiko, a warm, expert tutor for African university students.${ctx} Continue this discussion, remembering earlier context. Be clear and concise; use a concrete example where it helps.`;
+      const msg = await client.messages.create({ model: FAST_MODEL, max_tokens: 700, system, messages: history });
+      const reply = (msg.content || []).filter((b) => b.type === 'text').map((b) => b.text).join(' ').trim();
+      const aiMsg = await addMessage(id, 'ai', reply);
+      let title = d.title;
+      if (!title || title === 'New Discussion') { title = String(text).slice(0, 42) + (String(text).length > 42 ? '…' : ''); await touchDiscussion(id, { title }); }
+      else { await touchDiscussion(id); }
+      return json(res, 200, { message: aiMsg, title });
+    } catch (e) {
+      return json(res, 502, { error: 'AI failed', detail: e.message });
+    }
   }
 
   // --- Courses (V1.5 F2): unified catalog over capsules + ALWE lessons ---

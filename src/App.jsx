@@ -16,6 +16,7 @@ import ExamReadiness from './components/ExamReadiness.jsx';
 import HomeDashboard from './components/HomeDashboard.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import TopBar from './components/TopBar.jsx';
+import ThinkSpace from './components/ThinkSpace.jsx';
 import AuthPanel from './components/AuthPanel.jsx';
 import Certificates from './components/Certificates.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
@@ -69,6 +70,7 @@ export default function App() {
   const [view, setView] = useState('library'); // 'library' (shell) | 'capsule' | 'studio' | 'admin'
   const [section, setSection] = useState('home'); // sidebar section within the shell
   const [navOpen, setNavOpen] = useState(false);   // mobile sidebar drawer
+  const [tsOpen, setTsOpen] = useState(false);     // ThinkSpace right panel
   const [active, setActive] = useState(null);
   const [catalog, setCatalog] = useState(null);
   const [library, setLibrary] = useState([]);
@@ -482,7 +484,7 @@ export default function App() {
         />
       )}
       <div className="shell-body">
-        <Sidebar active={view === 'library' ? section : null} onSelect={goSection} onTeach={() => goSection('teach')} />
+        <Sidebar active={tsOpen ? 'thinkspace' : (view === 'library' ? section : null)} onSelect={(id) => { setNavOpen(false); if (id === 'thinkspace') setTsOpen((o) => !o); else goSection(id); }} onTeach={() => goSection('teach')} />
         {navOpen && <div className="nav-scrim" onClick={() => setNavOpen(false)} />}
         <main className="app-main">
           {error && <p className="error">{error}</p>}
@@ -499,6 +501,7 @@ export default function App() {
             renderSection()
           )}
         </main>
+        <ThinkSpace open={tsOpen} onClose={() => setTsOpen(false)} user={user} onNeedAuth={() => { setTsOpen(false); setAuthOpen(true); }} />
       </div>
     </div>
   );
