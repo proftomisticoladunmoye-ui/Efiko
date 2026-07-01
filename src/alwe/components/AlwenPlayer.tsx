@@ -9,6 +9,7 @@ import { clipKeyOf } from '../engine/VoiceSync';
 import { fetchSegmentAudio } from '../net/voice';
 import { AnalyticsRecorder } from '../engine/AnalyticsRecorder';
 import { diagnose, type TutorInsight } from '../engine/CognitiveTutor';
+import { reportProgress } from '../../progress.js';
 import type { QuizResult } from './QuizNode';
 import SceneNode from './SceneNode';
 import ModeSwitch from './ModeSwitch';
@@ -113,6 +114,7 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
       if (cancelled) return;
       setPkg(p);
       setMode(p.manifest.defaultMode || 'normal');
+      reportProgress({ university: p.manifest.meta.university, course: p.manifest.meta.course, event: 'opened' });
       analytics.current = await AnalyticsRecorder.load(lessonId);
       await loadClips(p);
       const prog = await getProgress(lessonId);
@@ -160,6 +162,7 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
   }
   function handleQuizComplete(r: QuizResult): void {
     r.results.forEach((x) => analytics.current?.recordQuiz(x.conceptTags, x.correct));
+    if (pkg) reportProgress({ university: pkg.manifest.meta.university, course: pkg.manifest.meta.course, event: 'quiz', score: r.correct, total: r.total });
     openCoach(); // personalised guidance after every assessment
   }
   function openCoach(): void {
@@ -297,7 +300,7 @@ export default function AlwenPlayer({ lessonId, onExit }: { lessonId: string; on
         {scene && <button className="ghost" onClick={() => { setResume({ index, elapsedMs: 0 }); go(index); }}>↺ Replay scene</button>}
         {ctrl.canNext
           ? <button className="alwe-next" onClick={next}>Next →</button>
-          : <button className="alwe-next" onClick={onExit}>Finish ✓</button>}
+          : <button className="alwe-next" onClick={() => { reportProgress({ university: pkg.manifest.meta.university, course: pkg.manifest.meta.course, event: 'completed' }); onExit?.(); }}>Finish ✓</button>}
       </div>
     </div>
   );

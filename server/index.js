@@ -15,7 +15,8 @@ import { getClient, FAST_MODEL } from './core/ai/client.js';
 import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alwe/sceneGenerator.js';
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
 import { createUser, authenticate, getUser, publicUser } from './core/users.js';
-import { listCourses, getCourse } from './core/courses.js';
+import { listCourses, getCourse, courseIdOf } from './core/courses.js';
+import { recordProgress, progressForUsers } from './core/progress.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
 import { registerCapsule } from './core/content.js';
@@ -251,6 +252,33 @@ const server = createServer(async (req, res) => {
     await enrol(user.userId, target, cohortId);
     return json(res, 200, { courseId: target, cohortId });
   }
+  // --- Progress (V2): a signed-in student reports learning events ---
+  if (req.method === 'POST' && url.pathname === '/progress') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { ok: false }); // visitors: no-op, not an error
+    const body = await readBody(req);
+    const courseId = body.courseId || courseIdOf(body.university, body.course);
+    if (!courseId) return json(res, 400, { error: 'courseId (or university+course) required' });
+    await recordProgress(user.userId, courseId, { event: body.event, score: body.score, total: body.total, cohortId: body.cohortId });
+    return json(res, 200, { ok: true });
+  }
+  // Lecturer: progress of everyone in a class.
+  if (req.method === 'GET' && url.pathname.match(/^\/cohorts\/[^/]+\/progress$/)) {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'unauthorized' });
+    const cohortId = decodeURIComponent(url.pathname.split('/')[2]);
+    const cohort = await getCohort(cohortId);
+    if (!cohort || cohort.ownerOrgId !== org.orgId) return json(res, 404, { error: 'class not found' });
+    const roster = await rosterForCohort(cohortId);
+    const prog = await progressForUsers(roster.map((r) => r.userId), cohort.courseId);
+    const rows = await Promise.all(roster.map(async (r) => {
+      const u = await getUser(r.userId);
+      const p = prog.get(r.userId) || {};
+      return { name: u?.name || 'Student', email: u?.email || '', started: !!p.started, completed: !!p.completed, bestQuizPct: p.bestQuizPct ?? null, lastActiveAt: p.lastActiveAt || null };
+    }));
+    return json(res, 200, { progress: rows });
+  }
+
   // --- Cohorts / Classes (V2): lecturer creates a class, sees the roster ---
   if (req.method === 'POST' && url.pathname === '/cohorts') {
     const org = await authedOrg(req);

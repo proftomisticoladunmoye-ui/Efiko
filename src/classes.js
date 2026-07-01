@@ -27,6 +27,12 @@ export async function fetchRoster(cohortId) {
   return (await r.json()).roster || [];
 }
 
+export async function fetchClassProgress(cohortId) {
+  const r = await fetch(`${GATEWAY}/cohorts/${encodeURIComponent(cohortId)}/progress`, { headers: authHeaders() });
+  if (!r.ok) return [];
+  return (await r.json()).progress || [];
+}
+
 export async function fetchCoursesForSelect() {
   try {
     const r = await fetch(`${GATEWAY}/courses`);

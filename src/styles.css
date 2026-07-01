@@ -452,6 +452,9 @@ body {
 .class-code { background: #0d1526; border: 1px solid var(--line); border-radius: 6px; padding: 3px 10px; color: var(--brand-2); letter-spacing: .15em; font-weight: 600; }
 .class-roster { list-style: none; margin: 10px 0 0; padding: 8px 0 0; border-top: 1px solid rgba(255,255,255,.06); display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
 .class-roster em { color: var(--muted); font-style: normal; font-size: 12px; }
+.class-progress { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
+.class-progress th { text-align: left; color: var(--muted); font-weight: 600; font-size: 12px; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.class-progress td { padding: 8px; border-bottom: 1px solid rgba(255,255,255,.05); }
 
 /* Account control + auth (V1.5) */
 .brandbar-account { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; }

@@ -4,6 +4,7 @@
 // a shareable join link. Offline, it falls back to downloaded ALWE lessons.
 import { useEffect, useState } from 'react';
 import { fetchCourses, fetchCourse } from '../courses.js';
+import { reportProgress } from '../progress.js';
 import { listPackages } from '../alwe/store/PackageStore';
 
 function openAlwe(id) {
@@ -106,7 +107,7 @@ export default function Courses({ onOpenCapsule, enrolledIds = [], onEnrol, sign
                     {detail[c.courseId].lessons.map((l) => (
                       <li key={l.id} className="course-lesson">
                         <span>{l.kind === 'alwe' ? '✨' : '📄'} {l.title}</span>
-                        <button className="course-open" onClick={() => (l.kind === 'alwe' ? openAlwe(l.id) : onOpenCapsule(l.id))}>Open</button>
+                        <button className="course-open" onClick={() => { reportProgress({ courseId: c.courseId, event: 'opened' }); l.kind === 'alwe' ? openAlwe(l.id) : onOpenCapsule(l.id); }}>Open</button>
                       </li>
                     ))}
                   </ul>

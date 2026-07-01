@@ -17,6 +17,9 @@ const ALWE_DIR = join(HERE, '..', '..', 'public', 'alwe');
 const slug = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const courseKey = (u, c) => `${slug(u) || 'efiko'}-${slug(c) || 'gen'}`;
 
+/** The canonical courseId for a (university, course) pair — used by progress reporting. */
+export function courseIdOf(university, course) { return courseKey(university, course); }
+
 // A short, shareable join code derived deterministically from the courseId — no code
 // store needed. Reverse lookup (code → course) scans the course list (F3 enrolment).
 export function codeForCourse(courseId) {
