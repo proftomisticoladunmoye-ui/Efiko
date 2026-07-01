@@ -18,6 +18,12 @@ export async function rosterForCohort(cohortId) {
   return all.filter((e) => e.cohortId === cohortId).map((e) => ({ userId: e.userId, enrolledAt: e.enrolledAt }));
 }
 
+/** Cohort ids a user joined (for the student's "My Classes"). */
+export async function cohortsForUser(userId) {
+  const all = await kvAll(COLL);
+  return [...new Set(all.filter((e) => e.userId === userId && e.cohortId).map((e) => e.cohortId))];
+}
+
 export async function unenrol(userId, courseId) {
   await kvDel(COLL, key(userId, courseId));
 }

@@ -23,3 +23,11 @@ export async function fetchEnrolments() {
     return (await r.json()).courseIds || [];
   } catch { return []; }
 }
+
+export async function fetchMyClasses() {
+  try {
+    const r = await fetch(`${GATEWAY}/my-classes`, { headers: authHeaders() });
+    if (!r.ok) return [];
+    return (await r.json()).classes || [];
+  } catch { return []; }
+}

@@ -13,6 +13,7 @@ import SnapLearn from './components/SnapLearn.jsx';
 import Studio from './components/Studio.jsx';
 import AdminPanel from './components/AdminPanel.jsx';
 import ExamReadiness from './components/ExamReadiness.jsx';
+import HomeDashboard from './components/HomeDashboard.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import TopBar from './components/TopBar.jsx';
 import AuthPanel from './components/AuthPanel.jsx';
@@ -451,19 +452,16 @@ export default function App() {
         </div>);
       case 'home':
       default:
-        return (<>
-          {user
-            ? <div className="efiko-greeting"><h2>👋 Hi {user.name.split(' ')[0]}, what do you want to learn today?</h2><p>Ask EFIKO AI above, or jump back in below.</p></div>
-            : <div className="efiko-greeting"><h2>Learn anything, anywhere — even offline.</h2><p>Ask EFIKO AI above, or explore courses. <button className="footer-link" onClick={() => setAuthOpen(true)}>Sign in</button> to save your progress.</p></div>}
-          <div className="home-quick">
-            <button className="quick-card" onClick={() => goSection('learn')}>✦ Ask & Learn</button>
-            <button className="quick-card" onClick={() => goSection('courses')}>📚 Courses</button>
-            <button className="quick-card" onClick={() => goSection('whiteboard')}>🎨 Whiteboard</button>
-            <button className="quick-card" onClick={() => goSection('assessments')}>📝 Assessments</button>
-          </div>
-          <ExamReadiness readiness={readiness} />
-          {user && <Certificates />}
-        </>);
+        return (
+          <HomeDashboard
+            user={user}
+            readiness={readiness}
+            enrolledIds={enrolledIds}
+            onOpenCapsule={openCapsule}
+            onGoSection={goSection}
+            onSignIn={() => setAuthOpen(true)}
+          />
+        );
     }
   }
 

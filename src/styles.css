@@ -559,6 +559,21 @@ body {
 .capsule-tab.on { background: var(--brand); color: #04231f; border-color: var(--brand); font-weight: 600; }
 .capsule-panel { min-height: 120px; }
 
+/* Home dashboard (R1c) */
+.dash-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 18px; }
+.dash-card { display: flex; flex-direction: column; gap: 4px; background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 14px; padding: 16px; text-align: left; color: var(--text); cursor: pointer; }
+.dash-card:hover { border-color: var(--brand); }
+.dash-card strong { font-size: 16px; }
+.dash-card em { font-style: normal; font-size: 12px; color: var(--muted); }
+.dash-kicker { font-size: 12px; color: var(--brand-2); }
+.dash-continue { background: linear-gradient(135deg, rgba(15,118,110,.22), rgba(13,21,38,.5)); border-color: var(--brand); }
+.dash-section { margin-top: 18px; }
+.dash-section h3 { font-size: 15px; margin: 0 0 8px; }
+.dash-list { display: flex; flex-direction: column; gap: 8px; }
+.dash-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; color: var(--text); cursor: pointer; text-align: left; font-size: 14px; }
+.dash-row:hover { border-color: var(--brand); }
+.dash-row em { font-style: normal; font-size: 12px; color: var(--muted); }
+
 @media (max-width: 860px) {
   .topbar-menu { display: block; }
   .topbar-ask { margin: 0; }

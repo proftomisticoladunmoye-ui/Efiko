@@ -19,7 +19,7 @@ import { listCourses, getCourse, courseIdOf } from './core/courses.js';
 import { recordProgress, progressForUsers, getProgress, listProgress } from './core/progress.js';
 import { issueCertificate, listCertificates, verifyBySerial } from './core/certificates.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
-import { enrol, listEnrolments, courseIdForCode, rosterForCohort } from './core/enrolments.js';
+import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
 import { registerCapsule } from './core/content.js';
 import { getVoiceAudio, attachVoice, isConfigured as voiceConfigured } from './core/voice/voiceTutor.js';
@@ -383,6 +383,15 @@ const server = createServer(async (req, res) => {
     const user = await authedUser(req);
     if (!user) return json(res, 200, { courseIds: [] }); // visitors have none
     return json(res, 200, { courseIds: await listEnrolments(user.userId) });
+  }
+  // Classes the signed-in student has joined (Home dashboard).
+  if (req.method === 'GET' && url.pathname === '/my-classes') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { classes: [] });
+    const ids = await cohortsForUser(user.userId);
+    const rows = [];
+    for (const id of ids) { const c = await getCohort(id); if (c) rows.push({ cohortId: c.cohortId, title: c.title, code: c.code, courseId: c.courseId }); }
+    return json(res, 200, { classes: rows });
   }
 
   // --- User accounts (V1.5): student/lecturer signup + login ---
