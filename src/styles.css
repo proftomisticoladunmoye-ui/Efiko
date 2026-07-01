@@ -552,6 +552,13 @@ body {
 .signin-prompt { text-align: center; padding: 30px; }
 .nav-scrim { display: none; }
 
+/* Tabbed AI response (R1b) */
+.capsule-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 10px; border-bottom: 1px solid var(--line); margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+.capsule-tab { flex: none; background: #0d1526; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 7px 14px; font-size: 13px; cursor: pointer; white-space: nowrap; }
+.capsule-tab:hover { color: var(--text); }
+.capsule-tab.on { background: var(--brand); color: #04231f; border-color: var(--brand); font-weight: 600; }
+.capsule-panel { min-height: 120px; }
+
 @media (max-width: 860px) {
   .topbar-menu { display: block; }
   .topbar-ask { margin: 0; }

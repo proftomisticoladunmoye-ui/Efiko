@@ -219,19 +219,34 @@ const RENDERERS = {
   summary: SummaryBlock
 };
 
-const SECTION_TITLES = {
-  whiteboard: 'Whiteboard',
-  voice: 'Voice lesson',
-  quiz: 'Practice quiz',
-  flashcards: 'Flashcards'
+// Tab label + icon per block type (EFIKO 2.0 tabbed AI response — R1b).
+const TAB = {
+  text: { icon: '📄', label: 'Text' },
+  whiteboard: { icon: '🖼️', label: 'Whiteboard' },
+  voice: { icon: '🔊', label: 'Voice' },
+  quiz: { icon: '✅', label: 'Quiz' },
+  flashcards: { icon: '🃏', label: 'Flashcards' },
+  summary: { icon: '📌', label: 'Summary' }
 };
 
 export default function CapsuleView({ capsule }) {
   const { meta } = capsule;
-  // Mark the course started for signed-in learners (no-op for visitors).
+  // One tab per renderable block (drops unknown/empty voice placeholders).
+  const tabs = capsule.blocks
+    .map((block, i) => ({ i, type: block.type, block }))
+    .filter((t) => RENDERERS[t.type]);
+  const defaultTab = () => { const ti = tabs.findIndex((t) => t.type === 'text'); return ti >= 0 ? ti : 0; };
+  const [active, setActive] = useState(defaultTab);
+
+  // Mark started (signed-in only) and reset to the first tab when a new lesson opens.
   useEffect(() => {
     reportProgress({ university: meta?.university, course: meta?.course, event: 'opened' });
+    setActive(defaultTab());
   }, [capsule.capsuleId]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const current = tabs[active] || tabs[0];
+  const Renderer = current ? RENDERERS[current.type] : null;
+
   return (
     <article className="capsule">
       <header className="capsule-header">
@@ -242,17 +257,21 @@ export default function CapsuleView({ capsule }) {
         </p>
       </header>
 
-      {capsule.blocks.map((block, i) => {
-        const Renderer = RENDERERS[block.type];
-        if (!Renderer) return null;
-        const title = SECTION_TITLES[block.type];
-        return (
-          <section key={i} className={`block block--${block.type}`}>
-            {title && <h2 className="block-title">{title}</h2>}
-            <Renderer block={block} capsule={capsule} />
-          </section>
-        );
-      })}
+      <div className="capsule-tabs" role="tablist" aria-label="Lesson formats">
+        {tabs.map((t, idx) => (
+          <button
+            key={idx} role="tab" aria-selected={idx === active}
+            className={`capsule-tab ${idx === active ? 'on' : ''}`}
+            onClick={() => setActive(idx)}
+          >
+            <span aria-hidden="true">{(TAB[t.type] || {}).icon}</span> {(TAB[t.type] || {}).label || t.type}
+          </button>
+        ))}
+      </div>
+
+      <div className="capsule-panel" role="tabpanel">
+        {Renderer ? <Renderer block={current.block} capsule={capsule} /> : <p className="lib-sub">Nothing to show.</p>}
+      </div>
     </article>
   );
 }
