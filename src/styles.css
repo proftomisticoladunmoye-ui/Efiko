@@ -456,6 +456,30 @@ body {
 .class-progress th { text-align: left; color: var(--muted); font-weight: 600; font-size: 12px; padding: 6px 8px; border-bottom: 1px solid var(--line); }
 .class-progress td { padding: 8px; border-bottom: 1px solid rgba(255,255,255,.05); }
 
+/* Certificates (V2) */
+.certs-card { background: linear-gradient(135deg, rgba(251,191,36,.10), rgba(13,21,38,.5)); border: 1px solid #fbbf24; border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+.certs-card h2 { font-size: 18px; margin: 0 0 8px; }
+.certs-claim { display: flex; flex-direction: column; gap: 8px; }
+.cert-claim-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; font-size: 14px; }
+.certs-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.cert-earned { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.cert-earned-meta { display: flex; flex-direction: column; }
+.cert-earned-meta em { font-size: 12px; color: var(--muted); font-style: normal; letter-spacing: .05em; }
+.cert-doc { position: relative; width: 100%; max-width: 480px; background: #0d1526; border: 1px solid #fbbf24; border-radius: 16px; padding: 18px; }
+.cert-print { text-align: center; background: #fffdf7; color: #1a1200; border: 3px double #b8860b; border-radius: 12px; padding: 28px 20px; }
+.cert-kicker { text-transform: uppercase; letter-spacing: .2em; font-size: 12px; color: #b8860b; margin: 8px 0; }
+.cert-awarded { font-size: 13px; color: #555; margin: 6px 0; }
+.cert-name { font-size: 26px; margin: 6px 0; color: #1a1200; }
+.cert-course { font-size: 18px; margin: 6px 0; color: #333; }
+.cert-score { font-size: 14px; color: #333; margin: 4px 0; }
+.cert-date { font-size: 13px; color: #666; margin: 10px 0 2px; }
+.cert-serial { font-size: 11px; color: #999; letter-spacing: .05em; }
+.cert-actions { display: flex; gap: 10px; margin-top: 12px; justify-content: center; }
+.verify-page { max-width: 440px; margin: 40px auto; text-align: center; background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+.verify-badge { font-size: 20px; font-weight: 700; color: var(--good); }
+.verify-badge.bad { color: var(--warn); }
+@media print { body * { visibility: hidden; } #cert-print, #cert-print * { visibility: visible; } #cert-print { position: absolute; left: 0; top: 0; width: 100%; } }
+
 /* Account control + auth (V1.5) */
 .brandbar-account { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; }
 .account-name { font-size: 13px; color: var(--muted); }

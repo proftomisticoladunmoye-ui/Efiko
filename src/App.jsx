@@ -15,6 +15,8 @@ import AdminPanel from './components/AdminPanel.jsx';
 import ExamReadiness from './components/ExamReadiness.jsx';
 import StatusBar from './components/StatusBar.jsx';
 import AuthPanel from './components/AuthPanel.jsx';
+import Certificates from './components/Certificates.jsx';
+import VerifyCertificate from './components/VerifyCertificate.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
 import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 // ALWE engine is lazy-loaded so it never weighs down the student library bundle.
@@ -334,6 +336,10 @@ export default function App() {
   const params = new URLSearchParams(window.location.search);
   const alweLesson = params.get('alwe');
   const alweFallback = <div className="app"><p className="alwe-loading">Loading…</p></div>;
+  const verifySerial = params.get('verify');
+  if (verifySerial) {
+    return <VerifyCertificate serial={verifySerial} onExit={() => { window.location.href = window.location.pathname; }} />;
+  }
   if (alweLesson) {
     return (
       <div className="app">
@@ -400,6 +406,8 @@ export default function App() {
         {view === 'library' && <SnapLearn onSnap={handleSnap} busy={snapping} />}
 
         {view === 'library' && <ExamReadiness readiness={readiness} />}
+
+        {view === 'library' && user && <Certificates />}
 
         {view === 'library' && <Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} />}
 

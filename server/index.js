@@ -16,7 +16,8 @@ import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alw
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
 import { createUser, authenticate, getUser, publicUser } from './core/users.js';
 import { listCourses, getCourse, courseIdOf } from './core/courses.js';
-import { recordProgress, progressForUsers } from './core/progress.js';
+import { recordProgress, progressForUsers, getProgress, listProgress } from './core/progress.js';
+import { issueCertificate, listCertificates, verifyBySerial } from './core/certificates.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
 import { registerCapsule } from './core/content.js';
@@ -69,6 +70,7 @@ const selfBase = (req) => PUBLIC_BASE_URL || `http://${req.headers.host}`;
 // /catalog content is unaffected — only live API calls count.
 const DAILY_GEN_LIMIT = Number(process.env.DAILY_GEN_LIMIT || 25);
 const DAILY_ASSIST_LIMIT = Number(process.env.DAILY_ASSIST_LIMIT || 300);
+const CERT_PASS_MARK = Number(process.env.CERT_PASS_MARK || 70); // % best-quiz to earn a certificate
 const rateCounts = new Map(); // "bucket|ip|date" -> count
 
 function clientIp(req) {
@@ -262,6 +264,39 @@ const server = createServer(async (req, res) => {
     await recordProgress(user.userId, courseId, { event: body.event, score: body.score, total: body.total, cohortId: body.cohortId });
     return json(res, 200, { ok: true });
   }
+  // My own progress across courses (drives certificate eligibility in the UI).
+  if (req.method === 'GET' && url.pathname === '/progress') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { progress: [] });
+    return json(res, 200, { progress: await listProgress(user.userId) });
+  }
+  // --- Certificates (V2) ---
+  if (req.method === 'POST' && url.pathname === '/certificates') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to claim a certificate.' });
+    const { courseId } = await readBody(req);
+    const course = await getCourse(courseId);
+    if (!course) return json(res, 404, { error: 'course not found' });
+    const p = await getProgress(user.userId, courseId);
+    if (!p || (p.bestQuizPct ?? -1) < CERT_PASS_MARK) {
+      return json(res, 403, { error: `Score at least ${CERT_PASS_MARK}% on a quiz to earn this certificate.`, needed: CERT_PASS_MARK, have: p?.bestQuizPct ?? null });
+    }
+    const cert = await issueCertificate({ userId: user.userId, userName: user.name, courseId, courseTitle: course.title, score: p.bestQuizPct });
+    return json(res, 200, { certificate: cert });
+  }
+  if (req.method === 'GET' && url.pathname === '/certificates') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { certificates: [] });
+    return json(res, 200, { certificates: await listCertificates(user.userId) });
+  }
+  // Public verification — no auth. Anyone with the serial can confirm authenticity.
+  if (req.method === 'GET' && url.pathname.startsWith('/verify/')) {
+    const serial = decodeURIComponent(url.pathname.slice('/verify/'.length));
+    const cert = await verifyBySerial(serial);
+    if (!cert) return json(res, 404, { valid: false });
+    return json(res, 200, { valid: true, name: cert.userName, courseTitle: cert.courseTitle, score: cert.score, issuedAt: cert.issuedAt, serial: cert.serial });
+  }
+
   // Lecturer: progress of everyone in a class.
   if (req.method === 'GET' && url.pathname.match(/^\/cohorts\/[^/]+\/progress$/)) {
     const org = await authedOrg(req);
