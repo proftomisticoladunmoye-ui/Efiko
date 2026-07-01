@@ -4,6 +4,7 @@
 // lessons of either kind. Read-only aggregation — it does not change either store, so
 // existing capsule/ALWE flows are untouched. See docs/PRODUCT-ARCHITECTURE-REVIEW.md (D4).
 import { readdir, readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { getCatalog } from './content.js';
@@ -15,6 +16,13 @@ const ALWE_DIR = join(HERE, '..', '..', 'public', 'alwe');
 
 const slug = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 const courseKey = (u, c) => `${slug(u) || 'efiko'}-${slug(c) || 'gen'}`;
+
+// A short, shareable join code derived deterministically from the courseId — no code
+// store needed. Reverse lookup (code → course) scans the course list (F3 enrolment).
+export function codeForCourse(courseId) {
+  const h = createHash('sha1').update(String(courseId)).digest('hex');
+  return parseInt(h.slice(0, 10), 16).toString(36).toUpperCase().slice(0, 6).padStart(6, 'X');
+}
 
 // Bundled ALWE lessons shipped in public/alwe (the kv store holds only published ones).
 async function bundledAlwe() {
@@ -75,6 +83,7 @@ export async function buildCourses() {
     co.lessons.sort((x, y) => (x.kind === y.kind ? (x.sequence || 0) - (y.sequence || 0) : x.kind === 'capsule' ? -1 : 1));
     co.lessonCount = co.lessons.length;
     co.hasAdaptive = co.lessons.some((l) => l.kind === 'alwe');
+    co.joinCode = codeForCourse(co.courseId);
   }
   return [...map.values()].filter((c) => c.lessonCount > 0);
 }

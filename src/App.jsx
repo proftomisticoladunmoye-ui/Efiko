@@ -16,6 +16,7 @@ import ExamReadiness from './components/ExamReadiness.jsx';
 import StatusBar from './components/StatusBar.jsx';
 import AuthPanel from './components/AuthPanel.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
+import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 // ALWE engine is lazy-loaded so it never weighs down the student library bundle.
 const AlwenPlayer = lazy(() => import('./alwe/components/AlwenPlayer.tsx'));
 const AlweStudio = lazy(() => import('./alwe/components/AlweStudio.tsx'));
@@ -68,8 +69,34 @@ export default function App() {
   const [user, setUser] = useState(null);          // signed-in account (null = visitor)
   const [authOpen, setAuthOpen] = useState(false);  // sign-in/up panel
 
+  const [enrolledIds, setEnrolledIds] = useState([]);
+
   // Restore an existing session on boot (optional login — visitors stay null).
   useEffect(() => { fetchMe().then((u) => u && setUser(u)); }, []);
+
+  // Load enrolments whenever the signed-in user changes.
+  useEffect(() => {
+    if (user) fetchEnrolments().then(setEnrolledIds);
+    else setEnrolledIds([]);
+  }, [user]);
+
+  // Deep link: ?join=<code> enrols the signed-in user (or prompts sign-in, then enrols).
+  useEffect(() => {
+    const join = new URLSearchParams(window.location.search).get('join');
+    if (!join) return;
+    if (!user) { setAuthOpen(true); return; }
+    enrolByCode(join)
+      .then(() => fetchEnrolments().then(setEnrolledIds))
+      .catch(() => {})
+      .finally(() => { const u = new URL(window.location.href); u.searchParams.delete('join'); window.history.replaceState({}, '', u); });
+  }, [user]);
+
+  // Enrol a signed-in user by course id or class code (prompts sign-in if a visitor).
+  async function enrolAction({ courseId, code }) {
+    if (!user) { setAuthOpen(true); throw new Error('auth'); }
+    if (code) await enrolByCode(code); else await enrolCourse(courseId);
+    setEnrolledIds(await fetchEnrolments());
+  }
   const [syncing, setSyncing] = useState(false);
   const [asking, setAsking] = useState(false);
   const [snapping, setSnapping] = useState(false);
@@ -364,7 +391,7 @@ export default function App() {
 
         {view === 'library' && <ExamReadiness readiness={readiness} />}
 
-        {view === 'library' && <Courses onOpenCapsule={openCapsule} />}
+        {view === 'library' && <Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} />}
 
         {view === 'library' && (
           <CampusSync

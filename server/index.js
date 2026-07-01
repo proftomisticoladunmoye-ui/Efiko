@@ -16,6 +16,7 @@ import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alw
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
 import { createUser, authenticate, getUser, publicUser } from './core/users.js';
 import { listCourses, getCourse } from './core/courses.js';
+import { enrol, listEnrolments, courseIdForCode } from './core/enrolments.js';
 import { registerCapsule } from './core/content.js';
 import { getVoiceAudio, attachVoice, isConfigured as voiceConfigured } from './core/voice/voiceTutor.js';
 import { synthesize as ttsSynthesize } from './core/voice/tts.js';
@@ -231,6 +232,23 @@ const server = createServer(async (req, res) => {
     const course = await getCourse(id);
     if (!course) return json(res, 404, { error: 'course not found' });
     return json(res, 200, course);
+  }
+
+  // --- Enrolment (V1.5 F3): join a course by code, list my courses ---
+  if (req.method === 'POST' && url.pathname === '/enrol') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to enrol.' });
+    const { code, courseId } = await readBody(req);
+    let target = courseId;
+    if (!target && code) target = await courseIdForCode(code);
+    if (!target || !(await getCourse(target))) return json(res, 404, { error: 'That class code is not valid.' });
+    await enrol(user.userId, target);
+    return json(res, 200, { courseId: target });
+  }
+  if (req.method === 'GET' && url.pathname === '/enrolments') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { courseIds: [] }); // visitors have none
+    return json(res, 200, { courseIds: await listEnrolments(user.userId) });
   }
 
   // --- User accounts (V1.5): student/lecturer signup + login ---

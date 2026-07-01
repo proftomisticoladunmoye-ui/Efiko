@@ -429,6 +429,19 @@ body {
 .course-lessons { list-style: none; margin: 0; padding: 0 12px 10px; display: flex; flex-direction: column; gap: 6px; }
 .course-lesson { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; padding: 6px 0; border-top: 1px solid rgba(255,255,255,.05); }
 .course-open { background: var(--brand); color: #04231f; border: 0; border-radius: 8px; padding: 6px 14px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.course-open:disabled { opacity: .5; cursor: not-allowed; }
+.course-head { display: flex; align-items: center; gap: 8px; }
+.course-title-btn { flex: 1; min-width: 0; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: transparent; border: 0; color: var(--text); padding: 11px 12px; cursor: pointer; text-align: left; }
+.course-tags { padding-right: 10px; }
+.badge-enrolled { font-size: 11px; color: var(--good); border: 1px solid var(--good); border-radius: 999px; padding: 2px 8px; }
+.course-enrol { background: transparent; border: 1px solid var(--brand); color: var(--brand-2); border-radius: 999px; padding: 4px 12px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+.course-body { padding: 0 12px 10px; }
+.course-share { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+.course-share code { background: #0d1526; border: 1px solid var(--line); border-radius: 5px; padding: 2px 8px; color: var(--brand-2); letter-spacing: .1em; }
+.course-share-btn { background: transparent; border: 1px solid var(--line); color: var(--brand-2); border-radius: 8px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+.enrol-form { display: flex; gap: 8px; margin-top: 10px; }
+.enrol-form .ask-input { flex: 1; }
+.enrol-msg { font-size: 13px; color: var(--good); margin: 8px 0 0; }
 
 /* Account control + auth (V1.5) */
 .brandbar-account { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; }
