@@ -11,7 +11,7 @@ function openAlwe(id) {
   window.location.href = `${window.location.pathname}?alwe=${encodeURIComponent(id)}`;
 }
 
-export default function Courses({ onOpenCapsule, enrolledIds = [], onEnrol, signedIn }) {
+export default function Courses({ onOpenCapsule, enrolledIds = [], onEnrol, signedIn, adaptiveOnly = false, heading }) {
   const [courses, setCourses] = useState([]);
   const [expanded, setExpanded] = useState(null);
   const [detail, setDetail] = useState({});
@@ -69,11 +69,12 @@ export default function Courses({ onOpenCapsule, enrolledIds = [], onEnrol, sign
     navigator.clipboard?.writeText(link).then(() => { setCopied(joinCode); setTimeout(() => setCopied(null), 1500); }).catch(() => {});
   }
 
-  if (courses.length === 0 && downloaded.length === 0) return null;
+  const shown = adaptiveOnly ? courses.filter((c) => c.hasAdaptive) : courses;
+  if (shown.length === 0 && downloaded.length === 0) return null;
 
   return (
     <section className="courses-card">
-      <h2>📚 Courses</h2>
+      <h2>{heading || '📚 Courses'}</h2>
       <p className="lib-sub">All your courses — adaptive whiteboard lessons and quick capsules, in one place.</p>
 
       <form className="enrol-form" onSubmit={submitCode}>
@@ -82,9 +83,9 @@ export default function Courses({ onOpenCapsule, enrolledIds = [], onEnrol, sign
       </form>
       {codeMsg && <p className="enrol-msg">{codeMsg}</p>}
 
-      {courses.length > 0 ? (
+      {shown.length > 0 ? (
         <div className="courses-list">
-          {courses.map((c) => (
+          {shown.map((c) => (
             <div key={c.courseId} className="course-row">
               <div className="course-head">
                 <button className="course-title-btn" onClick={() => toggle(c.courseId)} aria-expanded={expanded === c.courseId}>

@@ -13,7 +13,8 @@ import SnapLearn from './components/SnapLearn.jsx';
 import Studio from './components/Studio.jsx';
 import AdminPanel from './components/AdminPanel.jsx';
 import ExamReadiness from './components/ExamReadiness.jsx';
-import StatusBar from './components/StatusBar.jsx';
+import Sidebar from './components/Sidebar.jsx';
+import TopBar from './components/TopBar.jsx';
 import AuthPanel from './components/AuthPanel.jsx';
 import Certificates from './components/Certificates.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
@@ -56,8 +57,17 @@ function withVoice(capsule) {
   return { ...capsule, blocks };
 }
 
+function SectionHead({ title, sub }) {
+  return <div className="section-head"><h2>{title}</h2>{sub && <p className="lib-sub">{sub}</p>}</div>;
+}
+function SignInPrompt({ onSignIn, what }) {
+  return <div className="signin-prompt"><p>Sign in to {what}.</p><button className="account-btn" onClick={onSignIn}>Sign in</button></div>;
+}
+
 export default function App() {
-  const [view, setView] = useState('library'); // 'library' | 'capsule'
+  const [view, setView] = useState('library'); // 'library' (shell) | 'capsule' | 'studio' | 'admin'
+  const [section, setSection] = useState('home'); // sidebar section within the shell
+  const [navOpen, setNavOpen] = useState(false);   // mobile sidebar drawer
   const [active, setActive] = useState(null);
   const [catalog, setCatalog] = useState(null);
   const [library, setLibrary] = useState([]);
@@ -387,120 +397,111 @@ export default function App() {
     );
   }
 
-  return (
-    <div className="app">
-      <StatusBar source={view === 'capsule' ? 'offline cache (IndexedDB)' : null} />
-      <header className="brandbar">
-        <img className="brandbar-logo" src={tenant?.logo || '/logo.png'} alt={tenant?.name || 'Efiko'} width="180" />
-        {tenant?.institution && <span className="brandbar-inst">{tenant.institution}</span>}
-        <span className="brandbar-account">
-          {user ? (
-            <>
-              <span className="account-name">Hi, {user.name}</span>
-              <button className="account-btn" onClick={() => { authLogout(); setUser(null); }}>Sign out</button>
-            </>
-          ) : (
-            <button className="account-btn" onClick={() => setAuthOpen(true)}>Sign in</button>
-          )}
-        </span>
-      </header>
+  // A section-change helper: return to the shell and show a section.
+  function goSection(id) { setView('library'); setSection(id); setNavOpen(false); setActive(null); }
 
+  function renderSection() {
+    switch (section) {
+      case 'learn':
+        return (<>
+          <SectionHead title="Learn" sub="Ask a question, snap a photo of your notes, or explore lessons." />
+          <AskEfiko onAsk={handleAsk} busy={asking} />
+          <SnapLearn onSnap={handleSnap} busy={snapping} />
+        </>);
+      case 'thinkspace':
+        return (<div className="ts-soon"><h2>🧠 ThinkSpace</h2><p className="lib-sub">Your AI learning workspace — persistent discussions that remember your context. Coming next.</p></div>);
+      case 'courses':
+        return (<>
+          <Programmes onEnrolProgramme={enrolProgrammeAction} />
+          <Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} />
+        </>);
+      case 'whiteboard':
+        return (<Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} adaptiveOnly heading="🎨 Adaptive Whiteboard Lessons" />);
+      case 'assessments':
+        return (<>
+          <SectionHead title="Assessments" sub="Your quiz performance and exam readiness." />
+          <ExamReadiness readiness={readiness} />
+        </>);
+      case 'certificates':
+        return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
+      case 'library':
+        return (<>
+          <SectionHead title="Library" sub="Everything you've downloaded — available offline." />
+          <CampusSync online={online} syncing={campusSyncing} progress={campusProgress} status={offlineStat} onSync={handleCampusSync} />
+          <Packs packs={packs} online={online} busyPackId={busyPackId} progress={packProgress} onDownload={handleDownloadPack} onRemove={handleRemovePack} />
+          <Library items={library} online={online} catalogSource={catalogSource} syncing={syncing} onOpen={openCapsule} onDownload={handleDownload} onRemove={handleRemove} onSync={handleSync} />
+        </>);
+      case 'settings':
+        return (<div className="settings-page">
+          <SectionHead title="Settings" />
+          {user
+            ? <p className="lib-sub">Signed in as {user.name} ({user.email}). <button className="footer-link" onClick={() => { authLogout(); setUser(null); }}>Sign out</button></p>
+            : <p className="lib-sub">You're browsing as a guest. <button className="footer-link" onClick={() => setAuthOpen(true)}>Sign in</button> to save your progress across devices.</p>}
+        </div>);
+      case 'teach':
+        return (<div className="teach-page">
+          <SectionHead title="Teach & Institution" sub="Author lessons, run classes and programmes, and manage your institution." />
+          <div className="teach-grid">
+            <button className="teach-card" onClick={openStudio}>📝 Lecturer Studio<span>Generate & publish lessons</span></button>
+            <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?alwe-studio`; }}>🎨 Whiteboard Studio<span>Author adaptive lessons</span></button>
+            <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?classes`; }}>👥 Classes<span>Rosters & class progress</span></button>
+            <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?programmes`; }}>🧭 Programmes<span>Group courses into tracks</span></button>
+            <button className="teach-card" onClick={() => setView('admin')}>🏛️ Institution Admin<span>Branding & account</span></button>
+          </div>
+        </div>);
+      case 'home':
+      default:
+        return (<>
+          {user
+            ? <div className="efiko-greeting"><h2>👋 Hi {user.name.split(' ')[0]}, what do you want to learn today?</h2><p>Ask EFIKO AI above, or jump back in below.</p></div>
+            : <div className="efiko-greeting"><h2>Learn anything, anywhere — even offline.</h2><p>Ask EFIKO AI above, or explore courses. <button className="footer-link" onClick={() => setAuthOpen(true)}>Sign in</button> to save your progress.</p></div>}
+          <div className="home-quick">
+            <button className="quick-card" onClick={() => goSection('learn')}>✦ Ask & Learn</button>
+            <button className="quick-card" onClick={() => goSection('courses')}>📚 Courses</button>
+            <button className="quick-card" onClick={() => goSection('whiteboard')}>🎨 Whiteboard</button>
+            <button className="quick-card" onClick={() => goSection('assessments')}>📝 Assessments</button>
+          </div>
+          <ExamReadiness readiness={readiness} />
+          {user && <Certificates />}
+        </>);
+    }
+  }
+
+  return (
+    <div className={`app shell ${navOpen ? 'nav-open' : ''}`}>
+      <TopBar
+        logo={tenant?.logo} name={tenant?.name} institution={tenant?.institution}
+        user={user} online={online} asking={asking}
+        onAsk={handleAsk}
+        onSignIn={() => setAuthOpen(true)}
+        onSignOut={() => { authLogout(); setUser(null); }}
+        onMenu={() => setNavOpen((o) => !o)}
+      />
       {authOpen && (
         <AuthPanel
-          onAuthed={(u) => { setUser(u); setAuthOpen(false); setView('library'); }}
+          onAuthed={(u) => { setUser(u); setAuthOpen(false); setView('library'); setSection('home'); }}
           onClose={() => setAuthOpen(false)}
         />
       )}
-      <main className="app-main">
-        {error && <p className="error">{error}</p>}
-
-        {view === 'library' && user && (
-          <div className="efiko-greeting">
-            <h2>👋 Hi {user.name.split(' ')[0]}, what do you want to learn today?</h2>
-            <p>Ask EFIKO AI anything, or pick up a course below.</p>
-          </div>
-        )}
-
-        {view === 'library' && <AskEfiko onAsk={handleAsk} busy={asking} />}
-        {view === 'library' && <SnapLearn onSnap={handleSnap} busy={snapping} />}
-
-        {view === 'library' && <ExamReadiness readiness={readiness} />}
-
-        {view === 'library' && user && <Certificates />}
-
-        {view === 'library' && <Programmes onEnrolProgramme={enrolProgrammeAction} />}
-
-        {view === 'library' && <Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} />}
-
-        {view === 'library' && (
-          <CampusSync
-            online={online}
-            syncing={campusSyncing}
-            progress={campusProgress}
-            status={offlineStat}
-            onSync={handleCampusSync}
-          />
-        )}
-
-        {view === 'library' && (
-          <Packs
-            packs={packs}
-            online={online}
-            busyPackId={busyPackId}
-            progress={packProgress}
-            onDownload={handleDownloadPack}
-            onRemove={handleRemovePack}
-          />
-        )}
-
-        {view === 'library' && (
-          <Library
-            items={library}
-            online={online}
-            catalogSource={catalogSource}
-            syncing={syncing}
-            onOpen={openCapsule}
-            onDownload={handleDownload}
-            onRemove={handleRemove}
-            onSync={handleSync}
-          />
-        )}
-
-        {view === 'capsule' && active && (
-          <>
-            <button className="back" onClick={() => { setView('library'); setActive(null); if (catalog) computeReadiness(catalog).then(setReadiness); }}>
-              ← My Courses
-            </button>
-            <CapsuleView capsule={active} />
-          </>
-        )}
-
-        {view === 'studio' && (
-          <Studio
-            onGenerate={studioGenerate}
-            onPublish={studioPublish}
-            onOpenPublished={openPublished}
-            onBack={() => setView('library')}
-            published={published}
-            busy={studioBusy}
-            publishing={studioPublishing}
-          />
-        )}
-
-        {view === 'admin' && <AdminPanel onBack={() => setView('library')} />}
-      </main>
-      <footer className="app-footer">
-        {tenant?.institution ? `${tenant.institution} · powered by Efiko` : 'Efiko · multi-channel learning ecosystem'}
-        {view !== 'studio' && view !== 'admin' && (
-          <>
-            {' · '}<button className="footer-link" onClick={openStudio}>Lecturer Studio</button>
-            {' · '}<button className="footer-link" onClick={() => { window.location.href = `${window.location.pathname}?alwe-studio`; }}>Whiteboard Studio</button>
-            {' · '}<button className="footer-link" onClick={() => { window.location.href = `${window.location.pathname}?classes`; }}>Classes</button>
-            {' · '}<button className="footer-link" onClick={() => { window.location.href = `${window.location.pathname}?programmes`; }}>Programmes</button>
-            {' · '}<button className="footer-link" onClick={() => setView('admin')}>Institution Admin</button>
-          </>
-        )}
-      </footer>
+      <div className="shell-body">
+        <Sidebar active={view === 'library' ? section : null} onSelect={goSection} onTeach={() => goSection('teach')} />
+        {navOpen && <div className="nav-scrim" onClick={() => setNavOpen(false)} />}
+        <main className="app-main">
+          {error && <p className="error">{error}</p>}
+          {view === 'capsule' && active ? (
+            <>
+              <button className="back" onClick={() => { setView('library'); setActive(null); if (catalog) computeReadiness(catalog).then(setReadiness); }}>← Back</button>
+              <CapsuleView capsule={active} />
+            </>
+          ) : view === 'studio' ? (
+            <Studio onGenerate={studioGenerate} onPublish={studioPublish} onOpenPublished={openPublished} onBack={() => goSection('teach')} published={published} busy={studioBusy} publishing={studioPublishing} />
+          ) : view === 'admin' ? (
+            <AdminPanel onBack={() => goSection('teach')} />
+          ) : (
+            renderSection()
+          )}
+        </main>
+      </div>
     </div>
   );
 }
