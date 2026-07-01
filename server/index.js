@@ -16,7 +16,8 @@ import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alw
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
 import { createUser, authenticate, getUser, publicUser } from './core/users.js';
 import { listCourses, getCourse } from './core/courses.js';
-import { enrol, listEnrolments, courseIdForCode } from './core/enrolments.js';
+import { enrol, listEnrolments, courseIdForCode, rosterForCohort } from './core/enrolments.js';
+import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
 import { registerCapsule } from './core/content.js';
 import { getVoiceAudio, attachVoice, isConfigured as voiceConfigured } from './core/voice/voiceTutor.js';
 import { synthesize as ttsSynthesize } from './core/voice/tts.js';
@@ -240,10 +241,47 @@ const server = createServer(async (req, res) => {
     if (!user) return json(res, 401, { error: 'Sign in to enrol.' });
     const { code, courseId } = await readBody(req);
     let target = courseId;
-    if (!target && code) target = await courseIdForCode(code);
+    let cohortId = null;
+    if (!target && code) {
+      const cohort = await getCohortByCode(code); // a class code takes priority over a course code
+      if (cohort) { target = cohort.courseId; cohortId = cohort.cohortId; }
+      else target = await courseIdForCode(code);
+    }
     if (!target || !(await getCourse(target))) return json(res, 404, { error: 'That class code is not valid.' });
-    await enrol(user.userId, target);
-    return json(res, 200, { courseId: target });
+    await enrol(user.userId, target, cohortId);
+    return json(res, 200, { courseId: target, cohortId });
+  }
+  // --- Cohorts / Classes (V2): lecturer creates a class, sees the roster ---
+  if (req.method === 'POST' && url.pathname === '/cohorts') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'Sign in as your institution (Institution Admin) to create a class.' });
+    const { courseId, title } = await readBody(req);
+    if (!courseId || !(await getCourse(courseId))) return json(res, 400, { error: 'a valid courseId is required' });
+    const c = await createCohort({ ownerOrgId: org.orgId, courseId, title });
+    return json(res, 200, { cohort: { cohortId: c.cohortId, code: c.code, courseId: c.courseId, title: c.title } });
+  }
+  if (req.method === 'GET' && url.pathname === '/cohorts') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'unauthorized' });
+    const cohorts = await listCohortsByOrg(org.orgId);
+    const withCounts = await Promise.all(cohorts.map(async (c) => ({
+      cohortId: c.cohortId, code: c.code, courseId: c.courseId, title: c.title,
+      students: (await rosterForCohort(c.cohortId)).length
+    })));
+    return json(res, 200, { cohorts: withCounts });
+  }
+  if (req.method === 'GET' && url.pathname.match(/^\/cohorts\/[^/]+\/roster$/)) {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'unauthorized' });
+    const cohortId = decodeURIComponent(url.pathname.split('/')[2]);
+    const cohort = await getCohort(cohortId);
+    if (!cohort || cohort.ownerOrgId !== org.orgId) return json(res, 404, { error: 'class not found' });
+    const roster = await rosterForCohort(cohortId);
+    const named = await Promise.all(roster.map(async (r) => {
+      const u = await getUser(r.userId);
+      return { name: u?.name || 'Student', email: u?.email || '', enrolledAt: r.enrolledAt };
+    }));
+    return json(res, 200, { roster: named });
   }
   if (req.method === 'GET' && url.pathname === '/enrolments') {
     const user = await authedUser(req);

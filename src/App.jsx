@@ -20,6 +20,7 @@ import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 // ALWE engine is lazy-loaded so it never weighs down the student library bundle.
 const AlwenPlayer = lazy(() => import('./alwe/components/AlwenPlayer.tsx'));
 const AlweStudio = lazy(() => import('./alwe/components/AlweStudio.tsx'));
+const Classes = lazy(() => import('./components/Classes.jsx'));
 // Unified Courses catalog (capsules + ALWE) — loads with the library, no engine code.
 import Courses from './components/Courses.jsx';
 import { computeReadiness } from './exam.js';
@@ -351,6 +352,15 @@ export default function App() {
       </div>
     );
   }
+  if (params.has('classes')) {
+    return (
+      <div className="app">
+        <Suspense fallback={alweFallback}>
+          <Classes onExit={() => { window.location.href = window.location.pathname; }} />
+        </Suspense>
+      </div>
+    );
+  }
 
   return (
     <div className="app">
@@ -456,6 +466,7 @@ export default function App() {
           <>
             {' · '}<button className="footer-link" onClick={openStudio}>Lecturer Studio</button>
             {' · '}<button className="footer-link" onClick={() => { window.location.href = `${window.location.pathname}?alwe-studio`; }}>Whiteboard Studio</button>
+            {' · '}<button className="footer-link" onClick={() => { window.location.href = `${window.location.pathname}?classes`; }}>Classes</button>
             {' · '}<button className="footer-link" onClick={() => setView('admin')}>Institution Admin</button>
           </>
         )}

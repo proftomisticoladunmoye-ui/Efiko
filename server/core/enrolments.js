@@ -6,10 +6,16 @@ import { listCourses } from './courses.js';
 const COLL = 'enrolments';
 const key = (userId, courseId) => `${userId}__${courseId}`;
 
-export async function enrol(userId, courseId) {
-  const rec = { id: key(userId, courseId), userId, courseId, enrolledAt: Date.now() };
+export async function enrol(userId, courseId, cohortId = null) {
+  const rec = { id: key(userId, courseId), userId, courseId, cohortId, enrolledAt: Date.now() };
   await kvPut(COLL, rec.id, rec);
   return rec;
+}
+
+/** User ids enrolled through a given cohort (for the lecturer roster). */
+export async function rosterForCohort(cohortId) {
+  const all = await kvAll(COLL);
+  return all.filter((e) => e.cohortId === cohortId).map((e) => ({ userId: e.userId, enrolledAt: e.enrolledAt }));
 }
 
 export async function unenrol(userId, courseId) {
