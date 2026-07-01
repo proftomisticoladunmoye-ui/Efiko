@@ -2,6 +2,7 @@
 // blocks its channel supports; it never contains teaching logic (Stage 1, §3.1).
 import { useState, useEffect, useRef } from 'react';
 import { getAudio, recordMastery } from '../storage/capsuleStore.js';
+import { reportProgress } from '../progress.js';
 
 function TextBlock({ block }) {
   return <p className="capsule-text">{block.value}</p>;
@@ -140,6 +141,8 @@ function QuizBlock({ block, capsule }) {
     if (allDone && !recorded.current && capsule) {
       recorded.current = true;
       recordMastery(capsule, score, items.length).catch(() => {});
+      // Also report to the server (progress + certificates) when signed in.
+      reportProgress({ university: capsule.meta?.university, course: capsule.meta?.course, event: 'quiz', score, total: items.length });
     }
   }, [allDone, capsule, score, items.length]);
 
@@ -225,6 +228,10 @@ const SECTION_TITLES = {
 
 export default function CapsuleView({ capsule }) {
   const { meta } = capsule;
+  // Mark the course started for signed-in learners (no-op for visitors).
+  useEffect(() => {
+    reportProgress({ university: meta?.university, course: meta?.course, event: 'opened' });
+  }, [capsule.capsuleId]); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <article className="capsule">
       <header className="capsule-header">
