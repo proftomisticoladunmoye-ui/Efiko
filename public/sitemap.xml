@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Efiko sitemap. Only genuinely-distinct, crawlable URLs are listed. Today the app is a
+  single-page shell, so only the homepage is a distinct document. As the public product
+  routes are prerendered (/ai, /courses, /community, /marketplace, /jobs, /research,
+  /certificates, /academy, plus AI content pages), add a <url> entry per route here.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://efiko.ai/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

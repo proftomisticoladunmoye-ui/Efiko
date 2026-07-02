@@ -6,7 +6,59 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0f766e" />
-    <title>Efiko Learning</title>
+
+    <!-- Primary meta -->
+    <title>Efiko — Learn Anywhere. Understand Everything.</title>
+    <meta name="description" content="Efiko is an AI learning operating system for African university students: adaptive courses, an AI tutor, ThinkSpace, certificates, a study community and marketplace — built to work even on low or no internet." />
+    <meta name="author" content="Efiko" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://efiko.ai/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Efiko" />
+    <meta property="og:title" content="Efiko — Learn Anywhere. Understand Everything." />
+    <meta property="og:description" content="An AI learning operating system for African university students — adaptive courses, an AI tutor, certificates, community and marketplace, built for low-data and offline learning." />
+    <meta property="og:url" content="https://efiko.ai/" />
+    <meta property="og:image" content="https://efiko.ai/logo.png" />
+    <meta property="og:locale" content="en" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Efiko — Learn Anywhere. Understand Everything." />
+    <meta name="twitter:description" content="An AI learning operating system for African university students — adaptive courses, an AI tutor, certificates, community and marketplace, built for low-data and offline learning." />
+    <meta name="twitter:image" content="https://efiko.ai/logo.png" />
+
+    <!-- Site-wide structured data: Organization + Website search. Per-page schema
+         (Course, FAQ, Article, JobPosting…) is added when the public routes are built. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "EducationalOrganization",
+          "@id": "https://efiko.ai/#organization",
+          "name": "Efiko",
+          "url": "https://efiko.ai/",
+          "logo": "https://efiko.ai/logo.png",
+          "slogan": "Learn Anywhere. Understand Everything.",
+          "description": "An AI learning operating system for African university students, built for low-data and offline learning."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://efiko.ai/#website",
+          "url": "https://efiko.ai/",
+          "name": "Efiko",
+          "publisher": { "@id": "https://efiko.ai/#organization" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://efiko.ai/search?q={search_term_string}" },
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
