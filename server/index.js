@@ -22,6 +22,7 @@ import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDisc
 import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
+import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
@@ -404,6 +405,71 @@ const server = createServer(async (req, res) => {
     if (!user) return json(res, 401, { error: 'Sign in to save opportunities.' });
     const id = decodeURIComponent(url.pathname.split('/')[2]);
     return json(res, 200, { ids: await toggleSaved(user.userId, id) });
+  }
+
+  // --- Community (V2 R5): study groups + member-only discussion ---
+  if (req.method === 'GET' && url.pathname === '/community/groups') {
+    return json(res, 200, { groups: await listGroups() });
+  }
+  if (req.method === 'GET' && url.pathname === '/community/mine') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { groups: [] });
+    return json(res, 200, { groups: await myGroups(user.userId) });
+  }
+  if (req.method === 'POST' && url.pathname === '/community/groups') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to create a study group.' });
+    try {
+      return json(res, 200, { group: await createGroup(user, await readBody(req)) });
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  if (req.method === 'GET' && url.pathname.match(/^\/community\/groups\/[^/]+$/)) {
+    const user = await authedUser(req);
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    const group = await getGroup(id);
+    if (!group) return json(res, 404, { error: 'not found' });
+    const member = user ? await isMember(id, user.userId) : false;
+    const members = await listMembers(id);
+    const posts = member ? await listPosts(id) : [];
+    return json(res, 200, { group: { ...group, memberCount: members.length }, member, members, posts });
+  }
+  if (req.method === 'POST' && url.pathname.match(/^\/community\/groups\/[^/]+\/join$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to join a study group.' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    if (!(await getGroup(id))) return json(res, 404, { error: 'not found' });
+    await joinGroup(id, user);
+    return json(res, 200, { ok: true });
+  }
+  if (req.method === 'POST' && url.pathname.match(/^\/community\/groups\/[^/]+\/leave$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'unauthorized' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    await leaveGroup(id, user.userId);
+    return json(res, 200, { ok: true });
+  }
+  if (req.method === 'POST' && url.pathname.match(/^\/community\/groups\/[^/]+\/posts$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to post.' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    if (!(await isMember(id, user.userId))) return json(res, 403, { error: 'Join the group to post.' });
+    const { text } = await readBody(req);
+    try {
+      return json(res, 200, { post: await addPost(id, user, text) });
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  if (req.method === 'DELETE' && url.pathname.match(/^\/community\/groups\/[^/]+\/posts\/[^/]+$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'unauthorized' });
+    const parts = url.pathname.split('/');
+    const groupId = decodeURIComponent(parts[3]);
+    const postId = decodeURIComponent(parts[5]);
+    const ok = await deletePost(groupId, user.userId, postId);
+    return json(res, ok ? 200 : 403, { ok });
   }
 
   // --- Courses (V1.5 F2): unified catalog over capsules + ALWE lessons ---

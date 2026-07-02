@@ -22,6 +22,7 @@ import AuthPanel from './components/AuthPanel.jsx';
 import Certificates from './components/Certificates.jsx';
 import StudyPlanner from './components/StudyPlanner.jsx';
 import Career from './components/Career.jsx';
+import Community from './components/Community.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
@@ -456,6 +457,8 @@ export default function App() {
         return user ? <StudyPlanner /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="plan and track your study" />;
       case 'career':
         return <Career signedIn={!!user} />;
+      case 'community':
+        return <Community signedIn={!!user} user={user} onSignIn={() => setAuthOpen(true)} />;
       case 'certificates':
         return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
       case 'library':

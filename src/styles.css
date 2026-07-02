@@ -601,6 +601,33 @@ body {
 .opp-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
 .opp-form-row .ask-input { flex: 1 1 140px; }
 
+/* Community (R5) */
+.community h2 { font-size: 18px; margin: 0 0 4px; }
+.community .back { background: none; border: none; color: var(--brand-2); cursor: pointer; font-size: 13px; padding: 4px 0; margin-bottom: 8px; }
+.grp-create { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0 6px; }
+.grp-create .ask-input { flex: 1 1 200px; }
+.grp-h { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; margin: 20px 0 10px; }
+.grp-empty { color: var(--muted); font-size: 14px; padding: 12px 4px; }
+.grp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.grp-card { display: flex; flex-direction: column; gap: 4px; text-align: left; background: #0d1526; border: 1px solid var(--line); border-radius: 12px; padding: 14px; cursor: pointer; color: var(--ink); }
+.grp-card:hover { border-color: var(--brand-2); }
+.grp-card-name { font-size: 15px; font-weight: 600; }
+.grp-card-topic { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.grp-card-meta { font-size: 11px; color: var(--brand-2); margin-top: 4px; }
+.grp-detail-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.grp-detail-head h2 { margin: 0; }
+.grp-meta { font-size: 12px; color: var(--muted); margin: 4px 0 0; }
+.grp-feed { display: flex; flex-direction: column; gap: 10px; margin: 16px 0; max-height: 52vh; overflow-y: auto; padding-right: 4px; }
+.grp-msg { background: #0d1526; border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; max-width: 88%; }
+.grp-msg.mine { align-self: flex-end; border-color: var(--brand); background: rgba(15,118,110,.14); }
+.grp-msg-head { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+.grp-msg-head strong { color: var(--ink); }
+.grp-del { margin-left: auto; background: none; border: none; color: var(--muted); font-size: 16px; line-height: 1; cursor: pointer; }
+.grp-del:hover { color: #f87171; }
+.grp-msg-text { margin: 0; font-size: 14px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+.grp-post { display: flex; gap: 8px; }
+.grp-post .ask-input { flex: 1; }
+
 /* Tabbed AI response (R1b) */
 .capsule-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 10px; border-bottom: 1px solid var(--line); margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
 .capsule-tab { flex: none; background: #0d1526; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 7px 14px; font-size: 13px; cursor: pointer; white-space: nowrap; }
