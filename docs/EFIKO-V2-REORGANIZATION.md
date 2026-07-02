@@ -4,7 +4,7 @@
 > — not add features. Every claim about "today" is grounded in the actual repository; every
 > "new" is flagged honestly.
 
-## Delivery status (V2 paused here — 2026-07-01)
+## Delivery status (V2 R1–R5 COMPLETE — 2026-07-02)
 Approved and **built** in careful, verified, revertible batches:
 - **✅ R1 — App Shell & IA** (`e2f4bc3` shell, `e31c418` tabbed responses, `3f428bd` Home dashboard):
   left sidebar + top-bar "Ask Efiko AI" + role-aware Teach console; tabbed AI responses
@@ -16,17 +16,18 @@ Approved and **built** in careful, verified, revertible batches:
   visible top-bar meter; never blocks offline/downloaded learning.
 - **✅ R4 — Library & Export** (`93531fb`): "My Work" in the Library; dependency-free export of
   a discussion to Markdown / Word / Text / PDF (print).
-- **⏸ R5 — Community · Marketplace · Career · Study Planner:** NOT started. These are new
-  *products* (real-time groups + moderation; payments + payouts; scheduling), each a
-  multi-batch effort — to be scoped one pillar at a time when resumed.
+- **✅ R5 — Ecosystem pillars**, each its own verified batch:
+  - **R5-a Study Planner** (`1e12bce`): personal study tasks with due dates, synced to the account.
+  - **R5-b Career** (`849ba7a`): portfolio summary + institution-posted opportunities board (browse/filter/save).
+  - **R5-c Community** (`67e1ba9`): study groups with a member-only discussion feed (create/join/post/moderate).
+  - **R5-d Marketplace** (`824b340`): institutions sell courses/packs; learners buy via a pluggable
+    payment adapter — **demo checkout by default**, seamed for **Flutterwave** (set `PAYMENTS_PROVIDER=flutterwave`
+    + `FLW_SECRET_KEY` and implement the verify call in `server/core/payments.js` to go live).
 
-Everything from the mockup that *reorganizes or enhances* the existing product is live. The
-remaining R5 pillars are net-new ecosystem products. **V2 is paused; R5 resumes later.**
+**The full EFIKO 2.0 reorganization (R1–R5) is delivered.** Follow-ups noted below: wire live
+Flutterwave payments; add access-gating so a Marketplace purchase actually unlocks a course
+(courses are currently open-access); optional lecturer role distinct from institution admin.
 
-> **North star (the journey):** Discover → Learn → Practice → Discuss → Reflect → Assess →
-> Master → Certificate → Portfolio. Each screen answers one question: *"what is the user
-> trying to do right now?"*
->
 > **North star (the journey):** Discover → Learn → Practice → Discuss → Reflect → Assess →
 > Master → Certificate → Portfolio. Each screen answers one question: *"what is the user
 > trying to do right now?"*
