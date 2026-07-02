@@ -23,6 +23,8 @@ import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
+import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase } from './core/marketplace.js';
+import { paymentsProvider, paymentsLive } from './core/payments.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
@@ -470,6 +472,47 @@ const server = createServer(async (req, res) => {
     const postId = decodeURIComponent(parts[5]);
     const ok = await deletePost(groupId, user.userId, postId);
     return json(res, ok ? 200 : 403, { ok });
+  }
+
+  // --- Marketplace (V2 R5): paid listings + checkout (payments adapter) ---
+  if (req.method === 'GET' && url.pathname === '/market/listings') {
+    return json(res, 200, { listings: await listListings(), payments: { provider: paymentsProvider(), live: paymentsLive() } });
+  }
+  if (req.method === 'GET' && url.pathname === '/market/mine') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'Sign in as your institution to manage listings.' });
+    return json(res, 200, { listings: await listListingsByOrg(org.orgId) });
+  }
+  if (req.method === 'POST' && url.pathname === '/market/listings') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'Sign in as your institution (Institution Admin) to sell a course.' });
+    try {
+      return json(res, 200, { listing: await createListing(org.orgId, await readBody(req)) });
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  if (req.method === 'DELETE' && url.pathname.match(/^\/market\/listings\/[^/]+$/)) {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'unauthorized' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    const ok = await deleteListing(org.orgId, id);
+    return json(res, ok ? 200 : 404, { ok });
+  }
+  if (req.method === 'GET' && url.pathname === '/market/purchases') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { purchases: [] });
+    return json(res, 200, { purchases: await listPurchases(user.userId) });
+  }
+  if (req.method === 'POST' && url.pathname.match(/^\/market\/listings\/[^/]+\/buy$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to buy.' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    try {
+      return json(res, 200, await purchase(user, id, user.email));
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
   }
 
   // --- Courses (V1.5 F2): unified catalog over capsules + ALWE lessons ---

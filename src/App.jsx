@@ -23,6 +23,7 @@ import Certificates from './components/Certificates.jsx';
 import StudyPlanner from './components/StudyPlanner.jsx';
 import Career from './components/Career.jsx';
 import Community from './components/Community.jsx';
+import Marketplace from './components/Marketplace.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
@@ -35,6 +36,7 @@ const AlweStudio = lazy(() => import('./alwe/components/AlweStudio.tsx'));
 const Classes = lazy(() => import('./components/Classes.jsx'));
 const ProgrammesConsole = lazy(() => import('./components/ProgrammesConsole.jsx'));
 const OpportunitiesConsole = lazy(() => import('./components/OpportunitiesConsole.jsx'));
+const MarketplaceConsole = lazy(() => import('./components/MarketplaceConsole.jsx'));
 // Unified Courses catalog (capsules + ALWE) — loads with the library, no engine code.
 import Courses from './components/Courses.jsx';
 import { computeReadiness } from './exam.js';
@@ -427,6 +429,15 @@ export default function App() {
       </div>
     );
   }
+  if (params.has('marketplace')) {
+    return (
+      <div className="app">
+        <Suspense fallback={alweFallback}>
+          <MarketplaceConsole onExit={() => { window.location.href = window.location.pathname; }} />
+        </Suspense>
+      </div>
+    );
+  }
 
   // A section-change helper: return to the shell and show a section.
   function goSection(id) { setView('library'); setSection(id); setNavOpen(false); setActive(null); }
@@ -459,6 +470,8 @@ export default function App() {
         return <Career signedIn={!!user} />;
       case 'community':
         return <Community signedIn={!!user} user={user} onSignIn={() => setAuthOpen(true)} />;
+      case 'market':
+        return <Marketplace signedIn={!!user} onSignIn={() => setAuthOpen(true)} />;
       case 'certificates':
         return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
       case 'library':
@@ -485,6 +498,7 @@ export default function App() {
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?classes`; }}>👥 Classes<span>Rosters & class progress</span></button>
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?programmes`; }}>🧭 Programmes<span>Group courses into tracks</span></button>
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?opportunities`; }}>🚀 Opportunities<span>Post jobs & scholarships</span></button>
+            <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?marketplace`; }}>🛒 Marketplace<span>Sell courses & packs</span></button>
             <button className="teach-card" onClick={() => setView('admin')}>🏛️ Institution Admin<span>Branding & account</span></button>
           </div>
         </div>);

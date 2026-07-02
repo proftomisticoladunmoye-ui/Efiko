@@ -10,6 +10,7 @@ const NAV = [
   { id: 'planner', label: 'Study Planner', icon: '🗓️' },
   { id: 'career', label: 'Career', icon: '🚀' },
   { id: 'community', label: 'Community', icon: '👥' },
+  { id: 'market', label: 'Marketplace', icon: '🛒' },
   { id: 'certificates', label: 'Certificates', icon: '🎓' },
   { id: 'library', label: 'Library', icon: '📥' }
 ];
