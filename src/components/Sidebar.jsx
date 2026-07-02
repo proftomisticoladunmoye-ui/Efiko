@@ -8,6 +8,7 @@ const NAV = [
   { id: 'whiteboard', label: 'Whiteboard', icon: '🎨' },
   { id: 'assessments', label: 'Assessments', icon: '📝' },
   { id: 'planner', label: 'Study Planner', icon: '🗓️' },
+  { id: 'career', label: 'Career', icon: '🚀' },
   { id: 'certificates', label: 'Certificates', icon: '🎓' },
   { id: 'library', label: 'Library', icon: '📥' }
 ];

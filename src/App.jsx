@@ -21,6 +21,7 @@ import MyWork from './components/MyWork.jsx';
 import AuthPanel from './components/AuthPanel.jsx';
 import Certificates from './components/Certificates.jsx';
 import StudyPlanner from './components/StudyPlanner.jsx';
+import Career from './components/Career.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
@@ -32,6 +33,7 @@ const AlwenPlayer = lazy(() => import('./alwe/components/AlwenPlayer.tsx'));
 const AlweStudio = lazy(() => import('./alwe/components/AlweStudio.tsx'));
 const Classes = lazy(() => import('./components/Classes.jsx'));
 const ProgrammesConsole = lazy(() => import('./components/ProgrammesConsole.jsx'));
+const OpportunitiesConsole = lazy(() => import('./components/OpportunitiesConsole.jsx'));
 // Unified Courses catalog (capsules + ALWE) — loads with the library, no engine code.
 import Courses from './components/Courses.jsx';
 import { computeReadiness } from './exam.js';
@@ -415,6 +417,15 @@ export default function App() {
       </div>
     );
   }
+  if (params.has('opportunities')) {
+    return (
+      <div className="app">
+        <Suspense fallback={alweFallback}>
+          <OpportunitiesConsole onExit={() => { window.location.href = window.location.pathname; }} />
+        </Suspense>
+      </div>
+    );
+  }
 
   // A section-change helper: return to the shell and show a section.
   function goSection(id) { setView('library'); setSection(id); setNavOpen(false); setActive(null); }
@@ -443,6 +454,8 @@ export default function App() {
         </>);
       case 'planner':
         return user ? <StudyPlanner /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="plan and track your study" />;
+      case 'career':
+        return <Career signedIn={!!user} />;
       case 'certificates':
         return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
       case 'library':
@@ -468,6 +481,7 @@ export default function App() {
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?alwe-studio`; }}>🎨 Whiteboard Studio<span>Author adaptive lessons</span></button>
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?classes`; }}>👥 Classes<span>Rosters & class progress</span></button>
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?programmes`; }}>🧭 Programmes<span>Group courses into tracks</span></button>
+            <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?opportunities`; }}>🚀 Opportunities<span>Post jobs & scholarships</span></button>
             <button className="teach-card" onClick={() => setView('admin')}>🏛️ Institution Admin<span>Branding & account</span></button>
           </div>
         </div>);

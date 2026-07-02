@@ -577,6 +577,30 @@ body {
 .planner-done { margin-top: 16px; }
 .planner-done summary { cursor: pointer; color: var(--muted); font-size: 13px; }
 
+/* Career (R5) */
+.career h2 { font-size: 18px; margin: 0 0 4px; }
+.career-portfolio { display: flex; gap: 10px; margin: 14px 0; flex-wrap: wrap; }
+.career-stat { flex: 1 1 90px; background: #0d1526; border: 1px solid var(--line); border-radius: 12px; padding: 12px; text-align: center; }
+.career-stat strong { display: block; font-size: 22px; color: var(--brand-2); }
+.career-stat span { font-size: 11px; color: var(--muted); }
+.career-filters { display: flex; gap: 6px; flex-wrap: wrap; margin: 12px 0; }
+.career-filters .chip { background: #0d1526; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 6px 12px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+.career-filters .chip.on { border-color: var(--brand-2); color: var(--brand-2); }
+.career-empty { color: var(--muted); font-size: 14px; padding: 18px 4px; }
+.career-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.opp-card { background: #0d1526; border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; }
+.opp-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 6px; }
+.opp-type { font-size: 11px; font-weight: 600; color: var(--brand-2); }
+.opp-deadline { font-size: 11px; color: var(--muted); }
+.opp-title { font-size: 15px; margin: 2px 0; }
+.opp-org { font-size: 12px; color: var(--muted); margin: 0 0 6px; }
+.opp-desc { font-size: 13px; color: var(--ink); margin: 0 0 10px; line-height: 1.4; }
+.opp-actions { display: flex; gap: 8px; align-items: center; margin-top: auto; }
+.opp-save { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 7px 12px; font-size: 13px; cursor: pointer; }
+.opp-save.on { border-color: #fbbf24; color: #fbbf24; }
+.opp-form-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.opp-form-row .ask-input { flex: 1 1 140px; }
+
 /* Tabbed AI response (R1b) */
 .capsule-tabs { display: flex; gap: 6px; overflow-x: auto; padding: 4px 0 10px; border-bottom: 1px solid var(--line); margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
 .capsule-tab { flex: none; background: #0d1526; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 7px 14px; font-size: 13px; cursor: pointer; white-space: nowrap; }

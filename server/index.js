@@ -21,6 +21,7 @@ import { issueCertificate, listCertificates, verifyBySerial } from './core/certi
 import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDiscussion, recentMessages, addResource } from './core/thinkspace.js';
 import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
+import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
@@ -366,6 +367,43 @@ const server = createServer(async (req, res) => {
     const id = decodeURIComponent(url.pathname.split('/')[3]);
     const ok = await deleteTask(user.userId, id);
     return json(res, ok ? 200 : 404, { ok });
+  }
+
+  // --- Career (V2 R5): opportunities board + student bookmarks ---
+  if (req.method === 'GET' && url.pathname === '/opportunities') {
+    return json(res, 200, { opportunities: await listOpportunities() });
+  }
+  if (req.method === 'GET' && url.pathname === '/opportunities/mine') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'Sign in as your institution to manage opportunities.' });
+    return json(res, 200, { opportunities: await listOpportunitiesByOrg(org.orgId) });
+  }
+  if (req.method === 'POST' && url.pathname === '/opportunities') {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'Sign in as your institution (Institution Admin) to post an opportunity.' });
+    try {
+      return json(res, 200, { opportunity: await createOpportunity(org.orgId, await readBody(req)) });
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  if (req.method === 'DELETE' && url.pathname.match(/^\/opportunities\/[^/]+$/)) {
+    const org = await authedOrg(req);
+    if (!org) return json(res, 401, { error: 'unauthorized' });
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    const ok = await deleteOpportunity(org.orgId, id);
+    return json(res, ok ? 200 : 404, { ok });
+  }
+  if (req.method === 'GET' && url.pathname === '/career/saved') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { ids: [] });
+    return json(res, 200, { ids: await listSaved(user.userId) });
+  }
+  if (req.method === 'POST' && url.pathname.match(/^\/opportunities\/[^/]+\/save$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to save opportunities.' });
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    return json(res, 200, { ids: await toggleSaved(user.userId, id) });
   }
 
   // --- Courses (V1.5 F2): unified catalog over capsules + ALWE lessons ---
