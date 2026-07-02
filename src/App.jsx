@@ -20,6 +20,7 @@ import ThinkSpace from './components/ThinkSpace.jsx';
 import MyWork from './components/MyWork.jsx';
 import AuthPanel from './components/AuthPanel.jsx';
 import Certificates from './components/Certificates.jsx';
+import StudyPlanner from './components/StudyPlanner.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
@@ -440,6 +441,8 @@ export default function App() {
           <SectionHead title="Assessments" sub="Your quiz performance and exam readiness." />
           <ExamReadiness readiness={readiness} />
         </>);
+      case 'planner':
+        return user ? <StudyPlanner /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="plan and track your study" />;
       case 'certificates':
         return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
       case 'library':

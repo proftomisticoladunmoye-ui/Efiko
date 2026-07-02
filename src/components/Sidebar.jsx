@@ -7,6 +7,7 @@ const NAV = [
   { id: 'courses', label: 'Courses', icon: '📚' },
   { id: 'whiteboard', label: 'Whiteboard', icon: '🎨' },
   { id: 'assessments', label: 'Assessments', icon: '📝' },
+  { id: 'planner', label: 'Study Planner', icon: '🗓️' },
   { id: 'certificates', label: 'Certificates', icon: '🎓' },
   { id: 'library', label: 'Library', icon: '📥' }
 ];

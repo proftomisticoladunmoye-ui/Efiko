@@ -20,6 +20,7 @@ import { recordProgress, progressForUsers, getProgress, listProgress } from './c
 import { issueCertificate, listCertificates, verifyBySerial } from './core/certificates.js';
 import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDiscussion, recentMessages, addResource } from './core/thinkspace.js';
 import { getCredits, spend, dailyGrant } from './core/credits.js';
+import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
@@ -194,7 +195,7 @@ const server = createServer(async (req, res) => {
   // CORS — the PWA (a different origin/port) calls /lessons/generate from the browser.
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
     return res.end();
@@ -333,6 +334,38 @@ const server = createServer(async (req, res) => {
     } catch (e) {
       return json(res, 502, { error: 'generation failed', detail: e.message });
     }
+  }
+
+  // --- Study Planner (V2 R5): personal study tasks tied to the account ---
+  if (req.method === 'GET' && url.pathname === '/planner/tasks') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { tasks: [] });
+    return json(res, 200, { tasks: await listTasks(user.userId) });
+  }
+  if (req.method === 'POST' && url.pathname === '/planner/tasks') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to use the Study Planner.' });
+    const { title, courseId, dueAt } = await readBody(req);
+    try {
+      return json(res, 200, { task: await addTask(user.userId, { title, courseId, dueAt }) });
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  if (req.method === 'POST' && url.pathname.match(/^\/planner\/tasks\/[^/]+\/toggle$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'unauthorized' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    const t = await toggleTask(user.userId, id);
+    if (!t) return json(res, 404, { error: 'not found' });
+    return json(res, 200, { task: t });
+  }
+  if (req.method === 'DELETE' && url.pathname.match(/^\/planner\/tasks\/[^/]+$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'unauthorized' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    const ok = await deleteTask(user.userId, id);
+    return json(res, ok ? 200 : 404, { ok });
   }
 
   // --- Courses (V1.5 F2): unified catalog over capsules + ALWE lessons ---
