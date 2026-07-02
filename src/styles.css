@@ -595,6 +595,17 @@ body {
 .ts-input { flex: 1; background: #0d1526; border: 1px solid var(--line); color: var(--text); border-radius: 10px; padding: 10px; resize: none; font-family: inherit; font-size: 14px; }
 .ts-send { background: var(--brand); color: #04231f; border: 0; border-radius: 10px; padding: 0 16px; font-weight: 600; cursor: pointer; }
 .ts-send:disabled { opacity: .5; cursor: default; }
+.ts-tools { display: flex; gap: 6px; padding: 8px 14px 0; flex-wrap: wrap; }
+.ts-tools button { flex: 1; min-width: 90px; background: #0d1526; border: 1px solid var(--line); color: var(--brand-2); border-radius: 8px; padding: 7px 8px; font-size: 12px; cursor: pointer; }
+.ts-tools button:disabled { opacity: .6; cursor: default; }
+.ts-resources { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.ts-res-h { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.ts-res { background: #0d1526; border: 1px solid var(--line); border-radius: 10px; }
+.ts-res-head { width: 100%; text-align: left; background: transparent; border: 0; color: var(--text); padding: 9px 12px; cursor: pointer; font-size: 13px; }
+.ts-res-body { padding: 0 12px 10px; font-size: 13px; line-height: 1.5; }
+.ts-res-body ul { margin: 4px 0; padding-left: 18px; }
+.ts-res-q { margin-bottom: 8px; }
+.ts-correct { color: var(--good); }
 @media (max-width: 860px) {
   .ts-panel { position: fixed; top: 0; right: 0; height: 100vh; width: min(92vw, 360px); z-index: 70; box-shadow: -8px 0 24px rgba(0,0,0,.4); }
   .ts-scrim { display: block; position: fixed; inset: 0; background: rgba(2,6,16,.6); z-index: 65; }

@@ -6,6 +6,7 @@ import { kvGet, kvPut, kvAll } from './kv.js';
 
 const D = 'ts_discussions';
 const M = 'ts_messages';
+const R = 'ts_resources';
 
 export async function createDiscussion(userId, { title = 'New Discussion', kind = 'general', context = {} } = {}) {
   const rec = { id: `d_${randomBytes(8).toString('hex')}`, userId, title, kind, context, createdAt: Date.now(), updatedAt: Date.now() };
@@ -24,7 +25,18 @@ export async function getDiscussion(userId, id) {
   const d = await kvGet(D, id);
   if (!d || d.userId !== userId) return null;
   const messages = (await kvAll(M)).filter((m) => m.discussionId === id).sort((a, b) => a.createdAt - b.createdAt);
-  return { ...d, messages };
+  const resources = await listResources(id);
+  return { ...d, messages, resources };
+}
+
+export async function addResource(discussionId, type, data) {
+  const rec = { id: `r_${randomBytes(8).toString('hex')}`, discussionId, type, data, createdAt: Date.now() };
+  await kvPut(R, rec.id, rec);
+  return rec;
+}
+
+export async function listResources(discussionId) {
+  return (await kvAll(R)).filter((r) => r.discussionId === discussionId).sort((a, b) => a.createdAt - b.createdAt);
 }
 
 export async function addMessage(discussionId, role, text) {

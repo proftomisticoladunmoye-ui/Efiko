@@ -1,13 +1,36 @@
 // EFIKO — ThinkSpace panel (V2 R2). A right-dock Academic Intelligence Workspace: persistent
 // discussions, each with memory. Desktop docks right; mobile slides over.
 import { useEffect, useRef, useState } from 'react';
-import { listDiscussions, createDiscussion, getDiscussion, ask } from '../thinkspace.js';
+import { listDiscussions, createDiscussion, getDiscussion, ask, generate } from '../thinkspace.js';
+
+function ResourceCard({ r }) {
+  const [open, setOpen] = useState(false);
+  const title = r.type === 'summary' ? '📌 Summary' : r.type === 'quiz' ? '✅ Quiz' : '🃏 Flashcards';
+  return (
+    <div className="ts-res">
+      <button className="ts-res-head" onClick={() => setOpen((o) => !o)}>{open ? '▾' : '▸'} {title}</button>
+      {open && (
+        <div className="ts-res-body">
+          {r.type === 'summary' && <p>{r.data.text}</p>}
+          {r.type === 'flashcards' && <ul>{(r.data.items || []).map((f, i) => <li key={i}><strong>{f.front}</strong> — {f.back}</li>)}</ul>}
+          {r.type === 'quiz' && (r.data.items || []).map((q, i) => (
+            <div key={i} className="ts-res-q">
+              <p><strong>{i + 1}. {q.q}</strong></p>
+              <ul>{(q.options || []).map((o, j) => <li key={j} className={j === q.answer ? 'ts-correct' : ''}>{o}</li>)}</ul>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function ThinkSpace({ open, onClose, user, onNeedAuth }) {
   const [discussions, setDiscussions] = useState([]);
   const [active, setActive] = useState(null); // { id, title, messages: [] }
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
+  const [genBusy, setGenBusy] = useState(null);
   const [err, setErr] = useState(null);
   const threadRef = useRef(null);
 
@@ -24,13 +47,22 @@ export default function ThinkSpace({ open, onClose, user, onNeedAuth }) {
     try {
       const d = await createDiscussion();
       setDiscussions((list) => [{ id: d.id, title: d.title, updatedAt: d.updatedAt }, ...list]);
-      setActive({ id: d.id, title: d.title, messages: [] });
+      setActive({ id: d.id, title: d.title, messages: [], resources: [] });
     } catch (e) { setErr(e.message); }
   }
 
   async function openDiscussion(id) {
     const d = await getDiscussion(id);
-    if (d) setActive({ id: d.id, title: d.title, messages: d.messages });
+    if (d) setActive({ id: d.id, title: d.title, messages: d.messages, resources: d.resources || [] });
+  }
+
+  async function runTool(tool) {
+    if (!active || genBusy) return;
+    setGenBusy(tool); setErr(null);
+    try {
+      const resource = await generate(active.id, tool);
+      setActive((a) => ({ ...a, resources: [...(a.resources || []), resource] }));
+    } catch (e) { setErr(e.message); } finally { setGenBusy(null); }
   }
 
   async function send(e) {
@@ -72,8 +104,19 @@ export default function ThinkSpace({ open, onClose, user, onNeedAuth }) {
                 <div key={i} className={`ts-msg ${m.role}`}>{m.text}</div>
               ))}
               {busy && <div className="ts-msg ai ts-typing">…</div>}
+              {(active.resources || []).length > 0 && (
+                <div className="ts-resources">
+                  <span className="ts-res-h">Resources</span>
+                  {active.resources.map((r) => <ResourceCard key={r.id} r={r} />)}
+                </div>
+              )}
             </div>
             {err && <p className="error" style={{ padding: '0 14px' }}>{err}</p>}
+            <div className="ts-tools">
+              <button disabled={!!genBusy} onClick={() => runTool('summary')}>{genBusy === 'summary' ? '…' : '📌 Summary'}</button>
+              <button disabled={!!genBusy} onClick={() => runTool('quiz')}>{genBusy === 'quiz' ? '…' : '✅ Quiz'}</button>
+              <button disabled={!!genBusy} onClick={() => runTool('flashcards')}>{genBusy === 'flashcards' ? '…' : '🃏 Flashcards'}</button>
+            </div>
             <form className="ts-input-row" onSubmit={send}>
               <textarea className="ts-input" rows={2} value={input} placeholder="Ask ThinkSpace…" disabled={busy}
                 onChange={(e) => setInput(e.target.value)}

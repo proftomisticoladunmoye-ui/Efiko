@@ -18,7 +18,7 @@ import { createUser, authenticate, getUser, publicUser } from './core/users.js';
 import { listCourses, getCourse, courseIdOf } from './core/courses.js';
 import { recordProgress, progressForUsers, getProgress, listProgress } from './core/progress.js';
 import { issueCertificate, listCertificates, verifyBySerial } from './core/certificates.js';
-import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDiscussion, recentMessages } from './core/thinkspace.js';
+import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDiscussion, recentMessages, addResource } from './core/thinkspace.js';
 import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
@@ -294,6 +294,44 @@ const server = createServer(async (req, res) => {
       return json(res, 200, { message: aiMsg, title });
     } catch (e) {
       return json(res, 502, { error: 'AI failed', detail: e.message });
+    }
+  }
+
+  // ThinkSpace AI Tools (R2c): generate a resource (summary/quiz/flashcards) from a discussion.
+  if (req.method === 'POST' && url.pathname.match(/^\/thinkspace\/discussions\/[^/]+\/generate$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to use ThinkSpace.' });
+    if (!aiConfigured()) return json(res, 503, { error: 'AI not configured' });
+    const charge = await chargeAI(req, 'assist');
+    if (!charge.ok) return json(res, charge.status, { error: charge.error });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    const d = await getDiscussion(user.userId, id);
+    if (!d) return json(res, 404, { error: 'not found' });
+    if (!d.messages.length) return json(res, 400, { error: 'Ask something first, then generate from the discussion.' });
+    const { tool } = await readBody(req);
+    const transcript = (await recentMessages(id, 20)).map((m) => `${m.role === 'ai' ? 'Efiko' : 'Student'}: ${m.text}`).join('\n');
+    const prompts = {
+      summary: 'Summarize the key points of this discussion as concise study notes (3-6 short bullet points). Plain text only.',
+      flashcards: 'Create 4-6 study flashcards from this discussion. Return ONLY a JSON array like [{"front":"term or question","back":"answer"}]. No other text.',
+      quiz: 'Create 3 multiple-choice questions from this discussion. Return ONLY a JSON array like [{"q":"...","options":["a","b","c","d"],"answer":0}]. No other text.'
+    };
+    if (!prompts[tool]) return json(res, 400, { error: 'unknown tool' });
+    try {
+      const client = getClient();
+      const msg = await client.messages.create({ model: FAST_MODEL, max_tokens: 800, messages: [{ role: 'user', content: `${prompts[tool]}\n\nDiscussion so far:\n${transcript}` }] });
+      const raw = (msg.content || []).filter((b) => b.type === 'text').map((b) => b.text).join('').trim();
+      let data;
+      if (tool === 'summary') data = { text: raw };
+      else {
+        const s = raw.indexOf('['); const e = raw.lastIndexOf(']');
+        const items = s >= 0 && e >= 0 ? JSON.parse(raw.slice(s, e + 1)) : [];
+        data = { items };
+      }
+      const resource = await addResource(id, tool, data);
+      await touchDiscussion(id);
+      return json(res, 200, { resource });
+    } catch (e) {
+      return json(res, 502, { error: 'generation failed', detail: e.message });
     }
   }
 

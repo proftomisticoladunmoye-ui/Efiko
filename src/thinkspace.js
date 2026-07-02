@@ -36,3 +36,13 @@ export async function ask(id, text) {
   if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
   return d; // { message, title }
 }
+
+export async function generate(id, tool) {
+  const r = await fetch(`${GATEWAY}/thinkspace/discussions/${encodeURIComponent(id)}/generate`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json', ...authHeaders() }, body: JSON.stringify({ tool })
+  });
+  const d = await r.json().catch(() => ({}));
+  notifyAiUsed();
+  if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
+  return d.resource;
+}
