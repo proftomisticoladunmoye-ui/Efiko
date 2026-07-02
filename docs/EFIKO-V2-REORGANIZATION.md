@@ -1,8 +1,31 @@
-# EFIKO 2.0 — Product Reorganization (design, for approval)
+# EFIKO 2.0 — Product Reorganization (design + delivery status)
 
 > **Mandate:** reorganize EFIKO into an elegant, minimal **AI Learning Operating System**
-> — not add features. **No implementation code** until this is approved. Every claim about
-> "today" is grounded in the actual repository; every "new" is flagged honestly.
+> — not add features. Every claim about "today" is grounded in the actual repository; every
+> "new" is flagged honestly.
+
+## Delivery status (V2 paused here — 2026-07-01)
+Approved and **built** in careful, verified, revertible batches:
+- **✅ R1 — App Shell & IA** (`e2f4bc3` shell, `e31c418` tabbed responses, `3f428bd` Home dashboard):
+  left sidebar + top-bar "Ask Efiko AI" + role-aware Teach console; tabbed AI responses
+  (Text/Whiteboard/Voice/Quiz/Flashcards/Summary); Home dashboard (Continue/Ask/ThinkSpace/
+  Progress/Classes/Courses); responsive (desktop sidebar / mobile drawer).
+- **✅ R2 — ThinkSpace** (`5cea4f2` chat+memory, `4f62d4d` AI Tools/resources): right-dock panel;
+  persistent discussions with memory; AI Tools (Summary/Quiz/Flashcards) saved as resources.
+- **✅ R3 — AI Credits** (`b8cb5ef`): per-user daily credits + tiers over the existing limiter;
+  visible top-bar meter; never blocks offline/downloaded learning.
+- **✅ R4 — Library & Export** (`93531fb`): "My Work" in the Library; dependency-free export of
+  a discussion to Markdown / Word / Text / PDF (print).
+- **⏸ R5 — Community · Marketplace · Career · Study Planner:** NOT started. These are new
+  *products* (real-time groups + moderation; payments + payouts; scheduling), each a
+  multi-batch effort — to be scoped one pillar at a time when resumed.
+
+Everything from the mockup that *reorganizes or enhances* the existing product is live. The
+remaining R5 pillars are net-new ecosystem products. **V2 is paused; R5 resumes later.**
+
+> **North star (the journey):** Discover → Learn → Practice → Discuss → Reflect → Assess →
+> Master → Certificate → Portfolio. Each screen answers one question: *"what is the user
+> trying to do right now?"*
 >
 > **North star (the journey):** Discover → Learn → Practice → Discuss → Reflect → Assess →
 > Master → Certificate → Portfolio. Each screen answers one question: *"what is the user
