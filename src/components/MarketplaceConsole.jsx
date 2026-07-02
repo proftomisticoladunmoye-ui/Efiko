@@ -3,14 +3,13 @@
 import { useEffect, useState } from 'react';
 import { hasAdminToken, fetchCoursesForSelect } from '../classes.js';
 import { listMyListings, createListing, deleteListing } from '../marketplace.js';
-
-const money = (a, c) => (a === 0 ? 'Free' : `${c === 'NGN' ? '₦' : c + ' '}${Number(a).toLocaleString()}`);
+import { CURRENCIES, currencySymbol, formatMoney as money } from '../currencies.js';
 
 export default function MarketplaceConsole({ onExit }) {
   const [authed] = useState(hasAdminToken());
   const [courses, setCourses] = useState([]);
   const [items, setItems] = useState([]);
-  const [f, setF] = useState({ title: '', description: '', price: '', courseId: '' });
+  const [f, setF] = useState({ title: '', description: '', price: '', currency: 'NGN', courseId: '' });
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState(null);
   const [msg, setMsg] = useState(null);
@@ -27,9 +26,9 @@ export default function MarketplaceConsole({ onExit }) {
     if (!f.title.trim()) return;
     setBusy(true); setErr(null); setMsg(null);
     try {
-      await createListing({ title: f.title.trim(), description: f.description.trim(), price: Number(f.price) || 0, courseId: f.courseId || null, currency: 'NGN' });
+      await createListing({ title: f.title.trim(), description: f.description.trim(), price: Number(f.price) || 0, courseId: f.courseId || null, currency: f.currency });
       setItems(await listMyListings());
-      setF({ title: '', description: '', price: '', courseId: '' });
+      setF({ title: '', description: '', price: '', currency: f.currency, courseId: '' });
       setMsg('✓ Listed — it now appears in the Marketplace.');
     } catch (e2) { setErr(e2.message); } finally { setBusy(false); }
   }
@@ -59,12 +58,15 @@ export default function MarketplaceConsole({ onExit }) {
         <input className="ask-input" placeholder="Listing title, e.g. GES100 Exam Masterclass" value={f.title} onChange={set('title')} disabled={busy} />
         <textarea className="ask-input" rows={3} placeholder="What the buyer gets (optional)" value={f.description} onChange={set('description')} disabled={busy} />
         <div className="opp-form-row">
-          <input className="ask-input" type="number" min="0" placeholder="Price in ₦ (0 = free)" value={f.price} onChange={set('price')} disabled={busy} />
-          <select className="ask-input" value={f.courseId} onChange={set('courseId')} disabled={busy} aria-label="Linked course">
-            <option value="">Link a course (optional)</option>
-            {courses.map((c) => <option key={c.courseId} value={c.courseId}>{c.title}</option>)}
+          <select className="ask-input" value={f.currency} onChange={set('currency')} disabled={busy} aria-label="Currency">
+            {CURRENCIES.map((c) => <option key={c.code} value={c.code}>{c.code} ({c.symbol}) — {c.name}</option>)}
           </select>
+          <input className="ask-input" type="number" min="0" placeholder={`Price in ${currencySymbol(f.currency).trim()} (0 = free)`} value={f.price} onChange={set('price')} disabled={busy} />
         </div>
+        <select className="ask-input" value={f.courseId} onChange={set('courseId')} disabled={busy} aria-label="Linked course">
+          <option value="">Link a course (optional)</option>
+          {courses.map((c) => <option key={c.courseId} value={c.courseId}>{c.title}</option>)}
+        </select>
         <button className="studio-btn" type="submit" disabled={busy || !f.title.trim()}>{busy ? 'Listing…' : 'Create listing'}</button>
       </form>
       {msg && <p className="studio-msg">{msg}</p>}

@@ -3,8 +3,7 @@
 // the flow is fully usable before a live provider (Flutterwave) is wired.
 import { useEffect, useState } from 'react';
 import { listListings, listPurchases, buyListing } from '../marketplace.js';
-
-const price = (amount, currency) => (amount === 0 ? 'Free' : `${currency === 'NGN' ? '₦' : currency + ' '}${amount.toLocaleString()}`);
+import { formatMoney as price } from '../currencies.js';
 
 export default function Marketplace({ signedIn, onSignIn }) {
   const [listings, setListings] = useState([]);

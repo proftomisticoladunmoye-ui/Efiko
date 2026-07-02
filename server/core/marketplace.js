@@ -8,6 +8,10 @@ import { settlePayment } from './payments.js';
 const LISTINGS = 'market_listings';
 const PURCHASES = 'market_purchases';
 
+// Supported pricing currencies (ISO 4217, all Flutterwave-payable). Keep in sync with
+// src/currencies.js on the client.
+const CURRENCIES = ['NGN', 'USD', 'GHS', 'KES', 'ZAR', 'UGX', 'TZS', 'RWF', 'XOF', 'EGP', 'EUR', 'GBP'];
+
 export async function createListing(ownerOrgId, { title, description, courseId = null, price = 0, currency = 'NGN' }) {
   if (!ownerOrgId) throw new Error('institution required');
   const t = String(title || '').trim();
@@ -19,7 +23,7 @@ export async function createListing(ownerOrgId, { title, description, courseId =
     description: String(description || '').trim().slice(0, 2000),
     courseId: courseId || null,
     price: Math.max(0, Math.round(Number(price) || 0)), // major units (e.g. naira)
-    currency,
+    currency: CURRENCIES.includes(currency) ? currency : 'NGN',
     createdAt: Date.now()
   };
   await kvPut(LISTINGS, rec.id, rec);
