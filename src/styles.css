@@ -518,7 +518,8 @@ body {
 .app.shell { max-width: none; margin: 0; }
 .topbar { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; gap: 12px; padding: 9px 16px; background: #0b1220; border-bottom: 1px solid var(--line); }
 .topbar-menu { display: none; background: transparent; border: 0; color: var(--text); font-size: 20px; cursor: pointer; }
-.topbar-logo { height: 30px; width: auto; }
+/* Logo: responsive per device (laptop 32 / tablet 28 / phone 24), aspect locked, never shrinks. */
+.topbar-logo { height: 32px; width: auto; flex: none; object-fit: contain; }
 .topbar-ask { flex: 1; max-width: 520px; margin: 0 auto; display: flex; align-items: center; gap: 8px; background: #0d1526; border: 1px solid var(--line); border-radius: 999px; padding: 4px 4px 4px 14px; }
 .topbar-ask-icon { color: var(--brand-2); }
 .topbar-ask-input { flex: 1; background: transparent; border: 0; color: var(--text); font-size: 14px; outline: none; }
@@ -711,10 +712,21 @@ body {
 
 @media (max-width: 860px) {
   .topbar-menu { display: block; }
+  .topbar-logo { height: 28px; }
   .topbar-ask { margin: 0; }
   .sidebar { position: fixed; top: 0; left: 0; height: 100vh; background: #0b1220; z-index: 60; transform: translateX(-100%); transition: transform .2s ease; }
   .app.shell.nav-open .sidebar { transform: translateX(0); }
   .app.shell.nav-open .nav-scrim { display: block; position: fixed; inset: 0; background: rgba(2,6,16,.6); z-index: 50; }
   .topbar-inst { display: none; }
   .app.shell .app-main { padding: 16px; }
+}
+
+/* Phones: smallest logo + tighter topbar so the brand, Ask box and account all fit. */
+@media (max-width: 560px) {
+  .topbar { gap: 8px; padding: 8px 12px; }
+  .topbar-logo { height: 24px; }
+  .topbar-ask { min-width: 0; }              /* let the Ask box shrink instead of overflowing */
+  .topbar-account { gap: 6px; }
+  .account-name { display: none; }           /* name hidden on phones; Sign out stays */
+  .account-btn { padding: 6px 10px; white-space: nowrap; }
 }
