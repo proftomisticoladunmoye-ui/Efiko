@@ -17,6 +17,7 @@ import HomeDashboard from './components/HomeDashboard.jsx';
 import Sidebar from './components/Sidebar.jsx';
 import TopBar from './components/TopBar.jsx';
 import ThinkSpace from './components/ThinkSpace.jsx';
+import MyWork from './components/MyWork.jsx';
 import AuthPanel from './components/AuthPanel.jsx';
 import Certificates from './components/Certificates.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
@@ -443,7 +444,8 @@ export default function App() {
         return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
       case 'library':
         return (<>
-          <SectionHead title="Library" sub="Everything you've downloaded — available offline." />
+          <SectionHead title="Library" sub="Your work and everything you've downloaded — available offline." />
+          <MyWork signedIn={!!user} />
           <CampusSync online={online} syncing={campusSyncing} progress={campusProgress} status={offlineStat} onSync={handleCampusSync} />
           <Packs packs={packs} online={online} busyPackId={busyPackId} progress={packProgress} onDownload={handleDownloadPack} onRemove={handleRemovePack} />
           <Library items={library} online={online} catalogSource={catalogSource} syncing={syncing} onOpen={openCapsule} onDownload={handleDownload} onRemove={handleRemove} onSync={handleSync} />

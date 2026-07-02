@@ -2,6 +2,7 @@
 // discussions, each with memory. Desktop docks right; mobile slides over.
 import { useEffect, useRef, useState } from 'react';
 import { listDiscussions, createDiscussion, getDiscussion, ask, generate } from '../thinkspace.js';
+import { exportMarkdown, exportWord, printPdf } from '../exportEngine.js';
 
 function ResourceCard({ r }) {
   const [open, setOpen] = useState(false);
@@ -97,7 +98,17 @@ export default function ThinkSpace({ open, onClose, user, onNeedAuth }) {
           <div className="signin-prompt"><p>Sign in to use ThinkSpace — your AI learning workspace.</p><button className="account-btn" onClick={onNeedAuth}>Sign in</button></div>
         ) : active ? (
           <>
-            <button className="ts-back" onClick={() => setActive(null)}>‹ Discussions</button>
+            <div className="ts-subhead">
+              <button className="ts-back" onClick={() => setActive(null)}>‹ Discussions</button>
+              {active.messages.length > 0 && (
+                <span className="ts-export">
+                  Export:
+                  <button onClick={() => exportMarkdown(active)} title="Markdown">MD</button>
+                  <button onClick={() => exportWord(active)} title="Word">Word</button>
+                  <button onClick={() => printPdf(active)} title="Print / Save as PDF">PDF</button>
+                </span>
+              )}
+            </div>
             <div className="ts-thread" ref={threadRef}>
               {active.messages.length === 0 && <p className="lib-sub">Ask anything — I'll remember this discussion.</p>}
               {active.messages.map((m, i) => (

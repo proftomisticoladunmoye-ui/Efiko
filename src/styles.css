@@ -606,6 +606,18 @@ body {
 .ts-res-body ul { margin: 4px 0; padding-left: 18px; }
 .ts-res-q { margin-bottom: 8px; }
 .ts-correct { color: var(--good); }
+.ts-subhead { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-right: 10px; }
+.ts-export { font-size: 11px; color: var(--muted); display: inline-flex; align-items: center; gap: 4px; }
+.ts-export button { background: #0d1526; border: 1px solid var(--line); color: var(--brand-2); border-radius: 6px; padding: 3px 7px; font-size: 11px; cursor: pointer; }
+
+/* My Work (R4) */
+.mywork-card { background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 14px; padding: 16px; margin-bottom: 16px; }
+.mywork-card h3 { margin: 0 0 4px; font-size: 16px; }
+.mywork-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.mywork-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #0d1526; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+.mywork-title { font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mywork-actions { display: inline-flex; gap: 6px; flex: none; }
+.mywork-actions button { background: transparent; border: 1px solid var(--line); color: var(--brand-2); border-radius: 8px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
 @media (max-width: 860px) {
   .ts-panel { position: fixed; top: 0; right: 0; height: 100vh; width: min(92vw, 360px); z-index: 70; box-shadow: -8px 0 24px rgba(0,0,0,.4); }
   .ts-scrim { display: block; position: fixed; inset: 0; background: rgba(2,6,16,.6); z-index: 65; }
