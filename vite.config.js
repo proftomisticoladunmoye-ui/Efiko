@@ -32,7 +32,10 @@ export default defineConfig({
         // browser at install time, so we exclude them from the first-load precache.
         globPatterns: ['**/*.{js,css,html,svg,png}'],
         globIgnores: ['**/icon-512.png', '**/icon-maskable-512.png'],
-        navigateFallback: '/index.html'
+        navigateFallback: '/index.html',
+        // Public SEO landing pages are real static documents, not the SPA shell — let the
+        // browser load them from the network instead of the app-shell fallback.
+        navigateFallbackDenylist: [/^\/(ai|thinkspace|courses|whiteboard|assessments|certificates|marketplace|community|jobs|research|academy)(\/|$)/]
       },
       devOptions: { enabled: true }
     })

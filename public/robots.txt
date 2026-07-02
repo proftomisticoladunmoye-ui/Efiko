@@ -1,9 +1,0 @@
-# Efiko — robots.txt
-# Public content is path-based (e.g. /courses, /ai). App-internal views use query strings
-# (admin consoles, deep links) and are not meant for the index.
-
-User-agent: *
-Allow: /
-Disallow: /*?
-
-Sitemap: https://efiko.ai/sitemap.xml

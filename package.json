@@ -9,7 +9,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/build-seo.mjs",
+    "build:app": "vite build",
     "preview": "vite preview",
     "server": "node server/index.js",
     "wa:sim": "node server/sim.js",

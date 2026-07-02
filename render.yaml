@@ -66,6 +66,13 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
     autoDeploy: true
+    # SPA fallback for the app. Render serves existing static files first (including the
+    # prerendered SEO landing pages at /ai, /courses, … → their <slug>/index.html), and only
+    # falls back to the app shell for paths that don't map to a file.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     envVars:
       # Point the web app at the gateway so AI/voice/snap work from the browser.
       - key: VITE_GATEWAY
