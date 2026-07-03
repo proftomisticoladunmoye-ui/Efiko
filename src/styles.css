@@ -632,6 +632,59 @@ body {
 .grp-post { display: flex; gap: 8px; }
 .grp-post .ask-input { flex: 1; }
 
+/* EFIKO Originals (learner player) */
+.originals h1 { font-size: 26px; margin: 6px 0; }
+.originals h2 { font-size: 20px; margin: 0 0 4px; }
+.originals h3 { font-size: 16px; margin: 20px 0 8px; }
+.originals .back { background: none; border: none; color: var(--brand-2); cursor: pointer; font-size: 13px; padding: 4px 0; margin-bottom: 8px; }
+.o-badge { display: inline-block; font-size: 11px; font-weight: 700; color: #fbbf24; background: rgba(251,191,36,.12); border: 1px solid rgba(251,191,36,.4); border-radius: 999px; padding: 3px 10px; }
+.o-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; margin-top: 14px; }
+.o-course-card { display: flex; flex-direction: column; gap: 6px; text-align: left; background: #0d1526; border: 1px solid var(--line); border-radius: 14px; padding: 16px; cursor: pointer; color: var(--ink); }
+.o-course-card:hover { border-color: #fbbf24; }
+.o-card-title { font-size: 16px; font-weight: 700; }
+.o-card-sub { font-size: 13px; color: var(--muted); }
+.o-card-meta { font-size: 12px; color: var(--brand-2); margin-top: 2px; }
+.o-card-foot { font-size: 12px; color: var(--muted); }
+.o-progress { height: 6px; background: #0d1526; border-radius: 999px; overflow: hidden; margin: 8px 0 18px; }
+.o-progress span { display: block; height: 100%; background: var(--brand-2); transition: width .3s; }
+.o-overview .o-subtitle { font-size: 17px; color: #cbd5e1; margin: 6px 0; }
+.o-meta { font-size: 13px; color: var(--brand-2); margin: 4px 0; }
+.o-desc { color: #cbd5e1; }
+.o-outcomes, .o-objectives { margin: 6px 0; padding-left: 20px; }
+.o-outcomes li, .o-objectives li { margin: 4px 0; color: #dbe4ee; }
+.o-sesslist { margin: 6px 0; padding-left: 20px; }
+.o-sesslist li { margin: 6px 0; }
+.o-start { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.o-step { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.o-board { margin: 12px 0; background: #fff; border-radius: 10px; padding: 8px; text-align: center; }
+.o-board svg { max-width: 100%; height: auto; }
+.o-caption { font-size: 13px; color: var(--muted); margin: -4px 0 12px; }
+.o-prose p { color: #dbe4ee; line-height: 1.6; margin: 0 0 12px; }
+.o-example { background: rgba(20,184,166,.08); border-left: 3px solid var(--brand-2); padding: 10px 12px; border-radius: 6px; margin: 12px 0; color: #dbe4ee; }
+.o-reflect { background: rgba(251,191,36,.07); border-left: 3px solid #fbbf24; padding: 10px 12px; border-radius: 6px; margin: 12px 0; }
+.o-summary { color: var(--muted); margin: 12px 0; }
+.o-discuss { display: block; width: 100%; text-align: left; background: #0d1526; border: 1px solid var(--line); color: var(--brand-2); border-radius: 10px; padding: 10px 12px; margin: 12px 0; cursor: pointer; font-size: 13px; }
+.o-extras { margin: 14px 0; }
+.o-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-top: 8px; }
+.o-card { background: #0d1526; border: 1px solid var(--line); border-radius: 10px; padding: 10px; display: flex; flex-direction: column; gap: 4px; }
+.o-card strong { font-size: 13px; }
+.o-card span { font-size: 12px; color: var(--muted); }
+.o-nav { margin: 20px 0; }
+/* quiz */
+.oq-item { margin: 0 0 14px; }
+.oq-q { font-weight: 600; margin: 0 0 6px; }
+.oq-opts { display: flex; flex-direction: column; gap: 6px; }
+.oq-opt { text-align: left; background: #0d1526; border: 1px solid var(--line); color: var(--ink); border-radius: 8px; padding: 9px 12px; font-size: 14px; cursor: pointer; }
+.oq-opt.chosen { border-color: var(--brand-2); }
+.oq-opt.correct { border-color: var(--good); background: rgba(21,128,61,.15); }
+.oq-opt.wrong { border-color: var(--bad); background: rgba(185,28,28,.15); }
+.oq-score { font-weight: 700; color: var(--brand-2); }
+.o-done { text-align: center; padding: 20px 0; }
+.o-done-badge { font-size: 56px; }
+.o-next { margin-top: 20px; display: inline-flex; flex-direction: column; gap: 2px; background: #0d1526; border: 1px solid var(--line); border-radius: 12px; padding: 12px 18px; }
+.o-next span { font-size: 11px; color: var(--muted); text-transform: uppercase; }
+.o-next strong { color: var(--brand-2); }
+
 /* Marketplace (R5) */
 .market h2 { font-size: 18px; margin: 0 0 4px; }
 .market-demo { font-size: 12px; color: #fbbf24; background: rgba(251,191,36,.10); border: 1px solid rgba(251,191,36,.35); border-radius: 8px; padding: 8px 10px; margin: 10px 0; }

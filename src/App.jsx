@@ -24,6 +24,7 @@ import StudyPlanner from './components/StudyPlanner.jsx';
 import Career from './components/Career.jsx';
 import Community from './components/Community.jsx';
 import Marketplace from './components/Marketplace.jsx';
+import Originals from './components/Originals.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
@@ -452,6 +453,8 @@ export default function App() {
         </>);
       case 'thinkspace':
         return (<div className="ts-soon"><h2>🧠 ThinkSpace</h2><p className="lib-sub">Your AI learning workspace — persistent discussions that remember your context. Coming next.</p></div>);
+      case 'originals':
+        return <Originals onAsk={handleAsk} />;
       case 'courses':
         return (<>
           <Programmes onEnrolProgramme={enrolProgrammeAction} />
