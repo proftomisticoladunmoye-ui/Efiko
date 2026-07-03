@@ -9,7 +9,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES } from '../seo/pages.mjs';
 import { renderPage, renderSitemap, renderRobots } from '../seo/render.mjs';
-import { loadCourses } from '../seo/catalog.mjs';
+import { loadCourses, fetchPublishedCourses, mergeCourses } from '../seo/catalog.mjs';
 import { renderCourseHub, renderTopicPage, contentRoutes } from '../seo/renderContent.mjs';
 import { ACADEMY } from '../seo/guides.mjs';
 import { renderAcademyItem, academyRoutes, academyIndexHtml } from '../seo/renderAcademy.mjs';
@@ -21,8 +21,23 @@ const writePage = (route, html) => {
   writeFileSync(join(dir, 'index.html'), html, 'utf8');
 };
 
-// Catalog-driven content pages.
-const courses = loadCourses();
+// Catalog-driven content pages: static bundled catalog + (optionally) lecturer-published
+// lessons from the live gateway. The fetch is best-effort — if the gateway is unreachable
+// the build proceeds with the static catalog only. Set SEO_CONTENT_URL to override, or
+// SEO_SKIP_PUBLISHED=1 to disable the fetch entirely (e.g. faster local builds).
+const staticCourses = loadCourses();
+let courses = staticCourses;
+const gatewayUrl = process.env.SEO_CONTENT_URL || process.env.VITE_GATEWAY || 'https://efiko-gateway.onrender.com';
+if (!process.env.SEO_SKIP_PUBLISHED) {
+  // Generous timeout: the gateway is a separate Render service that may be cold at build time.
+  const published = await fetchPublishedCourses(gatewayUrl, Number(process.env.SEO_FETCH_TIMEOUT_MS) || 30000);
+  if (published && published.length) {
+    courses = mergeCourses(staticCourses, published);
+    console.log(`SEO: merged ${published.length} published course(s) from ${gatewayUrl}`);
+  } else {
+    console.log(`SEO: no published courses fetched (${gatewayUrl}) — using static catalog only`);
+  }
+}
 
 // "Browse courses" section injected into the /courses product landing (internal linking).
 const courseListHtml = courses.length
