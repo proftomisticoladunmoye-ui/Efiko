@@ -139,6 +139,25 @@ export function renderPage(page, extraHtml = '') {
   return htmlDocument({ metaInner: metaTags({ title: page.title, description: page.description, path: page.slug }), schemaInner: productSchema(page), body });
 }
 
+// Homepage content injected into the app shell's #root. Crawlers and no-JS visitors see this
+// content-rich hub (brand + description + links to every section); when the app's JS loads,
+// createRoot() clears #root and renders the app, so users are unaffected. This makes "/" — the
+// most important URL — indexable and gives the homepage internal links to all sections.
+export function renderHomeContent({ courses = [], academy = [] } = {}) {
+  const products = NAV.map((s) => `<a href="${href(s)}">${esc(bySlug[s].nav)}</a>`).join('');
+  const courseLinks = courses.slice(0, 8).map((c) => `<a href="${href(`/courses/${c.slug}`)}">${esc(`${c.university} ${c.course}`)}</a>`).join('');
+  const guideLinks = academy.filter((i) => i.kind === 'guide').map((i) => `<a href="${href(`/academy/${i.slug}`)}">${esc(i.h1)}</a>`).join('');
+  const style = '#efiko-home{max-width:820px;margin:0 auto;padding:48px 20px;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#e2e8f0;text-align:center}#efiko-home img{height:44px;width:auto}#efiko-home h1{font-size:30px;margin:16px 0 8px}#efiko-home p.lede{font-size:18px;color:#cbd5e1;max-width:640px;margin:0 auto 8px}#efiko-home h2{font-size:15px;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;margin:28px 0 10px}#efiko-home .links{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}#efiko-home a{color:#14b8a6;text-decoration:none;border:1px solid #1e293b;border-radius:999px;padding:6px 14px}';
+  return `<div id="efiko-home"><style>${style}</style>
+    <img src="/logo.png" alt="Efiko" width="80" height="44"/>
+    <h1>${esc(SITE.name)} — ${esc(SITE.tagline)}</h1>
+    <p class="lede">${esc(SITE.description)}</p>
+    <h2>Explore Efiko</h2><nav class="links">${products}</nav>
+    ${courseLinks ? `<h2>Courses</h2><nav class="links">${courseLinks}</nav>` : ''}
+    ${guideLinks ? `<h2>Study guides</h2><nav class="links">${guideLinks}</nav>` : ''}
+  </div>`;
+}
+
 export function renderSitemap(extra = []) {
   const now = new Date().toISOString().slice(0, 10);
   const entries = [

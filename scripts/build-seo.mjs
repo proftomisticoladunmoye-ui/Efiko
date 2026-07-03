@@ -4,11 +4,11 @@
 //   - a content page per topic (real lesson text) -> dist/courses/<course>/<topic>/index.html
 //   - a generated sitemap.xml + robots.txt (domain from seo/site.mjs)
 // The logged-in app stays a SPA at "/"; these public pages are separate static documents.
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES } from '../seo/pages.mjs';
-import { renderPage, renderSitemap, renderRobots } from '../seo/render.mjs';
+import { renderPage, renderSitemap, renderRobots, renderHomeContent } from '../seo/render.mjs';
 import { loadCourses, fetchPublishedCourses, mergeCourses } from '../seo/catalog.mjs';
 import { renderCourseHub, renderTopicPage, contentRoutes } from '../seo/renderContent.mjs';
 import { ACADEMY } from '../seo/guides.mjs';
@@ -54,6 +54,17 @@ let topicCount = 0;
 for (const c of courses) {
   writePage(`/courses/${c.slug}`, renderCourseHub(c));
   for (const t of c.topics) { writePage(`/courses/${c.slug}/${t.slug}`, renderTopicPage(c, t)); topicCount++; }
+}
+
+// Homepage: inject crawlable content into the app shell's empty #root (React clears it on
+// mount, so users get the app; crawlers/no-JS get a content-rich, internally-linked homepage).
+const idxPath = join(dist, 'index.html');
+const home = renderHomeContent({ courses, academy: ACADEMY });
+const idx = readFileSync(idxPath, 'utf8');
+if (idx.includes('<div id="root"></div>')) {
+  writeFileSync(idxPath, idx.replace('<div id="root"></div>', `<div id="root">${home}</div>`), 'utf8');
+} else {
+  console.warn('SEO: could not find empty #root in index.html — homepage content not injected');
 }
 
 // Sitemap (products + course content + academy) + robots.
