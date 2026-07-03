@@ -39,6 +39,9 @@ ul.topics{list-style:none;padding:0;margin:8px 0}
 ul.topics li{border-top:1px solid var(--line);padding:12px 0}
 ul.topics a{font-size:17px;font-weight:600}
 ul.topics .t-sub{color:var(--muted);font-size:13px}
+ol.steps{padding-left:20px;margin:8px 0}
+ol.steps li{margin:0 0 12px;color:#dbe4ee}
+ol.steps strong{color:var(--ink)}
 .related{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
 .related a{border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--ink);font-size:14px}
 .hero-cta{display:inline-block;margin:16px 0;background:var(--brand);color:#04231f;border-radius:999px;padding:12px 22px;font-weight:700}
