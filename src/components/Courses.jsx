@@ -6,12 +6,13 @@ import { useEffect, useState } from 'react';
 import { fetchCourses, fetchCourse } from '../courses.js';
 import { reportProgress } from '../progress.js';
 import { listPackages } from '../alwe/store/PackageStore';
+import { formatMoney } from '../currencies.js';
 
 function openAlwe(id) {
   window.location.href = `${window.location.pathname}?alwe=${encodeURIComponent(id)}`;
 }
 
-export default function Courses({ onOpenCapsule, enrolledIds = [], onEnrol, signedIn, adaptiveOnly = false, heading }) {
+export default function Courses({ onOpenCapsule, enrolledIds = [], onEnrol, signedIn, adaptiveOnly = false, heading, onGoSection }) {
   const [courses, setCourses] = useState([]);
   const [expanded, setExpanded] = useState(null);
   const [detail, setDetail] = useState({});
@@ -97,21 +98,32 @@ export default function Courses({ onOpenCapsule, enrolledIds = [], onEnrol, sign
                 </button>
                 <span className="course-tags">
                   {c.hasAdaptive && <span className="badge-adaptive">✨ Adaptive</span>}
-                  {enrolled.has(c.courseId)
-                    ? <span className="badge-enrolled">✓ Enrolled</span>
-                    : <button className="course-enrol" onClick={() => enrolCourse(c.courseId)}>{signedIn ? 'Enrol' : 'Sign in to enrol'}</button>}
+                  {c.gated
+                    ? (c.owned
+                        ? <span className="badge-enrolled">✓ Owned</span>
+                        : <button className="course-enrol lock" onClick={() => onGoSection?.('market')}>🔒 Buy {formatMoney(c.price, c.currency)}</button>)
+                    : (enrolled.has(c.courseId)
+                        ? <span className="badge-enrolled">✓ Enrolled</span>
+                        : <button className="course-enrol" onClick={() => enrolCourse(c.courseId)}>{signedIn ? 'Enrol' : 'Sign in to enrol'}</button>)}
                 </span>
               </div>
               {expanded === c.courseId && detail[c.courseId] && (
                 <div className="course-body">
-                  <ul className="course-lessons">
-                    {detail[c.courseId].lessons.map((l) => (
-                      <li key={l.id} className="course-lesson">
-                        <span>{l.kind === 'alwe' ? '✨' : '📄'} {l.title}</span>
-                        <button className="course-open" onClick={() => { reportProgress({ courseId: c.courseId, event: 'opened' }); l.kind === 'alwe' ? openAlwe(l.id) : onOpenCapsule(l.id); }}>Open</button>
-                      </li>
-                    ))}
-                  </ul>
+                  {c.gated && !c.owned ? (
+                    <div className="course-locked">
+                      <p>🔒 Premium course — unlock all {c.lessonCount} lesson{c.lessonCount !== 1 ? 's' : ''}.</p>
+                      <button className="course-open" onClick={() => onGoSection?.('market')}>Buy to unlock — {formatMoney(c.price, c.currency)}</button>
+                    </div>
+                  ) : (
+                    <ul className="course-lessons">
+                      {detail[c.courseId].lessons.map((l) => (
+                        <li key={l.id} className="course-lesson">
+                          <span>{l.kind === 'alwe' ? '✨' : '📄'} {l.title}</span>
+                          <button className="course-open" onClick={() => { reportProgress({ courseId: c.courseId, event: 'opened' }); l.kind === 'alwe' ? openAlwe(l.id) : onOpenCapsule(l.id); }}>Open</button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <p className="course-share">Class code <code>{c.joinCode}</code>
                     <button className="course-share-btn" onClick={() => copyJoin(c.joinCode)}>{copied === c.joinCode ? 'Copied!' : '🔗 Copy join link'}</button>
                   </p>

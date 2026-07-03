@@ -435,6 +435,9 @@ body {
 .course-tags { padding-right: 10px; }
 .badge-enrolled { font-size: 11px; color: var(--good); border: 1px solid var(--good); border-radius: 999px; padding: 2px 8px; }
 .course-enrol { background: transparent; border: 1px solid var(--brand); color: var(--brand-2); border-radius: 999px; padding: 4px 12px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+.course-enrol.lock { border-color: #fbbf24; color: #fbbf24; }
+.course-locked { text-align: center; padding: 14px; background: rgba(251,191,36,.07); border: 1px solid rgba(251,191,36,.3); border-radius: 10px; }
+.course-locked p { margin: 0 0 10px; color: var(--muted); font-size: 14px; }
 .course-body { padding: 0 12px 10px; }
 .course-share { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin: 8px 0 0; }
 .course-share code { background: #0d1526; border: 1px solid var(--line); border-radius: 5px; padding: 2px 8px; color: var(--brand-2); letter-spacing: .1em; }

@@ -57,6 +57,29 @@ export async function hasPurchased(userId, listingId) {
   return (await kvAll(PURCHASES)).some((p) => p.userId === userId && p.listingId === listingId && p.status === 'paid');
 }
 
+// --- Access-gating (entitlements) ---
+// A course is "gated" if a paid listing links to it. Map courseId -> newest paid listing.
+export async function gatedListingMap() {
+  const listings = (await kvAll(LISTINGS)).filter((l) => l.courseId && l.price > 0).sort((a, b) => a.createdAt - b.createdAt);
+  const m = new Map();
+  for (const l of listings) m.set(l.courseId, l); // ascending sort => newest wins
+  return m;
+}
+
+// Courses this user has bought (by the listing's linked courseId).
+export async function purchasedCourseIds(userId) {
+  if (!userId) return new Set();
+  const purchases = await kvAll(PURCHASES);
+  return new Set(purchases.filter((p) => p.userId === userId && p.status === 'paid' && p.courseId).map((p) => p.courseId));
+}
+
+// Access = course is not gated, OR the user has purchased it.
+export async function hasCourseAccess(userId, courseId) {
+  if (!(await gatedListingMap()).has(courseId)) return true;
+  if (!userId) return false;
+  return (await purchasedCourseIds(userId)).has(courseId);
+}
+
 export async function purchase(user, listingId, email) {
   const l = await getListing(listingId);
   if (!l) throw new Error('listing not found');

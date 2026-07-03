@@ -23,7 +23,7 @@ import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
-import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase } from './core/marketplace.js';
+import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, gatedListingMap, purchasedCourseIds, hasCourseAccess } from './core/marketplace.js';
 import { paymentsProvider, paymentsLive } from './core/payments.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
@@ -57,6 +57,14 @@ async function authedUser(req) {
   const h = req.headers['authorization'] || '';
   const p = verifyToken(h.startsWith('Bearer ') ? h.slice(7) : '');
   return p?.userId ? getUser(p.userId) : null;
+}
+
+// Annotate a course with marketplace access state. Non-gated courses pass through unchanged;
+// gated ones get { gated, owned, listingId, price, currency } so the client can lock/unlock.
+function marketMeta(course, gatedMap, ownedSet) {
+  const L = gatedMap.get(course.courseId);
+  if (!L) return course;
+  return { ...course, gated: true, owned: ownedSet.has(course.courseId), listingId: L.id, price: L.price, currency: L.currency };
 }
 
 // In-memory sessions (per phone number). Persistence comes in a later stage.
@@ -249,6 +257,11 @@ const server = createServer(async (req, res) => {
     const id = decodeURIComponent(url.pathname.slice('/studio/capsule/'.length).replace(/\.json$/i, ''));
     const capsule = await getPublished(id);
     if (!capsule) return json(res, 404, { error: 'not found' });
+    { // access-gating: premium (paid-listing) courses require purchase
+      const courseId = courseIdOf(capsule.meta?.university, capsule.meta?.course);
+      const user = await authedUser(req);
+      if (!(await hasCourseAccess(user?.userId, courseId))) return json(res, 402, { error: 'This is a premium course — buy it to unlock.', locked: true, courseId });
+    }
     return json(res, 200, capsule);
   }
 
@@ -516,14 +529,19 @@ const server = createServer(async (req, res) => {
   }
 
   // --- Courses (V1.5 F2): unified catalog over capsules + ALWE lessons ---
+  // Annotate each course with marketplace access state (gated/owned + buy info).
   if (req.method === 'GET' && url.pathname === '/courses') {
-    return json(res, 200, { courses: await listCourses() });
+    const [courses, gatedMap, user] = await Promise.all([listCourses(), gatedListingMap(), authedUser(req)]);
+    const owned = await purchasedCourseIds(user?.userId);
+    return json(res, 200, { courses: courses.map((c) => marketMeta(c, gatedMap, owned)) });
   }
   if (req.method === 'GET' && url.pathname.startsWith('/courses/')) {
     const id = decodeURIComponent(url.pathname.slice('/courses/'.length));
     const course = await getCourse(id);
     if (!course) return json(res, 404, { error: 'course not found' });
-    return json(res, 200, course);
+    const [gatedMap, user] = await Promise.all([gatedListingMap(), authedUser(req)]);
+    const owned = await purchasedCourseIds(user?.userId);
+    return json(res, 200, marketMeta(course, gatedMap, owned));
   }
 
   // --- Programmes (V2): tracks that group courses ---
@@ -828,6 +846,12 @@ const server = createServer(async (req, res) => {
     const id = decodeURIComponent(url.pathname.slice('/alwe/lesson/'.length));
     const pkg = await getAlweLesson(id);
     if (!pkg) return json(res, 404, { error: 'lesson not found' });
+    { // access-gating: premium (paid-listing) courses require purchase
+      const m = pkg.manifest?.meta || {};
+      const courseId = courseIdOf(m.university, m.course);
+      const user = await authedUser(req);
+      if (!(await hasCourseAccess(user?.userId, courseId))) return json(res, 402, { error: 'This is a premium course — buy it to unlock.', locked: true, courseId });
+    }
     return json(res, 200, pkg);
   }
 

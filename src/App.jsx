@@ -455,10 +455,10 @@ export default function App() {
       case 'courses':
         return (<>
           <Programmes onEnrolProgramme={enrolProgrammeAction} />
-          <Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} />
+          <Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} onGoSection={goSection} />
         </>);
       case 'whiteboard':
-        return (<Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} adaptiveOnly heading="🎨 Adaptive Whiteboard Lessons" />);
+        return (<Courses onOpenCapsule={openCapsule} enrolledIds={enrolledIds} onEnrol={enrolAction} signedIn={!!user} adaptiveOnly heading="🎨 Adaptive Whiteboard Lessons" onGoSection={goSection} />);
       case 'assessments':
         return (<>
           <SectionHead title="Assessments" sub="Your quiz performance and exam readiness." />
@@ -471,7 +471,7 @@ export default function App() {
       case 'community':
         return <Community signedIn={!!user} user={user} onSignIn={() => setAuthOpen(true)} />;
       case 'market':
-        return <Marketplace signedIn={!!user} onSignIn={() => setAuthOpen(true)} />;
+        return <Marketplace signedIn={!!user} onSignIn={() => setAuthOpen(true)} onGoSection={goSection} />;
       case 'certificates':
         return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
       case 'library':

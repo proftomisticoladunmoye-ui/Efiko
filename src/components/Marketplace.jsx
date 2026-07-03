@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { listListings, listPurchases, buyListing } from '../marketplace.js';
 import { formatMoney as price } from '../currencies.js';
 
-export default function Marketplace({ signedIn, onSignIn }) {
+export default function Marketplace({ signedIn, onSignIn, onGoSection }) {
   const [listings, setListings] = useState([]);
   const [ownedIds, setOwnedIds] = useState(new Set());
   const [payments, setPayments] = useState({ provider: 'mock', live: false });
@@ -58,7 +58,9 @@ export default function Marketplace({ signedIn, onSignIn }) {
               {l.description && <p className="opp-desc">{l.description}</p>}
               <div className="opp-actions">
                 {owned
-                  ? <span className="course-open" aria-disabled="true" style={{ opacity: .7 }}>Purchased</span>
+                  ? (l.courseId
+                      ? <button className="course-open" onClick={() => onGoSection?.('courses')}>Open course →</button>
+                      : <span className="course-open" aria-disabled="true" style={{ opacity: .7 }}>Purchased</span>)
                   : <button className="course-open" onClick={() => startBuy(l)} disabled={busy}>{l.price === 0 ? 'Get free' : `Buy · ${price(l.price, l.currency)}`}</button>}
               </div>
             </article>
