@@ -3,7 +3,7 @@
 // -> sessions (each with whiteboard, example, quiz, flashcards, reflection, summary) ->
 // final assessment -> completion (+ recommended next course). Self-contained section.
 import { useEffect, useRef, useState } from 'react';
-import { listOriginals, getOriginal, claimOriginalCertificate, synthesizeVoice } from '../originals.js';
+import { listOriginals, getOriginal, claimOriginalCertificate, synthesizeVoice, evaluateTeachBack } from '../originals.js';
 import { reportProgress } from '../progress.js';
 import CertificateCard from './CertificateCard.jsx';
 
@@ -44,7 +44,7 @@ function MiniQuiz({ questions, onDone, cta = 'Submit answers' }) {
   );
 }
 
-function SessionView({ session, index, count, onNext, onAsk }) {
+function SessionView({ session, index, count, onNext, onAsk, nextLabel }) {
   const [quizDone, setQuizDone] = useState(false);
   const [showCards, setShowCards] = useState(false);
   const [voice, setVoice] = useState('idle'); // idle | loading | playing | error
@@ -101,20 +101,62 @@ function SessionView({ session, index, count, onNext, onAsk }) {
       )}
 
       <div className="o-nav">
-        <button className="course-open" disabled={!quizDone} onClick={onNext}>{quizDone ? (index + 1 < count ? 'Next session →' : 'Final assessment →') : 'Check the quiz to continue'}</button>
+        <button className="course-open" disabled={!quizDone} onClick={onNext}>{quizDone ? nextLabel : 'Check the quiz to continue'}</button>
+      </div>
+    </div>
+  );
+}
+
+// Teach Back checkpoint: the learner explains the covered sessions in their own words and
+// EFIKO evaluates before letting them proceed.
+function TeachBack({ course, from, to, onPass }) {
+  const [text, setText] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [result, setResult] = useState(null);
+  const [err, setErr] = useState(null);
+  const covered = course.sessions.slice(from, to + 1);
+
+  async function submit() {
+    if (!text.trim() || busy) return;
+    setBusy(true); setErr(null);
+    try { setResult(await evaluateTeachBack(course.courseId, from, to, text.trim())); }
+    catch (e) { setErr(e.message); } finally { setBusy(false); }
+  }
+
+  return (
+    <div className="osession teachback">
+      <p className="o-step">Teach-back checkpoint</p>
+      <h2>🎓 Teach it back</h2>
+      <p className="lib-sub">Explain what you just learned in your own words — teaching it back is one of the most effective ways to lock in learning. EFIKO will check your understanding before you move on.</p>
+      <p className="tb-cover">Covers: {covered.map((s) => s.title).join('  ·  ')}</p>
+      <textarea className="tb-input" rows={6} placeholder="In your own words, explain the key ideas from these sessions, as if teaching a friend…" value={text} onChange={(e) => setText(e.target.value)} disabled={busy} />
+      {result && (
+        <div className={`tb-result ${result.understood ? 'ok' : 'retry'}`}>
+          <p className="tb-verdict">{result.understood ? '✓ Well explained — you’ve got it' : '↻ Not quite yet — refine your explanation'}{typeof result.score === 'number' ? `  (${result.score}%)` : ''}</p>
+          <p>{result.feedback}</p>
+          {result.missing?.length > 0 && <ul className="tb-missing">{result.missing.map((m, i) => <li key={i}>{m}</li>)}</ul>}
+        </div>
+      )}
+      {err && <p className="error">{err}</p>}
+      <div className="o-nav">
+        {result?.understood
+          ? <button className="course-open" onClick={onPass}>Continue →</button>
+          : <button className="course-open" disabled={busy || !text.trim()} onClick={submit}>{busy ? 'EFIKO is checking…' : (result ? 'Revise & resubmit' : 'Submit for feedback')}</button>}
       </div>
     </div>
   );
 }
 
 function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn }) {
-  const [step, setStep] = useState('overview'); // 'overview' | 'pre' | number | 'final' | 'done'
+  const [step, setStep] = useState('overview'); // 'overview' | 'pre' | number | 'tb:from:to' | 'final' | 'done'
   const [finalPct, setFinalPct] = useState(0);
+  const [cpStart, setCpStart] = useState(0); // first session not yet teach-back'd
   const [cert, setCert] = useState(null);
   const [claiming, setClaiming] = useState(false);
   const [certErr, setCertErr] = useState(null);
   const sessions = course.sessions || [];
   const passMark = course.finalAssessment?.passMark ?? 70;
+  const checkpointDue = (i) => (i - cpStart + 1) >= 2 || i === sessions.length - 1;
 
   async function claim() {
     if (!signedIn) return onSignIn?.();
@@ -125,10 +167,12 @@ function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn }) {
 
   useEffect(() => { reportProgress({ courseId: course.courseId, event: 'opened' }); }, [course.courseId]);
 
-  const progressPct = step === 'overview' || step === 'pre' ? 0
-    : step === 'done' ? 100
-      : step === 'final' ? Math.round((sessions.length / (sessions.length + 1)) * 100)
-        : Math.round((step / (sessions.length + 1)) * 100);
+  const stepIndex = step === 'overview' || step === 'pre' ? 0
+    : step === 'done' ? sessions.length + 1
+      : step === 'final' ? sessions.length
+        : typeof step === 'number' ? step
+          : (typeof step === 'string' && step.startsWith('tb:') ? Number(step.split(':')[2]) + 1 : 0);
+  const progressPct = Math.round((stepIndex / (sessions.length + 1)) * 100);
 
   return (
     <section className="originals">
@@ -163,8 +207,18 @@ function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn }) {
 
       {typeof step === 'number' && (
         <SessionView key={sessions[step].id} session={sessions[step]} index={step} count={sessions.length}
-          onAsk={onAsk} onNext={() => { setStep(step + 1 < sessions.length ? step + 1 : 'final'); window.scrollTo(0, 0); }} />
+          onAsk={onAsk}
+          nextLabel={checkpointDue(step) ? '🎓 Teach-back →' : (step + 1 < sessions.length ? 'Next session →' : 'Final assessment →')}
+          onNext={() => { setStep(checkpointDue(step) ? `tb:${cpStart}:${step}` : step + 1); window.scrollTo(0, 0); }} />
       )}
+
+      {typeof step === 'string' && step.startsWith('tb:') && (() => {
+        const [, from, to] = step.split(':').map(Number);
+        return (
+          <TeachBack key={step} course={course} from={from} to={to}
+            onPass={() => { const next = to + 1; setCpStart(next); setStep(next < sessions.length ? next : 'final'); window.scrollTo(0, 0); }} />
+        );
+      })()}
 
       {step === 'final' && (
         <div className="osession">

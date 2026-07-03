@@ -10,7 +10,7 @@
 // Every generated course is a DRAFT and must pass human review before publication.
 import { z } from 'zod';
 import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
-import { getClient, isConfigured, AUTHOR_MODEL } from '../ai/client.js';
+import { getClient, isConfigured, AUTHOR_MODEL, FAST_MODEL } from '../ai/client.js';
 
 export const slug = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '').slice(0, 60);
 const kb = (str) => Math.max(1, Math.round(Buffer.byteLength(str || '', 'utf8') / 1024));
@@ -87,16 +87,11 @@ Produce a complete, self-contained session. Rules:
 - "discussionPrompt": one prompt the learner could take into the EFIKO AI tutor to go deeper.
 Be accurate, practical and encouraging.`;
 
-async function parse(system, userContent, schema, maxTokens) {
+async function parse(system, userContent, schema, maxTokens, model = AUTHOR_MODEL, thinking = { type: 'adaptive' }) {
   const client = getClient();
-  const res = await client.beta.messages.parse({
-    model: AUTHOR_MODEL,
-    max_tokens: maxTokens,
-    thinking: { type: 'adaptive' },
-    system,
-    messages: [{ role: 'user', content: userContent }],
-    output_format: betaZodOutputFormat(schema)
-  });
+  const req = { model, max_tokens: maxTokens, system, messages: [{ role: 'user', content: userContent }], output_format: betaZodOutputFormat(schema) };
+  if (thinking) req.thinking = thinking; // adaptive thinking isn't supported on the fast model
+  const res = await client.beta.messages.parse(req);
   let data = res.parsed;
   if (!data) {
     const t = res.content?.find((b) => b.type === 'text');
@@ -162,6 +157,28 @@ function assemble(spec, outline, sessions) {
     createdAt: now,
     updatedAt: now
   };
+}
+
+// --- Teach Back evaluation ---
+// A learner explains what they just learned; EFIKO judges whether they understood before
+// letting them move on. Uses the FAST model (cheap, quick) with a structured verdict.
+const TeachBackSchema = z.object({
+  understood: z.boolean(),
+  score: z.number(),
+  feedback: z.string(),
+  missing: z.array(z.string())
+});
+
+export async function evaluateTeachBack({ courseTitle, sessions, explanation }) {
+  if (!isConfigured()) return null;
+  const covered = (sessions || []).map((s) => `Session "${s.title}"\n- key points: ${(s.keyPoints || []).join('; ')}\n- summary: ${s.summary || ''}`).join('\n\n');
+  const system = `You are EFIKO, a warm but rigorous tutor. A learner is "teaching back" what they just learned, in their own words, to prove understanding before moving on. Judge their explanation against the covered material.
+- Set "understood" to true only if they show a correct, reasonable grasp of the MAIN ideas. They do NOT need to be perfect, complete, or use technical wording — everyday language is fine. If they clearly misunderstand a core idea or the answer is empty/irrelevant/too vague, set it false.
+- "feedback": 2-4 warm sentences — first what they got right, then the single most important gap or correction, then one encouraging line. No headings.
+- "missing": 0-3 short key ideas they omitted or got wrong.
+- "score": 0-100 overall grasp.`;
+  const user = `Course: ${courseTitle}\n\nCovered material:\n${covered}\n\nThe learner's teach-back:\n"""${String(explanation).slice(0, 2000)}"""\n\nEvaluate it.`;
+  return parse(system, user, TeachBackSchema, 900, FAST_MODEL, null);
 }
 
 // Generate a full EFIKO Original (DRAFT). Returns the assembled course, or null if AI is off

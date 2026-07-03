@@ -713,6 +713,19 @@ body {
 .o-voice-note { font-size: 12px; color: var(--muted); margin: 0 0 8px; }
 .o-keypoints { margin: 6px 0 12px; padding-left: 20px; }
 .o-keypoints li { margin: 3px 0; color: #dbe4ee; font-weight: 500; }
+/* teach-back checkpoint */
+.tb-cover { font-size: 13px; color: var(--brand-2); margin: 8px 0; }
+.tb-input { width: 100%; background: #0d1526; border: 1px solid var(--line); color: var(--ink); border-radius: 10px; padding: 12px; font-size: 14px; line-height: 1.5; resize: vertical; font-family: inherit; }
+.tb-input:focus { outline: none; border-color: var(--brand-2); }
+.tb-result { margin: 14px 0; padding: 12px 14px; border-radius: 10px; border: 1px solid var(--line); }
+.tb-result.ok { border-color: var(--good); background: rgba(21,128,61,.12); }
+.tb-result.retry { border-color: #fbbf24; background: rgba(251,191,36,.08); }
+.tb-verdict { font-weight: 700; margin: 0 0 6px; }
+.tb-result.ok .tb-verdict { color: #34d399; }
+.tb-result.retry .tb-verdict { color: #fbbf24; }
+.tb-result p { margin: 0 0 6px; color: #dbe4ee; line-height: 1.5; }
+.tb-missing { margin: 6px 0 0; padding-left: 18px; }
+.tb-missing li { color: var(--muted); font-size: 13px; margin: 2px 0; }
 .o-caption { font-size: 13px; color: var(--muted); margin: -4px 0 12px; }
 .o-prose p { color: #dbe4ee; line-height: 1.6; margin: 0 0 12px; }
 .o-example { background: rgba(20,184,166,.08); border-left: 3px solid var(--brand-2); padding: 10px 12px; border-radius: 6px; margin: 12px 0; color: #dbe4ee; }

@@ -30,6 +30,18 @@ export async function getOriginal(id) {
   } catch { return null; }
 }
 
+// Teach Back: EFIKO evaluates the learner's explanation of the covered sessions.
+export async function evaluateTeachBack(id, fromSession, toSession, explanation) {
+  const r = await fetch(`${GATEWAY}/originals/${encodeURIComponent(id)}/teachback`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json', ...aiHeaders() },
+    body: JSON.stringify({ fromSession, toSession, explanation })
+  });
+  notifyAiUsed();
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
+  return d; // { understood, score, feedback, missing }
+}
+
 // Claim the certificate after passing the final assessment (needs the user token).
 export async function claimOriginalCertificate(id) {
   const token = localStorage.getItem('efiko-user-token') || '';

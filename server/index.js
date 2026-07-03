@@ -21,7 +21,7 @@ import { issueCertificate, listCertificates, verifyBySerial } from './core/certi
 import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDiscussion, recentMessages, addResource } from './core/thinkspace.js';
 import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
-import { generateCourse } from './core/originals/generator.js';
+import { generateCourse, evaluateTeachBack } from './core/originals/generator.js';
 import { saveOriginal, getOriginal, listOriginals, setStatus, updateOriginal, deleteOriginal } from './core/originals/store.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
@@ -582,6 +582,25 @@ const server = createServer(async (req, res) => {
       const c = await setStatus(id, status, 'operator');
       return c ? json(res, 200, { status: c.status }) : json(res, 404, { error: 'not found' });
     } catch (e) { return json(res, 400, { error: e.message }); }
+  }
+  // Teach Back: EFIKO evaluates the learner's explanation to confirm understanding before
+  // they move on. Charged as an AI assist (anonymous learners fall back to the IP limiter).
+  if (req.method === 'POST' && url.pathname.match(/^\/originals\/[^/]+\/teachback$/)) {
+    if (!aiConfigured()) return json(res, 503, { error: 'AI not configured' });
+    { const ch = await chargeAI(req, 'assist'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    const course = await getOriginal(id);
+    if (!course || course.status !== 'published') return json(res, 404, { error: 'course not found' });
+    const { fromSession = 0, toSession = 0, explanation } = await readBody(req);
+    if (!explanation || !String(explanation).trim()) return json(res, 400, { error: 'explanation is required' });
+    const sessions = (course.sessions || []).slice(Math.max(0, fromSession), toSession + 1);
+    try {
+      const result = await evaluateTeachBack({ courseTitle: course.title, sessions, explanation });
+      if (!result) return json(res, 502, { error: 'evaluation failed' });
+      return json(res, 200, result);
+    } catch (e) {
+      return json(res, 502, { error: 'evaluation failed', detail: e.message });
+    }
   }
   // Learner claims a certificate after passing an Original's final assessment.
   if (req.method === 'POST' && url.pathname.match(/^\/originals\/[^/]+\/certificate$/)) {
