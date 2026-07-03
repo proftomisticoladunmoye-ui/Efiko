@@ -14,4 +14,10 @@ export const SITE = {
   twitterHandle: '' // e.g. '@efikolearn' — omitted from tags while empty
 };
 
-export const url = (path = '/') => `${SITE.base}${path === '/' ? '/' : path.replace(/\/$/, '')}`;
+// Canonical form uses a TRAILING SLASH. On the static host a request to /courses (no slash)
+// can be shadowed by the SPA fallback, whereas /courses/ resolves to the prerendered
+// <slug>/index.html. So all internal links, canonicals, OG urls and the sitemap use the
+// trailing-slash form. Use href() for in-page links and url() for absolute URLs.
+export const withSlash = (p = '/') => (p === '/' ? '/' : `/${String(p).replace(/^\/+|\/+$/g, '')}/`);
+export const href = withSlash;
+export const url = (path = '/') => `${SITE.base}${withSlash(path)}`;

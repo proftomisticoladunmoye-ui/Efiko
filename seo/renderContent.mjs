@@ -3,7 +3,7 @@
 //   - topic page:  /courses/<course-slug>/<topic>/   (LearningResource/Article + Breadcrumb)
 // Built on the shared document core in render.mjs. Content is real lesson text from the
 // catalog — indexable, useful pages that link into the app to actually learn.
-import { SITE, url } from './site.mjs';
+import { SITE, url, href } from './site.mjs';
 import { esc, jsonld, htmlDocument, metaTags, breadcrumbSchema, orgRef } from './render.mjs';
 
 const clip = (s, n = 155) => { const t = String(s).replace(/\s+/g, ' ').trim(); return t.length > n ? `${t.slice(0, n - 1).trimEnd()}…` : t; };
@@ -28,12 +28,12 @@ export function renderCourseHub(course) {
   });
 
   const body = `<main class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/courses">Courses</a> › <span>${esc(name)}</span></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="${href('/courses')}">Courses</a> › <span>${esc(name)}</span></nav>
     <h1>${esc(name)}</h1>
     <p class="intro">Adaptive, exam-focused lessons for ${esc(name)} — learn with text, whiteboard, voice and quizzes, online or offline.</p>
     <a class="hero-cta" href="/">Open ${esc(name)} in Efiko</a>
     <section class="block"><h2>Topics in this course</h2>
-      <ul class="topics">${course.topics.map((t) => `<li><a href="${topicPath(course, t)}">${esc(t.topic)}</a><div class="t-sub">${[t.level, t.durationMin ? `${t.durationMin} min` : ''].filter(Boolean).map(esc).join(' · ')}</div></li>`).join('')}</ul>
+      <ul class="topics">${course.topics.map((t) => `<li><a href="${href(topicPath(course, t))}">${esc(t.topic)}</a><div class="t-sub">${[t.level, t.durationMin ? `${t.durationMin} min` : ''].filter(Boolean).map(esc).join(' · ')}</div></li>`).join('')}</ul>
     </section>
   </main>`;
 
@@ -67,12 +67,12 @@ export function renderTopicPage(course, topic) {
   const siblings = course.topics.filter((t) => t.slug !== topic.slug).slice(0, 6);
 
   const body = `<main class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/courses">Courses</a> › <a href="${coursePath(course)}">${esc(name)}</a> › <span>${esc(topic.topic)}</span></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="${href('/courses')}">Courses</a> › <a href="${href(coursePath(course))}">${esc(name)}</a> › <span>${esc(topic.topic)}</span></nav>
     <h1>${esc(topic.topic)}</h1>
     <div class="meta-chips">${chips.map((c) => `<span class="chip">${esc(c)}</span>`).join('')}</div>
     <a class="hero-cta" href="/">Learn ${esc(topic.topic)} in Efiko</a>
     <section class="block prose">${figure}${paras.map((p) => `<p>${esc(p)}</p>`).join('')}</section>
-    ${siblings.length ? `<section class="block"><h2>More topics in ${esc(name)}</h2><div class="related">${siblings.map((t) => `<a href="${topicPath(course, t)}">${esc(t.topic)}</a>`).join('')}</div></section>` : ''}
+    ${siblings.length ? `<section class="block"><h2>More topics in ${esc(name)}</h2><div class="related">${siblings.map((t) => `<a href="${href(topicPath(course, t))}">${esc(t.topic)}</a>`).join('')}</div></section>` : ''}
   </main>`;
 
   return htmlDocument({ metaInner: metaTags({ title, description, path, type: 'article' }), schemaInner: schema, body });

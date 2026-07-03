@@ -41,7 +41,7 @@ if (!process.env.SEO_SKIP_PUBLISHED) {
 
 // "Browse courses" section injected into the /courses product landing (internal linking).
 const courseListHtml = courses.length
-  ? `<section class="block"><h2>Browse courses</h2><ul class="topics">${courses.map((c) => `<li><a href="/courses/${c.slug}">${c.university} ${c.course}</a><div class="t-sub">${c.topics.length} topic${c.topics.length !== 1 ? 's' : ''}</div></li>`).join('')}</ul></section>`
+  ? `<section class="block"><h2>Browse courses</h2><ul class="topics">${courses.map((c) => `<li><a href="/courses/${c.slug}/">${c.university} ${c.course}</a><div class="t-sub">${c.topics.length} topic${c.topics.length !== 1 ? 's' : ''}</div></li>`).join('')}</ul></section>`
   : '';
 
 // Product landing pages (inject course list into /courses, guide/definition list into /academy).

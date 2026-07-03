@@ -1,6 +1,6 @@
 // Efiko — Academy content pages: study guides (HowTo) and definitions (DefinedTerm) at
 // /academy/<slug>. Built on the shared document core in render.mjs.
-import { SITE, url } from './site.mjs';
+import { SITE, url, href } from './site.mjs';
 import { esc, jsonld, htmlDocument, metaTags, breadcrumbSchema, orgRef } from './render.mjs';
 import { ACADEMY } from './guides.mjs';
 
@@ -54,11 +54,11 @@ export function renderAcademyItem(item) {
     : '';
 
   const related = item.related?.length
-    ? `<section class="block"><h2>Related</h2><div class="related">${item.related.map((s) => `<a href="/academy/${s}">${esc(label(s))}</a>`).join('')}</div></section>`
+    ? `<section class="block"><h2>Related</h2><div class="related">${item.related.map((s) => `<a href="${href(`/academy/${s}`)}">${esc(label(s))}</a>`).join('')}</div></section>`
     : '';
 
   const main = `<main class="wrap">
-    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="/academy">Academy</a> › <span>${heading}</span></nav>
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <a href="${href('/academy')}">Academy</a> › <span>${heading}</span></nav>
     <h1>${esc(item.h1)}</h1>
     ${intro}
     <a class="hero-cta" href="/">Learn with Efiko</a>
@@ -74,7 +74,7 @@ export const academyRoutes = () => ACADEMY.map(path);
 export function academyIndexHtml() {
   const guides = ACADEMY.filter((i) => i.kind === 'guide');
   const defs = ACADEMY.filter((i) => i.kind === 'definition');
-  const list = (items) => `<ul class="topics">${items.map((i) => `<li><a href="${path(i)}">${esc(i.term || i.h1)}</a><div class="t-sub">${esc(i.description.slice(0, 90))}…</div></li>`).join('')}</ul>`;
+  const list = (items) => `<ul class="topics">${items.map((i) => `<li><a href="${href(path(i))}">${esc(i.term || i.h1)}</a><div class="t-sub">${esc(i.description.slice(0, 90))}…</div></li>`).join('')}</ul>`;
   return `<section class="block"><h2>Study guides</h2>${list(guides)}</section>
     <section class="block"><h2>Definitions</h2>${list(defs)}</section>`;
 }

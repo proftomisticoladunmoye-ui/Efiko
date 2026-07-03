@@ -5,7 +5,7 @@
 //
 // Exposes a shared document core (metaTags / htmlDocument / siteHeader / siteFooter / esc)
 // reused by the catalog-driven content pages in renderContent.mjs.
-import { SITE, url } from './site.mjs';
+import { SITE, url, href } from './site.mjs';
 import { PAGES, NAV, bySlug } from './pages.mjs';
 
 export const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -83,7 +83,7 @@ export const breadcrumbSchema = (items) => ({
 export const orgRef = { '@type': 'EducationalOrganization', '@id': `${SITE.base}/#organization`, name: SITE.name, url: `${SITE.base}/`, logo: `${SITE.base}${SITE.logo}` };
 
 export function siteHeader() {
-  const links = NAV.map((s) => `<a href="${s}">${esc(bySlug[s].nav)}</a>`).join('');
+  const links = NAV.map((s) => `<a href="${href(s)}">${esc(bySlug[s].nav)}</a>`).join('');
   return `<header class="site"><div class="wrap">
     <a href="/" aria-label="Efiko home"><img src="/logo.png" alt="Efiko" width="52" height="28"/></a>
     <nav class="top" aria-label="Products">${links}</nav>
@@ -92,7 +92,7 @@ export function siteHeader() {
 }
 
 export function siteFooter() {
-  const links = NAV.map((s) => `<a href="${s}">${esc(bySlug[s].product)}</a>`).join('');
+  const links = NAV.map((s) => `<a href="${href(s)}">${esc(bySlug[s].product)}</a>`).join('');
   return `<footer class="site"><div class="wrap">
     <div class="cols">${links}</div>
     <div>© ${new Date().getFullYear()} ${esc(SITE.name)} — ${esc(SITE.tagline)}</div>
@@ -134,7 +134,7 @@ export function renderPage(page, extraHtml = '') {
     ${page.sections.map((s) => `<section class="block"><h2>${esc(s.h2)}</h2><p>${esc(s.p)}</p></section>`).join('')}
     ${extraHtml}
     ${page.faqs?.length ? `<section class="block faq"><h2>Frequently asked questions</h2>${page.faqs.map((f) => `<h3>${esc(f.q)}</h3><p>${esc(f.a)}</p>`).join('')}</section>` : ''}
-    ${page.related?.length ? `<section class="block"><h2>Explore more of Efiko</h2><div class="related">${page.related.map((s) => `<a href="${s}">${esc(bySlug[s].product)}</a>`).join('')}</div></section>` : ''}
+    ${page.related?.length ? `<section class="block"><h2>Explore more of Efiko</h2><div class="related">${page.related.map((s) => `<a href="${href(s)}">${esc(bySlug[s].product)}</a>`).join('')}</div></section>` : ''}
   </main>`;
   return htmlDocument({ metaInner: metaTags({ title: page.title, description: page.description, path: page.slug }), schemaInner: productSchema(page), body });
 }
