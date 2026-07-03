@@ -471,7 +471,7 @@ export default function App() {
       case 'community':
         return <Community signedIn={!!user} user={user} onSignIn={() => setAuthOpen(true)} />;
       case 'market':
-        return <Marketplace signedIn={!!user} onSignIn={() => setAuthOpen(true)} onGoSection={goSection} />;
+        return <Marketplace signedIn={!!user} onSignIn={() => setAuthOpen(true)} onGoSection={goSection} user={user} />;
       case 'certificates':
         return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
       case 'library':

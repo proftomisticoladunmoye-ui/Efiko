@@ -23,8 +23,8 @@ import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
-import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, gatedListingMap, purchasedCourseIds, hasCourseAccess } from './core/marketplace.js';
-import { paymentsProvider, paymentsLive } from './core/payments.js';
+import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess } from './core/marketplace.js';
+import { paymentsProvider, paymentsLive, paymentsPublicKey } from './core/payments.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
@@ -489,7 +489,11 @@ const server = createServer(async (req, res) => {
 
   // --- Marketplace (V2 R5): paid listings + checkout (payments adapter) ---
   if (req.method === 'GET' && url.pathname === '/market/listings') {
-    return json(res, 200, { listings: await listListings(), payments: { provider: paymentsProvider(), live: paymentsLive() } });
+    return json(res, 200, { listings: await listListings(), payments: { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey() } });
+  }
+  // Payment config for the client checkout (public key is safe to expose; secret never is).
+  if (req.method === 'GET' && url.pathname === '/payments/config') {
+    return json(res, 200, { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey() });
   }
   if (req.method === 'GET' && url.pathname === '/market/mine') {
     const org = await authedOrg(req);
@@ -522,7 +526,19 @@ const server = createServer(async (req, res) => {
     if (!user) return json(res, 401, { error: 'Sign in to buy.' });
     const id = decodeURIComponent(url.pathname.split('/')[3]);
     try {
-      return json(res, 200, await purchase(user, id, user.email));
+      return json(res, 200, await purchase(user, id));
+    } catch (e) {
+      return json(res, 400, { error: e.message });
+    }
+  }
+  // Live checkout completion: the browser paid via Flutterwave and returns the transaction id.
+  if (req.method === 'POST' && url.pathname.match(/^\/market\/listings\/[^/]+\/verify$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to buy.' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    const { transactionId } = await readBody(req);
+    try {
+      return json(res, 200, await purchaseVerified(user, id, transactionId));
     } catch (e) {
       return json(res, 400, { error: e.message });
     }

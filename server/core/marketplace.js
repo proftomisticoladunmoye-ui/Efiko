@@ -3,7 +3,7 @@
 // adapter (payments.js) — a mock demo by default, Flutterwave-seamed for going live.
 import { randomBytes } from 'node:crypto';
 import { kvGet, kvPut, kvAll, kvDel } from './kv.js';
-import { settlePayment } from './payments.js';
+import { settlePayment, verifyPayment } from './payments.js';
 
 const LISTINGS = 'market_listings';
 const PURCHASES = 'market_purchases';
@@ -80,24 +80,40 @@ export async function hasCourseAccess(userId, courseId) {
   return (await purchasedCourseIds(userId)).has(courseId);
 }
 
-export async function purchase(user, listingId, email) {
-  const l = await getListing(listingId);
-  if (!l) throw new Error('listing not found');
-  if (await hasPurchased(user.userId, listingId)) return { already: true };
-  const pay = await settlePayment({ amount: l.price, currency: l.currency, email, ref: `${listingId}_${user.userId}` });
+async function recordPurchase(user, listing, pay) {
   const rec = {
     id: `pur_${randomBytes(8).toString('hex')}`,
-    listingId,
-    courseId: l.courseId,
-    title: l.title,
+    listingId: listing.id,
+    courseId: listing.courseId,
+    title: listing.title,
     userId: user.userId,
-    amount: l.price,
-    currency: l.currency,
-    status: pay.status,
+    amount: listing.price,
+    currency: listing.currency,
+    status: pay.status || 'paid',
     ref: pay.ref,
     provider: pay.provider,
     createdAt: Date.now()
   };
   await kvPut(PURCHASES, rec.id, rec);
-  return { purchase: rec };
+  return rec;
+}
+
+// Free items + demo (mock) checkout. In live mode, paid items settle via purchaseVerified().
+export async function purchase(user, listingId) {
+  const l = await getListing(listingId);
+  if (!l) throw new Error('listing not found');
+  if (await hasPurchased(user.userId, listingId)) return { already: true };
+  const pay = await settlePayment({ amount: l.price, currency: l.currency, ref: `${listingId}_${user.userId}` });
+  return { purchase: await recordPurchase(user, l, pay) };
+}
+
+// Live checkout: the browser paid via Flutterwave and returned a transaction id; verify it
+// server-side (amount + currency + status) before recording the purchase and granting access.
+export async function purchaseVerified(user, listingId, transactionId) {
+  const l = await getListing(listingId);
+  if (!l) throw new Error('listing not found');
+  if (await hasPurchased(user.userId, listingId)) return { already: true };
+  const v = await verifyPayment({ transactionId, amount: l.price, currency: l.currency });
+  if (!v.ok) throw new Error(v.detail || 'payment could not be verified');
+  return { purchase: await recordPurchase(user, l, { status: 'paid', ref: v.ref, provider: v.provider }) };
 }

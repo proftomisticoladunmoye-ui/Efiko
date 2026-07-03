@@ -28,6 +28,16 @@ export async function buyListing(id) {
   return d; // { purchase } | { already: true }
 }
 
+// Live checkout: after Flutterwave payment, verify the transaction server-side to grant access.
+export async function verifyPurchase(id, transactionId) {
+  const r = await fetch(`${GATEWAY}/market/listings/${encodeURIComponent(id)}/verify`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json', ...userHeaders() }, body: JSON.stringify({ transactionId })
+  });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
+  return d;
+}
+
 // --- institution-facing (marketplace console) ---
 export async function listMyListings() {
   try {

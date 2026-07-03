@@ -54,6 +54,14 @@ services:
       # Persistence — Neon/Postgres connection string (durable accounts/branding/lessons)
       - key: DATABASE_URL
         sync: false
+      # Payments (Marketplace). Default 'mock' = demo checkout. To take real payments set
+      # PAYMENTS_PROVIDER=flutterwave and add both Flutterwave keys below (dashboard).
+      - key: PAYMENTS_PROVIDER
+        value: mock
+      - key: FLW_PUBLIC_KEY
+        sync: false
+      - key: FLW_SECRET_KEY
+        sync: false
       # Set AFTER first deploy to the service's own URL, e.g.
       # https://efiko-gateway.onrender.com  (used for voice/whiteboard links)
       - key: PUBLIC_BASE_URL

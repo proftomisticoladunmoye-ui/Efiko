@@ -2,21 +2,33 @@
 // Checkout runs through the payment adapter; by default that's a labelled demo checkout, so
 // the flow is fully usable before a live provider (Flutterwave) is wired.
 import { useEffect, useState } from 'react';
-import { listListings, listPurchases, buyListing } from '../marketplace.js';
+import { listListings, listPurchases, buyListing, verifyPurchase } from '../marketplace.js';
 import { formatMoney as price } from '../currencies.js';
 
-export default function Marketplace({ signedIn, onSignIn, onGoSection }) {
+// Load Flutterwave's checkout script once (only needed in live mode).
+function loadFlutterwave() {
+  return new Promise((resolve, reject) => {
+    if (window.FlutterwaveCheckout) return resolve();
+    const s = document.createElement('script');
+    s.src = 'https://checkout.flutterwave.com/v3.js';
+    s.onload = () => resolve();
+    s.onerror = () => reject(new Error('Could not load the payment checkout. Check your connection.'));
+    document.head.appendChild(s);
+  });
+}
+
+export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
   const [listings, setListings] = useState([]);
   const [ownedIds, setOwnedIds] = useState(new Set());
-  const [payments, setPayments] = useState({ provider: 'mock', live: false });
-  const [checkout, setCheckout] = useState(null); // listing being purchased
+  const [payments, setPayments] = useState({ provider: 'mock', live: false, publicKey: '' });
+  const [checkout, setCheckout] = useState(null); // listing being purchased (demo modal)
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
   async function load() {
     const [res, purchases] = await Promise.all([listListings(), signedIn ? listPurchases() : Promise.resolve([])]);
-    setListings(res.listings); setPayments(res.payments || { provider: 'mock', live: false });
+    setListings(res.listings); setPayments(res.payments || { provider: 'mock', live: false, publicKey: '' });
     setOwnedIds(new Set(purchases.map((p) => p.listingId)));
     setLoaded(true);
   }
@@ -24,10 +36,12 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection }) {
 
   function startBuy(l) {
     if (!signedIn) return onSignIn();
-    if (l.price === 0) { confirmBuy(l); return; } // free items skip checkout
-    setErr(null); setCheckout(l);
+    if (l.price === 0) return confirmBuy(l);           // free items settle instantly
+    if (payments.live) return payLive(l);              // real Flutterwave checkout
+    setErr(null); setCheckout(l);                      // demo checkout modal
   }
 
+  // Mock/free purchase (demo checkout or free item).
   async function confirmBuy(l) {
     setBusy(true); setErr(null);
     try {
@@ -35,6 +49,29 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection }) {
       setOwnedIds((s) => new Set([...s, l.id]));
       setCheckout(null);
     } catch (e) { setErr(e.message); } finally { setBusy(false); }
+  }
+
+  // Live Flutterwave checkout: open their inline modal, then verify the transaction server-side.
+  async function payLive(l) {
+    setErr(null);
+    try {
+      await loadFlutterwave();
+      window.FlutterwaveCheckout({
+        public_key: payments.publicKey,
+        tx_ref: `efiko_${l.id}_${Date.now()}`,
+        amount: l.price,
+        currency: l.currency,
+        payment_options: 'card,banktransfer,ussd',
+        customer: { email: user?.email || 'learner@efiko.app', name: user?.name || 'Efiko learner' },
+        customizations: { title: 'Efiko', description: l.title },
+        callback: async (data) => {
+          try {
+            await verifyPurchase(l.id, data.transaction_id || data.id);
+            setOwnedIds((s) => new Set([...s, l.id]));
+          } catch (e) { setErr(e.message); }
+        }
+      });
+    } catch (e) { setErr(e.message); }
   }
 
   return (
