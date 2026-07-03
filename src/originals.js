@@ -1,6 +1,18 @@
 // EFIKO Originals — learner client (Phase 2). Reads the public catalog (published only) and
 // full course content for the player.
+import { aiHeaders, notifyAiUsed } from './aiClient.js';
 const GATEWAY = import.meta.env.VITE_GATEWAY || 'http://localhost:4100';
+
+// Synthesize a session's voice narration (Deepgram TTS via the gateway). Returns an object
+// URL for an <audio> element, or throws (e.g. 503 when voice isn't configured).
+export async function synthesizeVoice(text) {
+  const r = await fetch(`${GATEWAY}/alwe/tts`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json', ...aiHeaders() }, body: JSON.stringify({ text })
+  });
+  notifyAiUsed();
+  if (!r.ok) { const d = await r.json().catch(() => ({})); throw new Error(d.error || `voice failed (${r.status})`); }
+  return URL.createObjectURL(await r.blob());
+}
 
 export async function listOriginals() {
   try {

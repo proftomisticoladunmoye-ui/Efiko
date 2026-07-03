@@ -46,9 +46,11 @@ const OutlineSchema = z.object({
 const SessionSchema = z.object({
   objectives: z.array(z.string()),
   text: z.string(),
+  voiceScript: z.string(),
   whiteboardSvg: z.string(),
   whiteboardCaption: z.string(),
   example: z.string(),
+  keyPoints: z.array(z.string()),
   quiz: z.array(McqSchema),
   flashcards: z.array(z.object({ front: z.string(), back: z.string() })),
   reflection: z.string(),
@@ -69,11 +71,13 @@ Design a course outline that is evidence-based, practical, competency-based and 
 - "estimatedHours": realistic total hours (2-10).
 Be accurate and academically sound. Plain, warm, inclusive English.`;
 
-const SESSION_SYSTEM = `You are EFIKO authoring ONE session of a micro-certificate course for African university students on low bandwidth.
+const SESSION_SYSTEM = `You are EFIKO authoring ONE session of a world-class micro-certificate course for African university students and young professionals on low bandwidth. Aim for a global standard: accurate, genuinely practical, and detailed enough to act on.
 
 Produce a complete, self-contained session. Rules:
-- "text": the core teaching content (a "whiteboard lesson" narrative), 130-200 words, step-by-step where useful, defining any jargon.
-- "whiteboardSvg": a SMALL self-contained SVG illustrating the key idea. viewBox "0 0 480 260", a white background rect, at most ~12 simple shapes/labels, a few colors (#0f766e, #15803d, #b45309, #334155). NO <script>, NO <foreignObject>, NO external images/hrefs. Under ~2KB. ASCII labels only (write "theta", not Greek).
+- "text": the core teaching content (a "whiteboard lesson"), 170-240 words. Teach concretely and step-by-step, define jargon, and include at least one practical how-to or worked example the learner can apply immediately.
+- "voiceScript": a natural SPOKEN narration of this session for text-to-speech — a warm, first-person tutor voice, 90-130 words, flowing sentences (NO lists, NO markdown, NO headings). It should sound good read aloud and reinforce the key ideas.
+- "keyPoints": 3-4 short takeaways (the whiteboard bullet points).
+- "whiteboardSvg": a clear, self-contained SVG illustrating the key idea. viewBox "0 0 480 260", a white background rect, ~8-16 simple shapes/labels, a few colors (#0f766e, #15803d, #b45309, #334155). Prefer <path>/<line>/<rect>/<circle> with visible strokes (they animate as a draw-on). NO <script>, NO <foreignObject>, NO external images/hrefs. Under ~2.5KB. ASCII labels only (write "theta", not Greek).
 - "whiteboardCaption": one sentence describing the figure.
 - "example": one concrete, real-life example relevant to an African student or workplace.
 - "quiz": EXACTLY 3 MCQs, EXACTLY 4 options each, "answer" = 0-based index.
@@ -140,6 +144,8 @@ function assemble(spec, outline, sessions) {
       title: outline.sessions[i]?.title || `Session ${i + 1}`,
       objectives: s.objectives,
       text: s.text,
+      voiceScript: s.voiceScript || s.text,
+      keyPoints: s.keyPoints || [],
       whiteboardSvg: sanitizeSvg(s.whiteboardSvg),
       whiteboardCaption: s.whiteboardCaption,
       example: s.example,

@@ -2,8 +2,8 @@
 // library, then take a course through its standard architecture: overview -> pre-assessment
 // -> sessions (each with whiteboard, example, quiz, flashcards, reflection, summary) ->
 // final assessment -> completion (+ recommended next course). Self-contained section.
-import { useEffect, useState } from 'react';
-import { listOriginals, getOriginal, claimOriginalCertificate } from '../originals.js';
+import { useEffect, useRef, useState } from 'react';
+import { listOriginals, getOriginal, claimOriginalCertificate, synthesizeVoice } from '../originals.js';
 import { reportProgress } from '../progress.js';
 import CertificateCard from './CertificateCard.jsx';
 
@@ -47,7 +47,24 @@ function MiniQuiz({ questions, onDone, cta = 'Submit answers' }) {
 function SessionView({ session, index, count, onNext, onAsk }) {
   const [quizDone, setQuizDone] = useState(false);
   const [showCards, setShowCards] = useState(false);
-  useEffect(() => { setQuizDone(false); setShowCards(false); }, [session.id]);
+  const [voice, setVoice] = useState('idle'); // idle | loading | playing | error
+  const [voiceErr, setVoiceErr] = useState(null);
+  const audioRef = useRef(null);
+
+  function stopAudio() { if (audioRef.current) { audioRef.current.pause(); audioRef.current = null; } }
+  useEffect(() => { setQuizDone(false); setShowCards(false); setVoice('idle'); setVoiceErr(null); stopAudio(); return stopAudio; }, [session.id]);
+
+  async function listen() {
+    if (voice === 'playing') { stopAudio(); setVoice('idle'); return; }
+    setVoice('loading'); setVoiceErr(null);
+    try {
+      const url = await synthesizeVoice(session.voiceScript || session.text);
+      const a = new Audio(url); audioRef.current = a;
+      a.onended = () => setVoice('idle');
+      await a.play(); setVoice('playing');
+    } catch (e) { setVoice('error'); setVoiceErr(e.message); }
+  }
+
   return (
     <div className="osession">
       <p className="o-step">Session {index + 1} of {count}</p>
@@ -55,10 +72,17 @@ function SessionView({ session, index, count, onNext, onAsk }) {
       {session.objectives?.length > 0 && (
         <ul className="o-objectives">{session.objectives.map((o, i) => <li key={i}>{o}</li>)}</ul>
       )}
+      <button className={`o-listen ${voice}`} onClick={listen} disabled={voice === 'loading'}>
+        {voice === 'loading' ? '… loading voice' : voice === 'playing' ? '⏸ Pause voice lesson' : '🔊 Listen to this session'}
+      </button>
+      {voiceErr && <p className="o-voice-note">Voice isn’t available right now.</p>}
       {session.whiteboardSvg && (
-        <figure className="o-board" dangerouslySetInnerHTML={{ __html: session.whiteboardSvg }} />
+        <figure key={session.id} className="o-board animate" dangerouslySetInnerHTML={{ __html: session.whiteboardSvg }} />
       )}
       {session.whiteboardCaption && <p className="o-caption">{session.whiteboardCaption}</p>}
+      {session.keyPoints?.length > 0 && (
+        <ul className="o-keypoints">{session.keyPoints.map((k, i) => <li key={i}>{k}</li>)}</ul>
+      )}
       <div className="o-prose">{session.text.split(/\n{2,}/).map((p, i) => <p key={i}>{p}</p>)}</div>
       {session.example && <div className="o-example"><strong>Example.</strong> {session.example}</div>}
 
