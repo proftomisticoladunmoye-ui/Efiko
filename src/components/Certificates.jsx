@@ -4,11 +4,7 @@
 import { useEffect, useState } from 'react';
 import { fetchMyCertificates, fetchMyProgress, claimCertificate, CERT_PASS_MARK } from '../certificates.js';
 import { fetchCourses } from '../courses.js';
-
-function verifyUrl(serial) {
-  return `${window.location.origin}${window.location.pathname}?verify=${encodeURIComponent(serial)}`;
-}
-const fmt = (ms) => (ms ? new Date(ms).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }) : '');
+import CertificateCard from './CertificateCard.jsx';
 
 export default function Certificates() {
   const [certs, setCerts] = useState([]);
@@ -65,28 +61,7 @@ export default function Certificates() {
         </div>
       )}
 
-      {view && (
-        <div className="auth-overlay" onClick={() => setView(null)}>
-          <div className="cert-doc" onClick={(e) => e.stopPropagation()}>
-            <button className="auth-close" onClick={() => setView(null)} aria-label="Close">×</button>
-            <div className="cert-print" id="cert-print">
-              <img className="cert-logo" src="/logo.png" alt="Efiko" width="140" />
-              <p className="cert-kicker">Certificate of Achievement</p>
-              <p className="cert-awarded">This certifies that</p>
-              <h3 className="cert-name">{view.userName || view.name}</h3>
-              <p className="cert-awarded">has successfully completed</p>
-              <h4 className="cert-course">{view.courseTitle}</h4>
-              {view.score != null && <p className="cert-score">with a score of {view.score}%</p>}
-              <p className="cert-date">{fmt(view.issuedAt)}</p>
-              <p className="cert-serial">Serial: {view.serial}</p>
-            </div>
-            <div className="cert-actions">
-              <button className="course-open" onClick={() => window.print()}>Print / Save PDF</button>
-              <a className="course-share-btn" href={verifyUrl(view.serial)} target="_blank" rel="noreferrer">Verify link</a>
-            </div>
-          </div>
-        </div>
-      )}
+      {view && <CertificateCard cert={view} onClose={() => setView(null)} />}
     </section>
   );
 }

@@ -10,14 +10,15 @@ function newSerial() {
   return `EFIKO-${randomBytes(5).toString('hex').toUpperCase()}`;
 }
 
-/** Issue (or return the existing) certificate for a user + course. */
-export async function issueCertificate({ userId, userName, courseId, courseTitle, score }) {
+/** Issue (or return the existing) certificate for a user + course. Optional fields
+ * (competencies, hours, issuer, kind) let EFIKO Originals carry richer credential data. */
+export async function issueCertificate({ userId, userName, courseId, courseTitle, score, competencies = null, hours = null, issuer = 'EFIKO', kind = 'course' }) {
   const id = key(userId, courseId);
   const existing = await kvGet(COLL, id);
   if (existing) return existing;
   let serial = newSerial();
   while (await verifyBySerial(serial)) serial = newSerial(); // avoid collision
-  const rec = { certId: id, serial, userId, userName, courseId, courseTitle, score: score ?? null, issuedAt: Date.now() };
+  const rec = { certId: id, serial, userId, userName, courseId, courseTitle, score: score ?? null, competencies, hours, issuer, kind, issuedAt: Date.now() };
   await kvPut(COLL, id, rec);
   return rec;
 }

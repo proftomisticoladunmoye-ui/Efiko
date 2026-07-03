@@ -3,8 +3,9 @@
 // -> sessions (each with whiteboard, example, quiz, flashcards, reflection, summary) ->
 // final assessment -> completion (+ recommended next course). Self-contained section.
 import { useEffect, useState } from 'react';
-import { listOriginals, getOriginal } from '../originals.js';
+import { listOriginals, getOriginal, claimOriginalCertificate } from '../originals.js';
 import { reportProgress } from '../progress.js';
+import CertificateCard from './CertificateCard.jsx';
 
 // --- a small reusable multiple-choice quiz ---
 function MiniQuiz({ questions, onDone, cta = 'Submit answers' }) {
@@ -82,11 +83,21 @@ function SessionView({ session, index, count, onNext, onAsk }) {
   );
 }
 
-function CoursePlayer({ course, onExit, onOpenCourse, onAsk }) {
+function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn }) {
   const [step, setStep] = useState('overview'); // 'overview' | 'pre' | number | 'final' | 'done'
   const [finalPct, setFinalPct] = useState(0);
+  const [cert, setCert] = useState(null);
+  const [claiming, setClaiming] = useState(false);
+  const [certErr, setCertErr] = useState(null);
   const sessions = course.sessions || [];
   const passMark = course.finalAssessment?.passMark ?? 70;
+
+  async function claim() {
+    if (!signedIn) return onSignIn?.();
+    setClaiming(true); setCertErr(null);
+    try { setCert(await claimOriginalCertificate(course.courseId)); }
+    catch (e) { setCertErr(e.message); } finally { setClaiming(false); }
+  }
 
   useEffect(() => { reportProgress({ courseId: course.courseId, event: 'opened' }); }, [course.courseId]);
 
@@ -150,7 +161,10 @@ function CoursePlayer({ course, onExit, onOpenCourse, onAsk }) {
             <h1>Course complete!</h1>
             <p className="o-subtitle">You passed <strong>{course.title}</strong> with {finalPct}%.</p>
             {course.competencies?.length > 0 && (<><h3>Competencies gained</h3><ul className="o-outcomes">{course.competencies.map((c, i) => <li key={i}>{c}</li>)}</ul></>)}
-            <p className="lib-sub">Your progress is saved. A verifiable certificate for this course arrives in the next update.</p>
+            <div className="o-nav">
+              <button className="course-open" disabled={claiming} onClick={claim}>{claiming ? 'Issuing…' : (signedIn ? '🎓 Claim your certificate' : 'Sign in to claim your certificate')}</button>
+            </div>
+            {certErr && <p className="error">{certErr}</p>}
           </>) : (<>
             <h1>Almost there</h1>
             <p className="o-subtitle">You scored {finalPct}% — {passMark}% is needed to pass. Review the sessions and try again.</p>
@@ -161,11 +175,13 @@ function CoursePlayer({ course, onExit, onOpenCourse, onAsk }) {
           )}
         </div>
       )}
+
+      {cert && <CertificateCard cert={cert} onClose={() => setCert(null)} />}
     </section>
   );
 }
 
-export default function Originals({ onAsk }) {
+export default function Originals({ onAsk, signedIn, onSignIn }) {
   const [courses, setCourses] = useState([]);
   const [active, setActive] = useState(null);
   const [loaded, setLoaded] = useState(false);
@@ -173,7 +189,7 @@ export default function Originals({ onAsk }) {
   useEffect(() => { listOriginals().then((c) => { setCourses(c); setLoaded(true); }); }, []);
   async function open(id) { const c = await getOriginal(id); if (c) { setActive(c); window.scrollTo(0, 0); } }
 
-  if (active) return <CoursePlayer course={active} onExit={() => setActive(null)} onOpenCourse={open} onAsk={onAsk} />;
+  if (active) return <CoursePlayer course={active} onExit={() => setActive(null)} onAsk={onAsk} signedIn={signedIn} onSignIn={onSignIn} />;
 
   return (
     <section className="originals">

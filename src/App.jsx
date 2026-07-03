@@ -454,7 +454,7 @@ export default function App() {
       case 'thinkspace':
         return (<div className="ts-soon"><h2>🧠 ThinkSpace</h2><p className="lib-sub">Your AI learning workspace — persistent discussions that remember your context. Coming next.</p></div>);
       case 'originals':
-        return <Originals onAsk={handleAsk} />;
+        return <Originals onAsk={handleAsk} signedIn={!!user} onSignIn={() => setAuthOpen(true)} />;
       case 'courses':
         return (<>
           <Programmes onEnrolProgramme={enrolProgrammeAction} />

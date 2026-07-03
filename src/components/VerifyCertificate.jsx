@@ -23,7 +23,10 @@ export default function VerifyCertificate({ serial, onExit }) {
             <p><strong>{state.name}</strong> completed</p>
             <h3>{state.courseTitle}</h3>
             {state.score != null && <p>Score: {state.score}%</p>}
-            <p className="lib-sub">Issued {fmt(state.issuedAt)} · Serial {state.serial}</p>
+            {state.competencies?.length > 0 && (
+              <div className="cert-comps"><p className="cert-comps-h">Competencies achieved</p><ul>{state.competencies.map((c, i) => <li key={i}>{c}</li>)}</ul></div>
+            )}
+            <p className="lib-sub">Issued by {state.issuer || 'EFIKO'}{state.hours ? ` · ${state.hours} learning hours` : ''} · {fmt(state.issuedAt)} · Serial {state.serial}</p>
           </div>
         ) : (
           <div className="verify-bad">

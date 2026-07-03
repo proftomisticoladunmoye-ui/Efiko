@@ -583,6 +583,21 @@ const server = createServer(async (req, res) => {
       return c ? json(res, 200, { status: c.status }) : json(res, 404, { error: 'not found' });
     } catch (e) { return json(res, 400, { error: e.message }); }
   }
+  // Learner claims a certificate after passing an Original's final assessment.
+  if (req.method === 'POST' && url.pathname.match(/^\/originals\/[^/]+\/certificate$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to claim your certificate.' });
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    const course = await getOriginal(id);
+    if (!course || course.status !== 'published') return json(res, 404, { error: 'course not found' });
+    const passMark = course.finalAssessment?.passMark ?? CERT_PASS_MARK;
+    const p = await getProgress(user.userId, id);
+    if (!p || (p.bestQuizPct ?? -1) < passMark) {
+      return json(res, 403, { error: `Pass the final assessment (${passMark}%) to earn this certificate.`, needed: passMark, have: p?.bestQuizPct ?? null });
+    }
+    const cert = await issueCertificate({ userId: user.userId, userName: user.name, courseId: id, courseTitle: course.title, score: p.bestQuizPct, competencies: course.competencies || [], hours: course.estimatedHours || null, issuer: 'EFIKO', kind: 'original' });
+    return json(res, 200, { certificate: cert });
+  }
   if (req.method === 'GET' && url.pathname.match(/^\/originals\/[^/]+$/)) {
     const id = decodeURIComponent(url.pathname.split('/')[2]);
     const c = await getOriginal(id);
@@ -707,7 +722,7 @@ const server = createServer(async (req, res) => {
     const serial = decodeURIComponent(url.pathname.slice('/verify/'.length));
     const cert = await verifyBySerial(serial);
     if (!cert) return json(res, 404, { valid: false });
-    return json(res, 200, { valid: true, name: cert.userName, courseTitle: cert.courseTitle, score: cert.score, issuedAt: cert.issuedAt, serial: cert.serial });
+    return json(res, 200, { valid: true, name: cert.userName, courseTitle: cert.courseTitle, score: cert.score, issuedAt: cert.issuedAt, serial: cert.serial, competencies: cert.competencies || null, hours: cert.hours ?? null, issuer: cert.issuer || 'EFIKO' });
   }
 
   // Lecturer: progress of everyone in a class.

@@ -17,3 +17,14 @@ export async function getOriginal(id) {
     return await r.json();
   } catch { return null; }
 }
+
+// Claim the certificate after passing the final assessment (needs the user token).
+export async function claimOriginalCertificate(id) {
+  const token = localStorage.getItem('efiko-user-token') || '';
+  const r = await fetch(`${GATEWAY}/originals/${encodeURIComponent(id)}/certificate`, {
+    method: 'POST', headers: token ? { Authorization: `Bearer ${token}` } : {}
+  });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
+  return d.certificate;
+}
