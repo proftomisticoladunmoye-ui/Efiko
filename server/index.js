@@ -21,6 +21,8 @@ import { issueCertificate, listCertificates, verifyBySerial } from './core/certi
 import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDiscussion, recentMessages, addResource } from './core/thinkspace.js';
 import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
+import { generateCourse } from './core/originals/generator.js';
+import { saveOriginal, getOriginal, listOriginals, setStatus, updateOriginal, deleteOriginal } from './core/originals/store.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
 import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess } from './core/marketplace.js';
@@ -43,6 +45,11 @@ const PORT = process.env.PORT || 4100;
 const VERIFY_TOKEN = process.env.WHATSAPP_VERIFY_TOKEN || 'Efiko-verify';
 const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || '';
 const ADMIN_MASTER_KEY = process.env.ADMIN_MASTER_KEY || ''; // gate for creating institution accounts
+
+// EFIKO operator (platform staff) — gates EFIKO Originals authoring. Uses the master key.
+function isOperator(req) {
+  return !!ADMIN_MASTER_KEY && req.headers['x-admin-key'] === ADMIN_MASTER_KEY;
+}
 
 // Resolve the institution behind a Bearer token (Phase B auth).
 async function authedOrg(req) {
@@ -206,7 +213,7 @@ const server = createServer(async (req, res) => {
 
   // CORS — the PWA (a different origin/port) calls /lessons/generate from the browser.
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-admin-key');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE, OPTIONS');
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
@@ -542,6 +549,58 @@ const server = createServer(async (req, res) => {
     } catch (e) {
       return json(res, 400, { error: e.message });
     }
+  }
+
+  // --- EFIKO Originals: AI-generated, human-reviewed, EFIKO-owned courses ---
+  // Authoring is operator-only (master key). Draft -> in_review -> published.
+  if (req.method === 'POST' && url.pathname === '/originals/generate') {
+    if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });
+    if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });
+    const { topic, audience, hours, level } = await readBody(req);
+    if (!topic) return json(res, 400, { error: 'topic is required' });
+    try {
+      const course = await generateCourse({ topic, audience, hours, level });
+      if (!course) return json(res, 502, { error: 'generation failed or returned nothing' });
+      await saveOriginal(course);
+      return json(res, 200, { courseId: course.courseId, title: course.title, sessionCount: course.sessions.length, status: course.status });
+    } catch (e) {
+      return json(res, 502, { error: 'generation failed', detail: e.message });
+    }
+  }
+  if (req.method === 'GET' && url.pathname === '/originals') { // public catalog: published only
+    return json(res, 200, { courses: await listOriginals({ status: 'published' }) });
+  }
+  if (req.method === 'GET' && url.pathname === '/admin/originals') { // operator: all statuses
+    if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });
+    return json(res, 200, { courses: await listOriginals({ status: url.searchParams.get('status') || undefined }) });
+  }
+  if (req.method === 'POST' && url.pathname.match(/^\/originals\/[^/]+\/status$/)) {
+    if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    const { status } = await readBody(req);
+    try {
+      const c = await setStatus(id, status, 'operator');
+      return c ? json(res, 200, { status: c.status }) : json(res, 404, { error: 'not found' });
+    } catch (e) { return json(res, 400, { error: e.message }); }
+  }
+  if (req.method === 'GET' && url.pathname.match(/^\/originals\/[^/]+$/)) {
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    const c = await getOriginal(id);
+    if (!c) return json(res, 404, { error: 'not found' });
+    if (c.status !== 'published' && !isOperator(req)) return json(res, 403, { error: 'not published' });
+    return json(res, 200, c);
+  }
+  if (req.method === 'POST' && url.pathname.match(/^\/originals\/[^/]+$/)) { // operator edits (review)
+    if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    const c = await updateOriginal(id, await readBody(req));
+    return c ? json(res, 200, { ok: true }) : json(res, 404, { error: 'not found' });
+  }
+  if (req.method === 'DELETE' && url.pathname.match(/^\/originals\/[^/]+$/)) {
+    if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    await deleteOriginal(id);
+    return json(res, 200, { ok: true });
   }
 
   // --- Courses (V1.5 F2): unified catalog over capsules + ALWE lessons ---
