@@ -23,6 +23,7 @@ import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
 import { generateCourse, evaluateTeachBack } from './core/originals/generator.js';
 import { saveOriginal, getOriginal, listOriginals, setStatus, updateOriginal, deleteOriginal } from './core/originals/store.js';
+import { listPathways, nextInPathway } from './core/originals/pathways.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
 import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess } from './core/marketplace.js';
@@ -571,6 +572,9 @@ const server = createServer(async (req, res) => {
   if (req.method === 'GET' && url.pathname === '/originals') { // public catalog: published only
     return json(res, 200, { courses: await listOriginals({ status: 'published' }) });
   }
+  if (req.method === 'GET' && url.pathname === '/pathways') { // Learning Graph: ordered course journeys
+    return json(res, 200, { pathways: await listPathways() });
+  }
   if (req.method === 'GET' && url.pathname === '/admin/originals') { // operator: all statuses
     if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });
     return json(res, 200, { courses: await listOriginals({ status: url.searchParams.get('status') || undefined }) });
@@ -623,7 +627,7 @@ const server = createServer(async (req, res) => {
     const c = await getOriginal(id);
     if (!c) return json(res, 404, { error: 'not found' });
     if (c.status !== 'published' && !isOperator(req)) return json(res, 403, { error: 'not published' });
-    return json(res, 200, c);
+    return json(res, 200, { ...c, nextInPathway: await nextInPathway(id) });
   }
   if (req.method === 'POST' && url.pathname.match(/^\/originals\/[^/]+$/)) { // operator edits (review)
     if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });

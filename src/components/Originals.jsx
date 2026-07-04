@@ -3,7 +3,7 @@
 // -> sessions (each with whiteboard, example, quiz, flashcards, reflection, summary) ->
 // final assessment -> completion (+ recommended next course). Self-contained section.
 import { useEffect, useRef, useState } from 'react';
-import { listOriginals, getOriginal, claimOriginalCertificate, synthesizeVoice, evaluateTeachBack } from '../originals.js';
+import { listOriginals, getOriginal, claimOriginalCertificate, synthesizeVoice, evaluateTeachBack, listPathways } from '../originals.js';
 import { reportProgress } from '../progress.js';
 import CertificateCard from './CertificateCard.jsx';
 
@@ -147,7 +147,7 @@ function TeachBack({ course, from, to, onPass }) {
   );
 }
 
-function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn }) {
+function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn, onOpen }) {
   const [step, setStep] = useState('overview'); // 'overview' | 'pre' | number | 'tb:from:to' | 'final' | 'done'
   const [finalPct, setFinalPct] = useState(0);
   const [cpStart, setCpStart] = useState(0); // first session not yet teach-back'd
@@ -248,9 +248,9 @@ function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn }) {
             <p className="o-subtitle">You scored {finalPct}% — {passMark}% is needed to pass. Review the sessions and try again.</p>
             <button className="course-open" onClick={() => setStep(0)}>Review sessions</button>
           </>)}
-          {course.nextCourse && finalPct >= passMark && (
-            <div className="o-next"><span>Recommended next</span><strong>{course.nextCourse}</strong></div>
-          )}
+          {finalPct >= passMark && (course.nextInPathway
+            ? <button className="o-next o-next-btn" onClick={() => onOpen?.(course.nextInPathway.courseId)}><span>Next in your pathway</span><strong>{course.nextInPathway.title} →</strong></button>
+            : (course.nextCourse && <div className="o-next"><span>Recommended next</span><strong>{course.nextCourse}</strong></div>))}
         </div>
       )}
 
@@ -261,18 +261,44 @@ function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn }) {
 
 export default function Originals({ onAsk, signedIn, onSignIn }) {
   const [courses, setCourses] = useState([]);
+  const [pathways, setPathways] = useState([]);
   const [active, setActive] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => { listOriginals().then((c) => { setCourses(c); setLoaded(true); }); }, []);
+  useEffect(() => {
+    listOriginals().then((c) => { setCourses(c); setLoaded(true); });
+    listPathways().then(setPathways);
+  }, []);
   async function open(id) { const c = await getOriginal(id); if (c) { setActive(c); window.scrollTo(0, 0); } }
 
-  if (active) return <CoursePlayer course={active} onExit={() => setActive(null)} onAsk={onAsk} signedIn={signedIn} onSignIn={onSignIn} />;
+  if (active) return <CoursePlayer course={active} onExit={() => setActive(null)} onOpen={open} onAsk={onAsk} signedIn={signedIn} onSignIn={onSignIn} />;
 
   return (
     <section className="originals">
       <h2>⭐ EFIKO Originals</h2>
       <p className="lib-sub">Free, expert-designed micro-certificate courses — built by EFIKO. Learn a skill, earn a certificate.</p>
+
+      {pathways.length > 0 && (
+        <div className="o-pathways">
+          <h3>Learning pathways</h3>
+          {pathways.map((p) => (
+            <div key={p.id} className="o-pathway">
+              <div className="o-pathway-head"><strong>{p.title}</strong><span>{p.courses.length} courses</span></div>
+              <p className="o-pathway-desc">{p.description}</p>
+              <div className="o-pathway-steps">
+                {p.courses.map((c, i) => (
+                  <span key={c.courseId} className="o-pathway-step">
+                    {i > 0 && <span className="o-pathway-arrow">→</span>}
+                    <button className="o-pathway-course" onClick={() => open(c.courseId)}>{c.title}</button>
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      <h3 className="o-all-h">All courses</h3>
       {loaded && courses.length === 0 && <p className="career-empty">No published courses yet — check back soon.</p>}
       <div className="o-grid">
         {courses.map((c) => (

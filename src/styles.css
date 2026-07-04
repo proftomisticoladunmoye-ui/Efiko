@@ -713,6 +713,23 @@ body {
 .o-voice-note { font-size: 12px; color: var(--muted); margin: 0 0 8px; }
 .o-keypoints { margin: 6px 0 12px; padding-left: 20px; }
 .o-keypoints li { margin: 3px 0; color: #dbe4ee; font-weight: 500; }
+/* learning pathways */
+.o-pathways { margin: 14px 0 22px; }
+.o-pathways h3 { font-size: 15px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 0 0 10px; }
+.o-pathway { background: linear-gradient(135deg, rgba(20,184,166,.08), rgba(13,21,38,.4)); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin-bottom: 12px; }
+.o-pathway-head { display: flex; justify-content: space-between; align-items: baseline; }
+.o-pathway-head strong { font-size: 16px; }
+.o-pathway-head span { font-size: 12px; color: var(--muted); }
+.o-pathway-desc { font-size: 13px; color: var(--muted); margin: 4px 0 10px; }
+.o-pathway-steps { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.o-pathway-step { display: inline-flex; align-items: center; gap: 6px; }
+.o-pathway-arrow { color: var(--brand-2); }
+.o-pathway-course { background: #0d1526; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: 5px 12px; font-size: 13px; cursor: pointer; }
+.o-pathway-course:hover { border-color: var(--brand-2); color: var(--brand-2); }
+.o-all-h { font-size: 15px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 18px 0 8px; }
+.o-next-btn { border: 1px solid var(--brand-2); cursor: pointer; text-align: left; }
+.o-next-btn:hover { background: rgba(20,184,166,.1); }
+
 /* teach-back checkpoint */
 .tb-cover { font-size: 13px; color: var(--brand-2); margin: 8px 0; }
 .tb-input { width: 100%; background: #0d1526; border: 1px solid var(--line); color: var(--ink); border-radius: 10px; padding: 12px; font-size: 14px; line-height: 1.5; resize: vertical; font-family: inherit; }

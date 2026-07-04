@@ -1,0 +1,26 @@
+[
+  {
+    "id": "ai-mastery",
+    "title": "AI Mastery",
+    "description": "Go from understanding AI to using it well and responsibly — the complete AI skillset for students and professionals.",
+    "courses": [
+      "orig-ai-literacy-essentials",
+      "orig-prompt-engineering-essentials",
+      "orig-ai-for-research",
+      "orig-ai-for-productivity",
+      "orig-ai-ethics-and-responsible-use"
+    ]
+  },
+  {
+    "id": "academic-excellence",
+    "title": "Academic Excellence",
+    "description": "Master the core academic skills that underpin strong grades and research — think, write, study and manage your time.",
+    "courses": [
+      "orig-critical-thinking-essentials",
+      "orig-academic-writing-essentials",
+      "orig-research-methods-from-question-to-evidence",
+      "orig-effective-study-skills-for-university-success",
+      "orig-time-management-for-students"
+    ]
+  }
+]

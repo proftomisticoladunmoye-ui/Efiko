@@ -30,6 +30,15 @@ export async function getOriginal(id) {
   } catch { return null; }
 }
 
+// Learning Graph — ordered course pathways.
+export async function listPathways() {
+  try {
+    const r = await fetch(`${GATEWAY}/pathways`);
+    if (!r.ok) return [];
+    return (await r.json()).pathways || [];
+  } catch { return []; }
+}
+
 // Teach Back: EFIKO evaluates the learner's explanation of the covered sessions.
 export async function evaluateTeachBack(id, fromSession, toSession, explanation) {
   const r = await fetch(`${GATEWAY}/originals/${encodeURIComponent(id)}/teachback`, {
