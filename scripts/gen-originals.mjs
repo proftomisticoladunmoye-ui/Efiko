@@ -8,16 +8,17 @@ import { writeFileSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { generateCourse } from '../server/core/originals/generator.js';
-import { getOriginal } from '../server/core/originals/store.js';
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'server', 'content', 'originals');
 mkdirSync(OUT, { recursive: true });
 
-// New courses to generate (AI pathway). AI Literacy already exists in kv and is exported below.
+// Courses to generate this batch. Edit per batch toward the ~100-course library.
 const SPECS = [
-  { topic: 'AI for Research', audience: 'University students and early researchers', hours: 5, level: 'Intermediate' },
-  { topic: 'AI for Productivity', audience: 'Students and professionals', hours: 4, level: 'Beginner' },
-  { topic: 'AI Ethics and Responsible Use', audience: 'University students', hours: 3, level: 'Beginner' }
+  { topic: 'Academic Writing', audience: 'University students', hours: 5, level: 'Beginner' },
+  { topic: 'Critical Thinking', audience: 'University students', hours: 4, level: 'Beginner' },
+  { topic: 'Research Methods', audience: 'University students and early researchers', hours: 6, level: 'Intermediate' },
+  { topic: 'Effective Study Skills', audience: 'University students', hours: 3, level: 'Beginner' },
+  { topic: 'Time Management for Students', audience: 'University students', hours: 3, level: 'Beginner' }
 ];
 
 // A course must clear this bar to be published as a seed.
@@ -46,15 +47,6 @@ function save(c) {
   writeFileSync(join(OUT, `${c.courseId}.json`), JSON.stringify(c, null, 2), 'utf8');
 }
 
-// 1) Export the existing AI Literacy pilot from kv as a seed (no regeneration).
-const ail = await getOriginal('orig-ai-literacy-essentials').catch(() => null);
-if (ail) {
-  const prob = robustness(ail);
-  if (prob.length === 0) { save(ail); console.log(`bundled from kv: ${ail.courseId} (${ail.sessions.length} sessions)`); }
-  else console.log(`AI Literacy in kv not robust (${prob.slice(0, 5).join(', ')}) — skipped`);
-} else console.log('AI Literacy not found in kv — will not bundle');
-
-// 2) Generate the new AI-pathway courses.
 for (const spec of SPECS) {
   process.stdout.write(`generating "${spec.topic}"... `);
   try {

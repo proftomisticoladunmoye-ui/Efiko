@@ -1,0 +1,507 @@
+{
+  "courseId": "orig-time-management-for-students",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Time Management for Students",
+  "subtitle": "Practical strategies to plan, focus, and thrive at university",
+  "category": "Personal Development & Study Skills",
+  "level": "Beginner",
+  "audience": "University students and young professionals",
+  "estimatedHours": 3,
+  "description": "This beginner-friendly course helps university students take control of their time using simple, evidence-based methods. You will learn how to set clear goals, plan realistic schedules, prioritise tasks, beat procrastination, and protect focus in a busy, distraction-filled world. Designed to be mobile and offline friendly, each short session gives you tools you can apply immediately to balance studies, work, and personal life.",
+  "outcomes": [
+    "Explain the core principles of effective time management and why they matter for academic success",
+    "Apply goal-setting and prioritisation techniques such as SMART goals and the Eisenhower Matrix",
+    "Create a realistic weekly study schedule that balances lectures, study, rest, and personal commitments",
+    "Use focus and anti-procrastination strategies like time-blocking and the Pomodoro Technique",
+    "Evaluate and adjust your personal time-management system to improve consistency over time"
+  ],
+  "competencies": [
+    "Setting SMART academic and personal goals",
+    "Prioritising tasks using proven frameworks like the Eisenhower Matrix",
+    "Building and maintaining a realistic weekly study schedule",
+    "Applying focus techniques to reduce procrastination and distraction",
+    "Reviewing and improving a personal productivity system"
+  ],
+  "nextCourse": "Effective Study Skills and Exam Preparation",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What is the main goal of time management?",
+        "options": [
+          "Filling every minute with activity",
+          "Using your available time intentionally to achieve what matters",
+          "Working as fast as possible at all times",
+          "Avoiding all forms of rest"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these best describes a SMART goal?",
+        "options": [
+          "A goal that is vague but ambitious",
+          "A goal that is Specific, Measurable, Achievable, Relevant, and Time-bound",
+          "Any goal written on paper",
+          "A goal set only by your lecturer"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is procrastination?",
+        "options": [
+          "Planning your day in advance",
+          "Delaying tasks even when you know you should start",
+          "Completing tasks early",
+          "Taking scheduled study breaks"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "In the Eisenhower Matrix, tasks that are important but not urgent should be:",
+        "options": [
+          "Ignored completely",
+          "Scheduled for later intentionally",
+          "Done immediately in a panic",
+          "Delegated to someone else always"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is the core idea of time-blocking?",
+        "options": [
+          "Doing many tasks at the same time",
+          "Assigning specific time slots to specific tasks",
+          "Only studying when you feel motivated",
+          "Removing all breaks from your day"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A standard Pomodoro focus session typically lasts about:",
+        "options": [
+          "5 minutes",
+          "25 minutes",
+          "2 hours",
+          "An entire day"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which practice best helps sustain a time-management system over time?",
+        "options": [
+          "Never changing your original plan",
+          "Doing regular weekly reviews and small adjustments",
+          "Relying only on last-minute cramming",
+          "Avoiding any form of planning"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Why is scheduling rest important in a weekly plan?",
+        "options": [
+          "It wastes valuable study time",
+          "It helps maintain focus, energy, and long-term consistency",
+          "It is only for people who are lazy",
+          "It has no effect on productivity"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-understanding-time-and-why-it-slips-away",
+      "order": 1,
+      "title": "Understanding Time and Why It Slips Away",
+      "objectives": [
+        "Explain what time management really means and its impact on academic performance",
+        "Identify personal time-wasters and common student time traps",
+        "Describe the mindset shift from being busy to being productive"
+      ],
+      "text": "Time management is not about squeezing more tasks into a day. It is about choosing what deserves your limited hours so your effort produces real results. Everyone has the same 24 hours; the difference is where those hours go.\n\nStart with a simple truth: you cannot manage what you cannot see. So try a Time Audit. For three days, write down what you actually do in 30-minute blocks. Be honest. At the end, group activities into three buckets: Study/Work, Rest, and Leaks (scrolling, aimless chatting, waiting). Most students discover 2-4 hours of daily leaks.\n\nCommon student time traps include: notification pings that pull you away mid-task, saying yes to everything, perfectionism that delays starting, and 'multitasking' that actually doubles your errors.\n\nThe key mindset shift is from being busy to being productive. Busy means motion; productive means progress toward a goal. Ask each morning: 'What one thing, if done today, moves me forward?'\n\nWorked example: Amina had 5 free hours but achieved nothing. Her audit showed 2.5 hours on social media. She moved her phone to another room during study blocks and reclaimed 2 hours daily. Small awareness, big change. Begin your audit today.",
+      "voiceScript": "Let me start with something we all share equally: everyone gets the same twenty-four hours. The difference is simply where those hours go. So time management isn't about doing more, more, more. It's about choosing what truly deserves your attention. Here's the honest problem: you can't manage what you can't see. That's why I want you to run a small time audit, writing down what you actually do in half-hour blocks for three days. Most of us are shocked to find two, three, even four hours quietly leaking away into scrolling and waiting. Once you see it, you can change it. Remember, being busy just means motion, but being productive means real progress. Start your audit today.",
+      "keyPoints": [
+        "Time management means choosing priorities, not just doing more",
+        "Run a 3-day time audit to see where your hours actually go",
+        "Notifications, saying yes to everything, and multitasking are common traps",
+        "Shift from being busy (motion) to productive (progress toward goals)"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' fill='#0f766e' font-size='18' font-family='sans-serif'>Where Do Your Hours Go?</text><circle cx='120' cy='140' r='70' fill='none' stroke='#334155' stroke-width='2'/><path d='M120 140 L120 70 A70 70 0 0 1 185 118 Z' fill='#15803d' opacity='0.7'/><path d='M120 140 L185 118 A70 70 0 0 1 150 205 Z' fill='#b45309' opacity='0.7'/><path d='M120 140 L150 205 A70 70 0 0 1 120 70 Z' fill='#0f766e' opacity='0.5'/><line x1='300' y1='70' x2='300' y2='210' stroke='#334155' stroke-width='2'/><rect x='310' y='60' width='16' height='16' fill='#15803d'/><text x='334' y='73' fill='#334155' font-size='13' font-family='sans-serif'>Study/Work</text><rect x='310' y='95' width='16' height='16' fill='#0f766e'/><text x='334' y='108' fill='#334155' font-size='13' font-family='sans-serif'>Rest</text><rect x='310' y='130' width='16' height='16' fill='#b45309'/><text x='334' y='143' fill='#334155' font-size='13' font-family='sans-serif'>Leaks</text><text x='300' y='185' fill='#b45309' font-size='12' font-family='sans-serif'>Find your</text><text x='300' y='202' fill='#b45309' font-size='12' font-family='sans-serif'>hidden leaks!</text></svg>",
+      "whiteboardCaption": "A pie chart splitting a typical day into Study/Work, Rest, and hidden time Leaks.",
+      "example": "Chidi, a second-year student in Lagos, felt he had no time to study yet always seemed tired. After a three-day time audit, he noticed 3 hours daily lost to WhatsApp and YouTube between lectures. By silencing group notifications and using that gap for revision, he prepared for exams without late-night cramming.",
+      "quiz": [
+        {
+          "q": "What is the main purpose of a time audit?",
+          "options": [
+            "To fill every hour with tasks",
+            "To see where your hours actually go",
+            "To reduce your sleep",
+            "To compare yourself with others"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which best describes the shift from 'busy' to 'productive'?",
+          "options": [
+            "From motion to progress toward goals",
+            "From rest to constant work",
+            "From studying to socialising",
+            "From planning to reacting"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which of these is a common student time trap?",
+          "options": [
+            "Prioritising one key task",
+            "Silencing notifications",
+            "Multitasking that doubles errors",
+            "Taking scheduled rest"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is time management?",
+          "back": "Choosing what deserves your limited hours so effort produces real results, not just doing more."
+        },
+        {
+          "front": "What is a time audit?",
+          "back": "Tracking what you actually do in 30-minute blocks over several days to reveal hidden time leaks."
+        },
+        {
+          "front": "Busy vs productive?",
+          "back": "Busy is motion; productive is real progress toward a goal."
+        },
+        {
+          "front": "Name a common time trap.",
+          "back": "Notification pings, saying yes to everything, perfectionism, or fake multitasking."
+        }
+      ],
+      "reflection": "Where do you suspect your biggest daily time leak is, and what makes it so easy to fall into?",
+      "summary": "Time management is about choosing priorities within your fixed 24 hours; a time audit reveals hidden leaks and helps you shift from merely being busy to being genuinely productive.",
+      "discussionPrompt": "Help me analyse the results of my 3-day time audit and identify my top two time-wasters plus one habit to fix them.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-setting-goals-and-priorities",
+      "order": 2,
+      "title": "Setting Goals and Priorities",
+      "objectives": [
+        "Write clear, measurable SMART goals for study and life",
+        "Apply the Eisenhower Matrix to separate urgent from important tasks",
+        "Rank daily and weekly tasks by value and deadline"
+      ],
+      "text": "Vague intentions like \"study more\" rarely happen. To act, turn them into SMART goals: Specific, Measurable, Achievable, Relevant, and Time-bound. Instead of \"study more,\" write: \"Complete 20 chemistry practice questions by Friday 6pm.\" You now know exactly what done looks like.\n\nWorked example: Turn \"improve my grades\" into a SMART goal. Specific: raise my Statistics score. Measurable: from 60% to 70%. Achievable: with two study sessions weekly. Relevant: it's a core module. Time-bound: by end of semester. Final goal: \"Raise my Statistics score from 60% to 70% by studying twice weekly before exams.\"\n\nOnce you have goals, prioritise tasks using the Eisenhower Matrix. Sort each task into four boxes:\n- Urgent + Important: Do now (assignment due tomorrow).\n- Important, Not Urgent: Schedule (exam prep next month).\n- Urgent, Not Important: Delegate or minimise (some messages).\n- Neither: Delete (endless scrolling).\n\nDaily ranking how-to: list your tasks, mark each A (high value, near deadline), B (matters, later), or C (low value). Do all A tasks before touching B. This protects your energy for what moves you toward your goals, not just what shouts loudest.",
+      "voiceScript": "Let's talk about turning wishes into results. When you say \"I'll study more,\" your brain has nothing to grab onto. So make it SMART: specific, measurable, achievable, relevant, and time-bound. Try \"finish twenty practice questions by Friday evening\" instead. Now you know exactly when you're done. Once your goals are clear, you decide what to do first. Picture four boxes: urgent and important tasks you do now, important but not urgent ones you schedule, urgent but unimportant ones you hand off, and the rest you simply drop. Each morning, label your tasks A, B, or C, and always finish the A's first. That's how you spend energy on what truly matters.",
+      "keyPoints": [
+        "SMART goals make intentions Specific, Measurable, Achievable, Relevant, Time-bound",
+        "Use the Eisenhower Matrix: Do, Schedule, Delegate, or Delete each task",
+        "Label tasks A/B/C and finish A tasks before B and C",
+        "Important is not the same as urgent, prioritise value plus deadline"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" fill=\"#334155\" font-size=\"16\" font-family=\"sans-serif\">Eisenhower Matrix</text><line x1=\"60\" y1=\"50\" x2=\"60\" y2=\"240\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"60\" y1=\"150\" x2=\"440\" y2=\"150\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"250\" y1=\"50\" x2=\"250\" y2=\"240\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"60\" y1=\"50\" x2=\"440\" y2=\"50\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"440\" y1=\"50\" x2=\"440\" y2=\"240\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"60\" y1=\"240\" x2=\"440\" y2=\"240\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"120\" y=\"45\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">Urgent</text><text x=\"320\" y=\"45\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">Not Urgent</text><text x=\"100\" y=\"105\" fill=\"#15803d\" font-size=\"13\" font-family=\"sans-serif\">DO NOW</text><text x=\"300\" y=\"105\" fill=\"#0f766e\" font-size=\"13\" font-family=\"sans-serif\">SCHEDULE</text><text x=\"95\" y=\"200\" fill=\"#b45309\" font-size=\"13\" font-family=\"sans-serif\">DELEGATE</text><text x=\"320\" y=\"200\" fill=\"#334155\" font-size=\"13\" font-family=\"sans-serif\">DELETE</text></svg>",
+      "whiteboardCaption": "The Eisenhower Matrix sorts tasks into four quadrants by urgency and importance.",
+      "example": "Amina, a Lagos undergraduate, rewrites \"revise for exams\" as \"complete two past Economics papers every Saturday until exams.\" On Monday she labels tasks: submit lab report (A, due tomorrow), read next week's chapter (B), reply to group chat (C). She finishes the report first, protecting her grade.",
+      "quiz": [
+        {
+          "q": "Which is the best SMART goal?",
+          "options": [
+            "Study harder this term",
+            "Complete 20 practice questions by Friday 6pm",
+            "Do well in exams",
+            "Be more focused"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "An assignment due tomorrow that counts for 30% of your grade belongs in which Eisenhower quadrant?",
+          "options": [
+            "Urgent and Important (Do now)",
+            "Not Urgent, Important (Schedule)",
+            "Urgent, Not Important (Delegate)",
+            "Neither (Delete)"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "In A/B/C ranking, what should you do first?",
+          "options": [
+            "C tasks, they are quick",
+            "B tasks, they feel productive",
+            "A tasks, high value and near deadline",
+            "Whatever feels easiest"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What does SMART stand for?",
+          "back": "Specific, Measurable, Achievable, Relevant, Time-bound"
+        },
+        {
+          "front": "Eisenhower Matrix four actions",
+          "back": "Do now, Schedule, Delegate, Delete"
+        },
+        {
+          "front": "Urgent vs Important",
+          "back": "Urgent demands attention now; Important moves you toward your goals. They are not the same."
+        },
+        {
+          "front": "A/B/C task ranking",
+          "back": "A = high value/near deadline, B = matters but later, C = low value. Do A first."
+        }
+      ],
+      "reflection": "Which of your current tasks are merely urgent, and which are truly important to your long-term goals?",
+      "summary": "Clear SMART goals plus the Eisenhower Matrix and A/B/C ranking help you focus daily effort on what genuinely matters, not just what feels urgent.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you convert three of your vague goals for this semester into SMART goals and sort this week's tasks into the Eisenhower Matrix.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s3-planning-your-week",
+      "order": 3,
+      "title": "Planning Your Week",
+      "objectives": [
+        "Build a realistic weekly schedule using time-blocking",
+        "Allocate time for lectures, independent study, rest, and personal life",
+        "Use simple offline and digital planning tools effectively"
+      ],
+      "text": "A weekly plan turns good intentions into action. The core skill is time-blocking: dividing your week into labelled chunks of time, each assigned to one activity. Instead of a vague to-do list, you decide exactly WHEN each task happens.\n\nStart with your fixed commitments. Write down lectures, labs, work shifts, church or mosque, and family duties. These are non-negotiable anchors. Next, block independent study: aim for 2-3 focused hours per major course each week, placed near the related lecture so material stays fresh. Then protect rest, meals, sleep (7-8 hours), and personal time with friends. Rest is not wasted time; it fuels focus.\n\nWorked example: Chidi has lectures Monday-Thursday mornings. He blocks Tuesday 4-6pm for Maths revision, Wednesday 4-6pm for Chemistry, and keeps Sunday free. He leaves a 30-minute daily \"buffer\" for surprises.\n\nHow-to in five steps: 1) List fixed commitments. 2) Add study blocks. 3) Add rest and personal life. 4) Leave buffer time for the unexpected. 5) Review every Sunday and adjust.\n\nUse whatever tool you will actually check: a paper timetable pinned to your wall, a cheap notebook, or Google Calendar with colour-coded blocks and reminders. Offline paper works without data. The best planner is the one you use consistently.",
+      "voiceScript": "Let's talk about planning your whole week, not just today. The trick is called time-blocking, where you give every hour a job instead of hoping things get done. Start by writing down the things you cannot move, like lectures, labs, and work shifts. Those are your anchors. Then, around them, block two to three focused hours for each of your main courses, and try to place that study close to the lecture so it stays fresh in your mind. Now, this part matters: schedule your rest, your meals, your sleep, and time with friends on purpose. Rest is what keeps your focus sharp. Leave a little buffer each day for surprises, and every Sunday, sit down for five minutes and adjust. Use paper or Google Calendar, whichever you'll actually check.",
+      "keyPoints": [
+        "Time-blocking assigns each hour a specific job, turning intentions into a plan",
+        "Start with fixed commitments, then add study, rest, and buffer time",
+        "Schedule rest and sleep deliberately \the your pler and use the tool you'll actually check"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='white'/><text x='20' y='28' font-size='16' fill='#334155'>Weekly Time-Blocking</text><line x1='20' y1='40' x2='460' y2='40' stroke='#334155' stroke-width='2'/><rect x='20' y='55' width='120' height='30' fill='none' stroke='#0f766e' stroke-width='2'/><text x='30' y='75' font-size='12' fill='#0f766e'>Lectures (fixed)</text><rect x='20' y='95' width='120' height='30' fill='none' stroke='#15803d' stroke-width='2'/><text x='30' y='115' font-size='12' fill='#15803d'>Study blocks</text><rect x='20' y='135' width='120' height='30' fill='none' stroke='#b45309' stroke-width='2'/><text x='30' y='155' font-size='12' fill='#b45309'>Rest and life</text><rect x='20' y='175' width='120' height='30' fill='none' stroke='#334155' stroke-width='2' stroke-dasharray='4'/><text x='30' y='195' font-size='12' fill='#334155'>Buffer time</text><line x1='170' y1='55' x2='170' y2='230' stroke='#334155' stroke-width='1'/><text x='185' y='70' font-size='11' fill='#334155'>Mon</text><rect x='180' y='78' width='60' height='18' fill='#0f766e' opacity='0.7'/><rect x='180' y='100' width='60' height='18' fill='#15803d' opacity='0.7'/><rect x='180' y='122' width='60' height='18' fill='#b45309' opacity='0.7'/><text x='260' y='70' font-size='11' fill='#334155'>Tue</text><rect x='255' y='78' width='60' height='18' fill='#0f766e' opacity='0.7'/><rect x='255' y='100' width='60' height='18' fill='#15803d' opacity='0.7'/><rect x='255' y='122' width='60' height='18' fill='#b45309' opacity='0.7'/><text x='340' y='70' font-size='11' fill='#334155'>Sun</text><rect x='335' y='100' width='60' height='40' fill='#b45309' opacity='0.4'/><text x='340' y='155' font-size='10' fill='#b45309'>Free/rest</text></svg>",
+      "whiteboardCaption": "A colour-coded weekly grid showing fixed lectures, study blocks, rest, and buffer time spread across the days.",
+      "example": "Amara, a nursing student in Lagos, pins a paper timetable above her desk. She blocks clinical placement mornings, two evening study sessions per subject, Friday night for family, and a daily 30-minute buffer for transport delays. Each Sunday she reviews and shifts blocks around exams.",
+      "quiz": [
+        {
+          "q": "What is time-blocking?",
+          "options": [
+            "Deleting tasks you dislike",
+            "Dividing your week into labelled chunks assigned to specific activities",
+            "Studying only when you feel motivated",
+            "Working non-stop without breaks"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What should you schedule FIRST when planning your week?",
+          "options": [
+            "Fixed commitments like lectures and work shifts",
+            "Social media time",
+            "Leisure activities",
+            "Random study whenever"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Why include buffer time in your weekly plan?",
+          "options": [
+            "To fill empty space",
+            "To absorb unexpected delays and surprises",
+            "Because rest is unimportant",
+            "To look busy"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Time-blocking",
+          "back": "Dividing your week into labelled time chunks, each assigned to one specific activity."
+        },
+        {
+          "front": "What are 'anchors' in a weekly plan?",
+          "back": "Fixed, non-negotiable commitments like lectures, labs, and work shifts scheduled first."
+        },
+        {
+          "front": "How much study time per major course weekly?",
+          "back": "Aim for 2-3 focused hours, placed near the related lecture."
+        },
+        {
+          "front": "Best planning tool?",
+          "back": "The one you will actually check consistently, whether paper or a digital calendar."
+        }
+      ],
+      "reflection": "Which part of your week most often gets crowded out—study, rest, or personal life—and how could a buffer block protect it?",
+      "summary": "Planning your week with time-blocking means anchoring fixed commitments, then deliberately scheduling study, rest, and buffer time using a tool you'll consistently use.",
+      "discussionPrompt": "Help me build a realistic time-blocked weekly schedule around my actual lecture times, study needs, and rest, and suggest how to review it each Sunday.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-focus-and-beating-procrastination",
+      "order": 4,
+      "title": "Focus and Beating Procrastination",
+      "objectives": [
+        "Explain why procrastination happens and how to interrupt it",
+        "Apply the Pomodoro Technique and deep-work sessions to boost focus",
+        "Reduce digital distractions during study time"
+      ],
+      "text": "Procrastination is not laziness. It usually happens because a task feels boring, hard, or unclear, so your brain avoids the discomfort and grabs an easy reward instead, like scrolling your phone. To interrupt this, shrink the first step until it feels almost silly: instead of 'write my essay,' start with 'open the document and write one sentence.' This is the two-minute rule. Getting started is the hardest part; momentum does the rest.\n\nTo sustain focus, use the Pomodoro Technique. Set a timer for 25 minutes and work on one task only. When it rings, take a 5-minute break. After four rounds, take a longer 20-minute rest. Each 25-minute block is called a 'pomodoro.' Deep work means longer, distraction-free stretches (60-90 minutes) reserved for your hardest thinking, done when your energy is highest.\n\nDigital distractions are the biggest focus-killer. Try this now: put your phone in another room or on airplane mode, close all browser tabs except the one you need, and silence notifications. Write your single task on paper before starting.\n\nWorked example: You have a 3-page assignment. Break it into 'outline' (one pomodoro), 'draft page 1' (one pomodoro), and so on. Small blocks turn a scary task into simple, doable steps.",
+      "voiceScript": "Let's talk about why we put things off. Procrastination usually isn't laziness. It happens because a task feels boring, hard, or unclear, so your brain reaches for something easier, like your phone. The trick is to make the first step tiny. Don't tell yourself to write the whole essay, just open the document and write one sentence. Once you start, momentum carries you. To stay focused, try the Pomodoro Technique. Work for twenty-five minutes on one thing, then rest for five. And please, put your phone in another room while you study. It sounds small, but removing that temptation makes an enormous difference. Start tiny, protect your attention, and watch your focus grow.",
+      "keyPoints": [
+        "Procrastination is avoidance of discomfort, not laziness; shrink the first step to start",
+        "Use the Pomodoro Technique: 25 min focus, 5 min break, long break after four rounds",
+        "Remove your phone and extra tabs to protect your attention",
+        "Reserve deep-work blocks for your hardest tasks at peak energy"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='white'/><text x='20' y='30' font-size='16' fill='#0f766e' font-family='sans-serif'>Pomodoro Cycle</text><circle cx='90' cy='120' r='45' fill='none' stroke='#0f766e' stroke-width='3'/><line x1='90' y1='120' x2='90' y2='85' stroke='#b45309' stroke-width='3'/><line x1='90' y1='120' x2='115' y2='120' stroke='#b45309' stroke-width='3'/><text x='60' y='185' font-size='13' fill='#334155' font-family='sans-serif'>25 min work</text><path d='M150 120 L200 120' stroke='#15803d' stroke-width='3' marker-end='url(#a)'/><defs><marker id='a' markerWidth='8' markerHeight='8' refX='6' refY='3' orient='auto'><path d='M0,0 L6,3 L0,6 Z' fill='#15803d'/></marker></defs><rect x='210' y='100' width='70' height='40' fill='none' stroke='#15803d' stroke-width='2'/><text x='222' y='125' font-size='12' fill='#15803d' font-family='sans-serif'>5 min</text><text x='222' y='138' font-size='10' fill='#15803d' font-family='sans-serif'>break</text><path d='M280 120 L330 120' stroke='#334155' stroke-width='2' stroke-dasharray='4'/><text x='340' y='115' font-size='12' fill='#334155' font-family='sans-serif'>x4 rounds</text><text x='340' y='135' font-size='12' fill='#b45309' font-family='sans-serif'>then 20 min</text><text x='340' y='150' font-size='12' fill='#b45309' font-family='sans-serif'>long rest</text><text x='20' y='230' font-size='13' fill='#334155' font-family='sans-serif'>Phone away + one task = deep focus</text></svg>",
+      "whiteboardCaption": "A diagram showing the Pomodoro cycle: 25 minutes of work, a 5-minute break, repeated four times, then a longer rest.",
+      "example": "Amara has a chemistry lab report due Friday but keeps opening WhatsApp. She puts her phone on airplane mode in her bag, sets a 25-minute timer, and commits to only writing the introduction. After two pomodoros the report feels manageable, and she finishes a day early.",
+      "quiz": [
+        {
+          "q": "According to the session, why do people usually procrastinate?",
+          "options": [
+            "They are naturally lazy",
+            "A task feels boring, hard, or unclear, so the brain avoids discomfort",
+            "They lack intelligence",
+            "They have too much free time"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How long is a standard Pomodoro work block?",
+          "options": [
+            "10 minutes",
+            "25 minutes",
+            "60 minutes",
+            "90 minutes"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the best way to reduce digital distraction during study?",
+          "options": [
+            "Keep your phone nearby in case of messages",
+            "Put your phone away or on airplane mode and close extra tabs",
+            "Study with the TV on for company",
+            "Check social media every 5 minutes as a reward"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is the two-minute rule?",
+          "back": "Shrink a task's first step so it takes under two minutes to begin, making it easy to start."
+        },
+        {
+          "front": "What is a 'pomodoro'?",
+          "back": "A single 25-minute focused work block, followed by a short break."
+        },
+        {
+          "front": "What is deep work?",
+          "back": "A longer distraction-free stretch (60-90 min) for your hardest thinking, done at peak energy."
+        },
+        {
+          "front": "Biggest focus-killer named in this session?",
+          "back": "Digital distractions, especially the phone and social media notifications."
+        }
+      ],
+      "reflection": "Which task have you been avoiding, and what is the smallest first step you could take on it in the next two minutes?",
+      "summary": "Procrastination is avoidance of discomfort; beat it by starting tiny, using Pomodoro and deep-work blocks, and removing digital distractions.",
+      "discussionPrompt": "Help me design a personalized daily focus schedule using Pomodoro blocks around my class timetable and energy levels.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-reviewing-and-sustaining-your-system",
+      "order": 5,
+      "title": "Reviewing and Sustaining Your System",
+      "objectives": [
+        "Reflect on what is working and what needs to change in your routine",
+        "Adjust your schedule using weekly reviews",
+        "Build habits that keep your time-management system going long-term"
+      ],
+      "text": "Welcome to your final session. Great systems are not built once; they are reviewed and adjusted. The secret to lasting time management is a short, regular check-in called a weekly review.\n\nHere is a simple 15-minute weekly review you can run every Sunday evening:\n1. Look back: List what you finished and what slipped. Ask, \"What worked? What didn't?\"\n2. Diagnose: For each task that slipped, name one honest reason (too big, wrong time, distraction, overcommitted).\n3. Adjust: Change ONE thing for next week, not five. Maybe move study blocks earlier, or shrink a task.\n4. Plan ahead: Schedule your top three priorities into specific time slots.\n\nTo keep the system going, use habit stacking: attach your review to something you already do. Example: \"After Sunday dinner, I open my planner.\" Small and consistent beats big and occasional.\n\nAlso track a simple signal, like ticking a box each day you follow your plan. Aim for progress, not perfection. If you miss a day, restart the next day without guilt this is the \"never miss twice\" rule.\n\nExpect your system to evolve as exams, jobs, and seasons change. A plan that flexes survives. Review, adjust, repeat and your good habits will outlast your motivation.",
+      "voiceScript": "Congratulations, you've reached the final session. Here's the truth I want you to remember: no time-management system stays perfect on its own. The magic is in reviewing it regularly. So each week, give yourself just fifteen minutes to look back and ask two simple questions what worked, and what didn't? Then change only one small thing for the week ahead, not everything at once. To make this stick, I love attaching the review to something you already do, like Sunday dinner. And when you slip, and you will, just don't miss twice in a row. Be kind to yourself, stay curious, and let your system grow with you. You've got this.",
+      "keyPoints": [
+        "Run a 15-minute weekly review: look back, diagnose, adjust, plan",
+        "Change only ONE thing each week for sustainable improvement",
+        "Use habit stacking to anchor your review to an existing routine",
+        "Follow the 'never miss twice' rule aim for progress, not perfection"
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='240' y='28' font-family='sans-serif' font-size='17' fill='#0f766e' text-anchor='middle'>Weekly Review Cycle</text><circle cx='240' cy='150' r='80' fill='none' stroke='#334155' stroke-width='2'/><circle cx='240' cy='70' r='16' fill='none' stroke='#0f766e' stroke-width='2'/><text x='240' y='55' font-family='sans-serif' font-size='11' fill='#0f766e' text-anchor='middle'>Look back</text><circle cx='320' cy='150' r='16' fill='none' stroke='#15803d' stroke-width='2'/><text x='360' y='150' font-family='sans-serif' font-size='11' fill='#15803d' text-anchor='middle'>Diagnose</text><circle cx='240' cy='230' r='16' fill='none' stroke='#b45309' stroke-width='2'/><text x='240' y='255' font-family='sans-serif' font-size='11' fill='#b45309' text-anchor='middle'>Adjust one thing</text><circle cx='160' cy='150' r='16' fill='none' stroke='#334155' stroke-width='2'/><text x='118' y='150' font-family='sans-serif' font-size='11' fill='#334155' text-anchor='middle'>Plan ahead</text><path d='M262 82 A80 80 0 0 1 320 130' fill='none' stroke='#334155' stroke-width='2' marker-end='url(#a)'/><path d='M320 172 A80 80 0 0 1 258 224' fill='none' stroke='#334155' stroke-width='2'/><path d='M222 224 A80 80 0 0 1 160 168' fill='none' stroke='#334155' stroke-width='2'/><path d='M160 132 A80 80 0 0 1 222 78' fill='none' stroke='#334155' stroke-width='2'/></svg>",
+      "whiteboardCaption": "A four-step cycle looping every week: look back, diagnose, adjust one thing, then plan ahead.",
+      "example": "Amara, a nursing student in Lagos, runs a 15-minute review every Sunday after dinner. She noticed her 9pm study blocks kept failing because she was exhausted from clinicals. Her one adjustment: move study to 6am before the ward. That single change, not a whole new plan, doubled her completed sessions.",
+      "quiz": [
+        {
+          "q": "What is the main purpose of a weekly review?",
+          "options": [
+            "To completely rebuild your schedule each week",
+            "To reflect on what worked, diagnose problems, and adjust",
+            "To add as many new tasks as possible",
+            "To compare yourself to other students"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How many changes should you make after each weekly review?",
+          "options": [
+            "As many as possible",
+            "One small change",
+            "At least five",
+            "None, keep it fixed"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the 'never miss twice' rule encourage?",
+          "options": [
+            "Perfect daily adherence with guilt for slips",
+            "Quitting after one missed day",
+            "Restarting the next day after a slip, without guilt",
+            "Reviewing only when you feel motivated"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Weekly review",
+          "back": "A short, regular check-in to reflect on what worked, diagnose slips, adjust, and plan the week ahead."
+        },
+        {
+          "front": "Habit stacking",
+          "back": "Attaching a new habit to an existing routine, e.g. 'After Sunday dinner, I open my planner.'"
+        },
+        {
+          "front": "Never miss twice",
+          "back": "If you slip one day, restart the next day without guilt never let two misses stack up."
+        },
+        {
+          "front": "Why adjust only one thing?",
+          "back": "Small, focused changes are sustainable and easier to sustain than overhauling everything at once."
+        },
+        {
+          "front": "Progress, not perfection",
+          "back": "Aim for steady improvement over time rather than flawless adherence to your plan."
+        }
+      ],
+      "reflection": "Looking back at this course, which single habit will you commit to reviewing each week, and what routine will you anchor it to?",
+      "summary": "Sustaining time management comes from short weekly reviews and small, consistent adjustments look back, diagnose, change one thing, and plan ahead, anchoring the habit to your existing routine.",
+      "discussionPrompt": "Help me design a personalized 15-minute weekly review checklist based on my current schedule and the biggest time-management challenge I face.",
+      "sizeKB": 4
+    }
+  ],
+  "spec": {
+    "topic": "Time Management for Students",
+    "audience": "University students",
+    "hours": 3,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783136309803,
+  "updatedAt": 1783136309803
+}

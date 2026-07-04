@@ -1,0 +1,518 @@
+{
+  "courseId": "orig-effective-study-skills-for-university-success",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Effective Study Skills for University Success",
+  "subtitle": "Learn how to study smarter, remember more, and manage your time",
+  "category": "Academic Skills & Learning",
+  "level": "Beginner",
+  "audience": "University students",
+  "estimatedHours": 3,
+  "description": "This practical, evidence-based course helps university students build the study habits that actually work. Instead of relying on cramming and re-reading, you will learn proven techniques from cognitive science, such as active recall, spaced repetition, and focused time management. Designed to be mobile and offline friendly, each short session gives you tools you can apply immediately to your courses, whether you study from a phone, printed notes, or a shared library computer.",
+  "outcomes": [
+    "Explain why passive study methods fail and why active learning works better",
+    "Apply active recall and spaced repetition to memorize and retain course material",
+    "Create a realistic weekly study schedule using time-management techniques",
+    "Use effective note-taking methods to capture and organize information",
+    "Design a personal study environment and routine that reduces distraction and boosts focus",
+    "Evaluate and adjust your own study habits using self-testing and reflection"
+  ],
+  "competencies": [
+    "Applies active recall and spaced repetition to retain course material",
+    "Plans and manages study time using structured scheduling techniques",
+    "Takes and organizes effective notes for revision",
+    "Creates a focused study environment and prepares systematically for exams"
+  ],
+  "nextCourse": "Critical Thinking and Academic Writing",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "Which study method is most effective for long-term memory?",
+        "options": [
+          "Re-reading notes many times",
+          "Highlighting textbooks",
+          "Testing yourself from memory",
+          "Listening to music while reading"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "What does 'spaced repetition' mean?",
+        "options": [
+          "Studying everything in one long session",
+          "Reviewing material at increasing intervals over time",
+          "Repeating a word out loud many times",
+          "Taking long breaks between courses"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is the main problem with cramming the night before an exam?",
+        "options": [
+          "It is too relaxing",
+          "Information is quickly forgotten after the exam",
+          "It improves deep understanding",
+          "It saves too much time"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Why does active recall improve learning more than re-reading?",
+        "options": [
+          "It takes less effort",
+          "It forces your brain to retrieve information, strengthening memory",
+          "It lets you avoid testing yourself",
+          "It works only for maths"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which schedule best reflects spaced repetition?",
+        "options": [
+          "Review once the night before the exam",
+          "Review the same material every hour for a day",
+          "Review after 1 day, then 3 days, then a week",
+          "Never review after the first reading"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "What is a key benefit of the Pomodoro (short focused blocks) technique?",
+        "options": [
+          "It removes all need for breaks",
+          "It helps maintain focus and reduce procrastination",
+          "It requires expensive apps",
+          "It only works for group study"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "The Cornell method is primarily a technique for what?",
+        "options": [
+          "Managing exam stress",
+          "Organizing and reviewing notes",
+          "Building a study timetable",
+          "Choosing a study location"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which action best supports a low-distraction study environment?",
+        "options": [
+          "Keeping your phone notifications on for motivation",
+          "Studying in a noisy area to stay alert",
+          "Silencing your phone and setting a dedicated study space",
+          "Multitasking across several subjects at once"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-how-learning-really-works",
+      "order": 1,
+      "title": "How Learning Really Works",
+      "objectives": [
+        "Explain the difference between passive and active learning",
+        "Describe how memory forms and why we forget",
+        "Identify common study myths to avoid"
+      ],
+      "text": "Learning is not about how many hours you sit with a book, but what your brain actually does during that time. Passive learning means simply re-reading notes, highlighting, or watching a lecture without effort. It feels easy and familiar, but that feeling is a trap: your brain stores little. Active learning means forcing your brain to retrieve and use information, which builds strong memory.\n\nMemory forms in three steps: encoding (taking information in), storage (holding it), and retrieval (pulling it back out). Every time you retrieve something from memory, that memory grows stronger. We forget because memories that are never retrieved fade, following the 'forgetting curve' described by Hermann Ebbinghaus.\n\nTry this now: after reading a page, close the book and write down everything you remember from memory. This is called retrieval practice, and it beats re-reading. Then space your review across days rather than cramming.\n\nAvoid three common myths. Myth one: highlighting means learning (it does not; it is passive). Myth two: 're-reading equals mastery' (fluency feels like knowing, but is not). Myth three: 'learning styles' (there is no strong evidence that matching material to a 'visual' or 'auditory' style improves results). Choose active, spaced strategies instead.",
+      "voiceScript": "Let me share something that changed how I study. Learning isn't about the hours you spend staring at a page, it's about what your brain is actually doing. When you just re-read or highlight, it feels comfortable, but your brain is barely working, so you forget quickly. The real magic happens when you make your brain retrieve information. So after you read a section, close the book and try to recall everything you can from memory. It feels harder, and that struggle is exactly what strengthens the memory. Then spread your review over several days instead of cramming the night before. And please, don't trust highlighting or the idea of fixed learning styles. Work with your brain, and studying gets easier.",
+      "keyPoints": [
+        "Active learning (retrieval) builds memory; passive re-reading feels easy but teaches little",
+        "Memory works in three stages: encode, store, retrieve — and retrieving strengthens it",
+        "We forget unreviewed material along the 'forgetting curve'; spacing review fights this",
+        "Ignore myths: highlighting, re-reading, and fixed 'learning styles' don't boost mastery"
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' font-size='16' fill='#0f766e'>How Memory Works</text><rect x='20' y='60' width='90' height='40' fill='none' stroke='#15803d' stroke-width='2'/><text x='30' y='85' font-size='12' fill='#334155'>Encode</text><line x1='110' y1='80' x2='160' y2='80' stroke='#334155' stroke-width='2'/><rect x='160' y='60' width='90' height='40' fill='none' stroke='#15803d' stroke-width='2'/><text x='172' y='85' font-size='12' fill='#334155'>Store</text><line x1='250' y1='80' x2='300' y2='80' stroke='#334155' stroke-width='2'/><rect x='300' y='60' width='90' height='40' fill='none' stroke='#15803d' stroke-width='2'/><text x='308' y='85' font-size='12' fill='#334155'>Retrieve</text><path d='M300 80 C 340 40, 120 40, 65 60' fill='none' stroke='#b45309' stroke-width='2' stroke-dasharray='4'/><text x='150' y='38' font-size='11' fill='#b45309'>retrieval strengthens memory</text><text x='20' y='150' font-size='14' fill='#0f766e'>Forgetting Curve</text><path d='M30 240 C 90 175, 200 170, 440 168' fill='none' stroke='#334155' stroke-width='2'/><line x1='30' y1='160' x2='30' y2='240' stroke='#334155' stroke-width='2'/><line x1='30' y1='240' x2='440' y2='240' stroke='#334155' stroke-width='2'/><text x='60' y='210' font-size='11' fill='#b45309'>memory fades without review</text></svg>",
+      "whiteboardCaption": "A diagram showing memory's three stages (encode, store, retrieve) and the forgetting curve that declines without review.",
+      "example": "Amaka has a biology exam in two weeks. Instead of re-reading her notes five times the night before, she reads a topic once, then closes her notebook and writes down everything she recalls. She repeats this quick recall every two days. By exam day, she remembers far more than her friend who highlighted the whole textbook in one long night.",
+      "quiz": [
+        {
+          "q": "Which activity is an example of active learning?",
+          "options": [
+            "Highlighting your textbook in bright colors",
+            "Closing the book and writing what you recall",
+            "Re-reading the chapter three times",
+            "Listening to a lecture while relaxing"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why do we forget information over time?",
+          "options": [
+            "The brain runs out of storage space",
+            "Memories that are never retrieved fade",
+            "Sleep erases new memories",
+            "Only visual learners forget quickly"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a common study myth to avoid?",
+          "options": [
+            "Spacing review across several days",
+            "Practising retrieval from memory",
+            "Matching study to your 'learning style' improves results",
+            "Testing yourself before an exam"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What are the three stages of memory formation?",
+          "options": [
+            "Read, highlight, repeat",
+            "Encode, store, retrieve",
+            "Listen, watch, relax",
+            "Cram, sleep, forget"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Passive learning",
+          "back": "Low-effort study like re-reading or highlighting that feels easy but stores little"
+        },
+        {
+          "front": "Retrieval practice",
+          "back": "Actively recalling information from memory, which strengthens it more than re-reading"
+        },
+        {
+          "front": "Forgetting curve",
+          "back": "Ebbinghaus's finding that memories fade over time unless reviewed"
+        },
+        {
+          "front": "Learning styles myth",
+          "back": "The unsupported idea that matching material to a 'visual/auditory' style improves learning"
+        }
+      ],
+      "reflection": "Think about your last exam: how much of your study time was passive re-reading versus active recall, and what could you change?",
+      "summary": "Learning sticks when you actively retrieve and space your review, not when you passively re-read; understanding how memory encodes, stores, and forgets helps you choose smarter strategies.",
+      "discussionPrompt": "Help me design a one-week retrieval-practice and spaced-review schedule for a subject I'm currently studying.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-active-recall-and-spaced-repetition",
+      "order": 2,
+      "title": "Active Recall and Spaced Repetition",
+      "objectives": [
+        "Apply active recall to test yourself without looking at notes",
+        "Plan a spaced repetition schedule for retaining material",
+        "Create simple flashcards or self-quiz questions"
+      ],
+      "text": "Rereading notes feels productive but tricks you: recognizing words is not the same as remembering them. Two techniques fix this.\n\nActive recall means retrieving information from memory instead of looking at it. After reading a page, close your notes and write or say everything you remember. Then check for gaps. The struggle to recall is what strengthens the memory.\n\nHow to do it now: turn every heading in your notes into a question. \"Photosynthesis\" becomes \"What are the inputs and outputs of photosynthesis?\" Answer aloud from memory before checking.\n\nSpaced repetition means reviewing material at increasing intervals rather than cramming once. Each time you nearly forget and then recall, the memory lasts longer. A simple schedule: review after 1 day, then 3 days, then 7 days, then 14 days.\n\nWorked example: Make a flashcard. Front: \"Define active recall.\" Back: \"Retrieving information from memory without looking.\" Test yourself; if correct, push it to a longer interval; if wrong, review it sooner.\n\nCombine both: create self-quiz questions or flashcards (paper or free apps like Anki), then quiz yourself on a spaced schedule. Twenty focused minutes daily beats a five-hour panic session before the exam, and the knowledge actually stays with you.",
+      "voiceScript": "Let me share the two most powerful study habits I know. The first is active recall. Instead of rereading your notes, close them and try to pull the information out of your own memory. That little bit of struggle is exactly what makes the memory stick. So turn your headings into questions and answer them out loud before you peek. The second is spaced repetition. Rather than cramming everything the night before, review the same material after one day, then three, then a week, then two weeks. Each time you almost forget and recall it, the memory grows stronger. Put them together with simple flashcards, quiz yourself on a schedule, and watch how much more you remember.",
+      "keyPoints": [
+        "Active recall = retrieve from memory, don't just reread",
+        "Turn headings into questions and answer before checking",
+        "Space reviews at widening intervals: day 1, 3, 7, 14",
+        "Flashcards + a schedule beat last-minute cramming"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" fill=\"#0f766e\" font-size=\"17\" font-weight=\"bold\">Active Recall + Spaced Repetition</text><rect x=\"20\" y=\"48\" width=\"130\" height=\"50\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"32\" y=\"70\" fill=\"#334155\" font-size=\"12\">Close notes,</text><text x=\"32\" y=\"88\" fill=\"#334155\" font-size=\"12\">recall answer</text><path d=\"M150 73 L185 73\" stroke=\"#b45309\" stroke-width=\"2\" marker-end=\"url(#a)\"/><rect x=\"185\" y=\"48\" width=\"120\" height=\"50\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"197\" y=\"70\" fill=\"#334155\" font-size=\"12\">Check gaps,</text><text x=\"197\" y=\"88\" fill=\"#334155\" font-size=\"12\">fix mistakes</text><text x=\"20\" y=\"135\" fill=\"#0f766e\" font-size=\"13\" font-weight=\"bold\">Review intervals:</text><line x1=\"40\" y1=\"210\" x2=\"440\" y2=\"210\" stroke=\"#334155\" stroke-width=\"2\"/><circle cx=\"70\" cy=\"210\" r=\"6\" fill=\"#b45309\"/><text x=\"55\" y=\"235\" fill=\"#334155\" font-size=\"12\">Day 1</text><circle cx=\"160\" cy=\"210\" r=\"6\" fill=\"#b45309\"/><text x=\"145\" y=\"235\" fill=\"#334155\" font-size=\"12\">Day 3</text><circle cx=\"280\" cy=\"210\" r=\"6\" fill=\"#b45309\"/><text x=\"265\" y=\"235\" fill=\"#334155\" font-size=\"12\">Day 7</text><circle cx=\"420\" cy=\"210\" r=\"6\" fill=\"#b45309\"/><text x=\"398\" y=\"235\" fill=\"#334155\" font-size=\"12\">Day 14</text><text x=\"120\" y=\"185\" fill=\"#15803d\" font-size=\"11\">gaps widen as memory strengthens</text><defs><marker id=\"a\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6\" fill=\"#b45309\"/></marker></defs></svg>",
+      "whiteboardCaption": "A flow from recalling to checking gaps, above a timeline showing review points spaced at days 1, 3, 7 and 14.",
+      "example": "Ada studies biology for her exam at the University of Lagos. Instead of rereading her notes five times, she writes ten question flashcards after each lecture. She quizzes herself the next day, again three days later, then a week later. By exam time she recalls the material in seconds while classmates who crammed struggle to remember what they read the night before.",
+      "quiz": [
+        {
+          "q": "What is active recall?",
+          "options": [
+            "Rereading notes several times",
+            "Retrieving information from memory without looking",
+            "Highlighting key sentences",
+            "Listening to a recorded lecture"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why does spaced repetition work better than cramming?",
+          "options": [
+            "It uses more colourful notes",
+            "Recalling just before forgetting strengthens memory over time",
+            "It requires expensive apps",
+            "It avoids testing yourself"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a good spaced review schedule?",
+          "options": [
+            "Every hour for one day",
+            "Day 1, then 3, then 7, then 14",
+            "Only the night before the exam",
+            "Once per month"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Active recall",
+          "back": "Retrieving information from memory without looking at your notes."
+        },
+        {
+          "front": "Spaced repetition",
+          "back": "Reviewing material at increasing intervals to boost long-term memory."
+        },
+        {
+          "front": "Why is rereading misleading?",
+          "back": "Recognizing familiar words isn't the same as being able to recall them."
+        },
+        {
+          "front": "How to make a self-quiz question",
+          "back": "Turn each note heading into a question and answer it from memory first."
+        },
+        {
+          "front": "Simple review schedule",
+          "back": "Review after 1 day, 3 days, 7 days, then 14 days."
+        }
+      ],
+      "reflection": "Which subject do you currently reread the most, and how could you convert its notes into recall questions this week?",
+      "summary": "Active recall (testing yourself from memory) and spaced repetition (reviewing at widening intervals) are the most effective, evidence-based ways to remember material long-term.",
+      "discussionPrompt": "Help me build a two-week spaced repetition plan with flashcards for a course I'm studying, and suggest how to handle cards I keep getting wrong.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-time-management-and-planning",
+      "order": 3,
+      "title": "Time Management and Planning",
+      "objectives": [
+        "Create a realistic weekly study timetable",
+        "Apply prioritization to balance courses and deadlines",
+        "Use short focused study blocks to avoid procrastination"
+      ],
+      "text": "Good time management means deciding in advance when and what you will study, then protecting that time. Start by mapping your fixed commitments: lectures, labs, work, meals, prayer, transport. Whatever gaps remain are your study slots.\n\nStep 1: Time-blocking. On a weekly grid (7 days x hours), write your fixed activities first, then assign specific subjects to specific blocks. Example: Monday 6-8pm = Statistics problems; Tuesday 4-6pm = read Biology chapter. A scheduled block is a promise to yourself.\n\nStep 2: Prioritize using urgency and importance. List tasks, then label each: A (due soon AND heavily weighted), B (important but not urgent), C (low stakes). Do A tasks first. A quiz worth 30% next week beats tidying notes.\n\nStep 3: Beat procrastination with the Pomodoro method. Work in focused 25-minute blocks, then take a 5-minute break. After four blocks, take a longer 20-minute rest. The short timer makes starting feel easy and keeps concentration sharp.\n\nWorked example: You have 3 free hours tonight. Block them as four Pomodoros: two on your urgent Statistics assignment (A), one reviewing Biology (B), one flexible. Set a phone timer, silence notifications, and begin. Steady, planned effort always beats last-minute cramming.",
+      "voiceScript": "Let me show you how to take control of your week. First, I write down everything that's already fixed, my lectures, my job, meals, travel, and I look at the empty gaps that are left. Those gaps become my study blocks, and I give each one a specific subject, because a vague plan to just study never works. Then I ask myself, what's both urgent and important? I do those tasks first. And when I actually sit down, I use a simple timer, twenty-five minutes of real focus, then a short break. Starting feels easy that way, and I make steady progress instead of panicking the night before. Try planning just tomorrow.",
+      "keyPoints": [
+        "Block fixed commitments first, then assign specific subjects to the empty time slots",
+        "Prioritize tasks A/B/C by urgency and importance, and do the A tasks first",
+        "Use 25-minute Pomodoro blocks with 5-minute breaks to start easily and stay focused",
+        "Steady planned study beats last-minute cramming"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"14\" y=\"24\" font-family=\"sans-serif\" font-size=\"15\" fill=\"#0f766e\">Weekly Time-Block</text><rect x=\"14\" y=\"36\" width=\"210\" height=\"200\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"14\" y1=\"76\" x2=\"224\" y2=\"76\" stroke=\"#334155\"/><line x1=\"14\" y1=\"116\" x2=\"224\" y2=\"116\" stroke=\"#334155\"/><line x1=\"14\" y1=\"156\" x2=\"224\" y2=\"156\" stroke=\"#334155\"/><line x1=\"14\" y1=\"196\" x2=\"224\" y2=\"196\" stroke=\"#334155\"/><line x1=\"119\" y1=\"36\" x2=\"119\" y2=\"236\" stroke=\"#334155\"/><text x=\"22\" y=\"62\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#15803d\">Mon 6pm</text><text x=\"127\" y=\"62\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">Stats</text><text x=\"22\" y=\"102\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#15803d\">Tue 4pm</text><text x=\"127\" y=\"102\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">Biology</text><text x=\"22\" y=\"142\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#15803d\">Wed 5pm</text><text x=\"127\" y=\"142\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">Review</text><text x=\"250\" y=\"60\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0f766e\">Pomodoro</text><circle cx=\"300\" cy=\"120\" r=\"42\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><path d=\"M300 120 L300 84\" stroke=\"#b45309\" stroke-width=\"3\"/><path d=\"M300 120 L326 132\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"268\" y=\"182\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">25 min + 5 break</text><text x=\"250\" y=\"212\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">Priority: A B C</text></svg>",
+      "whiteboardCaption": "A weekly grid with subjects blocked into time slots beside a 25-minute Pomodoro timer and A-B-C priority labels.",
+      "example": "Amara has a chemistry test Friday and a group project due next week. She blocks Tuesday and Wednesday evenings (6-8pm) for chemistry as A tasks, and Saturday morning for the project as a B task. Each evening she runs three Pomodoros, silencing WhatsApp, and walks into Friday's test calm and prepared.",
+      "quiz": [
+        {
+          "q": "What should you schedule FIRST when building a weekly timetable?",
+          "options": [
+            "Your fixed commitments like lectures and work",
+            "Your least favourite subject",
+            "Social activities",
+            "Break times only"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "In A/B/C prioritization, which task should you do first?",
+          "options": [
+            "The easiest task",
+            "A task that is both urgent and heavily weighted",
+            "The task you enjoy most",
+            "Any task chosen at random"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How long is one standard Pomodoro focus block?",
+          "options": [
+            "5 minutes",
+            "60 minutes",
+            "25 minutes",
+            "90 minutes"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Time-blocking",
+          "back": "Assigning specific subjects or tasks to specific slots in your weekly schedule."
+        },
+        {
+          "front": "Pomodoro method",
+          "back": "Working in focused 25-minute blocks with 5-minute breaks; a longer rest after four blocks."
+        },
+        {
+          "front": "A/B/C prioritization",
+          "back": "Labelling tasks by urgency and importance so you tackle the most critical (A) first."
+        },
+        {
+          "front": "Why plan before studying?",
+          "back": "A scheduled block is a promise that turns vague intentions into steady, reliable progress."
+        }
+      ],
+      "reflection": "Which time of day are you most focused, and how could you protect that slot for your most important (A) tasks?",
+      "summary": "Plan your week by blocking fixed commitments first, filling gaps with specific subjects, prioritizing tasks A/B/C, and studying in short focused Pomodoro blocks to make steady progress.",
+      "discussionPrompt": "Help me turn my real class schedule and this week's deadlines into a realistic time-blocked timetable with A/B/C priorities.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-note-taking-and-organizing-information",
+      "order": 4,
+      "title": "Note-Taking and Organizing Information",
+      "objectives": [
+        "Compare note-taking methods such as Cornell and mind mapping",
+        "Apply a note-taking method to a lecture or reading",
+        "Organize notes for easy review and self-testing"
+      ],
+      "text": "Good notes do two jobs: they capture ideas during a lecture and help you revise afterward. Let's compare two proven systems.\n\nThe Cornell method divides your page into three zones. Draw a vertical line about 6cm from the left, creating a narrow \"cue\" column and a wide \"notes\" column. Leave a summary strip at the bottom. During class, write main ideas in the wide column. Afterward, fill the cue column with questions or keywords, and write a two-line summary at the bottom. This structure builds self-testing right in: cover the notes, read a cue, and try to recall.\n\nMind mapping suits linked or visual topics. Put the main topic in a central circle, then branch out to subtopics, and branch again to details. Use colour and short phrases. It shows relationships that linear notes hide.\n\nHow to apply it now: Take today's lecture. If it's structured and fact-heavy (like law or biology), use Cornell. If it's about connected concepts (like a historical cause-and-effect), map it.\n\nAlways use abbreviations (e.g., \"govt\", arrows for \"leads to\"), and review within 24 hours while memory is fresh. Turning cues into quiz questions converts passive notes into active study material.",
+      "voiceScript": "Let me show you how great notes actually work. They do two things: capture ideas while you listen, and help you revise later. My favourite system is the Cornell method. You simply divide your page into a narrow column on the left, a wide column on the right, and a summary strip at the bottom. During the lecture you write main points on the right. Afterwards, you add questions in the left column and a short summary below. Now you can cover the notes, read a question, and test yourself. For topics full of connections, try mind mapping instead, branching outward from one central idea. Whatever you choose, use abbreviations and review within a day while it's fresh.",
+      "keyPoints": [
+        "Cornell notes create built-in self-testing with cue questions and summaries",
+        "Mind maps reveal relationships between connected ideas",
+        "Match the method to the material: linear facts vs linked concepts",
+        "Review within 24 hours and turn cues into quiz questions"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><rect x='20' y='20' width='200' height='200' fill='none' stroke='#334155' stroke-width='2'/><line x1='80' y1='20' x2='80' y2='180' stroke='#0f766e' stroke-width='2'/><line x1='20' y1='180' x2='220' y2='180' stroke='#b45309' stroke-width='2'/><text x='30' y='45' font-size='11' fill='#0f766e'>Cues</text><text x='110' y='45' font-size='11' fill='#334155'>Notes</text><text x='30' y='200' font-size='11' fill='#b45309'>Summary</text><text x='90' y='245' font-size='12' fill='#334155'>Cornell</text><circle cx='360' cy='90' r='30' fill='none' stroke='#15803d' stroke-width='2'/><text x='340' y='94' font-size='11' fill='#15803d'>Topic</text><line x1='388' y1='75' x2='430' y2='55' stroke='#0f766e' stroke-width='2'/><line x1='388' y1='105' x2='430' y2='130' stroke='#0f766e' stroke-width='2'/><line x1='332' y1='105' x2='300' y2='135' stroke='#0f766e' stroke-width='2'/><circle cx='435' cy='52' r='8' fill='none' stroke='#b45309' stroke-width='2'/><circle cx='435' cy='133' r='8' fill='none' stroke='#b45309' stroke-width='2'/><circle cx='295' cy='138' r='8' fill='none' stroke='#b45309' stroke-width='2'/><text x='330' y='245' font-size='12' fill='#334155'>Mind Map</text></svg>",
+      "whiteboardCaption": "A Cornell page layout beside a branching mind map, showing two ways to structure notes.",
+      "example": "During a crowded 8am Economics lecture, Amara splits her notebook Cornell-style. She jots supply-and-demand points on the right. That evening she writes cue questions like \"What shifts a demand curve?\" on the left and a one-line summary below, then quizzes herself before her group study meets.",
+      "quiz": [
+        {
+          "q": "What is the purpose of the cue column in Cornell notes?",
+          "options": [
+            "To write the date and title",
+            "To hold questions and keywords for self-testing",
+            "To draw diagrams",
+            "To copy the textbook word-for-word"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which note-taking method best suits showing cause-and-effect relationships between ideas?",
+          "options": [
+            "Mind mapping",
+            "Verbatim transcription",
+            "Highlighting only",
+            "Alphabetical listing"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "When should you ideally review new notes for best retention?",
+          "options": [
+            "Only before the exam",
+            "Within 24 hours",
+            "After one month",
+            "Never, if they're neat"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What are the three zones of a Cornell page?",
+          "back": "A narrow cue column, a wide notes column, and a summary strip at the bottom."
+        },
+        {
+          "front": "When is mind mapping most useful?",
+          "back": "For connected or visual topics where relationships between ideas matter."
+        },
+        {
+          "front": "How do Cornell notes enable self-testing?",
+          "back": "Cover the notes, read a cue question, and try to recall the answer."
+        },
+        {
+          "front": "Why use abbreviations while taking notes?",
+          "back": "They let you capture ideas quickly without falling behind the speaker."
+        }
+      ],
+      "reflection": "Which of your current courses would benefit most from Cornell notes, and which from mind mapping, and why?",
+      "summary": "Choose a note-taking method that fits your material—Cornell for structured facts, mind maps for connected ideas—and organize notes for quick review and self-testing within 24 hours.",
+      "discussionPrompt": "Help me redesign my messy lecture notes from one course into a Cornell layout with good cue questions I can quiz myself on.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-focus-environment-and-exam-preparation",
+      "order": 5,
+      "title": "Focus, Environment, and Exam Preparation",
+      "objectives": [
+        "Design a low-distraction study environment",
+        "Apply strategies to manage stress and stay focused",
+        "Plan an effective exam revision timetable"
+      ],
+      "text": "Welcome to the final session, where we bring your study skills together for exam success. Start with your environment. A low-distraction space has good light, a clear desk, and your phone silenced in another room or set to Do Not Disturb. If your hostel is noisy, try the library or an empty lecture hall, and keep only what you need for the current subject in front of you.\n\nNext, protect your focus using the Pomodoro technique: study for 25 minutes, then rest 5 minutes; after four rounds, take a longer 20-minute break. This trains concentration and reduces burnout. When worry creeps in, use box breathing: inhale 4 seconds, hold 4, exhale 4, hold 4. Repeat four times to calm exam stress.\n\nNow plan your revision. Count the days until each exam, list every topic, and rate each one from 1 (weak) to 3 (strong). Give weak topics more slots. Build a simple weekly timetable, blocking two-hour sessions with breaks, and always practise past questions under timed conditions.\n\nWorked example: with 10 days to a Statistics exam and 5 topics, revise two topics daily using active recall, then spend the final two days on full past papers. Sleep well before the exam \\u2014 rest beats last-minute cramming.",
+      "voiceScript": "Congratulations on reaching our final session. Let me leave you with the habits that pull everything together. First, shape your space: a tidy desk, good light, and your phone out of sight make focus so much easier. When your mind starts to drift, try studying in short bursts, maybe twenty-five minutes of real work followed by a five-minute rest. It's amazing how much you get done. If exam nerves rise, slow your breathing, in for four, hold for four, out for four, and feel yourself settle. Then plan backwards from each exam date, giving your weakest topics the most time, and practise real past questions under the clock. Sleep well, trust your preparation, and walk in calm.",
+      "keyPoints": [
+        "A tidy, phone-free, well-lit space removes most distractions before you start",
+        "Use the Pomodoro method (25 min work, 5 min rest) to sustain focus",
+        "Calm exam stress with box breathing: inhale, hold, exhale, hold, 4 seconds each",
+        "Plan revision backwards from the exam date, giving weak topics more time and practising past papers"
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' font-size='16' fill='#0f766e'>Focus and Exam Prep</text><rect x='20' y='50' width='130' height='80' rx='6' fill='none' stroke='#334155' stroke-width='2'/><text x='34' y='75' font-size='11' fill='#334155'>Clean desk</text><line x1='34' y1='90' x2='136' y2='90' stroke='#15803d' stroke-width='2'/><circle cx='120' cy='110' r='10' fill='none' stroke='#b45309' stroke-width='2'/><line x1='114' y1='110' x2='126' y2='110' stroke='#b45309' stroke-width='2'/><text x='30' y='125' font-size='9' fill='#b45309'>phone off</text><circle cx='250' cy='90' r='38' fill='none' stroke='#0f766e' stroke-width='3'/><text x='232' y='86' font-size='11' fill='#0f766e'>25 min</text><text x='236' y='100' font-size='9' fill='#15803d'>focus</text><path d='M250 52 A38 38 0 0 1 285 78' fill='none' stroke='#b45309' stroke-width='4'/><text x='330' y='60' font-size='11' fill='#334155'>Breathe 4-4-4-4</text><rect x='330' y='70' width='16' height='16' fill='none' stroke='#15803d' stroke-width='2'/><rect x='352' y='70' width='16' height='16' fill='none' stroke='#15803d' stroke-width='2'/><rect x='374' y='70' width='16' height='16' fill='none' stroke='#15803d' stroke-width='2'/><text x='20' y='170' font-size='12' fill='#0f766e'>Revision timetable</text><line x1='20' y1='180' x2='460' y2='180' stroke='#334155' stroke-width='2'/><rect x='20' y='190' width='90' height='30' fill='none' stroke='#b45309' stroke-width='2'/><text x='30' y='209' font-size='9' fill='#b45309'>weak topic</text><rect x='120' y='190' width='60' height='30' fill='none' stroke='#15803d' stroke-width='2'/><text x='128' y='209' font-size='9' fill='#15803d'>strong</text><rect x='190' y='190' width='90' height='30' fill='none' stroke='#0f766e' stroke-width='2'/><text x='200' y='209' font-size='9' fill='#0f766e'>past papers</text></svg>",
+      "whiteboardCaption": "A study setup showing a clean phone-free desk, the 25-minute focus cycle, box breathing, and a revision timetable weighted toward weak topics.",
+      "example": "Amina at the University of Lagos has 10 days before her Statistics exam and five topics. She rates probability as weak, so she gives it extra Pomodoro sessions, silences her phone in the library, and spends the final two days doing past papers under timed conditions instead of cramming overnight.",
+      "quiz": [
+        {
+          "q": "What is the standard Pomodoro focus-and-break pattern?",
+          "options": [
+            "60 minutes work, 15 minutes rest",
+            "25 minutes work, 5 minutes rest",
+            "90 minutes work, no rest",
+            "10 minutes work, 30 minutes rest"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "When building a revision timetable, which topics should get the most time?",
+          "options": [
+            "The topics you already know best",
+            "The topics rated weakest",
+            "Only the last topic taught",
+            "Whichever is most enjoyable"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the best way to reduce distraction while studying in a noisy hostel?",
+          "options": [
+            "Keep the phone nearby for quick breaks",
+            "Move to a quiet library and silence your phone",
+            "Study with the TV on for company",
+            "Wait until everyone is asleep to start"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Pomodoro technique",
+          "back": "Study in 25-minute focused blocks with 5-minute breaks; take a longer break after four rounds."
+        },
+        {
+          "front": "Box breathing",
+          "back": "Inhale 4s, hold 4s, exhale 4s, hold 4s \focfoc."
+        },
+        {
+          "front": "How to prioritise revision topics",
+          "back": "Rate each topic 1 (weak) to 3 (strong) and give weak topics more study slots."
+        },
+        {
+          "front": "Best exam-eve strategy",
+          "back": "Sleep well and trust your preparation; rest beats last-minute cramming."
+        }
+      ],
+      "reflection": "Which single distraction most disrupts your study, and what concrete change will you make this week to remove it?",
+      "summary": "Design a clean, phone-free study space, protect focus with short timed sessions and calm breathing, and plan revision backwards from each exam date so your weakest topics get the most practice.",
+      "discussionPrompt": "Help me build a personalised 10-day revision timetable for my upcoming exams, weighted toward my weakest topics and including past-paper practice.",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Effective Study Skills",
+    "audience": "University students",
+    "hours": 3,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783136125279,
+  "updatedAt": 1783136125279
+}

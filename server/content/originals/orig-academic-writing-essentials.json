@@ -1,0 +1,503 @@
+{
+  "courseId": "orig-academic-writing-essentials",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Academic Writing Essentials",
+  "subtitle": "Write clear, credible, and well-structured university papers",
+  "category": "Academic Skills",
+  "level": "Beginner",
+  "audience": "University students",
+  "estimatedHours": 5,
+  "description": "This beginner-friendly course helps university students build the core skills needed to write strong academic papers. Through practical, mobile-friendly sessions, you will learn how to understand assignments, structure your writing, build clear arguments, use sources responsibly, and edit your work to a polished standard. Designed for African university contexts, the course uses relatable examples and short activities you can complete offline, on any device.",
+  "outcomes": [
+    "Explain the key features and expectations of academic writing.",
+    "Analyze an assignment prompt to identify its task, scope, and audience.",
+    "Construct a clear thesis statement and well-organized paragraphs.",
+    "Apply basic citation and referencing to avoid plagiarism.",
+    "Evaluate and revise a draft for clarity, coherence, and grammar."
+  ],
+  "competencies": [
+    "Interpreting assignment prompts to plan focused responses",
+    "Structuring essays with a clear thesis and organized paragraphs",
+    "Citing and referencing sources with academic integrity",
+    "Self-editing drafts for clarity, coherence, and correctness"
+  ],
+  "nextCourse": "Research and Critical Thinking Skills",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What is the main purpose of academic writing?",
+        "options": [
+          "To entertain readers with stories",
+          "To present ideas and arguments supported by evidence",
+          "To share personal opinions casually",
+          "To advertise a product or service"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "In an assignment, the word 'analyze' mainly asks you to:",
+        "options": [
+          "List facts without comment",
+          "Break something down and examine its parts",
+          "Summarize in one sentence",
+          "Copy the textbook definition"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these best helps you avoid plagiarism?",
+        "options": [
+          "Changing one or two words in a sentence",
+          "Citing the sources you use",
+          "Removing all references",
+          "Writing quickly from memory"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "A key feature of academic tone is that it is:",
+        "options": [
+          "Emotional and personal",
+          "Formal and evidence-based",
+          "Full of slang",
+          "Written in the first person only"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A strong thesis statement should be:",
+        "options": [
+          "Vague and general",
+          "Clear and arguable",
+          "A simple factual observation",
+          "A list of unrelated topics"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "The point-evidence-explain method is used to:",
+        "options": [
+          "Format a title page",
+          "Build well-developed paragraphs",
+          "Create a bibliography",
+          "Choose a font"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "When you put a source's idea into your own words, you should still:",
+        "options": [
+          "Ignore the original author",
+          "Cite the source",
+          "Use quotation marks only",
+          "Avoid mentioning it"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "The best final step before submitting a paper is to:",
+        "options": [
+          "Add more words to reach the limit",
+          "Edit and proofread for clarity and errors",
+          "Delete the introduction",
+          "Change the topic"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-what-makes-writing-academic",
+      "order": 1,
+      "title": "What Makes Writing Academic",
+      "objectives": [
+        "Describe the purpose and audience of academic writing.",
+        "Distinguish academic tone from casual or informal writing.",
+        "Recognize common academic genres such as essays and reports."
+      ],
+      "text": "Academic writing is how scholars share ideas backed by evidence. Its purpose is to inform, analyse, or argue a point clearly, and its audience is usually lecturers, examiners, or fellow researchers who expect precision. Four features define it:\n\n1. Formality: avoid slang, contractions, and chatty phrases. Instead of \"kids can't cope,\" write \"children struggle to cope.\"\n2. Objectivity: focus on evidence, not personal feelings. Replace \"I think exams are unfair\" with \"Research suggests exams may disadvantage certain learners (Adeyemi, 2021).\"\n3. Evidence: support claims with data, citations, or examples rather than opinion alone.\n4. Structure: organise into introduction, body paragraphs, and conclusion, each with a clear point.\n\nQuick how-to: take one casual sentence and \"academify\" it. Casual: \"Social media is messing up students' grades big time.\" Academic: \"Frequent social media use has been linked to lower academic performance among students (Okoro, 2020).\" Notice the neutral tone, hedging word \"linked,\" and citation.\n\nCommon genres include the essay (a structured argument responding to a question), the report (organised findings, often with headings and sections), and the literature review (a summary of existing research). Knowing the genre tells you the expected structure and tone. Master these features and your writing will read as credible, clear, and scholarly.",
+      "voiceScript": "Welcome to your first step into academic writing. Think of it as a formal conversation with your lecturers and fellow researchers, where every claim you make needs to earn its place. Unlike a chat with friends, academic writing avoids slang and strong opinions, and instead leans on evidence, clear structure, and a neutral, objective tone. If you catch yourself writing something like \"exams are totally unfair,\" pause and rephrase it as \"research suggests exams may disadvantage some learners,\" then add a citation. That small shift is the heart of what we're learning. As you write essays, reports, or literature reviews, remember each genre has its own shape. Stay formal, stay evidence-based, and your writing will sound credible and confident.",
+      "keyPoints": [
+        "Academic writing informs or argues for an audience of lecturers and researchers.",
+        "It is formal, objective, evidence-based, and clearly structured.",
+        "Replace opinions and slang with hedged, cited claims.",
+        "Know your genre: essay, report, or literature review shapes your structure."
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='240' y='28' font-size='18' text-anchor='middle' fill='#0f766e'>Academic Writing</text><circle cx='240' cy='130' r='42' fill='none' stroke='#0f766e' stroke-width='2'/><text x='240' y='135' font-size='12' text-anchor='middle' fill='#334155'>Credible</text><line x1='240' y1='88' x2='240' y2='55' stroke='#334155' stroke-width='1.5'/><rect x='190' y='30' width='100' height='24' fill='none' stroke='#15803d' stroke-width='1.5'/><text x='240' y='46' font-size='11' text-anchor='middle' fill='#15803d'>Formality</text><line x1='198' y1='130' x2='120' y2='130' stroke='#334155' stroke-width='1.5'/><rect x='30' y='118' width='90' height='24' fill='none' stroke='#b45309' stroke-width='1.5'/><text x='75' y='134' font-size='11' text-anchor='middle' fill='#b45309'>Objectivity</text><line x1='282' y1='130' x2='360' y2='130' stroke='#334155' stroke-width='1.5'/><rect x='360' y='118' width='90' height='24' fill='none' stroke='#b45309' stroke-width='1.5'/><text x='405' y='134' font-size='11' text-anchor='middle' fill='#b45309'>Evidence</text><line x1='240' y1='172' x2='240' y2='205' stroke='#334155' stroke-width='1.5'/><rect x='190' y='205' width='100' height='24' fill='none' stroke='#15803d' stroke-width='1.5'/><text x='240' y='221' font-size='11' text-anchor='middle' fill='#15803d'>Structure</text></svg>",
+      "whiteboardCaption": "A diagram showing four pillars of academic writing surrounding the goal of credible communication.",
+      "example": "A Nigerian undergraduate writing a sociology essay changes \"WhatsApp is ruining how we talk to each other\" into \"Instant messaging platforms may reshape interpersonal communication patterns (Eze, 2022)\" to meet her lecturer's expectations for a formal, evidence-based tone.",
+      "quiz": [
+        {
+          "q": "Which sentence best fits an academic tone?",
+          "options": [
+            "\"Exams are totally unfair to poor students.\"",
+            "\"I really feel exams mess things up.\"",
+            "\"Research suggests exams may disadvantage some learners (Adeyemi, 2021).\"",
+            "\"Exams? Don't even get me started!\""
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Who is the typical audience for academic writing?",
+          "options": [
+            "Close friends and family",
+            "Lecturers, examiners, and researchers",
+            "Social media followers",
+            "Advertising clients"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a common academic genre?",
+          "options": [
+            "A gossip column",
+            "A literature review",
+            "A text message",
+            "A shopping list"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is the purpose of academic writing?",
+          "back": "To inform, analyse, or argue a point clearly using evidence for a scholarly audience."
+        },
+        {
+          "front": "What does 'objectivity' mean in writing?",
+          "back": "Focusing on evidence rather than personal feelings or unsupported opinion."
+        },
+        {
+          "front": "Give one way to make a sentence more formal.",
+          "back": "Remove slang and contractions, e.g. change \"can't cope\" to \"struggle to cope.\""
+        },
+        {
+          "front": "What is a literature review?",
+          "back": "A structured summary and analysis of existing research on a topic."
+        }
+      ],
+      "reflection": "Think of something you recently wrote casually. How would you rewrite one sentence to sound academic?",
+      "summary": "Academic writing is formal, objective, evidence-based, and structured, aimed at scholarly readers, and appears in genres like essays, reports, and literature reviews.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you convert three of your own casual sentences into academic tone and explain each change.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-understanding-the-assignment",
+      "order": 2,
+      "title": "Understanding the Assignment",
+      "objectives": [
+        "Interpret task words like 'discuss', 'analyze', and 'compare'.",
+        "Identify the scope, format, and marking expectations of a prompt.",
+        "Plan a focused response before you begin writing."
+      ],
+      "text": "Many good essays lose marks simply because they answer the wrong question. Before writing, decode the prompt in three steps.\n\nFirst, find the TASK WORD (the verb telling you what to do). 'Discuss' means present different viewpoints and weigh them. 'Analyze' means break something into parts and explain how they connect. 'Compare' means show similarities and differences. 'Evaluate' means judge value using evidence. 'Describe' just wants detail; 'argue' wants a clear position. Underline this word first.\n\nSecond, find the CONTENT WORDS (the topic and its limits). In 'Discuss the causes of urban migration in West Africa since 2000', the scope is causes (not effects), the place is West Africa, and the time is since 2000. Staying inside these limits keeps you focused.\n\nThird, check the INSTRUCTIONS: word count, format (essay, report, reflection), referencing style, and the marking rubric if provided. The rubric tells you exactly where marks come from.\n\nNow plan: write a one-sentence answer to the question. This becomes your thesis. List three or four points that support it, each becoming a paragraph.\n\nWorked example: For the migration prompt, your plan might be 'Migration rose mainly due to jobs, climate stress, and conflict', then one paragraph per cause. You are now writing to answer, not to fill pages.",
+      "voiceScript": "Let me share the most common reason good students lose marks: they answer a question that was never asked. So before you write a single sentence, slow down and decode the prompt. Start by underlining the task word, that verb that tells you what to actually do. Discuss asks you to weigh viewpoints, analyze asks you to break things apart, and compare asks for similarities and differences. Next, notice the content words that fix your topic, your place, and your timeframe, so you stay inside the boundaries. Then check the practical instructions and the marking rubric. Finally, write one sentence that answers the question directly. That sentence is your thesis, and everything else simply supports it.",
+      "keyPoints": [
+        "Underline the task word first: it tells you what to actually do.",
+        "Identify content words to fix your topic, scope, and limits.",
+        "Check word count, format, and the marking rubric before writing.",
+        "Turn the question into a one-sentence thesis, then plan supporting points."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' font-family='sans-serif' font-size='16' fill='#0f766e'>Decode the Prompt</text><rect x='20' y='45' width='130' height='55' rx='6' fill='none' stroke='#b45309' stroke-width='2'/><text x='30' y='68' font-family='sans-serif' font-size='12' fill='#b45309'>1. Task word</text><text x='30' y='88' font-family='sans-serif' font-size='11' fill='#334155'>discuss/analyze</text><rect x='175' y='45' width='130' height='55' rx='6' fill='none' stroke='#15803d' stroke-width='2'/><text x='185' y='68' font-family='sans-serif' font-size='12' fill='#15803d'>2. Content</text><text x='185' y='88' font-family='sans-serif' font-size='11' fill='#334155'>topic + scope</text><rect x='330' y='45' width='130' height='55' rx='6' fill='none' stroke='#0f766e' stroke-width='2'/><text x='340' y='68' font-family='sans-serif' font-size='12' fill='#0f766e'>3. Rules</text><text x='340' y='88' font-family='sans-serif' font-size='11' fill='#334155'>words/format</text><line x1='150' y1='72' x2='175' y2='72' stroke='#334155' stroke-width='2'/><line x1='305' y1='72' x2='330' y2='72' stroke='#334155' stroke-width='2'/><line x1='240' y1='100' x2='240' y2='130' stroke='#334155' stroke-width='2'/><rect x='120' y='130' width='240' height='40' rx='6' fill='none' stroke='#0f766e' stroke-width='2'/><text x='140' y='155' font-family='sans-serif' font-size='13' fill='#0f766e'>Thesis: one-sentence answer</text><line x1='160' y1='170' x2='120' y2='205' stroke='#334155' stroke-width='1.5'/><line x1='240' y1='170' x2='240' y2='205' stroke='#334155' stroke-width='1.5'/><line x1='320' y1='170' x2='360' y2='205' stroke='#334155' stroke-width='1.5'/><rect x='80' y='205' width='80' height='35' rx='4' fill='none' stroke='#15803d' stroke-width='2'/><text x='100' y='227' font-family='sans-serif' font-size='11' fill='#15803d'>Point 1</text><rect x='200' y='205' width='80' height='35' rx='4' fill='none' stroke='#15803d' stroke-width='2'/><text x='220' y='227' font-family='sans-serif' font-size='11' fill='#15803d'>Point 2</text><rect x='320' y='205' width='80' height='35' rx='4' fill='none' stroke='#15803d' stroke-width='2'/><text x='340' y='227' font-family='sans-serif' font-size='11' fill='#15803d'>Point 3</text></svg>",
+      "whiteboardCaption": "A three-step flow from decoding the prompt to a thesis supported by three planned points.",
+      "example": "A Nigerian sociology student receives: 'Evaluate the impact of mobile money on small traders in Lagos.' She underlines 'evaluate' (judge with evidence), notes the scope (mobile money, small traders, Lagos), then writes her thesis: 'Mobile money mostly helps small traders by speeding payments, though transaction fees limit gains.' Her paragraphs follow those two judgments.",
+      "quiz": [
+        {
+          "q": "What does the task word 'analyze' require you to do?",
+          "options": [
+            "Simply list facts about the topic",
+            "Break something into parts and explain how they connect",
+            "Give your personal opinion only",
+            "Copy the definition from a textbook"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "In the prompt 'Discuss the causes of urban migration in West Africa since 2000', what is the scope?",
+          "options": [
+            "The effects of migration worldwide",
+            "Causes, in West Africa, since 2000",
+            "Any migration at any time",
+            "Solutions to migration"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the best first step after decoding a prompt?",
+          "options": [
+            "Start writing the introduction immediately",
+            "Write a one-sentence thesis answering the question",
+            "Find as many sources as possible",
+            "Count how many pages you need"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Task word",
+          "back": "The verb in a prompt (discuss, analyze, compare) that tells you what to do."
+        },
+        {
+          "front": "'Compare' means...",
+          "back": "Show both the similarities and the differences between things."
+        },
+        {
+          "front": "Scope",
+          "back": "The topic limits: subject, place, and timeframe you must stay within."
+        },
+        {
+          "front": "Thesis",
+          "back": "A one-sentence direct answer to the question that guides your whole essay."
+        }
+      ],
+      "reflection": "Think of a recent assignment where you lost marks. Did you misread the task word or drift outside the scope?",
+      "summary": "Decode every prompt by underlining the task word, identifying content and scope, and checking the rules, then write a one-sentence thesis to plan focused supporting points.",
+      "discussionPrompt": "Give the tutor a real assignment prompt from your course and ask it to help you identify the task word, scope, and a possible thesis.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-structure-and-the-thesis-statement",
+      "order": 3,
+      "title": "Structure and the Thesis Statement",
+      "objectives": [
+        "Write a clear, arguable thesis statement.",
+        "Organize an essay using introduction, body, and conclusion.",
+        "Build unified paragraphs using the point-evidence-explain method."
+      ],
+      "text": "A strong essay has a skeleton: introduction, body, and conclusion. The introduction opens with context, narrows to your topic, and ends with a thesis statement. The body develops that thesis in paragraphs. The conclusion restates your argument and shows why it matters.\n\nA thesis statement is one or two sentences stating your main argument. It must be arguable (someone could disagree), specific, and a signpost for the whole paper. Weak: \"Social media is popular.\" (a fact, not arguable). Strong: \"Universities should limit social media in lectures because it reduces attention and lowers grades.\" Notice it takes a position and previews reasons.\n\nBuild each body paragraph with PEE:\n- Point: a topic sentence stating one idea.\n- Evidence: a fact, statistic, quote, or example.\n- Explain: connect the evidence back to your thesis.\n\nWorked example paragraph: \"Phones distract students (Point). A 2019 study found students who multitasked scored 20% lower (Evidence). This shows classroom phone use directly harms learning, supporting a limit (Explain).\"\n\nQuick how-to: write your thesis first, then draft one topic sentence per paragraph. Read those sentences alone; if they tell a clear story, your structure is unified. Every paragraph should support the thesis, or cut it.",
+      "voiceScript": "Let's talk about giving your essay a strong backbone. Think of your paper as having three parts: an introduction that sets the scene, a body that does the work, and a conclusion that ties it together. The heart of it all is your thesis statement, one or two sentences that state your main argument. A good thesis is arguable, specific, and points the reader toward what's coming. Then, for each paragraph, I want you to try the point-evidence-explain method. Start with your point, back it up with evidence, and explain how that evidence supports your thesis. Here's my favourite trick: write your thesis first, then one topic sentence per paragraph, and read those sentences alone. If they tell a clear story, you're on track.",
+      "keyPoints": [
+        "Structure every essay as introduction, body, and conclusion.",
+        "A thesis is one to two sentences: arguable, specific, and a signpost.",
+        "Build paragraphs with Point, Evidence, Explain (PEE).",
+        "Read your topic sentences alone to test if the structure is unified."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><rect x=\"20\" y=\"20\" width=\"440\" height=\"40\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"40\" y=\"45\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#0f766e\">Introduction + THESIS</text><rect x=\"20\" y=\"75\" width=\"440\" height=\"110\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"40\" y=\"95\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#15803d\">Body: PEE paragraphs</text><line x1=\"40\" y1=\"110\" x2=\"300\" y2=\"110\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"45\" y=\"124\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">Point</text><line x1=\"40\" y1=\"135\" x2=\"300\" y2=\"135\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"45\" y=\"149\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">Evidence</text><line x1=\"40\" y1=\"160\" x2=\"300\" y2=\"160\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"45\" y=\"174\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">Explain</text><rect x=\"20\" y=\"200\" width=\"440\" height=\"40\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"40\" y=\"225\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#334155\">Conclusion: restate + so what</text></svg>",
+      "whiteboardCaption": "An essay map showing introduction with thesis, PEE body paragraphs, and a conclusion.",
+      "example": "A student writing a term paper for a Lagos university argues: \"Nigeria should expand solar power because it reduces blackouts and creates jobs.\" Each body paragraph then uses PEE, one on blackouts with grid data, one on jobs with employment figures, keeping every paragraph tied to that thesis.",
+      "quiz": [
+        {
+          "q": "Which is the strongest thesis statement?",
+          "options": [
+            "Social media is used by many people.",
+            "Social media should be limited in lectures because it lowers grades.",
+            "This essay is about social media.",
+            "Social media exists on phones."
+          ],
+          "answer": 1
+        },
+        {
+          "q": "In the PEE method, what does the final E stand for?",
+          "options": [
+            "Estimate",
+            "Emphasise",
+            "Explain",
+            "Enumerate"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Where does the thesis statement usually appear?",
+          "options": [
+            "End of the introduction",
+            "Middle of the conclusion",
+            "First body paragraph only",
+            "In the title"
+          ],
+          "answer": 0
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What makes a thesis 'arguable'?",
+          "back": "Someone could reasonably disagree with it; it takes a position rather than stating a plain fact."
+        },
+        {
+          "front": "What are the three parts of an essay?",
+          "back": "Introduction, body, and conclusion."
+        },
+        {
+          "front": "What does PEE stand for?",
+          "back": "Point, Evidence, Explain."
+        },
+        {
+          "front": "How do you test if your essay is unified?",
+          "back": "Read all topic sentences alone; they should tell a clear, connected story supporting the thesis."
+        }
+      ],
+      "reflection": "Look at an essay you wrote before: could you identify a single, arguable thesis, and did every paragraph support it?",
+      "summary": "A clear essay rests on an arguable, specific thesis, supported by PEE paragraphs inside an introduction-body-conclusion structure.",
+      "discussionPrompt": "Ask the tutor to review a draft thesis statement you wrote and suggest how to make it more arguable and specific.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s4-using-sources-and-avoiding-plagiarism",
+      "order": 4,
+      "title": "Using Sources and Avoiding Plagiarism",
+      "objectives": [
+        "Explain why and when to cite sources.",
+        "Paraphrase, summarize, and quote responsibly.",
+        "Apply a basic citation style such as APA in-text and reference lists."
+      ],
+      "text": "Citing sources shows where your ideas come from, gives credit to original authors, and lets readers verify your claims. You must cite whenever you use someone's words, ideas, data, or images that are not common knowledge. Failing to do so is plagiarism, which can lead to failed grades or expulsion.\n\nThere are three ways to bring sources into your writing. QUOTE: copy exact words inside quotation marks, used sparingly for striking or precise wording. PARAPHRASE: restate one passage in your own words and sentence structure (not just swapping synonyms). SUMMARIZE: condense a longer text into its main point. All three still need a citation.\n\nWorked example using APA. Suppose you read: \"Regular sleep improves memory retention.\" A responsible paraphrase: Sleeping consistently helps students remember what they study (Mensah, 2020). The in-text citation gives author and year. At the end, your reference list entry reads:\n\nMensah, A. (2020). Sleep and learning. Accra University Press.\n\nHow-to steps: (1) Note the author, year, title, and source as you read. (2) Decide quote, paraphrase, or summarize. (3) Add an in-text citation immediately. (4) Build a matching reference entry. Every in-text citation must appear in the reference list, and vice versa.",
+      "voiceScript": "When you use research in your writing, you have to show where it came from. Citing sources gives credit to the original authors, protects you from plagiarism, and lets your readers check your evidence. So whenever you borrow someone's words, ideas, or data that aren't common knowledge, cite them. You can quote exact words in quotation marks, paraphrase a passage in your own words and structure, or summarize a long text into its main idea. All three still need a citation. In APA style, you name the author and year right in your sentence, like Mensah, twenty-twenty, and then you list the full source at the end. Keep track of authors and titles as you read, and you'll write with confidence and integrity.",
+      "keyPoints": [
+        "Cite whenever you use others' words, ideas, or data that aren't common knowledge.",
+        "Quote exact words, paraphrase in your own words, or summarize the main point, all need citations.",
+        "APA uses in-text (Author, Year) plus a matching reference list entry.",
+        "Every in-text citation must appear in the reference list and vice versa."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"16\" fill=\"#0f766e\">Using Sources Responsibly</text><rect x=\"20\" y=\"50\" width=\"120\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"38\" y=\"75\" font-size=\"13\" fill=\"#15803d\">QUOTE</text><text x=\"30\" y=\"95\" font-size=\"10\" fill=\"#334155\">exact words \"...\"</text><rect x=\"180\" y=\"50\" width=\"120\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"198\" y=\"75\" font-size=\"13\" fill=\"#b45309\">PARAPHRASE</text><text x=\"190\" y=\"95\" font-size=\"10\" fill=\"#334155\">own words</text><rect x=\"340\" y=\"50\" width=\"120\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"358\" y=\"75\" font-size=\"13\" fill=\"#0f766e\">SUMMARIZE</text><text x=\"350\" y=\"95\" font-size=\"10\" fill=\"#334155\">main point only</text><line x1=\"80\" y1=\"105\" x2=\"240\" y2=\"140\" stroke=\"#334155\" stroke-width=\"1.5\"/><line x1=\"240\" y1=\"105\" x2=\"240\" y2=\"140\" stroke=\"#334155\" stroke-width=\"1.5\"/><line x1=\"400\" y1=\"105\" x2=\"240\" y2=\"140\" stroke=\"#334155\" stroke-width=\"1.5\"/><rect x=\"120\" y=\"140\" width=\"240\" height=\"35\" rx=\"6\" fill=\"#0f766e\"/><text x=\"140\" y=\"162\" font-size=\"12\" fill=\"#ffffff\">ALL need a CITATION</text><text x=\"20\" y=\"205\" font-size=\"11\" fill=\"#334155\">In-text: (Mensah, 2020)</text><text x=\"20\" y=\"228\" font-size=\"11\" fill=\"#334155\">Ref: Mensah, A. (2020). Sleep and</text><text x=\"20\" y=\"244\" font-size=\"11\" fill=\"#334155\">learning. Accra University Press.</text></svg>",
+      "whiteboardCaption": "Three ways to use sources (quote, paraphrase, summarize) all require a citation, shown with an APA in-text and reference example.",
+      "example": "While writing an essay on study habits, you read a journal article by Dr. Mensah about sleep and memory. Instead of copying, you paraphrase the idea in your own words and add (Mensah, 2020) in the sentence, then place the full reference in your list at the end so your lecturer can trace the source.",
+      "quiz": [
+        {
+          "q": "When do you NOT need to add a citation?",
+          "options": [
+            "When paraphrasing an author's argument",
+            "When quoting exact words",
+            "When stating widely known common knowledge",
+            "When using data from a study"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is the key feature of a responsible paraphrase?",
+          "options": [
+            "Copying the passage with quotation marks",
+            "Restating the idea in your own words and structure",
+            "Swapping a few synonyms only",
+            "Leaving out the citation"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a correct APA in-text citation?",
+          "options": [
+            "(Mensah 2020 page)",
+            "[Mensah, 2020]",
+            "(Mensah, 2020)",
+            "Mensah/2020"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is plagiarism?",
+          "back": "Using someone's words, ideas, or data without giving credit through proper citation."
+        },
+        {
+          "front": "Quote vs. paraphrase",
+          "back": "A quote copies exact words in quotation marks; a paraphrase restates one passage in your own words and structure."
+        },
+        {
+          "front": "APA in-text citation format",
+          "back": "(Author's last name, Year), e.g., (Mensah, 2020)."
+        },
+        {
+          "front": "Reference list rule",
+          "back": "Every in-text citation must have a matching full entry, and every entry must be cited in the text."
+        }
+      ],
+      "reflection": "Think about your last assignment: did you clearly separate your own ideas from your sources, and could a reader trace each borrowed idea back to its origin?",
+      "summary": "Cite sources whenever you borrow words, ideas, or data; use quotes, paraphrases, or summaries responsibly; and apply APA with matching in-text citations and reference entries to uphold academic integrity.",
+      "discussionPrompt": "Ask the EFIKO tutor to give you a short paragraph and help you practice paraphrasing it and writing both the APA in-text citation and reference entry.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s5-editing-clarity-and-grammar",
+      "order": 5,
+      "title": "Editing, Clarity, and Grammar",
+      "objectives": [
+        "Revise drafts for logical flow and coherence.",
+        "Correct common grammar, punctuation, and word-choice errors.",
+        "Use a self-editing checklist to finalize your work."
+      ],
+      "text": "A rough draft is only half the work. Editing turns messy ideas into clear, polished writing. Work in three passes so you don't try to fix everything at once.\n\nPass 1 - Structure and flow: Read each paragraph and ask, \"Does it have one main idea?\" Check that paragraphs connect using transitions like 'however', 'therefore', and 'in addition'. Move or delete sentences that break the logic.\n\nPass 2 - Sentences and grammar: Fix common errors. Subject-verb agreement: 'The data show' (data is plural). Comma splices: don't join two full sentences with only a comma - use a full stop, semicolon, or a word like 'because'. Watch confused words: their/there/they're, its/it's, affect (verb) / effect (noun).\n\nPass 3 - Clarity and word choice: Cut wordiness. Change 'due to the fact that' to 'because'; 'in order to' to 'to'. Prefer active voice: 'The team collected data' instead of 'Data was collected by the team'.\n\nWorked example: Rough - 'Due to the fact that the results was unclear, we redid it.' Edited - 'Because the results were unclear, we repeated the experiment.' Notice the fixed verb, tighter wording, and clearer noun.\n\nFinally, read your work aloud - your ear catches errors your eye skips.",
+      "voiceScript": "Congratulations on reaching the final session. Here's a secret good writers know: the magic happens in editing, not the first draft. So don't panic when your rough draft looks messy - that's completely normal. My advice is to edit in three gentle passes instead of fixing everything at once. First, read for structure: does each paragraph carry one clear idea, and do your paragraphs connect smoothly? Second, hunt for grammar slips, like subject-verb agreement and those tricky words their, there, and they're. Third, tighten your language - cut extra words and choose active, direct sentences. My favourite trick is to read the whole thing aloud, because your ear catches what your eye glides over. Polish with care, and submit with pride.",
+      "keyPoints": [
+        "Edit in three passes: structure, then grammar, then clarity.",
+        "Fix common traps: subject-verb agreement, comma splices, their/there/they're.",
+        "Cut wordiness and prefer active voice for clearer sentences.",
+        "Read your work aloud to catch errors your eyes miss."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"17\" fill=\"#334155\" font-family=\"sans-serif\">Three-Pass Editing</text><rect x=\"20\" y=\"50\" width=\"130\" height=\"70\" rx=\"8\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"35\" y=\"78\" font-size=\"13\" fill=\"#0f766e\" font-family=\"sans-serif\">1. Structure</text><text x=\"35\" y=\"100\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">flow + logic</text><rect x=\"175\" y=\"50\" width=\"130\" height=\"70\" rx=\"8\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"190\" y=\"78\" font-size=\"13\" fill=\"#15803d\" font-family=\"sans-serif\">2. Grammar</text><text x=\"190\" y=\"100\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">fix errors</text><rect x=\"330\" y=\"50\" width=\"130\" height=\"70\" rx=\"8\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"345\" y=\"78\" font-size=\"13\" fill=\"#b45309\" font-family=\"sans-serif\">3. Clarity</text><text x=\"345\" y=\"100\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">cut wordiness</text><line x1=\"150\" y1=\"85\" x2=\"175\" y2=\"85\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"305\" y1=\"85\" x2=\"330\" y2=\"85\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"20\" y=\"165\" font-size=\"13\" fill=\"#334155\" font-family=\"sans-serif\">Rough: results was unclear</text><line x1=\"20\" y1=\"178\" x2=\"250\" y2=\"178\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"20\" y=\"210\" font-size=\"13\" fill=\"#15803d\" font-family=\"sans-serif\">Edited: results were unclear</text><text x=\"20\" y=\"245\" font-size=\"12\" fill=\"#0f766e\" font-family=\"sans-serif\">Tip: read aloud to catch errors</text></svg>",
+      "whiteboardCaption": "A three-stage editing workflow moving from structure to grammar to clarity, with a before-and-after example.",
+      "example": "A student finishing a psychology assignment reads her draft aloud and hears, 'The participants was nervous.' She catches the agreement error, changes it to 'The participants were nervous,' then trims 'due to the fact that' to 'because' throughout - submitting a cleaner, tighter final paper.",
+      "quiz": [
+        {
+          "q": "Which sentence corrects the comma splice 'The lab was closed, we went home'?",
+          "options": [
+            "The lab was closed we went home.",
+            "The lab was closed, so we went home.",
+            "The lab was closed, we, went home.",
+            "The lab, was closed we went home."
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which choice uses the words correctly?",
+          "options": [
+            "Their going to affect the results.",
+            "There going to effect the results.",
+            "They're going to affect the results.",
+            "Their going to effect the results."
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is the best reason to read your draft aloud during editing?",
+          "options": [
+            "It makes writing longer",
+            "Your ear catches errors your eye skips",
+            "It adds more citations",
+            "It replaces the need to revise structure"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What are the three editing passes?",
+          "back": "Structure/flow, grammar/sentences, then clarity/word choice."
+        },
+        {
+          "front": "What is a comma splice?",
+          "back": "Joining two complete sentences with only a comma; fix with a full stop, semicolon, or connecting word."
+        },
+        {
+          "front": "Affect vs effect?",
+          "back": "'Affect' is usually a verb (to influence); 'effect' is usually a noun (the result)."
+        },
+        {
+          "front": "How do you reduce wordiness?",
+          "back": "Replace phrases like 'due to the fact that' with 'because' and prefer active voice."
+        }
+      ],
+      "reflection": "Which editing pass - structure, grammar, or clarity - do you tend to skip, and how will you build it into your routine?",
+      "summary": "Editing in three focused passes - structure, grammar, and clarity - plus reading aloud transforms a rough draft into a polished, error-free final submission.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you build a personalized self-editing checklist based on the grammar mistakes you make most often.",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Academic Writing",
+    "audience": "University students",
+    "hours": 5,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783135481855,
+  "updatedAt": 1783135481855
+}

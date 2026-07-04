@@ -1,0 +1,580 @@
+{
+  "courseId": "orig-critical-thinking-essentials",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Critical Thinking Essentials",
+  "subtitle": "Think Clearly, Reason Well, Decide Wisely",
+  "category": "Cognitive & Academic Skills",
+  "level": "Beginner",
+  "audience": "University students",
+  "estimatedHours": 4,
+  "description": "This beginner-friendly EFIKO Original course equips African university students with practical tools to think more clearly, question assumptions, evaluate evidence, and make sound decisions. Through short, mobile-friendly sessions, you will learn to spot flawed reasoning, distinguish facts from opinions, and build well-supported arguments for coursework and everyday life. No prior knowledge is required, and all lessons are designed to work offline on a basic smartphone.",
+  "outcomes": [
+    "Explain what critical thinking is and why it matters for academic and personal life",
+    "Identify common logical fallacies and cognitive biases in everyday arguments",
+    "Apply a structured method to evaluate the credibility of sources and evidence",
+    "Construct clear, well-supported arguments using claims, reasons, and evidence",
+    "Analyse real-world problems using structured questioning and reasoning frameworks",
+    "Demonstrate reflective thinking to check and improve your own reasoning"
+  ],
+  "competencies": [
+    "Evaluates arguments and evidence to distinguish sound from flawed reasoning",
+    "Identifies logical fallacies, cognitive biases, and hidden assumptions",
+    "Assesses source credibility and detects misinformation",
+    "Constructs and communicates clear, well-supported arguments",
+    "Applies structured reasoning and reflection to solve real problems"
+  ],
+  "nextCourse": "Logical Reasoning and Argumentation",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What best describes critical thinking?",
+        "options": [
+          "Memorising facts quickly",
+          "Actively analysing and evaluating information before accepting it",
+          "Agreeing with expert opinions",
+          "Thinking as fast as possible"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of the following is an opinion rather than a fact?",
+        "options": [
+          "Water boils at 100°C at sea level",
+          "The capital of Kenya is Nairobi",
+          "This is the best university in Africa",
+          "Humans need oxygen to survive"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "A logical fallacy is best described as:",
+        "options": [
+          "A true statement supported by evidence",
+          "An error in reasoning that weakens an argument",
+          "A type of scientific experiment",
+          "A reliable source of information"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Which activity best demonstrates critical thinking?",
+        "options": [
+          "Accepting a headline because it is popular",
+          "Weighing evidence before forming a conclusion",
+          "Repeating what a lecturer said without question",
+          "Choosing the first answer that feels right"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "An 'ad hominem' fallacy occurs when someone:",
+        "options": [
+          "Attacks the person instead of their argument",
+          "Uses strong statistical evidence",
+          "Cites a credible expert",
+          "Admits they might be wrong"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "When evaluating an online source, which factor matters MOST?",
+        "options": [
+          "How colourful the website is",
+          "The author's expertise and the evidence provided",
+          "How many advertisements it has",
+          "Whether it loads quickly"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A well-structured argument typically includes:",
+        "options": [
+          "Only strong emotions",
+          "A claim, supporting reasons, and evidence",
+          "Insults toward opposing views",
+          "As many words as possible"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Confirmation bias is the tendency to:",
+        "options": [
+          "Seek information that supports what you already believe",
+          "Change your mind after seeing new evidence",
+          "Question all your assumptions equally",
+          "Trust only official government data"
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-what-is-critical-thinking",
+      "order": 1,
+      "title": "What Is Critical Thinking?",
+      "objectives": [
+        "Define critical thinking and describe its core elements",
+        "Distinguish critical thinking from ordinary or passive thinking",
+        "Recognise where critical thinking applies in study, work, and daily life"
+      ],
+      "text": "Critical thinking is the active, disciplined process of analysing and evaluating information before you accept, reject, or act on it. Instead of taking claims at face value, you ask: What exactly is being claimed? What evidence supports it? Are there other explanations? What am I assuming?\n\nIts core elements are: (1) Clarity - understand the claim precisely; (2) Evidence - check facts and sources; (3) Reasoning - see whether conclusions actually follow; (4) Assumptions - notice hidden beliefs; (5) Perspective - consider other viewpoints; (6) Judgement - decide thoughtfully.\n\nPassive thinking accepts what we hear because it feels familiar, comes from authority, or matches what we already believe. Critical thinking pauses and tests it.\n\nHow-to (the PAUSE method): P - Pause before reacting. A - Ask what is being claimed. U - Uncover the evidence and assumptions. S - Seek other explanations. E - Evaluate and decide.\n\nWorked example: A WhatsApp message says \"Drinking hot water cures malaria.\" Passive response: forward it. Critical response: Pause. What is claimed? A cure. Evidence? None cited. Assumption? That the sender is reliable. Other explanations? Malaria needs medical treatment. Evaluate: reject and verify with a health source.\n\nUse this in lectures, research, budgeting, news, and workplace decisions daily.",
+      "voiceScript": "Welcome to Critical Thinking Essentials. Let me start with a simple idea: critical thinking just means you don't accept information at face value. Instead, you pause and ask good questions. What exactly is being claimed here? What evidence backs it up? What am I quietly assuming? And could there be another explanation? I like to use a little method called PAUSE: Pause before reacting, Ask what's being claimed, Uncover the evidence, Seek other explanations, and Evaluate before you decide. Think about the messages that fly around your phone every day. Passive thinking forwards them instantly. Critical thinking slows down and tests them first. That small habit protects your studies, your money, and your decisions. Let's build it together.",
+      "keyPoints": [
+        "Critical thinking is active, disciplined analysis instead of passive acceptance",
+        "Core elements: clarity, evidence, reasoning, assumptions, perspective, judgement",
+        "Use the PAUSE method to test any claim before acting",
+        "It applies everywhere: lectures, research, news, money, and work"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"18\" fill=\"#0f766e\" font-family=\"sans-serif\">The PAUSE Method</text><circle cx=\"60\" cy=\"80\" r=\"20\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"53\" y=\"86\" font-size=\"18\" fill=\"#0f766e\">P</text><text x=\"90\" y=\"85\" font-size=\"13\" fill=\"#334155\">Pause before reacting</text><circle cx=\"60\" cy=\"120\" r=\"20\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"53\" y=\"126\" font-size=\"18\" fill=\"#15803d\">A</text><text x=\"90\" y=\"125\" font-size=\"13\" fill=\"#334155\">Ask what is claimed</text><circle cx=\"60\" cy=\"160\" r=\"20\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"53\" y=\"166\" font-size=\"18\" fill=\"#b45309\">U</text><text x=\"90\" y=\"165\" font-size=\"13\" fill=\"#334155\">Uncover evidence</text><circle cx=\"60\" cy=\"200\" r=\"20\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"53\" y=\"206\" font-size=\"18\" fill=\"#0f766e\">S</text><text x=\"90\" y=\"205\" font-size=\"13\" fill=\"#334155\">Seek other explanations</text><circle cx=\"60\" cy=\"240\" r=\"18\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"53\" y=\"246\" font-size=\"18\" fill=\"#15803d\">E</text><text x=\"90\" y=\"245\" font-size=\"13\" fill=\"#334155\">Evaluate and decide</text><line x1=\"300\" y1=\"70\" x2=\"300\" y2=\"250\" stroke=\"#334155\" stroke-width=\"1\" stroke-dasharray=\"4\"/><text x=\"320\" y=\"90\" font-size=\"12\" fill=\"#b45309\">Claim in</text><path d=\"M320 100 h120\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"320\" y=\"150\" font-size=\"12\" fill=\"#0f766e\">Test it</text><path d=\"M320 160 h120\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"320\" y=\"210\" font-size=\"12\" fill=\"#15803d\">Sound judgement out</text><path d=\"M320 220 h120\" stroke=\"#15803d\" stroke-width=\"2\"/></svg>",
+      "whiteboardCaption": "The PAUSE method turns an incoming claim into a tested, well-judged decision.",
+      "example": "You see a viral WhatsApp forward claiming a university has cancelled exams. Before spreading it, you pause, note there is no official source, check the school's verified page, and find it is false - saving yourself and classmates from panic.",
+      "quiz": [
+        {
+          "q": "Which best defines critical thinking?",
+          "options": [
+            "Believing whatever an expert says",
+            "Actively analysing and evaluating information before accepting it",
+            "Memorising facts for an exam",
+            "Trusting your first instinct always"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What most clearly signals passive thinking?",
+          "options": [
+            "Asking for evidence",
+            "Considering other explanations",
+            "Forwarding a claim because it feels familiar",
+            "Checking a reliable source"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "In the PAUSE method, what does 'U' stand for?",
+          "options": [
+            "Uncover the evidence and assumptions",
+            "Understand your feelings",
+            "Use authority",
+            "Undo your decision"
+          ],
+          "answer": 0
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Critical thinking",
+          "back": "The active, disciplined process of analysing and evaluating information before accepting or acting on it."
+        },
+        {
+          "front": "Core elements",
+          "back": "Clarity, evidence, reasoning, assumptions, perspective, and judgement."
+        },
+        {
+          "front": "PAUSE method",
+          "back": "Pause, Ask what is claimed, Uncover evidence, Seek other explanations, Evaluate and decide."
+        },
+        {
+          "front": "Passive vs critical thinking",
+          "back": "Passive accepts claims at face value; critical pauses to test them with questions and evidence."
+        }
+      ],
+      "reflection": "Think of a recent time you accepted a claim without checking. How might the PAUSE method have changed your response?",
+      "summary": "Critical thinking is the active habit of analysing and evaluating information rather than accepting it passively; the PAUSE method gives you a simple way to test any claim.",
+      "discussionPrompt": "Ask the EFIKO tutor to give you three claims from everyday student life and coach you through applying the PAUSE method to each.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s2-facts-opinions-and-assumptions",
+      "order": 2,
+      "title": "Facts, Opinions, and Assumptions",
+      "objectives": [
+        "Differentiate between facts, opinions, and hidden assumptions",
+        "Identify unstated assumptions behind common claims",
+        "Question assumptions using simple prompting techniques"
+      ],
+      "text": "Every argument we hear mixes three ingredients. A FACT is a statement that can be checked against evidence and proven true or false: \"Lagos has over 15 million people.\" An OPINION expresses a judgement, preference, or value: \"Lagos is the best city in Africa.\" An ASSUMPTION is something taken for granted but not stated: the hidden belief that must be true for a claim to make sense.\n\nWhy does this matter? Weak arguments often smuggle opinions in as if they were facts, or rest on shaky assumptions nobody examined.\n\nHere is a simple how-to. When you meet a claim, run it through three questions:\n1. Can this be verified? If yes, it's a fact-claim (still check the source).\n2. Does this express a value or preference? If yes, it's an opinion.\n3. What must already be true for this to hold? That reveals the assumption.\n\nWorked example: \"We should build a new road because it will boost the local economy.\" The stated reason is the road; the hidden assumption is that new roads reliably create economic growth here. Question it: Is that always true? What evidence supports it?\n\nUse the prompt \"What is being assumed?\" every time. Naming assumptions lets you test them instead of swallowing them.",
+      "voiceScript": "Let's untangle something we do every day without noticing. When someone makes a claim, they usually blend facts, opinions, and hidden assumptions together. A fact can be checked and proven, like a population figure. An opinion is a judgement or preference, like calling somewhere the best city. And an assumption is the quiet belief underneath, the thing that must be true for the claim to work but which nobody actually says. The trick I want you to practise is simple. Whenever you hear a claim, ask yourself three things. Can this be verified? Is this a value or preference? And what must already be true for this to hold? That last question uncovers the assumption. Once you name an assumption, you can test it instead of just believing it.",
+      "keyPoints": [
+        "Facts can be verified; opinions express values; assumptions are unstated beliefs",
+        "Weak arguments often disguise opinions as facts",
+        "Ask 'What must be true for this to hold?' to reveal assumptions",
+        "Naming an assumption lets you test it instead of accepting it"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><rect x='20' y='40' width='130' height='90' rx='8' fill='none' stroke='#15803d' stroke-width='2'/><text x='85' y='30' font-size='14' fill='#15803d' text-anchor='middle'>FACT</text><text x='85' y='90' font-size='11' fill='#334155' text-anchor='middle'>can be</text><text x='85' y='106' font-size='11' fill='#334155' text-anchor='middle'>verified</text><rect x='175' y='40' width='130' height='90' rx='8' fill='none' stroke='#b45309' stroke-width='2'/><text x='240' y='30' font-size='14' fill='#b45309' text-anchor='middle'>OPINION</text><text x='240' y='90' font-size='11' fill='#334155' text-anchor='middle'>value or</text><text x='240' y='106' font-size='11' fill='#334155' text-anchor='middle'>preference</text><rect x='330' y='40' width='130' height='90' rx='8' fill='none' stroke='#0f766e' stroke-width='2'/><text x='395' y='30' font-size='14' fill='#0f766e' text-anchor='middle'>ASSUMPTION</text><text x='395' y='90' font-size='11' fill='#334155' text-anchor='middle'>unstated</text><text x='395' y='106' font-size='11' fill='#334155' text-anchor='middle'>belief</text><line x1='240' y1='150' x2='240' y2='180' stroke='#334155' stroke-width='2'/><rect x='120' y='180' width='240' height='40' rx='8' fill='none' stroke='#334155' stroke-width='2'/><text x='240' y='205' font-size='12' fill='#334155' text-anchor='middle'>Ask: What is being assumed?</text></svg>",
+      "whiteboardCaption": "Three boxes contrast fact, opinion, and assumption, leading to the key question: what is being assumed?",
+      "example": "A friend says, \"Studying abroad guarantees a better job, so you should take the loan.\" The fact-claim (some graduates earn more abroad) can be checked; \"you should\" is opinion; the hidden assumption is that a foreign degree reliably outweighs the debt for your situation. Naming it lets you test it against real graduate outcomes.",
+      "quiz": [
+        {
+          "q": "Which statement is a fact-claim (verifiable)?",
+          "options": [
+            "Jollof rice is the tastiest dish",
+            "Nigeria's capital is Abuja",
+            "Everyone should visit Ghana",
+            "Coding is more fun than writing"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "An assumption is best described as:",
+          "options": [
+            "A statement backed by clear evidence",
+            "A personal preference stated openly",
+            "An unstated belief a claim depends on",
+            "A proven scientific law"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "'We should ban the app because it wastes students' time.' The hidden assumption is:",
+          "options": [
+            "The app has millions of users",
+            "Banning the app is legal",
+            "The app actually causes wasted time that a ban would fix",
+            "Students dislike the app"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Fact",
+          "back": "A statement that can be checked against evidence and proven true or false."
+        },
+        {
+          "front": "Opinion",
+          "back": "A judgement, preference, or value that reflects a viewpoint rather than verifiable proof."
+        },
+        {
+          "front": "Assumption",
+          "back": "An unstated belief taken for granted that must be true for a claim to make sense."
+        },
+        {
+          "front": "Key questioning prompt",
+          "back": "'What must already be true for this to hold?' — it reveals hidden assumptions."
+        }
+      ],
+      "reflection": "Think of a claim you accepted recently without question. What assumption was hiding inside it, and does it hold up?",
+      "summary": "Facts can be verified, opinions express values, and assumptions are the unstated beliefs beneath claims; asking 'what is being assumed?' lets you test arguments instead of accepting them.",
+      "discussionPrompt": "Give me a claim from a news headline and help me separate its facts, opinions, and hidden assumptions step by step.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s3-spotting-faulty-reasoning",
+      "order": 3,
+      "title": "Spotting Faulty Reasoning",
+      "objectives": [
+        "Recognise common logical fallacies in arguments",
+        "Identify cognitive biases that distort thinking",
+        "Explain how emotion and manipulation weaken reasoning"
+      ],
+      "text": "Faulty reasoning happens when a conclusion doesn't truly follow from its evidence. Learning to spot it protects you from being misled and sharpens your own arguments.\n\nStart with three common logical fallacies. Ad hominem attacks the person instead of their argument (\"You failed maths, so your budget plan is wrong\"). Straw man distorts someone's point into a weaker version, then knocks it down. False dilemma pretends only two options exist (\"Either we ban phones or grades collapse\") when others exist.\n\nNext, cognitive biases: mental shortcuts that quietly distort thinking. Confirmation bias makes us notice evidence that supports what we already believe and ignore what doesn't. Bandwagon reasoning assumes something is true because many people accept it.\n\nEmotion and manipulation also weaken reasoning. Fear appeals or flattery push you to act before you evaluate the claim.\n\nHow-to: use a quick three-step check on any claim. 1) Name the actual conclusion. 2) List the evidence given. 3) Ask, \"Does the evidence really support this, or is it an attack, a false choice, or just a feeling?\" If the link breaks, the reasoning is faulty.\n\nPractise on WhatsApp forwards and news headlines. The more you name fallacies, the faster you catch them.",
+      "voiceScript": "Let's talk about spotting faulty reasoning. Faulty reasoning is simply when a conclusion doesn't really follow from the evidence behind it. Once you can name the common tricks, they lose their power over you. Watch for ad hominem, where someone attacks the person instead of the argument. Watch for the straw man, where they twist your point into something weaker and easy to beat. And watch for the false dilemma, where you're told there are only two choices when really there are more. Then there's confirmation bias, our habit of seeing only what agrees with us. My favourite tool is a quick three-step check: name the conclusion, list the evidence, then ask honestly whether that evidence truly supports it. Try it on the next headline you read.",
+      "keyPoints": [
+        "Faulty reasoning means the conclusion doesn't truly follow from the evidence",
+        "Watch for ad hominem, straw man and false dilemma fallacies",
+        "Confirmation and bandwagon biases quietly distort what we accept as true",
+        "Use the 3-step check: name the conclusion, list evidence, test the link"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-family=\"sans-serif\" font-size=\"17\" fill=\"#0f766e\">Check any claim in 3 steps</text><rect x=\"20\" y=\"50\" width=\"130\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"32\" y=\"72\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">1. Name the</text><text x=\"32\" y=\"88\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">conclusion</text><rect x=\"175\" y=\"50\" width=\"130\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"187\" y=\"72\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">2. List the</text><text x=\"187\" y=\"88\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">evidence</text><rect x=\"330\" y=\"50\" width=\"130\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"342\" y=\"72\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">3. Does it</text><text x=\"342\" y=\"88\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">support it?</text><line x1=\"150\" y1=\"75\" x2=\"175\" y2=\"75\" stroke=\"#b45309\" stroke-width=\"2\"/><line x1=\"305\" y1=\"75\" x2=\"330\" y2=\"75\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"20\" y=\"140\" font-family=\"sans-serif\" font-size=\"15\" fill=\"#b45309\">Red flags:</text><circle cx=\"30\" cy=\"162\" r=\"4\" fill=\"#0f766e\"/><text x=\"42\" y=\"167\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#334155\">Ad hominem (attacks the person)</text><circle cx=\"30\" cy=\"187\" r=\"4\" fill=\"#0f766e\"/><text x=\"42\" y=\"192\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#334155\">Straw man (distorts the point)</text><circle cx=\"30\" cy=\"212\" r=\"4\" fill=\"#0f766e\"/><text x=\"42\" y=\"217\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#334155\">False dilemma (only two choices)</text><circle cx=\"30\" cy=\"237\" r=\"4\" fill=\"#0f766e\"/><text x=\"42\" y=\"242\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#334155\">Confirmation bias (see only agreement)</text></svg>",
+      "whiteboardCaption": "A three-step claim check with a list of common reasoning red flags to watch for.",
+      "example": "During a student union debate, a candidate says, \"My opponent skipped one meeting, so his whole campaign is worthless.\" That's an ad hominem, attacking the person, not the plan. Applying the three-step check, you notice missing a meeting is not evidence that the actual proposals are bad, so the reasoning is faulty.",
+      "quiz": [
+        {
+          "q": "A politician says, \"Don't trust her budget idea, she once failed an exam.\" Which fallacy is this?",
+          "options": [
+            "Straw man",
+            "Ad hominem",
+            "False dilemma",
+            "Confirmation bias"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is confirmation bias?",
+          "options": [
+            "Believing something because many people do",
+            "Noticing evidence that supports your existing belief and ignoring the rest",
+            "Attacking a weaker version of an argument",
+            "Presenting only two options"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the correct first step of the three-step claim check?",
+          "options": [
+            "List the evidence given",
+            "Name the actual conclusion",
+            "Decide if you agree emotionally",
+            "Count how many people support it"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Ad hominem",
+          "back": "Attacking the person making the argument instead of the argument itself."
+        },
+        {
+          "front": "Straw man fallacy",
+          "back": "Distorting someone's argument into a weaker version, then attacking that version."
+        },
+        {
+          "front": "False dilemma",
+          "back": "Presenting only two options when other possibilities actually exist."
+        },
+        {
+          "front": "Confirmation bias",
+          "back": "Favouring evidence that supports what we already believe while ignoring contrary evidence."
+        }
+      ],
+      "reflection": "Think of a recent argument or headline you accepted quickly. Which fallacy or bias might have been at work, and how would the three-step check have changed your response?",
+      "summary": "Faulty reasoning occurs when conclusions don't follow from evidence; by learning fallacies like ad hominem, straw man and false dilemma, spotting biases such as confirmation bias, and applying a three-step claim check, you can evaluate claims more clearly.",
+      "discussionPrompt": "Ask the EFIKO tutor to give you five real-world statements and help you identify the fallacy or bias hidden in each.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-evaluating-sources-and-evidence",
+      "order": 4,
+      "title": "Evaluating Sources and Evidence",
+      "objectives": [
+        "Apply criteria to judge the credibility of a source",
+        "Assess the quality and relevance of evidence",
+        "Detect misinformation and unreliable claims online"
+      ],
+      "text": "Every day you meet claims: a WhatsApp forward, a news headline, a lecturer's slide. Critical thinking means checking who is speaking and what evidence they offer before you believe or share. Use the CRAAP checklist:\n\nCurrency: How recent is the information? Old data may be outdated for fast-changing topics.\nRelevance: Does it actually address your question, and at the right depth?\nAuthority: Who created it? Do they have real expertise, credentials, or a track record? Check the author and the publisher.\nAccuracy: Is the claim supported by evidence you can verify? Are sources cited? Can you confirm it elsewhere?\nPurpose: Why was this made — to inform, persuade, sell, or manipulate? Watch for bias and hidden motives.\n\nHow-to, applied now: Suppose a post claims \"Drinking lemon water cures malaria.\" Step 1: Find the source — is it a health ministry or an anonymous account? Step 2: Look for evidence — studies, data, or just a testimonial? Step 3: Cross-check with two trusted sites (WHO, a university, a fact-checker like Africa Check). Step 4: Notice emotional or urgent language (\"Share now!\") — a red flag for misinformation.\n\nStrong evidence is recent, relevant, from a qualified source, and independently verifiable. When these fail, pause before sharing.",
+      "voiceScript": "Imagine a message lands in your group chat claiming a simple drink cures a serious disease. Before you share it, pause and ask two questions: who is saying this, and what evidence do they actually have? I like to use a quick checklist called CRAAP — currency, relevance, authority, accuracy, and purpose. Is it recent? Does it answer my real question? Does the author truly have expertise? Can I verify the claim somewhere else? And why was it made — to inform me, or to sell me something? When you notice urgent language screaming share now, that's a red flag. Cross-check with two trusted sources before you believe or forward anything. That small habit protects you and everyone around you.",
+      "keyPoints": [
+        "Use CRAAP: Currency, Relevance, Authority, Accuracy, Purpose to judge any source",
+        "Strong evidence is recent, relevant, from a qualified source, and independently verifiable",
+        "Cross-check surprising claims with two trusted sources before believing or sharing",
+        "Urgent emotional language and missing citations are red flags for misinformation"
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' font-family='sans-serif' font-size='18' fill='#0f766e'>CRAAP Test for Sources</text><circle cx='40' cy='60' r='8' fill='#15803d'/><text x='58' y='65' font-family='sans-serif' font-size='14' fill='#334155'>Currency - how recent?</text><circle cx='40' cy='90' r='8' fill='#15803d'/><text x='58' y='95' font-family='sans-serif' font-size='14' fill='#334155'>Relevance - fits my question?</text><circle cx='40' cy='120' r='8' fill='#15803d'/><text x='58' y='125' font-family='sans-serif' font-size='14' fill='#334155'>Authority - real expertise?</text><circle cx='40' cy='150' r='8' fill='#15803d'/><text x='58' y='155' font-family='sans-serif' font-size='14' fill='#334155'>Accuracy - verifiable?</text><circle cx='40' cy='180' r='8' fill='#15803d'/><text x='58' y='185' font-family='sans-serif' font-size='14' fill='#334155'>Purpose - why made?</text><rect x='20' y='205' width='440' height='40' fill='none' stroke='#b45309' stroke-width='2'/><text x='30' y='230' font-family='sans-serif' font-size='13' fill='#b45309'>Red flag: 'Share now!' + no sources = misinformation</text></svg>",
+      "whiteboardCaption": "The five-point CRAAP checklist with a warning box highlighting a common misinformation red flag.",
+      "example": "A student sees a Facebook post saying a Nigerian university has cancelled all exams this semester. Before resharing, she checks the school's official website and verified social pages, finds nothing, spots the post came from an unofficial account using urgent language, and concludes it is fake — saving her classmates needless panic.",
+      "quiz": [
+        {
+          "q": "What does the 'A' for Authority in the CRAAP test ask you to check?",
+          "options": [
+            "Whether the information is recent",
+            "Who created it and their expertise or credentials",
+            "How emotional the language is",
+            "Whether the topic is interesting"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which of these is the strongest sign a claim may be misinformation?",
+          "options": [
+            "It cites a peer-reviewed study",
+            "It urges you to 'share now' and gives no verifiable sources",
+            "It comes from a government health ministry",
+            "It includes recent statistics with links"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the best next step when you encounter a surprising claim online?",
+          "options": [
+            "Share it immediately so others know",
+            "Cross-check it against two trusted, independent sources",
+            "Believe it if it has many likes",
+            "Ignore it completely without checking"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What does CRAAP stand for?",
+          "back": "Currency, Relevance, Authority, Accuracy, Purpose — five criteria for evaluating a source."
+        },
+        {
+          "front": "What makes evidence 'strong'?",
+          "back": "It is recent, relevant, from a qualified source, and can be independently verified."
+        },
+        {
+          "front": "Name two red flags for misinformation.",
+          "back": "Urgent emotional language ('Share now!') and missing or unverifiable sources."
+        },
+        {
+          "front": "Why check a source's 'Purpose'?",
+          "back": "To spot hidden motives — whether it aims to inform, persuade, sell, or manipulate you."
+        }
+      ],
+      "reflection": "Think of a claim you recently shared or believed online — which CRAAP criteria did it actually pass, and which did you skip?",
+      "summary": "Evaluating sources means checking who is speaking and what evidence they offer, using the CRAAP checklist and cross-checking claims before trusting or sharing them.",
+      "discussionPrompt": "Ask the EFIKO tutor to walk through applying the CRAAP test to a real news story or WhatsApp message you're unsure about.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-building-strong-arguments",
+      "order": 5,
+      "title": "Building Strong Arguments",
+      "objectives": [
+        "Structure an argument using claims, reasons, and evidence",
+        "Anticipate and respond to counterarguments",
+        "Communicate reasoning clearly in writing and speech"
+      ],
+      "text": "A strong argument is not shouting louder or repeating yourself. It is a structure you can build in three parts. First, the CLAIM: the position you want accepted, stated in one clear sentence. Second, the REASON: why the claim is true, usually signalled by the word 'because'. Third, the EVIDENCE: facts, data, examples, or expert testimony that support the reason.\n\nWorked example. Claim: 'Our campus should install solar panels.' Reason: 'because they lower long-term electricity costs.' Evidence: 'A 2022 study of Nigerian universities found solar cut power bills by 30% within four years.' Notice how each layer answers the question 'says who, and why?'\n\nNow anticipate COUNTERARGUMENTS. A counterargument is the strongest objection an intelligent opponent would raise. Here: 'Solar panels are expensive to install.' Respond with a REBUTTAL that concedes what is fair, then answers: 'True, upfront cost is high, but savings repay it in four years, and grants exist.'\n\nHow-to you can use today: write your point as Claim-Reason-Evidence, then add one 'Some might say... however...' sentence. This single habit makes essays, presentations, and debates far more convincing. Clear signposting words 'because', 'for example', 'however', 'therefore' guide your listener through the reasoning without confusion.",
+      "voiceScript": "Let me show you how to build an argument that actually holds up. Think of three building blocks. Start with your claim, the one thing you want people to accept. Then give your reason, the 'because' behind it. Then back it with evidence, real facts or examples, so people know it's not just your opinion. Say I claim our campus should go solar, because it lowers costs, and studies show bills dropping thirty percent. Now here's the move most people skip: imagine your smartest critic. What would they object to? Name that objection, then answer it fairly. When you concede what's true and still stand your ground, you sound confident, honest, and genuinely persuasive.",
+      "keyPoints": [
+        "Every strong argument = Claim + Reason + Evidence",
+        "Use signal words: because, for example, however, therefore",
+        "Anticipate the strongest counterargument and rebut it fairly",
+        "Concede what is true, then defend your position with proof"
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' fill='#0f766e' font-size='18' font-weight='bold'>Argument Structure</text><rect x='30' y='50' width='180' height='40' rx='6' fill='none' stroke='#0f766e' stroke-width='2'/><text x='50' y='75' fill='#0f766e' font-size='15'>CLAIM</text><rect x='30' y='105' width='180' height='40' rx='6' fill='none' stroke='#15803d' stroke-width='2'/><text x='50' y='130' fill='#15803d' font-size='15'>REASON (because)</text><rect x='30' y='160' width='180' height='40' rx='6' fill='none' stroke='#b45309' stroke-width='2'/><text x='50' y='185' fill='#b45309' font-size='15'>EVIDENCE</text><line x1='120' y1='90' x2='120' y2='105' stroke='#334155' stroke-width='2'/><line x1='120' y1='145' x2='120' y2='160' stroke='#334155' stroke-width='2'/><line x1='210' y1='125' x2='280' y2='125' stroke='#334155' stroke-width='2' stroke-dasharray='4'/><rect x='280' y='90' width='170' height='70' rx='6' fill='none' stroke='#334155' stroke-width='2'/><text x='295' y='120' fill='#334155' font-size='13'>Some might say...</text><text x='295' y='145' fill='#334155' font-size='13'>however...</text><text x='300' y='185' fill='#b45309' font-size='12'>= Rebuttal</text></svg>",
+      "whiteboardCaption": "A vertical stack of Claim, Reason, and Evidence, linked to a rebuttal box answering objections.",
+      "example": "A student union leader argues for a shuttle bus: Claim, the university needs a campus shuttle; Reason, because students walking far at night face safety risks; Evidence, three reported incidents last semester near the far gate. She then adds, 'Some might say it's costly, however a small levy of 200 naira per student covers it.'",
+      "quiz": [
+        {
+          "q": "What are the three core parts of a strong argument?",
+          "options": [
+            "Opinion, emotion, volume",
+            "Claim, reason, evidence",
+            "Introduction, body, conclusion",
+            "Question, answer, summary"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the purpose of a rebuttal?",
+          "options": [
+            "To ignore objections entirely",
+            "To fairly answer the strongest counterargument",
+            "To repeat the claim louder",
+            "To add more evidence to the claim"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which word best signals a reason in an argument?",
+          "options": [
+            "However",
+            "Because",
+            "Meanwhile",
+            "Although"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Claim",
+          "back": "The position you want your audience to accept, stated in one clear sentence."
+        },
+        {
+          "front": "Reason",
+          "back": "The 'because' explaining why the claim is true."
+        },
+        {
+          "front": "Evidence",
+          "back": "Facts, data, examples, or expert testimony supporting the reason."
+        },
+        {
+          "front": "Rebuttal",
+          "back": "A fair response that concedes valid points, then answers the strongest counterargument."
+        }
+      ],
+      "reflection": "Think of a recent opinion you shared. Could you restate it as a clear Claim-Reason-Evidence structure, and what counterargument would you need to address?",
+      "summary": "Strong arguments combine a clear claim, a supporting reason, and solid evidence, and become persuasive when you anticipate and fairly rebut the strongest objections.",
+      "discussionPrompt": "Help me practise: I'll give you a claim, and you play the intelligent critic raising the toughest counterargument so I can craft a rebuttal.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s6-critical-thinking-in-action",
+      "order": 6,
+      "title": "Critical Thinking in Action",
+      "objectives": [
+        "Apply a structured framework to solve a real problem",
+        "Reflect on and check your own reasoning for errors",
+        "Create a personal plan to keep practising critical thinking"
+      ],
+      "text": "Welcome to the final session, where we put every skill into action. Across this course you learned to question assumptions, evaluate evidence, spot biases, and build sound arguments. Now let's combine them using a simple five-step framework you can apply to almost any problem: CLEAR.\n\nC - Clarify the problem. State exactly what you must decide, in one sentence.\nL - List the evidence and options. Gather facts, not opinions.\nE - Evaluate each option against your evidence and criteria.\nA - Anticipate biases and consequences. Ask: what am I assuming? What could go wrong?\nR - Reach and review a decision. Choose, act, then check the result.\n\nWorked example: A student must choose between two side jobs. Clarify: \"Which job best supports my studies and income?\" List: job A pays more but has night shifts; job B pays less but is flexible. Evaluate: grades matter most this semester. Anticipate: am I overvaluing money (a bias)? Reach: choose B, review after one month.\n\nThen self-check your reasoning: Did I rely on real evidence? Did emotion drive me? Did I consider alternatives? Finally, build a habit. Spend five minutes daily questioning one claim you read, keep a decision journal, and discuss ideas with others. Critical thinking grows with deliberate practice, just like a muscle.",
+      "voiceScript": "Congratulations on reaching the final session. Here everything we've practised comes together. I want to give you a simple framework I call CLEAR. First, clarify the problem in one sentence. Then list your evidence and options, focusing on facts rather than feelings. Next, evaluate each option, and anticipate your own biases and any consequences. Finally, reach a decision, act on it, and review how it turned out. After deciding, always pause and ask yourself: did I rely on real evidence, or did emotion take over? Did I consider other options? The real secret is habit. Question one claim each day, keep a small decision journal, and talk ideas through with friends. Your thinking sharpens with practice.",
+      "keyPoints": [
+        "Use CLEAR: Clarify, List, Evaluate, Anticipate, Reach and review",
+        "Always self-check for weak evidence, emotion, and ignored alternatives",
+        "Build daily habits: question a claim, keep a decision journal",
+        "Critical thinking improves with deliberate, consistent practice"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"140\" y=\"28\" font-size=\"18\" fill=\"#0f766e\" font-family=\"sans-serif\">The CLEAR Framework</text><circle cx=\"40\" cy=\"60\" r=\"16\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"34\" y=\"66\" font-size=\"16\" fill=\"#0f766e\">C</text><text x=\"66\" y=\"65\" font-size=\"14\" fill=\"#334155\">Clarify the problem</text><circle cx=\"40\" cy=\"100\" r=\"16\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"35\" y=\"106\" font-size=\"16\" fill=\"#15803d\">L</text><text x=\"66\" y=\"105\" font-size=\"14\" fill=\"#334155\">List evidence + options</text><circle cx=\"40\" cy=\"140\" r=\"16\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"35\" y=\"146\" font-size=\"16\" fill=\"#b45309\">E</text><text x=\"66\" y=\"145\" font-size=\"14\" fill=\"#334155\">Evaluate each option</text><circle cx=\"40\" cy=\"180\" r=\"16\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"34\" y=\"186\" font-size=\"16\" fill=\"#0f766e\">A</text><text x=\"66\" y=\"185\" font-size=\"14\" fill=\"#334155\">Anticipate bias + risk</text><circle cx=\"40\" cy=\"220\" r=\"16\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"35\" y=\"226\" font-size=\"16\" fill=\"#15803d\">R</text><text x=\"66\" y=\"225\" font-size=\"14\" fill=\"#334155\">Reach + review decision</text><path d=\"M300 70 L300 210\" stroke=\"#334155\" stroke-width=\"1.5\" stroke-dasharray=\"4 4\"/><text x=\"320\" y=\"120\" font-size=\"12\" fill=\"#b45309\">Then self-check:</text><text x=\"320\" y=\"142\" font-size=\"11\" fill=\"#334155\">real evidence?</text><text x=\"320\" y=\"160\" font-size=\"11\" fill=\"#334155\">emotion driving?</text><text x=\"320\" y=\"178\" font-size=\"11\" fill=\"#334155\">alternatives?</text></svg>",
+      "whiteboardCaption": "The five-step CLEAR framework with a self-check reminder for reviewing your reasoning.",
+      "example": "A final-year student in Lagos must decide whether to accept an unpaid internship at a top firm or a paid retail job. Using CLEAR, she clarifies her goal (career experience within budget), lists costs and benefits of each, evaluates them against her savings, anticipates the sunk-cost bias of chasing prestige, and chooses a part-time paid role plus a shorter internship, reviewing the plan monthly.",
+      "quiz": [
+        {
+          "q": "In the CLEAR framework, what does the 'A' step focus on?",
+          "options": [
+            "Accepting the first option",
+            "Anticipating biases and consequences",
+            "Avoiding all decisions",
+            "Adding more emotions"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the best first step when facing a complex problem?",
+          "options": [
+            "Choose the cheapest option immediately",
+            "Clarify exactly what you must decide",
+            "Ask others to decide for you",
+            "Ignore the evidence available"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is a good habit for maintaining critical thinking skills?",
+          "options": [
+            "Accepting claims without checking",
+            "Keeping a decision journal and questioning daily claims",
+            "Only thinking when forced to",
+            "Relying solely on gut feeling"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What does CLEAR stand for?",
+          "back": "Clarify, List evidence/options, Evaluate, Anticipate bias/consequences, Reach and review a decision."
+        },
+        {
+          "front": "Why self-check your reasoning?",
+          "back": "To catch weak evidence, emotional influence, and options you overlooked before finalising a decision."
+        },
+        {
+          "front": "Name one lifelong critical-thinking habit.",
+          "back": "Spend five minutes daily questioning a claim you read, or keep a decision journal."
+        },
+        {
+          "front": "What bias does the internship example warn against?",
+          "back": "Sunk-cost/prestige bias - overvaluing status instead of weighing real evidence and cost."
+        }
+      ],
+      "reflection": "Think of a recent decision you made quickly. How might applying the CLEAR framework and a self-check have changed your outcome?",
+      "summary": "This session combined all course skills into the CLEAR framework for solving real problems, paired with self-checking your reasoning and building daily habits to keep critical thinking sharp.",
+      "discussionPrompt": "Ask the EFIKO tutor to walk you through applying the CLEAR framework to a real decision you are facing right now, and to point out any biases in your reasoning.",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Critical Thinking",
+    "audience": "University students",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783135702860,
+  "updatedAt": 1783135702860
+}

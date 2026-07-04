@@ -1,0 +1,590 @@
+{
+  "courseId": "orig-research-methods-from-question-to-evidence",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Research Methods: From Question to Evidence",
+  "subtitle": "A practical guide to designing, conducting, and reporting sound research",
+  "category": "Academic & Research Skills",
+  "level": "Intermediate",
+  "audience": "University students and early-career researchers",
+  "estimatedHours": 6,
+  "description": "This course equips university students and early researchers with the core skills to plan and carry out credible research. Through six focused, mobile-friendly sessions, you will learn to frame researchable questions, review literature efficiently, choose appropriate quantitative and qualitative designs, collect and analyse data ethically, and communicate findings clearly. The course emphasises practical, low-bandwidth activities relevant to African research contexts and everyday academic work.",
+  "outcomes": [
+    "Formulate a clear, focused, and researchable question with matching objectives.",
+    "Distinguish between qualitative, quantitative, and mixed-methods approaches and select an appropriate design.",
+    "Apply ethical principles and sampling strategies when collecting data.",
+    "Analyse and interpret data using basic quantitative and qualitative techniques.",
+    "Evaluate the credibility, validity, and reliability of research findings.",
+    "Communicate research results in a structured, honest, and accessible way."
+  ],
+  "competencies": [
+    "Formulating focused, feasible, and ethical research questions",
+    "Selecting and justifying appropriate research designs and sampling methods",
+    "Collecting valid and reliable data while upholding research ethics",
+    "Conducting basic quantitative and qualitative data analysis",
+    "Reporting findings clearly using standard academic structures"
+  ],
+  "nextCourse": "Academic Writing and Publishing Your Research",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What best describes a research question?",
+        "options": [
+          "A general topic you find interesting",
+          "A focused, answerable question that guides a study",
+          "A summary of your conclusions",
+          "A list of sources you plan to read"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these is a qualitative data collection method?",
+        "options": [
+          "Structured numeric survey",
+          "Randomised experiment",
+          "In-depth interview",
+          "Measuring reaction times"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "Why is informed consent important in research?",
+        "options": [
+          "It speeds up data collection",
+          "It respects participants' rights and autonomy",
+          "It guarantees positive results",
+          "It replaces the need for ethics approval"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "The FINER criteria are used to assess whether a research question is:",
+        "options": [
+          "Feasible, Interesting, Novel, Ethical, and Relevant",
+          "Formal, Independent, New, Empirical, Reliable",
+          "Fast, Inexpensive, Neat, Efficient, Rigorous",
+          "Focused, Important, Numeric, Explained, Reviewed"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "Which sampling method gives every member of a population an equal chance of selection?",
+        "options": [
+          "Convenience sampling",
+          "Snowball sampling",
+          "Simple random sampling",
+          "Purposive sampling"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "Reliability of a measurement instrument refers to its:",
+        "options": [
+          "Ability to measure what it claims to measure",
+          "Consistency in producing similar results over repeated use",
+          "Level of ethical approval",
+          "Number of questions it contains"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Thematic analysis is most commonly used with which type of data?",
+        "options": [
+          "Large numeric datasets",
+          "Qualitative text data such as interviews",
+          "Experimental control groups",
+          "Financial spreadsheets"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "In the IMRaD reporting structure, the 'D' stands for:",
+        "options": [
+          "Data",
+          "Design",
+          "Discussion",
+          "Definition"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-foundations-what-makes-good-research",
+      "order": 1,
+      "title": "Foundations: What Makes Good Research",
+      "objectives": [
+        "Define research and distinguish it from opinion or casual inquiry.",
+        "Identify the main paradigms and the research process cycle.",
+        "Recognise features of rigorous, ethical scholarship."
+      ],
+      "text": "Research is a systematic, transparent process of asking a clear question and gathering evidence to answer it. Unlike opinion (\"I think fees are too high\") or casual inquiry (a quick chat with friends), research follows a documented method others can check and repeat. That transparency is what turns a claim into a finding.\n\nThe research cycle has six stages: (1) ask a focused question, (2) review existing literature, (3) design a method, (4) collect data, (5) analyse it, (6) report and reflect, which sparks new questions. It is a loop, not a straight line.\n\nParadigms are worldviews shaping how you investigate. Positivism seeks objective, measurable truth (surveys, experiments, statistics). Interpretivism explores meaning and context (interviews, observation). Pragmatism mixes both, choosing whatever best answers the question.\n\nRigorous scholarship is valid (measures what it claims), reliable (repeatable), and ethical (informed consent, honesty, no harm, proper citation).\n\nHow-to: Take a topic like \"student wellbeing.\" Turn it into a testable question: \"How does part-time work affect final-year students' sleep at my university?\" Notice it is specific, answerable with evidence, and neutral. Write yours now, then name which paradigm fits and one ethical duty you must respect.",
+      "voiceScript": "Welcome to our first session. Let's start simply: research is not just having an opinion. It's a careful, transparent way of asking a clear question and then gathering evidence that anyone could check. When I say something is a finding rather than a hunch, I mean I followed a method I can show you. Think of research as a cycle: you ask a focused question, read what others found, design a method, collect data, analyse it, and report, which usually raises fresh questions. Along the way your paradigm, your worldview, shapes your tools, whether you count things, explore meaning, or blend both. And always, good research is valid, repeatable, and ethical. Let's begin.",
+      "keyPoints": [
+        "Research is systematic, transparent inquiry, not mere opinion.",
+        "The cycle loops: question, review, design, collect, analyse, report.",
+        "Paradigms (positivist, interpretivist, pragmatist) shape your methods.",
+        "Rigour means valid, reliable, and ethical work."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='140' y='24' font-family='sans-serif' font-size='16' fill='#0f766e'>The Research Cycle</text><circle cx='240' cy='140' r='90' fill='none' stroke='#334155' stroke-width='2'/><circle cx='240' cy='50' r='6' fill='#0f766e'/><text x='200' y='44' font-family='sans-serif' font-size='11' fill='#334155'>1 Question</text><circle cx='318' cy='95' r='6' fill='#15803d'/><text x='330' y='92' font-family='sans-serif' font-size='11' fill='#334155'>2 Review</text><circle cx='318' cy='185' r='6' fill='#b45309'/><text x='330' y='189' font-family='sans-serif' font-size='11' fill='#334155'>3 Design</text><circle cx='240' cy='230' r='6' fill='#0f766e'/><text x='200' y='248' font-family='sans-serif' font-size='11' fill='#334155'>4 Collect</text><circle cx='162' cy='185' r='6' fill='#15803d'/><text x='105' y='189' font-family='sans-serif' font-size='11' fill='#334155'>5 Analyse</text><circle cx='162' cy='95' r='6' fill='#b45309'/><text x='95' y='92' font-family='sans-serif' font-size='11' fill='#334155'>6 Report</text><path d='M320 130 a80 80 0 0 1 -8 40' fill='none' stroke='#0f766e' stroke-width='2' marker-end='url(#a)'/><defs><marker id='a' markerWidth='8' markerHeight='8' refX='4' refY='4' orient='auto'><path d='M0 0 L8 4 L0 8 z' fill='#0f766e'/></marker></defs></svg>",
+      "whiteboardCaption": "A six-stage loop showing research as an iterative cycle from question to report and back.",
+      "example": "A Kenyan public-health student wonders why clinic queues are long. Instead of guessing, she frames a question, reviews hospital records, times 200 patient visits, analyses the delays, and reports that lab turnaround is the bottleneck, evidence the clinic can act on.",
+      "quiz": [
+        {
+          "q": "What best distinguishes research from casual opinion?",
+          "options": [
+            "It uses longer words",
+            "It follows a transparent, repeatable method with evidence",
+            "It is always about science",
+            "It avoids asking questions"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which paradigm typically relies on interviews to explore meaning and context?",
+          "options": [
+            "Positivism",
+            "Interpretivism",
+            "Empiricism",
+            "Determinism"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is NOT a feature of rigorous, ethical scholarship?",
+          "options": [
+            "Validity",
+            "Reliability",
+            "Informed consent",
+            "Hiding your methods"
+          ],
+          "answer": 3
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Research (definition)",
+          "back": "A systematic, transparent process of asking a clear question and gathering checkable evidence to answer it."
+        },
+        {
+          "front": "Positivism",
+          "back": "A paradigm seeking objective, measurable truth via surveys, experiments, and statistics."
+        },
+        {
+          "front": "Interpretivism",
+          "back": "A paradigm exploring meaning and context through interviews and observation."
+        },
+        {
+          "front": "Validity vs reliability",
+          "back": "Validity = measures what it claims; reliability = produces consistent, repeatable results."
+        }
+      ],
+      "reflection": "Think of a topic you care about: how could you turn a personal opinion about it into a researchable, evidence-based question?",
+      "summary": "Research is transparent, systematic inquiry that moves through a repeating cycle and is guided by a paradigm, always aiming to be valid, reliable, and ethical.",
+      "discussionPrompt": "Ask the tutor: For my research idea, which paradigm fits best and why, and how would that choice change my methods?",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-framing-your-research-question",
+      "order": 2,
+      "title": "Framing Your Research Question",
+      "objectives": [
+        "Turn a broad topic into a focused, researchable question.",
+        "Write aligned aims, objectives, and hypotheses.",
+        "Apply frameworks like FINER and PICO to test question quality."
+      ],
+      "text": "A good research question is the engine of your whole project. Start with a broad topic, then narrow it using three moves: pick a specific population, a specific variable or intervention, and a specific outcome. Broad: \"malaria in Nigeria.\" Narrowed: \"Does distributing insecticide-treated nets to pregnant women in rural Kano reduce malaria infection rates?\"\n\nTest quality with two frameworks. FINER asks: is it Feasible (time, money, data), Interesting, Novel, Ethical, and Relevant? PICO structures clinical or comparative questions into Population, Intervention, Comparison, Outcome. For the example: P = pregnant women in rural Kano; I = insecticide-treated nets; C = no nets; O = malaria infection rate.\n\nNow align your outputs. The AIM is the big-picture goal (\"to assess whether nets reduce malaria in pregnancy\"). OBJECTIVES are the concrete, measurable steps (\"to measure infection rates before and after distribution\"). The HYPOTHESIS is your testable prediction (\"nets reduce infection rates by at least 20%\"), with a null hypothesis stating no difference.\n\nHow-to: write your topic, apply PICO to name each part, run it through FINER to cut what's unfeasible, then draft one aim, two or three objectives, and one hypothesis. Each objective should map directly to your question so nothing drifts.",
+      "voiceScript": "Let's turn a big topic into a question you can actually answer. Imagine you start with something huge like malaria in Nigeria. That's a subject, not a question. To sharpen it, I pick a specific group of people, a specific thing I'm studying, and a clear outcome I can measure. Suddenly I have: do treated nets reduce malaria in pregnant women in rural Kano? Now I test it. FINER asks whether it's feasible, interesting, novel, ethical, and relevant. PICO breaks it into population, intervention, comparison, and outcome. Then I write one clear aim, a few measurable objectives, and a testable hypothesis. When everything lines up, your research almost designs itself. You've got this.",
+      "keyPoints": [
+        "Narrow a topic by naming a specific population, variable, and measurable outcome.",
+        "Use PICO to structure the question and FINER to test its feasibility and value.",
+        "Align aim (big goal), objectives (measurable steps), and hypothesis (testable prediction).",
+        "Every objective should map directly back to the research question."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" font-size=\"15\" fill=\"#334155\">From Topic to Question</text><path d=\"M40 50 L200 50\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"45\" y=\"45\" font-size=\"12\" fill=\"#b45309\">Broad topic</text><path d=\"M120 55 L120 90\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"40\" y=\"92\" width=\"170\" height=\"30\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"52\" y=\"112\" font-size=\"12\" fill=\"#0f766e\">Focused question</text><rect x=\"250\" y=\"45\" width=\"200\" height=\"90\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"260\" y=\"63\" font-size=\"11\" fill=\"#15803d\">PICO</text><text x=\"260\" y=\"82\" font-size=\"10\" fill=\"#334155\">P Population</text><text x=\"260\" y=\"98\" font-size=\"10\" fill=\"#334155\">I Intervention</text><text x=\"360\" y=\"82\" font-size=\"10\" fill=\"#334155\">C Comparison</text><text x=\"360\" y=\"98\" font-size=\"10\" fill=\"#334155\">O Outcome</text><rect x=\"250\" y=\"150\" width=\"200\" height=\"30\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"260\" y=\"170\" font-size=\"11\" fill=\"#b45309\">FINER quality test</text><path d=\"M40 150 L210 150\" stroke=\"#334155\" stroke-width=\"1.5\"/><text x=\"40\" y=\"165\" font-size=\"10\" fill=\"#0f766e\">Aim</text><path d=\"M40 175 L210 175\" stroke=\"#334155\" stroke-width=\"1.5\"/><text x=\"40\" y=\"190\" font-size=\"10\" fill=\"#0f766e\">Objectives</text><path d=\"M40 200 L210 200\" stroke=\"#334155\" stroke-width=\"1.5\"/><text x=\"40\" y=\"215\" font-size=\"10\" fill=\"#0f766e\">Hypothesis</text></svg>",
+      "whiteboardCaption": "A broad topic funnels into a focused question, structured by PICO and quality-checked by FINER, then aligned with aim, objectives, and hypothesis.",
+      "example": "A public health student in Kano wants to study malaria. Using PICO she frames: among pregnant women (P), do insecticide-treated nets (I) versus no nets (C) lower malaria infection rates (O)? FINER confirms it is feasible with clinic records, ethical, and locally relevant. Her aim assesses net effectiveness; her objectives measure infection rates before and after; her hypothesis predicts at least a 20% reduction.",
+      "quiz": [
+        {
+          "q": "What does the 'F' in FINER stand for?",
+          "options": [
+            "Focused",
+            "Feasible",
+            "Formal",
+            "Final"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "In PICO, what does the 'O' represent?",
+          "options": [
+            "Objective",
+            "Observation",
+            "Outcome",
+            "Order"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which best describes a research objective?",
+          "options": [
+            "The broad overall goal of the study",
+            "A concrete, measurable step toward the aim",
+            "An untestable opinion",
+            "A summary of the literature"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "PICO",
+          "back": "Population, Intervention, Comparison, Outcome — a framework for structuring comparative research questions."
+        },
+        {
+          "front": "FINER",
+          "back": "Feasible, Interesting, Novel, Ethical, Relevant — criteria for testing whether a question is worth pursuing."
+        },
+        {
+          "front": "Aim vs objective",
+          "back": "Aim is the big-picture goal; objectives are the specific, measurable steps to achieve it."
+        },
+        {
+          "front": "Null hypothesis",
+          "back": "A prediction of no difference or no effect, tested against your main hypothesis."
+        }
+      ],
+      "reflection": "Take a topic you care about and narrow it using PICO — which part is hardest to make specific, and why?",
+      "summary": "Turn broad topics into focused, researchable questions using PICO and FINER, then align an aim, measurable objectives, and a testable hypothesis so your whole study stays coherent.",
+      "discussionPrompt": "Help me apply PICO and FINER to my own research topic and refine it into a strong, feasible question with aligned objectives.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-reviewing-the-literature",
+      "order": 3,
+      "title": "Reviewing the Literature",
+      "objectives": [
+        "Search academic sources efficiently, including offline and open-access options.",
+        "Evaluate sources for credibility and relevance.",
+        "Synthesise findings to identify gaps and avoid plagiarism."
+      ],
+      "text": "A literature review is not a summary pile of papers; it is an argument about what is already known and what is missing. Work in four steps.\n\n1) SEARCH smartly. Turn your research question into keywords, then combine them with Boolean operators: AND narrows (malaria AND children), OR widens (adolescents OR teenagers), and quotation marks find exact phrases (\"maternal mortality\"). Use open-access sources like Google Scholar, DOAJ, AJOL (African Journals Online), and PubMed. Offline, download PDFs to read without data, and try your library's cached databases.\n\n2) APPRAISE each source using CRAAP: Currency (how recent?), Relevance (does it fit your question?), Authority (who wrote it, are they credentialed?), Accuracy (is it peer-reviewed, evidence-based?), Purpose (any bias or funding conflict?).\n\n3) ORGANISE using a synthesis matrix: a table where rows are sources and columns are themes, methods, and findings. This reveals patterns across studies at a glance.\n\n4) SYNTHESISE. Group studies by theme, compare agreements and contradictions, and name the GAP your study will fill. \n\nTo avoid plagiarism, paraphrase in your own words, cite every borrowed idea, and use a reference manager like Zotero (free) to store and format citations automatically. Always record the source the moment you take a note.",
+      "voiceScript": "Let me walk you through reviewing the literature. Think of it not as stacking papers, but as building an argument about what's already known and what's still missing. I start by turning my research question into keywords, then combine them cleverly, using AND to narrow, OR to widen, and quotation marks for exact phrases. When data is tight, I lean on open-access sites like AJOL, DOAJ and Google Scholar, and I download PDFs to read offline. Then I judge each source honestly, asking how recent, how relevant, and how trustworthy it is. I lay everything in a simple table so patterns jump out, and I always paraphrase and cite as I go, so I never accidentally plagiarise. That's how gaps reveal themselves.",
+      "keyPoints": [
+        "Use Boolean operators (AND, OR, \"quotes\") and open-access sources like AJOL, DOAJ and Scholar; download PDFs to read offline.",
+        "Appraise every source with the CRAAP test: Currency, Relevance, Authority, Accuracy, Purpose.",
+        "Organise with a synthesis matrix, then compare studies to name the gap your research fills.",
+        "Paraphrase, cite every borrowed idea, and use a free reference manager like Zotero to avoid plagiarism."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" fill=\"#0f766e\" font-size=\"17\" font-family=\"sans-serif\">Literature Review: 4 Steps</text><rect x=\"20\" y=\"45\" width=\"100\" height=\"48\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"32\" y=\"66\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">1 Search</text><text x=\"32\" y=\"82\" fill=\"#334155\" font-size=\"9\" font-family=\"sans-serif\">AND OR \"...\"</text><rect x=\"135\" y=\"45\" width=\"100\" height=\"48\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"147\" y=\"66\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">2 Appraise</text><text x=\"147\" y=\"82\" fill=\"#334155\" font-size=\"9\" font-family=\"sans-serif\">CRAAP test</text><rect x=\"250\" y=\"45\" width=\"100\" height=\"48\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"262\" y=\"66\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">3 Organise</text><text x=\"262\" y=\"82\" fill=\"#334155\" font-size=\"9\" font-family=\"sans-serif\">matrix</text><rect x=\"365\" y=\"45\" width=\"100\" height=\"48\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"377\" y=\"66\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">4 Synthesise</text><text x=\"377\" y=\"82\" fill=\"#334155\" font-size=\"9\" font-family=\"sans-serif\">find GAP</text><line x1=\"120\" y1=\"69\" x2=\"135\" y2=\"69\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"235\" y1=\"69\" x2=\"250\" y2=\"69\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"350\" y1=\"69\" x2=\"365\" y2=\"69\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"20\" y=\"125\" fill=\"#15803d\" font-size=\"13\" font-family=\"sans-serif\">Synthesis Matrix</text><rect x=\"20\" y=\"135\" width=\"440\" height=\"95\" fill=\"none\" stroke=\"#334155\" stroke-width=\"1.5\"/><line x1=\"140\" y1=\"135\" x2=\"140\" y2=\"230\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"280\" y1=\"135\" x2=\"280\" y2=\"230\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"20\" y1=\"162\" x2=\"460\" y2=\"162\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"30\" y=\"153\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">Source</text><text x=\"150\" y=\"153\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">Theme</text><text x=\"290\" y=\"153\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">Finding</text><text x=\"30\" y=\"182\" fill=\"#b45309\" font-size=\"10\" font-family=\"sans-serif\">Study A</text><text x=\"30\" y=\"210\" fill=\"#b45309\" font-size=\"10\" font-family=\"sans-serif\">Study B</text></svg>",
+      "whiteboardCaption": "A flow of the four review steps above a synthesis matrix mapping sources to themes and findings.",
+      "example": "A nursing student in Nairobi researching teenage pregnancy searches AJOL and Google Scholar with \"adolescent pregnancy\" AND Kenya, downloads ten open-access PDFs to read offline over the weekend, screens them with the CRAAP test, and builds a synthesis matrix in a notebook. She notices most studies focus on urban clinics, revealing a gap: rural county data is scarce, which becomes the justification for her own study.",
+      "quiz": [
+        {
+          "q": "In a search, which Boolean operator NARROWS your results?",
+          "options": [
+            "OR",
+            "AND",
+            "NOT quotes",
+            "NEAR"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the 'A' for Authority in the CRAAP test check?",
+          "options": [
+            "How recent the source is",
+            "Who wrote it and their credentials",
+            "Whether it fits your topic",
+            "The author's writing style"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the main purpose of a synthesis matrix?",
+          "options": [
+            "To count how many pages each paper has",
+            "To reveal patterns and themes across multiple sources",
+            "To automatically write your conclusion",
+            "To translate papers into your language"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which practice best helps avoid plagiarism?",
+          "options": [
+            "Copying sentences and changing one word",
+            "Paraphrasing in your own words and citing the source",
+            "Only reading abstracts",
+            "Listing sources without reading them"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Boolean operators AND vs OR",
+          "back": "AND narrows results (both terms must appear); OR widens them (either term qualifies)."
+        },
+        {
+          "front": "CRAAP test",
+          "back": "A checklist to appraise sources: Currency, Relevance, Authority, Accuracy, Purpose."
+        },
+        {
+          "front": "Synthesis matrix",
+          "back": "A table with sources as rows and themes/methods/findings as columns to compare studies and spot gaps."
+        },
+        {
+          "front": "Open-access African source",
+          "back": "AJOL (African Journals Online) offers free, peer-reviewed African research; also DOAJ, PubMed, Google Scholar."
+        }
+      ],
+      "reflection": "Think of your current research question: what keyword combinations would you use, and which open-access database is most likely to hold relevant African studies?",
+      "summary": "A strong literature review searches strategically, appraises sources critically, organises them in a matrix, and synthesises them to reveal the gap your research fills, all while citing responsibly.",
+      "discussionPrompt": "Help me turn my research question into an effective search strategy and design a synthesis matrix for the five sources I've found so far.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-research-design-and-sampling",
+      "order": 4,
+      "title": "Research Design and Sampling",
+      "objectives": [
+        "Compare qualitative, quantitative, and mixed-methods designs.",
+        "Match a design to your research question and resources.",
+        "Choose appropriate probability and non-probability sampling methods."
+      ],
+      "text": "A research design is your master plan for collecting and analysing evidence. Three families dominate. Quantitative designs measure variables numerically to test hypotheses and generalise (surveys, experiments). Qualitative designs explore meaning, experience, and context through words (interviews, focus groups, case studies). Mixed-methods deliberately combine both, using numbers for breadth and words for depth.\n\nMatch the design to your question. If your question asks \"how many\" or \"is there a relationship\", go quantitative. If it asks \"why\" or \"how do people experience\", go qualitative. If it asks both, mix them. Also weigh resources: time, funding, access, and skills.\n\nSampling decides who you study. Probability sampling gives every unit a known chance of selection, enabling generalisation: simple random (draw names/numbers), systematic (every kth person), stratified (sample within groups like gender), and cluster (sample whole groups). Non-probability sampling is cheaper but limits generalisation: convenience (whoever's available), purposive (experts chosen deliberately), snowball (referrals), and quota.\n\nWorked example: You want to estimate how many students at your university skip breakfast. That's a \"how many\" question, so use a quantitative survey. To generalise, use stratified random sampling: split students by faculty, then randomly select proportionally from each. This ensures every faculty is fairly represented in your final sample.",
+      "voiceScript": "Let's talk about choosing your research design. Think of it as the blueprint for your whole study. If your question asks how many or whether two things are related, you're in quantitative territory, working with numbers and surveys. If you're curious about why people do something, or how they experience it, that's qualitative, working with words and interviews. And when you want both breadth and depth, you mix them. Now, once you know your design, you decide who to study. Probability sampling, like random or stratified, lets you generalise to everyone. Non-probability sampling, like convenience or purposive, is quicker but narrower. Always let your question, and your real resources, guide the choice.",
+      "keyPoints": [
+        "Quantitative answers 'how many', qualitative answers 'why', mixed does both.",
+        "Let your research question and available resources drive the design.",
+        "Probability sampling enables generalisation; non-probability is faster but narrower.",
+        "Stratified sampling ensures fair representation of subgroups."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-size=\"16\" fill=\"#334155\">Question guides Design and Sampling</text><rect x=\"20\" y=\"50\" width=\"130\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"30\" y=\"75\" font-size=\"12\" fill=\"#0f766e\">Quantitative</text><text x=\"30\" y=\"93\" font-size=\"10\" fill=\"#334155\">how many? numbers</text><rect x=\"175\" y=\"50\" width=\"130\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"185\" y=\"75\" font-size=\"12\" fill=\"#15803d\">Qualitative</text><text x=\"185\" y=\"93\" font-size=\"10\" fill=\"#334155\">why? words</text><rect x=\"330\" y=\"50\" width=\"130\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"340\" y=\"75\" font-size=\"12\" fill=\"#b45309\">Mixed</text><text x=\"340\" y=\"93\" font-size=\"10\" fill=\"#334155\">both together</text><line x1=\"120\" y1=\"130\" x2=\"120\" y2=\"150\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"20\" y=\"145\" font-size=\"13\" fill=\"#334155\">Sampling:</text><rect x=\"20\" y=\"155\" width=\"200\" height=\"85\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"30\" y=\"175\" font-size=\"11\" fill=\"#0f766e\">Probability (generalise)</text><text x=\"30\" y=\"195\" font-size=\"10\" fill=\"#334155\">random, systematic,</text><text x=\"30\" y=\"210\" font-size=\"10\" fill=\"#334155\">stratified, cluster</text><rect x=\"260\" y=\"155\" width=\"200\" height=\"85\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"270\" y=\"175\" font-size=\"11\" fill=\"#b45309\">Non-probability (cheap)</text><text x=\"270\" y=\"195\" font-size=\"10\" fill=\"#334155\">convenience, purposive,</text><text x=\"270\" y=\"210\" font-size=\"10\" fill=\"#334155\">snowball, quota</text></svg>",
+      "whiteboardCaption": "A map showing how your research question leads to a design choice and then a matching sampling strategy.",
+      "example": "A student in Nairobi wants to know why smallholder farmers hesitate to adopt a new drought-resistant maize seed. Because the question asks \"why\", she chooses a qualitative design with in-depth interviews, and uses purposive sampling to select farmers who have and haven't adopted the seed, plus snowball referrals to reach more.",
+      "quiz": [
+        {
+          "q": "Your question is 'How do nursing students experience burnout during clinical placements?' Which design fits best?",
+          "options": [
+            "Quantitative survey",
+            "Qualitative interviews",
+            "Randomised experiment",
+            "Systematic count"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which sampling method gives every unit a known, non-zero chance of selection?",
+          "options": [
+            "Convenience sampling",
+            "Snowball sampling",
+            "Simple random sampling",
+            "Purposive sampling"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "You split a population by faculty and randomly select proportionally within each group. This is:",
+          "options": [
+            "Cluster sampling",
+            "Quota sampling",
+            "Stratified random sampling",
+            "Convenience sampling"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Mixed-methods design",
+          "back": "A design that deliberately combines quantitative and qualitative approaches for both breadth and depth."
+        },
+        {
+          "front": "Probability sampling",
+          "back": "Sampling where every unit has a known chance of selection, allowing generalisation to the population."
+        },
+        {
+          "front": "Purposive sampling",
+          "back": "A non-probability method choosing participants deliberately for their relevance or expertise."
+        },
+        {
+          "front": "Stratified sampling",
+          "back": "Dividing a population into subgroups (strata) then randomly sampling within each to ensure representation."
+        }
+      ],
+      "reflection": "For your own research question, which design and sampling method fit best given your time, funding, and access, and what trade-offs will you accept?",
+      "summary": "Choose a research design (quantitative, qualitative, or mixed) that matches your question and resources, then pick a probability or non-probability sampling method that fits your need to generalise.",
+      "discussionPrompt": "Help me match a specific research design and sampling strategy to my study question, and stress-test whether it's realistic given limited time and budget.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s5-data-collection-and-research-ethics",
+      "order": 5,
+      "title": "Data Collection and Research Ethics",
+      "objectives": [
+        "Design reliable and valid instruments such as surveys and interview guides.",
+        "Apply informed consent, confidentiality, and integrity principles.",
+        "Plan practical, low-resource data collection procedures."
+      ],
+      "text": "Good evidence starts with good instruments. Two qualities matter: reliability (your tool gives consistent results if repeated) and validity (it actually measures what you intend). A bathroom scale that reads the same weight twice is reliable; if it's set 3kg too high, it's still not valid.\n\nHow to build a survey question well: (1) Ask one thing at a time — avoid \"double-barrelled\" items like \"Is the clinic clean and affordable?\" Split them. (2) Use plain, neutral wording — no leading phrases. (3) Match the scale to the question (e.g., 1=Strongly disagree to 5=Strongly agree). (4) Pilot it with 5-10 people and revise confusing items.\n\nFor interviews, write a guide with 6-8 open questions plus gentle follow-up \"probes\" (\"Can you tell me more?\").\n\nEthics is non-negotiable. Informed consent means participants understand the purpose, risks, and their right to withdraw, then agree freely. Confidentiality means separating names from data using ID codes stored apart from responses. Integrity means never fabricating or selectively deleting data.\n\nLow-resource tip: use offline tools like KoboToolbox or ODK on a phone to collect data without constant internet, syncing later. Recruit a small trained team, translate instruments into local languages, and back up files daily.",
+      "voiceScript": "Let's talk about gathering data you can actually trust. Everything rests on two ideas. Reliability means your tool gives consistent answers each time you use it. Validity means it truly measures what you set out to measure. Think of a scale: if it reads the same weight twice, it's reliable, but if it's set three kilograms too high, it isn't valid. When you write survey questions, ask one thing at a time, keep the wording plain and neutral, and always pilot with a handful of people first. And please, treat ethics as sacred. Explain your study honestly, get free informed consent, protect people's identities with codes, and never fake or hide your data. Do this, and your evidence earns respect.",
+      "keyPoints": [
+        "Reliability = consistent results; validity = measuring the right thing — pilot to check both.",
+        "Write clear, single-idea, neutral survey questions and open interview probes.",
+        "Ethics is mandatory: informed consent, confidentiality via ID codes, and honest data integrity.",
+        "Use offline tools (KoboToolbox/ODK), local languages, and daily backups for low-resource settings."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='480' height='260' fill='white'/><text x='20' y='30' fill='#0f766e' font-size='18' font-family='sans-serif'>Trustworthy Data</text><circle cx='120' cy='120' r='40' fill='none' stroke='#15803d' stroke-width='3'/><circle cx='120' cy='120' r='6' fill='#15803d'/><circle cx='118' cy='118' r='14' fill='none' stroke='#15803d' stroke-width='2'/><text x='85' y='185' fill='#15803d' font-size='13' font-family='sans-serif'>Reliable</text><circle cx='260' cy='120' r='40' fill='none' stroke='#b45309' stroke-width='3'/><circle cx='260' cy='120' r='6' fill='#b45309'/><line x1='260' y1='90' x2='260' y2='150' stroke='#b45309' stroke-width='1'/><line x1='230' y1='120' x2='290' y2='120' stroke='#b45309' stroke-width='1'/><text x='222' y='185' fill='#b45309' font-size='13' font-family='sans-serif'>+ Valid</text><rect x='340' y='80' width='110' height='90' fill='none' stroke='#334155' stroke-width='2'/><text x='352' y='105' fill='#334155' font-size='12' font-family='sans-serif'>Consent</text><text x='352' y='128' fill='#334155' font-size='12' font-family='sans-serif'>Confidential</text><text x='352' y='151' fill='#334155' font-size='12' font-family='sans-serif'>Integrity</text><text x='352' y='70' fill='#0f766e' font-size='13' font-family='sans-serif'>Ethics</text></svg>",
+      "whiteboardCaption": "A dartboard analogy shows reliable-and-valid data plus the three ethics pillars: consent, confidentiality, integrity.",
+      "example": "A Nairobi student surveying market vendors on mobile-money use loads her questionnaire into KoboToolbox on her phone, collects responses offline at the stalls, reads a short consent statement aloud in Swahili, labels each record with an ID code instead of names, and syncs the data to the cloud each evening.",
+      "quiz": [
+        {
+          "q": "A questionnaire gives the same score when the same person answers twice under similar conditions. This describes:",
+          "options": [
+            "Validity",
+            "Reliability",
+            "Consent",
+            "Sampling bias"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a 'double-barrelled' question that should be split?",
+          "options": [
+            "How old are you?",
+            "Is the clinic clean and affordable?",
+            "How satisfied are you with the service?",
+            "Do you use mobile money?"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "The best way to protect participant confidentiality is to:",
+          "options": [
+            "Publish names with results",
+            "Store names together with responses",
+            "Use ID codes stored separately from responses",
+            "Skip consent to save time"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Reliability",
+          "back": "The degree to which an instrument gives consistent, repeatable results."
+        },
+        {
+          "front": "Validity",
+          "back": "The degree to which an instrument actually measures what it intends to measure."
+        },
+        {
+          "front": "Informed consent",
+          "back": "Voluntary agreement to participate after understanding the study's purpose, risks, and right to withdraw."
+        },
+        {
+          "front": "Why pilot an instrument?",
+          "back": "To catch confusing or biased items and improve reliability and validity before full data collection."
+        }
+      ],
+      "reflection": "Think of a study you might run: which single survey question is most likely to be misunderstood, and how would you rewrite it?",
+      "summary": "Trustworthy evidence comes from reliable, valid instruments used ethically — with informed consent, confidentiality, and integrity — and practical offline procedures for low-resource settings.",
+      "discussionPrompt": "Help me draft and critique a 6-question interview guide for a study on students' internet access, including consent wording and follow-up probes.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s6-analysis-interpretation-and-reporting",
+      "order": 6,
+      "title": "Analysis, Interpretation, and Reporting",
+      "objectives": [
+        "Apply basic descriptive statistics and thematic analysis.",
+        "Interpret results honestly and acknowledge limitations.",
+        "Structure a clear report using the IMRaD format."
+      ],
+      "text": "Once your data is collected, analysis turns raw numbers and words into evidence. For quantitative data, start with descriptive statistics. The mean is the average (add all values, divide by the count). The median is the middle value when sorted, useful when a few extreme values skew the mean. The standard deviation shows how spread out values are around the mean. Always report the sample size (n) alongside these.\n\nFor qualitative data (interviews, open answers), use thematic analysis: (1) read all responses; (2) code by tagging chunks with short labels like \"cost barrier\"; (3) group related codes into themes; (4) name and describe each theme with example quotes.\n\nInterpret honestly. Correlation is not causation. State what your data does and does NOT show, and name limitations (small sample, self-report bias).\n\nReport using IMRaD: Introduction (why and your question), Methods (what you did, so others can repeat it), Results (what you found, no interpretation yet), and Discussion (what it means, limitations, next steps).\n\nWorked example: survey scores 4, 5, 5, 6, 30. Mean = 50/5 = 10, but median = 5. Here the median better represents the typical student because 30 is an outlier. Report both and explain the choice.",
+      "voiceScript": "Welcome to our final session, where your data finally becomes evidence. Think of analysis as translation: numbers and interview quotes only speak once you organise them. For numbers, I lean on three friends, the mean, the median, and the standard deviation, and I always mention how many people I studied. For interview data, I read everything, tag small chunks with short labels, then gather those labels into themes I can describe with real quotes. Above all, I stay honest, because correlation is not causation, and naming my limitations makes my work stronger, not weaker. Finally, I structure everything using IMRaD, so any reader, anywhere, could follow and even repeat what I did.",
+      "keyPoints": [
+        "Use mean, median, and standard deviation, and always report sample size (n).",
+        "Thematic analysis: read, code, group into themes, illustrate with quotes.",
+        "Interpret honestly: correlation is not causation; state your limitations.",
+        "Structure reports with IMRaD: Introduction, Methods, Results, Discussion."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"16\" fill=\"#0f766e\">IMRaD Report Structure</text><rect x=\"30\" y=\"50\" width=\"180\" height=\"40\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"45\" y=\"75\" font-size=\"13\" fill=\"#334155\">I: Introduction (Why?)</text><rect x=\"30\" y=\"100\" width=\"180\" height=\"40\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"45\" y=\"125\" font-size=\"13\" fill=\"#334155\">M: Methods (How?)</text><rect x=\"30\" y=\"150\" width=\"180\" height=\"40\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"45\" y=\"175\" font-size=\"13\" fill=\"#334155\">R: Results (What?)</text><rect x=\"30\" y=\"200\" width=\"180\" height=\"40\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"45\" y=\"225\" font-size=\"13\" fill=\"#334155\">D: Discussion (So what?)</text><line x1=\"120\" y1=\"90\" x2=\"120\" y2=\"100\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"120\" y1=\"140\" x2=\"120\" y2=\"150\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"120\" y1=\"190\" x2=\"120\" y2=\"200\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"260\" y=\"70\" font-size=\"13\" fill=\"#0f766e\">Data 4,5,5,6,30</text><text x=\"260\" y=\"100\" font-size=\"13\" fill=\"#b45309\">Mean = 10</text><text x=\"260\" y=\"125\" font-size=\"13\" fill=\"#15803d\">Median = 5</text><text x=\"260\" y=\"155\" font-size=\"12\" fill=\"#334155\">30 = outlier</text><text x=\"260\" y=\"180\" font-size=\"12\" fill=\"#334155\">Median is typical</text><circle cx=\"430\" cy=\"66\" r=\"8\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/></svg>",
+      "whiteboardCaption": "The four IMRaD sections alongside a worked example showing why the median beats the mean when an outlier is present.",
+      "example": "A student surveys 40 classmates on weekly data-bundle spending. Most spend 500-1500 naira, but two spend 20,000. The mean spend looks huge and misleading, so she reports the median instead, notes the two outliers, and admits her sample only covers one department, a clear limitation.",
+      "quiz": [
+        {
+          "q": "For the values 4, 5, 5, 6, 30, why report the median rather than the mean?",
+          "options": [
+            "The median is always larger",
+            "The outlier 30 inflates the mean, so the median better reflects the typical value",
+            "The mean cannot be calculated",
+            "Medians require no sample size"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "In IMRaD, which section describes exactly what you did so others can repeat it?",
+          "options": [
+            "Introduction",
+            "Methods",
+            "Results",
+            "Discussion"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the correct order of steps in thematic analysis?",
+          "options": [
+            "Group themes, then read the data",
+            "Read, code, group into themes, illustrate with quotes",
+            "Write conclusions, then collect quotes",
+            "Calculate the mean, then code"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Mean vs median",
+          "back": "Mean is the average; median is the middle value. Prefer the median when outliers skew the data."
+        },
+        {
+          "front": "Standard deviation",
+          "back": "A measure of how spread out values are around the mean."
+        },
+        {
+          "front": "Thematic analysis",
+          "back": "Reading qualitative data, coding chunks with labels, grouping codes into named themes, and illustrating with quotes."
+        },
+        {
+          "front": "IMRaD",
+          "back": "Introduction, Methods, Results, Discussion: a standard structure for clear, repeatable research reports."
+        }
+      ],
+      "reflection": "Think about your own study: what is one limitation you must honestly acknowledge, and how would you phrase it in your Discussion section?",
+      "summary": "Analysis turns data into evidence using descriptive statistics and thematic coding; honest interpretation and the IMRaD structure ensure your findings are clear, repeatable, and trustworthy.",
+      "discussionPrompt": "Help me draft the Results and Discussion sections for a small survey I conducted, including how to report descriptive statistics and acknowledge limitations honestly.",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Research Methods",
+    "audience": "University students and early researchers",
+    "hours": 6,
+    "level": "Intermediate"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783135931783,
+  "updatedAt": 1783135931783
+}
