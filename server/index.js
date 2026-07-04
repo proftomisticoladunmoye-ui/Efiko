@@ -38,6 +38,7 @@ import { fetchMediaBase64 } from './channels/whatsapp/transport.js';
 import { renderSms } from './channels/sms/render.js';
 import { sendSms, smsLive } from './channels/sms/transport.js';
 import { addPublished, getPublished, listPublished } from './core/published.js';
+import { dbConfigured } from './core/kv.js';
 import { verifyToken, verifyPassword, signToken } from './core/auth.js';
 import { createInstitution, findByEmail, getOrg, updateBranding, getBranding, publicOrg, seedFromEnv } from './core/institutions.js';
 
@@ -234,7 +235,7 @@ const server = createServer(async (req, res) => {
   }
 
   if (url.pathname === '/health') {
-    return json(res, 200, { ok: true, live: isLive(), ai: aiConfigured(), voice: voiceConfigured(), sms: smsLive() });
+    return json(res, 200, { ok: true, live: isLive(), ai: aiConfigured(), voice: voiceConfigured(), sms: smsLive(), db: dbConfigured(), durableAccounts: dbConfigured() });
   }
 
   // SMS Learning Assistant (Stage 10) — inbound SMS → core → reply via SMS transport.
@@ -1093,6 +1094,11 @@ In 3-4 short sentences, give feedback: first what they got right, then the most 
 
 server.listen(PORT, () => {
   console.log(`Efiko Gateway on http://localhost:${PORT}  (WhatsApp ${isLive() ? 'LIVE' : 'MOCK'})`);
+  if (dbConfigured()) {
+    console.log('[persistence] DATABASE_URL set — accounts and data are durable.');
+  } else {
+    console.warn('[persistence] WARNING: no DATABASE_URL. Accounts/branding/progress are stored in files that RESET on restart or redeploy (and on Render free-tier spin-down), so users who sign up will not be recognised later. Set DATABASE_URL (e.g. a free Neon Postgres) to fix.');
+  }
   // Bootstrap the first admin account from env vars (no-op if already present).
   seedFromEnv().catch((e) => console.error('[seed] failed:', e.message));
 });
