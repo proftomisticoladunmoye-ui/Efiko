@@ -6,6 +6,7 @@ import { listCapsules } from '../storage/capsuleStore.js';
 import { fetchCourses } from '../courses.js';
 import { fetchMyClasses } from '../enrol.js';
 import ExamReadiness from './ExamReadiness.jsx';
+import GameStats from './GameStats.jsx';
 
 export default function HomeDashboard({ user, readiness, enrolledIds = [], onOpenCapsule, onGoSection, onSignIn }) {
   const [recent, setRecent] = useState(null);
@@ -46,6 +47,8 @@ export default function HomeDashboard({ user, readiness, enrolledIds = [], onOpe
           ? <><h2>👋 Hi {first}, what do you want to learn today?</h2><p>Pick up where you left off, or ask EFIKO AI above.</p></>
           : <><h2>Learn anything, anywhere — even offline.</h2><p>Ask EFIKO AI above, or explore courses. <button className="footer-link" onClick={onSignIn}>Sign in</button> to save your progress.</p></>}
       </div>
+
+      {user && <GameStats />}
 
       <div className="dash-grid">
         {recent && (

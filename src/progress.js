@@ -13,6 +13,6 @@ export function reportProgress(payload) {
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${t}` },
       body: JSON.stringify(payload),
       keepalive: true
-    }).catch(() => {});
+    }).then(() => window.dispatchEvent(new Event('efiko-progress'))).catch(() => {});
   } catch { /* offline */ }
 }

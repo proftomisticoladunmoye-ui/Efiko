@@ -40,6 +40,7 @@ import { renderSms } from './channels/sms/render.js';
 import { sendSms, smsLive } from './channels/sms/transport.js';
 import { addPublished, getPublished, listPublished } from './core/published.js';
 import { dbConfigured } from './core/kv.js';
+import { getStats as gamifyStats, award as gamifyAward } from './core/gamification.js';
 import { verifyToken, verifyPassword, signToken } from './core/auth.js';
 import { createInstitution, findByEmail, getOrg, updateBranding, getBranding, publicOrg, seedFromEnv } from './core/institutions.js';
 
@@ -602,6 +603,7 @@ const server = createServer(async (req, res) => {
     try {
       const result = await evaluateTeachBack({ courseTitle: course.title, sessions, explanation });
       if (!result) return json(res, 502, { error: 'evaluation failed' });
+      if (result.understood) { const u = await authedUser(req); if (u) await gamifyAward(u.userId, 'teachback').catch(() => {}); }
       return json(res, 200, result);
     } catch (e) {
       return json(res, 502, { error: 'evaluation failed', detail: e.message });
@@ -620,6 +622,7 @@ const server = createServer(async (req, res) => {
       return json(res, 403, { error: `Pass the final assessment (${passMark}%) to earn this certificate.`, needed: passMark, have: p?.bestQuizPct ?? null });
     }
     const cert = await issueCertificate({ userId: user.userId, userName: user.name, courseId: id, courseTitle: course.title, score: p.bestQuizPct, competencies: course.competencies || [], hours: course.estimatedHours || null, issuer: 'EFIKO', kind: 'original' });
+    await gamifyAward(user.userId, 'certificate').catch(() => {});
     return json(res, 200, { certificate: cert });
   }
   if (req.method === 'GET' && url.pathname.match(/^\/originals\/[^/]+$/)) {
@@ -714,7 +717,19 @@ const server = createServer(async (req, res) => {
     const courseId = body.courseId || courseIdOf(body.university, body.course);
     if (!courseId) return json(res, 400, { error: 'courseId (or university+course) required' });
     await recordProgress(user.userId, courseId, { event: body.event, score: body.score, total: body.total, cohortId: body.cohortId });
+    // Gamification: award XP for real learning events (fire-and-forget).
+    try {
+      if (body.event === 'completed') await gamifyAward(user.userId, 'course_complete');
+      else if (body.event === 'quiz' && body.total && (body.score / body.total) * 100 >= CERT_PASS_MARK) await gamifyAward(user.userId, 'quiz_pass');
+      else if (body.event === 'opened') await gamifyAward(user.userId, 'session');
+    } catch { /* never block progress on gamification */ }
     return json(res, 200, { ok: true });
+  }
+  // Gamification stats for the current user (XP, level, streak, badges).
+  if (req.method === 'GET' && url.pathname === '/gamify') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { stats: null });
+    return json(res, 200, { stats: await gamifyStats(user.userId) });
   }
   // My own progress across courses (drives certificate eligibility in the UI).
   if (req.method === 'GET' && url.pathname === '/progress') {
