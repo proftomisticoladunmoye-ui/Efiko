@@ -1,0 +1,580 @@
+{
+  "courseId": "orig-prompt-engineering-essentials",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Prompt Engineering Essentials",
+  "subtitle": "Communicate clearly with AI to get useful, reliable results",
+  "category": "Artificial Intelligence & Digital Skills",
+  "level": "Beginner",
+  "audience": "University students and young professionals",
+  "estimatedHours": 4,
+  "description": "This practical, mobile-friendly course teaches you how to write clear, effective prompts for AI chat tools like ChatGPT, Gemini, and Claude. You will learn how large language models respond to instructions, how to structure prompts for study, work, and everyday tasks, and how to refine outputs safely and ethically. Designed for beginners, each short session builds a reusable skill you can apply immediately, even on a low-bandwidth phone.",
+  "outcomes": [
+    "Explain what a large language model is and how prompts shape its responses",
+    "Apply core prompting components such as role, task, context, and format to build clear prompts",
+    "Use iteration and refinement techniques to improve weak or vague AI outputs",
+    "Design few-shot and step-by-step prompts for study, writing, and workplace tasks",
+    "Evaluate AI responses for accuracy, bias, and hallucination before using them",
+    "Practice responsible and ethical prompting including privacy and academic integrity"
+  ],
+  "competencies": [
+    "Constructs clear, structured prompts using role, task, context, and format",
+    "Refines and iterates AI outputs to meet specific goals",
+    "Applies few-shot and reasoning techniques to practical tasks",
+    "Evaluates AI responses for accuracy, bias, and reliability",
+    "Practices ethical and privacy-conscious use of AI tools"
+  ],
+  "nextCourse": "AI Tools for Productivity and Research",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What does a large language model mainly do to generate a response?",
+        "options": [
+          "Searches a fixed database of correct answers",
+          "Predicts likely text based on patterns it learned",
+          "Copies answers directly from the internet in real time",
+          "Asks a human to write each reply"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which prompt is likely to give the most useful result?",
+        "options": [
+          "Tell me about it",
+          "Write something good",
+          "Summarise this article in 3 bullet points for a first-year student",
+          "Help"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "What is an AI 'hallucination'?",
+        "options": [
+          "When the AI refuses to answer",
+          "When the AI produces confident but false information",
+          "When the AI runs very slowly",
+          "When the AI repeats your question"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Which four components make up a well-structured prompt?",
+        "options": [
+          "Role, task, context, and format",
+          "Speed, cost, size, and colour",
+          "Password, username, email, and phone",
+          "Intro, body, conclusion, and title"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "You get a vague answer. What is the best next step?",
+        "options": [
+          "Give up and accept it",
+          "Ask a refining follow-up with clearer instructions",
+          "Repeat the exact same prompt",
+          "Switch off the tool"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is 'few-shot' prompting?",
+        "options": [
+          "Giving the model a few examples of what you want",
+          "Using as few words as possible",
+          "Sending the same prompt a few times",
+          "Limiting the AI to a few seconds"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "Before using an AI answer for an assignment, you should first:",
+        "options": [
+          "Submit it immediately without changes",
+          "Verify the facts and check for bias",
+          "Delete your original notes",
+          "Share your password with the AI"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which practice protects your privacy when prompting?",
+        "options": [
+          "Pasting confidential personal data into the prompt",
+          "Avoiding sharing sensitive or private information",
+          "Using your full banking details as examples",
+          "Turning off all safety checks"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-how-ai-chat-tools-understand-you",
+      "order": 1,
+      "title": "How AI Chat Tools Understand You",
+      "objectives": [
+        "Explain in simple terms how a large language model predicts text",
+        "Identify why clear prompts produce better answers",
+        "Recognise common AI limitations like hallucination"
+      ],
+      "text": "A large language model (LLM) like ChatGPT is a prediction engine. It was trained on huge amounts of text and learned patterns of which words tend to follow other words. When you type a prompt, it does not \"look up\" a fixed answer. Instead, it predicts the most likely next word, then the next, building a response one piece at a time.\n\nBecause it works from patterns, the words you choose steer it. Vague input gives vague output. A clear prompt narrows the possibilities so the model lands on what you actually want.\n\nTry this. Instead of \"Tell me about business,\" write: \"Explain three low-cost marketing ideas for a small tailoring shop in Lagos, in simple bullet points.\" Notice how role, topic, quantity, and format guide the answer.\n\nOne key limitation is hallucination: the model can state false information confidently, because it predicts plausible-sounding text, not verified truth. It may invent fake references, dates, or statistics. Always verify facts, names, and numbers from a trusted source.\n\nRemember: the AI has no true understanding or feelings. It mirrors patterns in language. Give it context, specifics, and a clear goal, and it becomes a powerful thinking partner. Feed it fuzzy requests, and you get fuzzy, sometimes invented, results.",
+      "voiceScript": "Welcome! Let me show you how AI chat tools actually understand you. Think of a large language model as a very skilled prediction engine. It learned from enormous amounts of text, and now, when you type something, it simply predicts the next likely word, again and again, until it forms a full answer. This is why your wording matters so much. If your prompt is vague, the model has too many directions to choose from, so the answer feels generic. But when you give it a clear role, topic, and format, you guide it straight to what you need. One thing to watch for is hallucination, where the AI sounds confident but invents facts or references. So always double-check important names, dates, and numbers. Treat it as a smart partner, not an oracle.",
+      "keyPoints": [
+        "An LLM predicts the next word from patterns; it does not retrieve fixed answers",
+        "Clear, specific prompts narrow the options and produce better output",
+        "Hallucination means AI can state false info confidently, so verify facts",
+        "The AI has no real understanding; context and specifics guide it"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"15\" fill=\"#334155\">Prompt in, prediction out</text><rect x=\"20\" y=\"50\" width=\"110\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"40\" y=\"80\" font-size=\"13\" fill=\"#0f766e\">Your prompt</text><line x1=\"130\" y1=\"75\" x2=\"185\" y2=\"75\" stroke=\"#334155\" stroke-width=\"2\"/><path d=\"M178 70 L188 75 L178 80\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"190\" y=\"50\" width=\"110\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"205\" y=\"80\" font-size=\"12\" fill=\"#b45309\">LLM predicts</text><line x1=\"300\" y1=\"75\" x2=\"355\" y2=\"75\" stroke=\"#334155\" stroke-width=\"2\"/><path d=\"M348 70 L358 75 L348 80\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"360\" y=\"50\" width=\"100\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"378\" y=\"80\" font-size=\"13\" fill=\"#15803d\">Answer</text><text x=\"20\" y=\"140\" font-size=\"13\" fill=\"#334155\">Next-word guessing:</text><text x=\"20\" y=\"165\" font-size=\"13\" fill=\"#0f766e\">\"The tailor sews a ___\"</text><text x=\"20\" y=\"188\" font-size=\"12\" fill=\"#15803d\">dress (likely) / shirt / bag</text><text x=\"20\" y=\"225\" font-size=\"12\" fill=\"#b45309\">Warning: may hallucinate facts</text><path d=\"M300 200 l10 -18 l10 18 z\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"306\" y=\"197\" font-size=\"12\" fill=\"#b45309\">!</text></svg>",
+      "whiteboardCaption": "A prompt flows into the model, which predicts words one by one to build an answer, but may confidently invent facts.",
+      "example": "A student in Accra asks an AI \"help me write my CV.\" It returns something generic. She retries: \"Rewrite this CV summary for a marketing internship, highlighting my social media experience, in 3 sentences.\" The specific prompt produces a targeted, useful result she can actually submit.",
+      "quiz": [
+        {
+          "q": "How does a large language model mainly generate its response?",
+          "options": [
+            "It searches a database for the exact answer",
+            "It predicts likely next words one at a time",
+            "It copies a saved reply written by a human",
+            "It calculates using fixed mathematical rules only"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is 'hallucination' in an AI chat tool?",
+          "options": [
+            "When the AI refuses to answer",
+            "When the AI confidently states false information",
+            "When the AI translates languages",
+            "When the AI runs out of memory"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why does a clear prompt usually give a better answer?",
+          "options": [
+            "It makes the AI run faster",
+            "It narrows the possibilities toward what you want",
+            "It removes the risk of hallucination entirely",
+            "It forces the AI to tell the truth"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is a large language model (LLM)?",
+          "back": "An AI trained on huge text data that predicts the next likely word to build responses."
+        },
+        {
+          "front": "Why does prompt wording matter?",
+          "back": "The model works from patterns, so specific wording steers it toward the answer you actually want."
+        },
+        {
+          "front": "What is hallucination?",
+          "back": "When an AI confidently produces false or invented information that sounds plausible."
+        },
+        {
+          "front": "Does an AI truly understand you?",
+          "back": "No. It mirrors language patterns; it has no real understanding or feelings."
+        }
+      ],
+      "reflection": "Think of a recent question you asked an AI tool. How could you rewrite it with more context, specifics, and a clear format to get a better answer?",
+      "summary": "AI chat tools predict text word-by-word from learned patterns, so clear, specific prompts produce better answers, but you must verify facts because the model can hallucinate.",
+      "discussionPrompt": "Ask the EFIKO tutor: 'Give me a vague prompt and a specific version of the same request, then explain exactly why the specific one works better.'",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-the-anatomy-of-a-strong-prompt",
+      "order": 2,
+      "title": "The Anatomy of a Strong Prompt",
+      "objectives": [
+        "Break a prompt into role, task, context, and format",
+        "Write a complete prompt using all four components",
+        "Compare vague versus specific prompts"
+      ],
+      "text": "A strong prompt has four building blocks. Learn them once and every request improves.\n\n1. ROLE: Tell the AI who to act as. This sets tone and expertise. Example: \"You are a career advisor for African graduates.\"\n\n2. TASK: State exactly what you want done, using a clear action verb. Example: \"Write a cover letter\" or \"Summarise this report.\"\n\n3. CONTEXT: Give the background the AI needs, details, audience, constraints. Example: \"I am applying for an entry-level accounting job at a Lagos bank; I have a BSc in Accounting and one internship.\"\n\n4. FORMAT: Say how the answer should look, length, structure, style. Example: \"Give it in three short paragraphs, professional tone, under 200 words.\"\n\nWorked example, combining all four:\n\"You are a career advisor (role). Write a cover letter (task) for an entry-level accounting role at a Lagos bank; I hold a BSc in Accounting and completed a one-month internship (context). Use three short paragraphs, professional tone, under 200 words (format).\"\n\nCompare that to a vague prompt: \"Help me with a cover letter.\" The vague version forces the AI to guess, so you get generic output. The specific version gives you a usable draft immediately. Try it: rewrite one of your own requests using all four blocks.",
+      "voiceScript": "Today I want to show you the secret behind every great prompt: four simple building blocks. First, role, tell the AI who to be, like a career advisor. Second, task, say clearly what you want done, using an action verb like write or summarise. Third, context, share the background it needs, your situation, your audience, any limits. And fourth, format, describe how the answer should look, its length and tone. When you combine all four, a fuzzy request like help me with a cover letter becomes a precise instruction that gives you a usable draft straight away. So next time, before you hit send, quickly check: role, task, context, format. That small habit will transform your results.",
+      "keyPoints": [
+        "Every strong prompt has four parts: role, task, context, format",
+        "Role sets expertise and tone; task states the action clearly",
+        "Context supplies details so the AI stops guessing; format controls the output shape",
+        "Combining all four turns a vague request into a precise, usable instruction"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"0\" y=\"0\" width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"140\" y=\"28\" font-size=\"18\" fill=\"#334155\">Anatomy of a Prompt</text><rect x=\"30\" y=\"50\" width=\"180\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"45\" y=\"75\" font-size=\"15\" fill=\"#0f766e\">ROLE: who acts</text><rect x=\"30\" y=\"105\" width=\"180\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"45\" y=\"130\" font-size=\"15\" fill=\"#15803d\">TASK: what to do</text><rect x=\"30\" y=\"160\" width=\"180\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"45\" y=\"185\" font-size=\"15\" fill=\"#b45309\">CONTEXT: details</text><rect x=\"30\" y=\"215\" width=\"180\" height=\"38\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"45\" y=\"239\" font-size=\"15\" fill=\"#334155\">FORMAT: how</text><line x1=\"210\" y1=\"70\" x2=\"320\" y2=\"150\" stroke=\"#0f766e\" stroke-width=\"1.5\"/><line x1=\"210\" y1=\"125\" x2=\"320\" y2=\"150\" stroke=\"#15803d\" stroke-width=\"1.5\"/><line x1=\"210\" y1=\"180\" x2=\"320\" y2=\"150\" stroke=\"#b45309\" stroke-width=\"1.5\"/><line x1=\"210\" y1=\"234\" x2=\"320\" y2=\"150\" stroke=\"#334155\" stroke-width=\"1.5\"/><circle cx=\"370\" cy=\"150\" r=\"48\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2.5\"/><text x=\"345\" y=\"148\" font-size=\"13\" fill=\"#0f766e\">STRONG</text><text x=\"348\" y=\"165\" font-size=\"13\" fill=\"#0f766e\">PROMPT</text></svg>",
+      "whiteboardCaption": "Four labelled blocks, role, task, context, and format, combine into one strong prompt.",
+      "example": "A student in Accra wants a scholarship motivation letter. Vague: \"Write me a scholarship letter.\" Strong: \"You are an admissions mentor (role). Write a motivation letter (task) for a Mastercard Foundation scholarship; I study Public Health at the University of Ghana with a 3.6 GPA and volunteer at a rural clinic (context). Keep it to 250 words in a confident, sincere tone (format).\"",
+      "quiz": [
+        {
+          "q": "Which prompt component tells the AI who to act as?",
+          "options": [
+            "Task",
+            "Role",
+            "Format",
+            "Context"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "In the prompt \"Give it in three short paragraphs, under 200 words,\" which component is this?",
+          "options": [
+            "Format",
+            "Role",
+            "Context",
+            "Task"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Why is a vague prompt like \"Help me with a cover letter\" less effective?",
+          "options": [
+            "It uses too many words",
+            "It forces the AI to guess, producing generic output",
+            "It cannot be understood at all",
+            "It is too specific"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "The four components of a strong prompt",
+          "back": "Role, Task, Context, and Format"
+        },
+        {
+          "front": "What does 'Role' do in a prompt?",
+          "back": "Tells the AI who to act as, setting its expertise and tone"
+        },
+        {
+          "front": "What does 'Context' provide?",
+          "back": "Background details, audience, and constraints so the AI does not guess"
+        },
+        {
+          "front": "What does 'Format' control?",
+          "back": "How the answer looks: length, structure, and style"
+        }
+      ],
+      "reflection": "Think of a request you recently made to an AI. Which of the four components did you leave out, and how might adding it have improved the result?",
+      "summary": "A strong prompt combines role, task, context, and format; supplying all four turns a fuzzy request into a precise instruction that produces usable results.",
+      "discussionPrompt": "Ask the EFIKO tutor to review a prompt you wrote and point out which of the four components are missing or weak, then suggest improvements.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s3-iterate-and-refine",
+      "order": 3,
+      "title": "Iterate and Refine",
+      "objectives": [
+        "Diagnose why an AI response missed the mark",
+        "Apply follow-up and correction techniques",
+        "Use constraints to control tone, length, and detail"
+      ],
+      "text": "Great prompting is rarely a one-shot event. Think of it as a conversation where you steer the AI closer to your goal with each turn. This is called iteration.\n\nStart by diagnosing the gap. When a response disappoints, name the problem: Is it too long? Too formal? Missing facts? Off-topic? Naming it tells you what to fix.\n\nNext, give a correction follow-up. You don't need to rewrite the whole prompt. Simply reply with a targeted instruction: \"Shorten this to 3 bullet points,\" or \"Rewrite in a friendly tone for first-year students,\" or \"Add a real example from Nigeria.\"\n\nFinally, use constraints to control the output. Constraints are rules you set:\n- Length: \"in 50 words,\" \"exactly 5 steps.\"\n- Tone: \"professional,\" \"casual,\" \"encouraging.\"\n- Detail: \"explain like I'm new to this,\" \"include a worked example.\"\n\nWorked example: You ask for a cover letter and get a generic wall of text. Diagnose (too generic, too long). Follow up: \"Make it 150 words, mention my volunteer experience at a campus tech club, and use a confident but humble tone.\" The second response fits your need.\n\nRefining beats restarting. Each turn is cheap feedback that sharpens the result until it truly matches what you want.",
+      "voiceScript": "Here's a secret that changes everything: the first answer from an AI is just a starting point, not the final word. I want you to treat prompting like a conversation. When a reply misses the mark, don't get frustrated and don't start over. Instead, pause and name exactly what's wrong. Maybe it's too long, too formal, or missing a key detail. Once you can name it, you can fix it with a simple follow-up, like asking it to shorten the answer, change the tone, or add a local example. Constraints are your steering wheel here. Tell it how many words, what tone, and how much detail you want. Each small correction sharpens the result until it genuinely fits your needs.",
+      "keyPoints": [
+        "Treat prompting as a conversation, not a single command",
+        "Diagnose the gap by naming what went wrong (length, tone, facts, focus)",
+        "Fix with targeted follow-ups instead of starting over",
+        "Set constraints on length, tone, and detail to steer output"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"16\" fill=\"#0f766e\" font-family=\"sans-serif\">Prompting is a Loop</text><rect x=\"30\" y=\"60\" width=\"110\" height=\"45\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"48\" y=\"88\" font-size=\"13\" fill=\"#334155\" font-family=\"sans-serif\">1. Prompt</text><rect x=\"185\" y=\"60\" width=\"110\" height=\"45\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"200\" y=\"88\" font-size=\"13\" fill=\"#334155\" font-family=\"sans-serif\">2. Diagnose</text><rect x=\"340\" y=\"60\" width=\"110\" height=\"45\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"355\" y=\"88\" font-size=\"13\" fill=\"#334155\" font-family=\"sans-serif\">3. Refine</text><line x1=\"140\" y1=\"82\" x2=\"183\" y2=\"82\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"295\" y1=\"82\" x2=\"338\" y2=\"82\" stroke=\"#334155\" stroke-width=\"2\"/><path d=\"M395 105 Q395 160 240 160 Q85 160 85 107\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><text x=\"170\" y=\"152\" font-size=\"12\" fill=\"#334155\" font-family=\"sans-serif\">repeat until it fits</text><text x=\"20\" y=\"200\" font-size=\"13\" fill=\"#b45309\" font-family=\"sans-serif\">Constraints:</text><text x=\"20\" y=\"222\" font-size=\"12\" fill=\"#334155\" font-family=\"sans-serif\">Length . Tone . Detail</text><text x=\"20\" y=\"244\" font-size=\"12\" fill=\"#15803d\" font-family=\"sans-serif\">\"Make it 150 words, friendly tone\"</text></svg>",
+      "whiteboardCaption": "A loop diagram showing prompt, diagnose, and refine repeating until the output fits, with constraint examples below.",
+      "example": "You ask an AI to write a message requesting a deadline extension from your lecturer, but it sounds too casual. You reply: \"Rewrite this in a respectful, formal tone, keep it under 120 words, and mention that I had internet outages during the semester.\" The refined version is polite, concise, and ready to send.",
+      "quiz": [
+        {
+          "q": "An AI gives you a response that is too long and formal. What is the best next step?",
+          "options": [
+            "Start a brand new chat and rewrite everything",
+            "Reply with a targeted follow-up like 'shorten to 3 bullets and use a casual tone'",
+            "Accept the response as is",
+            "Ask the same question again word-for-word"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which of these is an example of a length constraint?",
+          "options": [
+            "'Use a professional tone'",
+            "'Explain it simply'",
+            "'Answer in exactly 50 words'",
+            "'Add a local example'"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Why is diagnosing a bad response important before fixing it?",
+          "options": [
+            "It makes the AI respond faster",
+            "Naming the specific problem tells you exactly what to correct",
+            "It reduces bandwidth usage",
+            "It is required by all AI tools"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What does 'iteration' mean in prompting?",
+          "back": "Refining an AI output step by step through follow-up turns until it meets your needs."
+        },
+        {
+          "front": "Name three types of constraints you can set.",
+          "back": "Length, tone, and detail (e.g., '50 words', 'friendly', 'include a worked example')."
+        },
+        {
+          "front": "What should you do first when a response disappoints?",
+          "back": "Diagnose it: name exactly what's wrong (too long, wrong tone, missing facts, off-topic)."
+        },
+        {
+          "front": "Refine or restart?",
+          "back": "Refine with a targeted follow-up; it's faster and cheaper than rewriting the whole prompt."
+        }
+      ],
+      "reflection": "Think of a recent time an AI answer didn't fit your needs. What single follow-up instruction could you have given to fix it?",
+      "summary": "Prompting is a conversation: diagnose what went wrong, give targeted follow-up corrections, and use length, tone, and detail constraints to steer the output until it fits.",
+      "discussionPrompt": "Ask the EFIKO tutor to give you a deliberately vague answer to a question, then coach you through three rounds of follow-up corrections to sharpen it.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s4-advanced-techniques-examples-and-reasoning",
+      "order": 4,
+      "title": "Advanced Techniques: Examples and Reasoning",
+      "objectives": [
+        "Create few-shot prompts using examples",
+        "Guide the model with step-by-step reasoning prompts",
+        "Choose the right technique for a given task"
+      ],
+      "text": "So far you've given instructions and context. Now let's add two power tools: few-shot prompting and step-by-step reasoning.\n\nFew-shot prompting means showing the model a few worked examples of the input-output pattern you want, before your real request. This teaches format and tone better than any description. For instance, to sort feedback:\n\n\"Classify sentiment as Positive, Negative, or Neutral.\nText: 'The delivery was fast.' -> Positive\nText: 'It arrived broken.' -> Negative\nText: 'The package was blue.' -> Neutral\nText: 'Support never replied.' ->\"\n\nThe model copies your pattern and answers 'Negative'. Two to four clear examples usually suffice. This is called 'few-shot'; giving zero examples is 'zero-shot'.\n\nStep-by-step reasoning (also called chain-of-thought) asks the model to work through a problem before answering. For maths, logic, or multi-part decisions, simply add: \"Let's think step by step\" or \"Show your reasoning before the final answer.\" This reduces careless errors.\n\nHow to choose: use few-shot when you need a consistent FORMAT or style; use step-by-step when the task needs REASONING or calculation. You can combine both.\n\nTry now: give three example summaries in your style, then ask for a fourth on new text. Watch it match you.",
+      "voiceScript": "In this session I want to hand you two of my favourite prompting tools. The first is few-shot prompting, which simply means showing the model a couple of worked examples before your real question. Instead of describing the format you want, you demonstrate it, and the model copies the pattern beautifully. The second tool is step-by-step reasoning. When a task involves maths, logic, or several decisions, just ask the model to think step by step before giving its answer, and you'll see far fewer careless mistakes. Here's my rule of thumb: reach for examples when you care about format or style, and reach for reasoning when the task needs real thinking. And remember, you can always combine the two.",
+      "keyPoints": [
+        "Few-shot = show 2-4 examples so the model copies your desired format",
+        "Step-by-step reasoning cuts errors on maths, logic and multi-part tasks",
+        "Use examples for format/style; use reasoning for thinking tasks",
+        "You can combine both techniques in one prompt"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" fill=\"#0f766e\" font-size=\"17\" font-weight=\"bold\">Two Power Tools</text><rect x=\"20\" y=\"45\" width=\"200\" height=\"180\" rx=\"8\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"34\" y=\"68\" fill=\"#15803d\" font-size=\"14\" font-weight=\"bold\">Few-shot</text><line x1=\"34\" y1=\"82\" x2=\"200\" y2=\"82\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"34\" y=\"104\" fill=\"#334155\" font-size=\"11\">in -&gt; out</text><text x=\"34\" y=\"124\" fill=\"#334155\" font-size=\"11\">in -&gt; out</text><text x=\"34\" y=\"144\" fill=\"#334155\" font-size=\"11\">in -&gt; out</text><text x=\"34\" y=\"170\" fill=\"#b45309\" font-size=\"11\">new -&gt; ?</text><text x=\"34\" y=\"200\" fill=\"#0f766e\" font-size=\"10\">Use for FORMAT</text><rect x=\"260\" y=\"45\" width=\"200\" height=\"180\" rx=\"8\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"274\" y=\"68\" fill=\"#b45309\" font-size=\"14\" font-weight=\"bold\">Step-by-step</text><line x1=\"274\" y1=\"82\" x2=\"440\" y2=\"82\" stroke=\"#334155\" stroke-width=\"1\"/><circle cx=\"282\" cy=\"104\" r=\"4\" fill=\"#0f766e\"/><line x1=\"286\" y1=\"104\" x2=\"320\" y2=\"104\" stroke=\"#334155\" stroke-width=\"1\"/><circle cx=\"282\" cy=\"128\" r=\"4\" fill=\"#0f766e\"/><line x1=\"286\" y1=\"128\" x2=\"330\" y2=\"128\" stroke=\"#334155\" stroke-width=\"1\"/><circle cx=\"282\" cy=\"152\" r=\"4\" fill=\"#0f766e\"/><line x1=\"286\" y1=\"152\" x2=\"340\" y2=\"152\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"274\" y=\"200\" fill=\"#0f766e\" font-size=\"10\">Use for REASONING</text></svg>",
+      "whiteboardCaption": "Two panels contrast few-shot prompting (examples for format) with step-by-step reasoning (chained steps for thinking tasks).",
+      "example": "A student running a campus catering side-business gets many WhatsApp messages. She gives the model three examples labelling messages as 'Order', 'Complaint', or 'Question', then pastes new messages. The model sorts her inbox instantly, so she replies to complaints first.",
+      "quiz": [
+        {
+          "q": "What does 'few-shot prompting' mean?",
+          "options": [
+            "Giving the model no context at all",
+            "Including a few worked example input-output pairs",
+            "Asking the model to be brief",
+            "Sending many prompts quickly"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which task benefits most from a 'think step by step' instruction?",
+          "options": [
+            "Solving a multi-step maths word problem",
+            "Copying a fixed output format",
+            "Translating one word",
+            "Choosing a font colour"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "You need outputs in a very consistent format. Best technique?",
+          "options": [
+            "Zero-shot with no guidance",
+            "Few-shot with examples",
+            "Only step-by-step reasoning",
+            "Shorter prompts"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Few-shot prompting",
+          "back": "Providing 2-4 example input-output pairs so the model imitates the pattern."
+        },
+        {
+          "front": "Zero-shot prompting",
+          "back": "Asking directly with no examples provided."
+        },
+        {
+          "front": "Chain-of-thought / step-by-step",
+          "back": "Asking the model to reason through steps before its final answer, reducing errors."
+        },
+        {
+          "front": "When to use examples vs reasoning",
+          "back": "Examples for consistent format/style; reasoning for calculation or multi-part logic."
+        }
+      ],
+      "reflection": "Think of one recurring task in your studies or work: would examples or step-by-step reasoning make the model's help more reliable, and why?",
+      "summary": "Few-shot prompting teaches format through examples, while step-by-step reasoning improves accuracy on thinking tasks; choose based on whether the task needs consistent format or careful reasoning.",
+      "discussionPrompt": "Help me design a combined few-shot and step-by-step prompt for grading short answers in my subject, and explain why each part is there.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-prompting-for-study-and-work",
+      "order": 5,
+      "title": "Prompting for Study and Work",
+      "objectives": [
+        "Build reusable prompt templates for common study and work tasks",
+        "Adapt prompts for summarising, drafting, and brainstorming",
+        "Apply prompting to a realistic academic or workplace scenario"
+      ],
+      "text": "Now you'll turn prompting skills into everyday tools. A reusable template is a fill-in-the-blank prompt you save once and reuse forever. The best templates follow four parts: ROLE (who the AI acts as), TASK (what to do), CONTEXT (background and constraints), and FORMAT (how the output should look).\n\nSummarising template: \"You are a study coach. Summarise the notes below into 5 bullet points a student can revise in 2 minutes. Keep key terms. Notes: [paste].\" Adapt it by changing bullet count, tone, or adding \"explain any jargon.\"\n\nDrafting template: \"You are a professional writer. Draft a polite email to my lecturer requesting a 3-day extension on my assignment because I was ill. Keep it under 120 words, formal but warm.\" Always review and personalise before sending.\n\nBrainstorming template: \"You are a creative partner. Give me 8 project ideas on renewable energy for a final-year group of 4, ranging from easy to ambitious. For each, add one sentence on feasibility.\"\n\nHow-to: pick a recurring task, write the four parts, test it, then save it in a notes app. Refine wording whenever results disappoint. Over time you build a personal prompt library that saves hours weekly and produces consistent, higher-quality work.",
+      "voiceScript": "In this session we make prompting truly useful for your daily study and work. The trick is to build reusable templates so you never start from scratch. Think of every strong prompt as having four parts: a role for the AI, the task you want done, the context or background, and the format you'd like back. Once you write one, save it in your notes app and reuse it. Need to summarise lecture notes? Ask for five quick bullets. Drafting an email to a lecturer? Set the tone and a word limit. Brainstorming a project? Ask for eight ideas from easy to ambitious. Test, refine, and slowly grow your own prompt library that saves you real hours.",
+      "keyPoints": [
+        "Save prompts as four-part templates: Role, Task, Context, Format",
+        "Adapt one template for summarising, drafting, or brainstorming by changing task and format",
+        "Always review and personalise AI drafts before using them",
+        "Build a personal prompt library to save hours each week"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"16\" fill=\"#0f766e\">Reusable Prompt Template</text><rect x=\"20\" y=\"50\" width=\"200\" height=\"40\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"30\" y=\"75\" font-size=\"13\" fill=\"#334155\">ROLE: who AI acts as</text><rect x=\"20\" y=\"98\" width=\"200\" height=\"40\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"30\" y=\"123\" font-size=\"13\" fill=\"#334155\">TASK: what to do</text><rect x=\"20\" y=\"146\" width=\"200\" height=\"40\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"30\" y=\"171\" font-size=\"13\" fill=\"#334155\">CONTEXT: background</text><rect x=\"20\" y=\"194\" width=\"200\" height=\"40\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"30\" y=\"219\" font-size=\"13\" fill=\"#334155\">FORMAT: how output looks</text><line x1=\"228\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#0f766e\" stroke-width=\"2\"/><path d=\"M285 134 L295 140 L285 146\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><circle cx=\"360\" cy=\"90\" r=\"22\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"345\" y=\"95\" font-size=\"12\" fill=\"#15803d\">Sum</text><circle cx=\"360\" cy=\"140\" r=\"22\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"343\" y=\"145\" font-size=\"12\" fill=\"#b45309\">Draft</text><circle cx=\"360\" cy=\"190\" r=\"22\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"342\" y=\"195\" font-size=\"11\" fill=\"#0f766e\">Ideas</text></svg>",
+      "whiteboardCaption": "A four-part template (Role, Task, Context, Format) feeds into three common uses: summarising, drafting, and brainstorming.",
+      "example": "A final-year student in Nairobi pastes messy lecture notes on cell biology into a saved summarising template, asking for five revision bullets with key terms kept. In two minutes she has a clean study sheet, then reuses the same template for every course before exams.",
+      "quiz": [
+        {
+          "q": "What are the four parts of a strong reusable template?",
+          "options": [
+            "Role, Task, Context, Format",
+            "Start, Middle, End, Review",
+            "Question, Answer, Edit, Send",
+            "Topic, Length, Tone, Time"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which addition best improves a summarising prompt for revision?",
+          "options": [
+            "Ask it to write longer paragraphs",
+            "Specify bullet count and to keep key terms",
+            "Remove all context",
+            "Ask for a random topic"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Before sending an AI-drafted email, you should:",
+          "options": [
+            "Send it immediately unchanged",
+            "Review and personalise it",
+            "Delete the context",
+            "Make it as long as possible"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Reusable prompt template",
+          "back": "A saved fill-in-the-blank prompt you reuse for recurring tasks."
+        },
+        {
+          "front": "Four parts of a template",
+          "back": "Role, Task, Context, Format."
+        },
+        {
+          "front": "Good summarising prompt feature",
+          "back": "Specify number of bullets and instruct it to keep key terms."
+        },
+        {
+          "front": "Why review AI drafts?",
+          "back": "To personalise, check accuracy, and match your voice before use."
+        }
+      ],
+      "reflection": "Which recurring task in your studies or work could you turn into a reusable template this week?",
+      "summary": "Reusable four-part templates (Role, Task, Context, Format) let you quickly summarise, draft, and brainstorm, building a personal prompt library that saves time and improves quality.",
+      "discussionPrompt": "Help me design and refine three reusable prompt templates for my most common tasks: summarising readings, drafting professional emails, and brainstorming project ideas.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s6-responsible-and-ethical-prompting",
+      "order": 6,
+      "title": "Responsible and Ethical Prompting",
+      "objectives": [
+        "Check AI outputs for accuracy and bias",
+        "Protect personal and confidential information in prompts",
+        "Use AI within academic integrity and workplace rules"
+      ],
+      "text": "AI tools are powerful, but they can be confidently wrong. A \"hallucination\" is when the AI invents facts, fake references, or wrong figures. Your job is to verify before you trust. Here is a simple three-step check you can use immediately:\n\n1) Verify accuracy: Ask the AI to cite sources, then confirm those sources actually exist using a search engine or library. Never submit numbers, quotes, or citations you have not checked.\n2) Watch for bias: AI learns from data that may under-represent African contexts, women, or local languages. Ask, \"Whose perspective is missing?\" and request balanced viewpoints.\n3) Protect privacy: Treat prompts like public postcards. Never paste passwords, exam questions, patient records, ID numbers, or client secrets. Replace real names with placeholders like \"Person A\".\n\nWorked example: You are writing a report and the AI gives a statistic \"Nigeria's literacy rate is 89%.\" Do not paste it in. Search a trusted source (UNESCO), find the real figure, and cite that source, not the chatbot.\n\nFinally, follow the rules. Many universities require you to disclose AI use, and workplaces have data policies. Use AI as a thinking assistant to draft, brainstorm, and explain, but keep the final judgement, honesty, and accountability yours.",
+      "voiceScript": "Welcome to our final session, where we make sure you use AI responsibly. Here is the truth: AI can sound confident and still be completely wrong. That is why I always verify before I trust. When the tool gives me a fact or a citation, I check it against a real, trusted source before I use it. I also ask myself whose perspective might be missing, because AI can carry bias and often overlooks African voices. And I treat every prompt like a public postcard, so I never paste passwords, private records, or secrets. Above all, I stay honest, disclose my AI use, and keep the final judgement my own. Well done finishing this course!",
+      "keyPoints": [
+        "AI can hallucinate\trusted sources before you trust or submit them",
+        "Watch for bias and ask whose perspective is missing, especially African contexts",
+        "Never paste passwords, private records, or secrets into prompts",
+        "Disclose AI use and follow academic and workplace rules"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"240\" y=\"28\" font-size=\"17\" fill=\"#334155\" text-anchor=\"middle\">Responsible Prompting</text><rect x=\"20\" y=\"55\" width=\"130\" height=\"90\" rx=\"8\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"85\" y=\"80\" font-size=\"13\" fill=\"#0f766e\" text-anchor=\"middle\">1 Verify</text><path d=\"M45 100 l15 18 l30 -35\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"85\" y=\"135\" font-size=\"10\" fill=\"#334155\" text-anchor=\"middle\">check sources</text><rect x=\"175\" y=\"55\" width=\"130\" height=\"90\" rx=\"8\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"240\" y=\"80\" font-size=\"13\" fill=\"#b45309\" text-anchor=\"middle\">2 Check Bias</text><circle cx=\"240\" cy=\"108\" r=\"16\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"228\" y1=\"108\" x2=\"252\" y2=\"108\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"240\" y=\"135\" font-size=\"10\" fill=\"#334155\" text-anchor=\"middle\">who is missing?</text><rect x=\"330\" y=\"55\" width=\"130\" height=\"90\" rx=\"8\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"395\" y=\"80\" font-size=\"13\" fill=\"#15803d\" text-anchor=\"middle\">3 Protect</text><rect x=\"378\" y=\"92\" width=\"34\" height=\"26\" rx=\"3\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><path d=\"M388 92 v-8 a7 7 0 0 1 14 0 v8\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"395\" y=\"135\" font-size=\"10\" fill=\"#334155\" text-anchor=\"middle\">no secrets</text><text x=\"240\" y=\"185\" font-size=\"13\" fill=\"#0f766e\" text-anchor=\"middle\">Keep honesty + judgement YOURS</text><line x1=\"60\" y1=\"205\" x2=\"420\" y2=\"205\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"240\" y=\"230\" font-size=\"11\" fill=\"#334155\" text-anchor=\"middle\">Disclose AI use - follow school/work rules</text></svg>",
+      "whiteboardCaption": "Three pillars of responsible prompting: verify accuracy, check for bias, and protect private information.",
+      "example": "A Ghanaian nursing student asks an AI to summarise a patient's case for a class assignment. Instead of pasting the real patient's name and hospital ID, she replaces them with \"Patient A\" and generic details, verifies the medical facts against her textbook, and notes in her submission that she used AI to help structure the summary.",
+      "quiz": [
+        {
+          "q": "What is an AI \"hallucination\"?",
+          "options": [
+            "When AI refuses to answer",
+            "When AI invents false facts or fake sources that sound convincing",
+            "When AI responds too slowly",
+            "When AI uses too many words"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which item is safe to paste into a public AI chatbot?",
+          "options": [
+            "A client's national ID number",
+            "A colleague's password",
+            "A general, non-confidential question about a topic",
+            "A patient's private medical record"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Before citing a statistic the AI gives you, you should:",
+          "options": [
+            "Trust it because AI is usually right",
+            "Verify it against a trusted source like UNESCO",
+            "Change the number slightly",
+            "Cite the chatbot as the source"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Hallucination",
+          "back": "When an AI confidently produces false facts, figures, or fake citations."
+        },
+        {
+          "front": "How to protect privacy in prompts",
+          "back": "Never paste secrets or personal data; replace real names with placeholders like 'Person A'."
+        },
+        {
+          "front": "Checking for bias",
+          "back": "Ask whose perspective is missing and request balanced viewpoints, since AI data may under-represent African contexts."
+        },
+        {
+          "front": "Academic integrity with AI",
+          "back": "Disclose your AI use, follow institution rules, and keep final judgement and honesty your own."
+        }
+      ],
+      "reflection": "Think of a recent assignment or task: where could AI help you, and what boundaries would you set to keep it honest and private?",
+      "summary": "Responsible prompting means verifying AI outputs for accuracy and bias, protecting personal and confidential data, and using AI transparently within academic and workplace rules.",
+      "discussionPrompt": "Ask the EFIKO tutor: How should I disclose that I used AI in a university assignment, and what wording keeps me within academic integrity rules?",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Prompt Engineering",
+    "audience": "University students and young professionals",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783114075847,
+  "updatedAt": 1783114075847
+}

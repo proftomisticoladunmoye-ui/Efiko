@@ -113,7 +113,7 @@ Brief: ${session.brief}`;
   return parse(SESSION_SYSTEM, `Author this EFIKO session in full.\n${ctx}`, SessionSchema, 6000);
 }
 
-function assemble(spec, outline, sessions) {
+function assemble(spec, outline, pairs) {
   const now = Date.now();
   const passMark = 70;
   return {
@@ -133,10 +133,10 @@ function assemble(spec, outline, sessions) {
     nextCourse: outline.nextCourse,
     preAssessment: { questions: outline.preAssessment },
     finalAssessment: { passMark, questions: outline.finalAssessment },
-    sessions: sessions.map((s, i) => ({
-      id: `s${i + 1}-${slug(outline.sessions[i]?.title || `session-${i + 1}`)}`,
+    sessions: pairs.map(({ outline: o, content: s }, i) => ({
+      id: `s${i + 1}-${slug(o?.title || `session-${i + 1}`)}`,
       order: i + 1,
-      title: outline.sessions[i]?.title || `Session ${i + 1}`,
+      title: o?.title || `Session ${i + 1}`,
       objectives: s.objectives,
       text: s.text,
       voiceScript: s.voiceScript || s.text,
@@ -181,18 +181,34 @@ export async function evaluateTeachBack({ courseTitle, sessions, explanation }) 
   return parse(system, user, TeachBackSchema, 900, FAST_MODEL, null);
 }
 
-// Generate a full EFIKO Original (DRAFT). Returns the assembled course, or null if AI is off
-// or the outline generation failed.
+// A session is only usable if it has all the pieces the player renders.
+function sessionValid(s) {
+  return !!(s && s.text && s.text.length >= 400 && s.voiceScript && s.whiteboardSvg && String(s.whiteboardSvg).includes('<svg')
+    && (s.quiz || []).length >= 3 && (s.flashcards || []).length >= 4 && (s.keyPoints || []).length >= 1);
+}
+
+// Retry an async producer until it yields a truthy result (tolerates transient API/parse errors).
+async function retry(fn, attempts = 3) {
+  for (let a = 0; a < attempts; a++) {
+    try { const r = await fn(); if (r) return r; } catch { /* transient — retry */ }
+  }
+  return null;
+}
+
+// Generate a full EFIKO Original (DRAFT). Self-healing: the outline and each session are
+// retried on transient errors or incomplete output, and a session that still can't be
+// authored is dropped rather than failing the whole course. Returns null only if AI is off
+// or too little usable content was produced.
 export async function generateCourse({ topic, audience = 'University students', hours = 4, level = 'Beginner' }) {
   if (!isConfigured()) return null;
   const spec = { topic, audience, hours, level };
-  const outline = await genOutline(spec);
+  const outline = await retry(() => genOutline(spec));
   if (!outline || !Array.isArray(outline.sessions) || !outline.sessions.length) return null;
-  const sessions = [];
+  const pairs = [];
   for (let i = 0; i < outline.sessions.length; i++) {
-    const s = await genSession(outline, outline.sessions[i], i);
-    if (s) sessions.push(s);
+    const content = await retry(async () => { const s = await genSession(outline, outline.sessions[i], i); return sessionValid(s) ? s : null; });
+    if (content) pairs.push({ outline: outline.sessions[i], content });
   }
-  if (!sessions.length) return null;
-  return assemble(spec, outline, sessions);
+  if (pairs.length < 4) return null; // need a substantial, complete course
+  return assemble(spec, outline, pairs);
 }

@@ -1,0 +1,503 @@
+{
+  "courseId": "orig-ai-for-productivity",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "AI for Productivity",
+  "subtitle": "Practical AI Tools to Work Smarter, Study Faster, and Save Time",
+  "category": "Digital Skills & Productivity",
+  "level": "Beginner",
+  "audience": "African university students and young professionals new to AI tools",
+  "estimatedHours": 4,
+  "description": "This hands-on, beginner-friendly course helps students and professionals use everyday AI tools to boost their productivity in studying, working, and communicating. You will learn what generative AI is (and is not), how to write effective prompts, and how to safely apply AI to real tasks like summarising, drafting, planning, and research. Designed to be mobile and offline friendly, each short session builds practical skills you can use immediately, with a strong focus on responsible and ethical use.",
+  "outcomes": [
+    "Explain what generative AI is and identify common tools and their everyday uses.",
+    "Apply effective prompting techniques to get useful, accurate results from AI assistants.",
+    "Use AI tools to complete real productivity tasks such as summarising, drafting, and planning.",
+    "Evaluate AI outputs critically for accuracy, bias, and reliability.",
+    "Demonstrate responsible, ethical, and privacy-aware use of AI in academic and professional settings."
+  ],
+  "competencies": [
+    "Uses generative AI tools confidently for everyday study and work tasks",
+    "Writes clear, effective prompts to get accurate and useful AI results",
+    "Critically evaluates AI outputs for accuracy, bias, and reliability",
+    "Applies AI responsibly with attention to ethics, privacy, and academic integrity"
+  ],
+  "nextCourse": "Advanced AI Workflows for Professionals",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What does 'generative AI' mean?",
+        "options": [
+          "A tool that only stores files",
+          "AI that can create new content like text or images",
+          "A type of internet browser",
+          "A social media platform"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is a 'prompt' when using an AI chatbot?",
+        "options": [
+          "The instruction or question you give the AI",
+          "The AI's internet speed",
+          "A password for the app",
+          "A type of computer virus"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "Which is a good habit when using AI-generated information?",
+        "options": [
+          "Trust everything it says",
+          "Never use it for anything",
+          "Verify important facts with trusted sources",
+          "Only use it at night"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Which best describes a limitation of current AI tools?",
+        "options": [
+          "They never make mistakes",
+          "They can produce confident but incorrect answers",
+          "They cannot generate text",
+          "They only work offline"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What makes a prompt more effective?",
+        "options": [
+          "Keeping it as short and vague as possible",
+          "Providing clear context, role, and examples",
+          "Using only one word",
+          "Writing in all capital letters"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "When AI 'hallucinates', it means the AI:",
+        "options": [
+          "Is turned off",
+          "Makes up information that sounds true but is false",
+          "Runs faster",
+          "Deletes your files"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which is a responsible way to use AI for schoolwork?",
+        "options": [
+          "Submit AI text as your own without review",
+          "Use it to understand concepts and cite appropriately",
+          "Share your classmates' passwords",
+          "Avoid checking any facts"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A privacy-safe practice when using AI tools is to:",
+        "options": [
+          "Paste sensitive personal or confidential data freely",
+          "Avoid sharing private or confidential information",
+          "Turn off your device",
+          "Only use AI in public spaces"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-understanding-ai-and-how-it-works",
+      "order": 1,
+      "title": "Understanding AI and How It Works",
+      "objectives": [
+        "Define generative AI and machine learning in simple terms.",
+        "Identify popular AI tools and their typical uses.",
+        "Recognise the strengths and limits of current AI tools."
+      ],
+      "text": "Artificial Intelligence (AI) is software that performs tasks we normally think need human thinking, like writing, summarising, or answering questions. Machine learning (ML) is the main method behind modern AI: instead of a programmer writing every rule, the computer learns patterns from huge amounts of example data. Generative AI is a type of ML that creates new content, text, images, code, or audio, based on those learned patterns.\n\nHow does a chatbot like ChatGPT work? It was trained on enormous amounts of text, so it learned which words tend to follow others. When you type a question (a \"prompt\"), it predicts the most likely helpful response, one piece at a time. It is not looking up facts in a database; it is generating a best guess. That is why it can sound confident but sometimes be wrong, a mistake called a \"hallucination\".\n\nTry this now: open a free AI chatbot and type, \"Explain photosynthesis to a 12-year-old in three sentences.\" Notice how it adjusts tone and length to your instructions. Then ask it to \"make it simpler.\" This shows AI's strength, fast drafting and rephrasing, and its limit, it needs your judgement to check accuracy. Treat AI as a smart assistant, not an oracle.",
+      "voiceScript": "Welcome to your first session on using AI for productivity. Let me keep this simple. Artificial intelligence is just software that does tasks we usually think need human thinking, like writing or answering questions. The engine behind it is machine learning, where a computer learns patterns from lots of examples instead of being told every rule. Generative AI goes a step further and creates new content for you. When you chat with a tool like ChatGPT, it is predicting helpful words one after another, not looking up facts, so it can sometimes sound sure but be wrong. That is why your judgement still matters. Think of AI as a clever assistant you guide and double-check.",
+      "keyPoints": [
+        "AI learns patterns from data; generative AI creates new content from those patterns.",
+        "Chatbots predict likely words, they do not look up guaranteed facts.",
+        "AI is great for drafting and rephrasing but can 'hallucinate' wrong information.",
+        "Use AI as an assistant you guide and fact-check, not as an oracle."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"15\" fill=\"#334155\">How a chatbot works</text><rect x=\"20\" y=\"60\" width=\"110\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"40\" y=\"90\" font-size=\"13\" fill=\"#0f766e\">Your prompt</text><line x1=\"130\" y1=\"85\" x2=\"185\" y2=\"85\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"185\" y=\"55\" width=\"120\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"200\" y=\"80\" font-size=\"12\" fill=\"#15803d\">AI model:</text><text x=\"200\" y=\"98\" font-size=\"11\" fill=\"#15803d\">predicts words</text><line x1=\"305\" y1=\"85\" x2=\"360\" y2=\"85\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"360\" y=\"60\" width=\"100\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"378\" y=\"90\" font-size=\"13\" fill=\"#b45309\">Response</text><text x=\"20\" y=\"165\" font-size=\"13\" fill=\"#334155\">Learned from lots of data</text><path d=\"M20 180 h300\" stroke=\"#0f766e\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><text x=\"20\" y=\"215\" font-size=\"12\" fill=\"#b45309\">Can sound sure but be wrong</text><text x=\"20\" y=\"238\" font-size=\"12\" fill=\"#15803d\">Always check the facts</text></svg>",
+      "whiteboardCaption": "A prompt flows into an AI model that predicts words and returns a response, with a reminder to verify accuracy.",
+      "example": "A student in Lagos writing a group project uses an AI chatbot to draft an introduction, then rewrites it to fit her lecturer's brief and checks every statistic against her textbook before submitting.",
+      "quiz": [
+        {
+          "q": "What best describes generative AI?",
+          "options": [
+            "Software that only stores files",
+            "A type of machine learning that creates new content from learned patterns",
+            "A search engine that finds exact web pages",
+            "A calculator for maths only"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why can a chatbot give a confident but incorrect answer?",
+          "options": [
+            "It intentionally lies",
+            "It predicts likely words rather than retrieving verified facts",
+            "It has no training data",
+            "It only works offline"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the best way to use AI for a school assignment?",
+          "options": [
+            "Copy its output directly with no checking",
+            "Ignore it completely",
+            "Use it to draft, then verify and edit the content yourself",
+            "Only use it for maths"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Machine learning",
+          "back": "A method where computers learn patterns from example data instead of being programmed with every rule."
+        },
+        {
+          "front": "Generative AI",
+          "back": "AI that creates new content like text, images, or code based on patterns it learned."
+        },
+        {
+          "front": "Prompt",
+          "back": "The instruction or question you type to guide an AI tool's response."
+        },
+        {
+          "front": "Hallucination",
+          "back": "When an AI produces confident-sounding but false or made-up information."
+        }
+      ],
+      "reflection": "Think of one task you do weekly, how could an AI assistant help draft it, and what would you still need to check yourself?",
+      "summary": "Generative AI uses machine learning to create content by predicting likely patterns; it is powerful for drafting but must be guided and fact-checked because it can be confidently wrong.",
+      "discussionPrompt": "Ask the EFIKO tutor: 'Give me three examples of AI hallucinations and how I can spot and prevent them in my own work.'",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-the-art-of-prompting",
+      "order": 2,
+      "title": "The Art of Prompting",
+      "objectives": [
+        "Describe the parts of an effective prompt.",
+        "Apply prompting techniques such as giving context, role, and examples.",
+        "Refine prompts iteratively to improve results."
+      ],
+      "text": "A prompt is the instruction you give an AI tool. Vague prompts produce vague answers. Strong prompts have four parts: Role, Task, Context, and Format.\n\nRole tells the AI who to act as: \"You are a career coach.\" Task states exactly what you want: \"Write a 150-word cover letter.\" Context gives details: \"For a marketing internship at a Lagos bank; I have a diploma and social-media skills.\" Format shows the shape of the answer: \"Use a formal tone, three short paragraphs.\"\n\nWorked example. Weak: \"Help me study.\" Strong: \"You are a patient tutor (role). Create a 5-question quiz on photosynthesis for a first-year biology student (task). I struggle with the light-dependent reactions (context). Give questions first, then answers below (format).\"\n\nTwo extra techniques: give an example of what good output looks like (\"few-shot\" prompting), and ask the AI to explain its reasoning step by step for complex tasks.\n\nRefine iteratively. Treat the first answer as a draft. Reply with corrections: \"Make it shorter,\" \"Add local examples,\" or \"That's too formal, sound friendlier.\" Each follow-up sharpens the result. Prompting is a conversation, not a single command. Practice this and you will get accurate, relevant, useful answers fast.",
+      "voiceScript": "Think of a prompt as a set of instructions to a very capable assistant who can't read your mind. If you're vague, you'll get something vague back. So I like to include four things: who the AI should act as, the exact task, the background context, and the format I want. For example, instead of saying help me study, I'd say, act as a patient tutor and make me a five-question quiz on photosynthesis, because I struggle with the light reactions. Notice how much clearer that is. And here's my favourite tip: don't stop at the first answer. Reply, refine, and nudge it closer to what you need. Prompting is really a conversation.",
+      "keyPoints": [
+        "A strong prompt has four parts: Role, Task, Context, Format.",
+        "Give examples (few-shot) and ask for step-by-step reasoning on hard tasks.",
+        "Treat the first answer as a draft and refine with follow-up instructions.",
+        "Specific inputs produce accurate, relevant, useful outputs."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"140\" y=\"28\" font-size=\"18\" fill=\"#0f766e\" font-family=\"sans-serif\">Anatomy of a Prompt</text><rect x=\"30\" y=\"50\" width=\"180\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"45\" y=\"75\" font-size=\"14\" fill=\"#0f766e\" font-family=\"sans-serif\">ROLE: act as...</text><rect x=\"30\" y=\"100\" width=\"180\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"45\" y=\"125\" font-size=\"14\" fill=\"#15803d\" font-family=\"sans-serif\">TASK: do this...</text><rect x=\"30\" y=\"150\" width=\"180\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"45\" y=\"175\" font-size=\"14\" fill=\"#b45309\" font-family=\"sans-serif\">CONTEXT: details</text><rect x=\"30\" y=\"200\" width=\"180\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"45\" y=\"225\" font-size=\"14\" fill=\"#334155\" font-family=\"sans-serif\">FORMAT: shape</text><path d=\"M220 130 L300 130\" stroke=\"#334155\" stroke-width=\"2\" marker-end=\"url(#a)\"/><defs><marker id=\"a\" markerWidth=\"10\" markerHeight=\"10\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 z\" fill=\"#334155\"/></marker></defs><circle cx=\"370\" cy=\"90\" r=\"36\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"350\" y=\"95\" font-size=\"13\" fill=\"#0f766e\" font-family=\"sans-serif\">AI</text><path d=\"M370 126 L370 170\" stroke=\"#15803d\" stroke-width=\"2\"/><path d=\"M340 200 L400 200\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"318\" y=\"225\" font-size=\"12\" fill=\"#15803d\" font-family=\"sans-serif\">refine + repeat</text><path d=\"M406 200 C440 200 440 90 380 88\" stroke=\"#b45309\" stroke-width=\"2\" fill=\"none\" stroke-dasharray=\"4 3\"/></svg>",
+      "whiteboardCaption": "The four building blocks of a prompt feed into the AI, which you then refine in a loop.",
+      "example": "A student in Nairobi wants a CV for a data-entry job. Weak prompt: \"Write my CV.\" Strong prompt: \"Act as a hiring recruiter. Draft a one-page CV for a data-entry role at an insurance firm. I'm a final-year student with fast typing and Excel skills, no formal job yet. Use bullet points and a professional tone.\" She then replies, \"Add a short objective line and make it fit half a page.\"",
+      "quiz": [
+        {
+          "q": "Which set best describes the four parts of an effective prompt?",
+          "options": [
+            "Role, Task, Context, Format",
+            "Question, Answer, Grade, Repeat",
+            "Login, Search, Copy, Paste",
+            "Tone, Speed, Cost, Length"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does 'few-shot' prompting mean?",
+          "options": [
+            "Sending the prompt very quickly",
+            "Giving the AI an example of the output you want",
+            "Using the fewest words possible",
+            "Asking only one short question"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Your first AI answer is too formal and too long. Best next step?",
+          "options": [
+            "Start a brand-new unrelated chat",
+            "Accept it since AI can't change",
+            "Reply asking it to be shorter and friendlier",
+            "Delete the whole conversation"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is a prompt?",
+          "back": "The instruction or set of instructions you give an AI tool to get a response."
+        },
+        {
+          "front": "The four parts of a strong prompt",
+          "back": "Role, Task, Context, and Format."
+        },
+        {
+          "front": "Few-shot prompting",
+          "back": "Including one or more examples of the desired output to guide the AI."
+        },
+        {
+          "front": "Iterative refinement",
+          "back": "Treating the first reply as a draft and improving it with follow-up instructions."
+        }
+      ],
+      "reflection": "Think of a task you did this week. How would you rewrite your request to an AI using Role, Task, Context, and Format?",
+      "summary": "Effective prompts combine Role, Task, Context, and Format, and get better through examples and iterative refinement, turning vague requests into accurate, useful AI answers.",
+      "discussionPrompt": "Ask the EFIKO tutor to critique and improve a real prompt you wrote, then explain why each change makes it stronger.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-ai-for-studying-and-research",
+      "order": 3,
+      "title": "AI for Studying and Research",
+      "objectives": [
+        "Use AI to summarise notes, articles, and long texts.",
+        "Generate study aids like quizzes, flashcards, and explanations.",
+        "Verify AI-generated information against trusted sources."
+      ],
+      "text": "AI tools like ChatGPT, Gemini, or Claude can help you study faster, but only if you drive them well. Start with summarising. Paste a long article or your lecture notes and ask: \"Summarise this in 5 bullet points for a beginner.\" For dense material, try: \"Explain this like I'm 15\" or \"Give me the key argument and three supporting facts.\"\n\nNext, generate study aids. Ask: \"Create 5 multiple-choice questions from this text with answers,\" or \"Turn these notes into 10 flashcards (term on front, definition on back).\" You can also request analogies: \"Give me a real-life example of supply and demand in a Lagos market.\"\n\nCritically, VERIFY. AI can \"hallucinate\" — confidently state wrong facts, fake statistics, or invented citations. Never trust a date, quote, or reference without checking. How to verify: cross-check facts against your textbook, Google Scholar, official websites, or trusted news. Ask the AI, \"What is your source?\" then confirm that source actually exists.\n\nWorked example: You have a 10-page PDF on photosynthesis. Step 1: \"Summarise in 6 bullets.\" Step 2: \"Make 5 quiz questions.\" Step 3: Check two facts against your biology textbook. In minutes you have a study pack you can trust.",
+      "voiceScript": "Let me show you how AI can make studying faster and smarter. Imagine you have a long article or messy lecture notes. You can simply paste them in and ask the AI to summarise everything in five clear bullet points, or explain a tough concept as if you were fifteen. Once you understand it, ask the same tool to create quiz questions or flashcards so you can test yourself. But here's the part many people skip: always verify. AI sometimes sounds confident while being completely wrong, inventing facts, dates, even fake references. So treat it like a smart but forgetful study partner. Cross-check important facts against your textbook or a trusted website before you rely on them. Study fast, but stay accurate.",
+      "keyPoints": [
+        "Ask AI to summarise long texts into simple bullets or beginner explanations.",
+        "Generate quizzes, flashcards, and analogies to test and reinforce learning.",
+        "AI can hallucinate — never trust facts, dates, or citations without checking.",
+        "Verify against textbooks, Google Scholar, or official sources before relying on it."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><rect x=\"20\" y=\"40\" width=\"110\" height=\"70\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"32\" y1=\"58\" x2=\"118\" y2=\"58\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"32\" y1=\"72\" x2=\"118\" y2=\"72\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"32\" y1=\"86\" x2=\"100\" y2=\"86\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"75\" y=\"128\" font-size=\"12\" text-anchor=\"middle\" fill=\"#334155\">Long text</text><path d=\"M135 75 L185 75\" stroke=\"#0f766e\" stroke-width=\"2\" marker-end=\"url(#a)\"/><rect x=\"190\" y=\"45\" width=\"110\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"245\" y=\"70\" font-size=\"12\" text-anchor=\"middle\" fill=\"#0f766e\">Summarise</text><text x=\"245\" y=\"90\" font-size=\"12\" text-anchor=\"middle\" fill=\"#0f766e\">+ Quiz</text><path d=\"M305 75 L355 75\" stroke=\"#15803d\" stroke-width=\"2\"/><rect x=\"360\" y=\"45\" width=\"100\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"410\" y=\"80\" font-size=\"12\" text-anchor=\"middle\" fill=\"#15803d\">Study pack</text><circle cx=\"245\" cy=\"175\" r=\"26\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"245\" y=\"180\" font-size=\"18\" text-anchor=\"middle\" fill=\"#b45309\">?</text><text x=\"245\" y=\"225\" font-size=\"12\" text-anchor=\"middle\" fill=\"#b45309\">VERIFY facts vs textbook</text><path d=\"M245 149 L245 120\" stroke=\"#b45309\" stroke-width=\"2\"/></svg>",
+      "whiteboardCaption": "A workflow turning long text into a summary and quiz, with a verification step to check facts.",
+      "example": "A University of Ibadan student pastes a 15-page economics journal article into an AI tool, asks for a 5-bullet summary and 8 flashcards, then confirms two key statistics against the Central Bank of Nigeria website before adding them to exam notes.",
+      "quiz": [
+        {
+          "q": "What is an 'AI hallucination'?",
+          "options": [
+            "When AI confidently states false or invented information",
+            "When AI refuses to answer",
+            "When AI works offline",
+            "When AI translates languages"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which prompt best turns notes into study aids?",
+          "options": [
+            "\"Tell me a story\"",
+            "\"Create 10 flashcards with term and definition from these notes\"",
+            "\"What is the weather?\"",
+            "\"Write me a poem\""
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Before trusting an AI-provided statistic, you should:",
+          "options": [
+            "Share it immediately",
+            "Cross-check it against a trusted source",
+            "Assume it is correct because AI is smart",
+            "Ignore the number"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Summarising prompt example",
+          "back": "\"Summarise this in 5 bullet points for a beginner.\""
+        },
+        {
+          "front": "Hallucination",
+          "back": "When AI confidently produces false facts, fake stats, or invented citations."
+        },
+        {
+          "front": "How to verify AI facts",
+          "back": "Cross-check against textbooks, Google Scholar, official sites, or trusted news."
+        },
+        {
+          "front": "Study aid prompts",
+          "back": "Ask for quizzes, flashcards, analogies, or 'explain like I'm 15'."
+        }
+      ],
+      "reflection": "Think of one subject you find difficult — how could an AI summary plus a self-quiz change how you prepare for that exam?",
+      "summary": "AI can summarise texts and create quizzes and flashcards to help you study faster, but you must verify its facts against trusted sources to avoid errors.",
+      "discussionPrompt": "Ask the EFIKO tutor: \"Help me build a verified study pack from my course notes and show me how to fact-check the AI's claims step by step.\"",
+      "sizeKB": 4
+    },
+    {
+      "id": "s4-ai-for-work-and-communication",
+      "order": 4,
+      "title": "AI for Work and Communication",
+      "objectives": [
+        "Draft emails, reports, and documents with AI assistance.",
+        "Use AI to plan tasks, schedules, and projects.",
+        "Edit and improve your own writing with AI feedback."
+      ],
+      "text": "At work, AI tools like ChatGPT or Gemini act as a tireless writing partner. The secret is giving clear instructions, called prompts, that include your goal, audience, and tone.\n\nDrafting emails: Instead of staring at a blank screen, type: \"Write a polite email to my lecturer requesting a two-day extension on my assignment because I was ill. Keep it under 120 words, formal tone.\" You get a solid first draft in seconds. Always read and personalise it before sending.\n\nReports and documents: Paste your rough notes and ask the AI to organise them into headings, or to summarise a long document into five bullet points. Ask it to explain any jargon it uses.\n\nPlanning: Describe your week and ask, \"Create a study and work schedule for these five tasks, prioritising deadlines.\" AI can break a big project into small daily steps.\n\nEditing your own writing: Paste your paragraph and ask, \"Fix grammar and make this clearer, but keep my voice.\" Then request feedback: \"What is unclear or too wordy?\" You learn while you improve.\n\nGolden rule: AI drafts, you decide. Check facts, remove errors, and never share confidential data. The final words are always yours.",
+      "voiceScript": "Imagine having a patient writing partner available any hour of the day. That is what AI can be for your work and communication. When I need to write a tricky email, I no longer freeze at a blank screen. I simply tell the tool who I'm writing to, what I want, and the tone I need, and it hands me a first draft in seconds. I do the same with messy notes, asking it to shape them into a clean report or a short summary. For busy weeks, I describe my tasks and let it build a realistic schedule. And when I've written something myself, I ask for gentle feedback to make it clearer. Remember, though, AI drafts, but you decide. Always read, correct, and keep your own voice.",
+      "keyPoints": [
+        "Great prompts state your goal, audience, and tone.",
+        "Use AI to draft emails/reports, plan schedules, and edit your writing.",
+        "Ask AI for feedback on clarity to learn while improving.",
+        "AI drafts, you decide: check facts and never share confidential data."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-family=\"sans-serif\" font-size=\"16\" fill=\"#0f766e\">AI as your work partner</text><rect x=\"20\" y=\"50\" width=\"130\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"32\" y=\"78\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">1. Draft</text><text x=\"32\" y=\"96\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">emails, reports</text><rect x=\"175\" y=\"50\" width=\"130\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"187\" y=\"78\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">2. Plan</text><text x=\"187\" y=\"96\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">tasks, schedule</text><rect x=\"330\" y=\"50\" width=\"130\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"342\" y=\"78\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">3. Edit</text><text x=\"342\" y=\"96\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">improve writing</text><line x1=\"150\" y1=\"80\" x2=\"175\" y2=\"80\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"305\" y1=\"80\" x2=\"330\" y2=\"80\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"20\" y=\"150\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#15803d\">Good prompt = Goal + Audience + Tone</text><rect x=\"20\" y=\"170\" width=\"440\" height=\"70\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"1.5\"/><text x=\"32\" y=\"195\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">\"Write a formal email to my lecturer requesting</text><text x=\"32\" y=\"213\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">a 2-day extension, under 120 words.\"</text><text x=\"32\" y=\"233\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">Golden rule: AI drafts, YOU decide.</text></svg>",
+      "whiteboardCaption": "A three-step workflow (Draft, Plan, Edit) with a sample prompt showing goal, audience and tone.",
+      "example": "Amara, a marketing intern in Lagos, must send a weekly progress report. She pastes her rough notes into ChatGPT and asks it to organise them into three headings with bullet points in a professional tone. In two minutes she has a clean draft, adds her real figures, corrects one detail the AI guessed wrong, and sends it, saving nearly an hour.",
+      "quiz": [
+        {
+          "q": "What three things make a strong prompt for a work email?",
+          "options": [
+            "Length, colour, and font",
+            "Goal, audience, and tone",
+            "Speed, cost, and language",
+            "Emoji, greeting, and signature"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "After AI drafts a report from your notes, what should you do first?",
+          "options": [
+            "Send it immediately to save time",
+            "Read it, personalise it, and check facts",
+            "Delete your original notes",
+            "Translate it into three languages"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the safest practice when using AI at work?",
+          "options": [
+            "Paste confidential client data for better results",
+            "Trust every fact the AI states",
+            "Never review the output",
+            "Avoid sharing confidential data and verify the output"
+          ],
+          "answer": 3
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is a prompt?",
+          "back": "The clear instruction you give an AI, ideally stating your goal, audience, and tone."
+        },
+        {
+          "front": "Golden rule of AI writing",
+          "back": "AI drafts, you decide: always review, edit, and verify before using it."
+        },
+        {
+          "front": "How can AI help with planning?",
+          "back": "Describe your tasks and deadlines and ask it to build a prioritised schedule or break projects into daily steps."
+        },
+        {
+          "front": "How to improve your own writing with AI",
+          "back": "Paste your text and ask it to fix grammar, boost clarity, and flag what is unclear while keeping your voice."
+        }
+      ],
+      "reflection": "Which recurring work or study task takes you the most time, and how could an AI drafting or planning prompt shorten it?",
+      "summary": "AI is a fast, tireless partner for drafting emails and reports, planning your schedule, and polishing your own writing, as long as you give clear prompts and always review the output yourself.",
+      "discussionPrompt": "Help me write and refine a prompt for a professional email requesting an internship, then critique my own draft for clarity and tone.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s5-responsible-and-ethical-ai-use",
+      "order": 5,
+      "title": "Responsible and Ethical AI Use",
+      "objectives": [
+        "Identify privacy and data-safety risks when using AI tools.",
+        "Recognise bias, hallucinations, and plagiarism concerns.",
+        "Apply guidelines for honest and ethical AI use in school and work."
+      ],
+      "text": "AI tools are powerful, but using them responsibly protects you and others. Start with three big risks.\n\nPrivacy: Anything you type into a chatbot may be stored or used to train models. Never paste passwords, ID numbers, exam questions, client contracts, or personal health data. Rule: if you would not post it publicly, do not paste it.\n\nBias: AI learns from human data, so it can repeat stereotypes about gender, region, or ethnicity. Treat outputs as a draft opinion, not fact.\n\nHallucinations: AI confidently invents fake facts, citations, and statistics. Always verify names, dates, laws, and references against a trusted source.\n\nPlagiarism: Submitting AI text as your own work is academic dishonesty. Many universities now require disclosure.\n\nHow-to (the SIFT check): before trusting output, (1) Stop, (2) Investigate the claim's source, (3) Find better coverage elsewhere, (4) Trace quotes to the original.\n\nWorked example: You ask AI for sources on Nigerian tax law. It lists three cases. Before citing them, search each case name on an official legal database. If a case does not exist, remove it. Then rewrite ideas in your own words, and add a note: \"Drafted with AI assistance, verified by me.\" That keeps you honest, safe, and credible.",
+      "voiceScript": "Let's talk about using AI responsibly, because how you use these tools matters as much as what they produce. First, protect your privacy. Anything you type into a chatbot might be stored, so never paste passwords, exam questions, or someone's personal details. My simple rule is: if you wouldn't post it publicly, don't paste it. Second, stay critical. AI can repeat human biases, and it sometimes invents facts and fake references so confidently that you believe them. Always verify names, dates, and citations against a trusted source. Third, be honest. Passing off AI text as your own is plagiarism, so rewrite ideas in your own words and disclose when you've used AI. Do this, and you'll stay safe, credible, and truly in control.",
+      "keyPoints": [
+        "If you wouldn't post it publicly, don't paste it into an AI tool.",
+        "AI can repeat bias and confidently invent fake facts and citations.",
+        "Always verify outputs against a trusted source using SIFT.",
+        "Rewrite ideas in your own words and disclose AI assistance to avoid plagiarism."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"17\" fill=\"#0f766e\" font-family=\"sans-serif\">Responsible AI Use</text><circle cx=\"70\" cy=\"90\" r=\"28\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"70\" y=\"95\" font-size=\"12\" fill=\"#b45309\" text-anchor=\"middle\">Privacy</text><circle cx=\"170\" cy=\"90\" r=\"28\" fill=\"none\" stroke=\"#334155\" stroke-width=\"3\"/><text x=\"170\" y=\"95\" font-size=\"12\" fill=\"#334155\" text-anchor=\"middle\">Bias</text><circle cx=\"290\" cy=\"90\" r=\"32\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"290\" y=\"88\" font-size=\"10\" fill=\"#15803d\" text-anchor=\"middle\">Halluci-</text><text x=\"290\" y=\"100\" font-size=\"10\" fill=\"#15803d\" text-anchor=\"middle\">nation</text><circle cx=\"410\" cy=\"90\" r=\"30\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"410\" y=\"95\" font-size=\"11\" fill=\"#0f766e\" text-anchor=\"middle\">Plagiarism</text><line x1=\"20\" y1=\"150\" x2=\"460\" y2=\"150\" stroke=\"#334155\" stroke-width=\"1.5\"/><text x=\"20\" y=\"175\" font-size=\"13\" fill=\"#0f766e\">SIFT check:</text><text x=\"20\" y=\"198\" font-size=\"12\" fill=\"#334155\">Stop - Investigate source</text><text x=\"20\" y=\"218\" font-size=\"12\" fill=\"#334155\">Find better coverage</text><text x=\"20\" y=\"238\" font-size=\"12\" fill=\"#334155\">Trace to original quote</text></svg>",
+      "whiteboardCaption": "Four core risks of AI use with the four-step SIFT verification check beneath them.",
+      "example": "A Lagos undergraduate uses AI to draft a term paper on Nigerian tax law. The tool cites three court cases; she checks each on an official legal database, finds one is fake, deletes it, rewrites the rest in her own words, and notes that AI assisted her draft.",
+      "quiz": [
+        {
+          "q": "Which item is safest to paste into a public AI chatbot?",
+          "options": [
+            "A client's contract details",
+            "Your bank password",
+            "A general essay outline with no personal data",
+            "A friend's ID number"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is an AI 'hallucination'?",
+          "options": [
+            "When AI confidently states false facts or fake sources",
+            "When AI refuses to answer",
+            "When AI works slowly on low bandwidth",
+            "When AI translates languages"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What does the 'I' in the SIFT check stand for?",
+          "options": [
+            "Ignore the claim",
+            "Investigate the source",
+            "Improve the grammar",
+            "Imitate the style"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Privacy rule for AI tools",
+          "back": "If you wouldn't post it publicly, don't paste it into an AI tool."
+        },
+        {
+          "front": "AI hallucination",
+          "back": "When AI generates false facts, statistics, or fake citations that sound convincing."
+        },
+        {
+          "front": "SIFT check",
+          "back": "Stop, Investigate the source, Find better coverage, Trace quotes to the original."
+        },
+        {
+          "front": "Avoiding AI plagiarism",
+          "back": "Rewrite ideas in your own words, verify them, and disclose that you used AI assistance."
+        }
+      ],
+      "reflection": "Think of a recent task where you used or could use AI. What personal or sensitive information might you have exposed, and how will you protect it next time?",
+      "summary": "Responsible AI use means guarding your private data, staying critical of biased or invented outputs, verifying with the SIFT check, and honestly disclosing AI assistance in your work.",
+      "discussionPrompt": "Ask the EFIKO tutor: How should my university's rules on AI disclosure shape the way I use chatbots for assignments, and what does an honest disclosure statement look like?",
+      "sizeKB": 4
+    }
+  ],
+  "spec": {
+    "topic": "AI for Productivity",
+    "audience": "Students and professionals",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783134510292,
+  "updatedAt": 1783134510292
+}

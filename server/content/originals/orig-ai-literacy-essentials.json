@@ -1,0 +1,590 @@
+{
+  "courseId": "orig-ai-literacy-essentials",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "AI Literacy Essentials",
+  "subtitle": "Understand, Use, and Question AI with Confidence",
+  "category": "Digital Skills & Technology",
+  "level": "Beginner",
+  "audience": "University students across all disciplines, no prior technical background required",
+  "estimatedHours": 4,
+  "description": "This mobile-friendly micro-course introduces university students to the fundamentals of artificial intelligence in clear, everyday language. You will learn what AI really is (and is not), how tools like chatbots and image generators work, how to use them effectively and responsibly for study and work, and how to spot bias, misinformation, and ethical risks. Designed for low-data and offline learning, each short session builds practical, transferable skills for the age of AI.",
+  "outcomes": [
+    "Explain what artificial intelligence, machine learning, and generative AI are in plain language.",
+    "Describe how everyday AI tools like chatbots and recommendation systems work.",
+    "Apply effective prompting techniques to get useful and accurate results from AI tools.",
+    "Evaluate AI outputs for bias, errors, and misinformation before trusting them.",
+    "Apply ethical and academic-integrity principles when using AI for study and work.",
+    "Identify practical, responsible uses of AI in university and career contexts."
+  ],
+  "competencies": [
+    "Explaining core AI concepts in plain language to non-experts",
+    "Using AI tools effectively through skilled prompting",
+    "Critically evaluating AI outputs for bias, accuracy, and misinformation",
+    "Applying ethical and academic-integrity principles to AI use",
+    "Planning responsible AI use for academic and career goals"
+  ],
+  "nextCourse": "Prompt Engineering for Productivity",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What does 'AI' stand for?",
+        "options": [
+          "Automated Internet",
+          "Artificial Intelligence",
+          "Advanced Information",
+          "Applied Integration"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these is an example of AI you likely already use?",
+        "options": [
+          "A paper notebook",
+          "A recommendation system suggesting videos",
+          "A basic calculator adding two numbers",
+          "A printed dictionary"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "When an AI chatbot gives an answer, you should:",
+        "options": [
+          "Always assume it is completely correct",
+          "Never use it for anything",
+          "Check important facts from reliable sources",
+          "Only trust it if it sounds confident"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "What best describes 'narrow AI'?",
+        "options": [
+          "AI that can do any human task equally well",
+          "AI designed for a specific task, like translation or recommendations",
+          "A robot with human emotions",
+          "Any computer program with a screen"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Why do generative AI tools sometimes 'hallucinate'?",
+        "options": [
+          "They are deliberately lying",
+          "They predict likely responses from patterns and can produce plausible but false content",
+          "They have run out of electricity",
+          "They only work offline"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which is the best approach to writing an effective prompt?",
+        "options": [
+          "Keep it as vague as possible",
+          "Give clear context, specify the format, and refine if needed",
+          "Use only single words",
+          "Never give examples"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Bias in AI systems most often comes from:",
+        "options": [
+          "The data used to train them",
+          "The colour of the screen",
+          "The user's typing speed",
+          "The time of day"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "When using AI for a university assignment, you should:",
+        "options": [
+          "Submit AI text as fully your own work",
+          "Follow your institution's academic-integrity rules and disclose AI use when required",
+          "Never verify any claims",
+          "Share your login passwords with the AI"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-what-is-ai-really",
+      "order": 1,
+      "title": "What Is AI, Really?",
+      "objectives": [
+        "Define artificial intelligence and distinguish it from science-fiction myths.",
+        "Differentiate between narrow AI and general AI with everyday examples.",
+        "Recognise common AI applications already present in daily life."
+      ],
+      "text": "Artificial intelligence (AI) means computer systems that perform tasks we normally associate with human thinking: recognising faces, understanding speech, recommending music, or translating languages. AI is not a conscious robot with feelings. Those are science-fiction myths. Real AI learns patterns from data and makes predictions, nothing more.\n\nThere are two important types. Narrow AI is built for one specific job, like the spam filter in your email or the voice assistant that sets an alarm. Every AI you use today is narrow AI. General AI, a machine that thinks flexibly across any task like a human, does not yet exist. It remains a research goal, not a product.\n\nAI has a history: the term was coined in 1956, went through quiet decades, and boomed recently because of cheap computing power and huge amounts of data.\n\nTry this now: open your phone and list five apps. For each, ask, \"Where might AI be working here?\" Your keyboard predicts your next word. Your gallery groups photos by face. Your mobile money app flags suspicious transactions. Your maps app estimates traffic. Your video app recommends what to watch next.\n\nRecognising AI around you is the first literacy skill. It is a tool built by people, trained on data, and pointed at a single, defined task.",
+      "voiceScript": "Let me clear up something right away. When we say artificial intelligence, we are not talking about the conscious robots you see in movies. Real AI is simply a computer system that spots patterns in data and makes predictions, whether that's recognising your face, understanding your voice, or suggesting the next song. Almost every AI you meet today is what we call narrow AI, built for one specific job. The flexible, human-like general AI? That still doesn't exist. So here's a small challenge: pick up your phone and, for each app, ask yourself where AI might quietly be working. Once you start noticing it, you've taken your first real step in AI literacy.",
+      "keyPoints": [
+        "AI finds patterns in data to make predictions; it is not a conscious sci-fi robot.",
+        "Narrow AI does one specific task and is everywhere today; general AI does not yet exist.",
+        "AI already powers keyboards, photo apps, maps, recommendations, and fraud detection.",
+        "Spotting AI in your daily tools is the first AI-literacy skill."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"240\" y=\"28\" font-size=\"18\" text-anchor=\"middle\" fill=\"#0f766e\">What Is AI?</text><rect x=\"40\" y=\"60\" width=\"170\" height=\"150\" rx=\"10\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"125\" y=\"85\" font-size=\"14\" text-anchor=\"middle\" fill=\"#15803d\">Narrow AI</text><text x=\"125\" y=\"110\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">one task</text><text x=\"125\" y=\"132\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">spam filter</text><text x=\"125\" y=\"152\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">voice assistant</text><text x=\"125\" y=\"172\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">maps traffic</text><text x=\"125\" y=\"196\" font-size=\"11\" text-anchor=\"middle\" fill=\"#0f766e\">EXISTS today</text><rect x=\"270\" y=\"60\" width=\"170\" height=\"150\" rx=\"10\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/><text x=\"355\" y=\"85\" font-size=\"14\" text-anchor=\"middle\" fill=\"#b45309\">General AI</text><text x=\"355\" y=\"110\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">any task</text><text x=\"355\" y=\"132\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">human-like</text><text x=\"355\" y=\"154\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">flexible</text><text x=\"355\" y=\"196\" font-size=\"11\" text-anchor=\"middle\" fill=\"#b45309\">NOT yet real</text><line x1=\"240\" y1=\"60\" x2=\"240\" y2=\"210\" stroke=\"#334155\" stroke-width=\"1\" stroke-dasharray=\"3 3\"/><text x=\"240\" y=\"238\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">AI learns patterns from data</text></svg>",
+      "whiteboardCaption": "A comparison showing narrow AI (exists today, single-task) versus general AI (human-like, not yet real).",
+      "example": "When a student in Lagos types a message and the keyboard suggests the next word, or when their mobile money app blocks a suspicious transfer, they are already using narrow AI trained on patterns from millions of past examples.",
+      "quiz": [
+        {
+          "q": "Which statement best describes real AI today?",
+          "options": [
+            "A conscious robot with human feelings",
+            "A computer system that learns patterns from data to make predictions",
+            "A machine that can do any task a human can",
+            "A device that thinks independently of its programming"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is an example of narrow AI?",
+          "options": [
+            "An email spam filter",
+            "A robot with genuine emotions",
+            "A machine equally skilled at every human task",
+            "A conscious digital being"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What is the current status of general AI?",
+          "options": [
+            "It runs most smartphones",
+            "It was achieved in 1956",
+            "It does not yet exist and remains a research goal",
+            "It replaced narrow AI last year"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is artificial intelligence?",
+          "back": "Computer systems that perform tasks associated with human thinking by finding patterns in data and making predictions."
+        },
+        {
+          "front": "Narrow AI",
+          "back": "AI built for one specific task, like spam filtering or voice assistants. All AI today is narrow AI."
+        },
+        {
+          "front": "General AI",
+          "back": "A hypothetical machine that thinks flexibly across any task like a human. It does not yet exist."
+        },
+        {
+          "front": "When was the term 'AI' coined?",
+          "back": "In 1956; the field boomed recently thanks to cheap computing power and abundant data."
+        }
+      ],
+      "reflection": "Which AI tools do you already rely on daily without realising it, and how do they shape your choices?",
+      "summary": "AI is software that learns patterns from data to do specific tasks; today's AI is all narrow AI, while human-like general AI remains fiction, and it already surrounds us in everyday apps.",
+      "discussionPrompt": "Ask the EFIKO tutor: 'Pick one app I use daily and walk me through exactly how the AI inside it might be learning and making decisions.'",
+      "sizeKB": 5
+    },
+    {
+      "id": "s2-how-ai-learns-and-generates",
+      "order": 2,
+      "title": "How AI Learns and Generates",
+      "objectives": [
+        "Explain the basic idea of machine learning using the concept of training on data.",
+        "Describe how generative AI produces text, images, and audio.",
+        "Understand why AI can 'hallucinate' or produce confident but wrong answers."
+      ],
+      "text": "Machine learning means teaching a computer by example instead of rules. Imagine showing a system thousands of photos labelled 'cat' or 'dog'. It gradually adjusts internal numbers, called weights, until it can guess correctly on new photos it has never seen. This adjustment process is called training, and the labelled photos are the training data. No one writes the rule 'cats have pointy ears' \\u2014 the pattern is learned from data.\n\nGenerative AI goes further: it creates new content. A text model like a chatbot learns from huge amounts of writing, then predicts the next most likely word, one at a time, to build a sentence. Image and audio models learn patterns of pixels or sound and assemble fresh combinations. They are, in effect, very powerful prediction machines.\n\nHere is the catch. The model predicts what sounds plausible, not what is true. When it lacks good data, it may invent a fake citation, a wrong date, or a non-existent fact \\u2014 stated confidently. This is called a hallucination.\n\nHow-to: whenever an AI gives you a fact, name, statistic, or reference, verify it against a trusted source before using it. Treat AI output as a confident first draft, never as final truth.",
+      "voiceScript": "Let me pull back the curtain on how AI actually works. Instead of following rules we write by hand, machine learning learns from examples. Picture showing a computer thousands of labelled photos until it slowly tunes its internal numbers and starts recognising cats and dogs on its own. That tuning is what we call training. Generative AI takes this further by creating new content, and a chatbot really just predicts the next likely word again and again until a sentence forms. But here is the important part: it predicts what sounds plausible, not what is true, so it can confidently invent fake facts. That's a hallucination. So always treat AI as a smart first draft, and verify anything important yourself.",
+      "keyPoints": [
+        "Machine learning trains on labelled data, adjusting internal weights to spot patterns.",
+        "Generative AI creates content by predicting the most likely next word, pixel, or sound.",
+        "AI predicts what is plausible, not what is true \\u2014 hallucinations sound confident but can be wrong.",
+        "Always verify AI facts, names, and citations against a trusted source."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-size=\"15\" fill=\"#334155\">How AI Learns and Generates</text><rect x=\"20\" y=\"60\" width=\"110\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"34\" y=\"84\" font-size=\"12\" fill=\"#b45309\">Training</text><text x=\"34\" y=\"102\" font-size=\"12\" fill=\"#b45309\">Data</text><line x1=\"130\" y1=\"88\" x2=\"190\" y2=\"88\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"190\" y=\"60\" width=\"110\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"210\" y=\"84\" font-size=\"12\" fill=\"#0f766e\">Model</text><text x=\"205\" y=\"102\" font-size=\"11\" fill=\"#0f766e\">adjusts weights</text><line x1=\"300\" y1=\"88\" x2=\"360\" y2=\"88\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"360\" y=\"60\" width=\"100\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"372\" y=\"84\" font-size=\"12\" fill=\"#15803d\">Generates</text><text x=\"372\" y=\"102\" font-size=\"11\" fill=\"#15803d\">predictions</text><text x=\"20\" y=\"160\" font-size=\"12\" fill=\"#334155\">Predicts next word: The sky is ___</text><rect x=\"300\" y=\"148\" width=\"70\" height=\"22\" rx=\"4\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"312\" y=\"163\" font-size=\"12\" fill=\"#0f766e\">blue</text><circle cx=\"40\" cy=\"210\" r=\"10\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"36\" y=\"215\" font-size=\"13\" fill=\"#b45309\">!</text><text x=\"60\" y=\"215\" font-size=\"12\" fill=\"#b45309\">Plausible not always true = hallucination</text></svg>",
+      "whiteboardCaption": "A pipeline showing training data feeding a model that adjusts weights and generates predictions, with a warning that plausible output may be false.",
+      "example": "A student in Lagos asks a chatbot for three journal articles on cassava farming. The AI returns three neatly formatted references with authors and years. When she searches the library database, two of them do not exist \\u2014 the AI hallucinated plausible-looking citations, so she must verify each source before citing it in her essay.",
+      "quiz": [
+        {
+          "q": "What does 'training' an AI model mean?",
+          "options": [
+            "Writing exact rules by hand for every case",
+            "Adjusting internal weights using example data until it recognises patterns",
+            "Downloading answers from the internet in real time",
+            "Letting the AI rest between tasks"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How does a text-generating chatbot build a sentence?",
+          "options": [
+            "It copies a full answer from a database",
+            "It predicts the most likely next word, one at a time",
+            "It translates from a secret language",
+            "It asks a human for each word"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why does AI sometimes 'hallucinate'?",
+          "options": [
+            "It intentionally lies to users",
+            "It predicts plausible-sounding output even when it lacks true information",
+            "It runs out of electricity",
+            "It only works in English"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Machine learning",
+          "back": "Teaching a computer by example \\u2014 it adjusts internal weights from training data instead of following hand-written rules."
+        },
+        {
+          "front": "Training data",
+          "back": "The examples (often labelled) a model learns patterns from during training."
+        },
+        {
+          "front": "Generative AI",
+          "back": "AI that creates new text, images, or audio by predicting likely combinations of words, pixels, or sounds."
+        },
+        {
+          "front": "Hallucination",
+          "back": "When AI confidently produces plausible-sounding but false information, such as fake facts or citations."
+        }
+      ],
+      "reflection": "Think of a recent time you relied on an AI answer \\u2014 how would you now verify whether it was actually true?",
+      "summary": "AI learns patterns by training on data and generates content by predicting what is most likely, which means its confident output can be plausible yet wrong \\u2014 so always verify important facts.",
+      "discussionPrompt": "Ask the EFIKO tutor: What practical checks can I build into my study routine to catch AI hallucinations before they end up in my assignments?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-using-ai-tools-effectively",
+      "order": 3,
+      "title": "Using AI Tools Effectively",
+      "objectives": [
+        "Apply clear prompting techniques to communicate with AI tools.",
+        "Refine and iterate on prompts to improve output quality.",
+        "Select appropriate AI tools for common study and productivity tasks."
+      ],
+      "text": "AI tools like ChatGPT, Gemini, or Claude respond to your instructions, called prompts. A weak prompt gives weak results. Use the RTCF framework to write strong ones: Role, Task, Context, Format.\n\nWorked example. Instead of \"write about malaria,\" try: \"You are a public health tutor (Role). Explain how malaria spreads and three prevention methods (Task). I am a first-year student in Nigeria with no biology background (Context). Give a 150-word summary with bullet points (Format).\" Notice how specific this is.\n\nRefine by iterating. If the answer is too long, reply: \"Shorten to 80 words.\" If it is too technical: \"Explain like I am 15.\" Treat it as a conversation, not one shot.\n\nAlways verify facts, because AI can \"hallucinate\" (invent confident but false information). Cross-check important claims with trusted sources.\n\nChoose the right tool for the task. For drafting essays or brainstorming, use a chatbot. For summarising a long PDF, upload it to a tool that reads documents. For finding current information, use an AI search tool that cites sources. For grammar polishing, use a writing assistant.\n\nStart today: pick one study task, write an RTCF prompt, then refine it twice until the output truly helps you.",
+      "voiceScript": "Let me show you how to actually talk to AI tools so they work for you. The secret is the prompt, the instruction you give. I like a simple recipe I call R-T-C-F: role, task, context, and format. Tell the AI who to be, what to do, a little about your situation, and how you want the answer shaped. Then treat it like a conversation. If the reply is too long, ask it to shorten. If it's too complex, ask it to simplify. And please, always double-check important facts, because AI can sound confident and still be wrong. Pick the right tool too: chatbots for drafting, document readers for summarising, search tools for current facts. Try it today.",
+      "keyPoints": [
+        "Use RTCF: Role, Task, Context, Format for clear prompts.",
+        "Iterate: refine prompts in a conversation to improve output.",
+        "Always verify facts; AI can hallucinate convincing errors.",
+        "Match the tool to the task: chatbot, document reader, or AI search."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-family=\"sans-serif\" font-size=\"18\" fill=\"#0f766e\">The RTCF Prompt Recipe</text><rect x=\"20\" y=\"50\" width=\"200\" height=\"38\" rx=\"5\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"30\" y=\"74\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#334155\">R - Role: who AI is</text><rect x=\"20\" y=\"96\" width=\"200\" height=\"38\" rx=\"5\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"30\" y=\"120\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#334155\">T - Task: what to do</text><rect x=\"20\" y=\"142\" width=\"200\" height=\"38\" rx=\"5\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"30\" y=\"166\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#334155\">C - Context: your info</text><rect x=\"20\" y=\"188\" width=\"200\" height=\"38\" rx=\"5\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"30\" y=\"212\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#334155\">F - Format: shape output</text><path d=\"M240 130 L300 130\" stroke=\"#0f766e\" stroke-width=\"2\" marker-end=\"url(#a)\"/><defs><marker id=\"a\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 z\" fill=\"#0f766e\"/></marker></defs><circle cx=\"370\" cy=\"90\" r=\"30\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"350\" y=\"95\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#15803d\">Prompt</text><path d=\"M370 120 L370 155\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"320\" y=\"180\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#b45309\">Refine + verify</text><path d=\"M400 168 C440 150 440 110 400 95\" stroke=\"#334155\" stroke-width=\"2\" fill=\"none\" marker-end=\"url(#a)\"/></svg>",
+      "whiteboardCaption": "The RTCF recipe (Role, Task, Context, Format) feeds a prompt you refine and verify in a loop.",
+      "example": "A student at the University of Ghana must summarise a 30-page PDF on climate policy overnight. She uploads it to a document-reading AI with the prompt: \"You are a study coach. Summarise this report into 10 key points for an exam. I study political science. Use plain English bullets.\" The draft is too vague, so she adds: \"Include specific figures and dates.\" Then she cross-checks two facts against the original PDF before revising her notes.",
+      "quiz": [
+        {
+          "q": "What does the 'C' in the RTCF prompting recipe stand for?",
+          "options": [
+            "Command",
+            "Context",
+            "Correction",
+            "Content"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "An AI gives a confident but factually false answer. This is called:",
+          "options": [
+            "Iteration",
+            "Formatting",
+            "Hallucination",
+            "Prompting"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "You need to summarise a long PDF for study. The best tool choice is:",
+          "options": [
+            "A grammar-polishing assistant",
+            "An AI tool that reads uploaded documents",
+            "A basic calculator app",
+            "An image generator"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is a prompt?",
+          "back": "The instruction or question you give an AI tool to get a response."
+        },
+        {
+          "front": "RTCF framework",
+          "back": "Role, Task, Context, Format - four elements of a strong, specific prompt."
+        },
+        {
+          "front": "Why iterate on prompts?",
+          "back": "Refining in a conversation (shorten, simplify, add detail) steadily improves output quality."
+        },
+        {
+          "front": "AI hallucination",
+          "back": "When AI confidently produces false or invented information, so facts must be verified."
+        }
+      ],
+      "reflection": "Think of a task you did this week that AI could have helped with. How would you write an RTCF prompt for it, and what would you verify?",
+      "summary": "Strong AI use comes from clear RTCF prompts, iterative refinement, fact-checking, and choosing the right tool for each task.",
+      "discussionPrompt": "Ask the EFIKO tutor to critique an RTCF prompt you wrote for one of your real assignments and suggest two improvements.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-bias-misinformation-and-fact-checking",
+      "order": 4,
+      "title": "Bias, Misinformation, and Fact-Checking",
+      "objectives": [
+        "Identify sources of bias in AI systems and their outputs.",
+        "Evaluate AI-generated information for accuracy and reliability.",
+        "Apply verification habits to detect AI-generated misinformation and deepfakes."
+      ],
+      "text": "AI systems learn from data created by humans, so they inherit human biases. Bias means systematic unfairness \\u2014 for example, an AI trained mostly on Western data may misjudge African names, dialects, or contexts. Three common sources: biased training data, biased design choices, and biased user prompts.\\n\\nAI can also \\\"hallucinate\\\" \\u2014 confidently state false facts, invent fake references, or produce convincing but untrue text, images, and videos (deepfakes). Because AI sounds fluent, wrong answers feel trustworthy. Never assume fluency equals accuracy.\\n\\nUse the SIFT method to verify claims:\\n1. STOP \\u2014 pause before sharing or acting.\\n2. INVESTIGATE the source \\u2014 who made this, and are they credible?\\n3. FIND better coverage \\u2014 search whether reputable outlets report the same.\\n4. TRACE claims to the original \\u2014 find the primary study, quote, or image.\\n\\nWorked example: An AI chatbot tells you \\\"Nigeria's minimum wage is 100,000 naira.\\\" Don't share it. Investigate: check the official government or a trusted news site. Find coverage from multiple outlets. Trace it to the actual policy document. If sources disagree with the AI, trust the verified source.\\n\\nHabit: cross-check any AI fact with at least two independent, reputable sources before relying on it academically or professionally.",
+      "voiceScript": "Here's something important to remember: just because an AI sounds confident and fluent doesn't mean it's telling the truth. These systems learn from human-made data, so they pick up human biases, and sometimes they simply invent facts, fake references, or even realistic-looking images and videos. I want you to build one simple habit called SIFT. First, stop before you share anything. Then investigate who created it and whether they're credible. Next, find better coverage by checking reputable outlets. Finally, trace the claim back to its original source. So if a chatbot quotes a statistic or a policy, pause and verify it with at least two trusted sources first. Fluency is not accuracy \\u2014 your curiosity and checking keep you sharp.",
+      "keyPoints": [
+        "AI inherits bias from its training data, design, and prompts \\u2014 fluency does not mean accuracy.",
+        "AI can hallucinate facts, invent references, and generate convincing deepfakes.",
+        "Use SIFT: Stop, Investigate the source, Find better coverage, Trace to the origin.",
+        "Cross-check any AI claim with at least two independent, reputable sources before relying on it."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' font-family='sans-serif' font-size='18' fill='#0f766e'>SIFT: Verify Before You Trust</text><rect x='20' y='55' width='95' height='55' rx='6' fill='none' stroke='#b45309' stroke-width='2'/><text x='40' y='88' font-family='sans-serif' font-size='16' fill='#b45309'>STOP</text><rect x='130' y='55' width='95' height='55' rx='6' fill='none' stroke='#15803d' stroke-width='2'/><text x='140' y='80' font-family='sans-serif' font-size='12' fill='#15803d'>INVESTIGATE</text><text x='150' y='97' font-family='sans-serif' font-size='12' fill='#15803d'>source</text><rect x='240' y='55' width='95' height='55' rx='6' fill='none' stroke='#0f766e' stroke-width='2'/><text x='258' y='80' font-family='sans-serif' font-size='14' fill='#0f766e'>FIND</text><text x='250' y='97' font-family='sans-serif' font-size='12' fill='#0f766e'>coverage</text><rect x='350' y='55' width='95' height='55' rx='6' fill='none' stroke='#334155' stroke-width='2'/><text x='372' y='80' font-family='sans-serif' font-size='14' fill='#334155'>TRACE</text><text x='366' y='97' font-family='sans-serif' font-size='12' fill='#334155'>to origin</text><line x1='115' y1='82' x2='130' y2='82' stroke='#334155' stroke-width='2'/><line x1='225' y1='82' x2='240' y2='82' stroke='#334155' stroke-width='2'/><line x1='335' y1='82' x2='350' y2='82' stroke='#334155' stroke-width='2'/><text x='20' y='155' font-family='sans-serif' font-size='14' fill='#334155'>AI claim</text><circle cx='120' cy='150' r='10' fill='none' stroke='#b45309' stroke-width='2'/><text x='113' y='155' font-family='sans-serif' font-size='13' fill='#b45309'>?</text><path d='M140 150 L360 150' stroke='#15803d' stroke-width='2' stroke-dasharray='5,4'/><text x='170' y='140' font-family='sans-serif' font-size='12' fill='#15803d'>cross-check 2+ sources</text><path d='M360 145 l10 5 l-10 5' fill='none' stroke='#15803d' stroke-width='2'/><text x='375' y='155' font-family='sans-serif' font-size='13' fill='#0f766e'>Trust</text><text x='20' y='210' font-family='sans-serif' font-size='13' fill='#334155'>Fluent =/= accurate. Watch for hallucinations,</text><text x='20' y='230' font-family='sans-serif' font-size='13' fill='#334155'>biased data, and deepfakes.</text></svg>",
+      "whiteboardCaption": "A flow of the four SIFT steps leading from a questionable AI claim to a verified, trustworthy conclusion.",
+      "example": "A student researching a term paper asks an AI for sources on Ghanaian economic history. The AI lists three books with authors and page numbers. When the student searches library catalogues, two of the books don't exist \\u2014 the AI hallucinated them. By tracing each citation to a real catalogue, she avoids submitting fake references and failing for academic dishonesty.",
+      "quiz": [
+        {
+          "q": "Why can AI outputs be biased?",
+          "options": [
+            "Because AI intentionally lies to users",
+            "Because AI learns from human-made data that contains human biases",
+            "Because AI has no access to the internet",
+            "Because bias only affects images, not text"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does it mean when an AI 'hallucinates'?",
+          "options": [
+            "It confidently produces false or invented information",
+            "It refuses to answer questions",
+            "It slows down and crashes",
+            "It only repeats the user's prompt"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "In the SIFT method, what should you do first?",
+          "options": [
+            "Share the claim immediately",
+            "Stop and pause before acting or sharing",
+            "Trust it because it sounds fluent",
+            "Delete the AI response"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is AI bias?",
+          "back": "Systematic unfairness in AI outputs caused by biased training data, design choices, or prompts."
+        },
+        {
+          "front": "What is an AI hallucination?",
+          "back": "When an AI confidently generates false facts, fake references, or fabricated content."
+        },
+        {
+          "front": "What does SIFT stand for?",
+          "back": "Stop, Investigate the source, Find better coverage, Trace claims to the original."
+        },
+        {
+          "front": "Does fluent AI writing mean it's accurate?",
+          "back": "No \\u2014 fluency is not accuracy; always verify with independent sources."
+        }
+      ],
+      "reflection": "Think of a time you almost shared or used information without checking it. How could the SIFT method have changed what you did?",
+      "summary": "AI can produce biased, false, or fabricated information that sounds convincing, so always apply the SIFT method and cross-check claims with at least two reputable, independent sources before relying on them.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you practise fact-checking a real AI-generated claim step by step using SIFT, and to explain how deepfakes are detected.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s5-ethics-privacy-and-academic-integrity",
+      "order": 5,
+      "title": "Ethics, Privacy, and Academic Integrity",
+      "objectives": [
+        "Explain key ethical concerns around AI, including privacy and data use.",
+        "Apply academic-integrity rules when using AI in coursework.",
+        "Describe responsible disclosure and citation of AI assistance."
+      ],
+      "text": "AI tools are powerful, but using them well means using them responsibly. Three areas matter most: privacy, integrity, and disclosure.\n\nPrivacy first. When you type into a chatbot, that text may be stored and used to train future models. So never paste sensitive data: your ID number, a friend's private messages, unpublished research, or confidential workplace files. Rule of thumb: if you would not post it publicly, do not paste it.\n\nAcademic integrity next. Most universities allow AI for brainstorming, explaining concepts, or checking grammar, but forbid submitting AI-generated text as your own. Always check your course policy. A safe workflow: use AI to understand, then write in your own words, then verify facts against real sources.\n\nDisclosure and citation. If your institution permits AI help, be transparent. A simple acknowledgement works: \"I used ChatGPT (OpenAI, 2024) to brainstorm essay structure; all writing is my own.\" APA style even has a format for citing AI.\n\nWorked example: You are stuck on an essay introduction. Instead of copying AI output, ask AI to explain what a strong introduction needs. Then draft your own, and note in your methods or acknowledgements that AI assisted your planning. That keeps you honest and safe.",
+      "voiceScript": "Let's talk about using AI honestly at university. Think of three things: your privacy, your integrity, and being open about the help you got. Here's a simple habit for privacy: if you wouldn't post it publicly, don't paste it into a chatbot, because your words may be stored and used for training. When it comes to your coursework, always check what your course actually allows. In most cases AI is great for understanding a topic or brainstorming, but handing in AI text as your own is cheating. So use it to learn, then write in your own voice, then check the facts. And if AI helped you, just say so, clearly and simply. Being transparent protects you, and it builds the kind of trust that makes you a professional people rely on.",
+      "keyPoints": [
+        "If you wouldn't post it publicly, don't paste it into an AI tool.",
+        "Check your course policy; use AI to learn, not to submit as your own work.",
+        "Be transparent: acknowledge and cite AI assistance when permitted.",
+        "Verify AI facts against trustworthy sources before relying on them."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"140\" y=\"28\" font-size=\"17\" fill=\"#0f766e\">Using AI Responsibly</text><circle cx=\"90\" cy=\"90\" r=\"34\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"66\" y=\"95\" font-size=\"13\" fill=\"#0f766e\">Privacy</text><circle cx=\"240\" cy=\"90\" r=\"34\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"210\" y=\"95\" font-size=\"13\" fill=\"#15803d\">Integrity</text><circle cx=\"390\" cy=\"90\" r=\"34\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"356\" y=\"95\" font-size=\"13\" fill=\"#b45309\">Disclose</text><text x=\"30\" y=\"165\" font-size=\"11\" fill=\"#334155\">Don't paste</text><text x=\"30\" y=\"180\" font-size=\"11\" fill=\"#334155\">private data</text><text x=\"195\" y=\"165\" font-size=\"11\" fill=\"#334155\">Write in your</text><text x=\"195\" y=\"180\" font-size=\"11\" fill=\"#334155\">own words</text><text x=\"345\" y=\"165\" font-size=\"11\" fill=\"#334155\">Cite AI</text><text x=\"345\" y=\"180\" font-size=\"11\" fill=\"#334155\">help used</text><path d=\"M60 210 H430\" stroke=\"#334155\" stroke-width=\"1.5\"/><text x=\"90\" y=\"235\" font-size=\"12\" fill=\"#334155\">Learn -&gt; Draft -&gt; Verify -&gt; Acknowledge</text></svg>",
+      "whiteboardCaption": "Three pillars of responsible AI use \the disparent disclosure with a learn-draft-verify-acknowledge workflow.",
+      "example": "Amara, a Lagos university student, uses ChatGPT to explain the structure of a literature review, then writes her own draft and adds a line in her acknowledgements: \"AI was used to clarify structure; all analysis and writing are my own.\" She never uploads her classmates' unpublished data.",
+      "quiz": [
+        {
+          "q": "What is a safe rule of thumb for AI privacy?",
+          "options": [
+            "Paste anything to get better answers",
+            "If you wouldn't post it publicly, don't paste it",
+            "Only paste other people's data",
+            "Always upload full documents"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which use is most likely to violate academic integrity?",
+          "options": [
+            "Asking AI to explain a concept",
+            "Using AI to check grammar",
+            "Submitting AI-generated text as your own work",
+            "Brainstorming essay ideas with AI"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is responsible disclosure of AI help?",
+          "options": [
+            "Hiding that AI was used",
+            "Clearly acknowledging and citing the AI assistance",
+            "Claiming you wrote everything unaided",
+            "Deleting your prompt history"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Why avoid pasting sensitive data into chatbots?",
+          "back": "Your input may be stored and used to train models, risking exposure of private or confidential information."
+        },
+        {
+          "front": "Safe AI coursework workflow",
+          "back": "Learn with AI, draft in your own words, verify facts, then acknowledge any AI assistance."
+        },
+        {
+          "front": "Academic integrity and AI",
+          "back": "Check your course policy; submitting AI-generated text as your own is usually cheating."
+        },
+        {
+          "front": "Disclosing AI use",
+          "back": "Transparently acknowledge and cite AI help, e.g. noting the tool and how you used it."
+        }
+      ],
+      "reflection": "Think of a recent assignment: how could you have used AI to learn without crossing your institution's integrity rules?",
+      "summary": "Use AI responsibly by protecting private data, following your course's integrity rules, and transparently disclosing and citing any AI assistance.",
+      "discussionPrompt": "Help me write a clear, honest acknowledgement statement for using AI to plan an essay, and explain when I might still be crossing an integrity line.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s6-ai-for-your-studies-and-career",
+      "order": 6,
+      "title": "AI for Your Studies and Career",
+      "objectives": [
+        "Identify practical AI uses for learning, productivity, and job readiness.",
+        "Develop a personal responsible-use plan for AI tools.",
+        "Recognise emerging AI skills valued in the workplace."
+      ],
+      "text": "You have learned what AI is, how it works, its limits, and its ethics. Now let's put it to work for your studies and career.\n\nFor learning: use AI as a study partner, not a shortcut. Ask it to explain a hard concept three ways, generate practice questions, or summarise your own notes. Always verify facts against your textbook.\n\nFor productivity: draft emails, outline reports, or plan a project timeline, then edit in your own voice. AI gives a first draft; you supply judgement.\n\nFor job readiness: tailor your CV to a job description, practise interview answers, or explore careers in your field.\n\nBuild a personal responsible-use plan with three rules: (1) Disclose AI use where required (many lecturers now ask). (2) Verify every fact and citation before submitting. (3) Never paste confidential or personal data into public tools.\n\nHow-to: Write a strong prompt using the R-T-F formula. Role: \"Act as a career coach.\" Task: \"Review my CV for a marketing internship.\" Format: \"Give five bullet-point improvements.\" Specific prompts get useful answers.\n\nEmerging valued skills: prompt writing, AI output evaluation, data literacy, and ethical judgement. Employers want people who use AI wisely, not blindly.",
+      "voiceScript": "Congratulations on reaching the final session. Let's talk about using AI for your studies and your career. Think of AI as a study partner, not a shortcut. You can ask it to explain a tricky topic in three different ways, or to create practice questions before an exam, but always check its answers against your textbook. For work, let it draft an email or outline a report, then rewrite it in your own voice, because your judgement is what makes it good. When you apply for jobs, use it to sharpen your CV and rehearse interview answers. And build yourself three simple rules: disclose when you use it, verify every fact, and never share private data. Use AI wisely, and you'll stand out.",
+      "keyPoints": [
+        "Use AI as a study partner and first-draft tool, never a replacement for your own judgement.",
+        "Build a responsible-use plan: disclose, verify, protect private data.",
+        "Write specific prompts with Role-Task-Format for better results.",
+        "Employers value prompt writing, output evaluation, data literacy and ethical judgement."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='white'/><text x='240' y='28' font-size='17' fill='#0f766e' text-anchor='middle' font-family='sans-serif'>AI for Studies and Career</text><circle cx='90' cy='95' r='30' fill='none' stroke='#0f766e' stroke-width='2.5'/><text x='90' y='100' font-size='12' fill='#0f766e' text-anchor='middle' font-family='sans-serif'>Learn</text><circle cx='240' cy='95' r='30' fill='none' stroke='#15803d' stroke-width='2.5'/><text x='240' y='100' font-size='11' fill='#15803d' text-anchor='middle' font-family='sans-serif'>Produce</text><circle cx='390' cy='95' r='30' fill='none' stroke='#b45309' stroke-width='2.5'/><text x='390' y='100' font-size='12' fill='#b45309' text-anchor='middle' font-family='sans-serif'>Career</text><rect x='60' y='150' width='360' height='80' fill='none' stroke='#334155' stroke-width='2'/><text x='240' y='172' font-size='12' fill='#334155' text-anchor='middle' font-family='sans-serif'>Responsible-Use Plan</text><text x='240' y='192' font-size='11' fill='#0f766e' text-anchor='middle' font-family='sans-serif'>1. Disclose use</text><text x='240' y='208' font-size='11' fill='#15803d' text-anchor='middle' font-family='sans-serif'>2. Verify facts</text><text x='240' y='224' font-size='11' fill='#b45309' text-anchor='middle' font-family='sans-serif'>3. Protect private data</text></svg>",
+      "whiteboardCaption": "Three AI uses (learn, produce, career) resting on a three-rule responsible-use plan.",
+      "example": "A student in Nairobi applying for a graphic-design internship prompts an AI: 'Act as a hiring manager; review my CV for a junior design role and suggest five improvements.' She applies the edits, verifies the tool did not invent skills she lacks, and notes in her cover letter that she used AI to refine wording.",
+      "quiz": [
+        {
+          "q": "Which is the best way to use AI for studying?",
+          "options": [
+            "Submit its answers directly as your work",
+            "Ask it to explain concepts and make practice questions, then verify",
+            "Avoid it entirely for all coursework",
+            "Paste your exam and let it decide answers"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the R-T-F prompt formula stand for?",
+          "options": [
+            "Read, Test, Finish",
+            "Role, Task, Format",
+            "Repeat, Try, Fix",
+            "Review, Type, Forward"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a core rule of a responsible-use plan?",
+          "options": [
+            "Never verify facts to save time",
+            "Paste confidential data freely",
+            "Disclose AI use where required",
+            "Hide all AI use from lecturers always"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which skill is increasingly valued by employers?",
+          "options": [
+            "Blindly trusting AI output",
+            "Evaluating AI output critically",
+            "Refusing to learn new tools",
+            "Copying without editing"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "R-T-F prompt formula",
+          "back": "Role, Task, Format — state who the AI should act as, what to do, and how to present the answer."
+        },
+        {
+          "front": "AI as study partner",
+          "back": "Use it to explain, quiz, and summarise, but verify against trusted sources; don't submit its work as your own."
+        },
+        {
+          "front": "Three responsible-use rules",
+          "back": "Disclose AI use, verify facts and citations, and protect confidential or personal data."
+        },
+        {
+          "front": "Emerging AI workplace skills",
+          "back": "Prompt writing, output evaluation, data literacy, and ethical judgement."
+        }
+      ],
+      "reflection": "Which single AI habit could most improve your studies or job search this month, and how will you keep it responsible?",
+      "summary": "AI can boost your learning, productivity and job readiness when used with specific prompts and a personal responsible-use plan built on disclosure, verification and data protection.",
+      "discussionPrompt": "Help me draft a personal responsible-use plan for AI in my degree programme and future career, including the specific skills I should build.",
+      "sizeKB": 4
+    }
+  ],
+  "spec": {
+    "topic": "AI Literacy",
+    "audience": "University students",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783091842089,
+  "updatedAt": 1783091843821
+}

@@ -1,0 +1,579 @@
+{
+  "courseId": "orig-ai-for-research",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "AI for Research",
+  "subtitle": "Using Artificial Intelligence Tools Responsibly to Power Your Academic Work",
+  "category": "Research Skills & Digital Literacy",
+  "level": "Intermediate",
+  "audience": "University students and early researchers",
+  "estimatedHours": 5,
+  "description": "This practical course helps university students and early-career researchers use AI tools to strengthen every stage of the research process, from finding literature to analysing data and writing. You will learn to prompt AI effectively, verify outputs, avoid plagiarism, and follow ethical and integrity standards. Designed to be mobile and offline friendly, the course focuses on real research tasks so you can apply what you learn immediately and responsibly.",
+  "outcomes": [
+    "Explain how common AI tools work and where they fit in the research workflow.",
+    "Apply effective prompting techniques to support literature searches, summaries, and drafting.",
+    "Evaluate AI-generated outputs for accuracy, bias, and hallucination.",
+    "Apply research integrity and citation standards when using AI.",
+    "Use AI tools to assist with data organisation and analysis tasks.",
+    "Design a responsible personal AI-use plan for your own research project."
+  ],
+  "competencies": [
+    "Effective and ethical prompting of AI tools for research tasks",
+    "Critical verification of AI outputs for accuracy and bias",
+    "Responsible use of AI in literature review, data, and writing",
+    "Application of academic integrity and citation standards to AI use"
+  ],
+  "nextCourse": "Academic Writing and Publishing for Early Researchers",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What is a 'hallucination' in the context of AI language models?",
+        "options": [
+          "A visual glitch on the screen",
+          "Confident output that is factually false or fabricated",
+          "A type of secure encryption",
+          "A tool for reading PDFs"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which is the best practice when an AI tool gives you a citation?",
+        "options": [
+          "Trust it because AI is usually right",
+          "Verify the source exists in a trusted database before using it",
+          "Copy it directly into your reference list",
+          "Ignore all citations from AI"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What does 'prompting' mean when using AI tools?",
+        "options": [
+          "Paying for a subscription",
+          "Giving the AI clear instructions or questions to guide its output",
+          "Turning the device on and off",
+          "Downloading offline models"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Which stage of research is LEAST appropriate to fully outsource to AI without human judgement?",
+        "options": [
+          "Brainstorming initial keywords",
+          "Drawing final conclusions and interpretations",
+          "Formatting a reference list style",
+          "Generating a draft outline"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A key technique to improve AI responses is to:",
+        "options": [
+          "Use the shortest prompt possible",
+          "Provide specific context and iterate on your prompt",
+          "Ask the same question repeatedly without changes",
+          "Avoid giving any examples"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "To confirm a source suggested by AI is credible, you should:",
+        "options": [
+          "Check it against a trusted academic database or the original publisher",
+          "Assume it is real if it has a DOI-like number",
+          "Add it without checking to save time",
+          "Ask the AI if it is sure"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "Which action best supports academic integrity when using AI?",
+        "options": [
+          "Hiding that AI was used",
+          "Disclosing and citing AI assistance per your institution's policy",
+          "Submitting AI text as fully your own",
+          "Using AI only for exams"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "When AI helps with data analysis, the researcher should:",
+        "options": [
+          "Accept all results without review",
+          "Understand and verify the methods and outputs",
+          "Never use AI for data",
+          "Only use AI for the introduction"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-understanding-ai-in-the-research-landscape",
+      "order": 1,
+      "title": "Understanding AI in the Research Landscape",
+      "objectives": [
+        "Describe what generative AI and large language models are.",
+        "Identify where AI can and cannot help in the research cycle.",
+        "Recognise the limits and risks of AI tools."
+      ],
+      "text": "Generative AI refers to systems that create new content, such as text, images or code, rather than just sorting existing data. Large language models (LLMs) like ChatGPT, Claude or Gemini are a type of generative AI trained on huge collections of text to predict the next likely word. This makes them fluent, but they do not truly 'know' facts, they estimate what sounds correct. This is why they sometimes produce a hallucination: a confident but false statement.\n\nMap AI onto the research cycle. In the early stages, AI helps you brainstorm topics, summarise papers, and simplify hard concepts. In the middle, it assists with organising notes, drafting outlines, cleaning data, and writing code snippets. It cannot reliably verify facts, invent original data, or replace peer-reviewed evidence.\n\nTry this now: take an abstract you are reading and paste it into an LLM with the prompt, 'Explain this abstract to me in simple terms and list three questions it does not answer.' You get a plain-language summary plus gaps to investigate, saving reading time.\n\nAlways treat AI output as a fast, imperfect assistant, not an authority. Verify every claim, citation, and number against original sources before using it in your work.",
+      "voiceScript": "Welcome to your first session on using AI for research. Let me set the scene simply. Generative AI creates new content, and large language models like ChatGPT or Claude are trained to predict the next word in a sentence. That is why they sound so fluent, yet also why they sometimes invent things that simply are not true. Think of these tools as an eager assistant, not an expert. They shine when you are brainstorming ideas, summarising papers, or drafting outlines, but they cannot verify facts or replace real evidence. So my advice throughout this course is this: let AI speed you up, but always check its claims against original sources before you trust them. Let's build that habit together.",
+      "keyPoints": [
+        "Generative AI and LLMs predict likely text; they do not truly 'know' facts.",
+        "AI helps most with brainstorming, summarising, outlining, and coding.",
+        "AI cannot verify facts, invent data, or replace peer-reviewed evidence.",
+        "Always verify every claim, citation, and number against original sources."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='28' fill='#0f766e' font-size='17' font-family='sans-serif'>AI in the Research Cycle</text><circle cx='240' cy='150' r='70' fill='none' stroke='#334155' stroke-width='2'/><path d='M240 80 A70 70 0 0 1 310 150' fill='none' stroke='#15803d' stroke-width='3'/><path d='M310 150 A70 70 0 0 1 240 220' fill='none' stroke='#15803d' stroke-width='3'/><path d='M240 220 A70 70 0 0 1 170 150' fill='none' stroke='#b45309' stroke-width='3'/><path d='M170 150 A70 70 0 0 1 240 80' fill='none' stroke='#0f766e' stroke-width='3'/><text x='215' y='72' fill='#0f766e' font-size='11' font-family='sans-serif'>Explore</text><text x='320' y='150' fill='#15803d' font-size='11' font-family='sans-serif'>Draft</text><text x='210' y='240' fill='#15803d' font-size='11' font-family='sans-serif'>Analyse</text><text x='95' y='150' fill='#b45309' font-size='11' font-family='sans-serif'>Verify(you!)</text><text x='210' y='155' fill='#334155' font-size='12' font-family='sans-serif'>LLM</text><line x1='400' y1='60' x2='400' y2='60' stroke='#334155'/><rect x='360' y='200' width='14' height='14' fill='#15803d'/><text x='380' y='212' fill='#334155' font-size='10' font-family='sans-serif'>AI helps</text><rect x='360' y='222' width='14' height='14' fill='#b45309'/><text x='380' y='234' fill='#334155' font-size='10' font-family='sans-serif'>Human only</text></svg>",
+      "whiteboardCaption": "A research-cycle wheel showing stages where AI assists (green) versus stages needing human verification (amber).",
+      "example": "A final-year student at the University of Ibadan is drafting a literature review on malaria prevention. She uses an LLM to summarise ten complex journal abstracts into plain English, then drafts an outline. But she opens each original paper to confirm the statistics and citations, because when she checked, the AI had invented one reference that did not exist.",
+      "quiz": [
+        {
+          "q": "What best describes how a large language model produces answers?",
+          "options": [
+            "It retrieves verified facts from a live database",
+            "It predicts the next likely word based on training text",
+            "It reasons like a human expert with true understanding",
+            "It copies answers directly from peer-reviewed journals"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A 'hallucination' in AI refers to:",
+          "options": [
+            "A slow internet connection during use",
+            "A confident but false or invented statement",
+            "An image generated by the model",
+            "A privacy breach of user data"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which research task is LEAST suitable to fully delegate to an LLM?",
+          "options": [
+            "Brainstorming possible research topics",
+            "Summarising a paper in simpler language",
+            "Verifying that a cited source truly exists",
+            "Drafting an initial outline"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is generative AI?",
+          "back": "Systems that create new content (text, images, code) rather than only sorting existing data."
+        },
+        {
+          "front": "What is a large language model (LLM)?",
+          "back": "Generative AI trained on large text collections to predict the next likely word, making it fluent."
+        },
+        {
+          "front": "What is an AI hallucination?",
+          "back": "A confident but false or fabricated statement, including invented citations."
+        },
+        {
+          "front": "Golden rule for AI in research",
+          "back": "Treat output as a fast but imperfect assistant; verify every claim against original sources."
+        }
+      ],
+      "reflection": "Which stage of your current research project could AI speed up, and how would you check its output for errors?",
+      "summary": "Generative AI and LLMs are powerful fluency machines that assist with brainstorming, summarising, and drafting, but they cannot verify facts, so you must check every output against original sources.",
+      "discussionPrompt": "Ask the EFIKO tutor: 'Help me design a checklist to verify AI-generated summaries and citations for my research topic.'",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-prompting-for-better-research-outputs",
+      "order": 2,
+      "title": "Prompting for Better Research Outputs",
+      "objectives": [
+        "Construct clear, specific prompts for research tasks.",
+        "Refine prompts iteratively to improve results.",
+        "Use prompts to summarise and explain complex sources."
+      ],
+      "text": "A prompt is the instruction you give an AI tool. Vague prompts give vague answers, so structure matters. Use the RTCF framework: Role, Task, Context, Format.\n\nRole: tell the AI who to act as (\"You are a research assistant in public health\"). Task: state exactly what you want (\"Summarise this article's method\"). Context: give background, audience, and constraints (\"for a final-year undergraduate; focus on limitations\"). Format: specify output shape (\"200 words, three bullet points, plain English\").\n\nWorked example. Weak prompt: \"Explain this paper.\" Strong prompt: \"You are a research tutor. Explain the attached study's aim, method, and key finding to a second-year student in 150 words. Define any statistical term you use, and list two weaknesses.\"\n\nRefine iteratively. Read the first answer, then correct it: \"Too technical, simplify\"; \"Add a real example\"; \"Cite the exact section.\" Each turn sharpens the result.\n\nFor summarising sources, ask for structure: \"List the research question, sample size, main result, and one limitation.\" Always verify claims against the original text, because AI can invent citations (called hallucination).\n\nHow-to you can use now: paste a paragraph, add \"Explain this to me like I'm new to the field, then define three key terms.\" You will instantly get clearer, usable output.",
+      "voiceScript": "Let me show you why the way you ask matters so much. When you type a lazy prompt, you get a lazy answer. So I want you to remember four things: role, task, context, and format. Tell the AI who to be, exactly what you need, the background it should know, and the shape you want the answer in. Then, and this is the part people skip, refine. Read the first reply and push back: say simplify this, or add an example, or point me to the exact section. And please, always check any citation against the real source, because AI sometimes invents them. Do that, and your research writing gets sharper fast.",
+      "keyPoints": [
+        "Structure prompts with RTCF: Role, Task, Context, Format.",
+        "Specific instructions and desired format produce sharper answers.",
+        "Refine iteratively—correct, simplify, and request examples turn by turn.",
+        "Always verify AI claims and citations against the original source."
+      ],
+      "whiteboardSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 260\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"30\" fill=\"#0f766e\" font-size=\"18\" font-family=\"sans-serif\">The RTCF Prompt Framework</text><rect x=\"20\" y=\"50\" width=\"200\" height=\"38\" rx=\"5\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"30\" y=\"74\" fill=\"#334155\" font-size=\"14\" font-family=\"sans-serif\">R: Role (who to act as)</text><rect x=\"20\" y=\"96\" width=\"200\" height=\"38\" rx=\"5\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"30\" y=\"120\" fill=\"#334155\" font-size=\"14\" font-family=\"sans-serif\">T: Task (what to do)</text><rect x=\"20\" y=\"142\" width=\"200\" height=\"38\" rx=\"5\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"30\" y=\"166\" fill=\"#334155\" font-size=\"14\" font-family=\"sans-serif\">C: Context (background)</text><rect x=\"20\" y=\"188\" width=\"200\" height=\"38\" rx=\"5\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"30\" y=\"212\" fill=\"#334155\" font-size=\"14\" font-family=\"sans-serif\">F: Format (output shape)</text><line x1=\"230\" y1=\"140\" x2=\"290\" y2=\"140\" stroke=\"#0f766e\" stroke-width=\"2\"/><path d=\"M285 134 L295 140 L285 146\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><circle cx=\"370\" cy=\"110\" r=\"42\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"345\" y=\"106\" fill=\"#15803d\" font-size=\"13\" font-family=\"sans-serif\">Better</text><text x=\"345\" y=\"124\" fill=\"#15803d\" font-size=\"13\" font-family=\"sans-serif\">Output</text><text x=\"300\" y=\"180\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">Refine + verify</text><path d=\"M300 195 q40 20 80 0\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/></svg>",
+      "whiteboardCaption": "The RTCF framework (Role, Task, Context, Format) feeding into a refined, verified AI output.",
+      "example": "A final-year student in Nairobi researching malaria prevention pastes a dense journal abstract and prompts: \"You are a research tutor. Summarise this abstract's aim, method, and main finding for an undergraduate in 120 words, define any technical term, and list one limitation.\" She then replies \"Point me to the exact sentence that states the sample size\" to verify before citing it in her literature review.",
+      "quiz": [
+        {
+          "q": "What does the 'C' in the RTCF prompting framework stand for?",
+          "options": [
+            "Citation",
+            "Context",
+            "Command",
+            "Conclusion"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which prompt is most likely to give a useful research summary?",
+          "options": [
+            "Explain this paper.",
+            "Tell me about this.",
+            "You are a research tutor; summarise the aim, method, and finding in 150 words for an undergraduate.",
+            "Is this good?"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Why must you verify AI-generated citations?",
+          "options": [
+            "AI charges extra for citations",
+            "AI can hallucinate or invent sources",
+            "Citations are always outdated",
+            "AI cannot read text"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is a prompt?",
+          "back": "The instruction or question you give an AI tool to guide its response."
+        },
+        {
+          "front": "RTCF framework",
+          "back": "Role, Task, Context, Format—four elements that make prompts clear and specific."
+        },
+        {
+          "front": "Iterative refinement",
+          "back": "Improving output by giving follow-up corrections like 'simplify' or 'add an example'."
+        },
+        {
+          "front": "Hallucination",
+          "back": "When AI invents false facts or fake citations that must be verified against sources."
+        }
+      ],
+      "reflection": "Think of a recent research task where AI gave a weak answer—how would rewriting the prompt with RTCF have improved it?",
+      "summary": "Well-structured prompts using Role, Task, Context, and Format, plus iterative refinement and source verification, dramatically improve the accuracy and usefulness of AI research outputs.",
+      "discussionPrompt": "Ask the EFIKO tutor to critique and rewrite a real prompt you used this week using the RTCF framework, then suggest two follow-up refinements.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-finding-and-reviewing-literature-with-ai",
+      "order": 3,
+      "title": "Finding and Reviewing Literature with AI",
+      "objectives": [
+        "Use AI-assisted tools to discover relevant literature.",
+        "Cross-check AI suggestions against trusted databases.",
+        "Synthesise findings into a structured review outline."
+      ],
+      "text": "Literature review means mapping what scholars have already published on your topic before you add your own contribution. AI can speed up discovery, but it can also \"hallucinate\" (invent) fake references, so verification is non-negotiable.\n\nStep 1: Discover. Use AI-powered tools like Elicit, Consensus, Semantic Scholar, or Research Rabbit. Ask a focused question, e.g., \"What are the effects of mobile money on financial inclusion in West Africa?\" These tools return real papers with abstracts and citation counts.\n\nStep 2: Cross-check. Never cite a source you have not verified. Copy each title into Google Scholar, Scopus, or your university library. Confirm the authors, journal, year, and DOI exist. If ChatGPT suggests a paper, treat it as a lead, not proof, because it may fabricate plausible-looking titles.\n\nStep 3: Synthesise. Build a matrix: columns for author/year, research question, method, key finding, and gap. Group papers by theme, not one-by-one. Themes become your outline headings.\n\nWorked example: For 20 papers on mobile money, you might find three themes: access, gender gaps, and regulation. Your review outline then has three sections, each comparing and contrasting studies, ending with the gap your research fills.",
+      "voiceScript": "Let me walk you through reviewing literature with AI as your assistant, not your author. Think of AI as a fast research scout: tools like Elicit, Consensus, or Semantic Scholar can surface real papers in seconds when you ask a focused question. But here's my golden rule, and I really mean it: never cite anything you haven't verified yourself. Some AI tools invent references that look completely convincing, so always check the title, authors, and DOI in Google Scholar or your library. Once you've gathered genuine papers, don't summarise them one by one. Instead, group them by theme and build a simple matrix. Those themes become the backbone of your review outline, and the missing piece becomes your research gap.",
+      "keyPoints": [
+        "AI accelerates discovery but can fabricate fake references.",
+        "Verify every source in Google Scholar, Scopus, or your library before citing.",
+        "Synthesise by theme using a matrix, not paper-by-paper summaries.",
+        "Identified gaps and themes become your review outline structure."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-family=\"sans-serif\" font-size=\"15\" fill=\"#0f766e\">AI Literature Review Flow</text><rect x=\"20\" y=\"50\" width=\"120\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"34\" y=\"72\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">1. Discover</text><text x=\"34\" y=\"90\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#334155\">Elicit, Consensus</text><line x1=\"140\" y1=\"75\" x2=\"180\" y2=\"75\" stroke=\"#b45309\" stroke-width=\"2\"/><rect x=\"180\" y=\"50\" width=\"120\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"194\" y=\"72\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">2. Cross-check</text><text x=\"194\" y=\"90\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#334155\">Scholar, DOI</text><line x1=\"300\" y1=\"75\" x2=\"340\" y2=\"75\" stroke=\"#b45309\" stroke-width=\"2\"/><rect x=\"340\" y=\"50\" width=\"120\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"354\" y=\"72\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#334155\">3. Synthesise</text><text x=\"354\" y=\"90\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#334155\">Theme matrix</text><rect x=\"60\" y=\"135\" width=\"360\" height=\"100\" rx=\"4\" fill=\"none\" stroke=\"#334155\" stroke-width=\"1.5\"/><line x1=\"60\" y1=\"160\" x2=\"420\" y2=\"160\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"150\" y1=\"135\" x2=\"150\" y2=\"235\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"250\" y1=\"135\" x2=\"250\" y2=\"235\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"340\" y1=\"135\" x2=\"340\" y2=\"235\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"75\" y=\"152\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#0f766e\">Author</text><text x=\"165\" y=\"152\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#0f766e\">Method</text><text x=\"262\" y=\"152\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#0f766e\">Finding</text><text x=\"352\" y=\"152\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#0f766e\">Gap</text><text x=\"120\" y=\"252\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#15803d\">Themes = outline headings</text></svg>",
+      "whiteboardCaption": "A three-step flow from AI discovery to verification to a themed synthesis matrix that shapes your review outline.",
+      "example": "A Master's student in Accra researching mobile money uses Consensus to find 20 papers overnight, then spends the morning confirming each title in Google Scholar. She discovers two AI-suggested references do not exist, drops them, and organises the real 18 into a matrix by access, gender, and regulation themes.",
+      "quiz": [
+        {
+          "q": "Why must you cross-check AI-suggested references?",
+          "options": [
+            "AI tools are always offline",
+            "AI can invent plausible but fake citations",
+            "Databases charge per search",
+            "AI cannot read abstracts"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the best way to organise papers for synthesis?",
+          "options": [
+            "Alphabetically by author",
+            "One summary paragraph per paper",
+            "Grouped by theme in a matrix",
+            "By file size"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which tool is appropriate for verifying a paper's DOI and journal?",
+          "options": [
+            "A social media feed",
+            "Google Scholar or your library database",
+            "A random blog",
+            "An image generator"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What does 'hallucination' mean in AI research tools?",
+          "back": "When AI invents fake but plausible-looking references or facts."
+        },
+        {
+          "front": "Name two AI-powered literature discovery tools.",
+          "back": "Elicit and Consensus (also Semantic Scholar, Research Rabbit)."
+        },
+        {
+          "front": "What is a synthesis matrix?",
+          "back": "A table comparing papers by author/year, method, finding, and gap."
+        },
+        {
+          "front": "How do themes help your review?",
+          "back": "Themes become the section headings of your review outline."
+        }
+      ],
+      "reflection": "Think of a topic you are researching: which two themes might structure your literature review, and how will you verify the AI-suggested sources?",
+      "summary": "AI speeds literature discovery, but you must verify every source in trusted databases and synthesise findings by theme to build a credible review outline.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you turn a list of 10 verified papers on your topic into a themed synthesis matrix and a draft review outline.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-verifying-accuracy-and-avoiding-bias",
+      "order": 4,
+      "title": "Verifying Accuracy and Avoiding Bias",
+      "objectives": [
+        "Detect AI hallucinations and fabricated citations.",
+        "Assess outputs for bias and cultural context.",
+        "Apply verification workflows to confirm facts."
+      ],
+      "text": "AI writing tools sometimes produce a \"hallucination\": a confident, fluent statement that is simply false. A common form is a fabricated citation, where the tool invents an author, title, or DOI that looks real but does not exist. Because these outputs are polished, they are easy to trust and dangerous in research.\n\nUse a three-step verification workflow:\n1. Trace the source. Copy any cited title or DOI into Google Scholar or your library database. If nothing matches, treat it as fabricated.\n2. Cross-check the claim. Confirm each key fact against at least two independent, reputable sources (peer-reviewed papers, official statistics, established institutions).\n3. Check for bias. Ask: whose perspective is missing? AI models are trained mostly on English-language, Global North data, so they may underrepresent African contexts, local studies, or regional statistics.\n\nWorked example: An AI claims \"Nigeria's literacy rate is 89% (Okonkwo, 2021).\" You search Scholar for \"Okonkwo 2021 literacy\" and find nothing, then check UNESCO data showing about 62%. Verdict: fabricated citation and an inflated figure. Correct it using the UNESCO source.\n\nAlways prompt the AI to \"list only verifiable sources with links,\" then verify each one yourself. Never cite what you have not personally confirmed.",
+      "voiceScript": "Here's a habit that will protect your whole research career: never trust an AI output just because it sounds confident. These tools can hallucinate, meaning they produce fluent statements that are simply untrue, and they sometimes invent citations that look completely real. So I want you to become a friendly detective. First, trace every source by searching the title or DOI in Google Scholar; if it doesn't exist, it's fabricated. Second, cross-check each important fact against two reputable sources. Third, ask whose voice is missing, because these models lean heavily on Global North data and can overlook African contexts. Verify before you cite, every single time, and your work will stay trustworthy and strong.",
+      "keyPoints": [
+        "AI hallucinations sound confident but can be false, including invented citations.",
+        "Verify every source in Google Scholar or a library database before citing.",
+        "Cross-check key facts against at least two reputable independent sources.",
+        "Watch for bias: AI often underrepresents African and Global South contexts."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"16\" fill=\"#334155\">AI Output - Verify Before You Trust</text><rect x=\"20\" y=\"45\" width=\"120\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"32\" y=\"75\" font-size=\"13\" fill=\"#b45309\">AI claim</text><line x1=\"140\" y1=\"70\" x2=\"185\" y2=\"70\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"185\" y=\"45\" width=\"130\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"196\" y=\"66\" font-size=\"12\" fill=\"#0f766e\">1 Trace source</text><text x=\"196\" y=\"85\" font-size=\"11\" fill=\"#334155\">Scholar / DOI</text><line x1=\"250\" y1=\"95\" x2=\"250\" y2=\"125\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"185\" y=\"125\" width=\"130\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"196\" y=\"146\" font-size=\"12\" fill=\"#0f766e\">2 Cross-check</text><text x=\"196\" y=\"165\" font-size=\"11\" fill=\"#334155\">2 sources</text><line x1=\"250\" y1=\"175\" x2=\"250\" y2=\"205\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"185\" y=\"205\" width=\"130\" height=\"45\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"196\" y=\"232\" font-size=\"12\" fill=\"#0f766e\">3 Check bias</text><path d=\"M340 60 l15 15 l25 -30\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"340\" y=\"110\" font-size=\"12\" fill=\"#15803d\">Confirmed</text><text x=\"340\" y=\"128\" font-size=\"12\" fill=\"#15803d\">= cite it</text><text x=\"340\" y=\"200\" font-size=\"11\" fill=\"#b45309\">No match?</text><text x=\"340\" y=\"216\" font-size=\"11\" fill=\"#b45309\">= discard</text></svg>",
+      "whiteboardCaption": "A three-step flow turning an unverified AI claim into a confirmed, citable fact or a discarded fabrication.",
+      "example": "A Kenyan graduate student uses ChatGPT for a literature review, and it cites \"Mwangi & Otieno (2019), Journal of African Health Policy.\" Searching Google Scholar and the journal's site returns nothing, revealing a fabricated citation. She replaces it with a verified WHO regional report she reads herself.",
+      "quiz": [
+        {
+          "q": "An AI gives you a citation with a real-looking DOI you cannot find anywhere. What is the best action?",
+          "options": [
+            "Cite it since the DOI looks valid",
+            "Treat it as fabricated and discard or replace it",
+            "Ask the AI to confirm it is real",
+            "Reword the citation slightly and use it"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why might AI outputs underrepresent African research contexts?",
+          "options": [
+            "African data is always inaccurate",
+            "Models are trained mostly on English-language, Global North data",
+            "AI refuses to use regional sources",
+            "Local statistics do not exist"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is a 'hallucination' in AI outputs?",
+          "options": [
+            "A slow or delayed response",
+            "A confident but false or fabricated statement",
+            "A grammar error in the text",
+            "A request for more information"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "AI hallucination",
+          "back": "A fluent, confident output that is factually false or fabricated, such as an invented citation."
+        },
+        {
+          "front": "First verification step",
+          "back": "Trace the source: search the title or DOI in Google Scholar or a library database."
+        },
+        {
+          "front": "Cross-checking rule",
+          "back": "Confirm each key fact against at least two independent, reputable sources before citing."
+        },
+        {
+          "front": "Bias risk in AI",
+          "back": "Training on Global North data can underrepresent African and Global South perspectives and statistics."
+        }
+      ],
+      "reflection": "Think of a recent time you accepted a fact quickly. How would applying the three-step verification workflow have changed your confidence in it?",
+      "summary": "AI can produce convincing but false claims and fake citations, so use a trace-source, cross-check, and check-bias workflow to verify everything before you cite it.",
+      "discussionPrompt": "Ask the EFIKO tutor: How can I design prompts that reduce hallucinations and encourage the AI to surface African and Global South sources?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s5-ai-for-data-drafting-and-analysis",
+      "order": 5,
+      "title": "AI for Data, Drafting, and Analysis",
+      "objectives": [
+        "Use AI to organise, clean, and interpret simple data.",
+        "Apply AI support for drafting and editing academic text.",
+        "Maintain your own voice and analytical thinking."
+      ],
+      "text": "AI tools can speed up three research chores: handling data, drafting text, and editing. But they assist you; they never replace your judgement.\n\nData tasks. Suppose you have survey results in a spreadsheet with messy entries like \"Male\", \"male\", \"M\". Paste a sample and ask the AI: \"Suggest a step-by-step plan to standardise these gender labels and flag missing values.\" It returns a cleaning recipe (rules, not magic). You then apply it yourself and verify each change. For interpretation, ask: \"What patterns might this table show, and what would I need to check before claiming them?\" Treat answers as hypotheses to test, not facts.\n\nDrafting. Write your own rough ideas first, then prompt: \"Improve clarity and flow of this paragraph without changing my argument or adding claims.\" Compare versions line by line; keep only edits you understand.\n\nEditing. Use AI as a proofreader: \"List grammar and citation-format issues; do not rewrite my meaning.\"\n\nGuardrails: never paste confidential data; verify every statistic and reference (AI invents citations); disclose AI use per your institution's policy. Worked example: give AI five raw dates in mixed formats and ask for one consistent ISO format (YYYY-MM-DD), then check each conversion. Your analysis and voice stay central.",
+      "voiceScript": "Let me show you how AI can genuinely help with research without taking over your thinking. Picture a messy spreadsheet where gender is written three different ways. Instead of fixing it blindly, I ask the AI for a step-by-step cleaning plan, then I apply and check each change myself. When it suggests patterns in my data, I treat those as hypotheses to test, never as conclusions. For writing, I always draft my own rough ideas first, then ask the AI to sharpen clarity without changing my argument. And I use it as a proofreader, comparing every edit line by line. Remember, AI invents citations, so verify each one, protect confidential data, and always disclose your use. Your voice stays in charge.",
+      "keyPoints": [
+        "AI drafts cleaning recipes and edits, but you apply and verify every step.",
+        "Treat AI interpretations as hypotheses to test, not conclusions.",
+        "Draft your own ideas first, then use AI to polish clarity, not change meaning.",
+        "Verify all statistics and citations, protect data, and disclose AI use."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" font-size=\"16\" fill=\"#334155\">You lead, AI assists</text><rect x=\"20\" y=\"50\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"38\" y=\"85\" font-size=\"13\" fill=\"#0f766e\">DATA clean</text><rect x=\"180\" y=\"50\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"198\" y=\"85\" font-size=\"13\" fill=\"#15803d\">DRAFT text</text><rect x=\"340\" y=\"50\" width=\"120\" height=\"60\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"360\" y=\"85\" font-size=\"13\" fill=\"#b45309\">EDIT proof</text><line x1=\"140\" y1=\"80\" x2=\"180\" y2=\"80\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"300\" y1=\"80\" x2=\"340\" y2=\"80\" stroke=\"#334155\" stroke-width=\"2\"/><circle cx=\"240\" cy=\"160\" r=\"30\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"212\" y=\"165\" font-size=\"12\" fill=\"#334155\">VERIFY</text><path d=\"M240 110 L240 130\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"20\" y=\"215\" font-size=\"12\" fill=\"#b45309\">Check stats, citations, privacy</text><text x=\"20\" y=\"238\" font-size=\"12\" fill=\"#15803d\">Keep your voice and analysis</text></svg>",
+      "whiteboardCaption": "AI supports data cleaning, drafting, and editing, but every output flows through your own verification.",
+      "example": "A Nairobi student cleaning fieldwork survey data asks AI to propose rules for standardising town names (\"Nbi\", \"Nairobi\", \"nairobi\") into one format, then applies and double-checks each row before running her analysis.",
+      "quiz": [
+        {
+          "q": "You ask AI to clean a messy data column. What should you do with its output?",
+          "options": [
+            "Apply it automatically without review",
+            "Apply the rules yourself and verify each change",
+            "Delete the original data immediately",
+            "Assume it fixed everything correctly"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How should you treat patterns AI 'finds' in your table?",
+          "options": [
+            "As proven facts to publish",
+            "As hypotheses to test and check",
+            "As irrelevant noise",
+            "As reasons to skip analysis"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a key guardrail when using AI for drafting?",
+          "options": [
+            "Let AI invent citations to save time",
+            "Paste confidential data freely",
+            "Verify every reference and disclose AI use",
+            "Never write anything yourself"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Why keep your own rough draft first?",
+          "back": "So AI polishes your argument and voice rather than replacing your thinking."
+        },
+        {
+          "front": "AI and citations",
+          "back": "AI can fabricate references, so verify every citation against real sources."
+        },
+        {
+          "front": "Data cleaning role of AI",
+          "back": "It suggests a step-by-step recipe; you apply and check each change."
+        },
+        {
+          "front": "AI interpretations",
+          "back": "Treat them as hypotheses to test, not confirmed conclusions."
+        }
+      ],
+      "reflection": "Where in your current project could AI save time on chores while you retain full control of the analysis and argument?",
+      "summary": "AI can accelerate data cleaning, drafting, and editing, but you must apply, verify, and interpret its outputs so your voice and analytical judgement stay central.",
+      "discussionPrompt": "Help me design safe, effective prompts for cleaning and interpreting my survey dataset while keeping my own analysis in charge.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s6-ethics-integrity-and-your-ai-use-plan",
+      "order": 6,
+      "title": "Ethics, Integrity, and Your AI-Use Plan",
+      "objectives": [
+        "Apply academic integrity rules to AI use.",
+        "Cite and disclose AI assistance appropriately.",
+        "Create a personal responsible AI-use plan."
+      ],
+      "text": "AI tools can accelerate research, but using them ethically protects your integrity and your degree. Start with three rules. First, never present AI-generated text or ideas as your own without disclosure; that is plagiarism, even if the words are new. Second, verify everything: chatbots hallucinate, meaning they invent plausible but false facts, fake citations, and misquoted sources. Always trace claims back to a real, readable source. Third, protect confidentiality; do not paste unpublished data, participants' personal details, or copyrighted text into public tools.\n\nDisclosure is now expected. Check your university and target journal policies first, because rules differ. A simple disclosure statement works: \"I used [tool, version] on [date] to [brainstorm outlines / check grammar]. All analysis and final wording are my own, and I verified all sources.\" Cite it like software or a personal communication, following your style guide (APA, for example, treats it as a software reference).\n\nBuild your AI-use plan in four steps. (1) List allowed tasks (grammar, summarising your own notes). (2) List forbidden tasks (writing conclusions, generating citations, entering private data). (3) Set a verification routine: every AI claim gets a human-checked source. (4) Write your standard disclosure line and keep prompt logs. Save this plan and apply it to every project.",
+      "voiceScript": "Congratulations on reaching our final session. Let's talk about using AI honestly, because your integrity is worth protecting. Think of AI as a helpful assistant, not the author. If it gives you ideas or words, you must disclose that, otherwise it counts as plagiarism. And please, verify everything, because these tools confidently invent fake facts and fake references. Never paste private data or unpublished work into public tools. Before you submit anything, check your university and journal policies, then add a short, honest disclosure of what you used and how. Finally, write yourself a simple AI-use plan: what's allowed, what's forbidden, how you'll verify, and how you'll disclose. Carry that plan into every project, and you'll research with confidence.",
+      "keyPoints": [
+        "Undisclosed AI text or ideas count as plagiarism, so disclose and verify.",
+        "Never enter private, unpublished, or confidential data into public AI tools.",
+        "Check university and journal policies, then cite AI per your style guide.",
+        "Write a four-part plan: allowed, forbidden, verify, disclose."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-size=\"16\" fill=\"#0f766e\">Responsible AI-Use Plan</text><rect x=\"20\" y=\"45\" width=\"200\" height=\"40\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"30\" y=\"62\" font-size=\"11\" fill=\"#15803d\">1. Allowed tasks</text><text x=\"30\" y=\"78\" font-size=\"10\" fill=\"#334155\">grammar, summarise notes</text><rect x=\"20\" y=\"95\" width=\"200\" height=\"40\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"30\" y=\"112\" font-size=\"11\" fill=\"#b45309\">2. Forbidden tasks</text><text x=\"30\" y=\"128\" font-size=\"10\" fill=\"#334155\">private data, fake cites</text><rect x=\"20\" y=\"145\" width=\"200\" height=\"40\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"30\" y=\"162\" font-size=\"11\" fill=\"#0f766e\">3. Verify sources</text><text x=\"30\" y=\"178\" font-size=\"10\" fill=\"#334155\">every claim -&gt; real source</text><rect x=\"20\" y=\"195\" width=\"200\" height=\"40\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"30\" y=\"212\" font-size=\"11\" fill=\"#334155\">4. Disclose + log</text><text x=\"30\" y=\"228\" font-size=\"10\" fill=\"#334155\">tool, date, task</text><circle cx=\"340\" cy=\"120\" r=\"55\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"312\" y=\"118\" font-size=\"13\" fill=\"#15803d\">INTEGRITY</text><path d=\"M320 125 l14 14 l26 -32\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><line x1=\"225\" y1=\"120\" x2=\"282\" y2=\"120\" stroke=\"#334155\" stroke-width=\"2\"/></svg>",
+      "whiteboardCaption": "A four-step responsible AI-use plan feeding into research integrity.",
+      "example": "A Nairobi master's student uses ChatGPT to tighten the grammar of her own thesis draft and to brainstorm section headings. She verifies every reference herself in Google Scholar, never pastes her interview transcripts into the tool, and adds a footnote: \"Grammar-checked with ChatGPT (GPT-4, March 2025); all analysis and sources are my own.\" Her supervisor approves because the work stays hers.",
+      "quiz": [
+        {
+          "q": "Why must you verify every factual claim an AI gives you?",
+          "options": [
+            "AI tools are always offline",
+            "AI can hallucinate, inventing false facts and fake citations",
+            "Verification is required by copyright law only",
+            "AI cannot write in English"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which action is safest for academic integrity?",
+          "options": [
+            "Submitting AI-written conclusions as your own",
+            "Pasting unpublished participant data into a public chatbot",
+            "Disclosing the tool, version, date, and how you used it",
+            "Hiding all AI use to avoid questions"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What should you check first before disclosing AI use?",
+          "options": [
+            "Your university and target journal policies",
+            "The AI tool's marketing page",
+            "Your friends' opinions",
+            "The tool's subscription price"
+          ],
+          "answer": 0
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is an AI 'hallucination'?",
+          "back": "When an AI confidently generates plausible but false information, such as fake facts or invented citations."
+        },
+        {
+          "front": "When does AI use become plagiarism?",
+          "back": "When AI-generated text or ideas are presented as your own without disclosure."
+        },
+        {
+          "front": "Four parts of an AI-use plan",
+          "back": "Allowed tasks, forbidden tasks, a verification routine, and a disclosure/log practice."
+        },
+        {
+          "front": "What data should never go into public AI tools?",
+          "back": "Unpublished data, participants' personal details, and copyrighted or confidential text."
+        }
+      ],
+      "reflection": "Which of your current research habits with AI might breach integrity rules, and how will you change them?",
+      "summary": "Ethical AI use means disclosing assistance, verifying every claim, protecting confidential data, and following your institution's policies through a personal four-step AI-use plan.",
+      "discussionPrompt": "Help me draft a personalised responsible AI-use plan for my current research project, including a disclosure statement that fits my university's policy.",
+      "sizeKB": 4
+    }
+  ],
+  "spec": {
+    "topic": "AI for Research",
+    "audience": "University students and early researchers",
+    "hours": 5,
+    "level": "Intermediate"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783134315871,
+  "updatedAt": 1783134315871
+}

@@ -1,0 +1,513 @@
+{
+  "courseId": "orig-ai-ethics-and-responsible-use",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "AI Ethics and Responsible Use",
+  "subtitle": "Thinking Critically and Acting Responsibly with Artificial Intelligence",
+  "category": "Technology & Ethics",
+  "level": "Beginner",
+  "audience": "University students and young professionals across Africa",
+  "estimatedHours": 3,
+  "description": "This beginner-friendly course helps you understand what artificial intelligence is, how it affects everyday life, and how to use AI tools responsibly and ethically. Through practical, mobile-friendly sessions, you will explore fairness, bias, privacy, transparency, and academic integrity, learning to make thoughtful decisions when using AI in your studies, work, and community. No technical background is required.",
+  "outcomes": [
+    "Explain the core concepts of artificial intelligence and why ethics matters in its use.",
+    "Identify common ethical risks such as bias, privacy violations, and misinformation in AI systems.",
+    "Apply responsible AI practices when using tools like chatbots and generative AI in academic and professional settings.",
+    "Evaluate the fairness, transparency, and accountability of an AI application using simple criteria.",
+    "Demonstrate ethical decision-making by resolving realistic AI dilemmas relevant to African contexts."
+  ],
+  "competencies": [
+    "Explaining AI concepts and ethical principles in plain language",
+    "Identifying bias, privacy, and misinformation risks in AI systems",
+    "Using AI tools responsibly with academic and professional integrity",
+    "Evaluating AI applications for fairness, transparency, and accountability",
+    "Applying an ethical decision-making framework to real AI dilemmas"
+  ],
+  "nextCourse": "Generative AI for Productivity and Learning",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What best describes artificial intelligence?",
+        "options": [
+          "A type of human brain surgery",
+          "Computer systems that perform tasks that normally require human intelligence",
+          "A brand of smartphone",
+          "A social media platform"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Why can an AI system produce biased results?",
+        "options": [
+          "Because computers dislike certain people",
+          "Because it can learn from data that reflects human biases",
+          "Because AI is always neutral and never biased",
+          "Because electricity affects fairness"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these is a responsible way to use an AI chatbot for an assignment?",
+        "options": [
+          "Submit its answer directly as your own work",
+          "Use it to brainstorm and then verify and cite appropriately",
+          "Never read what it produces",
+          "Share your classmates' passwords with it"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Which statement about AI ethics is most accurate?",
+        "options": [
+          "Ethics only matters for AI developers, not users",
+          "Ethical use concerns everyone who builds or uses AI",
+          "AI cannot cause any harm",
+          "Ethics slows down all technology and should be ignored"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A hiring AI rejects more qualified women than men. This is an example of:",
+        "options": [
+          "Good data protection",
+          "Algorithmic bias",
+          "Strong transparency",
+          "Proper consent"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is the role of consent when AI collects personal data?",
+        "options": [
+          "It allows people to knowingly agree to how their data is used",
+          "It is unnecessary if the company is large",
+          "It means data can never be collected",
+          "It only applies to government agencies"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "Using generative AI ethically in your studies means:",
+        "options": [
+          "Presenting AI text as fully your own without checking it",
+          "Verifying information and being transparent about AI assistance",
+          "Avoiding all learning and letting AI do everything",
+          "Hiding your sources from instructors"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which practice best supports AI accountability and reduces misinformation?",
+        "options": [
+          "Sharing content without checking its source",
+          "Verifying claims and questioning how an AI reached its output",
+          "Trusting all AI output automatically",
+          "Ignoring where information comes from"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-what-is-ai-and-why-ethics-matters",
+      "order": 1,
+      "title": "What Is AI and Why Ethics Matters",
+      "objectives": [
+        "Define artificial intelligence and describe common everyday examples.",
+        "Explain why ethical considerations are essential when building and using AI.",
+        "Recognize the benefits and risks AI brings to African communities."
+      ],
+      "text": "Artificial intelligence (AI) means computer systems that perform tasks we normally associate with human thinking: recognizing speech, translating languages, recommending videos, or predicting what you might type next. Most modern AI is \"machine learning\" — the system studies large amounts of past data to spot patterns, then uses those patterns to make predictions. It does not truly understand; it calculates probabilities.\n\nYou already use AI daily. When M-Pesa flags a suspicious transaction, when WhatsApp suggests a reply, when YouTube queues the next song, or when Google Maps reroutes around Nairobi traffic — that is AI.\n\nEthics matters because AI learns from human data, and human data carries human bias. If a loan-approval model was trained mostly on urban men, it may unfairly reject rural women. If a facial system rarely saw dark skin, it misidentifies people. These are not rare glitches; they are predictable risks.\n\nQuick how-to: before trusting any AI tool, ask three questions. First, \"What data taught this?\" Second, \"Who could be harmed if it's wrong?\" Third, \"Can a human review the decision?\" Write these down and apply them to one app you used today. That habit — pausing to question — is the foundation of responsible use, and it protects both you and your community.",
+      "voiceScript": "Welcome! Let me start with something you already know, even if you didn't name it. When your phone suggests the next word, or your mobile-money app flags a strange payment, that's artificial intelligence at work. AI simply means computer systems doing tasks that usually need human thinking, and most of them learn by studying huge amounts of past data to find patterns. Here's the catch: that data comes from people, and people carry bias, so AI can quietly repeat unfair patterns. That's why ethics matters from day one. My favourite habit is to pause and ask three questions: what data taught this tool, who gets harmed if it's wrong, and can a human check the result? Try it today.",
+      "keyPoints": [
+        "AI is software that learns patterns from data to make predictions, not true understanding.",
+        "You already use AI daily: mobile money alerts, maps, chat suggestions, video recommendations.",
+        "AI learns from biased human data, so it can repeat unfair outcomes.",
+        "Ask: what data taught it, who could be harmed, and can a human review the decision."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='white'/><text x='20' y='30' font-family='sans-serif' font-size='16' fill='#0f766e'>AI = patterns from data</text><rect x='30' y='60' width='90' height='45' rx='6' fill='none' stroke='#334155' stroke-width='2'/><text x='42' y='87' font-family='sans-serif' font-size='12' fill='#334155'>Past data</text><line x1='120' y1='82' x2='185' y2='82' stroke='#b45309' stroke-width='2'/><rect x='185' y='60' width='95' height='45' rx='6' fill='none' stroke='#15803d' stroke-width='2'/><text x='198' y='87' font-family='sans-serif' font-size='12' fill='#15803d'>Learns</text><line x1='280' y1='82' x2='345' y2='82' stroke='#b45309' stroke-width='2'/><rect x='345' y='60' width='105' height='45' rx='6' fill='none' stroke='#334155' stroke-width='2'/><text x='356' y='87' font-family='sans-serif' font-size='12' fill='#334155'>Predicts</text><text x='20' y='150' font-family='sans-serif' font-size='14' fill='#b45309'>Ask before trusting:</text><circle cx='35' cy='175' r='4' fill='#0f766e'/><text x='48' y='180' font-family='sans-serif' font-size='12' fill='#334155'>What data taught it?</text><circle cx='35' cy='200' r='4' fill='#0f766e'/><text x='48' y='205' font-family='sans-serif' font-size='12' fill='#334155'>Who is harmed if wrong?</text><circle cx='35' cy='225' r='4' fill='#0f766e'/><text x='48' y='230' font-family='sans-serif' font-size='12' fill='#334155'>Can a human review it?</text></svg>",
+      "whiteboardCaption": "AI turns past data into predictions, so we must question the data and the decisions.",
+      "example": "A Kenyan fintech uses AI to approve small loans in seconds. Because it learned mostly from salaried city customers, it keeps rejecting a market trader in Kisumu with steady but informal income — a real bias risk that fair design and human review could fix.",
+      "quiz": [
+        {
+          "q": "What best describes how most modern AI works?",
+          "options": [
+            "It thinks and reasons exactly like a human brain",
+            "It learns patterns from large amounts of past data to make predictions",
+            "It follows only rules typed in by hand with no data",
+            "It is always correct and free of bias"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why do ethical concerns arise with AI?",
+          "options": [
+            "AI never uses real data",
+            "AI learns from human data that can carry bias",
+            "AI is too slow to be useful",
+            "AI cannot be used on phones"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a good question to ask before trusting an AI tool?",
+          "options": [
+            "How expensive was the computer?",
+            "Who could be harmed if the AI is wrong?",
+            "What colour is the app icon?",
+            "How many people downloaded it?"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is artificial intelligence?",
+          "back": "Computer systems that perform tasks needing human-like thinking, usually by learning patterns from data."
+        },
+        {
+          "front": "What is machine learning?",
+          "back": "AI that studies past data to find patterns, then uses them to predict new outcomes."
+        },
+        {
+          "front": "Why can AI be biased?",
+          "back": "It learns from human data, which reflects existing human and social biases."
+        },
+        {
+          "front": "Three questions before trusting AI",
+          "back": "What data taught it? Who is harmed if wrong? Can a human review the decision?"
+        }
+      ],
+      "reflection": "Think of one AI tool you used this week — what data might it have learned from, and who could it treat unfairly?",
+      "summary": "AI learns patterns from data to make predictions, appearing throughout daily life; because that data carries human bias, ethical questioning is essential from the very start.",
+      "discussionPrompt": "Ask the EFIKO tutor: How could an AI loan-approval system in my country be made fairer for people with informal incomes?",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-bias-and-fairness-in-ai",
+      "order": 2,
+      "title": "Bias and Fairness in AI",
+      "objectives": [
+        "Explain how bias enters AI systems through data and design.",
+        "Identify real-world examples of unfair or discriminatory AI outcomes.",
+        "Describe simple ways to reduce and challenge bias as a user."
+      ],
+      "text": "AI bias means an AI system produces results that unfairly favour or harm certain groups. Bias usually enters in two ways. First, through data: AI learns patterns from past examples. If those examples reflect human prejudice or leave out certain groups, the AI copies and even amplifies that. For instance, a hiring tool trained mostly on male CVs may rank men higher. Second, through design: the choices engineers make, like which features matter or how success is measured, can quietly favour some people.\n\nFairness means the system treats similar people similarly and does not systematically disadvantage a group by gender, ethnicity, language, or region.\n\nTry this three-step check whenever you use an AI tool:\n1. Ask what data it learned from and who might be missing (for example, does a voice tool understand African accents?).\n2. Test it: give it varied inputs, including local names, languages, and contexts, and compare the outputs.\n3. Challenge and report: if results feel unfair, don't accept them blindly. Flag the issue, seek a human review, and use the tool's feedback option.\n\nRemember: AI outputs are predictions, not truth. Staying curious and questioning results is your strongest protection against unfair outcomes.",
+      "voiceScript": "Let's talk about why an AI can be unfair. AI learns from past examples, so if that data carries human prejudice or ignores certain people, the AI copies it, and sometimes makes it worse. Imagine a hiring tool trained mostly on men's applications; it may quietly rank women lower without anyone intending that. Design choices matter too, like how the builders define success. So here's my simple habit for you. First, ask what data the tool learned from and who might be missing. Second, test it with local names, languages, and accents, and compare the answers. Third, if something feels unfair, don't just accept it, question it, ask for a human review, and report the problem. AI gives predictions, not truth, so stay curious.",
+      "keyPoints": [
+        "Bias enters AI through skewed training data and human design choices.",
+        "Fairness means similar people are treated similarly, without disadvantaging a group.",
+        "Test AI tools with local names, languages and accents to spot unfair outputs.",
+        "AI gives predictions, not truth — question and report unfair results."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-family=\"sans-serif\" font-size=\"16\" fill=\"#0f766e\">How Bias Enters AI</text><rect x=\"20\" y=\"60\" width=\"110\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"38\" y=\"90\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#b45309\">Biased Data</text><line x1=\"130\" y1=\"85\" x2=\"195\" y2=\"85\" stroke=\"#334155\" stroke-width=\"2\"/><path d=\"M188 79 L198 85 L188 91\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"200\" y=\"60\" width=\"90\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"228\" y=\"90\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0f766e\">AI Model</text><line x1=\"245\" y1=\"40\" x2=\"245\" y2=\"58\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"250\" y=\"46\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">design choices</text><line x1=\"290\" y1=\"85\" x2=\"355\" y2=\"85\" stroke=\"#334155\" stroke-width=\"2\"/><path d=\"M348 79 L358 85 L348 91\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"360\" y=\"60\" width=\"100\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"372\" y=\"84\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#b45309\">Unfair</text><text x=\"372\" y=\"100\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#b45309\">Outcome</text><text x=\"20\" y=\"150\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#15803d\">User check:</text><text x=\"30\" y=\"175\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#334155\">1. Ask about the data</text><text x=\"30\" y=\"200\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#334155\">2. Test with local inputs</text><text x=\"30\" y=\"225\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#334155\">3. Challenge and report</text></svg>",
+      "whiteboardCaption": "A flow showing biased data and design choices feeding an AI model to produce unfair outcomes, with a three-step user check.",
+      "example": "A Nigerian bank uses an AI loan-scoring app trained mostly on data from formally employed, urban customers. A qualified market trader in a rural town is repeatedly denied loans because the model rarely saw people like her. By flagging the pattern and requesting a human review, staff catch the bias and adjust the process.",
+      "quiz": [
+        {
+          "q": "What is a main way bias enters an AI system?",
+          "options": [
+            "The computer's hardware overheating",
+            "Training data that reflects human prejudice or excludes groups",
+            "Using the tool at night",
+            "Having too many users at once"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A hiring AI trained mostly on men's CVs ranks men higher. This is an example of:",
+          "options": [
+            "A fair, neutral outcome",
+            "Bias amplified from skewed data",
+            "A hardware failure",
+            "Deliberate hacking"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is a good first step when an AI result feels unfair?",
+          "options": [
+            "Accept it because AI is always right",
+            "Question it, seek human review, and report the issue",
+            "Delete your account immediately",
+            "Ignore it and try later"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is AI bias?",
+          "back": "When an AI system produces results that unfairly favour or harm certain groups."
+        },
+        {
+          "front": "Two main sources of AI bias?",
+          "back": "Skewed or incomplete training data, and human design choices."
+        },
+        {
+          "front": "What does fairness mean in AI?",
+          "back": "Treating similar people similarly without systematically disadvantaging a group."
+        },
+        {
+          "front": "Three-step user check for bias?",
+          "back": "Ask about the data, test with varied local inputs, then challenge and report unfair results."
+        }
+      ],
+      "reflection": "Think of an AI tool you use. Whose data might be missing from it, and how could that affect people like you or your community?",
+      "summary": "AI bias arises from skewed data and design choices, leading to unfair outcomes; users can reduce harm by questioning, testing, and reporting AI results.",
+      "discussionPrompt": "Ask the EFIKO tutor: How can I design a simple fairness test for an AI chatbot to check whether it handles African names and languages equally well?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-privacy-data-and-consent",
+      "order": 3,
+      "title": "Privacy, Data, and Consent",
+      "objectives": [
+        "Describe how AI systems collect and use personal data.",
+        "Explain the importance of consent, transparency, and data protection.",
+        "Apply practical habits to protect your privacy when using AI tools."
+      ],
+      "text": "AI systems learn from data — and much of that data is personal. Personal data is any information that identifies you: your name, phone number, location, photos, voice, or even how you type. AI tools collect this in three main ways: data you provide (chat messages, uploads), data collected automatically (device type, location, clicks), and data bought or scraped from other sources. This data trains models, personalises services, and sometimes gets shared with third parties.\n\nThree ideas protect you. Consent means you knowingly agree to how your data is used — not just clicking 'Accept' blindly. Transparency means the company clearly explains what it collects and why. Data protection means securing data and limiting its use (many African countries now have laws, like Nigeria's NDPA, Kenya's DPA, and South Africa's POPIA).\n\nHow-to: Before using any AI tool, do a 3-minute check. (1) Read the data section of the privacy policy — search for 'share' and 'third party'. (2) Turn off 'use my data to train the model' in settings if available. (3) Never paste passwords, national ID numbers, medical records, or other people's private details into a chatbot. (4) Use a nickname or throwaway email for casual tools. Treat every prompt as if it could become public.",
+      "voiceScript": "Let's talk about your data, because AI runs on it. Every time you chat with an AI tool, upload a photo, or let an app track your location, you're sharing personal information — and that information often trains the model or gets shared with others. That's why three things matter so much: consent, meaning you truly agree to how your data is used; transparency, meaning the company tells you clearly; and data protection, which many African laws now require. Here's my simple habit for you. Before trusting any tool, spend three minutes checking its privacy settings, switch off data-for-training if you can, and never paste passwords, ID numbers, or someone else's secrets into a chatbot. Treat every prompt as if it could one day become public.",
+      "keyPoints": [
+        "AI collects personal data you provide, that's tracked automatically, and that's bought from others.",
+        "Consent, transparency, and data protection are your core rights — backed by laws like NDPA, DPA and POPIA.",
+        "Do a 3-minute privacy check and disable data-for-training before trusting a tool.",
+        "Never paste passwords, ID numbers, or other people's private data into a chatbot."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-family=\"sans-serif\" font-size=\"16\" fill=\"#0f766e\">Your Data and AI</text><circle cx=\"70\" cy=\"90\" r=\"26\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"52\" y=\"95\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">You</text><line x1=\"96\" y1=\"90\" x2=\"180\" y2=\"90\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"100\" y=\"82\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#b45309\">data</text><rect x=\"182\" y=\"64\" width=\"90\" height=\"52\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"198\" y=\"94\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#0f766e\">AI Model</text><line x1=\"272\" y1=\"90\" x2=\"356\" y2=\"90\" stroke=\"#b45309\" stroke-width=\"2\"/><rect x=\"358\" y=\"64\" width=\"100\" height=\"52\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"368\" y=\"88\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#334155\">Third parties?</text><text x=\"368\" y=\"104\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#334155\">Storage</text><text x=\"20\" y=\"160\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#15803d\">Protect yourself:</text><line x1=\"24\" y1=\"180\" x2=\"34\" y2=\"188\" stroke=\"#15803d\" stroke-width=\"2\"/><line x1=\"34\" y1=\"188\" x2=\"48\" y2=\"172\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"56\" y=\"186\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">Consent</text><line x1=\"24\" y1=\"206\" x2=\"34\" y2=\"214\" stroke=\"#15803d\" stroke-width=\"2\"/><line x1=\"34\" y1=\"214\" x2=\"48\" y2=\"198\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"56\" y=\"212\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">Check settings</text><line x1=\"24\" y1=\"232\" x2=\"34\" y2=\"240\" stroke=\"#15803d\" stroke-width=\"2\"/><line x1=\"34\" y1=\"240\" x2=\"48\" y2=\"224\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"56\" y=\"238\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">Never paste secrets</text></svg>",
+      "whiteboardCaption": "A diagram showing personal data flowing from you into an AI model and possibly to third parties, with three habits to protect yourself.",
+      "example": "A university student in Lagos uses a free AI app to summarise a friend's medical report. By pasting the report, she exposes another person's health data without consent — likely breaching Nigeria's NDPA. A safer choice: remove names and ID numbers first, or use a tool that lets her turn off data-for-training.",
+      "quiz": [
+        {
+          "q": "Which is an example of personal data?",
+          "options": [
+            "A public weather forecast",
+            "Your phone number and location",
+            "A general math formula",
+            "A published news headline"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does meaningful 'consent' require?",
+          "options": [
+            "Clicking Accept as fast as possible",
+            "Knowingly agreeing to how your data is used",
+            "Ignoring the privacy policy",
+            "Letting the app decide for you"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which habit best protects your privacy with AI tools?",
+          "options": [
+            "Pasting ID numbers to get faster help",
+            "Never checking settings",
+            "Disabling data-for-training and avoiding sensitive info",
+            "Sharing others' medical records freely"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Personal data",
+          "back": "Any information that identifies you, such as name, phone, location, photos, or voice."
+        },
+        {
+          "front": "Consent",
+          "back": "Knowingly and freely agreeing to how your data is collected and used — not blind clicking."
+        },
+        {
+          "front": "Transparency",
+          "back": "When a company clearly explains what data it collects and why."
+        },
+        {
+          "front": "Example data protection law",
+          "back": "Nigeria's NDPA, Kenya's DPA, or South Africa's POPIA."
+        }
+      ],
+      "reflection": "Think of one AI tool you use often — what personal data have you shared with it, and would you still share it knowing it could become public?",
+      "summary": "AI runs on personal data, so understanding consent, transparency, and data protection helps you use AI tools while safeguarding your privacy and others' rights.",
+      "discussionPrompt": "Ask the EFIKO tutor: How do data protection laws like NDPA, POPIA, or Kenya's DPA affect the AI tools students commonly use, and what are my rights under them?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-responsible-use-in-study-and-work",
+      "order": 4,
+      "title": "Responsible Use in Study and Work",
+      "objectives": [
+        "Distinguish between ethical and unethical uses of generative AI in academic settings.",
+        "Apply guidelines for using AI while maintaining academic integrity.",
+        "Demonstrate how to acknowledge and verify AI-generated content."
+      ],
+      "text": "Generative AI tools like ChatGPT, Gemini, or Copilot can boost your learning, but only if you use them honestly. The key question is: are you using AI to think, or to avoid thinking?\n\nEthical uses: brainstorming ideas, explaining hard concepts, generating practice questions, checking grammar, or getting feedback on your own draft. Unethical uses: submitting AI text as your own work, fabricating data, or bypassing an assessment meant to test your skills.\n\nFollow three rules. First, check your institution's policy before using AI, and when in doubt, ask your lecturer. Second, verify everything, because AI can \"hallucinate\" (confidently state false facts and fake citations). Cross-check names, dates, and references against trusted sources. Third, disclose your use.\n\nHow to acknowledge AI: add a short note such as, \"I used ChatGPT (GPT-4, 2024) to brainstorm an outline and explain terms; all writing and analysis are my own.\" Cite it like a tool, not an author.\n\nWorked example: You must write an essay on climate policy. Ethical workflow: ask AI to suggest sub-topics, then research each yourself, write your own draft, ask AI for feedback on clarity, verify every fact, and add a disclosure note. You learn, produce original work, and stay honest.",
+      "voiceScript": "Let me ask you a simple question that cuts through the confusion around AI in your studies: are you using it to think, or to avoid thinking? That's the line between ethical and unethical use. Using AI to brainstorm ideas, explain a tricky concept, or give feedback on your own draft is smart and honest. Copying its text and submitting it as your own is not. So do three things. Check your school's policy first. Verify everything, because AI sometimes invents facts and fake references with total confidence. And disclose how you used it in a short honest note. Do this, and AI becomes a tutor that sharpens your mind rather than a shortcut that hollows it out.",
+      "keyPoints": [
+        "Use AI to think, not to skip thinking or bypass assessments.",
+        "Always verify AI output; it can hallucinate false facts and fake citations.",
+        "Disclose your AI use honestly and check your institution's policy first."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><line x1=\"240\" y1=\"30\" x2=\"240\" y2=\"235\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"120\" y=\"48\" font-size=\"15\" fill=\"#15803d\" text-anchor=\"middle\">ETHICAL</text><text x=\"360\" y=\"48\" font-size=\"15\" fill=\"#b45309\" text-anchor=\"middle\">UNETHICAL</text><circle cx=\"40\" cy=\"78\" r=\"6\" fill=\"#15803d\"/><text x=\"55\" y=\"82\" font-size=\"11\" fill=\"#334155\">Brainstorm ideas</text><circle cx=\"40\" cy=\"108\" r=\"6\" fill=\"#15803d\"/><text x=\"55\" y=\"112\" font-size=\"11\" fill=\"#334155\">Explain concepts</text><circle cx=\"40\" cy=\"138\" r=\"6\" fill=\"#15803d\"/><text x=\"55\" y=\"142\" font-size=\"11\" fill=\"#334155\">Feedback on draft</text><circle cx=\"260\" cy=\"78\" r=\"6\" fill=\"#b45309\"/><text x=\"275\" y=\"82\" font-size=\"11\" fill=\"#334155\">Submit as own</text><circle cx=\"260\" cy=\"108\" r=\"6\" fill=\"#b45309\"/><text x=\"275\" y=\"112\" font-size=\"11\" fill=\"#334155\">Fabricate data</text><circle cx=\"260\" cy=\"138\" r=\"6\" fill=\"#b45309\"/><text x=\"275\" y=\"142\" font-size=\"11\" fill=\"#334155\">Bypass assessment</text><rect x=\"30\" y=\"175\" width=\"420\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"240\" y=\"197\" font-size=\"12\" fill=\"#0f766e\" text-anchor=\"middle\">3 RULES</text><text x=\"240\" y=\"218\" font-size=\"11\" fill=\"#334155\" text-anchor=\"middle\">1. Check policy   2. Verify facts   3. Disclose use</text></svg>",
+      "whiteboardCaption": "A split chart contrasting ethical and unethical AI uses, above the three core rules for responsible use.",
+      "example": "A Nairobi undergraduate writing a marketing report asks Gemini to suggest section headings and explain SWOT analysis, then researches and writes each section herself. She verifies a statistic Gemini gave, finds it was invented, replaces it with a real World Bank figure, and adds a note: \"AI used for outlining and concept explanation; analysis my own.\"",
+      "quiz": [
+        {
+          "q": "Which of these is an ethical use of generative AI in coursework?",
+          "options": [
+            "Submitting AI-written text as your own essay",
+            "Asking AI to explain a difficult concept, then writing yourself",
+            "Using AI to fabricate experimental data",
+            "Having AI complete an exam meant to test you"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does it mean when AI 'hallucinates'?",
+          "options": [
+            "It refuses to answer questions",
+            "It confidently states false facts or fake citations",
+            "It works only offline",
+            "It copies from your classmates"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the best way to acknowledge AI use in an assignment?",
+          "options": [
+            "Never mention it to avoid trouble",
+            "List the AI as the paper's main author",
+            "Add an honest note stating how you used it and that the analysis is yours",
+            "Change the wording so no one notices"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Ethical vs unethical AI use test",
+          "back": "Are you using AI to think and learn, or to avoid thinking and bypass an assessment?"
+        },
+        {
+          "front": "AI hallucination",
+          "back": "When AI confidently produces false facts or fabricated references; always verify."
+        },
+        {
+          "front": "Three rules for responsible AI use",
+          "back": "Check institutional policy, verify all output, and disclose your use."
+        },
+        {
+          "front": "How to acknowledge AI",
+          "back": "Add a brief note describing what you used AI for, confirming the analysis is your own."
+        }
+      ],
+      "reflection": "Think of a recent assignment: where could AI have helped you learn better, and where might it have crossed into dishonesty?",
+      "summary": "Use generative AI to support your thinking, not replace it: check your institution's policy, verify every output, and honestly disclose how you used it.",
+      "discussionPrompt": "Help me draft a fair AI-use disclosure statement for a research report, and discuss how strict my university's policy should be.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-misinformation-accountability-and-making-ethical-choices",
+      "order": 5,
+      "title": "Misinformation, Accountability, and Making Ethical Choices",
+      "objectives": [
+        "Explain how AI can spread misinformation and deepfakes.",
+        "Evaluate an AI tool using transparency and accountability criteria.",
+        "Resolve realistic AI ethical dilemmas using a simple decision framework."
+      ],
+      "text": "AI can spread false information at scale. Two big risks: misinformation (false content shared, sometimes unknowingly) and deepfakes (AI-generated fake images, audio, or video that look real). A chatbot might also confidently invent facts, called a hallucination.\n\nBefore trusting or sharing AI output, run a quick check. Use the SIFT method: Stop; Investigate the source; Find better coverage; Trace claims to the original. If a video shows a leader saying something shocking, don't share yet, search a trusted news outlet to confirm.\n\nTo evaluate any AI tool, ask three accountability questions: Who built it and can I find that information (transparency)? What data trained it and are there known biases? Who is responsible if it causes harm, and how do I report problems?\n\nFor tough decisions, use this simple framework: 1) Facts, what is actually happening? 2) Stakeholders, who is affected? 3) Options, what could I do? 4) Principles, does it respect honesty, fairness, privacy, and consent? 5) Decide and be ready to explain your choice.\n\nWorked example: A friend sends a viral audio clip of a politician. You Stop, check two reputable outlets, find no coverage, notice audio artifacts, and choose not to forward it. That is responsible use.",
+      "voiceScript": "Welcome to our final session together. Today I want you to feel confident, not fearful, about AI. The truth is that AI can spread false information fast, through misinformation, deepfakes, and those confident but wrong answers we call hallucinations. So before you trust or share anything, pause. I use a simple habit: stop, investigate the source, find better coverage, and trace the claim back to where it started. When you're choosing an AI tool, ask who built it, what data trained it, and who is accountable if something goes wrong. And for genuinely hard choices, walk through the facts, the people affected, your options, and your principles, then decide and be ready to explain yourself. That's what responsible use looks like.",
+      "keyPoints": [
+        "Misinformation, deepfakes, and hallucinations can make AI output false, so verify before sharing.",
+        "Use SIFT: Stop, Investigate the source, Find better coverage, Trace to the original.",
+        "Evaluate AI tools by transparency (who built it, what data) and accountability (who is responsible).",
+        "For dilemmas, work through Facts, Stakeholders, Options, Principles, then Decide and explain."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"16\" fill=\"#0f766e\" font-family=\"sans-serif\">SIFT: Check before you share</text><circle cx=\"60\" cy=\"80\" r=\"22\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"52\" y=\"86\" font-size=\"18\" fill=\"#b45309\" font-family=\"sans-serif\">S</text><text x=\"40\" y=\"120\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">Stop</text><circle cx=\"160\" cy=\"80\" r=\"22\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"152\" y=\"86\" font-size=\"18\" fill=\"#15803d\" font-family=\"sans-serif\">I</text><text x=\"128\" y=\"120\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">Investigate</text><circle cx=\"260\" cy=\"80\" r=\"22\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"252\" y=\"86\" font-size=\"18\" fill=\"#0f766e\" font-family=\"sans-serif\">F</text><text x=\"236\" y=\"120\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">Find</text><circle cx=\"360\" cy=\"80\" r=\"22\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"352\" y=\"86\" font-size=\"18\" fill=\"#b45309\" font-family=\"sans-serif\">T</text><text x=\"336\" y=\"120\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">Trace</text><line x1=\"82\" y1=\"80\" x2=\"138\" y2=\"80\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"182\" y1=\"80\" x2=\"238\" y2=\"80\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"282\" y1=\"80\" x2=\"338\" y2=\"80\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"20\" y=\"165\" font-size=\"14\" fill=\"#15803d\" font-family=\"sans-serif\">Decide framework:</text><rect x=\"20\" y=\"180\" width=\"440\" height=\"50\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"30\" y=\"210\" font-size=\"12\" fill=\"#334155\" font-family=\"sans-serif\">Facts &gt; Stakeholders &gt; Options &gt; Principles &gt; Decide</text></svg>",
+      "whiteboardCaption": "The SIFT verification steps above and a five-step ethical decision framework below.",
+      "example": "A WhatsApp group you belong to shares a shocking audio clip of a Nigerian official announcing a fuel price change. Before forwarding, you apply SIFT: you check two trusted news sites, find no report, notice odd audio glitches, and decide not to spread it, avoiding panic among friends.",
+      "quiz": [
+        {
+          "q": "What is a 'deepfake'?",
+          "options": [
+            "A slow internet connection",
+            "AI-generated fake image, audio, or video that looks real",
+            "A verified news source",
+            "A type of password"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "In the SIFT method, what does the first 'S' tell you to do?",
+          "options": [
+            "Share immediately",
+            "Stop before trusting or sharing",
+            "Save the file",
+            "Sign in"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which question best tests an AI tool's accountability?",
+          "options": [
+            "Is it free to use?",
+            "Is it popular online?",
+            "Who is responsible if it causes harm and how do I report it?",
+            "Does it have a nice interface?"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "When an AI confidently states false facts, this is called a:",
+          "options": [
+            "Hallucination",
+            "Firewall",
+            "Backup",
+            "Bandwidth"
+          ],
+          "answer": 0
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "SIFT",
+          "back": "Stop, Investigate the source, Find better coverage, Trace claims to the original."
+        },
+        {
+          "front": "AI hallucination",
+          "back": "When an AI generates confident but false or made-up information."
+        },
+        {
+          "front": "Transparency in AI tools",
+          "back": "Knowing who built the tool, what data trained it, and its known limits or biases."
+        },
+        {
+          "front": "5-step decision framework",
+          "back": "Facts, Stakeholders, Options, Principles, then Decide and explain."
+        }
+      ],
+      "reflection": "Think of a time you almost shared something online that turned out false. How would applying SIFT have changed what you did?",
+      "summary": "AI can spread misinformation, deepfakes, and hallucinations, so verify with SIFT, judge tools by transparency and accountability, and resolve dilemmas with a clear five-step framework before you act.",
+      "discussionPrompt": "Give me a realistic AI ethical dilemma from student life and walk me through solving it using the Facts, Stakeholders, Options, Principles, Decide framework.",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "AI Ethics and Responsible Use",
+    "audience": "University students",
+    "hours": 3,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783134714640,
+  "updatedAt": 1783134714640
+}
