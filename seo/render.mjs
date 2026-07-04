@@ -32,6 +32,7 @@ section.block{padding:22px 0;border-top:1px solid var(--line)}
 h2{font-size:22px;margin:0 0 8px}
 .prose p{margin:0 0 14px;color:#dbe4ee}
 .meta-chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 4px}
+.o-seo-badge{display:inline-block;font-size:12px;font-weight:700;color:#fbbf24;background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.4);border-radius:999px;padding:4px 12px;margin:4px 0}
 .chip{font-size:12px;color:var(--brand2);border:1px solid var(--line);border-radius:999px;padding:4px 10px}
 .faq h3{font-size:17px;margin:16px 0 4px}
 .faq p{margin:0 0 8px;color:#cbd5e1}

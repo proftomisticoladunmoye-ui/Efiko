@@ -13,6 +13,7 @@ import { loadCourses, fetchPublishedCourses, mergeCourses } from '../seo/catalog
 import { renderCourseHub, renderTopicPage, contentRoutes } from '../seo/renderContent.mjs';
 import { ACADEMY } from '../seo/guides.mjs';
 import { renderAcademyItem, academyRoutes, academyIndexHtml } from '../seo/renderAcademy.mjs';
+import { loadOriginals, renderOriginal, originalRoutes, originalsIndexHtml, originalPath } from '../seo/originals.mjs';
 
 const dist = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const writePage = (route, html) => {
@@ -44,8 +45,12 @@ const courseListHtml = courses.length
   ? `<section class="block"><h2>Browse courses</h2><ul class="topics">${courses.map((c) => `<li><a href="/courses/${c.slug}/">${c.university} ${c.course}</a><div class="t-sub">${c.topics.length} topic${c.topics.length !== 1 ? 's' : ''}</div></li>`).join('')}</ul></section>`
   : '';
 
-// Product landing pages (inject course list into /courses, guide/definition list into /academy).
-const injected = { '/courses': courseListHtml, '/academy': academyIndexHtml() };
+// EFIKO Originals — one indexable page per bundled course.
+const originals = loadOriginals();
+for (const c of originals) writePage(originalPath(c), renderOriginal(c));
+
+// Product landing pages (inject free Originals + course list into /courses, guides into /academy).
+const injected = { '/courses': originalsIndexHtml(originals) + courseListHtml, '/academy': academyIndexHtml() };
 for (const page of PAGES) writePage(page.slug, renderPage(page, injected[page.slug] || ''));
 
 // Academy content pages (guides + definitions).
@@ -67,8 +72,8 @@ if (idx.includes('<div id="root"></div>')) {
   console.warn('SEO: could not find empty #root in index.html — homepage content not injected');
 }
 
-// Sitemap (products + course content + academy) + robots.
-writeFileSync(join(dist, 'sitemap.xml'), renderSitemap([...contentRoutes(courses), ...academyRoutes()]), 'utf8');
+// Sitemap (products + course content + academy + Originals) + robots.
+writeFileSync(join(dist, 'sitemap.xml'), renderSitemap([...contentRoutes(courses), ...academyRoutes(), ...originalRoutes(originals)]), 'utf8');
 writeFileSync(join(dist, 'robots.txt'), renderRobots(), 'utf8');
 
-console.log(`SEO prerender: ${PAGES.length} product pages, ${courses.length} course hubs, ${topicCount} topic pages, ${ACADEMY.length} academy pages + sitemap.xml + robots.txt → dist/`);
+console.log(`SEO prerender: ${PAGES.length} product pages, ${courses.length} course hubs, ${topicCount} topic pages, ${ACADEMY.length} academy pages, ${originals.length} Original course pages + sitemap.xml + robots.txt → dist/`);
