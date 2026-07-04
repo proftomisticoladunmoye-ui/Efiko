@@ -26,6 +26,7 @@ import { saveOriginal, getOriginal, listOriginals, setStatus, updateOriginal, de
 import { listPathways, nextInPathway } from './core/originals/pathways.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
 import { refreshAggregated, listAggregated, refreshIfStale, lastRun } from './core/careers/aggregator.js';
+import { oppSkills, suggestCoursesForOpportunity, userSkills, rankBySkills, resetCourseIndex } from './core/careers/skills.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
 import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess, createCreatorListing, listCreatorListings, deleteCreatorListing, getCreatorEarnings, requestPayout, platformFeePct } from './core/marketplace.js';
 import { paymentsProvider, paymentsLive, paymentsPublicKey } from './core/payments.js';
@@ -398,10 +399,23 @@ const server = createServer(async (req, res) => {
 
   // --- Career (V2 R5): opportunities board + student bookmarks ---
   if (req.method === 'GET' && url.pathname === '/opportunities') {
-    refreshIfStale(); // opportunistic background refresh of aggregated opportunities
+    refreshIfStale(); // opportunistic background refresh (~3x/week) of aggregated opportunities
     const [posted, agg] = await Promise.all([listOpportunities(), listAggregated()]);
-    const all = [...posted, ...agg].sort((a, b) => (b.postedAt || b.createdAt || 0) - (a.postedAt || a.createdAt || 0));
+    const merged = [...posted, ...agg].sort((a, b) => (b.postedAt || b.createdAt || 0) - (a.postedAt || a.createdAt || 0));
+    // enrich each with the skills it needs + EFIKO courses that build them (learn -> earn)
+    const all = await Promise.all(merged.map(async (o) => ({ ...o, skills: oppSkills(o), suggestedCourses: await suggestCoursesForOpportunity(o) })));
     return json(res, 200, { opportunities: all, aggregatedCount: agg.length });
+  }
+  // Personalised: opportunities matched to the courses this learner has taken.
+  if (req.method === 'GET' && url.pathname === '/career/for-me') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { opportunities: [] });
+    const taken = (await listProgress(user.userId)).filter((p) => p.courseId?.startsWith('orig-')).map((p) => p.courseId);
+    const skills = await userSkills(taken);
+    const [posted, agg] = await Promise.all([listOpportunities(), listAggregated()]);
+    const ranked = rankBySkills([...posted, ...agg], skills).slice(0, 8);
+    const all = await Promise.all(ranked.map(async (o) => ({ ...o, skills: oppSkills(o), suggestedCourses: await suggestCoursesForOpportunity(o) })));
+    return json(res, 200, { opportunities: all, basedOn: taken.length });
   }
   // Aggregate genuine opportunities from permitted job APIs (operator-triggered; also refreshes
   // on its own when stale). Sources: see server/core/careers/sources.js.
@@ -409,6 +423,13 @@ const server = createServer(async (req, res) => {
     if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });
     const r = await refreshAggregated();
     return json(res, r ? 200 : 502, r || { error: 'aggregation failed (sources unreachable)' });
+  }
+  // Public cron tick — an external scheduler (e.g. cron-job.org, Mon/Wed/Fri) hits this to
+  // enforce the ~3x/week refresh; it only fetches when actually due (stale), so it's cheap.
+  if (req.method === 'GET' && url.pathname === '/career/aggregate/tick') {
+    const before = await lastRun();
+    refreshIfStale();
+    return json(res, 200, { ok: true, due: !before || Date.now() - before.at > 56 * 3600000 });
   }
   if (req.method === 'GET' && url.pathname === '/career/aggregate/status') {
     return json(res, 200, { last: await lastRun(), count: (await listAggregated()).length });
@@ -607,7 +628,7 @@ const server = createServer(async (req, res) => {
     try {
       const course = await generateCourse({ topic, audience, hours, level });
       if (!course) return json(res, 502, { error: 'generation failed or returned nothing' });
-      await saveOriginal(course);
+      await saveOriginal(course); resetCourseIndex();
       return json(res, 200, { courseId: course.courseId, title: course.title, sessionCount: course.sessions.length, status: course.status });
     } catch (e) {
       return json(res, 502, { error: 'generation failed', detail: e.message });
@@ -661,7 +682,7 @@ const server = createServer(async (req, res) => {
     const id = decodeURIComponent(url.pathname.split('/')[2]);
     const { status } = await readBody(req);
     try {
-      const c = await setStatus(id, status, 'operator');
+      const c = await setStatus(id, status, 'operator'); resetCourseIndex();
       return c ? json(res, 200, { status: c.status }) : json(res, 404, { error: 'not found' });
     } catch (e) { return json(res, 400, { error: e.message }); }
   }

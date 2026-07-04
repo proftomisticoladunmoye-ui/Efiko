@@ -7,8 +7,8 @@ import { fetchAllSources, SOURCE_NAMES } from './sources.js';
 
 const COLL = 'agg_opps';
 const META = 'agg_meta';
-const MAX_AGE = 45 * 86400000; // drop postings older than ~45 days
-const STALE = 12 * 3600000;    // refresh if last run > 12h ago
+const MAX_AGE = 40 * 86400000;  // drop postings older than ~40 days (likely filled)
+const STALE = 56 * 3600000;     // ~3x/week: refresh if last run > ~2.3 days ago
 
 const idFor = (o) => `agg_${o.source}_${o.extId}`.toLowerCase().replace(/[^a-z0-9_-]/g, '-').slice(0, 90);
 
@@ -30,10 +30,11 @@ export async function refreshAggregated() {
       await kvPut(COLL, id, { id, aggregated: true, ...o, deadline: o.deadline || null, fetchedAt: now });
     }
     await kvPut(META, 'last', { at: now, sources: [...new Set(items.map((x) => x.source))] });
-    // prune very old postings and any from decommissioned sources
+    // auto-delist: prune expired (past deadline), very old, or decommissioned-source postings
     const active = new Set(SOURCE_NAMES);
     for (const rec of await kvAll(COLL)) {
-      if (!active.has(rec.source) || now - (rec.postedAt || rec.fetchedAt || 0) > MAX_AGE) await kvDel(COLL, rec.id);
+      const expired = rec.deadline && rec.deadline < now;
+      if (expired || !active.has(rec.source) || now - (rec.postedAt || rec.fetchedAt || 0) > MAX_AGE) await kvDel(COLL, rec.id);
     }
     return { added, total: (await kvAll(COLL)).length };
   } catch {
@@ -44,7 +45,10 @@ export async function refreshAggregated() {
 }
 
 export async function listAggregated() {
-  return (await kvAll(COLL)).sort((a, b) => (b.postedAt || 0) - (a.postedAt || 0));
+  const now = Date.now();
+  return (await kvAll(COLL))
+    .filter((o) => !(o.deadline && o.deadline < now) && now - (o.postedAt || o.fetchedAt || 0) <= MAX_AGE) // hide expired/very-old
+    .sort((a, b) => (b.postedAt || 0) - (a.postedAt || 0));
 }
 
 // Kick a background refresh if the data is stale (fire-and-forget; never blocks the caller).

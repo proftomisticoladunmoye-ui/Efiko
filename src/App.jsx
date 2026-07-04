@@ -470,7 +470,7 @@ export default function App() {
       case 'planner':
         return user ? <StudyPlanner /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="plan and track your study" />;
       case 'career':
-        return <Career signedIn={!!user} />;
+        return <Career signedIn={!!user} onGoSection={goSection} />;
       case 'community':
         return <Community signedIn={!!user} user={user} onSignIn={() => setAuthOpen(true)} />;
       case 'market':

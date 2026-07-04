@@ -640,6 +640,14 @@ body {
 .opp-type { font-size: 11px; font-weight: 600; color: var(--brand-2); }
 .opp-deadline { font-size: 11px; color: var(--muted); }
 .opp-source { font-size: 11px; color: var(--muted); font-style: italic; }
+.opp-skills { display: flex; flex-wrap: wrap; gap: 5px; margin: 8px 0; }
+.opp-skill { font-size: 11px; background: #0d1526; border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; color: var(--muted); }
+.opp-prep { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 8px 0; }
+.opp-prep > span { font-size: 12px; color: var(--muted); }
+.opp-prep-course { font-size: 12px; background: rgba(251,191,36,.1); border: 1px solid rgba(251,191,36,.35); color: #fbbf24; border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+.opp-prep-course:hover { background: rgba(251,191,36,.18); }
+.career-forme { background: linear-gradient(135deg, rgba(20,184,166,.08), rgba(13,21,38,.4)); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; margin: 14px 0; }
+.career-forme h3 { margin: 0 0 2px; font-size: 16px; }
 .opp-title { font-size: 15px; margin: 2px 0; }
 .opp-org { font-size: 12px; color: var(--muted); margin: 0 0 6px; }
 .opp-desc { font-size: 13px; color: var(--ink); margin: 0 0 10px; line-height: 1.4; }

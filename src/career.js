@@ -13,6 +13,16 @@ export async function listOpportunities() {
   } catch { return []; }
 }
 
+// Personalised opportunities matched to the courses the learner has taken.
+export async function listForMe() {
+  if (!userToken()) return [];
+  try {
+    const r = await fetch(`${GATEWAY}/career/for-me`, { headers: userHeaders() });
+    if (!r.ok) return [];
+    return (await r.json()).opportunities || [];
+  } catch { return []; }
+}
+
 export async function listSaved() {
   try {
     const r = await fetch(`${GATEWAY}/career/saved`, { headers: userHeaders() });

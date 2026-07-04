@@ -2,7 +2,7 @@
 // the learner's certificates and mastered courses, plus an opportunities board (jobs,
 // internships, scholarships) posted by institutions, which students can bookmark.
 import { useEffect, useState } from 'react';
-import { listOpportunities, listSaved, toggleSaved } from '../career.js';
+import { listOpportunities, listForMe, listSaved, toggleSaved } from '../career.js';
 import { fetchMyCertificates, fetchMyProgress, CERT_PASS_MARK } from '../certificates.js';
 
 const TYPE_META = {
@@ -13,8 +13,9 @@ const TYPE_META = {
 };
 const fmtDeadline = (ms) => new Date(ms).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
 
-export default function Career({ signedIn }) {
+export default function Career({ signedIn, onGoSection }) {
   const [opps, setOpps] = useState([]);
+  const [forMe, setForMe] = useState([]);
   const [saved, setSaved] = useState([]);
   const [certs, setCerts] = useState([]);
   const [mastered, setMastered] = useState(0);
@@ -23,13 +24,14 @@ export default function Career({ signedIn }) {
 
   useEffect(() => {
     (async () => {
-      const [o, s, c, p] = await Promise.all([
+      const [o, fm, s, c, p] = await Promise.all([
         listOpportunities(),
+        signedIn ? listForMe() : Promise.resolve([]),
         signedIn ? listSaved() : Promise.resolve([]),
         signedIn ? fetchMyCertificates() : Promise.resolve([]),
         signedIn ? fetchMyProgress() : Promise.resolve([])
       ]);
-      setOpps(o); setSaved(s); setCerts(c);
+      setOpps(o); setForMe(fm); setSaved(s); setCerts(c);
       setMastered(p.filter((x) => (x.bestQuizPct ?? -1) >= CERT_PASS_MARK).length);
       setLoaded(true);
     })();
@@ -48,6 +50,38 @@ export default function Career({ signedIn }) {
     return o.type === filter;
   });
 
+  function OppCard(o) {
+    const m = TYPE_META[o.type] || TYPE_META.job;
+    const isSaved = saved.includes(o.id);
+    return (
+      <article key={o.id} className="opp-card">
+        <div className="opp-head">
+          <span className="opp-type">{m.icon} {m.label}</span>
+          {o.deadline
+            ? <span className="opp-deadline">Apply by {fmtDeadline(o.deadline)}</span>
+            : (o.source && <span className="opp-source">via {o.source}</span>)}
+        </div>
+        <h3 className="opp-title">{o.title}</h3>
+        {(o.org || o.location) && <p className="opp-org">{[o.org, o.location].filter(Boolean).join(' · ')}</p>}
+        {o.description && <p className="opp-desc">{o.description}</p>}
+        {o.skills?.length > 0 && (
+          <div className="opp-skills">{o.skills.slice(0, 5).map((s, i) => <span key={i} className="opp-skill">{s}</span>)}</div>
+        )}
+        {o.suggestedCourses?.length > 0 && (
+          <div className="opp-prep"><span>Prepare with:</span>{o.suggestedCourses.map((c) => (
+            <button key={c.courseId} className="opp-prep-course" onClick={() => onGoSection?.('originals')}>⭐ {c.title}</button>
+          ))}</div>
+        )}
+        <div className="opp-actions">
+          {o.url && <a className="course-open" href={o.url} target="_blank" rel="noreferrer">View & apply</a>}
+          {signedIn && (
+            <button className={`opp-save ${isSaved ? 'on' : ''}`} onClick={() => save(o.id)}>{isSaved ? '★ Saved' : '☆ Save'}</button>
+          )}
+        </div>
+      </article>
+    );
+  }
+
   return (
     <section className="career">
       <h2>🚀 Career</h2>
@@ -58,6 +92,14 @@ export default function Career({ signedIn }) {
           <div className="career-stat"><strong>{certs.length}</strong><span>Certificates</span></div>
           <div className="career-stat"><strong>{mastered}</strong><span>Courses mastered</span></div>
           <div className="career-stat"><strong>{saved.length}</strong><span>Saved roles</span></div>
+        </div>
+      )}
+
+      {forMe.length > 0 && (
+        <div className="career-forme">
+          <h3>✨ Recommended for you</h3>
+          <p className="lib-sub">Matched to the courses you've taken.</p>
+          <div className="career-list">{forMe.map(OppCard)}</div>
         </div>
       )}
 
@@ -72,33 +114,7 @@ export default function Career({ signedIn }) {
       {loaded && opps.length === 0 && <p className="career-empty">No opportunities yet. Check back soon — we aggregate genuine roles from across the web, and your institution can post here too.</p>}
       {loaded && opps.length > 0 && shown.length === 0 && <p className="career-empty">Nothing matches this filter.</p>}
 
-      <div className="career-list">
-        {shown.map((o) => {
-          const m = TYPE_META[o.type] || TYPE_META.job;
-          const isSaved = saved.includes(o.id);
-          return (
-            <article key={o.id} className="opp-card">
-              <div className="opp-head">
-                <span className="opp-type">{m.icon} {m.label}</span>
-                {o.deadline
-                  ? <span className="opp-deadline">Apply by {fmtDeadline(o.deadline)}</span>
-                  : (o.source && <span className="opp-source">via {o.source}</span>)}
-              </div>
-              <h3 className="opp-title">{o.title}</h3>
-              {(o.org || o.location) && <p className="opp-org">{[o.org, o.location].filter(Boolean).join(' · ')}</p>}
-              {o.description && <p className="opp-desc">{o.description}</p>}
-              <div className="opp-actions">
-                {o.url && <a className="course-open" href={o.url} target="_blank" rel="noreferrer">View & apply</a>}
-                {signedIn && (
-                  <button className={`opp-save ${isSaved ? 'on' : ''}`} onClick={() => save(o.id)}>
-                    {isSaved ? '★ Saved' : '☆ Save'}
-                  </button>
-                )}
-              </div>
-            </article>
-          );
-        })}
-      </div>
+      <div className="career-list">{shown.map(OppCard)}</div>
     </section>
   );
 }
