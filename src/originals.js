@@ -39,6 +39,28 @@ export async function listPathways() {
   } catch { return []; }
 }
 
+const userToken = () => localStorage.getItem('efiko-user-token') || '';
+
+// My progress across pathways (earned/total course certificates + pathway-cert state).
+export async function fetchPathwayProgress() {
+  if (!userToken()) return [];
+  try {
+    const r = await fetch(`${GATEWAY}/pathways/progress`, { headers: { Authorization: `Bearer ${userToken()}` } });
+    if (!r.ok) return [];
+    return (await r.json()).progress || [];
+  } catch { return []; }
+}
+
+// Claim the stackable pathway certificate (all courses must be certified).
+export async function claimPathwayCertificate(id) {
+  const r = await fetch(`${GATEWAY}/pathways/${encodeURIComponent(id)}/certificate`, {
+    method: 'POST', headers: userToken() ? { Authorization: `Bearer ${userToken()}` } : {}
+  });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
+  return d.certificate;
+}
+
 // Teach Back: EFIKO evaluates the learner's explanation of the covered sessions.
 export async function evaluateTeachBack(id, fromSession, toSession, explanation) {
   const r = await fetch(`${GATEWAY}/originals/${encodeURIComponent(id)}/teachback`, {

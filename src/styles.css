@@ -743,6 +743,8 @@ body {
 .o-pathway-arrow { color: var(--brand-2); }
 .o-pathway-course { background: #0d1526; border: 1px solid var(--line); color: var(--ink); border-radius: 999px; padding: 5px 12px; font-size: 13px; cursor: pointer; }
 .o-pathway-course:hover { border-color: var(--brand-2); color: var(--brand-2); }
+.o-pathway-claim { margin-top: 12px; background: linear-gradient(135deg, #fbbf24, #d4941a); color: #1a1200; border: 0; }
+.o-pathway-done { margin-top: 10px; color: #34d399; font-weight: 600; font-size: 14px; }
 .o-all-h { font-size: 15px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 18px 0 8px; }
 .o-next-btn { border: 1px solid var(--brand-2); cursor: pointer; text-align: left; }
 .o-next-btn:hover { background: rgba(20,184,166,.1); }

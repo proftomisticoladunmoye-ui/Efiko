@@ -3,7 +3,7 @@
 // -> sessions (each with whiteboard, example, quiz, flashcards, reflection, summary) ->
 // final assessment -> completion (+ recommended next course). Self-contained section.
 import { useEffect, useRef, useState } from 'react';
-import { listOriginals, getOriginal, claimOriginalCertificate, synthesizeVoice, evaluateTeachBack, listPathways } from '../originals.js';
+import { listOriginals, getOriginal, claimOriginalCertificate, synthesizeVoice, evaluateTeachBack, listPathways, fetchPathwayProgress, claimPathwayCertificate } from '../originals.js';
 import { reportProgress } from '../progress.js';
 import CertificateCard from './CertificateCard.jsx';
 
@@ -262,16 +262,28 @@ function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn, onOpen }) {
 export default function Originals({ onAsk, signedIn, onSignIn }) {
   const [courses, setCourses] = useState([]);
   const [pathways, setPathways] = useState([]);
+  const [pwProgress, setPwProgress] = useState({}); // id -> { earned, total, complete, hasCert }
+  const [pwCert, setPwCert] = useState(null);
+  const [pwErr, setPwErr] = useState(null);
   const [active, setActive] = useState(null);
   const [loaded, setLoaded] = useState(false);
 
+  const loadProgress = () => fetchPathwayProgress().then((list) => setPwProgress(Object.fromEntries(list.map((p) => [p.id, p]))));
   useEffect(() => {
     listOriginals().then((c) => { setCourses(c); setLoaded(true); });
     listPathways().then(setPathways);
-  }, []);
+    loadProgress();
+  }, [signedIn]);
+
+  async function claimPathway(id) {
+    if (!signedIn) return onSignIn?.();
+    setPwErr(null);
+    try { setPwCert(await claimPathwayCertificate(id)); loadProgress(); }
+    catch (e) { setPwErr(e.message); }
+  }
   async function open(id) { const c = await getOriginal(id); if (c) { setActive(c); window.scrollTo(0, 0); } }
 
-  if (active) return <CoursePlayer course={active} onExit={() => setActive(null)} onOpen={open} onAsk={onAsk} signedIn={signedIn} onSignIn={onSignIn} />;
+  if (active) return <CoursePlayer course={active} onExit={() => { setActive(null); loadProgress(); }} onOpen={open} onAsk={onAsk} signedIn={signedIn} onSignIn={onSignIn} />;
 
   return (
     <section className="originals">
@@ -281,20 +293,31 @@ export default function Originals({ onAsk, signedIn, onSignIn }) {
       {pathways.length > 0 && (
         <div className="o-pathways">
           <h3>Learning pathways</h3>
-          {pathways.map((p) => (
-            <div key={p.id} className="o-pathway">
-              <div className="o-pathway-head"><strong>{p.title}</strong><span>{p.courses.length} courses</span></div>
-              <p className="o-pathway-desc">{p.description}</p>
-              <div className="o-pathway-steps">
-                {p.courses.map((c, i) => (
-                  <span key={c.courseId} className="o-pathway-step">
-                    {i > 0 && <span className="o-pathway-arrow">→</span>}
-                    <button className="o-pathway-course" onClick={() => open(c.courseId)}>{c.title}</button>
-                  </span>
-                ))}
+          {pathways.map((p) => {
+            const prog = pwProgress[p.id];
+            return (
+              <div key={p.id} className="o-pathway">
+                <div className="o-pathway-head"><strong>{p.title}</strong>
+                  <span>{prog ? `${prog.earned}/${prog.total} certified` : `${p.courses.length} courses`}</span>
+                </div>
+                <p className="o-pathway-desc">{p.description}</p>
+                <div className="o-pathway-steps">
+                  {p.courses.map((c, i) => (
+                    <span key={c.courseId} className="o-pathway-step">
+                      {i > 0 && <span className="o-pathway-arrow">→</span>}
+                      <button className="o-pathway-course" onClick={() => open(c.courseId)}>{c.title}</button>
+                    </span>
+                  ))}
+                </div>
+                {prog?.hasCert
+                  ? <p className="o-pathway-done">🏆 Pathway certificate earned</p>
+                  : prog?.complete
+                    ? <button className="course-open o-pathway-claim" onClick={() => claimPathway(p.id)}>🏆 Claim your {p.title} pathway certificate</button>
+                    : null}
               </div>
-            </div>
-          ))}
+            );
+          })}
+          {pwErr && <p className="error">{pwErr}</p>}
         </div>
       )}
 
@@ -311,6 +334,7 @@ export default function Originals({ onAsk, signedIn, onSignIn }) {
           </button>
         ))}
       </div>
+      {pwCert && <CertificateCard cert={pwCert} onClose={() => setPwCert(null)} />}
     </section>
   );
 }

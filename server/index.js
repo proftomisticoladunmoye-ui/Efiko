@@ -576,6 +576,39 @@ const server = createServer(async (req, res) => {
   if (req.method === 'GET' && url.pathname === '/pathways') { // Learning Graph: ordered course journeys
     return json(res, 200, { pathways: await listPathways() });
   }
+  // My progress across pathways (how many course certificates earned, and whether the
+  // stackable pathway certificate is complete/claimed).
+  if (req.method === 'GET' && url.pathname === '/pathways/progress') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { progress: [] });
+    const certIds = new Set((await listCertificates(user.userId)).map((c) => c.courseId));
+    const progress = (await listPathways()).map((p) => {
+      const earned = p.courses.filter((c) => certIds.has(c.courseId)).length;
+      return { id: p.id, title: p.title, earned, total: p.courses.length, complete: earned === p.courses.length, hasCert: certIds.has(`pathway-${p.id}`) };
+    });
+    return json(res, 200, { progress });
+  }
+  // Claim the stackable pathway certificate once every course in it is certified.
+  if (req.method === 'POST' && url.pathname.match(/^\/pathways\/[^/]+\/certificate$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to claim your certificate.' });
+    const id = decodeURIComponent(url.pathname.split('/')[2]);
+    const p = (await listPathways()).find((x) => x.id === id);
+    if (!p) return json(res, 404, { error: 'pathway not found' });
+    const certIds = new Set((await listCertificates(user.userId)).map((c) => c.courseId));
+    if (!p.courses.every((c) => certIds.has(c.courseId))) {
+      return json(res, 403, { error: 'Earn a certificate for every course in this pathway first.' });
+    }
+    const cert = await issueCertificate({
+      userId: user.userId, userName: user.name, courseId: `pathway-${p.id}`,
+      courseTitle: `${p.title} Pathway`, score: null,
+      competencies: p.courses.map((c) => c.title),
+      hours: p.courses.reduce((s, c) => s + (c.estimatedHours || 0), 0),
+      issuer: 'EFIKO', kind: 'pathway'
+    });
+    await gamifyAward(user.userId, 'certificate').catch(() => {});
+    return json(res, 200, { certificate: cert });
+  }
   if (req.method === 'GET' && url.pathname === '/admin/originals') { // operator: all statuses
     if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });
     return json(res, 200, { courses: await listOriginals({ status: url.searchParams.get('status') || undefined }) });
