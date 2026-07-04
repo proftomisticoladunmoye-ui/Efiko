@@ -3,7 +3,7 @@
 // Career board shows both. Refresh is triggered by an operator endpoint or, opportunistically,
 // when the stored data goes stale — no persistent cron needed.
 import { kvGet, kvPut, kvAll, kvDel } from '../kv.js';
-import { fetchAllSources } from './sources.js';
+import { fetchAllSources, SOURCE_NAMES } from './sources.js';
 
 const COLL = 'agg_opps';
 const META = 'agg_meta';
@@ -30,8 +30,11 @@ export async function refreshAggregated() {
       await kvPut(COLL, id, { id, aggregated: true, ...o, deadline: o.deadline || null, fetchedAt: now });
     }
     await kvPut(META, 'last', { at: now, sources: [...new Set(items.map((x) => x.source))] });
-    // prune very old postings
-    for (const rec of await kvAll(COLL)) if (now - (rec.postedAt || rec.fetchedAt || 0) > MAX_AGE) await kvDel(COLL, rec.id);
+    // prune very old postings and any from decommissioned sources
+    const active = new Set(SOURCE_NAMES);
+    for (const rec of await kvAll(COLL)) {
+      if (!active.has(rec.source) || now - (rec.postedAt || rec.fetchedAt || 0) > MAX_AGE) await kvDel(COLL, rec.id);
+    }
     return { added, total: (await kvAll(COLL)).length };
   } catch {
     return null;

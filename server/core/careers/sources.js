@@ -32,22 +32,25 @@ export function mapRemotive(jobs) {
   })).filter((o) => AFRICA.test(`${o.location} ${o.title}`));
 }
 
-// Arbeitnow — free job-board API (https://www.arbeitnow.com/api/job-board-api). Remote roles.
-export function mapArbeitnow(data) {
-  return (data || []).filter((j) => j.remote).map((j) => ({
-    source: 'Arbeitnow', extId: j.slug, title: j.title, org: j.company_name,
-    location: j.remote ? 'Remote' : (j.location || ''), url: j.url,
-    type: (j.job_types || []).some((t) => /intern/i.test(t)) ? 'internship' : typeOf(j.title),
-    description: clip(j.description), tags: (j.tags || []).slice(0, 4),
-    postedAt: j.created_at ? j.created_at * 1000 : Date.now()
-  }));
+// RemoteOK — free remote-jobs API (https://remoteok.com/api). Global worldwide-remote roles,
+// generally open to African applicants. The first array element is legal/metadata (skipped).
+export function mapRemoteOK(rows) {
+  return (rows || []).filter((j) => j && j.id && j.position).map((j) => ({
+    source: 'RemoteOK', extId: String(j.id), title: j.position, org: j.company,
+    location: j.location || 'Worldwide', url: j.url || `https://remoteok.com/remote-jobs/${j.id}`,
+    type: typeOf(j.position), description: clip(j.description), tags: (j.tags || []).slice(0, 4),
+    postedAt: j.date ? Date.parse(j.date) : Date.now()
+  })).filter((o) => AFRICA.test(`${o.location} ${o.title}`));
 }
 
-const remotive = async () => mapRemotive((await getJson('https://remotive.com/api/remote-jobs?limit=80')).jobs);
-const arbeitnow = async () => mapArbeitnow((await getJson('https://www.arbeitnow.com/api/job-board-api')).data);
+const remotive = async () => mapRemotive((await getJson('https://remotive.com/api/remote-jobs?limit=100')).jobs);
+const remoteok = async () => mapRemoteOK(await getJson('https://remoteok.com/api'));
 
 // All source adapters. Each is best-effort; a failing source never blocks the others.
-export const SOURCES = [remotive, arbeitnow];
+// Both are global worldwide-remote boards (Africa-accessible). Add Africa-specific job,
+// scholarship and volunteer feeds here as adapters — the aggregator picks them up.
+export const SOURCES = [remotive, remoteok];
+export const SOURCE_NAMES = ['Remotive', 'RemoteOK']; // active sources — used to prune decommissioned ones
 
 export async function fetchAllSources() {
   const results = await Promise.allSettled(SOURCES.map((fn) => fn()));
