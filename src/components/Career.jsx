@@ -69,7 +69,7 @@ export default function Career({ signedIn }) {
         ))}
       </div>
 
-      {loaded && opps.length === 0 && <p className="career-empty">No opportunities posted yet. Check back soon — your institution can post roles, internships and scholarships here.</p>}
+      {loaded && opps.length === 0 && <p className="career-empty">No opportunities yet. Check back soon — we aggregate genuine roles from across the web, and your institution can post here too.</p>}
       {loaded && opps.length > 0 && shown.length === 0 && <p className="career-empty">Nothing matches this filter.</p>}
 
       <div className="career-list">
@@ -80,7 +80,9 @@ export default function Career({ signedIn }) {
             <article key={o.id} className="opp-card">
               <div className="opp-head">
                 <span className="opp-type">{m.icon} {m.label}</span>
-                {o.deadline && <span className="opp-deadline">Apply by {fmtDeadline(o.deadline)}</span>}
+                {o.deadline
+                  ? <span className="opp-deadline">Apply by {fmtDeadline(o.deadline)}</span>
+                  : (o.source && <span className="opp-source">via {o.source}</span>)}
               </div>
               <h3 className="opp-title">{o.title}</h3>
               {(o.org || o.location) && <p className="opp-org">{[o.org, o.location].filter(Boolean).join(' · ')}</p>}

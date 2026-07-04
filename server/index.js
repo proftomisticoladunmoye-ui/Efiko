@@ -25,6 +25,7 @@ import { generateCourse, evaluateTeachBack } from './core/originals/generator.js
 import { saveOriginal, getOriginal, listOriginals, setStatus, updateOriginal, deleteOriginal } from './core/originals/store.js';
 import { listPathways, nextInPathway } from './core/originals/pathways.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
+import { refreshAggregated, listAggregated, refreshIfStale, lastRun } from './core/careers/aggregator.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
 import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess } from './core/marketplace.js';
 import { paymentsProvider, paymentsLive, paymentsPublicKey } from './core/payments.js';
@@ -397,7 +398,20 @@ const server = createServer(async (req, res) => {
 
   // --- Career (V2 R5): opportunities board + student bookmarks ---
   if (req.method === 'GET' && url.pathname === '/opportunities') {
-    return json(res, 200, { opportunities: await listOpportunities() });
+    refreshIfStale(); // opportunistic background refresh of aggregated opportunities
+    const [posted, agg] = await Promise.all([listOpportunities(), listAggregated()]);
+    const all = [...posted, ...agg].sort((a, b) => (b.postedAt || b.createdAt || 0) - (a.postedAt || a.createdAt || 0));
+    return json(res, 200, { opportunities: all, aggregatedCount: agg.length });
+  }
+  // Aggregate genuine opportunities from permitted job APIs (operator-triggered; also refreshes
+  // on its own when stale). Sources: see server/core/careers/sources.js.
+  if (req.method === 'POST' && url.pathname === '/career/aggregate') {
+    if (!isOperator(req)) return json(res, 401, { error: 'operator key required' });
+    const r = await refreshAggregated();
+    return json(res, r ? 200 : 502, r || { error: 'aggregation failed (sources unreachable)' });
+  }
+  if (req.method === 'GET' && url.pathname === '/career/aggregate/status') {
+    return json(res, 200, { last: await lastRun(), count: (await listAggregated()).length });
   }
   if (req.method === 'GET' && url.pathname === '/opportunities/mine') {
     const org = await authedOrg(req);
