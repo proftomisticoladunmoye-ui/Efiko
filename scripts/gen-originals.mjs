@@ -14,11 +14,11 @@ mkdirSync(OUT, { recursive: true });
 
 // Courses to generate this batch. Edit per batch toward the ~100-course library.
 const SPECS = [
-  { topic: 'Academic Writing', audience: 'University students', hours: 5, level: 'Beginner' },
-  { topic: 'Critical Thinking', audience: 'University students', hours: 4, level: 'Beginner' },
-  { topic: 'Research Methods', audience: 'University students and early researchers', hours: 6, level: 'Intermediate' },
-  { topic: 'Effective Study Skills', audience: 'University students', hours: 3, level: 'Beginner' },
-  { topic: 'Time Management for Students', audience: 'University students', hours: 3, level: 'Beginner' }
+  { topic: 'Statistics for Research', audience: 'University students and researchers', hours: 6, level: 'Beginner' },
+  { topic: 'SPSS for Data Analysis', audience: 'University students and researchers', hours: 5, level: 'Beginner' },
+  { topic: 'Python for Research', audience: 'University students and researchers', hours: 6, level: 'Intermediate' },
+  { topic: 'Data Visualization', audience: 'University students and professionals', hours: 4, level: 'Beginner' },
+  { topic: 'Questionnaire Design', audience: 'University students and researchers', hours: 3, level: 'Beginner' }
 ];
 
 // A course must clear this bar to be published as a seed.

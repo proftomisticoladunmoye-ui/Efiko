@@ -1,0 +1,604 @@
+{
+  "courseId": "orig-questionnaire-design-essentials",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Questionnaire Design Essentials",
+  "subtitle": "Build Valid, Reliable Surveys for Research",
+  "category": "Research Methods",
+  "level": "Beginner",
+  "audience": "University students and early-career researchers across disciplines",
+  "estimatedHours": 3,
+  "description": "This practical, mobile-friendly course teaches you how to design questionnaires that collect accurate, useful data. You will learn to move from research questions to well-crafted survey items, avoid common wording mistakes, choose appropriate response scales, structure and format your questionnaire, and pilot-test it before use. Ideal for undergraduate projects, dissertations, and applied field research in African contexts and beyond.",
+  "outcomes": [
+    "Explain the purpose of a questionnaire and when it is the right data-collection tool.",
+    "Translate research objectives into clear, measurable survey questions.",
+    "Apply best practices to write unbiased, unambiguous items and response options.",
+    "Select appropriate question types and rating scales for different variables.",
+    "Organize and format a questionnaire for logical flow and ease of completion.",
+    "Evaluate and improve a draft questionnaire through pilot testing and revision."
+  ],
+  "competencies": [
+    "Translating research objectives into valid survey questions",
+    "Writing clear, unbiased, and culturally appropriate items",
+    "Selecting appropriate question types and response scales",
+    "Structuring and formatting questionnaires for multiple delivery modes",
+    "Pilot testing and refining a questionnaire for reliability and validity"
+  ],
+  "nextCourse": "Survey Sampling and Data Collection",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What is the main purpose of a questionnaire?",
+        "options": [
+          "To publish research findings",
+          "To systematically collect data from respondents",
+          "To analyse statistics automatically",
+          "To replace a literature review"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these is a poorly written survey question?",
+        "options": [
+          "How old are you?",
+          "Do you agree that our excellent service is helpful?",
+          "How often do you use public transport?",
+          "What is your highest level of education?"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A Likert scale is most commonly used to measure:",
+        "options": [
+          "Exact numeric counts",
+          "Attitudes or levels of agreement",
+          "Open-ended opinions",
+          "Respondent names"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "A 'double-barrelled' question is problematic because it:",
+        "options": [
+          "Is too short",
+          "Asks about two things at once",
+          "Uses numbers",
+          "Has too many options"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Response options should ideally be:",
+        "options": [
+          "Overlapping and vague",
+          "Exhaustive and mutually exclusive",
+          "As many as possible",
+          "Only open-ended"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "The best reason to pilot test a questionnaire is to:",
+        "options": [
+          "Increase the sample size",
+          "Identify unclear or problematic questions before full use",
+          "Skip ethics approval",
+          "Make it longer"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which question is written most neutrally?",
+        "options": [
+          "Don't you think prices are too high?",
+          "How would you rate the current prices?",
+          "Isn't our product the best?",
+          "Wouldn't you agree service improved?"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Skip logic in a questionnaire is used to:",
+        "options": [
+          "Delete all responses",
+          "Route respondents to relevant questions only",
+          "Randomize answers",
+          "Force every question to be answered"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-foundations-of-questionnaires",
+      "order": 1,
+      "title": "Foundations of Questionnaires",
+      "objectives": [
+        "Define a questionnaire and distinguish it from interviews and other tools.",
+        "Identify strengths, limitations, and ethical considerations of surveys.",
+        "Link questionnaire design to research questions and objectives."
+      ],
+      "text": "A questionnaire is a structured set of written questions used to collect standardized data from many respondents. Unlike an interview, where a researcher speaks with someone and can probe or clarify, a questionnaire is usually self-administered and identical for everyone. This makes it cheap, fast, and easy to reach large samples, but it cannot easily explore surprising answers or read tone.\n\nStrengths: scale, low cost, anonymity (helpful for sensitive topics), and comparable data. Limitations: shallow responses, misunderstanding of questions, and low response rates. Ethics matter: obtain informed consent, protect privacy, allow people to skip questions, and store data securely.\n\nThe golden rule is that every question must earn its place by serving your research question. How-to, in three steps:\n1. Write your research question, e.g. \"What barriers stop students from using campus counselling?\"\n2. Break it into sub-objectives: awareness, access, stigma, cost.\n3. For each sub-objective, draft one or two questions. \"Have you heard of the campus counselling service?\" maps directly to awareness.\n\nBefore finalizing, check each question against a simple test: if I delete this, does my research question suffer? If not, cut it. This keeps surveys short, respectful of respondents' time, and focused on data you will actually analyze.",
+      "voiceScript": "Welcome! Let's start with the big picture. A questionnaire is simply a structured set of written questions that everyone answers the same way, so you can compare responses across many people. That's different from an interview, where you sit with someone and follow up on whatever they say. Questionnaires are wonderful for reaching lots of people cheaply, and anonymity helps with sensitive topics, but they can't probe or clarify, and people sometimes misread questions. So here's my favourite habit: every single question must serve your research question. Start with that question, break it into a few sub-topics, then write items for each one. If deleting a question wouldn't hurt your study, cut it. Always seek consent, protect privacy, and respect people's time.",
+      "keyPoints": [
+        "A questionnaire collects standardized data; interviews allow probing and follow-up.",
+        "Surveys offer scale, low cost, and anonymity but risk shallow or misread answers.",
+        "Ethics: informed consent, privacy, the right to skip, and secure data.",
+        "Every question must trace back to your research question and objectives."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><rect x=\"170\" y=\"18\" width=\"140\" height=\"36\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"240\" y=\"41\" font-size=\"13\" text-anchor=\"middle\" fill=\"#0f766e\">Research Question</text><line x1=\"240\" y1=\"54\" x2=\"110\" y2=\"92\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"240\" y1=\"54\" x2=\"240\" y2=\"92\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"240\" y1=\"54\" x2=\"370\" y2=\"92\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"55\" y=\"94\" width=\"110\" height=\"30\" rx=\"5\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"110\" y=\"114\" font-size=\"11\" text-anchor=\"middle\" fill=\"#15803d\">Awareness</text><rect x=\"185\" y=\"94\" width=\"110\" height=\"30\" rx=\"5\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"240\" y=\"114\" font-size=\"11\" text-anchor=\"middle\" fill=\"#15803d\">Access</text><rect x=\"315\" y=\"94\" width=\"110\" height=\"30\" rx=\"5\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"370\" y=\"114\" font-size=\"11\" text-anchor=\"middle\" fill=\"#15803d\">Stigma</text><line x1=\"110\" y1=\"124\" x2=\"110\" y2=\"160\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"240\" y1=\"124\" x2=\"240\" y2=\"160\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"370\" y1=\"124\" x2=\"370\" y2=\"160\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"65\" y=\"162\" width=\"90\" height=\"28\" rx=\"5\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"110\" y=\"180\" font-size=\"10\" text-anchor=\"middle\" fill=\"#b45309\">Question</text><rect x=\"195\" y=\"162\" width=\"90\" height=\"28\" rx=\"5\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"240\" y=\"180\" font-size=\"10\" text-anchor=\"middle\" fill=\"#b45309\">Question</text><rect x=\"325\" y=\"162\" width=\"90\" height=\"28\" rx=\"5\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"370\" y=\"180\" font-size=\"10\" text-anchor=\"middle\" fill=\"#b45309\">Question</text><text x=\"240\" y=\"232\" font-size=\"12\" text-anchor=\"middle\" fill=\"#334155\">Every question maps back to the research question</text></svg>",
+      "whiteboardCaption": "A tree showing how one research question branches into sub-objectives and then into specific survey questions.",
+      "example": "A student researching why classmates skip campus counselling turns the question \"What stops students from using counselling?\" into sub-topics (awareness, access, stigma) and writes two short items per topic, producing a focused 8-question survey that peers can complete in three minutes between lectures.",
+      "quiz": [
+        {
+          "q": "What most clearly distinguishes a questionnaire from an interview?",
+          "options": [
+            "Questionnaires are always shorter",
+            "Questionnaires use standardized questions without live probing",
+            "Interviews cannot collect data",
+            "Questionnaires must be anonymous"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a genuine limitation of questionnaires?",
+          "options": [
+            "They cannot reach many people",
+            "Respondents may misunderstand questions with no chance to clarify",
+            "They are always expensive",
+            "They cannot be anonymous"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Before keeping a survey question, you should check that it:",
+          "options": [
+            "Sounds academic and complex",
+            "Serves your research question or an objective",
+            "Is longer than other questions",
+            "Uses technical jargon"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is a questionnaire?",
+          "back": "A structured set of written questions used to collect standardized data from many respondents."
+        },
+        {
+          "front": "Key strength of surveys for sensitive topics?",
+          "back": "Anonymity, which encourages more honest responses."
+        },
+        {
+          "front": "Name two survey ethics essentials.",
+          "back": "Informed consent and protecting respondents' privacy/data; also the right to skip questions."
+        },
+        {
+          "front": "The 'earn its place' test",
+          "back": "Delete a question if removing it would not weaken your research question."
+        }
+      ],
+      "reflection": "Think of a topic you care about: what is your research question, and which two sub-objectives would it break into?",
+      "summary": "Questionnaires gather standardized data at scale but can't probe like interviews; good design starts from your research question and keeps only ethical, purposeful items.",
+      "discussionPrompt": "Help me turn my research question into 3 sub-objectives and check whether a questionnaire or interviews would suit it better.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s2-from-objectives-to-questions",
+      "order": 2,
+      "title": "From Objectives to Questions",
+      "objectives": [
+        "Break research objectives into specific information needs.",
+        "Distinguish between concepts, variables, and indicators.",
+        "Draft questions that directly measure your target variables."
+      ],
+      "text": "A questionnaire fails when questions wander away from your objective. Session 2 shows you how to keep them anchored. Start with your research objective, for example: \"Understand what drives student use of campus buses.\" Break this into information needs: How often do students ride? What stops them? How satisfied are they?\n\nNext, climb down the ladder of abstraction. A CONCEPT is a broad idea (e.g., \"satisfaction\"). A VARIABLE is a measurable dimension of that concept (e.g., waiting time, cleanliness). An INDICATOR is the observable signal you actually record (e.g., minutes waited, a 1-5 rating). You cannot ask a concept directly; you ask its indicators.\n\nHow-to in four steps: (1) Write the objective as one sentence. (2) List 3-5 information needs. (3) For each, name the concept, then split it into variables. (4) For each variable, write one indicator question.\n\nWorked example: Concept = bus satisfaction. Variable = punctuality. Indicator question: \"In the last 7 days, how many times did your bus arrive more than 10 minutes late? (0, 1-2, 3-4, 5+).\"\n\nBefore finalizing, run a coverage check: every objective maps to at least one question, and every question traces back to an objective. Delete any orphan question that measures nothing you need.",
+      "voiceScript": "Let's turn your research aim into questions that actually earn their place. I always start with one clear objective sentence, then ask myself what information I truly need to answer it. From there I climb down what researchers call the ladder of abstraction. A concept is a big fuzzy idea, like satisfaction. A variable is a piece of it I can measure, like punctuality or cleanliness. And an indicator is the concrete thing I record, like minutes waited or a rating from one to five. You can't ask someone their satisfaction directly, so you ask about the indicators instead. Finally I do a coverage check: every objective links to a question, and every question links back to an objective. If a question measures nothing you need, delete it without mercy.",
+      "keyPoints": [
+        "Break each objective into 3-5 specific information needs before writing questions.",
+        "Concept -> Variable -> Indicator: you can only ask about observable indicators.",
+        "Write one clear indicator question per variable.",
+        "Run a coverage check; delete orphan questions that map to no objective."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-family=\"sans-serif\" font-size=\"15\" fill=\"#334155\">Ladder of Abstraction</text><rect x=\"40\" y=\"48\" width=\"180\" height=\"34\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"55\" y=\"70\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#b45309\">CONCEPT: satisfaction</text><line x1=\"130\" y1=\"82\" x2=\"130\" y2=\"110\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"40\" y=\"110\" width=\"180\" height=\"34\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"55\" y=\"132\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#0f766e\">VARIABLE: punctuality</text><line x1=\"130\" y1=\"144\" x2=\"130\" y2=\"172\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"40\" y=\"172\" width=\"180\" height=\"34\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"55\" y=\"194\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#15803d\">INDICATOR: mins late</text><line x1=\"230\" y1=\"189\" x2=\"280\" y2=\"189\" stroke=\"#334155\" stroke-width=\"2\" marker-end=\"url(#a)\"/><rect x=\"280\" y=\"165\" width=\"170\" height=\"48\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"290\" y=\"185\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">Q: times bus was</text><text x=\"290\" y=\"200\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">&gt;10 min late?</text><defs><marker id=\"a\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0,0 L6,3 L0,6\" fill=\"#334155\"/></marker></defs></svg>",
+      "whiteboardCaption": "A ladder showing how a broad concept narrows into a variable, then an indicator, then a concrete survey question.",
+      "example": "A student researching why classmates skip lectures sets the objective \"Understand causes of lecture absenteeism.\" She breaks it into needs (frequency, reasons, timing), turns the concept \"barriers\" into variables like transport cost and clashing jobs, then asks: \"In the past two weeks, how many lectures did you miss because of transport problems? (0, 1-2, 3+).\"",
+      "quiz": [
+        {
+          "q": "In the ladder of abstraction, which element is the observable thing you actually record?",
+          "options": [
+            "Concept",
+            "Variable",
+            "Indicator",
+            "Objective"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is the FIRST step in converting an objective into questions?",
+          "options": [
+            "List information needs",
+            "Write the objective as one clear sentence",
+            "Choose a rating scale",
+            "Delete orphan questions"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A 'coverage check' ensures that:",
+          "options": [
+            "Every question is short",
+            "Every objective maps to a question and every question to an objective",
+            "All questions use the same scale",
+            "The survey has many questions"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Concept",
+          "back": "A broad, abstract idea (e.g., satisfaction) that cannot be measured directly."
+        },
+        {
+          "front": "Variable",
+          "back": "A measurable dimension of a concept, such as punctuality or cleanliness."
+        },
+        {
+          "front": "Indicator",
+          "back": "The observable signal you actually record, like minutes waited or a 1-5 rating."
+        },
+        {
+          "front": "Orphan question",
+          "back": "A question that traces back to no objective; it should be deleted."
+        }
+      ],
+      "reflection": "Look at your own research aim: which concept are you most tempted to ask about directly, and how could you break it into concrete indicators instead?",
+      "summary": "Convert objectives into focused questions by listing information needs and moving down the ladder from concept to variable to indicator, then verify every question maps back to an objective.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you turn one of your research objectives into a concept-variable-indicator table with draft questions.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s3-writing-clear-unbiased-questions",
+      "order": 3,
+      "title": "Writing Clear, Unbiased Questions",
+      "objectives": [
+        "Recognize and fix leading, double-barrelled, and ambiguous questions.",
+        "Use plain, culturally appropriate language for your respondents.",
+        "Handle sensitive topics and reduce response bias."
+      ],
+      "text": "Great questions produce trustworthy data; poor wording quietly ruins it. Three common faults to hunt for:\n\n1) Leading questions push respondents toward an answer. \"Don't you agree our excellent library needs more funding?\" signals the 'right' reply. Fix: \"How satisfied are you with the library's funding?\" with a balanced scale.\n\n2) Double-barrelled questions ask two things at once. \"Was the lecturer clear and well-prepared?\" What if she was clear but unprepared? Split into two separate questions.\n\n3) Ambiguous questions use vague words. \"Do you exercise regularly?\" \"Regularly\" means different things to different people. Instead: \"On how many days in the past 7 did you exercise for 30+ minutes?\"\n\nUse plain, culturally appropriate language. Avoid jargon, acronyms, and idioms that don't translate. Match local terms (say \"secondary school\" if that's what people use). Keep each item under about 20 words.\n\nFor sensitive topics (income, health, behaviour), reduce bias by: normalising (\"Many students sometimes miss class; in the last month, how often did you?\"), using ranges instead of exact figures, ensuring anonymity, and placing sensitive items later.\n\nQuick how-to: read each question aloud, ask \"Could someone honestly answer two ways?\" and \"Am I hinting at an answer?\" Revise until it's neutral, single, and specific.",
+      "voiceScript": "Let's talk about wording, because even a smart survey falls apart if the questions are unclear. I always watch for three troublemakers. First, leading questions that hint at the answer I want, like praising something before asking about it. Second, double-barrelled questions that sneak in two ideas at once, so a single answer can't fit. Third, vague words like 'regularly' or 'often' that everyone reads differently. My fix is simple: read each question aloud and ask myself, could someone honestly answer this two different ways, and am I nudging them? For sensitive topics, I normalise the behaviour, offer ranges, and promise anonymity. Keep it plain, local, and specific, and your data becomes something you can truly trust.",
+      "keyPoints": [
+        "Leading questions hint at an answer; rewrite them neutrally with balanced scales.",
+        "Split double-barrelled questions so each asks about only one thing.",
+        "Replace vague words with specific timeframes and definitions.",
+        "For sensitive topics, normalise, use ranges, ensure anonymity, and place items later."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" fill=\"#334155\" font-size=\"16\" font-family=\"sans-serif\">Fix Bad Questions</text><line x1=\"20\" y1=\"38\" x2=\"200\" y2=\"38\" stroke=\"#b45309\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"70\" r=\"8\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"58\" y=\"75\" fill=\"#334155\" font-size=\"13\" font-family=\"sans-serif\">Leading -> stay neutral</text><circle cx=\"40\" cy=\"110\" r=\"8\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"58\" y=\"115\" fill=\"#334155\" font-size=\"13\" font-family=\"sans-serif\">Double-barrelled -> split</text><circle cx=\"40\" cy=\"150\" r=\"8\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"58\" y=\"155\" fill=\"#334155\" font-size=\"13\" font-family=\"sans-serif\">Ambiguous -> be specific</text><rect x=\"20\" y=\"180\" width=\"440\" height=\"60\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"32\" y=\"203\" fill=\"#15803d\" font-size=\"12\" font-family=\"sans-serif\">Bad: \"exercise regularly?\"</text><text x=\"32\" y=\"225\" fill=\"#0f766e\" font-size=\"12\" font-family=\"sans-serif\">Good: \"days in past 7 you exercised 30+ min?\"</text></svg>",
+      "whiteboardCaption": "A checklist mapping three question faults to their fixes, with a before-and-after wording example.",
+      "example": "A student surveying campus food vendors asks: \"Do you think the affordable and hygienic canteen should be expanded?\" It's both leading and double-barrelled. She rewrites it as two neutral items: \"How would you rate the canteen's prices?\" and \"How would you rate the canteen's hygiene?\" each with a balanced 5-point scale, then asks separately about expansion.",
+      "quiz": [
+        {
+          "q": "Why is \"Was the lecturer knowledgeable and approachable?\" a flawed question?",
+          "options": [
+            "It is leading",
+            "It is double-barrelled",
+            "It is too specific",
+            "It uses a balanced scale"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the best fix for \"Do you exercise regularly?\"",
+          "options": [
+            "Do you exercise a lot?",
+            "On how many days in the past 7 did you exercise 30+ minutes?",
+            "Don't you think exercise is important?",
+            "Are you fit and healthy?"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which technique reduces bias on sensitive topics?",
+          "options": [
+            "Placing sensitive items first",
+            "Demanding exact figures",
+            "Normalising the behaviour and offering ranges",
+            "Using technical jargon"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Leading question",
+          "back": "A question worded to nudge respondents toward a particular answer; fix by staying neutral."
+        },
+        {
+          "front": "Double-barrelled question",
+          "back": "One item asking about two things at once; split it into separate questions."
+        },
+        {
+          "front": "Ambiguous question",
+          "back": "Uses vague terms like 'regularly'; replace with specific definitions or timeframes."
+        },
+        {
+          "front": "Normalising",
+          "back": "Framing a sensitive behaviour as common so respondents answer honestly without shame."
+        }
+      ],
+      "reflection": "Look at a question you have written or seen recently: could someone honestly answer it two different ways, and does it hint at an answer?",
+      "summary": "Clear, unbiased questions are neutral, single-focused, and specific, using plain local language and careful handling of sensitive topics to produce trustworthy data.",
+      "discussionPrompt": "Ask the EFIKO tutor to review three draft questions from my survey and flag any leading, double-barrelled, or ambiguous wording.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s4-question-types-and-response-scales",
+      "order": 4,
+      "title": "Question Types and Response Scales",
+      "objectives": [
+        "Compare open-ended and closed-ended question formats.",
+        "Design effective Likert and rating scales.",
+        "Create response options that are exhaustive and mutually exclusive."
+      ],
+      "text": "Every question you write has two parts: the question stem and the response format. Choosing the right format decides whether your data is easy to analyse.\n\nOpen-ended questions let respondents answer in their own words (\"What worries you most about exams?\"). They capture rich detail but are slow to code. Closed-ended questions offer fixed options (Yes/No, multiple choice, scales). They are fast to analyse but limit answers. Use open questions to explore; closed questions to measure.\n\nA Likert scale measures agreement or intensity using ordered points. Build a good one this way: (1) write a clear statement, e.g. \"The library has enough study space.\" (2) Offer a balanced set of points: Strongly disagree, Disagree, Neutral, Agree, Strongly agree. (3) Keep 5 or 7 points; label every point, not just the ends.\n\nResponse options must be exhaustive (cover every possible answer) and mutually exclusive (no overlap). Bad: age groups \"18-25, 25-35\" — 25 fits both. Fix: \"18-24, 25-34.\" Add \"Other\" or \"Prefer not to say\" when needed so everyone can answer.\n\nQuick test: read each option aloud and ask, \"Could one person truthfully pick two?\" If yes, rewrite.",
+      "voiceScript": "Let's talk about how you let people answer your questions, because that choice shapes everything you can do with the data later. Open-ended questions invite people to reply in their own words, which is wonderful for exploring ideas but slow to analyse. Closed-ended questions give fixed choices, so they're quick to count and compare. When you want to measure attitudes, a Likert scale works beautifully: write a clear statement, then offer balanced, labelled points from strongly disagree to strongly agree. And here's my golden rule for response options: make them exhaustive and mutually exclusive. That simply means everyone can find their answer, and nobody fits two boxes at once. Test it by asking, could one honest person pick two? If so, rewrite.",
+      "keyPoints": [
+        "Open questions explore; closed questions measure and analyse faster.",
+        "Use 5 or 7 balanced Likert points and label every point, not just the ends.",
+        "Response options must be exhaustive (cover all) and mutually exclusive (no overlap).",
+        "Test options by asking: could one honest person pick two?"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-family=\"sans-serif\" font-size=\"16\" fill=\"#334155\">Question Formats</text><rect x=\"20\" y=\"44\" width=\"200\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"32\" y=\"70\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#b45309\">Open-ended</text><text x=\"32\" y=\"90\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">rich, hard to code</text><rect x=\"260\" y=\"44\" width=\"200\" height=\"60\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"272\" y=\"70\" font-family=\"sans-serif\" font-size=\"13\" fill=\"#15803d\">Closed-ended</text><text x=\"272\" y=\"90\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">fast to analyse</text><text x=\"20\" y=\"140\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#0f766e\">Likert scale (label every point)</text><line x1=\"30\" y1=\"165\" x2=\"430\" y2=\"165\" stroke=\"#334155\" stroke-width=\"2\"/><circle cx=\"40\" cy=\"165\" r=\"6\" fill=\"#0f766e\"/><circle cx=\"140\" cy=\"165\" r=\"6\" fill=\"#0f766e\"/><circle cx=\"230\" cy=\"165\" r=\"6\" fill=\"#0f766e\"/><circle cx=\"320\" cy=\"165\" r=\"6\" fill=\"#0f766e\"/><circle cx=\"420\" cy=\"165\" r=\"6\" fill=\"#0f766e\"/><text x=\"20\" y=\"188\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Str.dis</text><text x=\"120\" y=\"188\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Disagree</text><text x=\"212\" y=\"188\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Neutral</text><text x=\"305\" y=\"188\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Agree</text><text x=\"398\" y=\"188\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Str.agr</text><text x=\"20\" y=\"222\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#b45309\">Options: Exhaustive + Mutually exclusive</text><text x=\"20\" y=\"244\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">18-24, 25-34 (not 18-25, 25-35)</text></svg>",
+      "whiteboardCaption": "A comparison of open vs closed questions, a labelled 5-point Likert scale, and the rule that options be exhaustive and mutually exclusive.",
+      "example": "A student surveying campus Wi-Fi asks: \"How satisfied are you with library Wi-Fi speed?\" with a labelled 5-point scale from Very dissatisfied to Very satisfied, plus one open question, \"What one change would improve it?\" The scale gives numbers to compare across faculties, while the open question surfaces fixes like adding routers on the third floor.",
+      "quiz": [
+        {
+          "q": "Which question format is best for quickly analysing and comparing responses across a large sample?",
+          "options": [
+            "Open-ended questions",
+            "Closed-ended questions",
+            "Essay prompts",
+            "Interview follow-ups"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the main problem with age options '18-25, 25-35, 35-45'?",
+          "options": [
+            "They are not exhaustive",
+            "They overlap, so they are not mutually exclusive",
+            "There are too many points",
+            "They lack a neutral option"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a best practice when building a Likert scale?",
+          "options": [
+            "Label only the two end points",
+            "Use an even number of points to force a choice always",
+            "Label every point and use 5 or 7 options",
+            "Mix agreement and frequency wording in one scale"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Adding 'Other' or 'Prefer not to say' primarily helps make options:",
+          "options": [
+            "Mutually exclusive",
+            "Exhaustive",
+            "Shorter",
+            "More biased"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Open- vs closed-ended",
+          "back": "Open = answers in own words (rich, hard to code); closed = fixed choices (fast to analyse)."
+        },
+        {
+          "front": "Likert scale",
+          "back": "An ordered scale measuring agreement/intensity, usually 5 or 7 labelled points from strongly disagree to strongly agree."
+        },
+        {
+          "front": "Exhaustive options",
+          "back": "The choices cover every possible answer, so every respondent can pick one."
+        },
+        {
+          "front": "Mutually exclusive options",
+          "back": "No two options overlap; a respondent cannot truthfully belong to more than one."
+        },
+        {
+          "front": "",
+          "back": ""
+        }
+      ],
+      "reflection": "Think of a survey you might run this semester: which two questions should be closed for measurement, and which one open for exploration, and why?",
+      "summary": "Match your response format to your goal: closed questions and well-labelled Likert scales for measurable data, open questions for depth, and always make options exhaustive and mutually exclusive.",
+      "discussionPrompt": "Ask the tutor to critique a Likert item and set of response options you drafted, checking for balance, labelling, and any overlapping or missing categories.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s5-structure-flow-and-formatting",
+      "order": 5,
+      "title": "Structure, Flow, and Formatting",
+      "objectives": [
+        "Sequence questions and use skip logic effectively.",
+        "Write clear instructions, introductions, and consent statements.",
+        "Format for mobile, paper, and offline data collection."
+      ],
+      "text": "A well-designed questionnaire flows like a conversation: it opens gently, builds trust, and guides respondents smoothly to the end. Structure has three parts. First, the INTRODUCTION states who you are, the study purpose, how long it takes, confidentiality, and CONSENT (a clear statement that participation is voluntary and the person agrees to continue). Second, the BODY, organized in logical blocks: start with easy, non-sensitive questions to warm people up, group related topics together, and place sensitive items (income, health) near the end. Third, a short CLOSING thanking them.\n\nSKIP LOGIC (also called branching) sends respondents past questions that do not apply. Example: 'Do you own a smartphone? If No, skip to Q10.' This prevents irrelevant questions and reduces fatigue.\n\nHow-to for clean flow: (1) Number every question. (2) Write skip instructions in bold beside the answer that triggers them. (3) Add brief section headers like 'Section B: Study Habits'. (4) Give an instruction before tricky formats, e.g. 'Select ONE option'.\n\nFormat for each mode: on mobile, one question per screen, large tap targets; on paper, clear boxes and arrows for skips; offline, ensure fonts and spacing print cleanly and forms are self-explanatory since no interviewer may be present. Always pilot-test the full flow.",
+      "voiceScript": "Think of your questionnaire as a friendly conversation. You start by introducing yourself, explaining the purpose, saying how long it takes, and asking for consent, because people relax when they know what to expect and that their answers stay private. Then you ease them in with simple questions before moving to anything sensitive, like income or health, which belongs near the end. When some questions don't apply to everyone, use skip logic, so a respondent who says no to owning a smartphone jumps straight past the smartphone questions. Number everything, add short section headers, and give a quick instruction before unusual formats. And remember, a form on a phone should show one question per screen, while a printed form needs clear boxes and arrows. Always pilot-test the whole flow first.",
+      "keyPoints": [
+        "Open with intro, purpose, confidentiality, and clear consent.",
+        "Order questions easy-to-sensitive and group related topics.",
+        "Use bold skip logic to route respondents past irrelevant items.",
+        "Adapt formatting for mobile, paper, and offline pilot-tested modes."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><rect x=\"20\" y=\"20\" width=\"140\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"90\" y=\"45\" font-size=\"13\" fill=\"#0f766e\" text-anchor=\"middle\">Intro + Consent</text><rect x=\"20\" y=\"80\" width=\"140\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"90\" y=\"105\" font-size=\"13\" fill=\"#15803d\" text-anchor=\"middle\">Easy questions</text><rect x=\"20\" y=\"140\" width=\"140\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"90\" y=\"165\" font-size=\"13\" fill=\"#15803d\" text-anchor=\"middle\">Sensitive items</text><rect x=\"20\" y=\"200\" width=\"140\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"90\" y=\"225\" font-size=\"13\" fill=\"#b45309\" text-anchor=\"middle\">Thank you</text><line x1=\"90\" y1=\"60\" x2=\"90\" y2=\"80\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"90\" y1=\"120\" x2=\"90\" y2=\"140\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"90\" y1=\"180\" x2=\"90\" y2=\"200\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"300\" y=\"95\" font-size=\"13\" fill=\"#334155\" text-anchor=\"middle\">Q4: Own phone?</text><text x=\"300\" y=\"120\" font-size=\"12\" fill=\"#b45309\" text-anchor=\"middle\">No -&gt; skip to Q10</text><path d=\"M240 130 q60 30 120 5\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><text x=\"370\" y=\"155\" font-size=\"12\" fill=\"#0f766e\">Q10</text><text x=\"300\" y=\"210\" font-size=\"11\" fill=\"#334155\" text-anchor=\"middle\">Skip logic saves time</text></svg>",
+      "whiteboardCaption": "A questionnaire flows top-to-bottom from intro and consent to easy, then sensitive questions, with skip logic branching past items that don't apply.",
+      "example": "A student surveying campus internet use writes: 'Q3: Do you access the internet on campus? If No, skip to Q8.' Students without campus access jump past four Wi-Fi questions, keeping the mobile form short and reducing drop-offs during load-shedding.",
+      "quiz": [
+        {
+          "q": "Where should sensitive questions like income be placed?",
+          "options": [
+            "At the very beginning",
+            "Near the end of the questionnaire",
+            "In the introduction",
+            "Randomly throughout"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the main purpose of skip logic?",
+          "options": [
+            "To make forms longer",
+            "To route respondents past questions that don't apply",
+            "To hide the consent statement",
+            "To collect names"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is best practice for a mobile questionnaire?",
+          "options": [
+            "Many questions per screen",
+            "Tiny tap targets to save space",
+            "One question per screen with large tap targets",
+            "No section headers"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What must a good introduction include?",
+          "options": [
+            "Only the researcher's name",
+            "Purpose, duration, confidentiality, and consent",
+            "The results",
+            "A list of skip instructions"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Consent statement",
+          "back": "A clear note that participation is voluntary and the respondent agrees to continue."
+        },
+        {
+          "front": "Skip logic (branching)",
+          "back": "Instructions that send respondents past questions that don't apply to them."
+        },
+        {
+          "front": "Question ordering rule",
+          "back": "Start easy and non-sensitive; place sensitive items near the end; group related topics."
+        },
+        {
+          "front": "Offline formatting concern",
+          "back": "Forms must be self-explanatory and print cleanly since no interviewer may be present."
+        }
+      ],
+      "reflection": "Think of a survey you recently took: what part of its flow felt confusing, and how would you restructure it?",
+      "summary": "Organize a questionnaire like a conversation—intro and consent, easy to sensitive questions, and skip logic—then format and pilot-test it for mobile, paper, and offline use.",
+      "discussionPrompt": "Help me design a skip-logic map and mobile-friendly layout for a survey on students' study habits.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s6-pilot-testing-and-refinement",
+      "order": 6,
+      "title": "Pilot Testing and Refinement",
+      "objectives": [
+        "Plan and conduct a small pilot test.",
+        "Interpret pilot feedback and basic reliability checks.",
+        "Revise items to improve validity and clarity."
+      ],
+      "text": "A pilot test is a small trial run of your questionnaire with 5-15 people who resemble your real respondents. It catches confusing wording, broken skip logic, and questions that don't work before you collect full data.\n\nHow to run one, step by step:\n1. Recruit 5-15 people similar to your target group (fellow students, market traders, clinic patients).\n2. Ask them to complete the draft while you observe or use 'think-aloud' - they say their thoughts as they answer.\n3. Time it. If it takes 25 minutes but you promised 10, you must cut items.\n4. After, debrief: 'Which questions were unclear? Did any answer options not fit you?'\n\nInterpreting feedback: look for items many people skip, misread, or all answer identically (no variation = weak item). For scales measuring one concept, compute Cronbach's alpha - a reliability measure from 0 to 1. Above 0.7 suggests items hang together consistently.\n\nRevising: rewrite double-barrelled or leading questions, add missing answer options (or an 'Other'), fix jargon, and correct skip logic. For example, if respondents hesitate at 'How satisfied are you with staff and facilities?', split it into two questions. Re-pilot major changes. Small, tested improvements protect your entire study's validity.",
+      "voiceScript": "Welcome to our final session. Before you send a questionnaire out to hundreds of people, you should always try it on just a handful first. This is called a pilot test, and it's the difference between confident research and wasted effort. Find five to fifteen people who look like your real respondents, and watch them fill it in. Better still, ask them to think aloud as they answer, so you hear exactly where they hesitate or get confused. Time it, ask what felt unclear, and notice any question everyone answers the same way. Then rewrite the weak items, fix your skip logic, and if the changes are big, pilot again. These small tested tweaks protect your whole study.",
+      "keyPoints": [
+        "Pilot with 5-15 people similar to your real respondents before full launch.",
+        "Use think-aloud and timing to spot confusing, skipped, or no-variation items.",
+        "Cronbach's alpha above 0.7 signals a scale's items hang together reliably.",
+        "Revise unclear, double-barrelled, or leading items, then re-pilot big changes."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='480' height='260' fill='#ffffff'/><text x='140' y='28' font-family='sans-serif' font-size='17' fill='#0f766e'>Pilot Test Cycle</text><rect x='30' y='55' width='110' height='45' rx='6' fill='none' stroke='#0f766e' stroke-width='2'/><text x='45' y='82' font-family='sans-serif' font-size='12' fill='#0f766e'>Draft items</text><rect x='185' y='55' width='110' height='45' rx='6' fill='none' stroke='#15803d' stroke-width='2'/><text x='198' y='75' font-family='sans-serif' font-size='11' fill='#15803d'>Pilot 5-15</text><text x='198' y='90' font-family='sans-serif' font-size='11' fill='#15803d'>people</text><rect x='340' y='55' width='110' height='45' rx='6' fill='none' stroke='#b45309' stroke-width='2'/><text x='352' y='75' font-family='sans-serif' font-size='11' fill='#b45309'>Collect</text><text x='352' y='90' font-family='sans-serif' font-size='11' fill='#b45309'>feedback</text><line x1='140' y1='77' x2='183' y2='77' stroke='#334155' stroke-width='2'/><line x1='295' y1='77' x2='338' y2='77' stroke='#334155' stroke-width='2'/><rect x='185' y='150' width='110' height='45' rx='6' fill='none' stroke='#334155' stroke-width='2'/><text x='200' y='170' font-family='sans-serif' font-size='11' fill='#334155'>Revise</text><text x='200' y='185' font-family='sans-serif' font-size='11' fill='#334155'>items</text><path d='M395 100 L395 172 L297 172' fill='none' stroke='#b45309' stroke-width='2'/><path d='M185 172 L90 172 L90 102' fill='none' stroke='#15803d' stroke-width='2'/><text x='300' y='225' font-family='sans-serif' font-size='11' fill='#0f766e'>alpha &gt; 0.7 = reliable</text></svg>",
+      "whiteboardCaption": "A cycle showing draft items piloted with a few people, feedback collected, and items revised before full collection.",
+      "example": "A Nigerian public-health student drafts a survey on clinic satisfaction. She pilots it with 8 patients in a waiting room using think-aloud. Two patients stumble on 'How satisfied are you with the nurses and the pharmacy?' because they liked one but not the other. She splits it into two questions, adds an 'I did not visit the pharmacy' option, and her final data becomes far clearer.",
+      "quiz": [
+        {
+          "q": "What is the main purpose of a pilot test?",
+          "options": [
+            "To collect final data quickly",
+            "To catch problems in the questionnaire before full data collection",
+            "To increase your sample size",
+            "To publish preliminary results"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A Cronbach's alpha of 0.82 for a scale suggests the items are:",
+          "options": [
+            "Reliably measuring the same concept",
+            "Completely invalid",
+            "Too few in number",
+            "Double-barrelled"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "During piloting, an item that every respondent answers identically likely:",
+          "options": [
+            "Is perfectly worded",
+            "Provides little useful variation and may be weak",
+            "Should be repeated three times",
+            "Proves high reliability"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Pilot test",
+          "back": "A small trial run of a questionnaire with 5-15 similar respondents to find problems before full collection."
+        },
+        {
+          "front": "Think-aloud method",
+          "back": "Asking respondents to say their thoughts while answering, revealing where wording confuses them."
+        },
+        {
+          "front": "Cronbach's alpha",
+          "back": "A 0-1 reliability measure; above 0.7 suggests scale items are internally consistent."
+        },
+        {
+          "front": "No-variation item",
+          "back": "A question everyone answers the same way, offering little useful information and often needing revision."
+        }
+      ],
+      "reflection": "Think about a questionnaire you might design: who could you realistically recruit for a pilot, and what one aspect worries you most about how respondents will interpret your questions?",
+      "summary": "Pilot testing runs your draft questionnaire with a few similar respondents, then uses their feedback, timing, and simple reliability checks to revise weak items and protect the validity of your full study.",
+      "discussionPrompt": "Help me design a think-aloud pilot for a 15-item survey on student study habits: what should I ask observers to note, and how should I decide which items to cut or rewrite?",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Questionnaire Design",
+    "audience": "University students and researchers",
+    "hours": 3,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783192759495,
+  "updatedAt": 1783192759495
+}

@@ -1,0 +1,589 @@
+{
+  "courseId": "orig-spss-for-data-analysis",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "SPSS for Data Analysis",
+  "subtitle": "A Beginner's Guide to Statistical Analysis with IBM SPSS",
+  "category": "Research Methods & Data Analysis",
+  "level": "Beginner",
+  "audience": "University students and researchers",
+  "estimatedHours": 5,
+  "description": "This hands-on, beginner-friendly course introduces you to IBM SPSS, one of the most widely used tools for statistical analysis in academic and applied research. You will learn to navigate the SPSS environment, prepare and clean data, run common descriptive and inferential analyses, and interpret and report your results correctly. Designed for mobile and offline study, the course uses clear examples relevant to African university and research contexts, so you can build practical, transferable data-analysis skills at your own pace.",
+  "outcomes": [
+    "Navigate the SPSS interface and manage data using the Data View and Variable View.",
+    "Prepare, clean, and transform datasets by defining variables, handling missing data, and recoding.",
+    "Generate and interpret descriptive statistics and appropriate charts.",
+    "Apply common inferential tests including t-tests, chi-square, correlation, and one-way ANOVA.",
+    "Interpret SPSS output tables and report results in APA-style format."
+  ],
+  "competencies": [
+    "Setting up and managing datasets in SPSS with correctly defined variables",
+    "Cleaning and transforming data for analysis",
+    "Producing and interpreting descriptive statistics and visualisations",
+    "Selecting and running appropriate inferential statistical tests",
+    "Reporting statistical results accurately in APA format"
+  ],
+  "nextCourse": "Intermediate SPSS: Regression and Multivariate Analysis",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What is SPSS primarily used for?",
+        "options": [
+          "Graphic design",
+          "Statistical data analysis",
+          "Web development",
+          "Video editing"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "In a typical dataset, what does a single row usually represent?",
+        "options": [
+          "A variable",
+          "A case or participant",
+          "A statistical test",
+          "A chart"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of the following is a measure of central tendency?",
+        "options": [
+          "Standard deviation",
+          "Mean",
+          "Range",
+          "Variance"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "In SPSS, where do you define a variable's measurement level and value labels?",
+        "options": [
+          "Data View",
+          "Variable View",
+          "Output Viewer",
+          "Syntax Editor"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which test is most appropriate for examining the relationship between two categorical variables?",
+        "options": [
+          "Independent t-test",
+          "Pearson correlation",
+          "Chi-square test",
+          "One-way ANOVA"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "You want to compare mean scores across three or more independent groups. Which test should you use?",
+        "options": [
+          "Paired t-test",
+          "One-way ANOVA",
+          "Chi-square test",
+          "Frequencies"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A p-value of 0.03 at an alpha of 0.05 generally indicates that the result is:",
+        "options": [
+          "Not statistically significant",
+          "Statistically significant",
+          "An error in the data",
+          "Impossible to interpret"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which SPSS feature would you use to create a new variable that groups ages into categories?",
+        "options": [
+          "Select Cases",
+          "Recode into Different Variables",
+          "Split File",
+          "Sort Cases"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-getting-started-with-spss",
+      "order": 1,
+      "title": "Getting Started with SPSS",
+      "objectives": [
+        "Identify the main windows and menus of the SPSS interface.",
+        "Distinguish between Data View and Variable View.",
+        "Open, save, and import data files into SPSS."
+      ],
+      "text": "SPSS (Statistical Package for the Social Sciences) is software for organizing and analyzing data. When you open SPSS, you meet three key windows. The Data Editor holds your dataset and has two tabs at the bottom: Data View and Variable View. The Output Viewer displays your results, tables, and charts. The Syntax Editor stores commands as code you can rerun.\n\nData View looks like a spreadsheet: each row is a case (one respondent) and each column is a variable (one question or measurement). Variable View is where you define each variable: its Name, Type (numeric or string), Label (a full description), Values (codes like 1='Male', 2='Female'), and Measure (Nominal, Ordinal, or Scale).\n\nSPSS saves data files with the .sav extension. Output files use .spv, and syntax files use .sps.\n\nHow-to: To import an Excel file, go to File > Import Data > Excel, choose your file, tick 'Read variable names from first row', and click OK. To save, go to File > Save As, name your file, and keep the .sav type. Always define your variables in Variable View before entering or analyzing data, so your results are clearly labelled and easy to interpret.",
+      "voiceScript": "Welcome to SPSS! Let me walk you through what you'll see when you first open it. Think of SPSS as having three main rooms. The Data Editor is where your data lives, and it has two views you switch between. Data View looks just like a spreadsheet, where every row is one person and every column is one question you asked them. Variable View is where you describe each of those columns, giving them names, labels, and value codes. Then there's the Output window, where your tables and charts appear after analysis. Remember, data files end in dot s-a-v. Before you analyze anything, always define your variables first. It makes everything clearer. Let's get comfortable exploring these windows together!",
+      "keyPoints": [
+        "SPSS has three main windows: Data Editor, Output Viewer, and Syntax Editor.",
+        "Data View shows cases (rows) and variables (columns); Variable View defines each variable's properties.",
+        "Data files use .sav, output uses .spv, and syntax uses .sps.",
+        "Import Excel via File > Import Data > Excel; always define variables before analysis."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"240\" y=\"24\" font-size=\"16\" fill=\"#0f766e\" text-anchor=\"middle\">SPSS Workspace</text><rect x=\"20\" y=\"50\" width=\"200\" height=\"170\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"120\" y=\"70\" font-size=\"12\" fill=\"#0f766e\" text-anchor=\"middle\">Data Editor</text><line x1=\"20\" y1=\"80\" x2=\"220\" y2=\"80\" stroke=\"#334155\"/><line x1=\"86\" y1=\"80\" x2=\"86\" y2=\"220\" stroke=\"#334155\"/><line x1=\"153\" y1=\"80\" x2=\"153\" y2=\"220\" stroke=\"#334155\"/><line x1=\"20\" y1=\"110\" x2=\"220\" y2=\"110\" stroke=\"#334155\"/><line x1=\"20\" y1=\"140\" x2=\"220\" y2=\"140\" stroke=\"#334155\"/><text x=\"53\" y=\"98\" font-size=\"10\" fill=\"#15803d\" text-anchor=\"middle\">row=case</text><text x=\"120\" y=\"235\" font-size=\"10\" fill=\"#b45309\" text-anchor=\"middle\">Data View / Variable View</text><rect x=\"260\" y=\"50\" width=\"200\" height=\"75\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"360\" y=\"70\" font-size=\"12\" fill=\"#15803d\" text-anchor=\"middle\">Output Viewer</text><rect x=\"280\" y=\"82\" width=\"160\" height=\"12\" fill=\"none\" stroke=\"#334155\"/><rect x=\"280\" y=\"100\" width=\"120\" height=\"12\" fill=\"none\" stroke=\"#334155\"/><rect x=\"260\" y=\"145\" width=\"200\" height=\"75\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"360\" y=\"165\" font-size=\"12\" fill=\"#b45309\" text-anchor=\"middle\">Syntax Editor</text><text x=\"360\" y=\"188\" font-size=\"10\" fill=\"#334155\" text-anchor=\"middle\">FREQUENCIES var.</text><text x=\"360\" y=\"205\" font-size=\"10\" fill=\"#334155\" text-anchor=\"middle\">.sav .spv .sps</text></svg>",
+      "whiteboardCaption": "The three main SPSS windows: the Data Editor with its two views, the Output Viewer, and the Syntax Editor.",
+      "example": "A public health student at the University of Ibadan collects 200 survey responses on malaria awareness in Excel. She imports the file via File > Import Data > Excel, then switches to Variable View to label her 'sex' variable with values 1='Male' and 2='Female' before running her analysis.",
+      "quiz": [
+        {
+          "q": "In SPSS Data View, what does a single row represent?",
+          "options": [
+            "One variable",
+            "One case (respondent)",
+            "One output table",
+            "One value label"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which file extension does SPSS use for saved data files?",
+          "options": [
+            ".spv",
+            ".sps",
+            ".sav",
+            ".xlsx"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Where do you define a variable's name, label, and value codes?",
+          "options": [
+            "Output Viewer",
+            "Variable View",
+            "Syntax Editor",
+            "Data View"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is Data View?",
+          "back": "A spreadsheet-like view where rows are cases and columns are variables."
+        },
+        {
+          "front": "What is Variable View?",
+          "back": "The view where you define each variable's Name, Type, Label, Values, and Measure."
+        },
+        {
+          "front": "What are the three SPSS file extensions?",
+          "back": ".sav (data), .spv (output), .sps (syntax)."
+        },
+        {
+          "front": "How do you import an Excel file into SPSS?",
+          "back": "File > Import Data > Excel, select the file, tick 'read variable names from first row', click OK."
+        }
+      ],
+      "reflection": "Think about a dataset you might collect for your studies. What variables would you include, and how would you label their values in Variable View?",
+      "summary": "SPSS organizes work across the Data Editor, Output Viewer, and Syntax Editor, storing data in .sav files with rows as cases and columns as variables defined in Variable View.",
+      "discussionPrompt": "Ask the EFIKO tutor to walk you through defining a variable's measurement level (Nominal, Ordinal, Scale) and why choosing the right one matters for analysis.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s2-defining-variables-and-preparing-data",
+      "order": 2,
+      "title": "Defining Variables and Preparing Data",
+      "objectives": [
+        "Define variable names, types, labels, values, and measurement levels in SPSS.",
+        "Enter data manually and import it accurately from Excel or CSV files.",
+        "Handle missing values and run basic checks for data quality."
+      ],
+      "text": "In SPSS you work in two views. Data View is a spreadsheet of rows (cases) and columns (variables). Variable View is where you define each column before analysis. Setting variables up correctly now saves hours later.\n\nFor every variable, define these fields:\n- Name: short, no spaces (e.g. \"age\", \"gender\").\n- Type: Numeric for numbers, String for text.\n- Label: a full description shown in output (e.g. \"Respondent's age in years\").\n- Values: codes for categories, like 1 = Male, 2 = Female. Click the Values cell to enter each code and its label.\n- Missing: tell SPSS which codes mean no answer (e.g. 99 = \"Did not respond\").\n- Measure: Scale (numbers like age), Ordinal (ranked, like satisfaction), or Nominal (unordered, like region).\n\nHow-to: To import Excel data, choose File > Import Data > Excel, tick \"Read variable names from first row,\" then check each variable's Type and Measure.\n\nData quality check: Run Analyze > Descriptive Statistics > Frequencies on each variable. Look for impossible values (an age of 200), wrong codes, or too many missing entries. Fix errors in Data View before analysing. A clean, well-labelled dataset is the foundation of trustworthy results.",
+      "voiceScript": "Welcome back! Today we prepare our data so SPSS can actually understand it. Think of Variable View as the place where you introduce each column to SPSS: you give it a short name, a full label, and tell it whether it holds numbers or text. For categories, you set value codes, like one for male and two for female, so your output reads clearly. You also mark which codes mean missing, and you pick a measurement level: scale, ordinal, or nominal. Once that's done, you can type data directly or import a spreadsheet from Excel. My favourite habit is running Frequencies on every variable to catch impossible values and stray errors. Clean data first, and every analysis afterwards becomes so much easier.",
+      "keyPoints": [
+        "Variable View defines Name, Type, Label, Values, Missing, and Measure before you analyse.",
+        "Choose the right measurement level: Scale, Ordinal, or Nominal.",
+        "Import cleanly by reading variable names from the first row, then verify types.",
+        "Run Frequencies to catch impossible values and missing data before analysing."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" fill=\"#0f766e\" font-size=\"17\" font-family=\"sans-serif\">Variable View Setup</text><rect x=\"20\" y=\"45\" width=\"440\" height=\"30\" fill=\"none\" stroke=\"#334155\" stroke-width=\"1.5\"/><line x1=\"110\" y1=\"45\" x2=\"110\" y2=\"195\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"210\" y1=\"45\" x2=\"210\" y2=\"195\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"320\" y1=\"45\" x2=\"320\" y2=\"195\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"20\" y1=\"75\" x2=\"460\" y2=\"75\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"20\" y1=\"105\" x2=\"460\" y2=\"105\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"20\" y1=\"135\" x2=\"460\" y2=\"135\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"20\" y1=\"165\" x2=\"460\" y2=\"165\" stroke=\"#334155\" stroke-width=\"1\"/><rect x=\"20\" y=\"165\" width=\"440\" height=\"30\" fill=\"none\" stroke=\"#334155\" stroke-width=\"1.5\"/><text x=\"28\" y=\"64\" fill=\"#15803d\" font-size=\"11\" font-family=\"sans-serif\">Name</text><text x=\"118\" y=\"64\" fill=\"#15803d\" font-size=\"11\" font-family=\"sans-serif\">Label</text><text x=\"218\" y=\"64\" fill=\"#15803d\" font-size=\"11\" font-family=\"sans-serif\">Values</text><text x=\"328\" y=\"64\" fill=\"#15803d\" font-size=\"11\" font-family=\"sans-serif\">Measure</text><text x=\"28\" y=\"94\" font-size=\"10\" font-family=\"sans-serif\">gender</text><text x=\"118\" y=\"94\" font-size=\"10\" font-family=\"sans-serif\">Sex</text><text x=\"218\" y=\"94\" font-size=\"10\" font-family=\"sans-serif\">1=M 2=F</text><text x=\"328\" y=\"94\" font-size=\"10\" font-family=\"sans-serif\">Nominal</text><text x=\"28\" y=\"124\" font-size=\"10\" font-family=\"sans-serif\">age</text><text x=\"118\" y=\"124\" font-size=\"10\" font-family=\"sans-serif\">Age(yrs)</text><text x=\"218\" y=\"124\" font-size=\"10\" font-family=\"sans-serif\">None</text><text x=\"328\" y=\"124\" font-size=\"10\" font-family=\"sans-serif\">Scale</text><text x=\"28\" y=\"154\" font-size=\"10\" font-family=\"sans-serif\">satis</text><text x=\"118\" y=\"154\" font-size=\"10\" font-family=\"sans-serif\">Rating</text><text x=\"218\" y=\"154\" font-size=\"10\" font-family=\"sans-serif\">1..5</text><text x=\"328\" y=\"154\" font-size=\"10\" font-family=\"sans-serif\">Ordinal</text><text x=\"28\" y=\"184\" fill=\"#b45309\" font-size=\"10\" font-family=\"sans-serif\">Missing: 99</text><text x=\"20\" y=\"222\" fill=\"#0f766e\" font-size=\"11\" font-family=\"sans-serif\">Then: Frequencies to check quality</text><text x=\"20\" y=\"242\" fill=\"#b45309\" font-size=\"10\" font-family=\"sans-serif\">Watch for impossible values &amp; missing data</text></svg>",
+      "whiteboardCaption": "A sample SPSS Variable View showing Name, Label, Values, Measure and a missing-value code.",
+      "example": "A student at the University of Lagos surveys 200 classmates on study habits. In Variable View she names a column \"hours\", labels it \"Daily study hours\", sets Measure to Scale, and codes faculty as 1=Science, 2=Arts, 3=Engineering. She marks 99 as missing for skipped answers. After importing from Excel, running Frequencies reveals one entry of \"48\" study hours per day, an obvious typo she corrects to 4.8 before analysis.",
+      "quiz": [
+        {
+          "q": "Which measurement level best fits a variable coded 1=Strongly Disagree to 5=Strongly Agree?",
+          "options": [
+            "Scale",
+            "Nominal",
+            "Ordinal",
+            "String"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "In Variable View, what is the purpose of the 'Values' field?",
+          "options": [
+            "To assign labels to category codes like 1=Male, 2=Female",
+            "To set the column width",
+            "To rename the file",
+            "To delete missing cases"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What is the best first step to check data quality after entering data?",
+          "options": [
+            "Delete all outliers immediately",
+            "Run Frequencies to spot impossible or missing values",
+            "Change every variable to String",
+            "Save and close SPSS"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why should you define a missing value code such as 99?",
+          "options": [
+            "To make the dataset larger",
+            "So SPSS excludes non-responses from calculations",
+            "To speed up importing",
+            "To rename variables automatically"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Variable View vs Data View",
+          "back": "Variable View defines each column's properties; Data View holds the actual rows of data."
+        },
+        {
+          "front": "Measurement levels in SPSS",
+          "back": "Scale (numeric quantities), Ordinal (ranked categories), Nominal (unordered categories)."
+        },
+        {
+          "front": "Value labels",
+          "back": "Text meanings assigned to numeric codes, e.g. 1=Male, 2=Female, shown in output."
+        },
+        {
+          "front": "Missing value code",
+          "back": "A code (e.g. 99) telling SPSS to exclude non-responses from analysis."
+        }
+      ],
+      "reflection": "Think about a dataset you might collect for your own research—which variables would be nominal, ordinal, or scale, and where might missing data occur?",
+      "summary": "Setting up variables correctly—names, types, labels, values, missing codes, and measurement levels—and checking with Frequencies gives you a clean, analysis-ready dataset in SPSS.",
+      "discussionPrompt": "Help me design the Variable View setup for a student survey on campus internet usage, including value codes and measurement levels for each question.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-transforming-and-managing-data",
+      "order": 3,
+      "title": "Transforming and Managing Data",
+      "objectives": [
+        "Recode variables and compute new variables.",
+        "Use Select Cases and Split File to focus your analysis.",
+        "Sort and organise data for efficient analysis."
+      ],
+      "text": "Raw data rarely arrives ready to analyse. SPSS gives you four powerful tools to reshape it.\n\nRecode turns values into new categories. Suppose you have Age in years and want three groups. Go to Transform > Recode into Different Variables. Choose Age, name the new variable AgeGroup, then set: 18-25 = 1, 26-40 = 2, 41+ = 3. Always recode into a DIFFERENT variable so your original data stays safe.\n\nCompute creates a new variable from a formula. Transform > Compute Variable. To make a total score, type TotalScore in the target box and Q1 + Q2 + Q3 in the expression box. Useful functions include MEAN(), SUM(), and SQRT().\n\nSelect Cases (Data > Select Cases) filters rows. Choose \"If condition is satisfied\" and type Gender = 1 to analyse only one group. Unselected cases are filtered, not deleted.\n\nSplit File (Data > Split File) runs every analysis separately for each group. Pick \"Compare groups\", move Region into the box, and every table now appears region by region.\n\nSort Cases (Data > Sort Cases) arranges rows, for example by Score descending, so you can spot highest and lowest values quickly.\n\nRemember to turn Select Cases and Split File OFF when finished, or later results will be wrong.",
+      "voiceScript": "Let me walk you through reshaping your data in SPSS. Think of your dataset as clay you can mould to fit your research question. First there's Recode, which groups values, like turning exact ages into neat categories such as young, middle, and older. Always recode into a new variable so your original stays safe. Then Compute builds fresh variables from formulas, perhaps adding three question scores into one total. Select Cases lets you focus on just part of your data, say only female respondents, without deleting anyone. Split File runs your analysis separately for each group, region by region. And Sort Cases lines up your rows neatly. One golden rule: switch off Select Cases and Split File when you're done, or your next results will surprise you.",
+      "keyPoints": [
+        "Recode groups values into new categories; always recode into a DIFFERENT variable.",
+        "Compute builds new variables from formulas like Q1+Q2+Q3 or MEAN().",
+        "Select Cases filters rows; Split File analyses groups separately.",
+        "Turn Select Cases and Split File OFF when finished to avoid wrong results."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" fill=\"#334155\" font-size=\"16\" font-family=\"sans-serif\">Reshaping Data in SPSS</text><rect x=\"20\" y=\"50\" width=\"110\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"32\" y=\"72\" fill=\"#0f766e\" font-size=\"13\" font-family=\"sans-serif\">Recode</text><text x=\"32\" y=\"90\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">age to groups</text><rect x=\"150\" y=\"50\" width=\"110\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"162\" y=\"72\" fill=\"#15803d\" font-size=\"13\" font-family=\"sans-serif\">Compute</text><text x=\"162\" y=\"90\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">Q1+Q2+Q3</text><rect x=\"280\" y=\"50\" width=\"110\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"292\" y=\"72\" fill=\"#b45309\" font-size=\"13\" font-family=\"sans-serif\">Select Cases</text><text x=\"292\" y=\"90\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">Gender = 1</text><rect x=\"20\" y=\"120\" width=\"110\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"32\" y=\"142\" fill=\"#334155\" font-size=\"13\" font-family=\"sans-serif\">Split File</text><text x=\"32\" y=\"160\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">by Region</text><rect x=\"150\" y=\"120\" width=\"110\" height=\"50\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"162\" y=\"142\" fill=\"#0f766e\" font-size=\"13\" font-family=\"sans-serif\">Sort Cases</text><text x=\"162\" y=\"160\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">by Score</text><line x1=\"20\" y1=\"195\" x2=\"460\" y2=\"195\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"20\" y=\"220\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">Tip: Turn Select Cases and Split File OFF</text><text x=\"20\" y=\"238\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">when finished!</text></svg>",
+      "whiteboardCaption": "A map of five SPSS data-transformation tools with a reminder to switch filters off when done.",
+      "example": "A public health student in Nairobi surveys 300 people on clinic satisfaction. She uses Compute to add five rating questions into a TotalSatisfaction score, Recode to group respondents into age bands, then Split File by county so her tables report satisfaction for Nairobi, Kisumu, and Mombasa separately.",
+      "quiz": [
+        {
+          "q": "Why should you recode into a DIFFERENT variable rather than the same one?",
+          "options": [
+            "It runs faster",
+            "To keep the original data safe and unchanged",
+            "SPSS requires it",
+            "To reduce file size"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which tool runs every analysis separately for each group, such as by region?",
+          "options": [
+            "Recode",
+            "Compute",
+            "Split File",
+            "Sort Cases"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "After using Select Cases to filter one group, what should you do when finished?",
+          "options": [
+            "Delete the dataset",
+            "Turn Select Cases off",
+            "Save as a new file only",
+            "Recode all variables"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Recode into Different Variables",
+          "back": "Transform tool that maps values into new categories while preserving the original variable."
+        },
+        {
+          "front": "Compute Variable",
+          "back": "Creates a new variable from a formula, e.g. TotalScore = Q1 + Q2 + Q3."
+        },
+        {
+          "front": "Select Cases",
+          "back": "Filters rows so analysis includes only cases meeting a condition; cases are filtered, not deleted."
+        },
+        {
+          "front": "Split File",
+          "back": "Runs each analysis separately for every group of a chosen variable."
+        }
+      ],
+      "reflection": "In your own research project, which variable would benefit most from being recoded into groups, and why?",
+      "summary": "SPSS transformation tools—Recode, Compute, Select Cases, Split File, and Sort—let you reshape data to answer specific questions, as long as you protect original variables and switch filters off afterward.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you design a Compute formula and Recode scheme for a survey with a 1-5 Likert scale across ten questions.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-descriptive-statistics-and-visualisation",
+      "order": 4,
+      "title": "Descriptive Statistics and Visualisation",
+      "objectives": [
+        "Produce frequencies, measures of central tendency, and dispersion in SPSS.",
+        "Create bar charts, histograms, and cross-tabulations.",
+        "Interpret descriptive output for a research report."
+      ],
+      "text": "Descriptive statistics summarise your data so patterns become visible. In SPSS, start with the top menu.\n\nFor a categorical variable (like Gender), use Analyze > Descriptive Statistics > Frequencies. Move the variable into the box and click OK. The output shows counts and percentages.\n\nFor a scale variable (like Age), use Analyze > Descriptive Statistics > Descriptives, then click Options to tick Mean, Median, Std. Deviation, Minimum and Maximum. Central tendency describes the 'typical' value: the mean (average), median (middle value), and mode (most frequent). Dispersion shows spread: the range (max minus min) and standard deviation (average distance from the mean).\n\nWorked example: If exam scores are 40, 55, 60, 60, 85, the mean = 300/5 = 60, median = 60, mode = 60, range = 45.\n\nTo visualise: Graphs > Chart Builder. Choose a Bar chart for categories, a Histogram for scale data to see distribution shape, and a Cross-tabulation (Analyze > Descriptive Statistics > Crosstabs) to compare two categorical variables, e.g. Gender by Pass/Fail.\n\nWhen reporting, write clearly: \"Participants' mean age was 24.3 years (SD = 3.1, range 18-35).\" Always pair a number with its measure of spread.",
+      "voiceScript": "Let me walk you through describing your data in SPSS. Think of descriptive statistics as painting a quick portrait of your dataset. For a category like gender, you run Frequencies to see counts and percentages. For a number like age, you run Descriptives and ask for the mean, median and standard deviation. Remember, the mean is the average, the median is the middle value, and the standard deviation tells you how spread out the numbers are. Then bring it to life visually: bar charts for categories, histograms to see the shape of a distribution, and crosstabs to compare two categories at once. When you write your report, always pair each average with its spread. That's how you tell an honest, clear data story.",
+      "keyPoints": [
+        "Frequencies summarise categories; Descriptives give mean, median and standard deviation for scale data.",
+        "Central tendency = typical value; dispersion (range, SD) = spread.",
+        "Use bar charts for categories, histograms for distribution shape, crosstabs to compare two categories.",
+        "In reports, always pair an average with its measure of spread, e.g. mean (SD)."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='white'/><text x='20' y='28' fill='#0f766e' font-size='16' font-family='sans-serif'>Descriptive Statistics</text><line x1='60' y1='210' x2='230' y2='210' stroke='#334155' stroke-width='2'/><line x1='60' y1='60' x2='60' y2='210' stroke='#334155' stroke-width='2'/><rect x='75' y='150' width='25' height='60' fill='#15803d'/><rect x='110' y='110' width='25' height='100' fill='#15803d'/><rect x='145' y='90' width='25' height='120' fill='#15803d'/><rect x='180' y='130' width='25' height='80' fill='#15803d'/><text x='95' y='230' fill='#334155' font-size='11' font-family='sans-serif'>Histogram</text><line x1='300' y1='150' x2='450' y2='150' stroke='#334155' stroke-width='2'/><circle cx='375' cy='110' r='6' fill='#b45309'/><line x1='375' y1='110' x2='375' y2='150' stroke='#b45309' stroke-width='2'/><text x='340' y='100' fill='#b45309' font-size='11' font-family='sans-serif'>Mean</text><text x='305' y='175' fill='#334155' font-size='11' font-family='sans-serif'>Central tendency</text><text x='305' y='205' fill='#0f766e' font-size='12' font-family='sans-serif'>Spread = SD, Range</text></svg>",
+      "whiteboardCaption": "A histogram showing distribution shape alongside markers for central tendency and spread.",
+      "example": "A student surveying 120 classmates at the University of Lagos uses Frequencies to report that 58% are female, Descriptives to state mean study time is 3.2 hours/day (SD = 1.1), and Crosstabs to compare study hours against pass/fail rates for their final project.",
+      "quiz": [
+        {
+          "q": "Which SPSS menu path produces counts and percentages for a categorical variable?",
+          "options": [
+            "Graphs > Chart Builder",
+            "Analyze > Descriptive Statistics > Frequencies",
+            "Transform > Compute Variable",
+            "File > Export"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the standard deviation describe?",
+          "options": [
+            "The most frequent value",
+            "The middle value",
+            "The spread of values around the mean",
+            "The total number of cases"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which chart best shows the distribution shape of a scale variable like age?",
+          "options": [
+            "Pie chart",
+            "Histogram",
+            "Crosstab table",
+            "Line of best fit"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Mean vs Median",
+          "back": "Mean is the arithmetic average; median is the middle value when data are ordered."
+        },
+        {
+          "front": "Standard deviation",
+          "back": "A measure of dispersion showing the average distance of values from the mean."
+        },
+        {
+          "front": "Crosstabulation",
+          "back": "A table comparing two categorical variables, e.g. gender by pass/fail."
+        },
+        {
+          "front": "Reporting format",
+          "back": "Pair each average with its spread, e.g. 'mean age 24.3 years (SD = 3.1)'."
+        }
+      ],
+      "reflection": "Which variable in your own research would be best summarised with a histogram, and what shape do you expect its distribution to take?",
+      "summary": "Descriptive statistics and visualisations in SPSS let you summarise categories, central tendency and spread, then present them clearly with bar charts, histograms and crosstabs for your report.",
+      "discussionPrompt": "Ask the tutor: How do I decide whether to report the mean or the median when my data are skewed or contain outliers?",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-inferential-statistics-comparing-and-relating-variables",
+      "order": 5,
+      "title": "Inferential Statistics: Comparing and Relating Variables",
+      "objectives": [
+        "Choose the correct inferential test for a research question",
+        "Run t-tests, chi-square, correlation, and one-way ANOVA in SPSS",
+        "Interpret significance values (p) and effect sizes"
+      ],
+      "text": "Inferential statistics let you draw conclusions about a population from a sample. The trick is matching the test to your variables.\n\nUse this decision guide:\n- Comparing the mean of two independent groups (e.g., male vs female exam scores)? Independent-samples t-test.\n- Comparing means across three or more groups (e.g., three faculties)? One-way ANOVA.\n- Testing a relationship between two categorical variables (e.g., gender vs pass/fail)? Chi-square.\n- Measuring the strength of a relationship between two continuous variables (e.g., study hours vs GPA)? Pearson correlation.\n\nWorked example (t-test): In SPSS go to Analyze > Compare Means > Independent-Samples T Test. Put 'ExamScore' in Test Variable, 'Gender' in Grouping Variable, define groups (1=male, 2=female), click OK.\n\nRead the output: the 'Sig. (2-tailed)' value is your p-value. If p < 0.05, the difference is statistically significant. Always report an effect size too, because significance does not mean 'big'. For t-tests use Cohen's d (0.2 small, 0.5 medium, 0.8 large); for correlation, r itself is the effect size; for chi-square use Cramer's V; for ANOVA use eta-squared. Report like this: t(98)=2.34, p=.021, d=0.47.",
+      "voiceScript": "Welcome back. Today we make sense of inferential statistics, which is simply using a sample to say something about a wider population. The most important skill here isn't clicking buttons, it's choosing the right test. Ask yourself what your variables look like. If you're comparing the average of two groups, reach for an independent-samples t-test. Three or more groups? That's a one-way ANOVA. If both variables are categories, like gender and pass or fail, use chi-square. And if you're relating two continuous measures, like study hours and grades, use a Pearson correlation. When you read the output, find the significance value, your p-value. Below zero point zero five means the result is unlikely to be chance. But please, always report an effect size too, because significant doesn't always mean large or important.",
+      "keyPoints": [
+        "Match the test to your variable types before touching SPSS",
+        "t-test = 2 groups, ANOVA = 3+ groups, Pearson = 2 continuous, Chi-square = 2 categorical",
+        "p < 0.05 means statistically significant, not necessarily important",
+        "Always report an effect size (Cohen's d, r, eta-squared, Cramer's V)"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='120' y='24' fill='#0f766e' font-size='16' font-family='sans-serif'>Which test do I use?</text><rect x='170' y='36' width='140' height='30' rx='6' fill='none' stroke='#334155' stroke-width='2'/><text x='182' y='56' fill='#334155' font-size='12' font-family='sans-serif'>Variable types?</text><line x1='240' y1='66' x2='120' y2='100' stroke='#334155' stroke-width='2'/><line x1='240' y1='66' x2='360' y2='100' stroke='#334155' stroke-width='2'/><text x='60' y='95' fill='#b45309' font-size='11' font-family='sans-serif'>Compare means</text><text x='300' y='95' fill='#b45309' font-size='11' font-family='sans-serif'>Relationship</text><rect x='30' y='108' width='110' height='30' rx='5' fill='none' stroke='#15803d' stroke-width='2'/><text x='40' y='128' fill='#15803d' font-size='11' font-family='sans-serif'>2 groups: t-test</text><rect x='30' y='150' width='110' height='30' rx='5' fill='none' stroke='#15803d' stroke-width='2'/><text x='40' y='170' fill='#15803d' font-size='11' font-family='sans-serif'>3+ groups: ANOVA</text><rect x='300' y='108' width='150' height='30' rx='5' fill='none' stroke='#15803d' stroke-width='2'/><text x='308' y='128' fill='#15803d' font-size='11' font-family='sans-serif'>2 continuous: Pearson r</text><rect x='300' y='150' width='150' height='30' rx='5' fill='none' stroke='#15803d' stroke-width='2'/><text x='308' y='170' fill='#15803d' font-size='11' font-family='sans-serif'>2 categorical: Chi-square</text><line x1='40' y1='215' x2='440' y2='215' stroke='#334155' stroke-width='1'/><text x='40' y='235' fill='#0f766e' font-size='13' font-family='sans-serif'>p &lt; .05 = significant  |  report effect size</text></svg>",
+      "whiteboardCaption": "A decision tree matching research questions to the correct inferential test, with a reminder about p-values and effect sizes.",
+      "example": "A Nigerian researcher wants to know if students who use the library daily score higher on exams than those who don't. Two groups, one continuous outcome: she runs an independent-samples t-test in SPSS, finds p = .03 and Cohen's d = 0.5, and reports a statistically significant, medium-sized difference.",
+      "quiz": [
+        {
+          "q": "You want to compare mean income across four different regions. Which test?",
+          "options": [
+            "Independent-samples t-test",
+            "One-way ANOVA",
+            "Pearson correlation",
+            "Chi-square"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A p-value of .12 in your t-test means:",
+          "options": [
+            "A large effect size",
+            "The result is statistically significant",
+            "The result is not statistically significant at .05",
+            "The test was run incorrectly"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which test examines the relationship between two categorical variables like gender and voting choice?",
+          "options": [
+            "Chi-square",
+            "Pearson correlation",
+            "One-way ANOVA",
+            "Paired t-test"
+          ],
+          "answer": 0
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "When do you use an independent-samples t-test?",
+          "back": "To compare the means of one continuous variable between two independent groups."
+        },
+        {
+          "front": "What is the p-value threshold for significance?",
+          "back": "Commonly p < 0.05; below it, the result is considered statistically significant."
+        },
+        {
+          "front": "Why report an effect size?",
+          "back": "Significance shows an effect likely exists; effect size shows how large/meaningful it is."
+        },
+        {
+          "front": "Which test relates two continuous variables?",
+          "back": "Pearson correlation (r), where r itself is the effect size."
+        }
+      ],
+      "reflection": "Think about your own research question: what are your variables, and which test does the decision guide point you toward?",
+      "summary": "Choosing the right inferential test depends on your variable types; run it in SPSS, then interpret both the p-value for significance and an effect size for magnitude.",
+      "discussionPrompt": "Ask the tutor: 'My study compares anxiety scores before and after an intervention in the same students. Which test should I use and why isn't it an independent-samples t-test?'",
+      "sizeKB": 5
+    },
+    {
+      "id": "s6-interpreting-and-reporting-results",
+      "order": 6,
+      "title": "Interpreting and Reporting Results",
+      "objectives": [
+        "Read and interpret key SPSS output tables.",
+        "Report statistical findings in APA style.",
+        "Avoid common errors in analysis and interpretation."
+      ],
+      "text": "SPSS gives you tables full of numbers; your job is to translate them into clear, honest sentences. Focus on three things in any output: the test statistic (like t, F, or r), the significance value (p, labelled \"Sig.\"), and the effect size or means that show how big the difference is.\n\nWorked example: You run an independent-samples t-test comparing exam scores for two study methods. SPSS shows t = 2.45, df = 48, Sig. (2-tailed) = .018, with Group A mean = 72 (SD = 8) and Group B mean = 66 (SD = 9). Since p = .018 is below .05, the difference is statistically significant.\n\nAPA report: \"Students using flashcards (M = 72, SD = 8) scored significantly higher than those using rereading (M = 66, SD = 9), t(48) = 2.45, p = .018.\" Note the formatting: italicize statistics, put df in brackets, report p to three decimals, and drop the leading zero before the decimal.\n\nAvoid common errors: never say \"proves\" (say \"suggests\" or \"indicates\"); don't confuse statistical significance with practical importance; report exact p-values, not just \"p < .05\"; and always state the direction of the effect. Report results neutrally, whether or not they support your hypothesis.",
+      "voiceScript": "Welcome to our final session. By now you can run tests in SPSS, but numbers alone don't tell a story—you do. When you look at any output table, hunt for three things: the test statistic, the significance value labelled Sig., and the means or effect size that show how large the difference really is. Imagine a t-test comparing two study methods, giving t equals 2.45 and a Sig. of .018. Because that's below .05, it's significant, and in APA style you'd write t, in brackets 48, equals 2.45, p equals .018, and always name which group did better. Remember, we never say results prove anything—they suggest or indicate. Report honestly, even when the findings surprise you. Congratulations on finishing the course!",
+      "keyPoints": [
+        "In any output, locate the test statistic, the Sig. (p) value, and the means/effect size.",
+        "APA style: italicize statistics, bracket df, report p to three decimals, drop the leading zero.",
+        "Results \"suggest\" or \"indicate\"—they never \"prove\"; state the direction of the effect.",
+        "Distinguish statistical significance from practical importance and report findings honestly."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"15\" fill=\"#334155\">SPSS Output to APA Sentence</text><rect x=\"20\" y=\"45\" width=\"180\" height=\"110\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"20\" y1=\"70\" x2=\"200\" y2=\"70\" stroke=\"#334155\"/><text x=\"30\" y=\"63\" font-size=\"11\" fill=\"#334155\">Output Table</text><text x=\"30\" y=\"90\" font-size=\"11\" fill=\"#b45309\">t = 2.45</text><text x=\"30\" y=\"110\" font-size=\"11\" fill=\"#b45309\">df = 48</text><text x=\"30\" y=\"130\" font-size=\"11\" fill=\"#15803d\">Sig. = .018</text><text x=\"30\" y=\"150\" font-size=\"11\" fill=\"#334155\">M=72 vs 66</text><path d=\"M210 100 L270 100\" stroke=\"#0f766e\" stroke-width=\"2\"/><path d=\"M260 92 L270 100 L260 108\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><rect x=\"278\" y=\"55\" width=\"185\" height=\"95\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"286\" y=\"75\" font-size=\"10\" fill=\"#0f766e\">APA report:</text><text x=\"286\" y=\"95\" font-size=\"9\" fill=\"#334155\">Group A scored higher,</text><text x=\"286\" y=\"112\" font-size=\"9\" fill=\"#334155\">t(48) = 2.45,</text><text x=\"286\" y=\"129\" font-size=\"9\" fill=\"#334155\">p = .018.</text><text x=\"20\" y=\"185\" font-size=\"11\" fill=\"#b45309\">p &lt; .05 = significant</text><text x=\"20\" y=\"210\" font-size=\"11\" fill=\"#15803d\">Say \"suggests\", not \"proves\"</text><text x=\"20\" y=\"235\" font-size=\"11\" fill=\"#334155\">Drop leading zero: .018</text></svg>",
+      "whiteboardCaption": "An SPSS output table is translated into a correctly formatted APA-style sentence.",
+      "example": "A University of Ibadan student surveys whether morning or evening study sessions improve quiz scores, runs a t-test in SPSS, and reports in her project: \"Evening studiers (M = 68, SD = 7) scored significantly higher than morning studiers (M = 61, SD = 8), t(58) = 3.10, p = .003,\" instead of just pasting the raw SPSS table.",
+      "quiz": [
+        {
+          "q": "In SPSS output, which value tells you whether a result is statistically significant?",
+          "options": [
+            "The df column",
+            "The \"Sig.\" (p) value",
+            "The variable name",
+            "The row count"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is correctly formatted APA reporting?",
+          "options": [
+            "t(48)=2.45, p=0.018",
+            "t(48) = 2.45, p = .018",
+            "T48 = 2.45, sig 0.018",
+            "t = 2.45 proves the effect"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which phrase should you AVOID in a results section?",
+          "options": [
+            "\"suggests that\"",
+            "\"indicates that\"",
+            "\"proves that\"",
+            "\"was associated with\""
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What does the \"Sig.\" column in SPSS represent?",
+          "back": "The p-value—the probability of the result if there were no real effect; below .05 is typically significant."
+        },
+        {
+          "front": "How is df reported in APA style?",
+          "back": "In brackets after the statistic, e.g., t(48) = 2.45."
+        },
+        {
+          "front": "Why drop the leading zero in p = .018?",
+          "back": "APA style omits the zero before decimals for numbers that can't exceed 1, like p and r."
+        },
+        {
+          "front": "Statistical vs practical significance?",
+          "back": "A significant p-value shows an effect likely exists; effect size shows whether it's large enough to matter."
+        }
+      ],
+      "reflection": "Think of a study you might conduct: how would you phrase your main finding in one honest APA sentence, whether or not it supported your hypothesis?",
+      "summary": "Interpreting SPSS means finding the test statistic, p-value, and effect size, then writing them as clear APA-formatted sentences while avoiding overstatement and reporting results honestly.",
+      "discussionPrompt": "Ask the EFIKO tutor to give you three sample SPSS output tables (t-test, correlation, ANOVA) and check the APA sentences you write for each.",
+      "sizeKB": 4
+    }
+  ],
+  "spec": {
+    "topic": "SPSS for Data Analysis",
+    "audience": "University students and researchers",
+    "hours": 5,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783191990194,
+  "updatedAt": 1783191990194
+}

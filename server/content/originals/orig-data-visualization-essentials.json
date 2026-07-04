@@ -1,0 +1,588 @@
+{
+  "courseId": "orig-data-visualization-essentials",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Data Visualization Essentials",
+  "subtitle": "Turn Data Into Clear, Honest, and Compelling Visual Stories",
+  "category": "Data & Analytics",
+  "level": "Beginner",
+  "audience": "University students and young professionals across all fields who work with data and want to communicate insights clearly",
+  "estimatedHours": 4,
+  "description": "This beginner-friendly, mobile-ready course teaches you how to transform raw data into clear and trustworthy visuals. You will learn the core principles behind effective charts, how to choose the right chart for your data, how to design for clarity and accessibility, and how to avoid misleading or cluttered visuals. Through practical, low-bandwidth exercises you can complete on a phone, you will build the confidence to create honest charts for reports, presentations, and social media. No prior design or statistics background is required.",
+  "outcomes": [
+    "Explain the purpose of data visualization and how humans perceive visual information.",
+    "Choose the appropriate chart type for comparison, trend, distribution, and part-to-whole data.",
+    "Apply core design principles such as decluttering, contrast, and clear labelling to improve a chart.",
+    "Identify and correct common misleading visualization practices.",
+    "Create an accessible, well-labelled chart that communicates a single clear message."
+  ],
+  "competencies": [
+    "Selecting appropriate chart types for different data and communication goals",
+    "Applying clarity and accessibility design principles to visualizations",
+    "Detecting and correcting misleading or unethical charts",
+    "Creating and sharing a clear, honest chart with a single key message"
+  ],
+  "nextCourse": "Data Analysis with Spreadsheets",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What is the main goal of data visualization?",
+        "options": [
+          "To make data look decorative",
+          "To communicate information clearly and support understanding",
+          "To hide complex numbers",
+          "To replace all written reports"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which chart is generally best for showing a trend over time?",
+        "options": [
+          "Pie chart",
+          "Line chart",
+          "Table",
+          "Word cloud"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these can make a chart misleading?",
+        "options": [
+          "Clear axis labels",
+          "A truncated (cut-off) y-axis that exaggerates differences",
+          "A descriptive title",
+          "Consistent colours"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Before creating a chart, what should you define first?",
+        "options": [
+          "The colour palette",
+          "Your audience and the message you want to convey",
+          "The software brand",
+          "The file format"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which chart type best shows the relationship between two numerical variables?",
+        "options": [
+          "Pie chart",
+          "Scatter plot",
+          "Bar chart of categories",
+          "Single number display"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "'Chartjunk' refers to:",
+        "options": [
+          "Useful gridlines that aid reading",
+          "Unnecessary decorative elements that distract from the data",
+          "Accurate data labels",
+          "The chart's main title"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A pie chart is usually a poor choice when:",
+        "options": [
+          "You have just two clear categories",
+          "You must compare many similar-sized slices precisely",
+          "You want to show a simple part-to-whole split",
+          "You have one dominant category"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which practice supports honest, accessible visualization?",
+        "options": [
+          "Starting bar-chart axes at zero and using clear labels",
+          "Using rainbow colours with no legend",
+          "Removing all titles",
+          "Stretching the scale to exaggerate change"
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-why-visualize-data",
+      "order": 1,
+      "title": "Why Visualize Data?",
+      "objectives": [
+        "Explain what data visualization is and why it matters for decision-making.",
+        "Describe how human perception makes visuals faster to understand than tables.",
+        "Identify the audience and message before building any chart."
+      ],
+      "text": "Data visualization is the practice of turning numbers into pictures - charts, maps, or graphs - so people can see patterns quickly. A table of 200 rows hides its story; a single line chart reveals a rising trend in one glance.\n\nWhy does this work? Our brains process visuals far faster than text. This is called pre-attentive processing: certain features like length, position, and colour are noticed almost instantly, before conscious thought. When you draw two bars, the taller one \"pops out\" - you don't have to compare digits one by one.\n\nBut a chart is only useful if it answers a question. So before opening any software, do three steps:\n1. Define your MESSAGE - the one insight you want understood (e.g. \"Sales grew 30% after we lowered prices\").\n2. Identify your AUDIENCE - a busy manager needs a headline; a fellow analyst may want detail.\n3. Pick the comparison that proves your message (over time? between groups?).\n\nWorked example: You have monthly enrolment data for your student club. Message: \"Membership doubled this year.\" Audience: the executive committee. The right visual is a simple line chart showing months rising - not a crowded table. Message and audience first, chart second.",
+      "voiceScript": "Welcome to Data Visualization Essentials. Let me start with a simple truth: numbers in a table can hide their story, but the right picture reveals it in a heartbeat. That's because our brains read visuals incredibly fast - a taller bar or a rising line just pops out at us before we even think. But here's the part many people skip: a chart is only powerful when it has a clear job to do. So before you touch any software, ask yourself two questions. What is the one message I want people to understand? And who exactly am I talking to? A busy manager wants the headline; a fellow analyst wants the detail. Get your message and audience right first, and the chart almost designs itself. Let's begin.",
+      "keyPoints": [
+        "Data visualization turns numbers into pictures so patterns are seen fast.",
+        "Our brains process visuals faster than tables via pre-attentive perception.",
+        "Define your MESSAGE and AUDIENCE before choosing any chart.",
+        "The right comparison (over time, between groups) proves your point."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' fill='#334155' font-size='16' font-family='sans-serif'>Table vs Chart</text><rect x='20' y='50' width='120' height='150' fill='none' stroke='#334155' stroke-width='2'/><line x1='20' y1='80' x2='140' y2='80' stroke='#334155'/><line x1='20' y1='110' x2='140' y2='110' stroke='#334155'/><line x1='20' y1='140' x2='140' y2='140' stroke='#334155'/><line x1='20' y1='170' x2='140' y2='170' stroke='#334155'/><line x1='80' y1='50' x2='80' y2='200' stroke='#334155'/><text x='30' y='220' fill='#b45309' font-size='12' font-family='sans-serif'>slow to read</text><path d='M220 190 L260 160 L300 130 L340 90 L380 60' fill='none' stroke='#0f766e' stroke-width='3'/><circle cx='260' cy='160' r='4' fill='#15803d'/><circle cx='300' cy='130' r='4' fill='#15803d'/><circle cx='340' cy='90' r='4' fill='#15803d'/><circle cx='380' cy='60' r='4' fill='#15803d'/><line x1='210' y1='50' x2='210' y2='200' stroke='#334155' stroke-width='2'/><line x1='210' y1='200' x2='400' y2='200' stroke='#334155' stroke-width='2'/><text x='250' y='225' fill='#15803d' font-size='12' font-family='sans-serif'>seen instantly</text></svg>",
+      "whiteboardCaption": "A dense data table takes effort to read, while the same data as a rising line chart shows the trend instantly.",
+      "example": "A university health club tracks monthly member sign-ups in a spreadsheet. Presenting 12 rows of numbers to the executive committee loses everyone; a single line chart climbing from 40 to 85 members instantly proves the message \"our membership doubled this year\" and wins support for more funding.",
+      "quiz": [
+        {
+          "q": "What is the main reason a chart can be understood faster than a table?",
+          "options": [
+            "Charts use more colours",
+            "Our brains process visual features like length and position pre-attentively",
+            "Tables are always wrong",
+            "Charts contain less data"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "According to the session, what should you do FIRST before building a chart?",
+          "options": [
+            "Pick the prettiest chart type",
+            "Choose software",
+            "Define your message and audience",
+            "Add as many colours as possible"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "You want to show a busy manager that sales grew after a price cut. The best approach is to:",
+          "options": [
+            "Show a detailed 200-row table",
+            "Show a simple chart with the headline insight",
+            "List every transaction",
+            "Avoid charts entirely"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is data visualization?",
+          "back": "The practice of turning numbers into pictures (charts, maps, graphs) so patterns can be seen quickly."
+        },
+        {
+          "front": "Pre-attentive processing",
+          "back": "The brain's ability to instantly notice visual features like length, position, and colour before conscious thought."
+        },
+        {
+          "front": "Two things to define before charting",
+          "back": "Your MESSAGE (the key insight) and your AUDIENCE (who will read it)."
+        },
+        {
+          "front": "Why not just use a table?",
+          "back": "Tables hide trends; a well-chosen chart reveals the pattern at a glance."
+        }
+      ],
+      "reflection": "Think of a recent time you struggled to understand data in a table. What single message would a chart have made instantly clear?",
+      "summary": "Data visualization turns numbers into pictures our brains grasp instantly; always define your message and audience before choosing a chart.",
+      "discussionPrompt": "Give the EFIKO tutor a dataset you work with and ask: what is the single clearest message I could communicate, and who is the ideal audience for it?",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-understanding-your-data",
+      "order": 2,
+      "title": "Understanding Your Data",
+      "objectives": [
+        "Distinguish between categorical, numerical, and time-based data.",
+        "Recognise how data type determines suitable chart options.",
+        "Frame a single clear question your visualization should answer."
+      ],
+      "text": "Before picking a chart, understand what your data actually is. Data usually falls into three families. Categorical data sorts items into groups or labels, like faculty (Science, Arts, Law) or payment method (cash, card, mobile money). Numerical data measures quantities you can count or scale, like age, income, or number of students. Time-based data tracks values across dates or periods, like monthly sales or daily rainfall.\n\nWhy does this matter? The data type decides which chart works. Categorical comparisons suit bar charts. Numerical distributions suit histograms; relationships between two numerical variables suit scatter plots. Time-based trends suit line charts. Parts of a whole can use a bar or, sparingly, a pie chart.\n\nHere is a quick how-to. Take any dataset and, for each column, label it C (categorical), N (numerical), or T (time). Example: a column \"Region\" is C, \"Sales (Naira)\" is N, \"Month\" is T.\n\nFinally, frame one clear question your chart must answer. Not \"show sales\" but \"Which region had the highest sales in 2023?\" A sharp question tells you which columns to use and which chart fits. One chart, one question. This discipline keeps your visuals focused and easy to read.",
+      "voiceScript": "Before you choose any chart, pause and ask yourself: what kind of data am I looking at? Most data falls into three families. Categorical data puts things into groups, like faculty or payment method. Numerical data measures amounts, like age or income. And time-based data follows something across dates, like monthly sales. This matters because the type quietly decides your chart. Categories love bar charts, trends over time love line charts, and relationships between two numbers love scatter plots. My favourite trick is to label each column as category, number, or time. Then frame one sharp question your chart must answer. One chart, one question keeps everything clear.",
+      "keyPoints": [
+        "Data comes in three families: categorical (groups), numerical (amounts), and time-based (dates).",
+        "The data type points you to the right chart: bar, histogram/scatter, or line.",
+        "Label each column as C, N, or T before charting.",
+        "Frame one sharp question so your chart stays focused: one chart, one question."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-size=\"16\" fill=\"#334155\">Data Type Decides Your Chart</text><rect x=\"20\" y=\"50\" width=\"130\" height=\"60\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"32\" y=\"78\" font-size=\"13\" fill=\"#0f766e\">Categorical</text><text x=\"32\" y=\"98\" font-size=\"11\" fill=\"#334155\">groups/labels</text><rect x=\"175\" y=\"50\" width=\"130\" height=\"60\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"187\" y=\"78\" font-size=\"13\" fill=\"#15803d\">Numerical</text><text x=\"187\" y=\"98\" font-size=\"11\" fill=\"#334155\">amounts</text><rect x=\"330\" y=\"50\" width=\"130\" height=\"60\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"342\" y=\"78\" font-size=\"13\" fill=\"#b45309\">Time-based</text><text x=\"342\" y=\"98\" font-size=\"11\" fill=\"#334155\">across dates</text><line x1=\"85\" y1=\"110\" x2=\"85\" y2=\"140\" stroke=\"#0f766e\" stroke-width=\"2\"/><line x1=\"240\" y1=\"110\" x2=\"240\" y2=\"140\" stroke=\"#15803d\" stroke-width=\"2\"/><line x1=\"395\" y1=\"110\" x2=\"395\" y2=\"140\" stroke=\"#b45309\" stroke-width=\"2\"/><rect x=\"55\" y=\"160\" width=\"12\" height=\"40\" fill=\"#0f766e\"/><rect x=\"72\" y=\"175\" width=\"12\" height=\"25\" fill=\"#0f766e\"/><rect x=\"89\" y=\"150\" width=\"12\" height=\"50\" fill=\"#0f766e\"/><text x=\"58\" y=\"215\" font-size=\"11\" fill=\"#334155\">bar</text><circle cx=\"215\" cy=\"190\" r=\"4\" fill=\"#15803d\"/><circle cx=\"235\" cy=\"175\" r=\"4\" fill=\"#15803d\"/><circle cx=\"255\" cy=\"165\" r=\"4\" fill=\"#15803d\"/><text x=\"218\" y=\"215\" font-size=\"11\" fill=\"#334155\">scatter</text><polyline points=\"370,195 385,180 400,185 415,160\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"372\" y=\"215\" font-size=\"11\" fill=\"#334155\">line</text></svg>",
+      "whiteboardCaption": "Three data types (categorical, numerical, time-based) each map to a suitable chart: bar, scatter, and line.",
+      "example": "A student running a campus food stall records each sale. \"Item\" (jollof, rice, drinks) is categorical, \"Amount in Naira\" is numerical, and \"Date\" is time-based. To answer \"Which item sells most?\" she uses a bar chart; to answer \"Are daily sales rising this term?\" she uses a line chart.",
+      "quiz": [
+        {
+          "q": "A column listing payment methods (cash, card, mobile money) is what type of data?",
+          "options": [
+            "Numerical",
+            "Categorical",
+            "Time-based",
+            "Continuous"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which chart best shows a trend in monthly rainfall over a year?",
+          "options": [
+            "Pie chart",
+            "Scatter plot",
+            "Line chart",
+            "Bar chart of categories"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What makes a good guiding question for a visualization?",
+          "options": [
+            "It is broad, like 'show all data'",
+            "It is specific and answerable with chosen columns",
+            "It avoids naming any variable",
+            "It requires many charts at once"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Categorical data",
+          "back": "Data that sorts items into groups or labels, like faculty or payment method; best shown with bar charts."
+        },
+        {
+          "front": "Numerical data",
+          "back": "Data measuring amounts you can count or scale, like income or age; suits histograms and scatter plots."
+        },
+        {
+          "front": "Time-based data",
+          "back": "Values tracked across dates or periods, like monthly sales; best shown with line charts."
+        },
+        {
+          "front": "One chart, one question",
+          "back": "A discipline where each visual answers a single clear, specific question, keeping it focused and readable."
+        }
+      ],
+      "reflection": "Think of a dataset you use. What single, specific question would you want one chart to answer, and which columns would it need?",
+      "summary": "Understanding whether your data is categorical, numerical, or time-based guides the right chart choice, and framing one sharp question keeps each visualization clear and focused.",
+      "discussionPrompt": "I have a dataset with several columns. Help me label each as categorical, numerical, or time-based, and suggest which chart answers a specific question I have.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-choosing-the-right-chart",
+      "order": 3,
+      "title": "Choosing the Right Chart",
+      "objectives": [
+        "Match bar, line, pie, and scatter charts to comparison, trend, part-to-whole, and relationship goals.",
+        "Explain when to avoid pie charts and 3D effects.",
+        "Select a chart type for a given real-world scenario."
+      ],
+      "text": "Every chart answers a question. Before choosing one, name your goal, then match it to the right chart.\n\nComparison: use a BAR chart to compare amounts across categories, like sales per region. Horizontal bars work well for long labels.\n\nTrend over time: use a LINE chart to show change across dates, like monthly rainfall. Time goes on the x-axis, values on the y-axis.\n\nPart-to-whole: use a PIE chart only when you have few categories (two to five) that sum to 100 percent. Otherwise a bar chart is clearer.\n\nRelationship: use a SCATTER plot to see if two numeric variables move together, like study hours versus exam scores. Each dot is one observation.\n\nAvoid pie charts with many slices (people can't judge angles well) and avoid 3D effects entirely: tilt and depth distort the sizes, making comparisons misleading.\n\nQuick how-to: (1) Write your question in one sentence. (2) Circle the goal word: compare, trend, part-of-whole, or relationship. (3) Pick the matching chart. (4) Label axes and add a title stating the takeaway.\n\nWorked example: \"How did enrollment change from 2019 to 2024?\" The goal word is trend, so choose a line chart with years on the x-axis.",
+      "voiceScript": "Let's make choosing a chart simple. Start by asking what question you want your data to answer, because every chart type is built for a different job. If you want to compare amounts across categories, reach for a bar chart. If you're showing how something changes over time, a line chart is your friend. When you're breaking a single whole into a few parts, a pie chart works, but only with a handful of slices. And when you're checking whether two numbers move together, a scatter plot reveals the pattern. Please avoid three-D effects; they tilt and distort your values and mislead your reader. Name the goal first, then the chart follows naturally.",
+      "keyPoints": [
+        "Bar = compare categories; Line = trend over time.",
+        "Pie = part-to-whole with few slices only; Scatter = relationship between two numbers.",
+        "Never use 3D effects; they distort values.",
+        "Name your goal word first, then the chart follows."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"24\" font-size=\"15\" fill=\"#334155\">Match goal to chart</text><rect x=\"25\" y=\"90\" width=\"18\" height=\"50\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><rect x=\"50\" y=\"70\" width=\"18\" height=\"70\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><rect x=\"75\" y=\"105\" width=\"18\" height=\"35\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"30\" y=\"158\" font-size=\"12\" fill=\"#334155\">Bar: compare</text><polyline points=\"140,130 165,95 190,110 215,70\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"140\" y=\"158\" font-size=\"12\" fill=\"#334155\">Line: trend</text><circle cx=\"300\" cy=\"105\" r=\"32\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><line x1=\"300\" y1=\"105\" x2=\"300\" y2=\"73\" stroke=\"#b45309\" stroke-width=\"3\"/><line x1=\"300\" y1=\"105\" x2=\"332\" y2=\"105\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"268\" y=\"158\" font-size=\"12\" fill=\"#334155\">Pie: part-whole</text><circle cx=\"390\" cy=\"120\" r=\"3\" fill=\"#334155\"/><circle cx=\"410\" cy=\"105\" r=\"3\" fill=\"#334155\"/><circle cx=\"430\" cy=\"95\" r=\"3\" fill=\"#334155\"/><circle cx=\"420\" cy=\"115\" r=\"3\" fill=\"#334155\"/><circle cx=\"445\" cy=\"80\" r=\"3\" fill=\"#334155\"/><text x=\"375\" y=\"158\" font-size=\"12\" fill=\"#334155\">Scatter: relation</text><text x=\"20\" y=\"200\" font-size=\"13\" fill=\"#b45309\">Avoid: 3D effects + too many pie slices</text></svg>",
+      "whiteboardCaption": "Four chart types shown with the data goal each one serves best.",
+      "example": "A student union tracks membership fees collected each month for a year and wants to show whether income is rising. Because the goal is a trend over time, they choose a line chart with months on the x-axis and fees on the y-axis, adding a title like \"Membership fees rose 30% in 2024.\"",
+      "quiz": [
+        {
+          "q": "You want to show how a company's revenue changed each quarter over three years. Which chart fits best?",
+          "options": [
+            "Line chart",
+            "Pie chart",
+            "Scatter plot",
+            "3D bar chart"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which goal is a scatter plot designed for?",
+          "options": [
+            "Comparing categories",
+            "Showing parts of a whole",
+            "Revealing a relationship between two numeric variables",
+            "Displaying change over time"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "When should you avoid a pie chart?",
+          "options": [
+            "When you have exactly two categories",
+            "When categories sum to 100 percent",
+            "When there are many slices to compare",
+            "When labels are short"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Why should 3D effects be avoided?",
+          "options": [
+            "They load faster",
+            "Tilt and depth distort the true sizes",
+            "They only work in Excel",
+            "They require more data"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Best chart to compare amounts across categories?",
+          "back": "Bar chart (horizontal for long labels)."
+        },
+        {
+          "front": "Best chart for trends over time?",
+          "back": "Line chart, with time on the x-axis."
+        },
+        {
+          "front": "When is a pie chart appropriate?",
+          "back": "Part-to-whole with only a few slices (2-5) summing to 100%."
+        },
+        {
+          "front": "What does a scatter plot show?",
+          "back": "The relationship between two numeric variables; each dot is one observation."
+        }
+      ],
+      "reflection": "Think of a dataset you've handled recently. What question were you really trying to answer, and did your chart match that goal?",
+      "summary": "Choose charts by naming your goal first: bar for comparison, line for trends, pie (sparingly) for part-to-whole, and scatter for relationships, while avoiding 3D effects.",
+      "discussionPrompt": "I have a dataset about student exam scores and study hours. Walk me through choosing the right chart and how to title it for maximum clarity.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s4-designing-for-clarity",
+      "order": 4,
+      "title": "Designing for Clarity",
+      "objectives": [
+        "Apply decluttering by removing chartjunk and unnecessary ink.",
+        "Use colour, contrast, and labels to guide attention accessibly.",
+        "Write informative titles that state the main takeaway."
+      ],
+      "text": "A cluttered chart hides its message. Designing for clarity means every mark on the page earns its place. Start by decluttering, removing what Edward Tufte called \"chartjunk\": heavy gridlines, 3D effects, background shading, redundant borders, and decorative icons. The \"data-ink ratio\" idea says most ink should show real data, not decoration.\n\nHow to do it, step by step: (1) Delete gridlines or fade them to light grey. (2) Remove chart borders and background fill. (3) Label data directly instead of forcing readers to hop to a legend. (4) Round numbers so 47.3% becomes 47%.\n\nNext, guide attention with colour and contrast. Use a single accent colour for the one series that matters and grey for the rest. This is \"pre-attentive\" design, the eye jumps to the odd-coloured bar instantly. For accessibility, avoid red-green pairings (colour-blind readers struggle), add labels, and keep strong contrast.\n\nFinally, write an informative title that states the takeaway, not just the topic. Replace \"Sales by Month\" with \"Sales Peaked in December, Then Fell 30%.\" The title becomes the headline of your story.\n\nWorked example: You have a bar chart of five regions. Grey four bars, colour the best-performing one teal, label its value, and title it \"Lagos Led Q2 Revenue.\" Instantly, viewers know what to see and why.",
+      "voiceScript": "Let me share a simple truth about charts: if everything shouts, nobody hears the message. So when you design for clarity, your job is to make one idea impossible to miss. First, declutter. Fade or delete those heavy gridlines, drop the borders, remove background shading, and label your data directly instead of sending people hunting through a legend. Then guide the eye with colour. Pick one accent colour for the series that matters and turn everything else grey, so the important part just pops out. Please avoid red and green together for accessibility, and always add clear labels. Finally, write a title that states your takeaway, like \"Lagos led Q2 revenue,\" not just \"revenue by region.\" That's how you tell a story.",
+      "keyPoints": [
+        "Declutter: remove gridlines, borders, and 3D effects so data-ink dominates.",
+        "Use one accent colour plus grey to direct the eye; avoid red-green for accessibility.",
+        "Label data directly instead of relying on legends.",
+        "Titles should state the takeaway, not just the topic."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-family=\"sans-serif\" font-size=\"15\" fill=\"#0f766e\" font-weight=\"bold\">Lagos Led Q2 Revenue</text><line x1=\"40\" y1=\"210\" x2=\"460\" y2=\"210\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"55\" y=\"150\" width=\"40\" height=\"60\" fill=\"#cbd5e1\"/><rect x=\"120\" y=\"120\" width=\"40\" height=\"90\" fill=\"#cbd5e1\"/><rect x=\"185\" y=\"70\" width=\"40\" height=\"140\" fill=\"#0f766e\"/><rect x=\"250\" y=\"140\" width=\"40\" height=\"70\" fill=\"#cbd5e1\"/><rect x=\"315\" y=\"160\" width=\"40\" height=\"50\" fill=\"#cbd5e1\"/><text x=\"188\" y=\"62\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#0f766e\" font-weight=\"bold\">42M</text><text x=\"60\" y=\"228\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#334155\">Abuja</text><text x=\"122\" y=\"228\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#334155\">Kano</text><text x=\"186\" y=\"228\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#0f766e\">Lagos</text><text x=\"250\" y=\"228\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#334155\">Ibadan</text><text x=\"316\" y=\"228\" font-family=\"sans-serif\" font-size=\"10\" fill=\"#334155\">Jos</text><text x=\"390\" y=\"110\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">one accent</text><text x=\"390\" y=\"125\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">colour</text><path d=\"M388 118 L230 110\" stroke=\"#b45309\" stroke-width=\"1.5\" fill=\"none\"/></svg>",
+      "whiteboardCaption": "A bar chart where four regions are grey and Lagos is highlighted in teal with a direct value label and a takeaway title.",
+      "example": "You present student club membership across five faculties to your union. Instead of a rainbow chart titled \"Membership by Faculty,\" you grey out four faculties, colour Engineering teal, label it \"320 members,\" and title it \"Engineering Drives Half of All Club Sign-ups.\" The committee instantly grasps where to focus recruitment support.",
+      "quiz": [
+        {
+          "q": "What does 'chartjunk' refer to?",
+          "options": [
+            "The main data series in a chart",
+            "Decorative or non-essential elements that don't convey data",
+            "Colour-blind-friendly palettes",
+            "Direct data labels"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which title best 'states the takeaway'?",
+          "options": [
+            "Revenue by Region",
+            "A Chart of Q2 Revenue",
+            "Lagos Led Q2 Revenue",
+            "Regional Data Overview"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Why grey out most bars and colour only one?",
+          "options": [
+            "Grey prints faster",
+            "It guides attention pre-attentively to the key point",
+            "Colour is always inaccessible",
+            "It reduces file size"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Data-ink ratio",
+          "back": "The proportion of a chart's ink that shows actual data; maximise it by removing decoration."
+        },
+        {
+          "front": "Chartjunk",
+          "back": "Non-essential visual elements (heavy gridlines, 3D, shading) that clutter and distract."
+        },
+        {
+          "front": "Pre-attentive attribute",
+          "back": "A visual feature like a distinct colour that the eye notices instantly, without effort."
+        },
+        {
+          "front": "Informative title",
+          "back": "A title that states the main insight (the takeaway), not just the topic."
+        }
+      ],
+      "reflection": "Think of a chart you made recently: what single message did you want viewers to leave with, and did your title and colours make that message obvious?",
+      "summary": "Clear charts remove clutter, use one accent colour and direct labels to guide the eye, and carry a title that states the key takeaway.",
+      "discussionPrompt": "Ask the EFIKO tutor: 'Here is a description of my chart and its message. How can I redesign the colours, labels, and title to make the takeaway instantly clear and accessible?'",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-avoiding-misleading-visuals",
+      "order": 5,
+      "title": "Avoiding Misleading Visuals",
+      "objectives": [
+        "Spot truncated axes, distorted scales, and cherry-picked data.",
+        "Explain the ethics of honest data presentation.",
+        "Correct a misleading chart to make it truthful."
+      ],
+      "text": "Charts can mislead even without a single false number. Here are the three most common tricks and how to fix them.\n\nTruncated axis: When a bar chart's y-axis starts at, say, 90 instead of 0, tiny differences look huge. Fix: for bar charts, always start the value axis at zero so bar lengths honestly reflect quantities.\n\nDistorted scale: Stretching or squeezing an axis, or using inconsistent intervals (0, 5, 20, 100), exaggerates or hides trends. Also avoid area/3D effects, where doubling a value quadruples the visual size. Fix: use even, linear intervals and flat 2D charts.\n\nCherry-picking: Showing only 2020-2022 to prove sales \"soared\" while hiding the 2015-2019 decline. Fix: show the full relevant time range and all comparable categories.\n\nWorked example: A company claims profits \"doubled visually\" with a bar chart y-axis from 48 to 52 (values 49 and 51). The bars look 3x different. To correct it: reset the y-axis to 0-60. Now both bars appear nearly equal height, revealing the real 4% change.\n\nHonest visuals respect your audience. Ethics here means: don't let design choices push a conclusion the data doesn't support. Label axes clearly, cite your source, and ask: \"Would this chart mislead a careful reader?\" If yes, redesign it.",
+      "voiceScript": "Let me show you how a chart can lie while every number stays technically true. The most common trick is the truncated axis. If a bar chart starts its scale at ninety instead of zero, a tiny gap suddenly looks enormous. So for bar charts, always start at zero. The second trick is distorting the scale, using uneven intervals or fancy three-D effects that make small changes look dramatic. Keep your intervals even and your charts flat. The third is cherry-picking, showing only the years that flatter your story. Always include the full, relevant range. Above all, ask yourself one honest question before you share anything: would this chart mislead a careful reader? If the answer is yes, redesign it.",
+      "keyPoints": [
+        "Bar charts must start the value axis at zero to avoid exaggeration.",
+        "Use even intervals and flat 2D charts; avoid 3D and area distortion.",
+        "Show the full relevant time range instead of cherry-picking flattering points.",
+        "Ethical visuals ask: would a careful reader be misled?"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='120' y='24' font-size='14' fill='#334155' text-anchor='middle'>Misleading</text><text x='360' y='24' font-size='14' fill='#334155' text-anchor='middle'>Honest</text><line x1='40' y1='40' x2='40' y2='200' stroke='#334155' stroke-width='2'/><line x1='40' y1='200' x2='220' y2='200' stroke='#334155' stroke-width='2'/><text x='30' y='195' font-size='10' fill='#b45309' text-anchor='end'>90</text><rect x='70' y='150' width='40' height='50' fill='#b45309'/><rect x='140' y='60' width='40' height='140' fill='#b45309'/><text x='120' y='230' font-size='10' fill='#b45309' text-anchor='middle'>y starts at 90</text><line x1='280' y1='40' x2='280' y2='200' stroke='#334155' stroke-width='2'/><line x1='280' y1='200' x2='460' y2='200' stroke='#334155' stroke-width='2'/><text x='270' y='195' font-size='10' fill='#15803d' text-anchor='end'>0</text><rect x='310' y='96' width='40' height='104' fill='#15803d'/><rect x='380' y='92' width='40' height='108' fill='#15803d'/><text x='360' y='230' font-size='10' fill='#15803d' text-anchor='middle'>y starts at 0</text></svg>",
+      "whiteboardCaption": "The same two values look dramatically different with a truncated axis (left) but nearly equal when the axis starts at zero (right).",
+      "example": "A student union reports that campus cafeteria complaints \"skyrocketed\" using a bar chart whose y-axis runs from 200 to 210, comparing 202 and 208 complaints. Redrawn from 0, the bars are almost identical, showing the increase is a modest 3 percent, not a crisis.",
+      "quiz": [
+        {
+          "q": "Why should a bar chart's value axis usually start at zero?",
+          "options": [
+            "To save space on the page",
+            "Because bar length represents quantity, and truncating exaggerates differences",
+            "To make the chart more colorful",
+            "Because zero is always the smallest data value"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A chart shows only 2021-2023 sales to prove growth, hiding a decline from 2016-2020. This is an example of:",
+          "options": [
+            "Cherry-picking data",
+            "A truncated axis",
+            "A 3D distortion",
+            "Correct labeling"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which is the best fix for a chart using uneven intervals (0, 5, 20, 100)?",
+          "options": [
+            "Add a 3D effect",
+            "Use even, linear intervals",
+            "Remove the axis labels",
+            "Start the axis at 100"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Truncated axis",
+          "back": "An axis that does not start at zero, making small differences look large; fix by starting bar-chart axes at zero."
+        },
+        {
+          "front": "Cherry-picking",
+          "back": "Selecting only data points that support a desired conclusion while hiding others; fix by showing the full relevant range."
+        },
+        {
+          "front": "Distorted scale",
+          "back": "Uneven intervals or 3D/area effects that exaggerate or hide trends; fix with even linear scales and flat charts."
+        },
+        {
+          "front": "Key ethics question",
+          "back": "\"Would this chart mislead a careful reader?\" If yes, redesign it."
+        }
+      ],
+      "reflection": "Think of a chart you have seen in the news or on social media recently. Which of the three tricks might it have used, and how would you redesign it honestly?",
+      "summary": "Charts mislead through truncated axes, distorted scales, and cherry-picked data; honest visualization means starting bar axes at zero, using even scales, showing full data, and always asking whether a careful reader would be misled.",
+      "discussionPrompt": "Ask the EFIKO tutor: \"Show me a real-world chart that used a truncated axis, explain exactly how it deceived, and walk me through redesigning it truthfully.\"",
+      "sizeKB": 4
+    },
+    {
+      "id": "s6-building-and-sharing-your-chart",
+      "order": 6,
+      "title": "Building and Sharing Your Chart",
+      "objectives": [
+        "Create a simple chart using free or offline tools.",
+        "Prepare a visual for reports, slides, or mobile sharing.",
+        "Give and receive constructive feedback on a visualization."
+      ],
+      "text": "This is your capstone: build one clear chart and prepare it to share. Start with a free tool you already have. Google Sheets works online; LibreOffice Calc works fully offline; even your phone's spreadsheet app is enough. Follow five steps.\n\nStep 1 - Pick your message. Write one sentence, like \"Enrolment grew fastest in 2023.\" Your chart must prove that sentence.\n\nStep 2 - Choose the chart type. Comparison uses bars; change over time uses lines; parts of a whole uses a pie (only if few slices).\n\nStep 3 - Enter clean data. Put labels in one column, values in the next. Remove blank rows.\n\nStep 4 - Insert and simplify. Highlight the data, click Insert then Chart. Delete gridlines and clutter, add a clear title that states your message, and label your axes.\n\nStep 5 - Export for the audience. For a report or slide, export as PNG. For mobile sharing, keep text large (font 14+), use high contrast colours, and check it reads on a small screen.\n\nFinally, seek feedback using the \"I like, I wish, I wonder\" method: name one strength, one improvement, one question. Give feedback the same way - specific and kind, focused on clarity, not taste.",
+      "voiceScript": "Welcome to your final session, where everything comes together. Today you actually build a chart and get it ready for real people to see. Start simple: open Google Sheets, or LibreOffice Calc if you're offline, and even your phone works. First, write one sentence that captures your message, because your chart exists to prove that sentence. Then pick the right shape - bars to compare, lines for change over time. Enter tidy data, insert your chart, and strip away clutter until only the story remains. Give it a title that states your point clearly. When you export, think about your audience: big text and strong contrast if it's going to a phone. And when you share, ask for feedback kindly: I like, I wish, I wonder. You're ready.",
+      "keyPoints": [
+        "Write one sentence message first; the chart must prove it.",
+        "Match chart type to purpose: bars compare, lines show change over time.",
+        "Simplify and export as PNG with large text and high contrast for mobile.",
+        "Use 'I like, I wish, I wonder' to give and receive kind, specific feedback."
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='28' fill='#0f766e' font-size='16' font-family='sans-serif'>Build and Share Your Chart</text><line x1='20' y1='40' x2='300' y2='40' stroke='#0f766e' stroke-width='2'/><text x='20' y='70' fill='#334155' font-size='12' font-family='sans-serif'>1 Message</text><text x='20' y='100' fill='#334155' font-size='12' font-family='sans-serif'>2 Chart type</text><text x='20' y='130' fill='#334155' font-size='12' font-family='sans-serif'>3 Clean data</text><text x='20' y='160' fill='#334155' font-size='12' font-family='sans-serif'>4 Simplify</text><text x='20' y='190' fill='#334155' font-size='12' font-family='sans-serif'>5 Export</text><line x1='250' y1='210' x2='450' y2='210' stroke='#334155' stroke-width='2'/><line x1='250' y1='60' x2='250' y2='210' stroke='#334155' stroke-width='2'/><rect x='265' y='150' width='24' height='60' fill='#15803d'/><rect x='305' y='120' width='24' height='90' fill='#15803d'/><rect x='345' y='90' width='24' height='120' fill='#b45309'/><rect x='385' y='70' width='24' height='140' fill='#15803d'/><text x='260' y='230' fill='#334155' font-size='10' font-family='sans-serif'>Enrolment grew fastest in 2023</text></svg>",
+      "whiteboardCaption": "A five-step workflow beside a clean bar chart titled with its own message.",
+      "example": "Amina, a student union treasurer, wants to show that event attendance rose over four semesters. In LibreOffice Calc offline, she enters semesters and attendance numbers, inserts a bar chart, deletes gridlines, and titles it \"Attendance doubled after we moved events to Fridays.\" She exports a PNG, checks the text is readable on her phone, and shares it in the union WhatsApp group before the budget meeting.",
+      "quiz": [
+        {
+          "q": "What should you decide before choosing a chart type?",
+          "options": [
+            "The colour palette",
+            "The one-sentence message the chart must prove",
+            "The file format",
+            "The font size"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which chart type best shows change over time?",
+          "options": [
+            "Pie chart",
+            "Line chart",
+            "Table",
+            "Word cloud"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "When preparing a chart for mobile sharing, you should:",
+          "options": [
+            "Use tiny text to fit more",
+            "Add many gridlines",
+            "Use large text and high-contrast colours",
+            "Export as a spreadsheet file"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "A free offline tool for making charts",
+          "back": "LibreOffice Calc (works without internet)."
+        },
+        {
+          "front": "Best export format for slides or reports",
+          "back": "PNG image."
+        },
+        {
+          "front": "'I like, I wish, I wonder' method",
+          "back": "A feedback structure: name a strength, an improvement, and a question."
+        },
+        {
+          "front": "First step in building any chart",
+          "back": "Write one clear sentence stating the message the chart must prove."
+        }
+      ],
+      "reflection": "Think of a dataset from your studies or work: what single sentence would you want your chart to prove, and which chart type fits it best?",
+      "summary": "You built a complete chart in a free tool, simplified it around one message, exported it for your audience, and learned to exchange constructive feedback using 'I like, I wish, I wonder.'",
+      "discussionPrompt": "Ask the EFIKO tutor to critique a chart idea you have using the 'I like, I wish, I wonder' method and suggest the best chart type for your message.",
+      "sizeKB": 4
+    }
+  ],
+  "spec": {
+    "topic": "Data Visualization",
+    "audience": "University students and professionals",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783192525465,
+  "updatedAt": 1783192525465
+}

@@ -1,0 +1,580 @@
+{
+  "courseId": "orig-python-for-research",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Python for Research",
+  "subtitle": "Practical programming and data analysis skills for academic and applied research",
+  "category": "Data Science & Programming",
+  "level": "Intermediate",
+  "audience": "University students, postgraduate researchers, and early-career professionals who already know basic Python and want to apply it to research workflows",
+  "estimatedHours": 6,
+  "description": "This course helps you move from knowing basic Python to using it confidently in real research. Over six focused sessions, you will learn to organise research code, clean and analyse data with Pandas, run statistical tests, create clear visualisations, and produce reproducible, shareable work. Every session is designed to be learnable on a phone, works well offline, and uses practical, low-data examples drawn from African research contexts. By the end, you will have a repeatable workflow for taking raw data all the way to publication-ready results.",
+  "outcomes": [
+    "Organise a reproducible research project structure using virtual environments and clear file layouts",
+    "Clean, transform, and summarise real datasets using Pandas and NumPy",
+    "Apply appropriate descriptive and inferential statistics to answer research questions",
+    "Create clear, publication-ready visualisations with Matplotlib and Seaborn",
+    "Document and share research code so that others can reproduce your results",
+    "Interpret and communicate analytical results accurately and ethically"
+  ],
+  "competencies": [
+    "Building reproducible Python research project workflows",
+    "Cleaning, transforming, and analysing datasets with Pandas and NumPy",
+    "Selecting and applying appropriate statistical tests and interpreting results",
+    "Producing clear, publication-ready data visualisations",
+    "Documenting and sharing research code ethically and reproducibly"
+  ],
+  "nextCourse": "Data Analysis and Visualisation with Python",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What is the main purpose of a Python virtual environment in a research project?",
+        "options": [
+          "To make code run faster",
+          "To isolate project dependencies so results are reproducible",
+          "To connect to the internet automatically",
+          "To convert Python into another language"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which library is most commonly used for tabular data analysis in Python?",
+        "options": [
+          "Pandas",
+          "Requests",
+          "Flask",
+          "Pillow"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "A p-value in a statistical test primarily tells you:",
+        "options": [
+          "The size of the effect",
+          "The probability that your hypothesis is true",
+          "The probability of observing your data (or more extreme) if the null hypothesis were true",
+          "The number of data points collected"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Which file is commonly used to record a project's package dependencies for reproducibility?",
+        "options": [
+          "notes.txt",
+          "requirements.txt",
+          "data.csv",
+          "index.html"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "In Pandas, which method gives a quick statistical summary of numeric columns?",
+        "options": [
+          "df.plot()",
+          "df.describe()",
+          "df.connect()",
+          "df.upload()"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "You want to compare the mean scores of two independent groups. Which test is most appropriate?",
+        "options": [
+          "Independent samples t-test",
+          "Linear interpolation",
+          "Chi-square goodness of fit on the means",
+          "Fourier transform"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "Which visualisation is best for showing the distribution of a single continuous variable?",
+        "options": [
+          "Pie chart",
+          "Histogram",
+          "Network diagram",
+          "Word cloud"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which practice best supports ethical, reproducible research?",
+        "options": [
+          "Deleting raw data after analysis",
+          "Reporting only the results that support your hypothesis",
+          "Documenting your steps and protecting participant privacy",
+          "Sharing code without any comments"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-setting-up-a-reproducible-research-environment",
+      "order": 1,
+      "title": "Setting Up a Reproducible Research Environment",
+      "objectives": [
+        "Create and manage virtual environments and install packages with pip",
+        "Structure a research project into logical folders for data, code, and outputs",
+        "Explain why reproducibility matters in academic research"
+      ],
+      "text": "Reproducibility means anyone (including future you) can rerun your analysis and get the same results. This depends on knowing exactly which packages and versions you used. A virtual environment is an isolated Python workspace that keeps one project's packages separate from others, so upgrading a library for one study never breaks another.\n\nHow-to, step by step:\n1. Open a terminal in your project folder.\n2. Create an environment: python -m venv .venv\n3. Activate it: on Linux/Mac run source .venv/bin/activate; on Windows run .venv\\Scripts\\activate. Your prompt now shows (.venv).\n4. Install packages: pip install pandas numpy matplotlib\n5. Freeze exact versions: pip freeze > requirements.txt\n\nAnyone can now recreate your setup with pip install -r requirements.txt.\n\nStructure your project into clear folders:\n- data/ (raw, never edited) and data/processed/\n- src/ (your .py scripts)\n- notebooks/ (exploratory analysis)\n- outputs/ (figures, tables, results)\n- README.md explaining how to run everything\n\nAdd a .gitignore listing .venv/ and large data files so they aren't committed. This separation keeps raw data safe, makes scripts easy to find, and lets collaborators understand your work in minutes. Reproducible projects are trusted, citable, and far easier to defend during peer review.",
+      "voiceScript": "Let me start with a question: if a reviewer asked you to rerun your analysis next year, could you? Reproducibility means the answer is yes. The secret is isolation and record-keeping. First, I create a virtual environment with python dash m venv dot venv, then activate it, so this project's packages stay separate from everything else on my machine. I install what I need, then freeze the exact versions into a requirements file. Now anyone can rebuild my exact setup with one command. Next, I keep raw data untouched in a data folder, my scripts in source, and my figures in outputs, with a README explaining how to run it all. Do this from day one, and your research becomes trustworthy, shareable, and much easier to defend.",
+      "keyPoints": [
+        "A virtual environment isolates a project's packages so versions never clash",
+        "pip freeze > requirements.txt records exact versions for others to rebuild",
+        "Separate folders for data, src, notebooks and outputs keep work clear and safe",
+        "Reproducibility makes research trustworthy, shareable and easy to defend"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"12\" y=\"22\" fill=\"#0f766e\" font-size=\"16\" font-family=\"sans-serif\">Reproducible Project</text><rect x=\"14\" y=\"38\" width=\"150\" height=\"200\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"26\" y=\"62\" fill=\"#334155\" font-size=\"13\" font-family=\"sans-serif\">project/</text><text x=\"36\" y=\"88\" fill=\"#15803d\" font-size=\"12\" font-family=\"sans-serif\">data/</text><text x=\"36\" y=\"112\" fill=\"#15803d\" font-size=\"12\" font-family=\"sans-serif\">src/</text><text x=\"36\" y=\"136\" fill=\"#15803d\" font-size=\"12\" font-family=\"sans-serif\">notebooks/</text><text x=\"36\" y=\"160\" fill=\"#15803d\" font-size=\"12\" font-family=\"sans-serif\">outputs/</text><text x=\"36\" y=\"184\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">README.md</text><text x=\"36\" y=\"208\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">requirements.txt</text><circle cx=\"300\" cy=\"70\" r=\"28\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"280\" y=\"74\" fill=\"#0f766e\" font-size=\"11\" font-family=\"sans-serif\">.venv</text><path d=\"M200 70 L268 70\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"340\" y=\"120\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">pip install</text><text x=\"330\" y=\"140\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">pip freeze &gt;</text><path d=\"M300 100 L300 150\" stroke=\"#15803d\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><rect x=\"280\" y=\"152\" width=\"120\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"292\" y=\"173\" fill=\"#b45309\" font-size=\"11\" font-family=\"sans-serif\">requirements.txt</text><text x=\"250\" y=\"225\" fill=\"#15803d\" font-size=\"12\" font-family=\"sans-serif\">= anyone can rebuild it</text></svg>",
+      "whiteboardCaption": "A tidy project folder linked to an isolated virtual environment that exports its exact packages into requirements.txt.",
+      "example": "A postgraduate student in Nairobi analysing rainfall data creates a .venv, installs pandas 2.1, and runs pip freeze into requirements.txt. Six months later her supervisor pulls the repo on a different laptop, runs pip install -r requirements.txt, and reproduces every figure exactly, avoiding the classic 'it works on my machine' problem during thesis review.",
+      "quiz": [
+        {
+          "q": "What is the main purpose of a virtual environment?",
+          "options": [
+            "To make Python run faster",
+            "To isolate a project's packages and versions from other projects",
+            "To automatically write your code",
+            "To connect to the internet"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which command records the exact package versions used in a project?",
+          "options": [
+            "pip list --all",
+            "python -m venv .venv",
+            "pip freeze > requirements.txt",
+            "pip install everything"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Why should raw data be kept in a separate, unedited folder?",
+          "options": [
+            "To preserve an untouched source you can always trace results back to",
+            "Because Python cannot read edited files",
+            "To make the project download faster",
+            "So it can be deleted safely"
+          ],
+          "answer": 0
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Virtual environment",
+          "back": "An isolated Python workspace where a project's packages and versions stay separate from other projects."
+        },
+        {
+          "front": "Command to create a venv",
+          "back": "python -m venv .venv (then activate it before installing packages)."
+        },
+        {
+          "front": "requirements.txt",
+          "back": "A file listing exact package versions, created with pip freeze, used to rebuild the same environment elsewhere."
+        },
+        {
+          "front": "Reproducibility",
+          "back": "The ability for anyone to rerun your analysis and obtain the same results."
+        }
+      ],
+      "reflection": "Think about your last coding project: could someone else reproduce your results today? What single step would have made it easier?",
+      "summary": "Set up research projects with an isolated virtual environment, a frozen requirements.txt, and clear data/code/output folders so your work is reproducible, shareable and defensible.",
+      "discussionPrompt": "Ask the EFIKO tutor: How do tools like conda or Docker extend reproducibility beyond a basic venv, and when should a researcher use each?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s2-working-with-research-data-in-pandas",
+      "order": 2,
+      "title": "Working with Research Data in Pandas",
+      "objectives": [
+        "Load data from CSV, Excel, and text files into DataFrames",
+        "Inspect, filter, and select rows and columns for analysis",
+        "Handle common data types and indexing in Pandas"
+      ],
+      "text": "Pandas is Python's core library for working with tabular data. Its main object is the DataFrame: a table with labelled rows (the index) and named columns, like a spreadsheet you can program.\n\nStart by importing: import pandas as pd. Load files with one line each: df = pd.read_csv('survey.csv') for CSV, pd.read_excel('data.xlsx') for Excel, or pd.read_csv('data.txt', sep='\\t') for tab-separated text.\n\nInspect immediately. df.head() shows the first five rows; df.shape gives (rows, columns); df.info() lists column names and data types (dtypes) such as int64, float64, or object (text); df.describe() summarises numeric columns.\n\nSelect columns by name: df['age'] returns one column; df[['age','score']] returns several. Select rows two ways: df.loc[] uses labels, df.iloc[] uses integer positions. So df.loc[0, 'age'] reads by label; df.iloc[0, 1] reads by position.\n\nFilter with a boolean condition: df[df['age'] > 25] keeps only rows where age exceeds 25. Combine conditions with & (and) and | (or), wrapping each in parentheses: df[(df['age'] > 25) & (df['score'] > 70)].\n\nFix data types when needed: df['age'] = df['age'].astype(int). Clean workflow: load, inspect, filter, then analyse.",
+      "voiceScript": "Welcome back. Today we meet the tool you'll use in almost every research project: the Pandas DataFrame. Think of it as a spreadsheet you can control with code, with named columns and a labelled index. Loading data is beautifully simple. Once you import pandas as pd, you read a CSV in a single line, and Excel or tab-separated text files just as easily. Before you analyse anything, look at your data. Use head to peek at the first rows, shape to count rows and columns, and info to check the data types. To pull out what you need, remember loc works by labels and iloc works by positions. And to filter, you write a condition inside the brackets, like keeping only rows where age is above twenty-five. Load, inspect, filter, then analyse. That rhythm will carry you through every dataset.",
+      "keyPoints": [
+        "A DataFrame is a labelled table: use read_csv, read_excel, or read_csv with sep for text files",
+        "Inspect first with head(), shape, info(), and describe()",
+        "Select columns by name; use loc for labels and iloc for integer positions",
+        "Filter rows with boolean conditions, combining them using & and | inside parentheses"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='white'/><text x='20' y='28' fill='#0f766e' font-size='17' font-family='sans-serif'>Pandas DataFrame</text><rect x='20' y='45' width='260' height='150' fill='none' stroke='#334155' stroke-width='2'/><line x1='20' y1='75' x2='280' y2='75' stroke='#334155' stroke-width='2'/><line x1='90' y1='45' x2='90' y2='195' stroke='#334155' stroke-width='1'/><line x1='185' y1='45' x2='185' y2='195' stroke='#334155' stroke-width='1'/><line x1='20' y1='105' x2='280' y2='105' stroke='#334155' stroke-width='1'/><line x1='20' y1='135' x2='280' y2='135' stroke='#334155' stroke-width='1'/><line x1='20' y1='165' x2='280' y2='165' stroke='#334155' stroke-width='1'/><text x='30' y='66' fill='#b45309' font-size='11' font-family='sans-serif'>index</text><text x='110' y='66' fill='#15803d' font-size='11' font-family='sans-serif'>age</text><text x='205' y='66' fill='#15803d' font-size='11' font-family='sans-serif'>score</text><text x='45' y='96' font-size='11' font-family='sans-serif'>0</text><text x='115' y='96' font-size='11' font-family='sans-serif'>28</text><text x='210' y='96' font-size='11' font-family='sans-serif'>82</text><text x='45' y='126' font-size='11' font-family='sans-serif'>1</text><text x='115' y='126' font-size='11' font-family='sans-serif'>19</text><text x='210' y='126' font-size='11' font-family='sans-serif'>55</text><text x='45' y='156' font-size='11' font-family='sans-serif'>2</text><text x='115' y='156' font-size='11' font-family='sans-serif'>34</text><text x='210' y='156' font-size='11' font-family='sans-serif'>91</text><text x='310' y='90' fill='#0f766e' font-size='12' font-family='sans-serif'>df.head()</text><text x='310' y='120' fill='#0f766e' font-size='12' font-family='sans-serif'>df['age']</text><text x='310' y='150' fill='#b45309' font-size='12' font-family='sans-serif'>df[df.age&gt;25]</text><text x='310' y='180' fill='#15803d' font-size='12' font-family='sans-serif'>df.loc / iloc</text></svg>",
+      "whiteboardCaption": "A DataFrame shown as a labelled table with columns and index, alongside common inspection and selection commands.",
+      "example": "A postgraduate researcher collects a malaria survey as a CSV from KoboToolbox. She runs df = pd.read_csv('malaria_survey.csv'), checks df.info() to confirm the 'age' column is numeric, then filters df[(df['region']=='Kano') & (df['tested']==True)] to isolate tested respondents in Kano for her regional analysis.",
+      "quiz": [
+        {
+          "q": "Which method quickly shows the column names and their data types?",
+          "options": [
+            "df.head()",
+            "df.info()",
+            "df.shape",
+            "df.values"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How do you select rows by integer position rather than label?",
+          "options": [
+            "df.loc[]",
+            "df.select()",
+            "df.iloc[]",
+            "df.rows()"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which correctly filters rows where age is over 25 AND score is over 70?",
+          "options": [
+            "df[df['age']>25 and df['score']>70]",
+            "df[(df['age']>25) & (df['score']>70)]",
+            "df[df['age']>25 | df['score']>70]",
+            "df.filter(age>25, score>70)"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is a Pandas DataFrame?",
+          "back": "A two-dimensional labelled table with named columns and an index, used to store and manipulate tabular data."
+        },
+        {
+          "front": "Difference between loc and iloc?",
+          "back": "loc selects by row/column labels; iloc selects by integer positions."
+        },
+        {
+          "front": "How to load a tab-separated text file?",
+          "back": "pd.read_csv('file.txt', sep='\\t')"
+        },
+        {
+          "front": "What does dtype 'object' usually mean?",
+          "back": "The column holds text (strings) or mixed types rather than numbers."
+        }
+      ],
+      "reflection": "Think of a dataset from your own research or studies: which columns would you inspect first, and what condition would you use to filter the rows that matter most?",
+      "summary": "The Pandas DataFrame lets you load, inspect, select, and filter research data in a few clear lines: load with read_csv/read_excel, inspect with head/info, and slice with loc, iloc, and boolean conditions.",
+      "discussionPrompt": "Ask the EFIKO tutor: how can I efficiently handle missing values and inconsistent data types when loading a messy real-world research CSV into Pandas?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-cleaning-and-transforming-data",
+      "order": 3,
+      "title": "Cleaning and Transforming Data",
+      "objectives": [
+        "Detect and handle missing values, duplicates, and inconsistent entries",
+        "Reshape, merge, and group datasets for analysis",
+        "Create derived variables and summary tables"
+      ],
+      "text": "Real research data is messy. Before analysis, you must clean and transform it. We use pandas, Python's data library.\n\nStep 1 - Inspect. Load your data with df = pd.read_csv('survey.csv'), then run df.info() and df.describe() to see column types and gaps.\n\nStep 2 - Missing values. Detect with df.isnull().sum(). Then decide: drop rows with df.dropna(subset=['age']) if few are missing, or fill with df['age'].fillna(df['age'].median()). Never blindly delete data - document your choice.\n\nStep 3 - Duplicates. Remove exact repeats: df = df.drop_duplicates().\n\nStep 4 - Inconsistent entries. Standardise text: df['gender'] = df['gender'].str.strip().str.lower(). This turns ' Female', 'FEMALE' into 'female'. Fix types with pd.to_numeric(df['income'], errors='coerce').\n\nStep 5 - Derived variables. Create new columns: df['bmi'] = df['weight'] / (df['height']**2).\n\nStep 6 - Reshape and combine. Merge two tables on a shared key: pd.merge(df1, df2, on='id'). Group and summarise: df.groupby('region')['income'].mean() gives average income per region.\n\nWorked example: after cleaning, df.groupby('region').agg(n=('id','count'), avg_age=('age','mean')) produces a tidy summary table ready for your report. Clean data means trustworthy results.",
+      "voiceScript": "Let's turn messy research data into something you can trust. I always start by looking before I leap, so I run info and describe to see what each column holds and where the gaps are. When I find missing values, I don't panic and I don't blindly delete them. If only a few are missing, I might drop those rows, but often I fill them with a sensible value like the median, and I write down exactly what I did. Then I remove duplicate rows, tidy up inconsistent text by trimming spaces and lowering case, and fix number columns that got read as text. Finally I create new variables I need and group my data to build clean summary tables. Careful cleaning is what makes your conclusions believable.",
+      "keyPoints": [
+        "Inspect first with info(), describe(), and isnull().sum() before changing anything",
+        "Handle missing values deliberately (drop or fill) and document your decision",
+        "Standardise text and fix data types to remove inconsistent entries",
+        "Use merge, groupby, and agg to combine data and build summary tables"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" fill=\"#334155\" font-size=\"16\" font-family=\"sans-serif\">Messy Data to Clean Table</text><rect x=\"20\" y=\"45\" width=\"120\" height=\"100\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"30\" y=\"65\" fill=\"#b45309\" font-size=\"11\" font-family=\"sans-serif\">' Female'</text><text x=\"30\" y=\"85\" fill=\"#b45309\" font-size=\"11\" font-family=\"sans-serif\">NaN age</text><text x=\"30\" y=\"105\" fill=\"#b45309\" font-size=\"11\" font-family=\"sans-serif\">dup row</text><text x=\"30\" y=\"125\" fill=\"#b45309\" font-size=\"11\" font-family=\"sans-serif\">\"12\" text</text><line x1=\"150\" y1=\"95\" x2=\"230\" y2=\"95\" stroke=\"#0f766e\" stroke-width=\"2\"/><path d=\"M222 88 L232 95 L222 102\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"150\" y=\"85\" fill=\"#0f766e\" font-size=\"10\" font-family=\"sans-serif\">clean</text><rect x=\"240\" y=\"45\" width=\"130\" height=\"100\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"250\" y=\"65\" fill=\"#15803d\" font-size=\"11\" font-family=\"sans-serif\">'female'</text><text x=\"250\" y=\"85\" fill=\"#15803d\" font-size=\"11\" font-family=\"sans-serif\">age=median</text><text x=\"250\" y=\"105\" fill=\"#15803d\" font-size=\"11\" font-family=\"sans-serif\">unique</text><text x=\"250\" y=\"125\" fill=\"#15803d\" font-size=\"11\" font-family=\"sans-serif\">income=12</text><line x1=\"375\" y1=\"95\" x2=\"455\" y2=\"95\" stroke=\"#0f766e\" stroke-width=\"2\"/><path d=\"M447 88 L457 95 L447 102\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><rect x=\"150\" y=\"165\" width=\"180\" height=\"70\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"160\" y=\"185\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">groupby('region')</text><line x1=\"150\" y1=\"195\" x2=\"330\" y2=\"195\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"160\" y=\"212\" fill=\"#15803d\" font-size=\"10\" font-family=\"sans-serif\">n | avg_age | avg_income</text><text x=\"160\" y=\"228\" fill=\"#0f766e\" font-size=\"10\" font-family=\"sans-serif\">summary table</text></svg>",
+      "whiteboardCaption": "Messy entries flow through cleaning steps into a tidy grouped summary table.",
+      "example": "A postgraduate student in Nairobi collects a health survey via Google Forms. The 'age' column has blanks, 'county' is typed as 'Nairobi', ' nairobi ', and 'NAIROBI', and some respondents appear twice. She fills missing ages with the median, standardises county names with str.strip().str.lower(), drops duplicates, then uses groupby('county')['bmi'].mean() to compare average BMI across counties for her thesis.",
+      "quiz": [
+        {
+          "q": "Which command counts missing values in each column of a pandas DataFrame?",
+          "options": [
+            "df.dropna()",
+            "df.isnull().sum()",
+            "df.describe()",
+            "df.merge()"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "To combine ' Female', 'FEMALE', and 'female' into one consistent value, you should:",
+          "options": [
+            "Drop all those rows",
+            "Apply .str.strip().str.lower()",
+            "Use fillna(0)",
+            "Run drop_duplicates()"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does df.groupby('region')['income'].mean() produce?",
+          "options": [
+            "The overall mean income ignoring region",
+            "A merged table of two datasets",
+            "The average income for each region",
+            "A list of duplicate rows"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "How do you fill missing values with the column median?",
+          "back": "df['col'] = df['col'].fillna(df['col'].median())"
+        },
+        {
+          "front": "What does drop_duplicates() do?",
+          "back": "Removes repeated (identical) rows from the DataFrame."
+        },
+        {
+          "front": "How do you merge two tables on a shared key?",
+          "back": "pd.merge(df1, df2, on='id')"
+        },
+        {
+          "front": "What is a derived variable?",
+          "back": "A new column computed from existing ones, e.g. df['bmi'] = df['weight']/(df['height']**2)."
+        }
+      ],
+      "reflection": "Think about a dataset you have worked with: what cleaning decisions did you make, and how might they have influenced your results?",
+      "summary": "Cleaning and transforming data with pandas - handling missing values, duplicates, and inconsistencies, then reshaping and grouping - turns messy real-world data into reliable input for analysis.",
+      "discussionPrompt": "Ask the EFIKO tutor: When should I drop rows with missing data versus impute them, and how do different imputation methods affect my research conclusions?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-descriptive-and-inferential-statistics",
+      "order": 4,
+      "title": "Descriptive and Inferential Statistics",
+      "objectives": [
+        "Compute descriptive statistics and measures of spread with NumPy and Pandas",
+        "Choose and run appropriate tests such as t-tests, correlation, and chi-square using SciPy",
+        "Interpret p-values, effect sizes, and confidence intervals correctly"
+      ],
+      "text": "Statistics turns messy data into defensible answers. Start with descriptive statistics that summarise your sample. In Pandas, df['score'].describe() gives count, mean, standard deviation, min, quartiles, and max. Key measures of spread: variance and standard deviation (std) show how far values scatter from the mean; the interquartile range (IQR = Q3 - Q1) resists outliers. In NumPy: np.mean(x), np.median(x), np.std(x, ddof=1). Use ddof=1 for a sample (divides by n-1), which corrects bias.\n\nInferential statistics let you generalise from sample to population. Choose the test by question and data type:\n- Compare two group means: from scipy import stats; stats.ttest_ind(groupA, groupB).\n- Relationship between two numeric variables: stats.pearsonr(x, y) returns correlation r and a p-value.\n- Association between two categories: stats.chi2_contingency(table).\n\nWorked example:\nt, p = stats.ttest_ind(treated, control)\nIf p = 0.03, that is below 0.05, so the difference is statistically significant. But always report an effect size, like Cohen's d = (mean1 - mean2) / pooled_sd, to show how big the difference is. A 95% confidence interval gives the plausible range for the true value. Remember: a p-value tells you whether an effect likely exists, not that it matters practically.",
+      "voiceScript": "Let's make your data speak clearly and honestly. I always begin with descriptive statistics, because before testing anything I want to know the shape of my sample. In Pandas, calling describe on a column instantly gives me the mean, the standard deviation, and the quartiles, so I can see the centre and the spread at a glance. Then I move to inference, where I generalise from my sample to the wider population. The trick is choosing the right test for the question: a t-test to compare two group means, a correlation to check how two numbers move together, and a chi-square for categories. And please, never stop at the p-value. Report an effect size and a confidence interval too, so your reader knows not just whether an effect exists, but how large and how certain it is.",
+      "keyPoints": [
+        "Use describe(), std with ddof=1, and IQR to summarise centre and spread",
+        "Match the test to the question: t-test for means, correlation for numeric pairs, chi-square for categories",
+        "A p-value below 0.05 suggests significance but says nothing about size",
+        "Always report effect size and a confidence interval alongside the p-value"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"12\" y=\"22\" font-size=\"15\" fill=\"#0f766e\">Data to Decision</text><rect x=\"18\" y=\"38\" width=\"120\" height=\"58\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"30\" y=\"62\" font-size=\"12\" fill=\"#334155\">Describe</text><text x=\"30\" y=\"80\" font-size=\"10\" fill=\"#334155\">mean, std, IQR</text><line x1=\"138\" y1=\"67\" x2=\"186\" y2=\"67\" stroke=\"#b45309\" stroke-width=\"2\"/><rect x=\"188\" y=\"38\" width=\"120\" height=\"58\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"200\" y=\"62\" font-size=\"12\" fill=\"#334155\">Choose test</text><text x=\"200\" y=\"80\" font-size=\"10\" fill=\"#334155\">t, r, chi2</text><line x1=\"308\" y1=\"67\" x2=\"356\" y2=\"67\" stroke=\"#b45309\" stroke-width=\"2\"/><rect x=\"358\" y=\"38\" width=\"110\" height=\"58\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"370\" y=\"62\" font-size=\"12\" fill=\"#334155\">Interpret</text><text x=\"370\" y=\"80\" font-size=\"10\" fill=\"#334155\">p, d, CI</text><text x=\"12\" y=\"128\" font-size=\"13\" fill=\"#15803d\">Report all three:</text><circle cx=\"30\" cy=\"152\" r=\"5\" fill=\"#0f766e\"/><text x=\"42\" y=\"156\" font-size=\"11\" fill=\"#334155\">p-value: does an effect exist?</text><circle cx=\"30\" cy=\"178\" r=\"5\" fill=\"#15803d\"/><text x=\"42\" y=\"182\" font-size=\"11\" fill=\"#334155\">effect size: how big is it?</text><circle cx=\"30\" cy=\"204\" r=\"5\" fill=\"#b45309\"/><text x=\"42\" y=\"208\" font-size=\"11\" fill=\"#334155\">CI: how certain are we?</text><line x1=\"12\" y1=\"224\" x2=\"468\" y2=\"224\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"12\" y=\"244\" font-size=\"11\" fill=\"#0f766e\">SciPy: stats.ttest_ind, pearsonr, chi2_contingency</text></svg>",
+      "whiteboardCaption": "A workflow from describing data to choosing a test to interpreting p-value, effect size, and confidence interval.",
+      "example": "A pharmacy student compares malaria recovery times for two treatments recorded in a CSV. Loading it with Pandas, she runs df.groupby('treatment')['days'].describe() to see means and spread, then stats.ttest_ind on the two groups. She finds p = 0.02 and Cohen's d = 0.6, so she reports a statistically significant, moderately sized reduction in recovery days rather than just saying it worked.",
+      "quiz": [
+        {
+          "q": "Which SciPy function tests the association between two categorical variables?",
+          "options": [
+            "stats.ttest_ind",
+            "stats.pearsonr",
+            "stats.chi2_contingency",
+            "stats.describe"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Why use ddof=1 when computing a sample standard deviation in NumPy?",
+          "options": [
+            "It divides by n-1 to correct sample bias",
+            "It makes the result larger for no reason",
+            "It converts data to percentages",
+            "It removes outliers automatically"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "A study reports p = 0.03. What does this correctly indicate?",
+          "options": [
+            "The effect is large and important",
+            "The result is unlikely under the null hypothesis, suggesting an effect exists",
+            "The hypothesis is proven true",
+            "The confidence interval is exactly 97%"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Interquartile range (IQR)",
+          "back": "Q3 minus Q1; a measure of spread that resists outliers."
+        },
+        {
+          "front": "Cohen's d",
+          "back": "An effect size: (mean1 - mean2) divided by the pooled standard deviation, showing how large a difference is."
+        },
+        {
+          "front": "stats.pearsonr(x, y)",
+          "back": "Returns the correlation coefficient r and its p-value for two numeric variables."
+        },
+        {
+          "front": "95% confidence interval",
+          "back": "A plausible range for the true population value; narrower means more precision."
+        }
+      ],
+      "reflection": "Think of a dataset from your own research: which test fits your main question, and what effect size would you report alongside the p-value?",
+      "summary": "Descriptive statistics summarise your sample with mean, spread, and quartiles, while inferential tests in SciPy let you generalise responsibly by pairing p-values with effect sizes and confidence intervals.",
+      "discussionPrompt": "Ask the EFIKO tutor to walk through interpreting a non-significant result (p = 0.2) with a wide confidence interval, and how sample size affects that conclusion.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s5-visualising-research-findings",
+      "order": 5,
+      "title": "Visualising Research Findings",
+      "objectives": [
+        "Create bar charts, scatter plots, histograms, and box plots with Matplotlib and Seaborn",
+        "Customise labels, titles, and styles for clear communication",
+        "Export publication-ready figures at appropriate resolution"
+      ],
+      "text": "Good visuals turn analysis into insight. Two libraries dominate research plotting: Matplotlib (fine control) and Seaborn (attractive defaults built on top of it). Start by importing them:\n\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\nEach plot type answers a question. A bar chart compares categories (mean yield per crop). A histogram shows the distribution of one numeric variable (age of respondents). A scatter plot reveals relationships between two numerics (rainfall vs harvest). A box plot summarises spread and outliers across groups.\n\nWorked example with a DataFrame df:\n\nfig, ax = plt.subplots(figsize=(6,4))\nsns.scatterplot(data=df, x='rainfall', y='yield', hue='region', ax=ax)\nax.set_title('Rainfall vs Crop Yield')\nax.set_xlabel('Rainfall (mm)')\nax.set_ylabel('Yield (t/ha)')\nfig.savefig('figure1.png', dpi=300, bbox_inches='tight')\n\nAlways label axes with units, add a clear title, and include a legend when using colour groups. dpi=300 gives print-quality resolution; use bbox_inches='tight' to trim white space. Save as PNG for documents or PDF/SVG for scalable vector output.\n\nBe honest: start bar-chart y-axes at zero, avoid misleading 3D effects, and never hide data variation. A clear, truthful figure communicates faster than a paragraph and strengthens your research credibility.",
+      "voiceScript": "When you finish an analysis, a good chart makes your finding obvious in seconds. I lean on two tools: Matplotlib when I want precise control, and Seaborn when I want beautiful defaults quickly. The trick is matching the chart to the question. Comparing categories? Reach for a bar chart. Curious about a single variable's spread? Use a histogram. Wondering if two things move together? A scatter plot. Comparing distributions across groups? A box plot. Whatever you choose, always label your axes with units, give it a clear title, and add a legend when colours mean something. Finally, save at three hundred dpi so it looks crisp in print. And please, keep it honest, no misleading axes.",
+      "keyPoints": [
+        "Match the chart type to your question: bar (compare), histogram (distribution), scatter (relationship), box (groups)",
+        "Seaborn gives quick attractive plots; Matplotlib gives fine control over every element",
+        "Always add axis labels with units, a clear title, and a legend for colour groups",
+        "Export with dpi=300 and bbox_inches='tight'; use PDF/SVG for scalable vector figures"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='white'/><text x='120' y='24' font-family='sans-serif' font-size='15' fill='#0f766e'>Match Chart to Question</text><rect x='30' y='60' width='120' height='80' fill='none' stroke='#334155' stroke-width='2'/><rect x='45' y='110' width='16' height='30' fill='#15803d'/><rect x='70' y='90' width='16' height='50' fill='#15803d'/><rect x='95' y='75' width='16' height='65' fill='#15803d'/><text x='55' y='155' font-family='sans-serif' font-size='11' fill='#334155'>Bar: compare</text><rect x='190' y='60' width='120' height='80' fill='none' stroke='#334155' stroke-width='2'/><circle cx='215' cy='120' r='4' fill='#b45309'/><circle cx='235' cy='105' r='4' fill='#b45309'/><circle cx='260' cy='95' r='4' fill='#b45309'/><circle cx='285' cy='78' r='4' fill='#b45309'/><text x='200' y='155' font-family='sans-serif' font-size='11' fill='#334155'>Scatter: relate</text><rect x='30' y='180' width='120' height='60' fill='none' stroke='#334155' stroke-width='2'/><rect x='45' y='210' width='14' height='30' fill='#0f766e'/><rect x='61' y='195' width='14' height='45' fill='#0f766e'/><rect x='77' y='205' width='14' height='35' fill='#0f766e'/><rect x='93' y='220' width='14' height='20' fill='#0f766e'/><text x='40' y='255' font-family='sans-serif' font-size='11' fill='#334155'>Histogram: spread</text><rect x='190' y='180' width='120' height='60' fill='none' stroke='#334155' stroke-width='2'/><line x1='230' y1='190' x2='230' y2='230' stroke='#b45309' stroke-width='2'/><rect x='215' y='200' width='30' height='18' fill='none' stroke='#b45309' stroke-width='2'/><text x='195' y='255' font-family='sans-serif' font-size='11' fill='#334155'>Box: groups</text><text x='340' y='80' font-family='sans-serif' font-size='12' fill='#15803d'>Label axes</text><text x='340' y='105' font-family='sans-serif' font-size='12' fill='#15803d'>Add title</text><text x='340' y='130' font-family='sans-serif' font-size='12' fill='#15803d'>dpi=300</text><text x='340' y='155' font-family='sans-serif' font-size='12' fill='#15803d'>Be honest</text></svg>",
+      "whiteboardCaption": "Four common research chart types, each matched to the question it answers, with reminders to label, title, and export at high resolution.",
+      "example": "A postgraduate agronomist in Kenya collects rainfall and maize yield data across five counties. She uses sns.scatterplot with hue='county' to show how yield rises with rainfall, labels axes in mm and t/ha, then saves at dpi=300 as a PDF to embed in her thesis and journal submission.",
+      "quiz": [
+        {
+          "q": "Which chart best shows the relationship between two numeric variables like rainfall and yield?",
+          "options": [
+            "Bar chart",
+            "Scatter plot",
+            "Histogram",
+            "Pie chart"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does dpi=300 achieve when saving a figure?",
+          "options": [
+            "Reduces file size only",
+            "Provides print-quality resolution",
+            "Changes the colour scheme",
+            "Adds a legend automatically"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which practice makes a bar chart more honest?",
+          "options": [
+            "Using 3D effects",
+            "Starting the y-axis at zero",
+            "Removing axis labels",
+            "Hiding outliers"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "When should you use a histogram?",
+          "back": "To show the distribution (spread and shape) of a single numeric variable."
+        },
+        {
+          "front": "What library is built on top of Matplotlib for attractive defaults?",
+          "back": "Seaborn."
+        },
+        {
+          "front": "How do you trim excess white space when saving a figure?",
+          "back": "Pass bbox_inches='tight' to fig.savefig()."
+        },
+        {
+          "front": "Which file formats are best for scalable, publication-ready figures?",
+          "back": "PDF or SVG (vector formats); PNG at dpi=300 for raster."
+        }
+      ],
+      "reflection": "Think of a recent dataset you worked with — which single chart would most clearly and honestly communicate your key finding, and why?",
+      "summary": "Choose the chart that fits your question, label and title it clearly with Matplotlib and Seaborn, and export at dpi=300 to produce honest, publication-ready research figures.",
+      "discussionPrompt": "Ask the EFIKO tutor to review a plotting scenario: 'I have survey data on student ages and study hours across three universities — walk me through which charts to make and the exact Seaborn code.'",
+      "sizeKB": 5
+    },
+    {
+      "id": "s6-reproducibility-sharing-and-research-ethics",
+      "order": 6,
+      "title": "Reproducibility, Sharing, and Research Ethics",
+      "objectives": [
+        "Document code and analysis using Jupyter notebooks and comments",
+        "Share projects reproducibly with requirements files and basic version control",
+        "Apply ethical principles around data privacy, bias, and honest reporting"
+      ],
+      "text": "Reproducible research means anyone (including future-you) can rerun your analysis and get the same result. Three habits make this possible: documenting, sharing, and reporting honestly.\n\nDocument as you go. In Jupyter notebooks, use Markdown cells to explain WHY each step exists, not just what the code does. Add short comments above tricky lines. Restart the kernel and 'Run All' before finishing to confirm cells work top-to-bottom.\n\nShare reproducibly. Pin your dependencies so others install the exact versions you used. Run:\n\n    pip freeze > requirements.txt\n\nOthers then run 'pip install -r requirements.txt'. Track your project with Git: 'git init', 'git add .', 'git commit -m \"initial analysis\"'. Add a .gitignore to exclude large data and secrets, and a README explaining how to run everything. Push to GitHub to share and back up.\n\nReport ethically. Anonymise personal data (remove names, ID numbers) and never commit private datasets or API keys. Check for bias: does your sample represent the population you claim? Report honestly, including negative results and limitations, and never manipulate figures or p-values.\n\nWorked step: after analysis, run 'pip freeze > requirements.txt', write a README with run instructions, remove identifiers from data, then commit. Now your work is shareable and trustworthy.",
+      "voiceScript": "Let's bring everything together. Reproducible research simply means someone else, or you six months from now, can rerun your work and get the same answer. I always document as I go, using Markdown cells in my notebook to explain why I made each choice, not just what the code does. Before I finish, I restart the kernel and run everything top to bottom to be sure it actually works. Then I freeze my dependencies into a requirements file and commit my project with Git, adding a README so others know how to run it. And I never forget ethics: I anonymise personal data, keep secrets out of my repository, watch for bias in my sample, and report my results honestly, limitations and all.",
+      "keyPoints": [
+        "Document WHY in Markdown/comments and 'Restart & Run All' to verify reproducibility",
+        "Pin dependencies with 'pip freeze > requirements.txt' and version with Git",
+        "Use README + .gitignore to keep secrets and large/private data out of your repo",
+        "Anonymise data, check for sample bias, and report honestly including limitations"
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" fill=\"#334155\" font-size=\"16\" font-family=\"sans-serif\">Reproducible Research Workflow</text><rect x=\"20\" y=\"50\" width=\"120\" height=\"50\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"32\" y=\"72\" fill=\"#0f766e\" font-size=\"12\" font-family=\"sans-serif\">Document</text><text x=\"32\" y=\"90\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">notebook + comments</text><rect x=\"180\" y=\"50\" width=\"120\" height=\"50\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"192\" y=\"72\" fill=\"#15803d\" font-size=\"12\" font-family=\"sans-serif\">Share</text><text x=\"192\" y=\"90\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">requirements + Git</text><rect x=\"340\" y=\"50\" width=\"120\" height=\"50\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"352\" y=\"72\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">Report ethically</text><text x=\"352\" y=\"90\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">privacy + honesty</text><line x1=\"140\" y1=\"75\" x2=\"180\" y2=\"75\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"300\" y1=\"75\" x2=\"340\" y2=\"75\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"20\" y=\"140\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">pip freeze &gt; requirements.txt</text><text x=\"20\" y=\"165\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">git init / add / commit</text><text x=\"20\" y=\"190\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">README + .gitignore</text><text x=\"20\" y=\"215\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">anonymise data, no secrets</text><text x=\"20\" y=\"240\" fill=\"#b45309\" font-size=\"12\" font-family=\"sans-serif\">check bias, report limitations</text></svg>",
+      "whiteboardCaption": "A three-stage workflow, document then share then report ethically, with the key commands and safeguards listed.",
+      "example": "A postgraduate in Nairobi analyses survey data on smallholder farmers. Before sharing on GitHub, she strips names and phone numbers from the CSV, runs 'pip freeze > requirements.txt', writes a README with steps to reproduce her charts, and adds a .gitignore so the raw private survey never uploads. Her supervisor clones the repo, installs the exact packages, and reproduces every figure.",
+      "quiz": [
+        {
+          "q": "What does 'pip freeze > requirements.txt' accomplish?",
+          "options": [
+            "Deletes unused packages",
+            "Records the exact installed package versions for others to reproduce",
+            "Uploads your code to GitHub",
+            "Runs all notebook cells top to bottom"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why 'Restart Kernel and Run All' before sharing a notebook?",
+          "options": [
+            "It makes the notebook run faster permanently",
+            "It confirms cells execute correctly in order without hidden state",
+            "It anonymises the data automatically",
+            "It creates a Git commit"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which practice best supports research ethics?",
+          "options": [
+            "Committing API keys so collaborators can log in",
+            "Removing personal identifiers and reporting limitations honestly",
+            "Hiding negative results to strengthen the paper",
+            "Adjusting p-values to reach significance"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Reproducible research",
+          "back": "Work others can rerun to obtain the same results, thanks to documentation, pinned dependencies, and shared code."
+        },
+        {
+          "front": "requirements.txt",
+          "back": "A file listing exact package versions; create with 'pip freeze > requirements.txt', install with 'pip install -r requirements.txt'."
+        },
+        {
+          "front": ".gitignore",
+          "back": "A file telling Git which files to skip, e.g. large datasets, private data, and secret keys."
+        },
+        {
+          "front": "Data anonymisation",
+          "back": "Removing or masking personal identifiers (names, IDs, phone numbers) before sharing data."
+        }
+      ],
+      "reflection": "Think about a project you've done: what would someone need to reproduce it exactly, and what personal or sensitive data would you have to protect first?",
+      "summary": "Reproducible research combines clear documentation, dependency pinning with Git-based sharing, and ethical handling of data and honest reporting so your work can be trusted and rerun by anyone.",
+      "discussionPrompt": "Ask the EFIKO tutor to walk you through setting up a Git repository with a README, requirements.txt, and .gitignore for one of your own research projects.",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Python for Research",
+    "audience": "University students and researchers",
+    "hours": 6,
+    "level": "Intermediate"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783192298515,
+  "updatedAt": 1783192298515
+}

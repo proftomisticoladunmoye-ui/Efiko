@@ -1,0 +1,600 @@
+{
+  "courseId": "orig-statistics-for-research",
+  "owner": "EFIKO",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Statistics for Research",
+  "subtitle": "A Beginner's Guide to Understanding and Applying Data in Your Research",
+  "category": "Research Methods & Data Analysis",
+  "level": "Beginner",
+  "audience": "University students and early-career researchers across all disciplines",
+  "estimatedHours": 6,
+  "description": "This practical, mobile-friendly course introduces the core statistical concepts every researcher needs to collect, summarise, and interpret data with confidence. Designed for beginners with no prior statistics background, it moves step by step from describing data to drawing sound conclusions, always grounded in real research examples relevant to African contexts. By the end you will be able to read statistical results critically, choose appropriate methods for your questions, and avoid common mistakes that undermine research quality. No expensive software is required; examples work with free tools and simple calculations.",
+  "outcomes": [
+    "Explain foundational statistical concepts including populations, samples, variables, and levels of measurement.",
+    "Apply descriptive statistics to summarise datasets using measures of central tendency and spread.",
+    "Interpret probability, distributions, and the logic of sampling in research.",
+    "Conduct basic hypothesis testing and interpret p-values and confidence intervals correctly.",
+    "Select appropriate statistical tests based on research questions and data types.",
+    "Evaluate statistical results critically and communicate findings clearly and ethically."
+  ],
+  "competencies": [
+    "Summarising and visualising research data using descriptive statistics",
+    "Interpreting probability, distributions, and sampling in research contexts",
+    "Conducting and correctly interpreting basic hypothesis tests and confidence intervals",
+    "Selecting appropriate statistical tests for given research questions and data types",
+    "Communicating statistical findings clearly, critically, and ethically"
+  ],
+  "nextCourse": "Data Analysis with SPSS and Excel for Researchers",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What is a 'sample' in research?",
+        "options": [
+          "The entire group you want to study",
+          "A smaller subset selected from the population",
+          "A single data point",
+          "The conclusion of a study"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these is a measure of central tendency?",
+        "options": [
+          "Standard deviation",
+          "Range",
+          "Mean",
+          "Variance"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "A p-value helps a researcher decide whether to:",
+        "options": [
+          "Increase their sample size automatically",
+          "Reject or fail to reject the null hypothesis",
+          "Change their research topic",
+          "Prove a hypothesis is completely true"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "A variable measured as 'low, medium, high' is at which level of measurement?",
+        "options": [
+          "Nominal",
+          "Ordinal",
+          "Interval",
+          "Ratio"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which measure of central tendency is least affected by extreme outliers?",
+        "options": [
+          "Mean",
+          "Median",
+          "Sum",
+          "Standard deviation"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "The central limit theorem tells us that, with a large enough sample, the sampling distribution of the mean tends to be:",
+        "options": [
+          "Skewed to the right",
+          "Uniform",
+          "Approximately normal",
+          "Bimodal"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "A 95% confidence interval means:",
+        "options": [
+          "95% of the data falls within the interval",
+          "If we repeated the study many times, about 95% of such intervals would contain the true value",
+          "There is a 95% chance the hypothesis is true",
+          "The sample size was 95"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which test is most appropriate for examining the relationship between two categorical variables?",
+        "options": [
+          "Independent samples t-test",
+          "Pearson correlation",
+          "Chi-square test",
+          "Standard deviation"
+        ],
+        "answer": 2
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-foundations-why-statistics-matters-in-research",
+      "order": 1,
+      "title": "Foundations: Why Statistics Matters in Research",
+      "objectives": [
+        "Define key terms: population, sample, variable, and data.",
+        "Distinguish between the four levels of measurement (nominal, ordinal, interval, ratio).",
+        "Identify how statistics supports credible research decisions."
+      ],
+      "text": "Statistics is the science of collecting, organising and interpreting data so we can make trustworthy claims from limited information. Start with four core terms. A POPULATION is every unit you care about (for example, all students at your university). A SAMPLE is the smaller group you actually measure (say, 300 randomly chosen students). A VARIABLE is any characteristic that can differ between units, such as age, gender, or exam score. DATA are the recorded values of those variables.\n\nEvery variable has a LEVEL OF MEASUREMENT, and this decides which analysis is valid:\n- Nominal: named categories with no order (blood type, region).\n- Ordinal: ordered categories with unequal gaps (satisfaction: low/medium/high).\n- Interval: numeric, equal gaps, no true zero (temperature in Celsius).\n- Ratio: numeric with a true zero, so ratios make sense (weight, income, count).\n\nHow-to: before analysing, list each variable and label its level. Rule of thumb: can you rank it? If no, nominal. If yes but gaps are uneven, ordinal. If gaps are equal but zero is arbitrary, interval. If zero means 'none', ratio. This single step prevents errors like averaging nominal codes.\n\nStatistics matters because it turns messy observation into evidence, quantifies uncertainty, and lets others check your reasoning transparently.",
+      "voiceScript": "Welcome to your first step into statistics for research. I want you to think of statistics simply as a way of turning limited observations into trustworthy claims. Imagine you cannot survey every student at your university, so you study a smaller sample and use it to say something about the whole population. The things you measure, like age or exam score, we call variables, and the values you record are your data. Now here is the idea I most want you to remember today: every variable has a level of measurement, whether nominal, ordinal, interval, or ratio, and that level quietly decides which analysis is honest and which is nonsense. Get this foundation right, and everything that follows becomes clearer and far more credible.",
+      "keyPoints": [
+        "Population is everyone you care about; a sample is the subset you measure to draw conclusions.",
+        "A variable is a measurable characteristic; data are its recorded values.",
+        "Levels of measurement (nominal, ordinal, interval, ratio) determine which analyses are valid.",
+        "Statistics turns observation into checkable evidence and quantifies uncertainty."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><circle cx=\"110\" cy=\"70\" r=\"52\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"110\" y=\"45\" font-size=\"13\" text-anchor=\"middle\" fill=\"#334155\">Population</text><circle cx=\"110\" cy=\"82\" r=\"22\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"110\" y=\"86\" font-size=\"11\" text-anchor=\"middle\" fill=\"#15803d\">Sample</text><line x1=\"165\" y1=\"70\" x2=\"215\" y2=\"70\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"260\" y=\"60\" font-size=\"12\" text-anchor=\"middle\" fill=\"#334155\">Variables + Data</text><text x=\"240\" y=\"120\" font-size=\"13\" fill=\"#0f766e\">Levels of measurement</text><rect x=\"240\" y=\"132\" width=\"210\" height=\"22\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"248\" y=\"147\" font-size=\"11\" fill=\"#334155\">Nominal: categories</text><rect x=\"240\" y=\"158\" width=\"210\" height=\"22\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"248\" y=\"173\" font-size=\"11\" fill=\"#334155\">Ordinal: ranked</text><rect x=\"240\" y=\"184\" width=\"210\" height=\"22\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"248\" y=\"199\" font-size=\"11\" fill=\"#334155\">Interval: equal gaps</text><rect x=\"240\" y=\"210\" width=\"210\" height=\"22\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"248\" y=\"225\" font-size=\"11\" fill=\"#15803d\">Ratio: true zero</text><text x=\"40\" y=\"160\" font-size=\"11\" fill=\"#b45309\">Sample drawn</text><text x=\"40\" y=\"176\" font-size=\"11\" fill=\"#b45309\">from population</text></svg>",
+      "whiteboardCaption": "A sample drawn from a population yields variables and data, each measured at one of four levels.",
+      "example": "A student researching transport habits at the University of Lagos cannot ask all 50,000 students (the population), so she surveys 400 (the sample). She records region (nominal), satisfaction rating low/medium/high (ordinal), and weekly transport spend in naira (ratio) — labelling each level before choosing any analysis.",
+      "quiz": [
+        {
+          "q": "A researcher measures every student's exam score at one small college. The set of ALL those students is best described as the:",
+          "options": [
+            "Sample",
+            "Population",
+            "Variable",
+            "Data point"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which variable is measured at the RATIO level?",
+          "options": [
+            "Blood type (A, B, O)",
+            "Satisfaction (low, medium, high)",
+            "Temperature in Celsius",
+            "Monthly income in naira"
+          ],
+          "answer": 3
+        },
+        {
+          "q": "Why is identifying a variable's level of measurement important?",
+          "options": [
+            "It makes the sample larger",
+            "It determines which analyses are valid and prevents errors",
+            "It removes all uncertainty from data",
+            "It replaces the need for a sample"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Population vs. sample",
+          "back": "Population is every unit of interest; a sample is the subset you actually measure to infer about the population."
+        },
+        {
+          "front": "Variable vs. data",
+          "back": "A variable is a characteristic that can differ between units; data are the recorded values of that variable."
+        },
+        {
+          "front": "Nominal vs. ordinal",
+          "back": "Nominal: named categories with no order. Ordinal: ordered categories but with unequal or unknown gaps."
+        },
+        {
+          "front": "Interval vs. ratio",
+          "back": "Both are numeric with equal gaps; ratio has a true zero (allowing meaningful ratios), interval does not."
+        }
+      ],
+      "reflection": "Think of a research question in your own field: what is the population, what would your sample be, and what level of measurement are your key variables?",
+      "summary": "Statistics turns limited data into credible claims; understanding population, sample, variable, data, and the four levels of measurement is the foundation for choosing valid analyses.",
+      "discussionPrompt": "Ask the EFIKO tutor: 'Here are three variables from my project — help me classify each by level of measurement and explain which summary statistics are appropriate for each.'",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-describing-your-data-descriptive-statistics",
+      "order": 2,
+      "title": "Describing Your Data: Descriptive Statistics",
+      "objectives": [
+        "Calculate measures of central tendency (mean, median, mode).",
+        "Compute and interpret measures of spread (range, variance, standard deviation).",
+        "Choose suitable charts and tables to visualise different data types."
+      ],
+      "text": "Descriptive statistics summarise a dataset so patterns are visible at a glance. Start with central tendency, which describes the typical value. The MEAN is the sum of values divided by how many there are. The MEDIAN is the middle value after sorting (average the two middle values if the count is even). The MODE is the most frequent value. Use median when data is skewed or has outliers, because the mean gets pulled toward extremes.\n\nWorked example: exam scores 60, 70, 70, 80, 90. Mean = 370/5 = 74. Sorted, the middle value (median) = 70. Mode = 70 (appears twice).\n\nNext, measure SPREAD (how varied the data is). RANGE = max - min = 90 - 60 = 30. VARIANCE averages the squared distances from the mean: differences are -14, -4, -4, 6, 16; squared they sum to 520; divide by n (5) = 104. STANDARD DEVIATION (SD) is the square root of variance = about 10.2. SD is in the same units as your data, so it's easy to interpret: most scores fall within one SD of the mean.\n\nFinally, match charts to data types: bar charts for categories, histograms for continuous distributions, line charts for trends over time, and scatter plots for relationships between two variables.",
+      "voiceScript": "Let's make sense of a pile of numbers. First, we find the typical value. The mean is just the average, the median is the middle value once you sort your data, and the mode is whatever appears most often. When you have unusual extreme values, lean on the median because the mean gets dragged toward those extremes. Then we ask how spread out the data is. The range is simply the biggest minus the smallest, while the standard deviation tells you, on average, how far values sit from the mean, in the same units as your data. Finally, pick the right picture: bars for categories, histograms for continuous data, lines for trends, and scatter plots for relationships. Summarise well, and your data starts speaking clearly.",
+      "keyPoints": [
+        "Mean, median and mode describe the typical value; prefer median when outliers exist.",
+        "Range, variance and standard deviation measure how spread out data is; SD shares the data's units.",
+        "Match the chart to the data: bars for categories, histograms for distributions, lines for trends, scatter for relationships.",
+        "Always report both a centre and a spread to describe data honestly."
+      ],
+      "whiteboardSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 480 260\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" fill=\"#0f766e\" font-size=\"18\" font-family=\"sans-serif\">Describing Data</text><text x=\"20\" y=\"58\" fill=\"#334155\" font-size=\"13\" font-family=\"sans-serif\">Data: 60 70 70 80 90</text><text x=\"20\" y=\"88\" fill=\"#15803d\" font-size=\"13\" font-family=\"sans-serif\">Mean = 74</text><text x=\"20\" y=\"110\" fill=\"#15803d\" font-size=\"13\" font-family=\"sans-serif\">Median = 70</text><text x=\"20\" y=\"132\" fill=\"#15803d\" font-size=\"13\" font-family=\"sans-serif\">Mode = 70</text><text x=\"20\" y=\"158\" fill=\"#b45309\" font-size=\"13\" font-family=\"sans-serif\">Range = 30  SD = 10.2</text><line x1=\"250\" y1=\"70\" x2=\"250\" y2=\"230\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"250\" y1=\"230\" x2=\"460\" y2=\"230\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"265\" y=\"180\" width=\"25\" height=\"50\" fill=\"#0f766e\"/><rect x=\"300\" y=\"140\" width=\"25\" height=\"90\" fill=\"#0f766e\"/><rect x=\"335\" y=\"110\" width=\"25\" height=\"120\" fill=\"#15803d\"/><rect x=\"370\" y=\"150\" width=\"25\" height=\"80\" fill=\"#0f766e\"/><rect x=\"405\" y=\"185\" width=\"25\" height=\"45\" fill=\"#0f766e\"/><text x=\"300\" y=\"250\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">histogram of scores</text></svg>",
+      "whiteboardCaption": "A summary of central tendency and spread for a small score dataset, alongside a histogram of its distribution.",
+      "example": "A lecturer marking 40 student assignments computes a mean of 62% but notices two students scored zero for non-submission. Because these outliers drag the mean down, she reports the median (68%) as a fairer picture of typical performance, and uses the standard deviation to show how consistent the class was.",
+      "quiz": [
+        {
+          "q": "For the values 4, 8, 8, 10, what is the median?",
+          "options": [
+            "8",
+            "7.5",
+            "8.5",
+            "10"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Why might you report the median instead of the mean?",
+          "options": [
+            "It is always larger",
+            "It is less affected by outliers and skew",
+            "It is easier to type",
+            "It uses more decimal places"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which chart best shows the relationship between two continuous variables?",
+          "options": [
+            "Pie chart",
+            "Bar chart",
+            "Scatter plot",
+            "Line of a single variable"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Mean",
+          "back": "The sum of all values divided by the number of values (the arithmetic average)."
+        },
+        {
+          "front": "Standard deviation",
+          "back": "The square root of variance; average distance of values from the mean, in the same units as the data."
+        },
+        {
+          "front": "Range",
+          "back": "The difference between the maximum and minimum values in a dataset."
+        },
+        {
+          "front": "When to use a histogram",
+          "back": "To show the distribution of a single continuous variable across intervals (bins)."
+        }
+      ],
+      "reflection": "Think about a dataset from your own studies or work. Would the mean or the median describe it more honestly, and why?",
+      "summary": "Descriptive statistics summarise data using a measure of centre (mean, median, mode) and a measure of spread (range, variance, standard deviation), while well-chosen charts reveal patterns at a glance.",
+      "discussionPrompt": "Ask the EFIKO tutor: How do I decide between reporting mean with standard deviation versus median with interquartile range for my specific dataset?",
+      "sizeKB": 4
+    },
+    {
+      "id": "s3-probability-and-distributions",
+      "order": 3,
+      "title": "Probability and Distributions",
+      "objectives": [
+        "Explain basic probability and its role in inference.",
+        "Describe the normal distribution and the concept of the bell curve.",
+        "Interpret z-scores and understand why distributions matter."
+      ],
+      "text": "Probability measures how likely an event is, on a scale from 0 (impossible) to 1 (certain). If you toss a fair coin, the probability of heads is 0.5. In research, we rarely study whole populations, so we use samples. Probability lets us reason from a sample back to the population, this is called inference. It tells us how surprising our data would be if chance alone were at work.\n\nMany measurements, like heights, exam scores, or blood pressure, cluster around an average and form a symmetric bell shape called the normal distribution. Its centre is the mean, and its spread is the standard deviation (SD). About 68% of values fall within 1 SD of the mean, 95% within 2 SD, and 99.7% within 3 SD, the empirical rule.\n\nA z-score tells you how many standard deviations a value sits from the mean. Formula: z = (value - mean) / SD.\n\nWorked example: Exam mean = 60, SD = 10. A student scores 80. z = (80 - 60) / 10 = 2. That student is 2 SD above the mean, near the top 2.5%. Z-scores let us compare scores from different tests fairly, and they power the p-values you will meet next session.",
+      "voiceScript": "Let's talk about probability, the language of uncertainty. Probability runs from zero, meaning impossible, to one, meaning certain. A fair coin lands heads with probability one half. This matters because in research we almost never measure everyone, so we take a sample and use probability to reason back to the whole population. Now, many things in nature, like heights or exam scores, pile up around an average and form a smooth bell shape we call the normal distribution. Roughly sixty-eight percent of values sit within one standard deviation of the mean, and ninety-five percent within two. A z-score simply counts how many standard deviations a value is from the mean, and it lets us compare very different measurements fairly.",
+      "keyPoints": [
+        "Probability (0 to 1) lets us infer about populations from samples.",
+        "The normal distribution is a symmetric bell curve defined by mean and standard deviation.",
+        "Empirical rule: about 68%, 95%, 99.7% of data lie within 1, 2, 3 SD.",
+        "A z-score = (value - mean)/SD shows how far a value is from the mean."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><line x1=\"40\" y1=\"210\" x2=\"440\" y2=\"210\" stroke=\"#334155\" stroke-width=\"2\"/><path d=\"M40 205 C140 205 180 60 240 60 C300 60 340 205 440 205\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><line x1=\"240\" y1=\"210\" x2=\"240\" y2=\"60\" stroke=\"#b45309\" stroke-width=\"2\" stroke-dasharray=\"4 3\"/><line x1=\"180\" y1=\"210\" x2=\"180\" y2=\"150\" stroke=\"#15803d\" stroke-width=\"1.5\"/><line x1=\"300\" y1=\"210\" x2=\"300\" y2=\"150\" stroke=\"#15803d\" stroke-width=\"1.5\"/><line x1=\"120\" y1=\"210\" x2=\"120\" y2=\"195\" stroke=\"#15803d\" stroke-width=\"1.5\"/><line x1=\"360\" y1=\"210\" x2=\"360\" y2=\"195\" stroke=\"#15803d\" stroke-width=\"1.5\"/><text x=\"232\" y=\"228\" font-size=\"12\" fill=\"#b45309\">mean</text><text x=\"160\" y=\"228\" font-size=\"11\" fill=\"#15803d\">-1 SD</text><text x=\"286\" y=\"228\" font-size=\"11\" fill=\"#15803d\">+1 SD</text><text x=\"150\" y=\"140\" font-size=\"11\" fill=\"#334155\">68%</text><text x=\"120\" y=\"45\" font-size=\"13\" fill=\"#0f766e\">Normal distribution</text><text x=\"110\" y=\"192\" font-size=\"11\" fill=\"#334155\">z = (x - mean)/SD</text></svg>",
+      "whiteboardCaption": "A bell-shaped normal curve showing the mean, one standard deviation either side, and the central 68% of values.",
+      "example": "A Nigerian university sets a national aptitude test with mean 60 and SD 10. Amina scores 80. Her z-score is (80-60)/10 = 2, placing her about two standard deviations above average, in roughly the top 2.5% of candidates, useful when comparing her against peers who sat different versions of the test.",
+      "quiz": [
+        {
+          "q": "What is the probability of a certain (guaranteed) event?",
+          "options": [
+            "0",
+            "0.5",
+            "1",
+            "100"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Under the empirical rule, roughly what percentage of values fall within 2 standard deviations of the mean?",
+          "options": [
+            "50%",
+            "68%",
+            "95%",
+            "99.7%"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "A dataset has mean 50 and SD 5. What is the z-score of a value of 60?",
+          "options": [
+            "2",
+            "10",
+            "0.5",
+            "5"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Why do researchers use probability in inference?",
+          "options": [
+            "To reason from a sample about a population",
+            "To make data collection faster",
+            "To remove all uncertainty",
+            "To avoid using standard deviation"
+          ],
+          "answer": 0
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Probability scale",
+          "back": "Ranges from 0 (impossible) to 1 (certain); 0.5 means equally likely."
+        },
+        {
+          "front": "Normal distribution",
+          "back": "A symmetric bell-shaped curve defined by its mean (centre) and standard deviation (spread)."
+        },
+        {
+          "front": "Empirical rule",
+          "back": "About 68%, 95%, and 99.7% of values lie within 1, 2, and 3 SD of the mean."
+        },
+        {
+          "front": "Z-score",
+          "back": "z = (value - mean)/SD; the number of standard deviations a value is from the mean."
+        }
+      ],
+      "reflection": "Think of a measurement in your field (grades, rainfall, reaction times). Would you expect it to follow a bell curve, and how might a z-score help you interpret an unusual value?",
+      "summary": "Probability quantifies uncertainty and lets us infer about populations from samples, while the normal distribution and z-scores describe how data spread around a mean.",
+      "discussionPrompt": "Ask the EFIKO tutor: How does the normal distribution connect to p-values and hypothesis testing, and what happens when my data are not normally distributed?",
+      "sizeKB": 4
+    },
+    {
+      "id": "s4-sampling-and-the-logic-of-inference",
+      "order": 4,
+      "title": "Sampling and the Logic of Inference",
+      "objectives": [
+        "Compare probability and non-probability sampling methods.",
+        "Explain sampling error, bias, and the central limit theorem in plain terms.",
+        "Describe how sample results are used to make claims about populations."
+      ],
+      "text": "Researchers rarely study everyone. Instead they select a sample and use it to make claims about the whole population. Good sampling makes those claims trustworthy.\n\nProbability sampling gives every member a known, non-zero chance of selection. Examples: simple random sampling (names drawn by lottery), systematic sampling (every 10th person on a list), stratified sampling (split by group, e.g. faculty, then sample each), and cluster sampling (randomly pick whole units like villages). These support valid statistical inference.\n\nNon-probability sampling uses convenience, judgement, quota, or snowball methods. It is cheaper and faster but risks bias and cannot support strong generalisation.\n\nTwo problems threaten conclusions. Sampling error is the natural difference between a sample statistic and the true population value; it shrinks as sample size grows. Bias is a systematic error from flawed selection or measurement; a bigger sample does NOT fix bias.\n\nThe Central Limit Theorem is the engine of inference: if you take many random samples and record each mean, those means form an approximately normal (bell-shaped) distribution centred on the true population mean, even when the raw data are skewed. This lets us build confidence intervals.\n\nHow-to: To survey 500 students' study hours, get the official register, number everyone, and use a random-number generator to pick 60. That single random sample supports honest estimation.",
+      "voiceScript": "Let's talk about how researchers go from a small sample to confident claims about a whole population. The secret is randomness. When every person has a known chance of being chosen, we call it probability sampling, and it lets our statistics genuinely stand in for the group. Convenience or snowball sampling is faster, but it invites bias. Now remember two different troubles: sampling error is just natural wobble that shrinks as your sample grows, while bias is a systematic tilt that a bigger sample will never fix. The beautiful idea underneath it all is the central limit theorem, which says sample means pile up into a bell shape around the truth. That's what makes honest inference possible.",
+      "keyPoints": [
+        "Probability sampling gives known chances of selection and supports valid generalisation; non-probability sampling is cheaper but risks bias.",
+        "Sampling error shrinks with larger samples; bias is systematic and is NOT fixed by size.",
+        "The Central Limit Theorem makes sample means bell-shaped around the true mean, enabling inference.",
+        "Random selection is what lets a sample speak for the whole population."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-size=\"15\" fill=\"#334155\">From Sample to Population</text><circle cx=\"90\" cy=\"120\" r=\"55\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"60\" y=\"120\" font-size=\"12\" fill=\"#0f766e\">Population</text><circle cx=\"78\" cy=\"105\" r=\"4\" fill=\"#15803d\"/><circle cx=\"100\" cy=\"130\" r=\"4\" fill=\"#15803d\"/><circle cx=\"90\" cy=\"140\" r=\"4\" fill=\"#15803d\"/><rect x=\"185\" y=\"95\" width=\"60\" height=\"50\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"188\" y=\"90\" font-size=\"12\" fill=\"#b45309\">Sample</text><circle cx=\"200\" cy=\"115\" r=\"4\" fill=\"#15803d\"/><circle cx=\"225\" cy=\"128\" r=\"4\" fill=\"#15803d\"/><line x1=\"148\" y1=\"120\" x2=\"183\" y2=\"120\" stroke=\"#334155\" stroke-width=\"2\" marker-end=\"url(#a)\"/><text x=\"150\" y=\"112\" font-size=\"9\" fill=\"#334155\">random</text><path d=\"M300 200 q30 -110 60 0\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><line x1=\"290\" y1=\"200\" x2=\"440\" y2=\"200\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"330\" y1=\"200\" x2=\"330\" y2=\"95\" stroke=\"#b45309\" stroke-width=\"1\" stroke-dasharray=\"3\"/><text x=\"300\" y=\"225\" font-size=\"11\" fill=\"#0f766e\">CLT: means -&gt; bell</text><text x=\"318\" y=\"90\" font-size=\"9\" fill=\"#b45309\">true mean</text><defs><marker id=\"a\" markerWidth=\"8\" markerHeight=\"8\" refX=\"6\" refY=\"3\" orient=\"auto\"><path d=\"M0 0 L6 3 L0 6 z\" fill=\"#334155\"/></marker></defs></svg>",
+      "whiteboardCaption": "A random sample drawn from a population, whose repeated means form a normal bell curve around the true value.",
+      "example": "A researcher at a Nigerian university wants to know average weekly study hours of 4,000 students. Rather than asking friends (convenience, biased), she obtains the enrolment register, numbers all students, and uses a random-number generator to select 200. Her sample mean estimates the true average, and the CLT lets her attach a confidence interval.",
+      "quiz": [
+        {
+          "q": "Which is a probability sampling method?",
+          "options": [
+            "Snowball sampling",
+            "Stratified random sampling",
+            "Convenience sampling",
+            "Quota sampling"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A larger sample size reliably reduces which problem?",
+          "options": [
+            "Selection bias",
+            "Measurement bias",
+            "Sampling error",
+            "Non-response bias"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "The Central Limit Theorem states that the distribution of sample means is approximately:",
+          "options": [
+            "Skewed like the raw data",
+            "Uniform",
+            "Normal (bell-shaped) around the true mean",
+            "Always exactly the population value"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which best describes bias?",
+          "options": [
+            "Random wobble that averages out",
+            "A systematic error from flawed selection or measurement",
+            "Something fixed by adding more participants",
+            "The width of a confidence interval"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Probability sampling",
+          "back": "Every population member has a known, non-zero chance of being selected, supporting valid statistical inference."
+        },
+        {
+          "front": "Sampling error vs bias",
+          "back": "Sampling error is random and shrinks with sample size; bias is systematic and is not fixed by a bigger sample."
+        },
+        {
+          "front": "Central Limit Theorem",
+          "back": "Means of many random samples form an approximately normal distribution centred on the true population mean, even for skewed data."
+        },
+        {
+          "front": "Stratified sampling",
+          "back": "Divide the population into groups (strata) and randomly sample within each to ensure representation."
+        }
+      ],
+      "reflection": "In a study you might conduct, where could bias sneak into how you select participants, and how would you reduce it?",
+      "summary": "Random probability sampling plus the Central Limit Theorem let researchers use a small sample to make trustworthy, quantified claims about a whole population, while bias remains a threat that size alone cannot cure.",
+      "discussionPrompt": "Help me design a sampling plan for a survey of small-business owners in my city, weighing stratified random sampling against a convenience approach.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-hypothesis-testing-and-confidence-intervals",
+      "order": 5,
+      "title": "Hypothesis Testing and Confidence Intervals",
+      "objectives": [
+        "State null and alternative hypotheses for a research question.",
+        "Interpret p-values, significance levels, and confidence intervals correctly.",
+        "Recognise common misinterpretations and errors (Type I and Type II)."
+      ],
+      "text": "Hypothesis testing is how researchers use data to weigh two competing claims. The null hypothesis (H0) says \"nothing is happening\" - no effect, no difference. The alternative hypothesis (H1) says \"there is an effect\". For example, testing whether a new study app raises exam scores: H0 = the app makes no difference; H1 = the app changes scores.\n\nWe collect data and compute a p-value: the probability of seeing results this extreme IF H0 were true. A small p-value means the data would be surprising under H0, so we doubt it. We compare the p-value to a significance level (alpha), usually 0.05. If p < 0.05, we \"reject H0\".\n\nA confidence interval (CI) reports a range of plausible values for the true effect. A 95% CI means: if we repeated the study many times, about 95% of such intervals would contain the true value.\n\nTwo errors matter. A Type I error (false positive) is rejecting a true H0 - claiming an effect that isn't real. A Type II error (false negative) is missing a real effect.\n\nHow-to: (1) state H0 and H1, (2) pick alpha, (3) compute p and CI, (4) decide, (5) report honestly. Remember: p = 0.06 does not prove H0 true - absence of evidence is not evidence of absence.",
+      "voiceScript": "Let's think about hypothesis testing as a fair courtroom for your ideas. You start by assuming the null hypothesis - that nothing interesting is happening, no effect, no difference. Then your data act like evidence. The p-value tells you how surprising your results would be if that null were actually true. When it's very small, usually below zero point zero five, you decide the null looks unlikely and you reject it. A confidence interval goes further, giving you a range of plausible values for the real effect, so you report your uncertainty honestly instead of pretending you're certain. And please remember two traps: a Type one error cries wolf about an effect that isn't there, while a Type two error misses one that really is. Stay humble with your conclusions.",
+      "keyPoints": [
+        "H0 assumes no effect; H1 claims an effect - state both before testing.",
+        "p-value = chance of data this extreme IF H0 is true; compare to alpha (often 0.05).",
+        "A 95% CI gives a plausible range for the true effect and shows your uncertainty.",
+        "Type I error = false alarm; Type II error = missed real effect."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-size=\"15\" fill=\"#0f766e\">H0: no effect</text><text x=\"20\" y=\"50\" font-size=\"15\" fill=\"#b45309\">H1: there is an effect</text><line x1=\"20\" y1=\"70\" x2=\"460\" y2=\"70\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"20\" y=\"95\" font-size=\"13\" fill=\"#334155\">p-value vs alpha (0.05)</text><rect x=\"20\" y=\"105\" width=\"420\" height=\"20\" fill=\"none\" stroke=\"#334155\"/><line x1=\"230\" y1=\"105\" x2=\"230\" y2=\"125\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"40\" y=\"120\" font-size=\"11\" fill=\"#15803d\">p&lt;0.05 reject H0</text><text x=\"300\" y=\"120\" font-size=\"11\" fill=\"#334155\">p&gt;0.05 keep H0</text><text x=\"20\" y=\"155\" font-size=\"13\" fill=\"#0f766e\">95% CI</text><line x1=\"90\" y1=\"150\" x2=\"260\" y2=\"150\" stroke=\"#0f766e\" stroke-width=\"3\"/><line x1=\"90\" y1=\"144\" x2=\"90\" y2=\"156\" stroke=\"#0f766e\" stroke-width=\"3\"/><line x1=\"260\" y1=\"144\" x2=\"260\" y2=\"156\" stroke=\"#0f766e\" stroke-width=\"3\"/><circle cx=\"175\" cy=\"150\" r=\"4\" fill=\"#15803d\"/><text x=\"280\" y=\"154\" font-size=\"11\" fill=\"#334155\">plausible range</text><rect x=\"20\" y=\"180\" width=\"200\" height=\"55\" fill=\"none\" stroke=\"#b45309\"/><text x=\"30\" y=\"200\" font-size=\"12\" fill=\"#b45309\">Type I: false positive</text><text x=\"30\" y=\"222\" font-size=\"12\" fill=\"#b45309\">(reject true H0)</text><rect x=\"250\" y=\"180\" width=\"210\" height=\"55\" fill=\"none\" stroke=\"#15803d\"/><text x=\"260\" y=\"200\" font-size=\"12\" fill=\"#15803d\">Type II: false negative</text><text x=\"260\" y=\"222\" font-size=\"12\" fill=\"#15803d\">(miss real effect)</text></svg>",
+      "whiteboardCaption": "The testing workflow: hypotheses, comparing p to alpha, a confidence interval, and the two error types.",
+      "example": "A Nigerian agriculture student tests whether a new fertiliser increases maize yield. H0: no yield difference; H1: yields differ. She measures 40 plots, gets p = 0.02 and a 95% CI of 0.3 to 1.1 tonnes per hectare. She rejects H0, reports the CI, and notes she could still be making a Type I error.",
+      "quiz": [
+        {
+          "q": "What does a p-value of 0.03 mean when alpha is 0.05?",
+          "options": [
+            "There is a 3% chance H0 is true",
+            "Results this extreme have a 3% probability if H0 is true, so we reject H0",
+            "The effect is definitely large",
+            "We accept H0 as proven"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A researcher rejects a null hypothesis that is actually true. This is a:",
+          "options": [
+            "Type II error",
+            "Correct decision",
+            "Type I error",
+            "Confidence interval"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which is the correct reading of a 95% confidence interval?",
+          "options": [
+            "95% of data fall inside it",
+            "It is a range of plausible values for the true effect from repeated sampling",
+            "There is a 95% chance the sample mean is wrong",
+            "It proves the hypothesis"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Null hypothesis (H0)",
+          "back": "The default claim that there is no effect or no difference."
+        },
+        {
+          "front": "p-value",
+          "back": "Probability of observing data at least this extreme if H0 were true."
+        },
+        {
+          "front": "Type I vs Type II error",
+          "back": "Type I = rejecting a true H0 (false positive); Type II = failing to reject a false H0 (false negative)."
+        },
+        {
+          "front": "95% confidence interval",
+          "back": "A range that would contain the true value in about 95% of repeated studies."
+        }
+      ],
+      "reflection": "Think of a claim in your field you'd like to test. What would your H0 and H1 be, and which error type would be more costly to make?",
+      "summary": "Hypothesis testing pits a null against an alternative, using p-values and confidence intervals to judge evidence while honestly acknowledging Type I and Type II errors.",
+      "discussionPrompt": "Ask the EFIKO tutor: Why can't a non-significant p-value (p > 0.05) prove that the null hypothesis is true?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s6-choosing-the-right-test-and-communicating-results",
+      "order": 6,
+      "title": "Choosing the Right Test and Communicating Results",
+      "objectives": [
+        "Match common statistical tests (t-test, chi-square, correlation) to data types and research questions.",
+        "Interpret basic output from these tests, including p-values and effect direction.",
+        "Communicate statistical findings clearly and ethically to different audiences."
+      ],
+      "text": "Choosing a test starts with two questions: What type of data do you have, and what do you want to know? Data are either categorical (groups, like gender or yes/no) or numeric (measured, like height or exam score).\n\nUse this decision guide:\n- Comparing the average of a numeric variable between TWO groups? Use an independent-samples t-test (e.g., test scores of urban vs rural students).\n- Testing whether TWO categorical variables are related? Use a chi-square test (e.g., gender vs course choice).\n- Measuring how two NUMERIC variables move together? Use correlation (e.g., study hours vs exam score).\n\nInterpreting output: nearly every test gives a p-value. If p is less than 0.05, the result is 'statistically significant' — unlikely due to chance alone. Correlation also gives r, from -1 to +1: near +1 means strong positive link, near -1 strong negative, near 0 none.\n\nWorked example: You compare mean scores of two study groups. Output: t = 2.4, p = 0.02. Since 0.02 < 0.05, the difference is significant. Report: 'Group A scored significantly higher than Group B (t = 2.4, p = 0.02).'\n\nEthical reporting: state your sample size, don't hide non-significant results, avoid claiming causation from correlation, and translate numbers into plain language for non-experts.",
+      "voiceScript": "Let's bring everything together by choosing the right test and sharing what you find. I always start with two simple questions: what kind of data do I have, and what am I actually trying to learn? If I'm comparing the average of a numeric measure between two groups, I reach for a t-test. If I'm checking whether two categories are linked, I use chi-square. And if I want to see how two numeric variables move together, correlation is my tool. Whatever test I run, I look at the p-value; below zero point zero five usually means the result is unlikely to be chance. But numbers alone don't help people. So I explain findings in plain words, I'm honest about my sample size, and I never confuse correlation with causation.",
+      "keyPoints": [
+        "Two groups + numeric outcome = t-test; two categories = chi-square; two numerics = correlation.",
+        "p < 0.05 signals statistical significance; correlation's r shows strength and direction (-1 to +1).",
+        "Correlation is not causation — never claim one variable causes another from a correlation.",
+        "Report sample size, include non-significant results, and explain findings in plain language."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='240' y='24' font-size='15' text-anchor='middle' fill='#0f766e'>Which test do I use?</text><rect x='180' y='38' width='120' height='30' rx='5' fill='none' stroke='#334155' stroke-width='2'/><text x='240' y='58' font-size='11' text-anchor='middle' fill='#334155'>Your question?</text><line x1='210' y1='68' x2='90' y2='110' stroke='#334155' stroke-width='1.5'/><line x1='240' y1='68' x2='240' y2='110' stroke='#334155' stroke-width='1.5'/><line x1='270' y1='68' x2='390' y2='110' stroke='#334155' stroke-width='1.5'/><rect x='30' y='112' width='120' height='34' rx='5' fill='none' stroke='#15803d' stroke-width='2'/><text x='90' y='133' font-size='10' text-anchor='middle' fill='#15803d'>Compare 2 means</text><rect x='180' y='112' width='120' height='34' rx='5' fill='none' stroke='#b45309' stroke-width='2'/><text x='240' y='133' font-size='10' text-anchor='middle' fill='#b45309'>2 categories linked?</text><rect x='330' y='112' width='120' height='34' rx='5' fill='none' stroke='#0f766e' stroke-width='2'/><text x='390' y='133' font-size='10' text-anchor='middle' fill='#0f766e'>2 numerics move?</text><text x='90' y='172' font-size='13' text-anchor='middle' fill='#15803d'>t-test</text><text x='240' y='172' font-size='13' text-anchor='middle' fill='#b45309'>chi-square</text><text x='390' y='172' font-size='13' text-anchor='middle' fill='#0f766e'>correlation</text><rect x='60' y='200' width='360' height='40' rx='6' fill='none' stroke='#334155' stroke-width='2'/><text x='240' y='218' font-size='11' text-anchor='middle' fill='#334155'>p &lt; 0.05 = significant</text><text x='240' y='233' font-size='10' text-anchor='middle' fill='#334155'>report clearly + ethically</text></svg>",
+      "whiteboardCaption": "A decision tree matching your research question to a t-test, chi-square, or correlation, then to interpreting p-values.",
+      "example": "A public health student in Nairobi surveys 200 people, recording county (categorical) and whether they use mosquito nets (categorical). To test if net use differs by county, she runs a chi-square test, gets p = 0.03, and reports that net usage is significantly associated with county — while noting this shows association, not that county causes behaviour.",
+      "quiz": [
+        {
+          "q": "You want to know if average exam scores differ between male and female students. Which test fits?",
+          "options": [
+            "Chi-square test",
+            "Independent-samples t-test",
+            "Correlation",
+            "No test needed"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A correlation gives r = -0.85. This means:",
+          "options": [
+            "A strong negative relationship",
+            "No relationship",
+            "A weak positive relationship",
+            "The result is invalid"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which statement is ethically sound reporting?",
+          "options": [
+            "Report only the significant results and hide the rest",
+            "State the sample size and avoid claiming causation from correlation",
+            "Claim one variable causes another based on correlation",
+            "Round p = 0.06 down to 0.05 to look significant"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "When do you use a chi-square test?",
+          "back": "When testing whether two categorical variables are related (e.g., gender vs course choice)."
+        },
+        {
+          "front": "What does a p-value below 0.05 usually mean?",
+          "back": "The result is statistically significant — unlikely to have occurred by chance alone."
+        },
+        {
+          "front": "What does the correlation coefficient r range from?",
+          "back": "-1 (strong negative) through 0 (none) to +1 (strong positive)."
+        },
+        {
+          "front": "Why is 'correlation is not causation' important?",
+          "back": "Two variables can move together without one causing the other; claiming cause misleads readers."
+        }
+      ],
+      "reflection": "Think of a question in your own field: what data type is involved, and which of the three tests would you choose to answer it?",
+      "summary": "Match your test to your data type and question — t-test for comparing two means, chi-square for linked categories, correlation for two numeric variables — then interpret the p-value and report findings honestly and in plain language.",
+      "discussionPrompt": "Ask the EFIKO tutor: 'I have [describe my variables and research question]. Which test should I use, and how would I write up the result responsibly?'",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Statistics for Research",
+    "audience": "University students and researchers",
+    "hours": 6,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": "operator",
+  "createdAt": 1783191764842,
+  "updatedAt": 1783191764842
+}

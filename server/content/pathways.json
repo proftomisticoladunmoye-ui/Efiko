@@ -22,5 +22,17 @@
       "orig-effective-study-skills-for-university-success",
       "orig-time-management-for-students"
     ]
+  },
+  {
+    "id": "research-data-analysis",
+    "title": "Research & Data Analysis",
+    "description": "From understanding statistics to designing instruments, analysing data and presenting findings — the full research-data toolkit.",
+    "courses": [
+      "orig-statistics-for-research",
+      "orig-questionnaire-design-essentials",
+      "orig-spss-for-data-analysis",
+      "orig-data-visualization-essentials",
+      "orig-python-for-research"
+    ]
   }
 ]
