@@ -7,6 +7,12 @@ import { settlePayment, verifyPayment } from './payments.js';
 
 const LISTINGS = 'market_listings';
 const PURCHASES = 'market_purchases';
+const EARNINGS = 'market_earnings'; // one ledger entry per creator sale
+
+// Platform commission on creator sales (%). The creator keeps the rest.
+const FEE_PCT = Math.min(90, Math.max(0, Number(process.env.MARKET_FEE_PCT) || 20));
+export const platformFeePct = () => FEE_PCT;
+const money2 = (n) => Math.round(Number(n) * 100) / 100;
 
 // Supported pricing currencies (ISO 4217, all Flutterwave-payable). Keep in sync with
 // src/currencies.js on the client.
@@ -18,7 +24,7 @@ export async function createListing(ownerOrgId, { title, description, courseId =
   if (!t) throw new Error('title is required');
   const rec = {
     id: `l_${randomBytes(7).toString('hex')}`,
-    ownerOrgId,
+    ownerType: 'org', ownerId: ownerOrgId, ownerOrgId,
     title: t,
     description: String(description || '').trim().slice(0, 2000),
     courseId: courseId || null,
@@ -30,8 +36,42 @@ export async function createListing(ownerOrgId, { title, description, courseId =
   return rec;
 }
 
+// An individual creator (lecturer/expert/trainer) lists a product. Delivered via a link the
+// buyer receives after purchase. Creator listings never gate EFIKO courses (no courseId), so
+// no one can hijack access to content they don't own.
+export async function createCreatorListing(user, { title, description, price = 0, currency = 'NGN', deliverableUrl = '' }) {
+  if (!user?.userId) throw new Error('sign in required');
+  const t = String(title || '').trim();
+  if (!t) throw new Error('title is required');
+  const rec = {
+    id: `l_${randomBytes(7).toString('hex')}`,
+    ownerType: 'creator', ownerId: user.userId, creatorName: user.name || 'Creator',
+    title: t,
+    description: String(description || '').trim().slice(0, 2000),
+    courseId: null,
+    deliverableUrl: String(deliverableUrl || '').trim().slice(0, 500),
+    price: Math.max(0, Math.round(Number(price) || 0)),
+    currency: CURRENCIES.includes(currency) ? currency : 'NGN',
+    createdAt: Date.now()
+  };
+  await kvPut(LISTINGS, rec.id, rec);
+  return rec;
+}
+
+export async function listCreatorListings(userId) {
+  return (await kvAll(LISTINGS)).filter((l) => l.ownerType === 'creator' && l.ownerId === userId).sort((a, b) => b.createdAt - a.createdAt);
+}
+
+export async function deleteCreatorListing(userId, id) {
+  const l = await kvGet(LISTINGS, id);
+  if (!l || l.ownerType !== 'creator' || l.ownerId !== userId) return false;
+  await kvDel(LISTINGS, id);
+  return true;
+}
+
 export async function listListings() {
-  return (await kvAll(LISTINGS)).sort((a, b) => b.createdAt - a.createdAt);
+  // Strip the creator's delivery link — only buyers receive it (via their purchase record).
+  return (await kvAll(LISTINGS)).map(({ deliverableUrl, ...l }) => l).sort((a, b) => b.createdAt - a.createdAt); // eslint-disable-line no-unused-vars
 }
 
 export async function listListingsByOrg(ownerOrgId) {
@@ -89,13 +129,45 @@ async function recordPurchase(user, listing, pay) {
     userId: user.userId,
     amount: listing.price,
     currency: listing.currency,
+    ...(listing.ownerType === 'creator' ? { deliverableUrl: listing.deliverableUrl || '', creatorName: listing.creatorName } : {}),
     status: pay.status || 'paid',
     ref: pay.ref,
     provider: pay.provider,
     createdAt: Date.now()
   };
   await kvPut(PURCHASES, rec.id, rec);
+  // Revenue split: a creator sale credits the creator (net of the platform fee).
+  if (listing.ownerType === 'creator' && listing.ownerId && (listing.price || 0) > 0) {
+    const gross = listing.price;
+    const fee = money2(gross * FEE_PCT / 100);
+    await kvPut(EARNINGS, `earn_${rec.id}`, {
+      id: `earn_${rec.id}`, purchaseId: rec.id, creatorId: listing.ownerId, listingId: listing.id, listingTitle: listing.title,
+      buyerId: user.userId, gross, feePct: FEE_PCT, fee, net: money2(gross - fee), currency: listing.currency,
+      status: 'pending', createdAt: Date.now()
+    });
+  }
   return rec;
+}
+
+// Creator earnings summary (per currency) + recent sales.
+export async function getCreatorEarnings(userId) {
+  const rows = (await kvAll(EARNINGS)).filter((e) => e.creatorId === userId);
+  const byCurrency = {};
+  for (const e of rows) {
+    const c = (byCurrency[e.currency] ||= { gross: 0, net: 0, pending: 0, paid: 0, sales: 0 });
+    c.gross = money2(c.gross + e.gross); c.net = money2(c.net + e.net); c.sales++;
+    if (e.status === 'paid') c.paid = money2(c.paid + e.net); else c.pending = money2(c.pending + e.net);
+  }
+  return { feePct: FEE_PCT, byCurrency, sales: rows.sort((a, b) => b.createdAt - a.createdAt).slice(0, 25) };
+}
+
+// Request a payout — flags this creator's pending earnings as requested (actual disbursement
+// is handled out-of-band via a Flutterwave transfer / manual payout). Returns requested totals.
+export async function requestPayout(userId) {
+  const rows = (await kvAll(EARNINGS)).filter((e) => e.creatorId === userId && e.status === 'pending');
+  const requested = {};
+  for (const e of rows) { e.status = 'requested'; e.requestedAt = Date.now(); await kvPut(EARNINGS, e.id, e); requested[e.currency] = money2((requested[e.currency] || 0) + e.net); }
+  return { requested, count: rows.length };
 }
 
 // Free items + demo (mock) checkout. In live mode, paid items settle via purchaseVerified().

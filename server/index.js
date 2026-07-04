@@ -27,7 +27,7 @@ import { listPathways, nextInPathway } from './core/originals/pathways.js';
 import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpportunity, listSaved, toggleSaved } from './core/careers.js';
 import { refreshAggregated, listAggregated, refreshIfStale, lastRun } from './core/careers/aggregator.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
-import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess } from './core/marketplace.js';
+import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess, createCreatorListing, listCreatorListings, deleteCreatorListing, getCreatorEarnings, requestPayout, platformFeePct } from './core/marketplace.js';
 import { paymentsProvider, paymentsLive, paymentsPublicKey } from './core/payments.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
@@ -544,6 +544,35 @@ const server = createServer(async (req, res) => {
     const user = await authedUser(req);
     if (!user) return json(res, 200, { purchases: [] });
     return json(res, 200, { purchases: await listPurchases(user.userId) });
+  }
+  // --- Creator marketplace: individual creators sell, with a revenue split ---
+  if (req.method === 'POST' && url.pathname === '/market/creator/listings') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to sell on EFIKO.' });
+    try {
+      return json(res, 200, { listing: await createCreatorListing(user, await readBody(req)) });
+    } catch (e) { return json(res, 400, { error: e.message }); }
+  }
+  if (req.method === 'GET' && url.pathname === '/market/creator/listings') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { listings: [] });
+    return json(res, 200, { listings: await listCreatorListings(user.userId) });
+  }
+  if (req.method === 'DELETE' && url.pathname.match(/^\/market\/creator\/listings\/[^/]+$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'unauthorized' });
+    const id = decodeURIComponent(url.pathname.split('/')[4]);
+    return json(res, (await deleteCreatorListing(user.userId, id)) ? 200 : 404, { ok: true });
+  }
+  if (req.method === 'GET' && url.pathname === '/market/creator/earnings') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 200, { earnings: null });
+    return json(res, 200, { earnings: await getCreatorEarnings(user.userId), feePct: platformFeePct() });
+  }
+  if (req.method === 'POST' && url.pathname === '/market/creator/payout') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in first.' });
+    return json(res, 200, await requestPayout(user.userId));
   }
   if (req.method === 'POST' && url.pathname.match(/^\/market\/listings\/[^/]+\/buy$/)) {
     const user = await authedUser(req);

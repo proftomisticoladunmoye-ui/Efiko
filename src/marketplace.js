@@ -5,6 +5,30 @@ const orgToken = () => localStorage.getItem('efiko-admin-token') || '';
 const userHeaders = () => (userToken() ? { Authorization: `Bearer ${userToken()}` } : {});
 const orgHeaders = () => (orgToken() ? { Authorization: `Bearer ${orgToken()}` } : {});
 
+// --- creator marketplace ---
+export async function createCreatorListing(payload) {
+  const r = await fetch(`${GATEWAY}/market/creator/listings`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...userHeaders() }, body: JSON.stringify(payload) });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
+  return d.listing;
+}
+export async function listMyCreatorListings() {
+  try { const r = await fetch(`${GATEWAY}/market/creator/listings`, { headers: userHeaders() }); if (!r.ok) return []; return (await r.json()).listings || []; } catch { return []; }
+}
+export async function deleteCreatorListing(id) {
+  const r = await fetch(`${GATEWAY}/market/creator/listings/${encodeURIComponent(id)}`, { method: 'DELETE', headers: userHeaders() });
+  return r.ok;
+}
+export async function fetchCreatorEarnings() {
+  try { const r = await fetch(`${GATEWAY}/market/creator/earnings`, { headers: userHeaders() }); if (!r.ok) return null; return (await r.json()).earnings; } catch { return null; }
+}
+export async function requestPayout() {
+  const r = await fetch(`${GATEWAY}/market/creator/payout`, { method: 'POST', headers: userHeaders() });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
+  return d;
+}
+
 export async function listListings() {
   try {
     const r = await fetch(`${GATEWAY}/market/listings`);

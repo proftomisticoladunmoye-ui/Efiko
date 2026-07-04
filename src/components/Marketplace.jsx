@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { listListings, listPurchases, buyListing, verifyPurchase } from '../marketplace.js';
 import { formatMoney as price } from '../currencies.js';
+import CreatorStudio from './CreatorStudio.jsx';
 
 // Load Flutterwave's checkout script once (only needed in live mode).
 function loadFlutterwave() {
@@ -20,6 +21,8 @@ function loadFlutterwave() {
 export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
   const [listings, setListings] = useState([]);
   const [ownedIds, setOwnedIds] = useState(new Set());
+  const [purchases, setPurchases] = useState([]);
+  const [sellMode, setSellMode] = useState(false);
   const [payments, setPayments] = useState({ provider: 'mock', live: false, publicKey: '' });
   const [checkout, setCheckout] = useState(null); // listing being purchased (demo modal)
   const [busy, setBusy] = useState(false);
@@ -27,9 +30,10 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
   const [loaded, setLoaded] = useState(false);
 
   async function load() {
-    const [res, purchases] = await Promise.all([listListings(), signedIn ? listPurchases() : Promise.resolve([])]);
+    const [res, myPurchases] = await Promise.all([listListings(), signedIn ? listPurchases() : Promise.resolve([])]);
     setListings(res.listings); setPayments(res.payments || { provider: 'mock', live: false, publicKey: '' });
-    setOwnedIds(new Set(purchases.map((p) => p.listingId)));
+    setPurchases(myPurchases);
+    setOwnedIds(new Set(myPurchases.map((p) => p.listingId)));
     setLoaded(true);
   }
   useEffect(() => { load(); }, [signedIn]);
@@ -74,17 +78,24 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
     } catch (e) { setErr(e.message); }
   }
 
+  if (sellMode) return <CreatorStudio onBack={() => { setSellMode(false); load(); }} />;
+
   return (
     <section className="market">
-      <h2>🛒 Marketplace</h2>
-      <p className="lib-sub">Premium courses and packs from institutions. Buy once, learn anytime — even offline.</p>
+      <div className="market-head">
+        <h2>🛒 Marketplace</h2>
+        {signedIn && <button className="course-enrol" onClick={() => setSellMode(true)}>💼 Sell on EFIKO</button>}
+      </div>
+      <p className="lib-sub">Premium courses, packs and resources from institutions and creators. Buy once, learn anytime — even offline.</p>
       {!payments.live && <p className="market-demo">🧪 Demo checkout — live payments (Flutterwave) activate once keys are added. No real charge is made.</p>}
 
-      {loaded && listings.length === 0 && <p className="career-empty">No listings yet. Institutions can put a course up for sale from Teach → Marketplace.</p>}
+      {loaded && listings.length === 0 && <p className="career-empty">No listings yet. Institutions and creators can list here — tap “Sell on EFIKO”.</p>}
 
       <div className="career-list">
         {listings.map((l) => {
           const owned = ownedIds.has(l.id);
+          const by = l.ownerType === 'creator' ? `by ${l.creatorName || 'a creator'}` : (l.ownerType === 'org' ? 'Institution' : null);
+          const deliverable = owned && purchases.find((p) => p.listingId === l.id)?.deliverableUrl;
           return (
             <article key={l.id} className="opp-card">
               <div className="opp-head">
@@ -92,12 +103,15 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
                 {owned && <span className="market-owned">✓ Owned</span>}
               </div>
               <h3 className="opp-title">{l.title}</h3>
+              {by && <p className="opp-org">{by}</p>}
               {l.description && <p className="opp-desc">{l.description}</p>}
               <div className="opp-actions">
                 {owned
                   ? (l.courseId
                       ? <button className="course-open" onClick={() => onGoSection?.('courses')}>Open course →</button>
-                      : <span className="course-open" aria-disabled="true" style={{ opacity: .7 }}>Purchased</span>)
+                      : (deliverable
+                          ? <a className="course-open" href={deliverable} target="_blank" rel="noreferrer">Access →</a>
+                          : <span className="course-open" aria-disabled="true" style={{ opacity: .7 }}>Purchased</span>))
                   : <button className="course-open" onClick={() => startBuy(l)} disabled={busy}>{l.price === 0 ? 'Get free' : `Buy · ${price(l.price, l.currency)}`}</button>}
               </div>
             </article>
