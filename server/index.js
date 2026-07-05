@@ -314,7 +314,7 @@ const server = createServer(async (req, res) => {
       let history = (await recentMessages(id, 12)).map((m) => ({ role: m.role === 'ai' ? 'assistant' : 'user', content: m.text }));
       while (history.length && history[0].role === 'assistant') history.shift();
       const ctx = d.context?.course ? ` The learner is studying ${d.context.course}${d.context.topic ? ` (${d.context.topic})` : ''}.` : '';
-      const system = `You are Efiko, a warm, expert tutor for African university students.${ctx} Continue this discussion, remembering earlier context. Be clear and concise; use a concrete example where it helps.`;
+      const system = `You are Efiko, a warm, expert tutor for African university students.${ctx} Continue this discussion, remembering earlier context. Be clear and concise; use a concrete example where it helps. Write in plain, conversational prose — do NOT use Markdown headings (#), bold (**), or bullet symbols.`;
       const msg = await client.messages.create({ model: FAST_MODEL, max_tokens: 700, system, messages: history });
       const reply = (msg.content || []).filter((b) => b.type === 'text').map((b) => b.text).join(' ').trim();
       const aiMsg = await addMessage(id, 'ai', reply);

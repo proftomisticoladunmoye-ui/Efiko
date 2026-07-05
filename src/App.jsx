@@ -452,7 +452,7 @@ export default function App() {
           <SnapLearn onSnap={handleSnap} busy={snapping} />
         </>);
       case 'thinkspace':
-        return (<div className="ts-soon"><h2>🧠 ThinkSpace</h2><p className="lib-sub">Your AI learning workspace — persistent discussions that remember your context. Coming next.</p></div>);
+        return (<div className="ts-soon"><h2>🧠 ThinkSpace</h2><p className="lib-sub">Your AI learning workspace — persistent discussions that remember your context.</p><button className="course-open" onClick={() => setTsOpen(true)}>Open ThinkSpace</button></div>);
       case 'originals':
         return <Originals onAsk={handleAsk} signedIn={!!user} onSignIn={() => setAuthOpen(true)} />;
       case 'courses':
@@ -514,6 +514,7 @@ export default function App() {
             enrolledIds={enrolledIds}
             onOpenCapsule={openCapsule}
             onGoSection={goSection}
+            onOpenThinkSpace={() => setTsOpen(true)}
             onSignIn={() => setAuthOpen(true)}
           />
         );

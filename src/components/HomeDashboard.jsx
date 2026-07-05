@@ -8,7 +8,7 @@ import { fetchMyClasses } from '../enrol.js';
 import ExamReadiness from './ExamReadiness.jsx';
 import GameStats from './GameStats.jsx';
 
-export default function HomeDashboard({ user, readiness, enrolledIds = [], onOpenCapsule, onGoSection, onSignIn }) {
+export default function HomeDashboard({ user, readiness, enrolledIds = [], onOpenCapsule, onGoSection, onOpenThinkSpace, onSignIn }) {
   const [recent, setRecent] = useState(null);
   const [courses, setCourses] = useState([]);
   const [classes, setClasses] = useState([]);
@@ -63,10 +63,10 @@ export default function HomeDashboard({ user, readiness, enrolledIds = [], onOpe
           <strong>Ask EFIKO AI</strong>
           <em>Any topic, instantly</em>
         </button>
-        <button className="dash-card" onClick={() => onGoSection('thinkspace')}>
+        <button className="dash-card" onClick={() => (onOpenThinkSpace ? onOpenThinkSpace() : onGoSection('thinkspace'))}>
           <span className="dash-kicker">🧠 ThinkSpace</span>
           <strong>Resume a discussion</strong>
-          <em>Your AI workspace (coming soon)</em>
+          <em>Your AI workspace that remembers</em>
         </button>
       </div>
 
