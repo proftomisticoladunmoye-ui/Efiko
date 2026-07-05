@@ -9,3 +9,4 @@ server/.err.log
 server/voice-sample.ogg
 server/data/
 .DS_Store
+COMMIT_MSG.txt
