@@ -25,6 +25,7 @@ import Career from './components/Career.jsx';
 import Community from './components/Community.jsx';
 import Marketplace from './components/Marketplace.jsx';
 import Originals from './components/Originals.jsx';
+import Settings from './components/Settings.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
@@ -486,12 +487,7 @@ export default function App() {
           <Library items={library} online={online} catalogSource={catalogSource} syncing={syncing} onOpen={openCapsule} onDownload={handleDownload} onRemove={handleRemove} onSync={handleSync} />
         </>);
       case 'settings':
-        return (<div className="settings-page">
-          <SectionHead title="Settings" />
-          {user
-            ? <p className="lib-sub">Signed in as {user.name} ({user.email}). <button className="footer-link" onClick={() => { authLogout(); setUser(null); }}>Sign out</button></p>
-            : <p className="lib-sub">You're browsing as a guest. <button className="footer-link" onClick={() => setAuthOpen(true)}>Sign in</button> to save your progress across devices.</p>}
-        </div>);
+        return <Settings user={user} onSignOut={() => { authLogout(); setUser(null); }} onSignIn={() => setAuthOpen(true)} onGoSection={goSection} />;
       case 'teach':
         return (<div className="teach-page">
           <SectionHead title="Teach & Institution" sub="Author lessons, run classes and programmes, and manage your institution." />
@@ -502,6 +498,7 @@ export default function App() {
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?programmes`; }}>🧭 Programmes<span>Group courses into tracks</span></button>
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?opportunities`; }}>🚀 Opportunities<span>Post jobs & scholarships</span></button>
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?marketplace`; }}>🛒 Marketplace<span>Sell courses & packs</span></button>
+            <button className="teach-card" onClick={() => goSection('market')}>💼 Sell on EFIKO<span>Creators: sell your own resources</span></button>
             <button className="teach-card" onClick={() => setView('admin')}>🏛️ Institution Admin<span>Branding & account</span></button>
           </div>
         </div>);

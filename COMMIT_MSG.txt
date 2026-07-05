@@ -1,0 +1,18 @@
+Settings: real account hub; Teach: creator-selling entry
+
+Reviewed Teach + Settings. Teach works (7 cards -> functional consoles, institution-gated,
+responsive). Settings was bare ("Signed in as X · Sign out") — made it a proper account hub
+that connects the data we already have:
+
+- Settings.jsx: account card (name/email/plan), AI Credits (balance / daily grant, from
+  /credits), Learning (level/XP/streak/badges, from /gamify), Certificates count (-> the
+  Certificates section), Offline & downloads (-> Library). Live-refreshes on efiko-ai-used /
+  efiko-progress. Guests get a sign-in prompt. Replaces the inline settings case in App.
+- Teach: added a "Sell on EFIKO" card so individual creators reach the Creator Studio (was
+  only discoverable inside Marketplace).
+
+Verified in-browser: Settings shows account/credits(100)/Level 1·20 XP·1 badge/certs/offline;
+the Certificates and Offline cards navigate; the Sell-on-EFIKO card opens Marketplace;
+both pages single-column with no overflow on mobile; typecheck clean, no console errors.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>

@@ -598,6 +598,24 @@ body {
 .teach-card { display: flex; flex-direction: column; gap: 4px; background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 12px; padding: 16px; color: var(--text); font-weight: 600; cursor: pointer; text-align: left; }
 .teach-card span { font-weight: 400; font-size: 12px; color: var(--muted); }
 .teach-card:hover { border-color: var(--brand); }
+/* settings / account hub */
+.set-h { font-size: 20px; margin: 0 0 14px; }
+.set-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.set-card { background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 14px; padding: 16px; text-align: left; color: var(--ink); }
+.set-card h3 { font-size: 14px; margin: 0 0 8px; color: var(--muted); }
+.set-big { font-size: 24px; font-weight: 800; color: var(--brand-2); margin: 0; }
+.set-big em { font-size: 13px; font-weight: 400; color: var(--muted); font-style: normal; }
+.set-sub { font-size: 12px; color: var(--muted); margin: 6px 0 0; }
+.set-account { display: flex; align-items: center; gap: 14px; grid-column: 1 / -1; }
+.set-account > div { display: flex; flex-direction: column; gap: 2px; }
+.set-account strong { font-size: 16px; }
+.set-account span { font-size: 13px; color: var(--muted); }
+.set-tier { text-transform: capitalize; color: var(--brand-2) !important; font-size: 12px !important; }
+.set-avatar { width: 52px; height: 52px; flex: none; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #04231f; font-size: 22px; font-weight: 800; display: grid; place-items: center; }
+button.set-link { cursor: pointer; transition: border-color .15s; }
+button.set-link:hover { border-color: var(--brand-2); }
+.set-actions { margin: 18px 0 8px; }
+.set-ver { font-size: 12px; color: var(--muted); }
 .signin-prompt { text-align: center; padding: 30px; }
 .nav-scrim { display: none; }
 
