@@ -14,10 +14,10 @@ import { generateCapsule, generateFromImage, isConfigured as aiConfigured } from
 import { getClient, FAST_MODEL } from './core/ai/client.js';
 import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alwe/sceneGenerator.js';
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
-import { createUser, authenticate, getUser, publicUser } from './core/users.js';
+import { createUser, authenticate, getUser, publicUser, countUsers } from './core/users.js';
 import { listCourses, getCourse, courseIdOf } from './core/courses.js';
 import { recordProgress, progressForUsers, getProgress, listProgress } from './core/progress.js';
-import { issueCertificate, listCertificates, verifyBySerial } from './core/certificates.js';
+import { issueCertificate, listCertificates, verifyBySerial, countCertificates } from './core/certificates.js';
 import { createDiscussion, listDiscussions, getDiscussion, addMessage, touchDiscussion, recentMessages, addResource } from './core/thinkspace.js';
 import { getCredits, spend, dailyGrant } from './core/credits.js';
 import { addTask, listTasks, toggleTask, deleteTask } from './core/planner.js';
@@ -28,7 +28,7 @@ import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpp
 import { refreshAggregated, listAggregated, refreshIfStale, lastRun } from './core/careers/aggregator.js';
 import { oppSkills, suggestCoursesForOpportunity, userSkills, rankBySkills, resetCourseIndex } from './core/careers/skills.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
-import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess, createCreatorListing, listCreatorListings, deleteCreatorListing, getCreatorEarnings, requestPayout, platformFeePct } from './core/marketplace.js';
+import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess, createCreatorListing, listCreatorListings, deleteCreatorListing, getCreatorEarnings, requestPayout, platformFeePct, listPayoutRequests, markPayoutPaid } from './core/marketplace.js';
 import { paymentsProvider, paymentsLive, paymentsPublicKey } from './core/payments.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
@@ -45,15 +45,29 @@ import { dbConfigured } from './core/kv.js';
 import { getStats as gamifyStats, award as gamifyAward } from './core/gamification.js';
 import { verifyToken, verifyPassword, signToken } from './core/auth.js';
 import { createInstitution, findByEmail, getOrg, updateBranding, getBranding, publicOrg, seedFromEnv } from './core/institutions.js';
+import { createOperator, findByEmail as findOperatorByEmail, getOperator, countOperators, publicOperator, seedFromEnv as seedOperatorFromEnv } from './core/operators.js';
 
 const PORT = process.env.PORT || 4100;
 const VERIFY_TOKEN = process.env.WHATSAPP_VERIFY_TOKEN || 'Efiko-verify';
 const PUBLIC_BASE_URL = process.env.PUBLIC_BASE_URL || '';
 const ADMIN_MASTER_KEY = process.env.ADMIN_MASTER_KEY || ''; // gate for creating institution accounts
 
-// EFIKO operator (platform staff) — gates EFIKO Originals authoring. Uses the master key.
+// EFIKO operator (platform staff) — gates EFIKO-owned actions (Originals authoring/review,
+// payout approval, aggregation). Satisfied by EITHER a signed operator bearer token
+// (role:'operator', the normal path) OR the master key header (bootstrap / scripts). Kept
+// synchronous: the token is HMAC-signed by us, so a valid signature is proof enough to gate.
 function isOperator(req) {
-  return !!ADMIN_MASTER_KEY && req.headers['x-admin-key'] === ADMIN_MASTER_KEY;
+  if (ADMIN_MASTER_KEY && req.headers['x-admin-key'] === ADMIN_MASTER_KEY) return true;
+  const h = req.headers['authorization'] || '';
+  const p = verifyToken(h.startsWith('Bearer ') ? h.slice(7) : '');
+  return p?.role === 'operator' && !!p.operatorId;
+}
+
+// Resolve the full operator record behind a bearer token (for /operator/me).
+async function authedOperator(req) {
+  const h = req.headers['authorization'] || '';
+  const p = verifyToken(h.startsWith('Bearer ') ? h.slice(7) : '');
+  return p?.role === 'operator' && p.operatorId ? getOperator(p.operatorId) : null;
 }
 
 // Resolve the institution behind a Bearer token (Phase B auth).
@@ -983,6 +997,62 @@ const server = createServer(async (req, res) => {
     const branding = await updateBranding(org.orgId, await readBody(req));
     return json(res, 200, { branding });
   }
+  // --- EFIKO platform operator (you) — real account login + owner dashboard ---
+  // Create an operator. Gated by an existing operator OR the master key (bootstrap). The very
+  // first operator is normally seeded from OPERATOR_EMAIL/OPERATOR_PASSWORD on startup.
+  if (req.method === 'POST' && url.pathname === '/operator/register') {
+    if (!isOperator(req)) return json(res, 401, { error: 'operator credentials required' });
+    const { name, email, password } = await readBody(req);
+    try {
+      return json(res, 200, { operator: await createOperator({ name, email, password }) });
+    } catch (e) { return json(res, 400, { error: e.message }); }
+  }
+  if (req.method === 'POST' && url.pathname === '/operator/login') {
+    const { email, password } = await readBody(req);
+    const rec = await findOperatorByEmail(email || '');
+    if (!rec || !verifyPassword(password || '', rec.passwordHash)) return json(res, 401, { error: 'Invalid email or password' });
+    return json(res, 200, { token: signToken({ operatorId: rec.operatorId, role: 'operator' }), operator: publicOperator(rec) });
+  }
+  if (req.method === 'GET' && url.pathname === '/operator/me') {
+    const op = await authedOperator(req);
+    if (!op) return json(res, 401, { error: 'unauthorized' });
+    return json(res, 200, { operator: publicOperator(op) });
+  }
+  // Platform overview for the owner dashboard.
+  if (req.method === 'GET' && url.pathname === '/operator/stats') {
+    if (!isOperator(req)) return json(res, 401, { error: 'operator credentials required' });
+    const originals = await listOriginals({});
+    const byStatus = originals.reduce((m, c) => { m[c.status] = (m[c.status] || 0) + 1; return m; }, {});
+    const payouts = await listPayoutRequests();
+    return json(res, 200, {
+      users: await countUsers(),
+      certificates: await countCertificates(),
+      originals: { total: originals.length, published: byStatus.published || 0, review: (byStatus.in_review || 0) + (byStatus.draft || 0) },
+      opportunities: (await listOpportunities()).length,
+      listings: (await listListings()).length,
+      payoutsPending: payouts.length,
+      durableAccounts: dbConfigured(),
+      aggregation: await lastRun()
+    });
+  }
+  // Pending creator payout requests, enriched with creator name/email.
+  if (req.method === 'GET' && url.pathname === '/operator/payouts') {
+    if (!isOperator(req)) return json(res, 401, { error: 'operator credentials required' });
+    const rows = await listPayoutRequests();
+    const out = await Promise.all(rows.map(async (r) => {
+      const u = await getUser(r.creatorId);
+      return { ...r, creatorName: u?.name || 'Unknown', creatorEmail: u?.email || '' };
+    }));
+    return json(res, 200, { payouts: out });
+  }
+  // Mark a creator's requested earnings as paid (after the operator disburses the transfer).
+  if (req.method === 'POST' && url.pathname === '/operator/payouts/mark-paid') {
+    if (!isOperator(req)) return json(res, 401, { error: 'operator credentials required' });
+    const { creatorId, currency } = await readBody(req);
+    if (!creatorId) return json(res, 400, { error: 'creatorId is required' });
+    return json(res, 200, await markPayoutPaid(creatorId, currency || null));
+  }
+
   // Public branding for the app's white-label theming.
   if (req.method === 'GET' && url.pathname.startsWith('/tenants/')) {
     const id = decodeURIComponent(url.pathname.slice('/tenants/'.length));
@@ -1217,4 +1287,6 @@ server.listen(PORT, () => {
   }
   // Bootstrap the first admin account from env vars (no-op if already present).
   seedFromEnv().catch((e) => console.error('[seed] failed:', e.message));
+  // Bootstrap the first platform operator (you) from OPERATOR_EMAIL/OPERATOR_PASSWORD.
+  seedOperatorFromEnv().catch((e) => console.error('[seed operator] failed:', e.message));
 });

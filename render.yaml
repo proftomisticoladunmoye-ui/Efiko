@@ -51,6 +51,14 @@ services:
         sync: false
       - key: SEED_INSTITUTION
         sync: false
+      # Platform operator (owner) bootstrap — seeds your ?operator dashboard login
+      # on first startup. Sign in with these afterwards.
+      - key: OPERATOR_EMAIL
+        sync: false
+      - key: OPERATOR_PASSWORD
+        sync: false
+      - key: OPERATOR_NAME
+        sync: false
       # Persistence — Neon/Postgres connection string (durable accounts/branding/lessons)
       - key: DATABASE_URL
         sync: false

@@ -25,6 +25,10 @@ export async function getUser(userId) {
   return userId ? kvGet(COLL, userId) : null;
 }
 
+export async function countUsers() {
+  return (await kvAll(COLL)).length;
+}
+
 export async function createUser({ name, email, password, role = 'student' }) {
   email = normEmail(email);
   if (!email || !password) throw new Error('email and password are required');

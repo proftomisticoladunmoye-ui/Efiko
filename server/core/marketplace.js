@@ -170,6 +170,29 @@ export async function requestPayout(userId) {
   return { requested, count: rows.length };
 }
 
+// --- Operator payout administration ---
+// Pending payout requests, grouped by creator + currency (earnings in status 'requested').
+export async function listPayoutRequests() {
+  const rows = (await kvAll(EARNINGS)).filter((e) => e.status === 'requested');
+  const byKey = {};
+  for (const e of rows) {
+    const at = e.requestedAt || e.createdAt;
+    const g = (byKey[`${e.creatorId}:${e.currency}`] ||= { creatorId: e.creatorId, currency: e.currency, net: 0, count: 0, oldestRequestedAt: at });
+    g.net = money2(g.net + e.net); g.count++;
+    if (at < g.oldestRequestedAt) g.oldestRequestedAt = at;
+  }
+  return Object.values(byKey).sort((a, b) => a.oldestRequestedAt - b.oldestRequestedAt);
+}
+
+// Mark a creator's requested earnings as paid (optionally scoped to one currency) once the
+// operator has disbursed the transfer. Returns how many rows and the net total settled.
+export async function markPayoutPaid(creatorId, currency) {
+  const rows = (await kvAll(EARNINGS)).filter((e) => e.creatorId === creatorId && e.status === 'requested' && (!currency || e.currency === currency));
+  let net = 0;
+  for (const e of rows) { e.status = 'paid'; e.paidAt = Date.now(); await kvPut(EARNINGS, e.id, e); net = money2(net + e.net); }
+  return { paid: rows.length, net: money2(net), currency: currency || null };
+}
+
 // Free items + demo (mock) checkout. In live mode, paid items settle via purchaseVerified().
 export async function purchase(user, listingId) {
   const l = await getListing(listingId);

@@ -31,6 +31,10 @@ export async function listCertificates(userId) {
   return (await kvAll(COLL)).filter((c) => c.userId === userId).sort((a, b) => b.issuedAt - a.issuedAt);
 }
 
+export async function countCertificates() {
+  return (await kvAll(COLL)).length;
+}
+
 /** Public verification: find a certificate by its serial. */
 export async function verifyBySerial(serial) {
   const s = String(serial || '').toUpperCase().trim();

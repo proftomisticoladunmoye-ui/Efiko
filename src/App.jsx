@@ -39,6 +39,7 @@ const Classes = lazy(() => import('./components/Classes.jsx'));
 const ProgrammesConsole = lazy(() => import('./components/ProgrammesConsole.jsx'));
 const OpportunitiesConsole = lazy(() => import('./components/OpportunitiesConsole.jsx'));
 const MarketplaceConsole = lazy(() => import('./components/MarketplaceConsole.jsx'));
+const OperatorConsole = lazy(() => import('./components/OperatorConsole.jsx'));
 // Unified Courses catalog (capsules + ALWE) — loads with the library, no engine code.
 import Courses from './components/Courses.jsx';
 import { computeReadiness } from './exam.js';
@@ -436,6 +437,15 @@ export default function App() {
       <div className="app">
         <Suspense fallback={alweFallback}>
           <MarketplaceConsole onExit={() => { window.location.href = window.location.pathname; }} />
+        </Suspense>
+      </div>
+    );
+  }
+  if (params.has('operator')) {
+    return (
+      <div className="app">
+        <Suspense fallback={alweFallback}>
+          <OperatorConsole onExit={() => { window.location.href = window.location.pathname; }} />
         </Suspense>
       </div>
     );
