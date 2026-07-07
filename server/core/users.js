@@ -29,6 +29,9 @@ export async function countUsers() {
   return (await kvAll(COLL)).length;
 }
 
+// Short, unambiguous, shareable referral code (8 hex chars, uppercase).
+const newRefCode = () => randomBytes(4).toString('hex').toUpperCase();
+
 export async function createUser({ name, email, password, role = 'student' }) {
   email = normEmail(email);
   if (!email || !password) throw new Error('email and password are required');
@@ -40,10 +43,40 @@ export async function createUser({ name, email, password, role = 'student' }) {
     email,
     passwordHash: hashPassword(password),
     role: ROLES.has(role) ? role : 'student',
+    refCode: newRefCode(),
     createdAt: Date.now()
   };
   await kvPut(COLL, rec.userId, rec);
   return rec;
+}
+
+// Find a user by their referral code (case-insensitive).
+export async function findByRefCode(code) {
+  const c = String(code || '').toUpperCase().trim();
+  if (!c) return null;
+  return (await kvAll(COLL)).find((u) => (u.refCode || '').toUpperCase() === c) || null;
+}
+
+// Return the user's referral code, generating + persisting one if they predate the feature.
+export async function ensureRefCode(userId) {
+  const u = await getUser(userId);
+  if (!u) return null;
+  if (u.refCode) return u.refCode;
+  for (let i = 0; i < 5; i++) {
+    const code = newRefCode();
+    if (!(await findByRefCode(code))) { u.refCode = code; await kvPut(COLL, u.userId, u); return code; }
+  }
+  return null;
+}
+
+// Record who referred this user — once only, and never a self-referral. Returns true if set.
+export async function setReferredBy(userId, referrerId) {
+  if (!userId || !referrerId || userId === referrerId) return false;
+  const u = await getUser(userId);
+  if (!u || u.referredBy) return false;
+  u.referredBy = referrerId;
+  await kvPut(COLL, u.userId, u);
+  return true;
 }
 
 export async function authenticate(email, password) {

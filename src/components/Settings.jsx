@@ -5,18 +5,22 @@ import { useEffect, useState } from 'react';
 import { fetchCredits } from '../aiClient.js';
 import { fetchGamifyStats } from '../gamify.js';
 import { fetchMyCertificates } from '../certificates.js';
+import { fetchReferral, inviteLink } from '../referral.js';
+import ShareButton from './ShareButton.jsx';
 
 export default function Settings({ user, onSignOut, onSignIn, onGoSection }) {
   const [credits, setCredits] = useState(null);
   const [stats, setStats] = useState(null);
   const [certs, setCerts] = useState(null);
+  const [ref, setRef] = useState(null);
 
   useEffect(() => {
     if (!user) return;
     fetchCredits().then(setCredits);
     fetchGamifyStats().then(setStats);
     fetchMyCertificates().then((c) => setCerts(c.length));
-    const refresh = () => { fetchCredits().then(setCredits); fetchGamifyStats().then(setStats); };
+    fetchReferral().then(setRef);
+    const refresh = () => { fetchCredits().then(setCredits); fetchGamifyStats().then(setStats); fetchReferral().then(setRef); };
     window.addEventListener('efiko-ai-used', refresh);
     window.addEventListener('efiko-progress', refresh);
     return () => { window.removeEventListener('efiko-ai-used', refresh); window.removeEventListener('efiko-progress', refresh); };
@@ -35,6 +39,19 @@ export default function Settings({ user, onSignOut, onSignIn, onGoSection }) {
   return (
     <div className="settings-page">
       <h2 className="set-h">⚙️ Settings</h2>
+
+      {ref?.code && (
+        <section className="set-card set-invite">
+          <h3>🎁 Invite friends, earn XP</h3>
+          <p className="set-sub">Share EFIKO — when a friend joins with your link, you earn {ref.xpPerReferral || 40} XP and a badge.</p>
+          <div className="set-invite-row">
+            <input className="ask-input set-invite-link" readOnly value={inviteLink(ref.code)} onFocus={(e) => e.target.select()} aria-label="Your invite link" />
+            <ShareButton url={inviteLink(ref.code)} title="Learn on EFIKO" label="Share invite"
+              message="Join me on EFIKO — free courses, an AI tutor and real certificates. Learn anywhere, understand everything:" />
+          </div>
+          <p className="set-sub">{ref.count > 0 ? `🎉 ${ref.count} friend${ref.count !== 1 ? 's' : ''} joined via your link.` : 'No friends yet — share your link to get started.'}</p>
+        </section>
+      )}
 
       <div className="set-grid">
         <section className="set-card set-account">

@@ -29,6 +29,7 @@ import Settings from './components/Settings.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
+import { storeRef } from './referral.js';
 import { aiHeaders, notifyAiUsed, fetchCredits } from './aiClient.js';
 import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 import { enrolProgramme } from './programmes.js';
@@ -120,6 +121,15 @@ export default function App() {
     if (user) fetchEnrolments().then(setEnrolledIds);
     else setEnrolledIds([]);
   }, [user]);
+
+  // Deep link: ?ref=<code> is an invite — stash it until this visitor creates an account,
+  // then clean it from the URL so it isn't shared onward.
+  useEffect(() => {
+    const ref = new URLSearchParams(window.location.search).get('ref');
+    if (!ref) return;
+    storeRef(ref);
+    const u = new URL(window.location.href); u.searchParams.delete('ref'); window.history.replaceState({}, '', u);
+  }, []);
 
   // Deep link: ?join=<code> enrols the signed-in user (or prompts sign-in, then enrols).
   useEffect(() => {

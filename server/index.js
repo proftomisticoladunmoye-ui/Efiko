@@ -14,7 +14,7 @@ import { generateCapsule, generateFromImage, isConfigured as aiConfigured } from
 import { getClient, FAST_MODEL } from './core/ai/client.js';
 import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alwe/sceneGenerator.js';
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
-import { createUser, authenticate, getUser, publicUser, countUsers } from './core/users.js';
+import { createUser, authenticate, getUser, publicUser, countUsers, findByRefCode, ensureRefCode, setReferredBy } from './core/users.js';
 import { listCourses, getCourse, courseIdOf } from './core/courses.js';
 import { recordProgress, progressForUsers, getProgress, listProgress } from './core/progress.js';
 import { issueCertificate, listCertificates, verifyBySerial, countCertificates } from './core/certificates.js';
@@ -941,9 +941,16 @@ const server = createServer(async (req, res) => {
 
   // --- User accounts (V1.5): student/lecturer signup + login ---
   if (req.method === 'POST' && url.pathname === '/auth/signup') {
-    const { name, email, password } = await readBody(req);
+    const { name, email, password, ref } = await readBody(req);
     try {
       const u = await createUser({ name, email, password, role: 'student' });
+      // Referral attribution: credit the referrer (XP) when their invitee signs up.
+      if (ref) {
+        const referrer = await findByRefCode(ref);
+        if (referrer && await setReferredBy(u.userId, referrer.userId)) {
+          await gamifyAward(referrer.userId, 'referral').catch(() => {});
+        }
+      }
       return json(res, 200, { token: signToken({ userId: u.userId, role: u.role }), user: publicUser(u) });
     } catch (e) {
       return json(res, 400, { error: e.message });
@@ -959,6 +966,14 @@ const server = createServer(async (req, res) => {
     const u = await authedUser(req);
     if (!u) return json(res, 401, { error: 'unauthorized' });
     return json(res, 200, { user: publicUser(u) });
+  }
+  // Referral: the signed-in user's invite code + how many friends have joined via it.
+  if (req.method === 'GET' && url.pathname === '/referral') {
+    const u = await authedUser(req);
+    if (!u) return json(res, 401, { error: 'unauthorized' });
+    const code = await ensureRefCode(u.userId);
+    const stats = await gamifyStats(u.userId);
+    return json(res, 200, { code, count: stats.referrals || 0, xpPerReferral: 40 });
   }
   // AI Credits balance for the meter (R3).
   if (req.method === 'GET' && url.pathname === '/credits') {

@@ -1,6 +1,8 @@
 // EFIKO — client auth (V1.5). Email+password accounts via the gateway. Optional: visitors
 // use the app without an account; signing in unlocks the EFIKO AI home + saved identity.
 // Token stored under 'efiko-user-token' (distinct from the institution-admin token).
+import { consumeRef, clearRef } from './referral.js';
+
 const GATEWAY = import.meta.env.VITE_GATEWAY || 'http://localhost:4100';
 const KEY = 'efiko-user-token';
 
@@ -17,8 +19,10 @@ async function post(path, body) {
 }
 
 export async function signup(name, email, password) {
-  const d = await post('/auth/signup', { name, email, password });
+  const ref = consumeRef();
+  const d = await post('/auth/signup', { name, email, password, ...(ref ? { ref } : {}) });
   setToken(d.token);
+  clearRef(); // one-time: don't attribute later signups on this device
   return d.user;
 }
 

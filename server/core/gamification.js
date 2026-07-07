@@ -7,7 +7,7 @@ const COLL = 'gamification';
 const today = () => new Date().toISOString().slice(0, 10);
 
 // XP per event.
-const XP = { session: 5, quiz_pass: 20, teachback: 15, course_complete: 100, certificate: 50 };
+const XP = { session: 5, quiz_pass: 20, teachback: 15, course_complete: 100, certificate: 50, referral: 40 };
 
 // Level curve: level L starts at 100*(L-1)^2 XP (1, 100, 400, 900, 1600, …).
 export function levelInfo(xp) {
@@ -25,11 +25,13 @@ const BADGES = [
   { id: 'scholar', label: 'Scholar', icon: '🎓', earned: (s) => s.coursesCompleted >= 3 },
   { id: 'certified', label: 'Certified', icon: '📜', earned: (s) => s.certificates >= 1 },
   { id: 'streak-3', label: '3-Day Streak', icon: '🔥', earned: (s) => s.longestStreak >= 3 },
-  { id: 'streak-7', label: 'Week Warrior', icon: '⚡', earned: (s) => s.longestStreak >= 7 }
+  { id: 'streak-7', label: 'Week Warrior', icon: '⚡', earned: (s) => s.longestStreak >= 7 },
+  { id: 'connector', label: 'Connector', icon: '🤝', earned: (s) => (s.referrals || 0) >= 1 },
+  { id: 'ambassador', label: 'Ambassador', icon: '📣', earned: (s) => (s.referrals || 0) >= 5 }
 ];
 
 function fresh(userId) {
-  return { userId, xp: 0, streak: 0, longestStreak: 0, lastActive: null, quizzesPassed: 0, coursesCompleted: 0, certificates: 0, badges: [], updatedAt: Date.now() };
+  return { userId, xp: 0, streak: 0, longestStreak: 0, lastActive: null, quizzesPassed: 0, coursesCompleted: 0, certificates: 0, referrals: 0, badges: [], updatedAt: Date.now() };
 }
 
 function updateStreak(s) {
@@ -43,7 +45,7 @@ function updateStreak(s) {
 
 export async function getStats(userId) {
   const s = (await kvGet(COLL, userId)) || fresh(userId);
-  return { xp: s.xp, ...levelInfo(s.xp), streak: s.streak, longestStreak: s.longestStreak, coursesCompleted: s.coursesCompleted, quizzesPassed: s.quizzesPassed, certificates: s.certificates, badges: BADGES.filter((b) => (s.badges || []).includes(b.id)).map((b) => ({ id: b.id, label: b.label, icon: b.icon })) };
+  return { xp: s.xp, ...levelInfo(s.xp), streak: s.streak, longestStreak: s.longestStreak, coursesCompleted: s.coursesCompleted, quizzesPassed: s.quizzesPassed, certificates: s.certificates, referrals: s.referrals || 0, badges: BADGES.filter((b) => (s.badges || []).includes(b.id)).map((b) => ({ id: b.id, label: b.label, icon: b.icon })) };
 }
 
 // Award XP for an event and refresh streak + badges. Returns fresh stats.
@@ -55,6 +57,7 @@ export async function award(userId, event) {
   if (event === 'quiz_pass') s.quizzesPassed = (s.quizzesPassed || 0) + 1;
   if (event === 'course_complete') s.coursesCompleted = (s.coursesCompleted || 0) + 1;
   if (event === 'certificate') s.certificates = (s.certificates || 0) + 1;
+  if (event === 'referral') s.referrals = (s.referrals || 0) + 1;
   const have = new Set(s.badges || []);
   for (const b of BADGES) if (!have.has(b.id) && b.earned(s)) have.add(b.id);
   s.badges = [...have];
