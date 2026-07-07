@@ -4,6 +4,7 @@
 // Certificates section and the EFIKO Originals completion screen.
 import { useEffect, useState } from 'react';
 import qrcode from 'qrcode-generator';
+import ShareButton, { linkedInCertUrl } from './ShareButton.jsx';
 
 const GOLD = '#c9a24a';
 const GOLD_D = '#a67c2e';
@@ -143,6 +144,8 @@ export default function CertificateCard({ cert, onClose }) {
         </div>
         <div className="cert-actions">
           <button className="course-open" onClick={() => window.print()}>Print / Save PDF</button>
+          <a className="course-share-btn cert-linkedin" href={linkedInCertUrl(cert, url)} target="_blank" rel="noreferrer">💼 Add to LinkedIn</a>
+          <ShareButton url={url} title={cert.courseTitle} label="Share" message={`I earned a verifiable certificate in “${cert.courseTitle}” from EFIKO! 🎓 Learn a skill and get certified too:`} />
           <a className="course-share-btn" href={url} target="_blank" rel="noreferrer">Verify link</a>
         </div>
       </div>

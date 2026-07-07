@@ -13,11 +13,32 @@ export function courseShareUrl(course) {
   return `${base}/courses/${slugify(course.title)}`;
 }
 
-export default function ShareButton({ course, label = 'Share', message }) {
+// LinkedIn "Add to profile" deep link — adds the EFIKO credential straight to the learner's
+// profile (Certifications section), with a link back to the public verification page.
+export function linkedInCertUrl(cert, certUrl) {
+  const d = cert.issuedAt ? new Date(cert.issuedAt) : new Date();
+  const params = new URLSearchParams({
+    startTask: 'CERTIFICATION_NAME',
+    name: `${cert.courseTitle} — ${cert.issuer || 'EFIKO'}`,
+    organizationName: cert.issuer || 'EFIKO',
+    issueYear: String(d.getFullYear()),
+    issueMonth: String(d.getMonth() + 1),
+    certUrl,
+    certId: cert.serial || ''
+  });
+  return `https://www.linkedin.com/profile/add?${params.toString()}`;
+}
+
+const fallbackOrigin = () => (typeof window !== 'undefined' && window.location.origin) || 'https://efikolearn.online';
+
+export default function ShareButton({ course, url: urlProp, title: titleProp, message, label = 'Share' }) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const url = courseShareUrl(course);
-  const text = message || `I'm learning “${course.title}” — a free certificate course on EFIKO. Learn anywhere, understand everything:`;
+  const url = urlProp || (course ? courseShareUrl(course) : fallbackOrigin());
+  const title = titleProp || course?.title || 'EFIKO';
+  const text = message || (course
+    ? `I'm learning “${course.title}” — a free certificate course on EFIKO. Learn anywhere, understand everything:`
+    : title);
   const enc = encodeURIComponent;
   const u = enc(url);
   const t = enc(text);
@@ -32,7 +53,7 @@ export default function ShareButton({ course, label = 'Share', message }) {
 
   async function onShare() {
     if (typeof navigator !== 'undefined' && navigator.share) {
-      try { await navigator.share({ title: course.title, text, url }); } catch { /* cancelled */ }
+      try { await navigator.share({ title, text, url }); } catch { /* cancelled */ }
       return;
     }
     setOpen((o) => !o);
