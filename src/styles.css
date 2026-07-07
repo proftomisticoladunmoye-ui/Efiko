@@ -618,6 +618,15 @@ button.set-link:hover { border-color: var(--brand-2); }
 .set-ver { font-size: 12px; color: var(--muted); }
 .signin-prompt { text-align: center; padding: 30px; }
 
+/* Social share (Originals) */
+.share-wrap { position: relative; display: inline-block; }
+.share-menu { position: absolute; z-index: 30; bottom: calc(100% + 6px); left: 0; min-width: 168px; background: var(--card, #131722); border: 1px solid var(--border); border-radius: 10px; padding: 6px; box-shadow: 0 8px 24px rgba(0,0,0,.35); display: flex; flex-direction: column; gap: 2px; }
+.share-target { display: flex; align-items: center; gap: 8px; text-align: left; background: none; border: 0; color: var(--text); font-size: 14px; padding: 8px 10px; border-radius: 7px; cursor: pointer; text-decoration: none; }
+.share-target:hover { background: var(--card-2, #1c2230); }
+.o-card-share { position: absolute; top: 10px; right: 10px; }
+.o-card-share .course-share-btn { padding: 5px 9px; font-size: 12px; }
+.o-course-card { position: relative; }
+
 /* Operator console (platform owner) */
 .op-console { max-width: 860px; }
 .op-topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }

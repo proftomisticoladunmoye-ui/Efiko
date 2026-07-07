@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { listOriginals, getOriginal, claimOriginalCertificate, synthesizeVoice, evaluateTeachBack, listPathways, fetchPathwayProgress, claimPathwayCertificate } from '../originals.js';
 import { reportProgress } from '../progress.js';
 import CertificateCard from './CertificateCard.jsx';
+import ShareButton from './ShareButton.jsx';
 
 // --- a small reusable multiple-choice quiz ---
 function MiniQuiz({ questions, onDone, cta = 'Submit answers' }) {
@@ -192,6 +193,7 @@ function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn, onOpen }) {
           <div className="o-start">
             {course.preAssessment?.questions?.length > 0 && <button className="course-share-btn" onClick={() => setStep('pre')}>Take the pre-assessment first</button>}
             <button className="course-open" onClick={() => setStep(0)}>Start course →</button>
+            <ShareButton course={course} label="Share this course" />
           </div>
         </div>
       )}
@@ -241,6 +243,7 @@ function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn, onOpen }) {
             {course.competencies?.length > 0 && (<><h3>Competencies gained</h3><ul className="o-outcomes">{course.competencies.map((c, i) => <li key={i}>{c}</li>)}</ul></>)}
             <div className="o-nav">
               <button className="course-open" disabled={claiming} onClick={claim}>{claiming ? 'Issuing…' : (signedIn ? '🎓 Claim your certificate' : 'Sign in to claim your certificate')}</button>
+              <ShareButton course={course} label="Share your achievement" message={`I just completed “${course.title}” and earned a free certificate on EFIKO! 🎓 Learn a skill and get certified too:`} />
             </div>
             {certErr && <p className="error">{certErr}</p>}
           </>) : (<>
@@ -325,13 +328,18 @@ export default function Originals({ onAsk, signedIn, onSignIn }) {
       {loaded && courses.length === 0 && <p className="career-empty">No published courses yet — check back soon.</p>}
       <div className="o-grid">
         {courses.map((c) => (
-          <button key={c.courseId} className="o-course-card" onClick={() => open(c.courseId)}>
+          <div key={c.courseId} className="o-course-card" role="button" tabIndex={0}
+            onClick={() => open(c.courseId)}
+            onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(c.courseId); } }}>
             <span className="o-badge">⭐ Original</span>
             <span className="o-card-title">{c.title}</span>
             {c.subtitle && <span className="o-card-sub">{c.subtitle}</span>}
             <span className="o-card-meta">{[c.category, c.level].filter(Boolean).join(' · ')}</span>
             <span className="o-card-foot">{[c.estimatedHours && `${c.estimatedHours}h`, `${c.sessionCount} sessions`].filter(Boolean).join(' · ')}</span>
-          </button>
+            <span className="o-card-share" onClick={(e) => e.stopPropagation()}>
+              <ShareButton course={c} label="Share" />
+            </span>
+          </div>
         ))}
       </div>
       {pwCert && <CertificateCard cert={pwCert} onClose={() => setPwCert(null)} />}
