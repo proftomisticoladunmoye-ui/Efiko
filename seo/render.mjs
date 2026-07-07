@@ -54,10 +54,13 @@ footer .cols{display:flex;flex-wrap:wrap;gap:8px 20px;margin-bottom:14px}
 `;
 
 // Head meta shared by every page (title, description, canonical, OG, Twitter).
-export function metaTags({ title, description, path, image = SITE.logo, type = 'website' }) {
+export function metaTags({ title, description, path, image = SITE.logo, imageW, imageH, type = 'website' }) {
   const canonical = url(path);
   const ogimg = `${SITE.base}${image}`;
   const tw = SITE.twitterHandle ? `<meta name="twitter:site" content="${esc(SITE.twitterHandle)}"/>` : '';
+  const dims = (imageW && imageH)
+    ? `\n    <meta property="og:image:width" content="${imageW}"/>\n    <meta property="og:image:height" content="${imageH}"/>`
+    : '';
   return `
     <title>${esc(title)}</title>
     <meta name="description" content="${esc(description)}"/>
@@ -68,7 +71,7 @@ export function metaTags({ title, description, path, image = SITE.logo, type = '
     <meta property="og:title" content="${esc(title)}"/>
     <meta property="og:description" content="${esc(description)}"/>
     <meta property="og:url" content="${canonical}"/>
-    <meta property="og:image" content="${ogimg}"/>
+    <meta property="og:image" content="${ogimg}"/>${dims}
     <meta property="og:locale" content="${SITE.locale}"/>
     <meta name="twitter:card" content="summary_large_image"/>${tw}
     <meta name="twitter:title" content="${esc(title)}"/>

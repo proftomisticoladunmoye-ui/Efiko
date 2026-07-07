@@ -14,6 +14,7 @@ import { renderCourseHub, renderTopicPage, contentRoutes } from '../seo/renderCo
 import { ACADEMY } from '../seo/guides.mjs';
 import { renderAcademyItem, academyRoutes, academyIndexHtml } from '../seo/renderAcademy.mjs';
 import { loadOriginals, renderOriginal, originalRoutes, originalsIndexHtml, originalPath } from '../seo/originals.mjs';
+import { courseOgSvg, svgToPng } from '../seo/ogimage.mjs';
 
 const dist = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const writePage = (route, html) => {
@@ -45,9 +46,45 @@ const courseListHtml = courses.length
   ? `<section class="block"><h2>Browse courses</h2><ul class="topics">${courses.map((c) => `<li><a href="/courses/${c.slug}/">${c.university} ${c.course}</a><div class="t-sub">${c.topics.length} topic${c.topics.length !== 1 ? 's' : ''}</div></li>`).join('')}</ul></section>`
   : '';
 
-// EFIKO Originals — one indexable page per bundled course.
+// Per-course Open Graph images (1200×630 PNG) for rich social share previews. Fully
+// build-safe: @resvg/resvg-js is an OPTIONAL dependency, so if it (or a usable font) isn't
+// available the whole step is skipped and pages fall back to the default share image — the
+// build never fails. Runs on Render where the rasterizer + system fonts are present.
+const slugOf = (c) => originalPath(c).replace('/courses/', '');
+let ogRasterizer = null;
+try {
+  const { Resvg } = await import('@resvg/resvg-js');
+  const fontBuffers = [];
+  for (const rel of ['node_modules/dejavu-fonts-ttf/ttf/DejaVuSans-Bold.ttf', 'node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf']) {
+    try { fontBuffers.push(readFileSync(join(dist, '..', rel))); } catch { /* rely on system fonts */ }
+  }
+  ogRasterizer = { Resvg, fontBuffers };
+  console.log(`SEO: OG image rasterizer ready (${fontBuffers.length} bundled font(s) + system fonts)`);
+} catch (e) {
+  console.log(`SEO: per-course OG images skipped (@resvg/resvg-js unavailable) — default share image will be used [${e.code || e.message}]`);
+}
+function ogImageFor(course) {
+  if (!ogRasterizer) return null;
+  try {
+    const png = svgToPng(courseOgSvg(course), ogRasterizer);
+    const slug = slugOf(course);
+    mkdirSync(join(dist, 'og'), { recursive: true });
+    writeFileSync(join(dist, 'og', `${slug}.png`), png);
+    return `/og/${slug}.png`;
+  } catch (e) {
+    console.warn(`SEO: OG image failed for "${course.title}": ${e.message}`);
+    return null;
+  }
+}
+
+// EFIKO Originals — one indexable page per bundled course (+ its own OG image when available).
 const originals = loadOriginals();
-for (const c of originals) writePage(originalPath(c), renderOriginal(c));
+let ogCount = 0;
+for (const c of originals) {
+  const og = ogImageFor(c);
+  if (og) ogCount++;
+  writePage(originalPath(c), renderOriginal(c, og));
+}
 
 // Product landing pages (inject free Originals + course list into /courses, guides into /academy).
 const injected = { '/courses': originalsIndexHtml(originals) + courseListHtml, '/academy': academyIndexHtml() };
@@ -76,4 +113,4 @@ if (idx.includes('<div id="root"></div>')) {
 writeFileSync(join(dist, 'sitemap.xml'), renderSitemap([...contentRoutes(courses), ...academyRoutes(), ...originalRoutes(originals)]), 'utf8');
 writeFileSync(join(dist, 'robots.txt'), renderRobots(), 'utf8');
 
-console.log(`SEO prerender: ${PAGES.length} product pages, ${courses.length} course hubs, ${topicCount} topic pages, ${ACADEMY.length} academy pages, ${originals.length} Original course pages + sitemap.xml + robots.txt → dist/`);
+console.log(`SEO prerender: ${PAGES.length} product pages, ${courses.length} course hubs, ${topicCount} topic pages, ${ACADEMY.length} academy pages, ${originals.length} Original course pages (${ogCount} OG images) + sitemap.xml + robots.txt → dist/`);

@@ -35,7 +35,7 @@ function faqs(c) {
   ];
 }
 
-export function renderOriginal(c) {
+export function renderOriginal(c, ogImage = null) {
   const p = coursePath(c);
   const canonical = url(p);
   const title = `${c.title} — Free Online Course with Certificate | Efiko`;
@@ -81,7 +81,10 @@ export function renderOriginal(c) {
     <section class="block"><a class="hero-cta" href="/">Start ${esc(c.title)} — free</a></section>
   </main>`;
 
-  return htmlDocument({ metaInner: metaTags({ title, description, path: p, type: 'website' }), schemaInner: schema, body });
+  const meta = ogImage
+    ? metaTags({ title, description, path: p, type: 'website', image: ogImage, imageW: 1200, imageH: 630 })
+    : metaTags({ title, description, path: p, type: 'website' });
+  return htmlDocument({ metaInner: meta, schemaInner: schema, body });
 }
 
 // "Free courses" list injected into the /courses product landing.
