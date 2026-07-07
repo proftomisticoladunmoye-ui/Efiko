@@ -4,7 +4,7 @@
 //   - a content page per topic (real lesson text) -> dist/courses/<course>/<topic>/index.html
 //   - a generated sitemap.xml + robots.txt (domain from seo/site.mjs)
 // The logged-in app stays a SPA at "/"; these public pages are separate static documents.
-import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PAGES } from '../seo/pages.mjs';
@@ -54,12 +54,13 @@ const slugOf = (c) => originalPath(c).replace('/courses/', '');
 let ogRasterizer = null;
 try {
   const { Resvg } = await import('@resvg/resvg-js');
-  const fontBuffers = [];
+  const fontFiles = [];
   for (const rel of ['node_modules/dejavu-fonts-ttf/ttf/DejaVuSans-Bold.ttf', 'node_modules/dejavu-fonts-ttf/ttf/DejaVuSans.ttf']) {
-    try { fontBuffers.push(readFileSync(join(dist, '..', rel))); } catch { /* rely on system fonts */ }
+    const abs = join(dist, '..', rel);
+    if (existsSync(abs)) fontFiles.push(abs);
   }
-  ogRasterizer = { Resvg, fontBuffers };
-  console.log(`SEO: OG image rasterizer ready (${fontBuffers.length} bundled font(s) + system fonts)`);
+  ogRasterizer = { Resvg, fontFiles };
+  console.log(`SEO: OG image rasterizer ready (${fontFiles.length} bundled font file(s)${fontFiles.length ? '' : ' — system fonts'})`);
 } catch (e) {
   console.log(`SEO: per-course OG images skipped (@resvg/resvg-js unavailable) — default share image will be used [${e.code || e.message}]`);
 }

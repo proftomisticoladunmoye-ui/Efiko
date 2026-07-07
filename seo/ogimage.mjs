@@ -82,14 +82,16 @@ export function courseOgSvg(course, { fontFamily = 'DejaVu Sans' } = {}) {
 </svg>`;
 }
 
-// Rasterize an SVG string to a PNG Buffer using an injected Resvg class + font buffers.
-// Kept dependency-free at import time so this module always loads.
-export function svgToPng(svg, { Resvg, fontBuffers = [], fontFamily = 'DejaVu Sans' }) {
+// Rasterize an SVG string to a PNG Buffer using an injected Resvg class + font file paths.
+// Uses fontFiles (not fontBuffers): the resvg-js prebuilt binaries handle file paths reliably
+// across platforms, whereas fontBuffers is ignored on some (e.g. Windows). Kept dependency-free
+// at import time so this module always loads.
+export function svgToPng(svg, { Resvg, fontFiles = [], fontFamily = 'DejaVu Sans' }) {
   const r = new Resvg(svg, {
     fitTo: { mode: 'width', value: OG_W },
-    // Prefer the bundled font buffers; fall back to the builder's system fonts (Render's
-    // Ubuntu image ships DejaVu) so rendering still works if the font package is absent.
-    font: { fontBuffers, defaultFontFamily: fontFamily, loadSystemFonts: true }
+    // Use ONLY the bundled DejaVu files when present, so rendering is deterministic and never
+    // picks up a random system font. Fall back to system fonts only if no font file was found.
+    font: { fontFiles, defaultFontFamily: fontFamily, sansSerifFamily: fontFamily, loadSystemFonts: fontFiles.length === 0 }
   });
   return r.render().asPng();
 }
