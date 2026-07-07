@@ -28,6 +28,19 @@ export async function requestPayout() {
   if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
   return d;
 }
+// Creator payout (bank) details.
+export async function fetchPayoutDetails() {
+  try { const r = await fetch(`${GATEWAY}/market/creator/payout-details`, { headers: userHeaders() }); if (!r.ok) return { details: null, live: false }; return await r.json(); } catch { return { details: null, live: false }; }
+}
+export async function savePayoutDetails(payload) {
+  const r = await fetch(`${GATEWAY}/market/creator/payout-details`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...userHeaders() }, body: JSON.stringify(payload) });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
+  return d.details;
+}
+export async function fetchBanks(country = 'NG') {
+  try { const r = await fetch(`${GATEWAY}/payments/banks?country=${encodeURIComponent(country)}`, { headers: userHeaders() }); if (!r.ok) return []; return (await r.json()).banks || []; } catch { return []; }
+}
 
 export async function listListings() {
   try {

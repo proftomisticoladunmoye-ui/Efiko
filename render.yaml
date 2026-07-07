@@ -70,6 +70,10 @@ services:
         sync: false
       - key: FLW_SECRET_KEY
         sync: false
+      # Webhook secret hash for creator payouts (same value in the Flutterwave dashboard;
+      # webhook URL = <gateway>/payments/webhook). Verifies transfer.completed events.
+      - key: FLW_WEBHOOK_HASH
+        sync: false
       # Set AFTER first deploy to the service's own URL, e.g.
       # https://efiko-gateway.onrender.com  (used for voice/whiteboard links)
       - key: PUBLIC_BASE_URL

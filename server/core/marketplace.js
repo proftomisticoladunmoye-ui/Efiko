@@ -8,6 +8,7 @@ import { settlePayment, verifyPayment } from './payments.js';
 const LISTINGS = 'market_listings';
 const PURCHASES = 'market_purchases';
 const EARNINGS = 'market_earnings'; // one ledger entry per creator sale
+const PAYOUT_DETAILS = 'market_payout_details'; // one per creator: where to send payouts
 
 // Platform commission on creator sales (%). The creator keeps the rest.
 const FEE_PCT = Math.min(90, Math.max(0, Number(process.env.MARKET_FEE_PCT) || 20));
@@ -185,12 +186,53 @@ export async function listPayoutRequests() {
 }
 
 // Mark a creator's requested earnings as paid (optionally scoped to one currency) once the
-// operator has disbursed the transfer. Returns how many rows and the net total settled.
-export async function markPayoutPaid(creatorId, currency) {
+// operator has disbursed the transfer. `meta` (e.g. { payoutRef, transferId, method }) is
+// stamped on each row for reconciliation. Returns how many rows and the net total settled.
+export async function markPayoutPaid(creatorId, currency, meta = {}) {
   const rows = (await kvAll(EARNINGS)).filter((e) => e.creatorId === creatorId && e.status === 'requested' && (!currency || e.currency === currency));
   let net = 0;
-  for (const e of rows) { e.status = 'paid'; e.paidAt = Date.now(); await kvPut(EARNINGS, e.id, e); net = money2(net + e.net); }
+  for (const e of rows) { e.status = 'paid'; e.paidAt = Date.now(); Object.assign(e, meta); await kvPut(EARNINGS, e.id, e); net = money2(net + e.net); }
   return { paid: rows.length, net: money2(net), currency: currency || null };
+}
+
+// Reconcile a payout by its reference after a Flutterwave webhook: mark the tagged earnings
+// paid (SUCCESSFUL) or revert them to 'requested' (FAILED). Returns how many rows changed.
+export async function reconcilePayout(payoutRef, ok) {
+  const rows = (await kvAll(EARNINGS)).filter((e) => e.payoutRef === payoutRef);
+  for (const e of rows) {
+    e.status = ok ? 'paid' : 'requested';
+    e.transferStatus = ok ? 'SUCCESSFUL' : 'FAILED';
+    if (ok && !e.paidAt) e.paidAt = Date.now();
+    await kvPut(EARNINGS, e.id, e);
+  }
+  return { updated: rows.length };
+}
+
+// --- Creator payout (bank) details: where to send this creator's money ---
+const maskAccount = (n) => { const s = String(n || ''); return s.length > 4 ? `••••${s.slice(-4)}` : s; };
+
+export async function savePayoutDetails(userId, { bankCode, bankName, accountNumber, accountName, country = 'NG', currency = 'NGN' }) {
+  if (!userId) throw new Error('sign in required');
+  if (!bankCode || !accountNumber) throw new Error('bank and account number are required');
+  const rec = { userId, bankCode: String(bankCode), bankName: bankName || '', accountNumber: String(accountNumber).trim(), accountName: accountName || '', country: String(country).toUpperCase(), currency: String(currency).toUpperCase(), updatedAt: Date.now() };
+  await kvPut(PAYOUT_DETAILS, userId, rec);
+  return getPayoutDetails(userId);
+}
+
+// Full record for internal use (transfers). Includes the raw account number.
+export async function getPayoutDetailsRaw(userId) {
+  return kvGet(PAYOUT_DETAILS, userId);
+}
+
+// Masked view for the client (never leak the full account number back).
+export async function getPayoutDetails(userId) {
+  const r = await getPayoutDetailsRaw(userId);
+  if (!r) return null;
+  return { bankCode: r.bankCode, bankName: r.bankName, accountNumber: maskAccount(r.accountNumber), accountName: r.accountName, country: r.country, currency: r.currency };
+}
+
+export async function hasPayoutDetails(userId) {
+  return !!(await getPayoutDetailsRaw(userId));
 }
 
 // Free items + demo (mock) checkout. In live mode, paid items settle via purchaseVerified().

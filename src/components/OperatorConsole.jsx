@@ -22,6 +22,7 @@ export default function OperatorConsole({ onExit }) {
   const [stats, setStats] = useState(null);
   const [originals, setOriginals] = useState(null);
   const [payouts, setPayouts] = useState(null);
+  const [payoutsLive, setPayoutsLive] = useState(false);
   const [note, setNote] = useState(null);
   const [gen, setGen] = useState({ topic: '', audience: 'African university students', hours: 2, level: 'beginner' });
 
@@ -39,7 +40,7 @@ export default function OperatorConsole({ onExit }) {
     try { const r = await authed('/admin/originals'); if (r.ok) setOriginals((await r.json()).courses || []); } catch { /* offline */ }
   }, [authed]);
   const loadPayouts = useCallback(async () => {
-    try { const r = await authed('/operator/payouts'); if (r.ok) setPayouts((await r.json()).payouts || []); } catch { /* offline */ }
+    try { const r = await authed('/operator/payouts'); if (r.ok) { const d = await r.json(); setPayouts(d.payouts || []); setPayoutsLive(!!d.live); } } catch { /* offline */ }
   }, [authed]);
 
   // Validate the stored token on mount, then load the dashboard data.
@@ -100,13 +101,15 @@ export default function OperatorConsole({ onExit }) {
     } catch (e2) { setNote(`⚠ ${e2.message}`); } finally { setBusy(false); }
   }
 
-  async function markPaid(p) {
-    setNote(null);
+  async function markPaid(p, transfer = false) {
+    setNote(transfer ? `Sending ${p.currency} ${p.net} to ${p.creatorName}…` : null);
     try {
-      const r = await authed('/operator/payouts/mark-paid', { method: 'POST', body: JSON.stringify({ creatorId: p.creatorId, currency: p.currency }) });
+      const r = await authed('/operator/payouts/mark-paid', { method: 'POST', body: JSON.stringify({ creatorId: p.creatorId, currency: p.currency, transfer }) });
       const d = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error(d.error || 'Failed');
-      setNote(`✓ Marked ${d.paid} earning(s) paid (${p.currency} ${d.net}) for ${p.creatorName}.`);
+      setNote(transfer
+        ? `✓ Transfer queued (${d.transfer?.status || 'processing'}) — ${p.currency} ${d.net} to ${p.creatorName}. Final status confirms via webhook.`
+        : `✓ Marked ${d.paid} earning(s) paid (${p.currency} ${d.net}) for ${p.creatorName}.`);
       await loadPayouts(); await loadStats();
     } catch (e2) { setNote(`⚠ ${e2.message}`); }
   }
@@ -224,7 +227,9 @@ export default function OperatorConsole({ onExit }) {
       {tab === 'payouts' && (
         <div className="op-section">
           <h3>Creator payout requests</h3>
-          <p className="admin-sub">Approve after you disburse the transfer (Flutterwave or manual). Marking paid settles the creator's requested earnings.</p>
+          <p className="admin-sub">{payoutsLive
+            ? 'Send via Flutterwave to transfer directly to the creator’s bank; final status confirms via webhook. “Mark paid” records a manual/out-of-band disbursement.'
+            : 'Live payments aren’t configured, so disburse manually and record it with “Mark paid”. Set Flutterwave keys to enable direct transfers.'}</p>
           {payouts === null ? <p className="admin-sub">Loading…</p>
             : payouts.length === 0 ? <p className="admin-sub">No pending payout requests.</p>
               : payouts.map((p) => (
@@ -232,10 +237,12 @@ export default function OperatorConsole({ onExit }) {
                   <div>
                     <strong>{p.creatorName}</strong>
                     <span className="op-meta">{p.creatorEmail} · {p.count} sale(s)</span>
+                    <span className="op-meta">{p.bank ? `→ ${p.bank.bankName || p.bank.bankCode} · ${p.bank.accountNumber}${p.bank.accountName ? ` · ${p.bank.accountName}` : ''}` : '⚠ no payout details on file'}</span>
                   </div>
                   <div className="op-course-actions">
                     <span className="op-amount">{p.currency} {p.net}</span>
-                    <button className="admin-btn" onClick={() => markPaid(p)}>Mark paid</button>
+                    {payoutsLive && p.bank && <button className="admin-btn" onClick={() => markPaid(p, true)}>Send via Flutterwave</button>}
+                    <button className="ghost" onClick={() => markPaid(p, false)}>Mark paid</button>
                   </div>
                 </div>
               ))}

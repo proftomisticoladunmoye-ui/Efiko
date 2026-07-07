@@ -620,6 +620,12 @@ button.set-link:hover { border-color: var(--brand-2); }
 .set-ver { font-size: 12px; color: var(--muted); }
 .signin-prompt { text-align: center; padding: 30px; }
 
+/* Creator payout method */
+.cs-payout { margin: 16px 0; }
+.cs-payout h3 { margin: 0 0 6px; }
+.cs-payout-saved { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: var(--card, #131722); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 14px; }
+.cs-payout-form { margin-top: 6px; }
+
 /* Invite / referral card */
 .set-invite { margin-bottom: 14px; border: 1px solid var(--brand); background: linear-gradient(135deg, rgba(20,184,166,.10), rgba(20,184,166,.02)); }
 .set-invite h3 { margin: 0 0 4px; }
