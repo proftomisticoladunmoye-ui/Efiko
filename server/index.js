@@ -30,6 +30,7 @@ import { oppSkills, suggestCoursesForOpportunity, userSkills, rankBySkills, rese
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
 import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess, createCreatorListing, listCreatorListings, deleteCreatorListing, getCreatorEarnings, requestPayout, platformFeePct, listPayoutRequests, markPayoutPaid, reconcilePayout, savePayoutDetails, getPayoutDetails, getPayoutDetailsRaw, hasPayoutDetails } from './core/marketplace.js';
 import { paymentsProvider, paymentsLive, paymentsPublicKey, listBanks, resolveAccount, initiateTransfer, verifyWebhook } from './core/payments.js';
+import { payoutsLive, listPayoutBanks, sendPayout, payoutsProvider } from './core/payouts.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
 import { enrol, listEnrolments, courseIdForCode, rosterForCohort, cohortsForUser } from './core/enrolments.js';
 import { createCohort, getCohort, getCohortByCode, listCohortsByOrg } from './core/cohorts.js';
@@ -607,38 +608,38 @@ const server = createServer(async (req, res) => {
   if (req.method === 'POST' && url.pathname === '/market/creator/payout') {
     const user = await authedUser(req);
     if (!user) return json(res, 401, { error: 'Sign in first.' });
-    if (paymentsLive() && !(await hasPayoutDetails(user.userId))) {
-      return json(res, 400, { error: 'Add your payout (bank) details first so we can send your earnings.' });
+    if (payoutsLive() && !(await hasPayoutDetails(user.userId))) {
+      return json(res, 400, { error: 'Add your payout details first so we can send your earnings.' });
     }
     return json(res, 200, await requestPayout(user.userId));
   }
-  // Creator payout (bank) details — where their earnings get sent.
+  // Creator payout details — where their earnings get sent (bank or mobile money).
   if (req.method === 'GET' && url.pathname === '/market/creator/payout-details') {
     const user = await authedUser(req);
     if (!user) return json(res, 200, { details: null });
-    return json(res, 200, { details: await getPayoutDetails(user.userId), live: paymentsLive() });
+    return json(res, 200, { details: await getPayoutDetails(user.userId), live: payoutsLive(), provider: payoutsProvider() });
   }
   if (req.method === 'POST' && url.pathname === '/market/creator/payout-details') {
     const user = await authedUser(req);
     if (!user) return json(res, 401, { error: 'Sign in first.' });
     const body = await readBody(req);
-    // In live mode, confirm the account resolves to a real name before saving.
-    let accountName = body.accountName || '';
-    if (paymentsLive() && body.bankCode && body.accountNumber) {
+    // v3 bank accounts can be name-resolved before saving; v4 resolves the name at transfer time
+    // and mobile-money names are user-provided — so only pre-resolve on the legacy v3 path.
+    let extra = {};
+    if (paymentsLive() && !payoutsProvider().endsWith('_v4') && body.method !== 'mobile_money' && body.bankCode && body.accountNumber) {
       const rv = await resolveAccount({ bankCode: body.bankCode, accountNumber: body.accountNumber });
       if (!rv.ok) return json(res, 400, { error: rv.detail || 'Could not verify that account. Check the bank and number.' });
-      accountName = rv.accountName || accountName;
+      extra.accountName = rv.accountName || body.accountName || '';
     }
     try {
-      return json(res, 200, { details: await savePayoutDetails(user.userId, { ...body, accountName }) });
+      return json(res, 200, { details: await savePayoutDetails(user.userId, { ...body, ...extra }) });
     } catch (e) { return json(res, 400, { error: e.message }); }
   }
-  // Bank list for the payout-details picker (secret-key backed; needs a signed-in user).
+  // Bank list for the payout-details picker (needs a signed-in user).
   if (req.method === 'GET' && url.pathname === '/payments/banks') {
     const user = await authedUser(req);
     if (!user) return json(res, 401, { error: 'unauthorized' });
-    if (!paymentsLive()) return json(res, 200, { banks: [] });
-    const r = await listBanks(url.searchParams.get('country') || 'NG');
+    const r = await listPayoutBanks(url.searchParams.get('country') || 'NG');
     return json(res, r.ok ? 200 : 502, r.ok ? { banks: r.banks } : { error: r.detail });
   }
   // Flutterwave webhook — final transfer status (transfer.completed). Verified by shared hash;
@@ -1103,7 +1104,7 @@ const server = createServer(async (req, res) => {
       const bank = await getPayoutDetails(r.creatorId);
       return { ...r, creatorName: u?.name || 'Unknown', creatorEmail: u?.email || '', bank };
     }));
-    return json(res, 200, { payouts: out, live: paymentsLive() });
+    return json(res, 200, { payouts: out, live: payoutsLive() });
   }
   // Settle a creator payout. With { transfer: true } and live payments, send a real Flutterwave
   // transfer to the creator's saved bank account and tag the earnings for webhook reconciliation.
@@ -1114,21 +1115,17 @@ const server = createServer(async (req, res) => {
     if (!creatorId) return json(res, 400, { error: 'creatorId is required' });
     const cur = currency || null;
     if (transfer) {
-      if (!paymentsLive()) return json(res, 400, { error: 'Live payments are not configured — cannot send a transfer.' });
-      const bank = await getPayoutDetailsRaw(creatorId);
-      if (!bank) return json(res, 400, { error: 'This creator has not added payout (bank) details yet.' });
+      if (!payoutsLive()) return json(res, 400, { error: 'Live payments are not configured — cannot send a transfer.' });
+      const dest = await getPayoutDetailsRaw(creatorId);
+      if (!dest) return json(res, 400, { error: 'This creator has not added payout details yet.' });
       // Total the amount owed for the chosen currency.
       const owed = (await listPayoutRequests()).find((p) => p.creatorId === creatorId && (!cur || p.currency === cur));
       if (!owed) return json(res, 400, { error: 'No pending payout for that creator/currency.' });
-      const payoutRef = `efiko_payout_${creatorId}_${Date.now()}`;
-      const tr = await initiateTransfer({
-        bankCode: bank.bankCode, accountNumber: bank.accountNumber, amount: owed.net,
-        currency: owed.currency, reference: payoutRef, beneficiaryName: bank.accountName || undefined,
-        narration: 'EFIKO creator payout'
-      });
+      const payoutRef = `efikopayout${creatorId}${Date.now()}`.replace(/[^a-zA-Z0-9]/g, '');
+      const tr = await sendPayout(dest, { amount: owed.net, currency: owed.currency, reference: payoutRef, narration: 'EFIKO creator payout' });
       if (!tr.ok) return json(res, 502, { error: `Transfer failed: ${tr.detail}` });
-      const result = await markPayoutPaid(creatorId, owed.currency, { payoutRef, transferId: tr.transferId, transferStatus: tr.status, method: 'flutterwave' });
-      return json(res, 200, { ...result, transfer: { id: tr.transferId, status: tr.status, reference: tr.reference } });
+      const result = await markPayoutPaid(creatorId, owed.currency, { payoutRef, transferId: tr.transferId, transferStatus: tr.status, method: payoutsProvider() });
+      return json(res, 200, { ...result, transfer: { id: tr.transferId, status: tr.status, recipientName: tr.recipientName } });
     }
     return json(res, 200, await markPayoutPaid(creatorId, cur, { method: 'manual' }));
   }

@@ -237,7 +237,10 @@ export default function OperatorConsole({ onExit }) {
                   <div>
                     <strong>{p.creatorName}</strong>
                     <span className="op-meta">{p.creatorEmail} · {p.count} sale(s)</span>
-                    <span className="op-meta">{p.bank ? `→ ${p.bank.bankName || p.bank.bankCode} · ${p.bank.accountNumber}${p.bank.accountName ? ` · ${p.bank.accountName}` : ''}` : '⚠ no payout details on file'}</span>
+                    <span className="op-meta">{!p.bank ? '⚠ no payout details on file'
+                      : p.bank.method === 'mobile_money'
+                        ? `→ ${p.bank.network} · ${p.bank.phone}${p.bank.accountName ? ` · ${p.bank.accountName}` : ''} (${p.bank.country})`
+                        : `→ ${p.bank.bankName || p.bank.bankCode} · ${p.bank.accountNumber}${p.bank.accountName ? ` · ${p.bank.accountName}` : ''} (${p.bank.country})`}</span>
                   </div>
                   <div className="op-course-actions">
                     <span className="op-amount">{p.currency} {p.net}</span>

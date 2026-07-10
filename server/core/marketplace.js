@@ -208,27 +208,41 @@ export async function reconcilePayout(payoutRef, ok) {
   return { updated: rows.length };
 }
 
-// --- Creator payout (bank) details: where to send this creator's money ---
-const maskAccount = (n) => { const s = String(n || ''); return s.length > 4 ? `••••${s.slice(-4)}` : s; };
+// --- Creator payout details: where to send this creator's money (multi-country) ---
+// method 'bank'         -> bankCode + accountNumber (name auto-resolves at transfer time)
+// method 'mobile_money' -> network + phone (msisdn) + first/last name
+const maskTail = (n) => { const s = String(n || ''); return s.length > 4 ? `••••${s.slice(-4)}` : s; };
 
-export async function savePayoutDetails(userId, { bankCode, bankName, accountNumber, accountName, country = 'NG', currency = 'NGN' }) {
+export async function savePayoutDetails(userId, d = {}) {
   if (!userId) throw new Error('sign in required');
-  if (!bankCode || !accountNumber) throw new Error('bank and account number are required');
-  const rec = { userId, bankCode: String(bankCode), bankName: bankName || '', accountNumber: String(accountNumber).trim(), accountName: accountName || '', country: String(country).toUpperCase(), currency: String(currency).toUpperCase(), updatedAt: Date.now() };
+  const method = d.method === 'mobile_money' ? 'mobile_money' : 'bank';
+  const country = String(d.country || 'NG').toUpperCase();
+  const currency = String(d.currency || 'NGN').toUpperCase();
+  let rec;
+  if (method === 'bank') {
+    if (!d.bankCode || !d.accountNumber) throw new Error('bank and account number are required');
+    rec = { userId, method, country, currency, bankCode: String(d.bankCode), bankName: d.bankName || '', accountNumber: String(d.accountNumber).trim(), accountName: d.accountName || '', updatedAt: Date.now() };
+  } else {
+    if (!d.network || !d.phone) throw new Error('mobile network and phone number are required');
+    rec = { userId, method, country, currency, network: String(d.network), phone: String(d.phone).trim(), firstName: (d.firstName || '').trim(), lastName: (d.lastName || '').trim(), updatedAt: Date.now() };
+  }
   await kvPut(PAYOUT_DETAILS, userId, rec);
   return getPayoutDetails(userId);
 }
 
-// Full record for internal use (transfers). Includes the raw account number.
+// Full record for internal use (transfers). Includes the raw account/phone number.
 export async function getPayoutDetailsRaw(userId) {
   return kvGet(PAYOUT_DETAILS, userId);
 }
 
-// Masked view for the client (never leak the full account number back).
+// Masked view for the client (never leak the full account/phone number back).
 export async function getPayoutDetails(userId) {
   const r = await getPayoutDetailsRaw(userId);
   if (!r) return null;
-  return { bankCode: r.bankCode, bankName: r.bankName, accountNumber: maskAccount(r.accountNumber), accountName: r.accountName, country: r.country, currency: r.currency };
+  const base = { method: r.method || 'bank', country: r.country, currency: r.currency };
+  return (r.method === 'mobile_money')
+    ? { ...base, network: r.network, phone: maskTail(r.phone), accountName: `${r.firstName || ''} ${r.lastName || ''}`.trim() }
+    : { ...base, bankCode: r.bankCode, bankName: r.bankName, accountNumber: maskTail(r.accountNumber), accountName: r.accountName };
 }
 
 export async function hasPayoutDetails(userId) {
