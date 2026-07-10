@@ -50,3 +50,49 @@ export async function v4CreateTransfer(d, { amount, narration = 'EFIKO creator p
   const nm = r.recipient?.name ? `${r.recipient.name.first || ''} ${r.recipient.name.last || ''}`.trim() : '';
   return { ok: true, transferId: r.id, status: r.status, reference: r.reference, recipientName: nm };
 }
+
+// --- Checkout (collections): buyer pays for a listing. Mobile money is PCI-safe (no card data
+// touches us) and dominant in EFIKO's markets. Flow: customer -> payment_method -> charge; the
+// charge returns next_action (a phone-approval prompt) and settles to 'succeeded' async, which
+// we confirm by polling GET /charges/{id} (and the webhook as backup). Verified on sandbox. ---
+const v4Post = (path, body) => flwV4('POST', path, { body, idempotent: true });
+
+export async function v4CreateCustomer(email) {
+  // Email is all that's required. (v4 enforces strict name rules — 2–50 letters — so we omit it
+  // rather than risk rejecting the charge over a short/odd display name.)
+  const { ok, data } = await v4Post('/customers', { email });
+  return ok ? { ok: true, id: (data.data || data).id } : { ok: false, detail: data?.error?.message || 'could not create customer', conflict: data?.error?.code === '10409' || /already exists/i.test(data?.error?.message || '') };
+}
+
+// Fall-back lookup when a customer already exists (v4 rejects duplicate emails). The list
+// endpoint doesn't actually filter by email, so we match client-side over the returned page.
+export async function v4FindCustomerByEmail(email) {
+  const { ok, data } = await flwV4('GET', `/customers?email=${encodeURIComponent(email)}`);
+  if (!ok) return null;
+  const m = (data.data || []).find((c) => String(c.email || '').toLowerCase() === String(email).toLowerCase());
+  return m?.id || null;
+}
+
+export async function v4CreateMomoMethod({ network, countryCode, phone }) {
+  const { ok, data } = await v4Post('/payment-methods', { type: 'mobile_money', mobile_money: { network, country_code: countryCode, phone_number: phone } });
+  return ok ? { ok: true, id: (data.data || data).id } : { ok: false, detail: JSON.stringify(data?.error?.validation_errors || data?.error?.message || 'invalid mobile money details') };
+}
+
+export async function v4CreateCharge({ customerId, paymentMethodId, amount, currency, reference, redirectUrl }) {
+  const { ok, data } = await v4Post('/charges', { reference, currency, customer_id: customerId, payment_method_id: paymentMethodId, amount: Number(amount), redirect_url: redirectUrl });
+  const d = data.data || data;
+  return ok ? { ok: true, chargeId: d.id, status: d.status, nextAction: d.next_action, reference: d.reference } : { ok: false, detail: data?.error?.message || 'charge failed' };
+}
+
+export async function v4GetCharge(chargeId) {
+  const { ok, data } = await flwV4('GET', `/charges/${encodeURIComponent(chargeId)}`);
+  const d = data.data || data;
+  return ok ? { ok: true, status: d.status, chargeId: d.id } : { ok: false, detail: data?.error?.message || 'charge lookup failed' };
+}
+
+// mobile-money method -> charge (the customer is created/reused by the caller). Returns
+// { chargeId, status, nextAction }.
+export async function v4StartMomoCharge({ customerId, network, countryCode, phone, amount, currency, reference, redirectUrl }) {
+  const pm = await v4CreateMomoMethod({ network, countryCode, phone }); if (!pm.ok) return pm;
+  return v4CreateCharge({ customerId, paymentMethodId: pm.id, amount, currency, reference, redirectUrl });
+}

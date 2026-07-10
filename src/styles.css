@@ -620,6 +620,16 @@ button.set-link:hover { border-color: var(--brand-2); }
 .set-ver { font-size: 12px; color: var(--muted); }
 .signin-prompt { text-align: center; padding: 30px; }
 
+/* v4 mobile-money checkout modal */
+.v4co { position: relative; background: var(--card, #131722); border: 1px solid var(--border); border-radius: 16px; padding: 22px; max-width: 380px; width: 92%; }
+.v4co h3 { margin: 0 0 2px; }
+.v4co-sub { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+.v4co-note { font-size: 14px; color: var(--muted); }
+.v4co-ok { color: var(--good, #34d399); font-weight: 600; text-align: center; padding: 16px 0; }
+.v4co-pending { text-align: center; padding: 10px 0; color: var(--muted); font-size: 14px; }
+.v4co-spin { width: 30px; height: 30px; margin: 0 auto 12px; border: 3px solid var(--border); border-top-color: var(--brand); border-radius: 50%; animation: v4spin 0.9s linear infinite; }
+@keyframes v4spin { to { transform: rotate(360deg); } }
+
 /* Creator payout method */
 .cs-payout { margin: 16px 0; }
 .cs-payout h3 { margin: 0 0 6px; }

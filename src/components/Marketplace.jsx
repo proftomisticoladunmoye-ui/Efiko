@@ -2,9 +2,78 @@
 // Checkout runs through the payment adapter; by default that's a labelled demo checkout, so
 // the flow is fully usable before a live provider (Flutterwave) is wired.
 import { useEffect, useState } from 'react';
-import { listListings, listPurchases, buyListing, verifyPurchase } from '../marketplace.js';
+import { listListings, listPurchases, buyListing, verifyPurchase, startCharge, pollCharge } from '../marketplace.js';
 import { formatMoney as price } from '../currencies.js';
 import CreatorStudio from './CreatorStudio.jsx';
+
+// Mobile-money support by currency (country dial code + networks) for v4 checkout.
+const MOMO = {
+  KES: { dial: '254', networks: ['MPESA', 'AIRTEL'] },
+  GHS: { dial: '233', networks: ['MTN', 'VODAFONE', 'AIRTELTIGO'] },
+  UGX: { dial: '256', networks: ['MTN', 'AIRTEL'] },
+  RWF: { dial: '250', networks: ['MTN', 'AIRTEL'] },
+  TZS: { dial: '255', networks: ['AIRTEL', 'TIGO', 'VODACOM', 'HALOTEL'] }
+};
+
+// v4 mobile-money checkout modal: buyer enters their number, we create a charge, they approve on
+// their phone, and we poll until it settles — then unlock the item.
+function V4Checkout({ listing, onClose, onOwned }) {
+  const cfg = MOMO[listing.currency];
+  const [network, setNetwork] = useState(cfg?.networks[0] || '');
+  const [phone, setPhone] = useState('');
+  const [stage, setStage] = useState('form'); // form | pending | done | error
+  const [note, setNote] = useState(null);
+  const [err, setErr] = useState(null);
+
+  async function pay() {
+    if (!phone.trim()) return;
+    setErr(null); setStage('pending'); setNote('Starting payment…');
+    try {
+      const r = await startCharge(listing.id, { network, countryCode: cfg.dial, phone: phone.trim(), redirectUrl: window.location.href });
+      if (r.already || r.free) { onOwned(listing.id); return onClose(); }
+      setNote(r.nextAction?.payment_instruction?.note || 'Approve the payment on your phone, then keep this open.');
+      // Poll until the charge settles.
+      const ref = r.reference;
+      for (let i = 0; i < 60; i++) {
+        await new Promise((res) => setTimeout(res, 4000));
+        const s = await pollCharge(ref);
+        if (s.status === 'succeeded') { setStage('done'); onOwned(listing.id); return; }
+        if (s.status === 'failed') { setStage('error'); setErr('Payment failed or was declined.'); return; }
+      }
+      setStage('error'); setErr('Timed out waiting for confirmation. If you were charged, it will unlock shortly.');
+    } catch (e) { setStage('error'); setErr(e.message); }
+  }
+
+  return (
+    <div className="auth-overlay" onClick={onClose}>
+      <div className="v4co" onClick={(e) => e.stopPropagation()}>
+        <button className="auth-close" onClick={onClose} aria-label="Close">×</button>
+        <h3>Pay {price(listing.price, listing.currency)}</h3>
+        <p className="v4co-sub">{listing.title}</p>
+        {!cfg ? (
+          <p className="v4co-note">Mobile-money checkout isn’t available for {listing.currency} yet — card payment is coming soon.</p>
+        ) : stage === 'done' ? (
+          <p className="v4co-ok">✓ Payment confirmed — enjoy your purchase!</p>
+        ) : stage === 'pending' ? (
+          <div className="v4co-pending"><div className="v4co-spin" />{note && <p>{note}</p>}</div>
+        ) : (
+          <>
+            <label className="studio-field">Mobile network
+              <select className="ask-input" value={network} onChange={(e) => setNetwork(e.target.value)}>
+                {cfg.networks.map((n) => <option key={n} value={n}>{n}</option>)}
+              </select>
+            </label>
+            <label className="studio-field">Your mobile-money number
+              <input className="ask-input" placeholder={`e.g. ${cfg.dial}7XXXXXXXX`} value={phone} onChange={(e) => setPhone(e.target.value)} />
+            </label>
+            <button className="course-open" onClick={pay} disabled={!phone.trim()}>Pay now</button>
+          </>
+        )}
+        {err && <p className="error">{err}</p>}
+      </div>
+    </div>
+  );
+}
 
 // Load Flutterwave's checkout script once (only needed in live mode).
 function loadFlutterwave() {
@@ -25,6 +94,7 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
   const [sellMode, setSellMode] = useState(false);
   const [payments, setPayments] = useState({ provider: 'mock', live: false, publicKey: '' });
   const [checkout, setCheckout] = useState(null); // listing being purchased (demo modal)
+  const [v4co, setV4co] = useState(null); // listing being purchased via v4 mobile money
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState(null);
   const [loaded, setLoaded] = useState(false);
@@ -41,9 +111,11 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
   function startBuy(l) {
     if (!signedIn) return onSignIn();
     if (l.price === 0) return confirmBuy(l);           // free items settle instantly
-    if (payments.live) return payLive(l);              // real Flutterwave checkout
+    if (payments.v4) { setErr(null); return setV4co(l); } // v4 mobile-money checkout
+    if (payments.live) return payLive(l);              // real Flutterwave v3 checkout
     setErr(null); setCheckout(l);                      // demo checkout modal
   }
+  function ownNow(id) { setOwnedIds((s) => new Set([...s, id])); }
 
   // Mock/free purchase (demo checkout or free item).
   async function confirmBuy(l) {
@@ -87,7 +159,7 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
         {signedIn && <button className="course-enrol" onClick={() => setSellMode(true)}>💼 Sell on EFIKO</button>}
       </div>
       <p className="lib-sub">Premium courses, packs and resources from institutions and creators. Buy once, learn anytime — even offline.</p>
-      {!payments.live && <p className="market-demo">🧪 Demo checkout — live payments (Flutterwave) activate once keys are added. No real charge is made.</p>}
+      {!payments.live && !payments.v4 && <p className="market-demo">🧪 Demo checkout — live payments (Flutterwave) activate once keys are added. No real charge is made.</p>}
 
       {loaded && listings.length === 0 && <p className="career-empty">No listings yet. Institutions and creators can list here — tap “Sell on EFIKO”.</p>}
 
@@ -135,6 +207,8 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
           </div>
         </div>
       )}
+
+      {v4co && <V4Checkout listing={v4co} onClose={() => setV4co(null)} onOwned={(id) => { ownNow(id); }} />}
     </section>
   );
 }

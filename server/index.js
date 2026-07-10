@@ -28,7 +28,8 @@ import { createOpportunity, listOpportunities, listOpportunitiesByOrg, deleteOpp
 import { refreshAggregated, listAggregated, refreshIfStale, lastRun } from './core/careers/aggregator.js';
 import { oppSkills, suggestCoursesForOpportunity, userSkills, rankBySkills, resetCourseIndex } from './core/careers/skills.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
-import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess, createCreatorListing, listCreatorListings, deleteCreatorListing, getCreatorEarnings, requestPayout, platformFeePct, listPayoutRequests, markPayoutPaid, reconcilePayout, savePayoutDetails, getPayoutDetails, getPayoutDetailsRaw, hasPayoutDetails } from './core/marketplace.js';
+import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess, createCreatorListing, listCreatorListings, deleteCreatorListing, getCreatorEarnings, requestPayout, platformFeePct, listPayoutRequests, markPayoutPaid, reconcilePayout, savePayoutDetails, getPayoutDetails, getPayoutDetailsRaw, hasPayoutDetails, startV4Checkout, confirmV4Checkout, reconcileCharge } from './core/marketplace.js';
+import { v4Configured } from './core/paymentsV4.js';
 import { paymentsProvider, paymentsLive, paymentsPublicKey, listBanks, resolveAccount, initiateTransfer, verifyWebhook } from './core/payments.js';
 import { payoutsLive, listPayoutBanks, sendPayout, payoutsProvider } from './core/payouts.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
@@ -549,11 +550,28 @@ const server = createServer(async (req, res) => {
 
   // --- Marketplace (V2 R5): paid listings + checkout (payments adapter) ---
   if (req.method === 'GET' && url.pathname === '/market/listings') {
-    return json(res, 200, { listings: await listListings(), payments: { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey() } });
+    return json(res, 200, { listings: await listListings(), payments: { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey(), v4: v4Configured() } });
   }
   // Payment config for the client checkout (public key is safe to expose; secret never is).
   if (req.method === 'GET' && url.pathname === '/payments/config') {
-    return json(res, 200, { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey() });
+    return json(res, 200, { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey(), v4: v4Configured() });
+  }
+  // v4 checkout: start a mobile-money charge for a paid listing (buyer authorises on their phone).
+  if (req.method === 'POST' && url.pathname.match(/^\/market\/listings\/[^/]+\/charge$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'Sign in to buy.' });
+    if (!v4Configured()) return json(res, 400, { error: 'Card/mobile-money checkout is not available right now.' });
+    const id = decodeURIComponent(url.pathname.split('/')[3]);
+    try {
+      return json(res, 200, await startV4Checkout(user, id, await readBody(req)));
+    } catch (e) { return json(res, 400, { error: e.message }); }
+  }
+  // v4 checkout: poll a charge's status (records the purchase + grants access on 'succeeded').
+  if (req.method === 'GET' && url.pathname.match(/^\/market\/charge\/[^/]+$/)) {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'unauthorized' });
+    const reference = decodeURIComponent(url.pathname.split('/')[3]);
+    return json(res, 200, await confirmV4Checkout(user.userId, reference));
   }
   if (req.method === 'GET' && url.pathname === '/market/mine') {
     const org = await authedOrg(req);
@@ -651,6 +669,9 @@ const server = createServer(async (req, res) => {
     const d = body?.data || {};
     if (ev.startsWith('transfer') && d.reference) {
       await reconcilePayout(d.reference, String(d.status).toUpperCase() === 'SUCCESSFUL').catch(() => {});
+    } else if (ev.startsWith('charge') && d.reference) {
+      // v4 buyer charge settled — record the purchase (polling is the primary confirmation path).
+      await reconcileCharge(d.reference).catch(() => {});
     }
     return json(res, 200, { ok: true });
   }

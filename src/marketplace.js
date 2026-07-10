@@ -65,6 +65,18 @@ export async function buyListing(id) {
   return d; // { purchase } | { already: true }
 }
 
+// v4 checkout: start a mobile-money charge; returns { reference, status, nextAction } (or { free/already }).
+export async function startCharge(id, method) {
+  const r = await fetch(`${GATEWAY}/market/listings/${encodeURIComponent(id)}/charge`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...userHeaders() }, body: JSON.stringify(method) });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.error || `failed (${r.status})`);
+  return d;
+}
+// v4 checkout: poll a charge until it settles. Returns { status, purchase? }.
+export async function pollCharge(reference) {
+  try { const r = await fetch(`${GATEWAY}/market/charge/${encodeURIComponent(reference)}`, { headers: userHeaders() }); if (!r.ok) return { status: 'pending' }; return await r.json(); } catch { return { status: 'pending' }; }
+}
+
 // Live checkout: after Flutterwave payment, verify the transaction server-side to grant access.
 export async function verifyPurchase(id, transactionId) {
   const r = await fetch(`${GATEWAY}/market/listings/${encodeURIComponent(id)}/verify`, {

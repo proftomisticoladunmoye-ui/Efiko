@@ -4,11 +4,25 @@
 import { randomBytes } from 'node:crypto';
 import { kvGet, kvPut, kvAll, kvDel } from './kv.js';
 import { settlePayment, verifyPayment } from './payments.js';
+import { v4StartMomoCharge, v4GetCharge, v4CreateCustomer, v4FindCustomerByEmail } from './paymentsV4.js';
 
 const LISTINGS = 'market_listings';
 const PURCHASES = 'market_purchases';
 const EARNINGS = 'market_earnings'; // one ledger entry per creator sale
 const PAYOUT_DETAILS = 'market_payout_details'; // one per creator: where to send payouts
+const CHARGES = 'market_charges'; // pending v4 checkout charges (reference -> buyer + listing)
+const FW_CUSTOMERS = 'fw_customers'; // EFIKO userId -> Flutterwave v4 customer id (create once)
+
+// Get (or create + cache) this user's Flutterwave customer id. v4 rejects duplicate-email
+// customers, so we reuse one per user; on a conflict we recover the id by lookup.
+async function getOrCreateFwCustomer(userId, email) {
+  const stored = await kvGet(FW_CUSTOMERS, userId);
+  if (stored?.customerId) return { ok: true, id: stored.customerId };
+  let c = await v4CreateCustomer(email);
+  if (!c.ok && c.conflict) { const found = await v4FindCustomerByEmail(email); if (found) c = { ok: true, id: found }; }
+  if (c.ok) await kvPut(FW_CUSTOMERS, userId, { userId, customerId: c.id });
+  return c;
+}
 
 // Platform commission on creator sales (%). The creator keeps the rest.
 const FEE_PCT = Math.min(90, Math.max(0, Number(process.env.MARKET_FEE_PCT) || 20));
@@ -256,6 +270,58 @@ export async function purchase(user, listingId) {
   if (await hasPurchased(user.userId, listingId)) return { already: true };
   const pay = await settlePayment({ amount: l.price, currency: l.currency, ref: `${listingId}_${user.userId}` });
   return { purchase: await recordPurchase(user, l, pay) };
+}
+
+// --- Flutterwave v4 checkout (mobile money) ---
+// Start a charge for a paid listing. Records a pending charge keyed by reference so we can
+// confirm it later. Returns { reference, chargeId, status, nextAction } for the buyer to
+// authorise on their phone.
+export async function startV4Checkout(user, listingId, method) {
+  const l = await getListing(listingId);
+  if (!l) throw new Error('listing not found');
+  if ((l.price || 0) <= 0) return { free: true, purchase: (await purchase(user, listingId)).purchase };
+  if (await hasPurchased(user.userId, listingId)) return { already: true };
+  const reference = `efikochg${randomBytes(10).toString('hex')}`;
+  // Flutterwave requires a valid public https redirect URL (rejects localhost). Trust the
+  // client's only if it qualifies, else fall back to the site base.
+  const cand = method.redirectUrl || '';
+  const redirectUrl = (/^https:\/\//.test(cand) && !/localhost|127\.0\.0\.1/.test(cand))
+    ? cand : `${process.env.PUBLIC_BASE_URL || 'https://efikolearn.online'}/?market`;
+  const cust = await getOrCreateFwCustomer(user.userId, user.email || `u_${user.userId}@efiko.app`);
+  if (!cust.ok) throw new Error(cust.detail || 'could not set up payment');
+  const r = await v4StartMomoCharge({
+    customerId: cust.id,
+    network: method.network, countryCode: method.countryCode, phone: method.phone,
+    amount: l.price, currency: l.currency, reference, redirectUrl
+  });
+  if (!r.ok) throw new Error(r.detail || 'could not start payment');
+  await kvPut(CHARGES, reference, { reference, chargeId: r.chargeId, userId: user.userId, listingId, status: r.status, createdAt: Date.now() });
+  return { reference, chargeId: r.chargeId, status: r.status, nextAction: r.nextAction };
+}
+
+// Confirm a v4 charge (polled by the client, and by the webhook). Records the purchase + grants
+// access once the charge is 'succeeded'. Returns { status, purchase? }.
+export async function confirmV4Checkout(userId, reference) {
+  const rec = await kvGet(CHARGES, reference);
+  if (!rec || (userId && rec.userId !== userId)) return { status: 'not_found' };
+  if (rec.recorded) return { status: 'succeeded', already: true };
+  const v = await v4GetCharge(rec.chargeId);
+  if (!v.ok) return { status: rec.status || 'pending' };
+  if (v.status === 'succeeded') {
+    const l = await getListing(rec.listingId);
+    const user = { userId: rec.userId };
+    const purchase = l ? await recordPurchase(user, l, { status: 'paid', ref: reference, provider: 'flutterwave_v4' }) : null;
+    rec.recorded = true; rec.status = 'succeeded'; await kvPut(CHARGES, reference, rec);
+    return { status: 'succeeded', purchase };
+  }
+  rec.status = v.status; await kvPut(CHARGES, reference, rec);
+  return { status: v.status };
+}
+
+// Reconcile a v4 charge by reference from a charge.completed webhook.
+export async function reconcileCharge(reference) {
+  const rec = await kvGet(CHARGES, reference);
+  if (rec) await confirmV4Checkout(null, reference);
 }
 
 // Live checkout: the browser paid via Flutterwave and returned a transaction id; verify it
