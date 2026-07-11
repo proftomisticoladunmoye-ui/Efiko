@@ -65,6 +65,30 @@ export async function buyListing(id) {
   return d; // { purchase } | { already: true }
 }
 
+// v4 card checkout: the browser encrypts card fields (AES-256-GCM) with the Flutterwave
+// encryption key so the raw card number never reaches our server. Returns the fields + nonce.
+export async function fetchCardKey() {
+  try { const r = await fetch(`${GATEWAY}/payments/card-key`, { headers: userHeaders() }); if (!r.ok) return null; return (await r.json()).key || null; } catch { return null; }
+}
+export async function encryptCard(card, keyB64) {
+  const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const nonce = Array.from({ length: 12 }, () => alphabet[Math.floor(Math.random() * alphabet.length)]).join('');
+  const keyBytes = Uint8Array.from(atob(keyB64), (c) => c.charCodeAt(0));
+  const key = await crypto.subtle.importKey('raw', keyBytes, 'AES-GCM', false, ['encrypt']);
+  const iv = new TextEncoder().encode(nonce);
+  const enc = async (v) => {
+    const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv, tagLength: 128 }, key, new TextEncoder().encode(String(v)));
+    return btoa(String.fromCharCode(...new Uint8Array(ct)));
+  };
+  return {
+    nonce,
+    encrypted_card_number: await enc(String(card.number).replace(/\s+/g, '')),
+    encrypted_expiry_month: await enc(card.month),
+    encrypted_expiry_year: await enc(card.year),
+    encrypted_cvv: await enc(card.cvv)
+  };
+}
+
 // v4 checkout: start a mobile-money charge; returns { reference, status, nextAction } (or { free/already }).
 export async function startCharge(id, method) {
   const r = await fetch(`${GATEWAY}/market/listings/${encodeURIComponent(id)}/charge`, { method: 'POST', headers: { 'Content-Type': 'application/json', ...userHeaders() }, body: JSON.stringify(method) });

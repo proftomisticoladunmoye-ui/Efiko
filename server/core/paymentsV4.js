@@ -3,9 +3,9 @@
 // creator's country, using v4's currency-specific payment_instruction. Schemas verified against
 // the Flutterwave sandbox (a NGN bank transfer returns 201 with an auto-resolved account name).
 import { randomUUID } from 'node:crypto';
-import { flwV4, v4Configured, v4Env } from './flutterwaveV4.js';
+import { flwV4, v4Configured, v4Env, v4EncryptionKey } from './flutterwaveV4.js';
 
-export { v4Configured, v4Env };
+export { v4Configured, v4Env, v4EncryptionKey };
 
 // v4 references must be alphanumeric (underscores are rejected).
 const ref = (p = 'efiko') => (p + randomUUID().replace(/-/g, '')).replace(/[^a-zA-Z0-9]/g, '').slice(0, 40);
@@ -94,5 +94,17 @@ export async function v4GetCharge(chargeId) {
 // { chargeId, status, nextAction }.
 export async function v4StartMomoCharge({ customerId, network, countryCode, phone, amount, currency, reference, redirectUrl }) {
   const pm = await v4CreateMomoMethod({ network, countryCode, phone }); if (!pm.ok) return pm;
+  return v4CreateCharge({ customerId, paymentMethodId: pm.id, amount, currency, reference, redirectUrl });
+}
+
+// Card: the browser already encrypted the card fields (AES-256-GCM) — we never see the raw PAN.
+// `card` = { nonce, encrypted_card_number, encrypted_expiry_month, encrypted_expiry_year,
+// encrypted_cvv }. The charge typically returns a 3DS redirect in next_action.
+export async function v4CreateCardMethod(card) {
+  const { ok, data } = await v4Post('/payment-methods', { type: 'card', card });
+  return ok ? { ok: true, id: (data.data || data).id } : { ok: false, detail: JSON.stringify(data?.error?.validation_errors || data?.error?.message || 'invalid card') };
+}
+export async function v4StartCardCharge({ customerId, card, amount, currency, reference, redirectUrl }) {
+  const pm = await v4CreateCardMethod(card); if (!pm.ok) return pm;
   return v4CreateCharge({ customerId, paymentMethodId: pm.id, amount, currency, reference, redirectUrl });
 }

@@ -4,7 +4,7 @@
 import { randomBytes } from 'node:crypto';
 import { kvGet, kvPut, kvAll, kvDel } from './kv.js';
 import { settlePayment, verifyPayment } from './payments.js';
-import { v4StartMomoCharge, v4GetCharge, v4CreateCustomer, v4FindCustomerByEmail } from './paymentsV4.js';
+import { v4StartMomoCharge, v4StartCardCharge, v4GetCharge, v4CreateCustomer, v4FindCustomerByEmail } from './paymentsV4.js';
 
 const LISTINGS = 'market_listings';
 const PURCHASES = 'market_purchases';
@@ -289,11 +289,9 @@ export async function startV4Checkout(user, listingId, method) {
     ? cand : `${process.env.PUBLIC_BASE_URL || 'https://efikolearn.online'}/?market`;
   const cust = await getOrCreateFwCustomer(user.userId, user.email || `u_${user.userId}@efiko.app`);
   if (!cust.ok) throw new Error(cust.detail || 'could not set up payment');
-  const r = await v4StartMomoCharge({
-    customerId: cust.id,
-    network: method.network, countryCode: method.countryCode, phone: method.phone,
-    amount: l.price, currency: l.currency, reference, redirectUrl
-  });
+  const r = method.type === 'card'
+    ? await v4StartCardCharge({ customerId: cust.id, card: method.card, amount: l.price, currency: l.currency, reference, redirectUrl })
+    : await v4StartMomoCharge({ customerId: cust.id, network: method.network, countryCode: method.countryCode, phone: method.phone, amount: l.price, currency: l.currency, reference, redirectUrl });
   if (!r.ok) throw new Error(r.detail || 'could not start payment');
   await kvPut(CHARGES, reference, { reference, chargeId: r.chargeId, userId: user.userId, listingId, status: r.status, createdAt: Date.now() });
   return { reference, chargeId: r.chargeId, status: r.status, nextAction: r.nextAction };

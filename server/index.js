@@ -29,7 +29,8 @@ import { refreshAggregated, listAggregated, refreshIfStale, lastRun } from './co
 import { oppSkills, suggestCoursesForOpportunity, userSkills, rankBySkills, resetCourseIndex } from './core/careers/skills.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
 import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess, createCreatorListing, listCreatorListings, deleteCreatorListing, getCreatorEarnings, requestPayout, platformFeePct, listPayoutRequests, markPayoutPaid, reconcilePayout, savePayoutDetails, getPayoutDetails, getPayoutDetailsRaw, hasPayoutDetails, startV4Checkout, confirmV4Checkout, reconcileCharge } from './core/marketplace.js';
-import { v4Configured, v4Env } from './core/paymentsV4.js';
+import { v4Configured, v4Env, v4EncryptionKey } from './core/paymentsV4.js';
+const v4CardReady = () => v4Configured() && !!v4EncryptionKey();
 import { paymentsProvider, paymentsLive, paymentsPublicKey, listBanks, resolveAccount, initiateTransfer, verifyWebhook } from './core/payments.js';
 import { payoutsLive, listPayoutBanks, sendPayout, payoutsProvider } from './core/payouts.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
@@ -550,11 +551,19 @@ const server = createServer(async (req, res) => {
 
   // --- Marketplace (V2 R5): paid listings + checkout (payments adapter) ---
   if (req.method === 'GET' && url.pathname === '/market/listings') {
-    return json(res, 200, { listings: await listListings(), payments: { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey(), v4: v4Configured() } });
+    return json(res, 200, { listings: await listListings(), payments: { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey(), v4: v4Configured(), card: v4CardReady() } });
   }
   // Payment config for the client checkout (public key is safe to expose; secret never is).
   if (req.method === 'GET' && url.pathname === '/payments/config') {
-    return json(res, 200, { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey(), v4: v4Configured(), v4Env: v4Configured() ? v4Env() : null });
+    return json(res, 200, { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey(), v4: v4Configured(), v4Env: v4Configured() ? v4Env() : null, card: v4CardReady() });
+  }
+  // Card checkout: the browser encrypts card fields with this key (AES-256-GCM) so the raw card
+  // never reaches our server. Only served to signed-in users when card checkout is configured.
+  if (req.method === 'GET' && url.pathname === '/payments/card-key') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'unauthorized' });
+    if (!v4CardReady()) return json(res, 503, { error: 'card checkout not available' });
+    return json(res, 200, { key: v4EncryptionKey() });
   }
   // v4 checkout: start a mobile-money charge for a paid listing (buyer authorises on their phone).
   if (req.method === 'POST' && url.pathname.match(/^\/market\/listings\/[^/]+\/charge$/)) {
