@@ -29,7 +29,7 @@ import { refreshAggregated, listAggregated, refreshIfStale, lastRun } from './co
 import { oppSkills, suggestCoursesForOpportunity, userSkills, rankBySkills, resetCourseIndex } from './core/careers/skills.js';
 import { createGroup, getGroup, listGroups, isMember, joinGroup, leaveGroup, listMembers, myGroups, addPost, listPosts, deletePost } from './core/community.js';
 import { createListing, listListings, listListingsByOrg, getListing, deleteListing, listPurchases, purchase, purchaseVerified, gatedListingMap, purchasedCourseIds, hasCourseAccess, createCreatorListing, listCreatorListings, deleteCreatorListing, getCreatorEarnings, requestPayout, platformFeePct, listPayoutRequests, markPayoutPaid, reconcilePayout, savePayoutDetails, getPayoutDetails, getPayoutDetailsRaw, hasPayoutDetails, startV4Checkout, confirmV4Checkout, reconcileCharge } from './core/marketplace.js';
-import { v4Configured } from './core/paymentsV4.js';
+import { v4Configured, v4Env } from './core/paymentsV4.js';
 import { paymentsProvider, paymentsLive, paymentsPublicKey, listBanks, resolveAccount, initiateTransfer, verifyWebhook } from './core/payments.js';
 import { payoutsLive, listPayoutBanks, sendPayout, payoutsProvider } from './core/payouts.js';
 import { createProgramme, listProgrammes, getProgramme, getProgrammeResolved } from './core/programmes.js';
@@ -554,7 +554,7 @@ const server = createServer(async (req, res) => {
   }
   // Payment config for the client checkout (public key is safe to expose; secret never is).
   if (req.method === 'GET' && url.pathname === '/payments/config') {
-    return json(res, 200, { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey(), v4: v4Configured() });
+    return json(res, 200, { provider: paymentsProvider(), live: paymentsLive(), publicKey: paymentsPublicKey(), v4: v4Configured(), v4Env: v4Configured() ? v4Env() : null });
   }
   // v4 checkout: start a mobile-money charge for a paid listing (buyer authorises on their phone).
   if (req.method === 'POST' && url.pathname.match(/^\/market\/listings\/[^/]+\/charge$/)) {
