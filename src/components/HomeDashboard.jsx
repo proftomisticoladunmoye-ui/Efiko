@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { listCapsules } from '../storage/capsuleStore.js';
 import { fetchCourses } from '../courses.js';
 import { fetchMyClasses } from '../enrol.js';
+import { fetchPublicStats, niceCount } from '../stats.js';
 import ExamReadiness from './ExamReadiness.jsx';
 import GameStats from './GameStats.jsx';
 
@@ -12,6 +13,9 @@ export default function HomeDashboard({ user, readiness, enrolledIds = [], onOpe
   const [recent, setRecent] = useState(null);
   const [courses, setCourses] = useState([]);
   const [classes, setClasses] = useState([]);
+  const [stats, setStats] = useState(null);
+
+  useEffect(() => { fetchPublicStats().then(setStats); }, []);
 
   // Last-viewed lesson (client-side; works offline).
   useEffect(() => {
@@ -47,6 +51,10 @@ export default function HomeDashboard({ user, readiness, enrolledIds = [], onOpe
           ? <><h2>👋 Hi {first}, what do you want to learn today?</h2><p>Pick up where you left off, or ask EFIKO AI above.</p></>
           : <><h2>Learn anything, anywhere — even offline.</h2><p>Ask EFIKO AI above, or explore courses. <button className="footer-link" onClick={onSignIn}>Sign in</button> to save your progress.</p></>}
       </div>
+
+      {stats?.learners >= 5 && (
+        <p className="home-social">🎓 <strong>{niceCount(stats.learners)}</strong> learners on Efiko{stats.certificates >= 5 ? <> · <strong>{niceCount(stats.certificates)}</strong> certificates earned</> : null}</p>
+      )}
 
       {user && <GameStats />}
 

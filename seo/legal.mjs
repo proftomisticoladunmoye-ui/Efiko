@@ -5,6 +5,9 @@ import { esc, metaTags, htmlDocument, breadcrumbSchema, jsonld, orgRef } from '.
 
 const crumb = (name, path) => jsonld(breadcrumbSchema([{ name: 'Home', path: '/' }, { name, path }]));
 
+// Brand logo shown at the top of the page body (the shared header logo is small).
+const brand = `<a href="/" class="page-brand" aria-label="Efiko home"><img src="/logo.png" alt="Efiko" style="height:52px;width:auto;display:block;margin:0 0 10px"/></a>`;
+
 export const aboutPath = '/about';
 export const privacyPath = '/privacy';
 
@@ -12,6 +15,7 @@ export function renderAbout() {
   const title = 'About Efiko — AI Learning for African Universities';
   const description = 'Efiko is an AI learning operating system for African university students: an AI tutor, adaptive courses, whiteboard lessons and assessments — built to work on low bandwidth and fully offline.';
   const body = `<main class="wrap">
+    ${brand}
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>About</span></nav>
     <h1>About Efiko</h1>
     <p class="intro">Learn Anywhere. Understand Everything.</p>
@@ -32,6 +36,7 @@ export function renderAbout() {
     <section class="block prose">
       <h2>Where We Are Today</h2>
       <p>Efiko is currently piloting with university students in Uganda, with live courses aligned to programmes at Kampala International University (KIU) and Makerere University. We are expanding course coverage and institutional partnerships across East Africa.</p>
+      <p class="stat-counter" data-efiko-learners>Join our growing community of learners.</p>
     </section>
 
     <section class="block prose">
@@ -46,6 +51,7 @@ export function renderAbout() {
     </section>
 
     <section class="block"><a class="hero-cta" href="/">Open the Efiko app</a></section>
+    <script>(function(){var G='${SITE.gateway || 'https://efiko-gateway.onrender.com'}';function nice(n){if(n<10)return String(n);if(n<100)return Math.floor(n/10)*10+'+';if(n<1000)return Math.floor(n/50)*50+'+';return (Math.floor(n/100)*100).toLocaleString()+'+';}fetch(G+'/stats/public').then(function(r){return r.json();}).then(function(d){if(d&&d.learners>=5){var el=document.querySelector('[data-efiko-learners]');if(el)el.innerHTML='Join <strong>'+nice(d.learners)+'</strong> learners already using Efiko.';}}).catch(function(){});})();</script>
   </main>`;
   return htmlDocument({ metaInner: metaTags({ title, description, path: aboutPath, type: 'website' }), schemaInner: crumb('About', aboutPath), body });
 }
@@ -55,6 +61,7 @@ export function renderPrivacy() {
   const description = 'How Efiko (Psychtrix Initiative Limited) collects, uses, stores and protects your personal data, in line with the Data Protection and Privacy Act, 2019 (Uganda).';
   const li = (items) => `<ul class="topics">${items.map((i) => `<li>${i}</li>`).join('')}</ul>`;
   const body = `<main class="wrap">
+    ${brand}
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › <span>Privacy Policy</span></nav>
     <h1>Efiko Privacy Policy</h1>
     <p class="intro">Effective date: 6 June 2026 · Last updated: 13 July 2026</p>

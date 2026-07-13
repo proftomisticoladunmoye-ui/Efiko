@@ -258,6 +258,10 @@ const server = createServer(async (req, res) => {
   if (url.pathname === '/health') {
     return json(res, 200, { ok: true, live: isLive(), ai: aiConfigured(), voice: voiceConfigured(), sms: smsLive(), db: dbConfigured(), durableAccounts: dbConfigured() });
   }
+  // Public headline stats (safe aggregates) — for the "join N learners" social-proof counter.
+  if (req.method === 'GET' && url.pathname === '/stats/public') {
+    return json(res, 200, { learners: await countUsers(), certificates: await countCertificates(), courses: (await listOriginals({ status: 'published' })).length });
+  }
 
   // SMS Learning Assistant (Stage 10) — inbound SMS → core → reply via SMS transport.
   if (req.method === 'POST' && url.pathname === '/sms/webhook') {

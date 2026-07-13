@@ -620,6 +620,10 @@ button.set-link:hover { border-color: var(--brand-2); }
 .set-ver { font-size: 12px; color: var(--muted); }
 .signin-prompt { text-align: center; padding: 30px; }
 
+/* Social-proof learners counter (home) */
+.home-social { margin: 4px 0 14px; font-size: 14px; color: var(--muted); }
+.home-social strong { color: var(--text); }
+
 /* App footer (About / Privacy) */
 .app-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: center; padding: 18px 16px 26px; border-top: 1px solid var(--border); margin-top: 8px; font-size: 13px; }
 .app-footer a { color: var(--muted); text-decoration: none; }

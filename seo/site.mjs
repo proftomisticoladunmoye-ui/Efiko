@@ -8,6 +8,8 @@ export const SITE = {
   description:
     'Efiko is an AI learning operating system for African university students: adaptive courses, an AI tutor, ThinkSpace, certificates, a study community and a marketplace — built to work even on low or no internet.',
   logo: '/logo.png',
+  // Public API gateway (used by the static pages' live learners counter).
+  gateway: 'https://efiko-gateway.onrender.com',
   locale: 'en',
   // Social profiles (add real handles when live; used for Organization sameAs + twitter:site).
   sameAs: [],
