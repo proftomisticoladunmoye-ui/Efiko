@@ -1,0 +1,595 @@
+{
+  "courseId": "orig-project-management-essentials",
+  "owner": "EFIKO Premium",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Project Management Essentials",
+  "subtitle": "Plan, deliver and close projects with confidence",
+  "category": "Business & Professional Skills",
+  "level": "Beginner",
+  "audience": "African university students and early-career professionals",
+  "estimatedHours": 4,
+  "description": "A practical, mobile-friendly introduction to managing projects from idea to delivery. Through short, focused sessions you will learn the core language, tools and habits of project management using low-cost, offline-friendly methods. Perfect for students leading group work, volunteers coordinating community initiatives, and early-career professionals taking on their first project responsibilities.",
+  "outcomes": [
+    "Explain the project life cycle and the role of a project manager.",
+    "Define a project's scope, objectives and stakeholders clearly.",
+    "Apply basic planning tools to schedule tasks, resources and timelines.",
+    "Identify and manage common project risks and issues.",
+    "Track progress and communicate status effectively to a team.",
+    "Close a project and capture lessons learned for the future."
+  ],
+  "competencies": [
+    "Defining project scope, objectives and stakeholders",
+    "Creating a basic project plan with tasks, schedule and resources",
+    "Identifying and responding to project risks",
+    "Tracking progress and communicating status to a team",
+    "Closing a project and documenting lessons learned"
+  ],
+  "nextCourse": "Agile & Team Collaboration Fundamentals",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "Which of these is the best example of a project?",
+        "options": [
+          "Answering customer emails every day",
+          "Organising a one-week campus health fair",
+          "Cleaning your workspace each morning",
+          "Restocking shelves on a fixed weekly routine"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What does 'scope' mean in project management?",
+        "options": [
+          "The total money spent on the project",
+          "The boundaries of what the project will and will not deliver",
+          "The number of people on the team",
+          "The software used to manage tasks"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Who is a stakeholder in a project?",
+        "options": [
+          "Only the project manager",
+          "Anyone affected by or interested in the project",
+          "Only people who pay for the project",
+          "Only the team members doing the work"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "How many phases are in the typical project life cycle described in this course?",
+        "options": [
+          "Three",
+          "Four",
+          "Five",
+          "Seven"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "A well-written project objective should be:",
+        "options": [
+          "Vague so it can change easily",
+          "SMART: Specific, Measurable, Achievable, Relevant, Time-bound",
+          "Focused only on cost",
+          "Kept secret from stakeholders"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A work breakdown structure helps you to:",
+        "options": [
+          "Break the project into smaller, manageable tasks",
+          "Fire underperforming team members",
+          "Increase the project budget automatically",
+          "Avoid talking to stakeholders"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "When assessing a risk, which two factors are most commonly used to prioritise it?",
+        "options": [
+          "Colour and size",
+          "Likelihood and impact",
+          "Cost and location",
+          "Speed and popularity"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is the main purpose of a lessons-learned review at project closure?",
+        "options": [
+          "To assign blame for mistakes",
+          "To capture what worked and what to improve for future projects",
+          "To extend the project deadline",
+          "To recruit new stakeholders"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-what-is-a-project-foundations-the-life-cycle",
+      "order": 1,
+      "title": "What Is a Project? Foundations & the Life Cycle",
+      "objectives": [
+        "Distinguish a project from routine day-to-day work.",
+        "Describe the five phases of the project life cycle.",
+        "Explain the key responsibilities of a project manager."
+      ],
+      "text": "A project is a temporary effort to create a unique result. It has a clear start and end, a defined goal, and a budget. Compare that to operations, which are ongoing and repetitive. Selling airtime every day is operations; building a new mobile app is a project.\n\nEvery project moves through five phases:\n1. Initiation - define why the project exists; write a short charter naming the goal, sponsor, and rough budget.\n2. Planning - break work into tasks, set a schedule, assign people, and list risks.\n3. Execution - the team does the actual work and produces deliverables.\n4. Monitoring & Controlling - track progress against the plan and adjust when things slip.\n5. Closure - hand over results, get sign-off, and record lessons learned.\n\nThe project manager (PM) coordinates all of this. Core responsibilities: clarify scope, plan the schedule, manage the budget, communicate with stakeholders, spot and reduce risks, and lead the team.\n\nHow-to you can use today: for any project, write one sentence answering \"What will exist at the end that does not exist now, and by when?\" That single line is your objective. Example: \"A working campus food-delivery website launched by 30 November.\" This anchors every decision that follows.",
+      "voiceScript": "Welcome to your first step in project management. Let me start with a simple idea: a project is temporary, it has a beginning and an end, and it creates something unique. That's different from your daily routine work, which just repeats. Think of running a shop versus building a brand new one. Every project travels through five phases, from initiation, where you decide why it matters, through planning, execution, monitoring, and finally closure, where you hand it over and capture lessons. As the project manager, you're the person holding it all together, clarifying goals, watching the budget, managing risks, and keeping people talking. Today, try writing one clear sentence describing what will exist when you finish, and by when.",
+      "keyPoints": [
+        "A project is temporary and creates a unique result; operations are ongoing and repetitive.",
+        "The five phases are initiation, planning, execution, monitoring & controlling, and closure.",
+        "The project manager clarifies scope, manages schedule, budget, risks, and stakeholders.",
+        "Start every project with one clear objective sentence: what will exist, and by when."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" font-family=\"sans-serif\" font-size=\"16\" fill=\"#334155\">Project Life Cycle</text><line x1=\"30\" y1=\"150\" x2=\"450\" y2=\"150\" stroke=\"#334155\" stroke-width=\"2\"/><circle cx=\"60\" cy=\"150\" r=\"14\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><circle cx=\"160\" cy=\"150\" r=\"14\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><circle cx=\"250\" cy=\"150\" r=\"14\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><circle cx=\"345\" cy=\"150\" r=\"14\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><circle cx=\"430\" cy=\"150\" r=\"14\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"36\" y=\"185\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">Initiate</text><text x=\"138\" y=\"185\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">Plan</text><text x=\"224\" y=\"185\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">Execute</text><text x=\"318\" y=\"205\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">Monitor</text><text x=\"408\" y=\"185\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">Close</text><path d=\"M74 150 H146\" stroke=\"#334155\" stroke-width=\"1.5\"/><path d=\"M174 150 H236\" stroke=\"#334155\" stroke-width=\"1.5\"/><path d=\"M264 150 H331\" stroke=\"#334155\" stroke-width=\"1.5\"/><path d=\"M359 150 H416\" stroke=\"#334155\" stroke-width=\"1.5\"/><text x=\"20\" y=\"235\" font-family=\"sans-serif\" font-size=\"12\" fill=\"#b45309\">Temporary + Unique goal = Project</text></svg>",
+      "whiteboardCaption": "A timeline showing the five sequential phases of the project life cycle from initiation to closure.",
+      "example": "A student club wants to run a career fair on campus. It has a clear goal (host 20 employers), a deadline (end of semester), and a budget from sponsors, so it's a project. The organiser acts as PM: initiating with a proposal to the dean, planning venue and invitations, executing the event, monitoring RSVPs, and closing by thanking sponsors and writing a report for next year's team.",
+      "quiz": [
+        {
+          "q": "Which of these is a project rather than routine operations?",
+          "options": [
+            "Serving customers at a bank counter each day",
+            "Building a new library extension by December",
+            "Restocking shelves every morning",
+            "Answering the office phone line"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the correct order of the project life cycle?",
+          "options": [
+            "Planning, Initiation, Closure, Execution, Monitoring",
+            "Initiation, Planning, Execution, Monitoring & Controlling, Closure",
+            "Execution, Planning, Initiation, Monitoring, Closure",
+            "Initiation, Execution, Planning, Closure, Monitoring"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a core responsibility of a project manager?",
+          "options": [
+            "Guaranteeing the project never changes",
+            "Managing scope, schedule, budget and stakeholders",
+            "Doing every task personally",
+            "Avoiding all communication until closure"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What defines a project?",
+          "back": "A temporary effort with a clear start and end that creates a unique result."
+        },
+        {
+          "front": "Name the five life-cycle phases.",
+          "back": "Initiation, Planning, Execution, Monitoring & Controlling, Closure."
+        },
+        {
+          "front": "What happens in the closure phase?",
+          "back": "Hand over results, get sign-off, and record lessons learned."
+        },
+        {
+          "front": "Key PM responsibilities?",
+          "back": "Clarify scope, manage schedule and budget, communicate with stakeholders, and reduce risks."
+        }
+      ],
+      "reflection": "Think of something you organised recently. Was it a project or routine work, and which life-cycle phases did you handle well or skip?",
+      "summary": "A project is a temporary, unique undertaking that moves through five phases from initiation to closure, guided by a project manager who balances scope, time, budget, risk and people.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you draft an objective sentence and rough phase plan for a real project you want to start this month.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-getting-started-scope-objectives-stakeholders",
+      "order": 2,
+      "title": "Getting Started: Scope, Objectives & Stakeholders",
+      "objectives": [
+        "Write clear, SMART project objectives.",
+        "Define project scope and avoid scope creep.",
+        "Map stakeholders and their interests and influence."
+      ],
+      "text": "Great projects start with clarity. Three tools give you that: SMART objectives, a scope statement, and a stakeholder map.\n\nSMART objectives are Specific, Measurable, Achievable, Relevant and Time-bound. Weak goal: \"Improve the campus library.\" SMART goal: \"Install 20 study desks in the library by 30 November, funded by a 500,000 naira grant.\" Notice the number (measurable), the deadline (time-bound), and the concrete deliverable (specific).\n\nScope is the boundary of your project: exactly what you will and will NOT deliver. Write two lists: In-Scope (e.g. desks, wiring, signage) and Out-of-Scope (e.g. repainting walls, new books). \"Scope creep\" is when small extra requests quietly pile up until you miss deadlines. Prevent it by agreeing scope in writing and only changing it through a simple change request everyone approves.\n\nStakeholders are anyone affected by or able to affect your project: sponsors, users, suppliers, your team. Map them on a Power-Interest grid. High power + high interest = manage closely (e.g. the sponsor). Low power + low interest = just monitor.\n\nHow-to now: for any project, write one SMART objective, list three in-scope and three out-of-scope items, and name your top three stakeholders with their main interest. You have just built a project foundation.",
+      "voiceScript": "Let's set your project up to succeed before any work begins. First, turn a vague wish into a SMART objective, meaning it's specific, measurable, achievable, relevant and time-bound. Instead of saying you'll improve the library, say you'll install twenty study desks by the thirtieth of November within a set budget. Next, agree your scope, which is simply what's in and what's out. Write both lists down, because when small extra requests sneak in, that's scope creep, and it quietly eats your deadlines. Finally, think about your stakeholders, the people who affect or are affected by your work. Rank them by power and interest, and give the most important ones close attention. Do these three things and your foundation is solid.",
+      "keyPoints": [
+        "SMART objectives are Specific, Measurable, Achievable, Relevant, Time-bound.",
+        "Scope defines what is IN and OUT; guard against scope creep with written change requests.",
+        "Map stakeholders on a power-interest grid to know who to manage closely.",
+        "Clarity at the start prevents confusion and missed deadlines later."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"12\" y=\"24\" font-family=\"sans-serif\" font-size=\"15\" fill=\"#0f766e\">SMART Objective</text><rect x=\"12\" y=\"34\" width=\"200\" height=\"26\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"18\" y=\"52\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">S M A R T = clear goal</text><text x=\"12\" y=\"88\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#b45309\">Scope</text><rect x=\"12\" y=\"96\" width=\"92\" height=\"48\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"20\" y=\"116\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">IN scope</text><rect x=\"116\" y=\"96\" width=\"96\" height=\"48\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"124\" y=\"116\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#334155\">OUT scope</text><text x=\"250\" y=\"24\" font-family=\"sans-serif\" font-size=\"14\" fill=\"#0f766e\">Power-Interest Grid</text><line x1=\"260\" y1=\"40\" x2=\"260\" y2=\"200\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"260\" y1=\"200\" x2=\"460\" y2=\"200\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"360\" y1=\"40\" x2=\"360\" y2=\"200\" stroke=\"#334155\" stroke-width=\"1\" stroke-dasharray=\"3\"/><line x1=\"260\" y1=\"120\" x2=\"460\" y2=\"120\" stroke=\"#334155\" stroke-width=\"1\" stroke-dasharray=\"3\"/><text x=\"368\" y=\"70\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#15803d\">Manage closely</text><text x=\"278\" y=\"70\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Keep satisfied</text><text x=\"368\" y=\"160\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Keep informed</text><text x=\"278\" y=\"160\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Monitor</text><text x=\"248\" y=\"215\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Interest -></text><text x=\"250\" y=\"38\" font-family=\"sans-serif\" font-size=\"9\" fill=\"#334155\">Power</text></svg>",
+      "whiteboardCaption": "The three foundation tools: a SMART objective box, in/out scope lists, and a power-interest stakeholder grid.",
+      "example": "A student club is organising a career fair. Their SMART objective: \"Host 15 employer booths for 300 students on 12 October within a 200,000 naira budget.\" In-scope: booths, invitations, refreshments. Out-of-scope: paid transport, printed CVs. Stakeholders mapped: the Dean (high power, high interest, manage closely), employers (high interest), and the cleaning staff (keep informed).",
+      "quiz": [
+        {
+          "q": "Which objective is fully SMART?",
+          "options": [
+            "Make the event better",
+            "Increase attendance a lot soon",
+            "Register 300 students by 12 October within budget",
+            "Attract as many people as possible"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is 'scope creep'?",
+          "options": [
+            "Finishing a project early",
+            "Small extra requests piling up beyond the agreed scope",
+            "Reducing the project budget",
+            "Adding more team members"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "On a power-interest grid, a stakeholder with high power and high interest should be:",
+          "options": [
+            "Ignored",
+            "Monitored only",
+            "Managed closely",
+            "Kept informed occasionally"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What does SMART stand for?",
+          "back": "Specific, Measurable, Achievable, Relevant, Time-bound."
+        },
+        {
+          "front": "What is project scope?",
+          "back": "The defined boundary of what the project will and will not deliver."
+        },
+        {
+          "front": "How do you prevent scope creep?",
+          "back": "Agree scope in writing and approve changes through a formal change request."
+        },
+        {
+          "front": "What does a power-interest grid do?",
+          "back": "Ranks stakeholders by their power and interest to decide how to engage each one."
+        }
+      ],
+      "reflection": "Think of a project you care about: what is one item you would deliberately place OUT of scope, and why?",
+      "summary": "Strong projects begin with SMART objectives, a clear in/out scope, and a stakeholder map that shows who to engage and how closely.",
+      "discussionPrompt": "Help me write a SMART objective and a power-interest stakeholder map for a real project I'm planning.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-planning-the-work-tasks-schedule-resources",
+      "order": 3,
+      "title": "Planning the Work: Tasks, Schedule & Resources",
+      "objectives": [
+        "Break work into tasks using a simple work breakdown structure.",
+        "Sequence tasks and build a basic timeline or Gantt view.",
+        "Estimate the time, people and resources each task needs."
+      ],
+      "text": "A plan turns a big goal into small, doable tasks. Start with a Work Breakdown Structure (WBS): write your project goal at the top, then split it into 3-6 major deliverables, and split each deliverable into tasks small enough to finish in a day or two.\n\nExample: planning a campus career fair. Deliverables might be Venue, Speakers, Marketing. Under Marketing, tasks are: design poster, print poster, post online.\n\nNext, sequence the tasks. Ask for each: what must finish before this can start? That is a dependency. \"Print poster\" depends on \"design poster.\" Some tasks run in parallel (booking venue while inviting speakers).\n\nNow build a timeline (Gantt view): draw a bar for each task along a calendar, its length showing duration. Stagger dependent tasks; overlap independent ones. This shows your critical path, the longest chain that sets the finish date.\n\nFinally, estimate resources for each task: How long (duration)? Who does it (people)? What is needed (money, printer, data)? Ask an experienced person to sanity-check estimates, then add a small buffer (about 15%) for surprises.\n\nHow-to right now: take any goal, list 5 tasks, mark which depends on which, add a day estimate to each. Use free tools like a paper grid, Google Sheets, or a simple table.",
+      "voiceScript": "Let me show you how to turn a goal into a real plan. First, break the work down. Write your goal, then split it into a few big pieces, and split each piece into small tasks you can finish in a day or two. Once you have your tasks, ask a simple question for each one: what must happen before this can start? That reveals your dependencies. Then sketch a timeline, drawing a bar for every task, staggering the ones that depend on each other and overlapping the ones that don't. Last, estimate each task's duration, the people needed, and the resources, and add a small buffer for surprises. Try it today with just five tasks.",
+      "keyPoints": [
+        "Use a Work Breakdown Structure to split a goal into small, day-sized tasks.",
+        "Find dependencies: what must finish before each task can start.",
+        "Draw a Gantt timeline to see overlaps and the critical path.",
+        "Estimate duration, people and resources, then add a ~15% buffer."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"12\" y=\"22\" font-size=\"14\" fill=\"#0f766e\">WBS to Gantt</text><rect x=\"180\" y=\"30\" width=\"120\" height=\"26\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"200\" y=\"47\" font-size=\"11\" fill=\"#0f766e\">Career Fair</text><line x1=\"240\" y1=\"56\" x2=\"120\" y2=\"80\" stroke=\"#334155\"/><line x1=\"240\" y1=\"56\" x2=\"360\" y2=\"80\" stroke=\"#334155\"/><rect x=\"70\" y=\"80\" width=\"100\" height=\"22\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"88\" y=\"95\" font-size=\"10\" fill=\"#15803d\">Marketing</text><rect x=\"310\" y=\"80\" width=\"100\" height=\"22\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"340\" y=\"95\" font-size=\"10\" fill=\"#15803d\">Venue</text><text x=\"12\" y=\"140\" font-size=\"12\" fill=\"#b45309\">Timeline (Gantt)</text><line x1=\"120\" y1=\"150\" x2=\"120\" y2=\"245\" stroke=\"#334155\"/><text x=\"20\" y=\"172\" font-size=\"10\" fill=\"#334155\">Design</text><rect x=\"120\" y=\"163\" width=\"70\" height=\"12\" fill=\"#0f766e\"/><text x=\"20\" y=\"197\" font-size=\"10\" fill=\"#334155\">Print</text><rect x=\"190\" y=\"188\" width=\"50\" height=\"12\" fill=\"#b45309\"/><text x=\"20\" y=\"222\" font-size=\"10\" fill=\"#334155\">Post</text><rect x=\"240\" y=\"213\" width=\"60\" height=\"12\" fill=\"#15803d\"/><text x=\"310\" y=\"210\" font-size=\"9\" fill=\"#334155\">dependent</text><text x=\"310\" y=\"222\" font-size=\"9\" fill=\"#334155\">tasks stagger</text></svg>",
+      "whiteboardCaption": "A work breakdown structure feeding into a staggered Gantt timeline of dependent tasks.",
+      "example": "A student club planning a career fair breaks work into Venue, Speakers and Marketing; under Marketing they design a poster (2 days), then print it (1 day), then post online (1 day), scheduling print only after design finishes.",
+      "quiz": [
+        {
+          "q": "What is the main purpose of a Work Breakdown Structure (WBS)?",
+          "options": [
+            "To assign blame for delays",
+            "To split a big goal into smaller manageable tasks",
+            "To calculate the project's profit",
+            "To replace the project team"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A task that must finish before another can start creates a:",
+          "options": [
+            "Buffer",
+            "Dependency",
+            "Milestone",
+            "Budget"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why add a buffer (about 15%) to your estimates?",
+          "options": [
+            "To make the project look longer",
+            "To account for unexpected delays and surprises",
+            "Because tools require it",
+            "To reduce the number of tasks"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Work Breakdown Structure (WBS)",
+          "back": "Splitting a project goal into deliverables and small, day-sized tasks."
+        },
+        {
+          "front": "Dependency",
+          "back": "A task that cannot start until another finishes (e.g., print after design)."
+        },
+        {
+          "front": "Gantt view",
+          "back": "A timeline with a bar per task showing duration and overlaps."
+        },
+        {
+          "front": "Critical path",
+          "back": "The longest chain of dependent tasks that sets the finish date."
+        }
+      ],
+      "reflection": "Think of a goal you have this month. What are its five biggest tasks, and which one is likely to become your critical path?",
+      "summary": "Planning turns a goal into action by breaking work into tasks, sequencing dependencies on a timeline, and estimating the time, people and resources each task needs.",
+      "discussionPrompt": "Help me build a task list, dependencies and a simple Gantt timeline for organizing a campus event in three weeks.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s4-managing-risks-solving-problems",
+      "order": 4,
+      "title": "Managing Risks & Solving Problems",
+      "objectives": [
+        "Identify common risks that threaten a project.",
+        "Assess risks by likelihood and impact.",
+        "Choose simple response strategies for risks and issues."
+      ],
+      "text": "A risk is something that MIGHT happen and would affect your project. An issue is a problem that HAS already happened. Managing risks means spotting trouble early, so it never surprises you.\n\nStep 1: List risks. Brainstorm with your team what could go wrong. Common ones: funding delays, a key member falling sick, unreliable electricity or internet, suppliers arriving late, or scope creep (the project quietly growing bigger).\n\nStep 2: Assess each risk. Score its Likelihood (how probable, 1-5) and Impact (how damaging, 1-5). Multiply them for a risk score. A power cut during exam season might be Likelihood 4, Impact 4, giving 16 - high priority. Rank risks by score so you focus on the biggest threats first.\n\nStep 3: Choose a response. Four simple strategies:\n- Avoid: change the plan so the risk disappears (host online instead of a flood-prone venue).\n- Reduce (mitigate): lower likelihood or impact (buy a backup generator).\n- Transfer: shift it to someone else (insurance, or a supplier contract).\n- Accept: do nothing but keep a small reserve of time or money.\n\nRecord everything in a simple risk register: risk, score, owner, response. Review it weekly. This turns panic into a plan.",
+      "voiceScript": "Let me share a mindset that will save your projects again and again: assume something will go wrong, and prepare for it calmly. A risk is something that might happen; an issue is something that already has. Start by gathering your team and listing everything that could threaten the project, like funding delays, sickness, or power cuts. Then score each one by how likely it is and how damaging it would be, and multiply those numbers to see which matters most. For the biggest threats, decide whether to avoid, reduce, transfer, or simply accept the risk while keeping a small reserve. Write it all in a risk register and review it weekly. That habit turns panic into a plan.",
+      "keyPoints": [
+        "A risk might happen; an issue already has - plan for both.",
+        "Score risks as Likelihood x Impact to prioritise the biggest threats.",
+        "Respond by Avoid, Reduce, Transfer, or Accept.",
+        "Track everything in a risk register and review it weekly."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" fill=\"#0f766e\" font-size=\"16\" font-family=\"sans-serif\">Risk Matrix: Likelihood x Impact</text><line x1=\"70\" y1=\"50\" x2=\"70\" y2=\"210\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"70\" y1=\"210\" x2=\"430\" y2=\"210\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"30\" y=\"130\" fill=\"#334155\" font-size=\"11\" transform=\"rotate(-90 30 130)\">Likelihood</text><text x=\"200\" y=\"235\" fill=\"#334155\" font-size=\"11\">Impact</text><rect x=\"70\" y=\"130\" width=\"180\" height=\"80\" fill=\"#15803d\" opacity=\"0.25\"/><rect x=\"250\" y=\"50\" width=\"180\" height=\"80\" fill=\"#b45309\" opacity=\"0.35\"/><rect x=\"250\" y=\"130\" width=\"180\" height=\"80\" fill=\"#b45309\" opacity=\"0.2\"/><rect x=\"70\" y=\"50\" width=\"180\" height=\"80\" fill=\"#b45309\" opacity=\"0.2\"/><circle cx=\"340\" cy=\"90\" r=\"9\" fill=\"#0f766e\"/><text x=\"352\" y=\"94\" fill=\"#334155\" font-size=\"10\">Power cut (16)</text><text x=\"110\" y=\"175\" fill=\"#15803d\" font-size=\"10\">Low priority</text><text x=\"300\" y=\"175\" fill=\"#b45309\" font-size=\"10\">Watch</text><text x=\"300\" y=\"95\" fill=\"#b45309\" font-size=\"10\">Act first</text></svg>",
+      "whiteboardCaption": "A risk matrix plotting each risk by likelihood and impact to reveal which threats to tackle first.",
+      "example": "A campus club plans an outdoor career fair. They list risks: rain (Likelihood 3, Impact 5 = 15), low turnout (2x4=8), and generator failure (3x3=9). Rain scores highest, so they reduce it by booking a hall with a tent backup and buy event insurance to transfer the loss - avoiding a last-minute disaster.",
+      "quiz": [
+        {
+          "q": "What is the difference between a risk and an issue?",
+          "options": [
+            "A risk has happened; an issue might happen",
+            "A risk might happen; an issue has already happened",
+            "They mean exactly the same thing",
+            "A risk is always financial; an issue is always technical"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A risk has Likelihood 4 and Impact 3. What is its risk score?",
+          "options": [
+            "7",
+            "12",
+            "1",
+            "43"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Buying a backup generator to lower the effect of power cuts is an example of which response?",
+          "options": [
+            "Avoid",
+            "Transfer",
+            "Reduce (mitigate)",
+            "Accept"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which response means shifting the risk to another party, such as through insurance?",
+          "options": [
+            "Transfer",
+            "Accept",
+            "Avoid",
+            "Reduce"
+          ],
+          "answer": 0
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Risk vs issue",
+          "back": "A risk is a potential future problem; an issue is a problem that has already occurred."
+        },
+        {
+          "front": "Risk score",
+          "back": "Likelihood (1-5) multiplied by Impact (1-5); higher scores get priority."
+        },
+        {
+          "front": "Four risk responses",
+          "back": "Avoid, Reduce (mitigate), Transfer, and Accept."
+        },
+        {
+          "front": "Risk register",
+          "back": "A simple table listing each risk, its score, owner, and planned response, reviewed regularly."
+        }
+      ],
+      "reflection": "Think of a project you're involved in: what is the one risk with the highest likelihood-times-impact, and which response strategy would you choose for it?",
+      "summary": "Managing risk means listing what could go wrong, scoring each by likelihood and impact, and choosing to avoid, reduce, transfer, or accept it - all tracked in a regularly reviewed risk register.",
+      "discussionPrompt": "Help me build a risk register for my project: I'll describe it, and you help me identify the top five risks, score them, and pick a response for each.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-leading-tracking-communicating",
+      "order": 5,
+      "title": "Leading, Tracking & Communicating",
+      "objectives": [
+        "Monitor progress against the plan using simple indicators.",
+        "Run effective, short team check-ins.",
+        "Share clear status updates with stakeholders."
+      ],
+      "text": "Once a project is running, your job shifts from planning to leading, tracking, and communicating. Tracking means comparing what you planned against what actually happened. Use two simple indicators: percent complete (how much of the work is done) and schedule status (ahead, on track, or behind). A quick tool is the RAG status: Green means on track, Amber means at risk and needs attention, Red means blocked or off-track. Update these weekly.\n\nRun short team check-ins called stand-ups. Keep them to 15 minutes. Each member answers three questions: What did I finish? What am I doing next? What is blocking me? The leader's job is to remove blockers, not to lecture.\n\nHow to write a status update to stakeholders: keep it to five lines. 1) Overall RAG status. 2) Key progress this week. 3) Risks or issues. 4) Decisions or help needed. 5) Next milestone and date. Be honest, especially about Red items early problems are cheaper to fix.\n\nWorked example: 'Status: Amber. Progress: registration form built and tested. Risk: hosting payment delayed. Need: approval for 5,000 Naira. Next: launch site by 30th.' That single message keeps everyone aligned without a long meeting.",
+      "voiceScript": "Once your project is moving, leadership becomes about three things: tracking, checking in, and communicating clearly. I like to keep tracking simple, just ask how far along we are and whether we're on track, at risk, or blocked. That's the traffic-light idea, green, amber, red. For your team, hold a quick fifteen-minute stand-up where everyone says what they finished, what's next, and what's blocking them, and your main task is to clear those blockers. When you update stakeholders, don't write an essay. Give them the overall status, this week's progress, any risks, what help you need, and the next milestone. Above all, be honest early, because small problems are always cheaper to fix than big ones.",
+      "keyPoints": [
+        "Track progress with simple indicators: percent complete and RAG (Red/Amber/Green) status.",
+        "Run 15-minute stand-ups: done, next, blockers and remove blockers fast.",
+        "Send short, honest five-line status updates to stakeholders.",
+        "Report problems early because they are cheaper to fix."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"16\" fill=\"#334155\">RAG Status Tracking</text><circle cx=\"40\" cy=\"70\" r=\"16\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"65\" y=\"75\" font-size=\"13\" fill=\"#334155\">Green = on track</text><circle cx=\"40\" cy=\"115\" r=\"16\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"65\" y=\"120\" font-size=\"13\" fill=\"#334155\">Amber = at risk</text><circle cx=\"40\" cy=\"160\" r=\"16\" fill=\"none\" stroke=\"#334155\" stroke-width=\"3\"/><text x=\"65\" y=\"165\" font-size=\"13\" fill=\"#334155\">Red = blocked</text><rect x=\"250\" y=\"55\" width=\"210\" height=\"150\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"262\" y=\"78\" font-size=\"12\" fill=\"#0f766e\">Status update:</text><line x1=\"262\" y1=\"92\" x2=\"445\" y2=\"92\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"262\" y1=\"112\" x2=\"445\" y2=\"112\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"262\" y1=\"132\" x2=\"445\" y2=\"132\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"262\" y1=\"152\" x2=\"445\" y2=\"152\" stroke=\"#334155\" stroke-width=\"1\"/><line x1=\"262\" y1=\"172\" x2=\"445\" y2=\"172\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"262\" y=\"196\" font-size=\"11\" fill=\"#15803d\">5 lines, honest, weekly</text></svg>",
+      "whiteboardCaption": "A diagram showing RAG traffic-light statuses beside a five-line stakeholder status update template.",
+      "example": "You lead a student team building a departmental event website. At the weekly stand-up, a teammate reports the payment gateway is blocked. You mark the project Amber and send stakeholders a five-line update requesting quick approval for hosting funds, keeping the lecturer informed before the launch deadline slips.",
+      "quiz": [
+        {
+          "q": "In RAG status, what does Amber mean?",
+          "options": [
+            "Project is complete",
+            "On track, no issues",
+            "At risk and needs attention",
+            "Cancelled"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is the leader's main job during a daily stand-up?",
+          "options": [
+            "Lecture the team on mistakes",
+            "Remove blockers raised by members",
+            "Assign new tasks every day",
+            "Extend the meeting past an hour"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is best practice for stakeholder status updates?",
+          "options": [
+            "Long detailed reports only monthly",
+            "Hide Red items until fixed",
+            "Short, honest, regular updates",
+            "Only verbal updates in meetings"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "RAG status",
+          "back": "A traffic-light indicator: Green (on track), Amber (at risk), Red (blocked/off-track)."
+        },
+        {
+          "front": "Stand-up meeting",
+          "back": "A short (~15 min) check-in where each member says what they finished, what's next, and what's blocking them."
+        },
+        {
+          "front": "Five-line status update",
+          "back": "Status, progress, risks, help needed, next milestone kept brief and honest."
+        },
+        {
+          "front": "Why report problems early?",
+          "back": "Small problems caught early are cheaper and faster to fix than big ones later."
+        }
+      ],
+      "reflection": "Think of a group task you're involved in now: what one simple indicator could you use to show whether it is on track, and who needs that update?",
+      "summary": "Leading a project means tracking progress with simple indicators like RAG status, running short focused stand-ups to clear blockers, and sending honest, concise status updates to stakeholders.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you draft a one-week RAG tracker and a five-line status update for a real project you are working on.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s6-closing-the-project-learning-forward",
+      "order": 6,
+      "title": "Closing the Project & Learning Forward",
+      "objectives": [
+        "Confirm deliverables meet the agreed scope.",
+        "Conduct a lessons-learned review with the team.",
+        "Celebrate, hand over and document outcomes properly."
+      ],
+      "text": "Closing a project is not just stopping work — it is formally confirming success and capturing knowledge. Follow four steps.\n\nFirst, verify deliverables. Open your original scope statement and tick each promised item against what was actually produced. Get the client or sponsor to sign an acceptance form — a short document stating the work is complete and approved. This prevents disputes later.\n\nSecond, close the administration. Pay outstanding invoices, release team members, close accounts, and archive files in one shared, named folder so future teams can find them.\n\nThird, run a lessons-learned review (a 'retrospective'). Gather the team and ask three questions: What went well? What went wrong? What will we do differently next time? Write answers in a simple table and store it with the project files.\n\nFourth, hand over and celebrate. Give the receiver a handover pack: final deliverables, user guides, contacts, and passwords. Then thank the team publicly — recognition sustains motivation.\n\nWorked example: You built a campus recycling programme. You confirm all 10 bins were installed (scope met), collect a signed acceptance note from the student union, hold a 30-minute retrospective ('posters worked, volunteer rota failed'), hand over the maintenance schedule to the next committee, and host a small thank-you gathering. The project is now truly closed.",
+      "voiceScript": "Welcome to our final session, where we learn how to close a project well. Finishing is more than stopping the work — it's proving you delivered what you promised and capturing lessons for next time. So start by opening your scope statement and checking off every deliverable, then ask your sponsor to sign an acceptance note. Next, tidy up the admin: pay invoices, archive your files, and release the team. Now gather everyone and honestly ask what went well, what went wrong, and what you'd change. Write it down so the knowledge outlives the project. Finally, hand over everything the next person needs, and celebrate together. Recognition keeps people wanting to work with you. Well done finishing this course!",
+      "keyPoints": [
+        "Confirm every deliverable against scope and get a signed acceptance.",
+        "Close admin: invoices, files archived, team released.",
+        "Run a lessons-learned review: what went well, wrong, and change.",
+        "Hand over a complete pack and celebrate the team."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"white\"/><text x=\"20\" y=\"28\" fill=\"#0f766e\" font-size=\"18\" font-family=\"sans-serif\">Closing the Project</text><rect x=\"20\" y=\"50\" width=\"100\" height=\"45\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"32\" y=\"70\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">1. Verify</text><text x=\"32\" y=\"85\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">deliverables</text><rect x=\"140\" y=\"50\" width=\"100\" height=\"45\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"152\" y=\"70\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">2. Close</text><text x=\"152\" y=\"85\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">admin</text><rect x=\"260\" y=\"50\" width=\"100\" height=\"45\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"272\" y=\"70\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">3. Lessons</text><text x=\"272\" y=\"85\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">learned</text><rect x=\"380\" y=\"50\" width=\"90\" height=\"45\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"392\" y=\"70\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">4. Handover</text><text x=\"392\" y=\"85\" fill=\"#334155\" font-size=\"11\" font-family=\"sans-serif\">+ celebrate</text><line x1=\"120\" y1=\"72\" x2=\"140\" y2=\"72\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"240\" y1=\"72\" x2=\"260\" y2=\"72\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"360\" y1=\"72\" x2=\"380\" y2=\"72\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"20\" y=\"135\" fill=\"#15803d\" font-size=\"13\" font-family=\"sans-serif\">Retrospective questions:</text><line x1=\"30\" y1=\"150\" x2=\"30\" y2=\"230\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"40\" y=\"165\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">What went well?</text><text x=\"40\" y=\"190\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">What went wrong?</text><text x=\"40\" y=\"215\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">What to change next time?</text><circle cx=\"33\" cy=\"161\" r=\"3\" fill=\"#0f766e\"/><circle cx=\"33\" cy=\"186\" r=\"3\" fill=\"#b45309\"/><circle cx=\"33\" cy=\"211\" r=\"3\" fill=\"#15803d\"/></svg>",
+      "whiteboardCaption": "A four-step closing flow followed by the three core lessons-learned questions.",
+      "example": "A student club runs a campus recycling project: they confirm all 10 bins were installed against the scope, get a signed acceptance note from the student union, hold a 30-minute retrospective noting posters worked but the volunteer rota failed, hand the maintenance schedule to next year's committee, and host a thank-you gathering.",
+      "quiz": [
+        {
+          "q": "What is the main purpose of getting a signed acceptance form at closing?",
+          "options": [
+            "To pay the team faster",
+            "To formally confirm the deliverables meet the agreed scope",
+            "To start a new project",
+            "To reduce the budget"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which three questions guide a lessons-learned review?",
+          "options": [
+            "Who is to blame, who worked hardest, who is next",
+            "What went well, what went wrong, what to change next time",
+            "How much money, how much time, how many people",
+            "What software, what hardware, what office"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What should a good handover pack include?",
+          "options": [
+            "Only a verbal summary",
+            "Final deliverables, guides, contacts and passwords",
+            "Just the budget spreadsheet",
+            "Nothing, since the project is done"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Acceptance form",
+          "back": "A short signed document confirming the client agrees the work is complete and approved."
+        },
+        {
+          "front": "Lessons-learned review (retrospective)",
+          "back": "A team meeting capturing what went well, what went wrong, and what to do differently next time."
+        },
+        {
+          "front": "Handover pack",
+          "back": "Everything the receiver needs to continue: deliverables, guides, contacts, and access details."
+        },
+        {
+          "front": "Why archive files?",
+          "back": "So future teams can find records, reuse knowledge, and resolve disputes."
+        }
+      ],
+      "reflection": "Think of a task or project you recently finished — did you capture any lessons, or did that knowledge disappear? What would you record next time?",
+      "summary": "Closing a project means verifying deliverables against scope, closing admin, capturing lessons learned, and handing over properly while celebrating the team.",
+      "discussionPrompt": "Help me design a one-page lessons-learned template and handover checklist for a small community project I am planning.",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Project Management Essentials",
+    "audience": "African university students and early-career professionals",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": null,
+  "createdAt": 1783963149527,
+  "updatedAt": 1783963149527,
+  "premium": true,
+  "priceHint": {
+    "amount": 15000,
+    "currency": "UGX"
+  }
+}

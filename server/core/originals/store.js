@@ -10,16 +10,27 @@ import { kvGet, kvPut, kvAll, kvDel } from '../kv.js';
 
 const COLL = 'originals';
 const STATUSES = ['draft', 'in_review', 'published'];
-const SEED_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'content', 'originals');
+const CONTENT = join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'content');
+const SEED_DIR = join(CONTENT, 'originals');       // free EFIKO Originals
+const PREMIUM_DIR = join(CONTENT, 'premium');      // paid EFIKO Premium courses (gated by a listing)
 
-function loadSeeds() {
-  if (!existsSync(SEED_DIR)) return [];
+function loadFrom(dir, extra = {}) {
+  if (!existsSync(dir)) return [];
   const out = [];
-  for (const f of readdirSync(SEED_DIR)) {
+  for (const f of readdirSync(dir)) {
     if (!f.endsWith('.json')) continue;
-    try { const c = JSON.parse(readFileSync(join(SEED_DIR, f), 'utf8')); if (c?.courseId) out.push({ ...c, status: 'published', seed: true }); } catch { /* skip malformed */ }
+    try { const c = JSON.parse(readFileSync(join(dir, f), 'utf8')); if (c?.courseId) out.push({ ...c, status: 'published', seed: true, ...extra }); } catch { /* skip malformed */ }
   }
   return out;
+}
+// Free Originals only — these populate the free catalog.
+function loadSeeds() { return loadFrom(SEED_DIR); }
+// Premium courses — retrievable for play (after purchase) but NEVER in the free catalog.
+function loadPremiumSeeds() { return loadFrom(PREMIUM_DIR, { premium: true }); }
+
+// Premium catalog rows (for a "Premium courses" view / marketplace).
+export async function listPremiumCourses() {
+  return loadPremiumSeeds().map(summary).sort((a, b) => (a.title || '').localeCompare(b.title || ''));
 }
 
 export async function saveOriginal(course) {
@@ -32,7 +43,7 @@ export async function getOriginal(courseId) {
   if (!courseId) return null;
   const kvRec = await kvGet(COLL, courseId);
   if (kvRec) return kvRec;
-  return loadSeeds().find((c) => c.courseId === courseId) || null;
+  return [...loadSeeds(), ...loadPremiumSeeds()].find((c) => c.courseId === courseId) || null;
 }
 
 // Catalog rows (no heavy session payloads).

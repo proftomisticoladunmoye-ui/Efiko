@@ -24,7 +24,10 @@ export async function listOriginals() {
 
 export async function getOriginal(id) {
   try {
-    const r = await fetch(`${GATEWAY}/originals/${encodeURIComponent(id)}`);
+    // Send the token so premium courses the user has purchased return their full content
+    // (unauthenticated / non-owners get the locked preview).
+    const t = localStorage.getItem('efiko-user-token') || '';
+    const r = await fetch(`${GATEWAY}/originals/${encodeURIComponent(id)}`, t ? { headers: { Authorization: `Bearer ${t}` } } : undefined);
     if (!r.ok) return null;
     return await r.json();
   } catch { return null; }

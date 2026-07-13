@@ -2,8 +2,22 @@
 // them and gain a purchase record (access marker). Checkout goes through the pluggable payment
 // adapter (payments.js) — a mock demo by default, Flutterwave-seamed for going live.
 import { randomBytes } from 'node:crypto';
+import { readFileSync, existsSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { kvGet, kvPut, kvAll, kvDel } from './kv.js';
 import { settlePayment, verifyPayment } from './payments.js';
+
+// Bundled EFIKO Premium listings (committed at server/content/premium-listings.json) — ship
+// with the platform so the marketplace is never empty, and gate their linked premium courses.
+const SEED_LISTINGS_FILE = join(dirname(fileURLToPath(import.meta.url)), '..', 'content', 'premium-listings.json');
+function loadSeedListings() {
+  try {
+    if (!existsSync(SEED_LISTINGS_FILE)) return [];
+    const arr = JSON.parse(readFileSync(SEED_LISTINGS_FILE, 'utf8'));
+    return Array.isArray(arr) ? arr.map((l) => ({ ownerType: 'org', ownerId: 'efiko', ownerOrgId: 'efiko', creatorName: 'EFIKO', seed: true, createdAt: 0, ...l })) : [];
+  } catch { return []; }
+}
 import { v4StartMomoCharge, v4StartCardCharge, v4GetCharge, v4CreateCustomer, v4FindCustomerByEmail } from './paymentsV4.js';
 
 const LISTINGS = 'market_listings';
@@ -85,8 +99,13 @@ export async function deleteCreatorListing(userId, id) {
 }
 
 export async function listListings() {
+  const kvRows = await kvAll(LISTINGS);
+  const kvIds = new Set(kvRows.map((l) => l.id));
+  const all = [...kvRows, ...loadSeedListings().filter((s) => !kvIds.has(s.id))];
   // Strip the creator's delivery link — only buyers receive it (via their purchase record).
-  return (await kvAll(LISTINGS)).map(({ deliverableUrl, ...l }) => l).sort((a, b) => b.createdAt - a.createdAt); // eslint-disable-line no-unused-vars
+  // Feature EFIKO Premium courses first, then newest.
+  return all.map(({ deliverableUrl, ...l }) => l) // eslint-disable-line no-unused-vars
+    .sort((a, b) => (b.ownerId === 'efiko' ? 1 : 0) - (a.ownerId === 'efiko' ? 1 : 0) || b.createdAt - a.createdAt);
 }
 
 export async function listListingsByOrg(ownerOrgId) {
@@ -94,7 +113,8 @@ export async function listListingsByOrg(ownerOrgId) {
 }
 
 export async function getListing(id) {
-  return id ? kvGet(LISTINGS, id) : null;
+  if (!id) return null;
+  return (await kvGet(LISTINGS, id)) || loadSeedListings().find((l) => l.id === id) || null;
 }
 
 export async function deleteListing(ownerOrgId, id) {
@@ -115,7 +135,10 @@ export async function hasPurchased(userId, listingId) {
 // --- Access-gating (entitlements) ---
 // A course is "gated" if a paid listing links to it. Map courseId -> newest paid listing.
 export async function gatedListingMap() {
-  const listings = (await kvAll(LISTINGS)).filter((l) => l.courseId && l.price > 0).sort((a, b) => a.createdAt - b.createdAt);
+  const kvRows = await kvAll(LISTINGS);
+  const kvIds = new Set(kvRows.map((l) => l.id));
+  const listings = [...kvRows, ...loadSeedListings().filter((s) => !kvIds.has(s.id))]
+    .filter((l) => l.courseId && l.price > 0).sort((a, b) => a.createdAt - b.createdAt);
   const m = new Map();
   for (const l of listings) m.set(l.courseId, l); // ascending sort => newest wins
   return m;

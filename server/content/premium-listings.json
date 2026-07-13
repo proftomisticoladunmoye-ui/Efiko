@@ -1,0 +1,26 @@
+[
+  {
+    "id": "lp-project-management",
+    "title": "Project Management Essentials — Premium Certificate",
+    "description": "A practical, globally-aligned introduction to managing projects from start to finish. Across 6 guided sessions you'll learn the project life cycle, how to scope work and manage stakeholders, build realistic schedules and budgets, handle risks and problems, lead and track a team, and close a project cleanly while capturing lessons learned. Includes worked examples, quizzes, flashcards and Teach-Back checkpoints. Finish the final assessment to earn a verifiable EFIKO Premium certificate you can add to your CV and LinkedIn. Ideal for students, graduates and early-career professionals stepping into project roles.",
+    "courseId": "orig-project-management-essentials",
+    "price": 20000,
+    "currency": "UGX"
+  },
+  {
+    "id": "lp-digital-marketing",
+    "title": "Digital Marketing Fundamentals — Premium Certificate",
+    "description": "Learn to grow a brand, product or personal profile online — the modern skill every employer and entrepreneur wants. This 6-session premium course covers digital marketing strategy, content and social media, SEO and search, email and messaging, paid ads basics, and measuring what works with analytics. Packed with real examples relevant to African markets, plus quizzes, flashcards and Teach-Back checks. Complete it to earn a verifiable EFIKO Premium certificate. Perfect for students, side-hustlers, job-seekers and small-business owners who want practical, job-ready marketing skills.",
+    "courseId": "orig-digital-marketing-fundamentals",
+    "price": 20000,
+    "currency": "UGX"
+  },
+  {
+    "id": "lp-financial-literacy",
+    "title": "Personal Financial Literacy — Premium Certificate",
+    "description": "Take control of your money with a clear, practical foundation in personal finance. Over 6 sessions you'll master budgeting, saving and emergency funds, smart borrowing and avoiding debt traps, the basics of investing and growing wealth, and planning for goals — all grounded in real African contexts and mobile-money realities. Includes examples, quizzes, flashcards and Teach-Back checkpoints, and a verifiable EFIKO Premium certificate on completion. A must for every student and young professional who wants to build lifelong financial confidence.",
+    "courseId": "orig-personal-financial-literacy-money-skills-for-everyday-life",
+    "price": 15000,
+    "currency": "UGX"
+  }
+]

@@ -80,6 +80,7 @@ function SignInPrompt({ onSignIn, what }) {
 
 export default function App() {
   const [view, setView] = useState('library'); // 'library' (shell) | 'capsule' | 'studio' | 'admin'
+  const [openOriginalId, setOpenOriginalId] = useState(null); // course to auto-open in Originals
   const [section, setSection] = useState('home'); // sidebar section within the shell
   const [navOpen, setNavOpen] = useState(false);   // mobile sidebar drawer
   const [tsOpen, setTsOpen] = useState(false);     // ThinkSpace right panel
@@ -463,6 +464,8 @@ export default function App() {
 
   // A section-change helper: return to the shell and show a section.
   function goSection(id) { setView('library'); setSection(id); setNavOpen(false); setActive(null); }
+  // Open a specific EFIKO course in the Originals player (e.g. after buying it in the marketplace).
+  function openOriginal(courseId) { setOpenOriginalId(courseId); goSection('originals'); }
 
   function renderSection() {
     switch (section) {
@@ -475,7 +478,7 @@ export default function App() {
       case 'thinkspace':
         return (<div className="ts-soon"><h2>🧠 ThinkSpace</h2><p className="lib-sub">Your AI learning workspace — persistent discussions that remember your context.</p><button className="course-open" onClick={() => setTsOpen(true)}>Open ThinkSpace</button></div>);
       case 'originals':
-        return <Originals onAsk={handleAsk} signedIn={!!user} onSignIn={() => setAuthOpen(true)} />;
+        return <Originals onAsk={handleAsk} signedIn={!!user} onSignIn={() => setAuthOpen(true)} openId={openOriginalId} onOpened={() => setOpenOriginalId(null)} />;
       case 'courses':
         return (<>
           <Programmes onEnrolProgramme={enrolProgrammeAction} />
@@ -495,7 +498,7 @@ export default function App() {
       case 'community':
         return <Community signedIn={!!user} user={user} onSignIn={() => setAuthOpen(true)} />;
       case 'market':
-        return <Marketplace signedIn={!!user} onSignIn={() => setAuthOpen(true)} onGoSection={goSection} user={user} />;
+        return <Marketplace signedIn={!!user} onSignIn={() => setAuthOpen(true)} onGoSection={goSection} onOpenOriginal={openOriginal} user={user} />;
       case 'certificates':
         return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
       case 'library':

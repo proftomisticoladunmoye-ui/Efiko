@@ -820,6 +820,16 @@ const server = createServer(async (req, res) => {
     const c = await getOriginal(id);
     if (!c) return json(res, 404, { error: 'not found' });
     if (c.status !== 'published' && !isOperator(req)) return json(res, 403, { error: 'not published' });
+    // Premium (paid) courses: withhold the paid content (sessions/assessments) until the buyer
+    // owns it — return a preview so they can see what they'd get, plus the buy state.
+    if (c.premium && !isOperator(req)) {
+      const user = await authedUser(req);
+      const owned = user ? (await purchasedCourseIds(user.userId)).has(id) : false;
+      if (!owned) {
+        const { sessions, preAssessment, finalAssessment, ...preview } = c; // eslint-disable-line no-unused-vars
+        return json(res, 200, { ...preview, locked: true, sessionCount: (sessions || []).length });
+      }
+    }
     return json(res, 200, { ...c, nextInPathway: await nextInPathway(id) });
   }
   if (req.method === 'POST' && url.pathname.match(/^\/originals\/[^/]+$/)) { // operator edits (review)

@@ -175,6 +175,22 @@ function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn, onOpen }) {
           : (typeof step === 'string' && step.startsWith('tb:') ? Number(step.split(':')[2]) + 1 : 0);
   const progressPct = Math.round((stepIndex / (sessions.length + 1)) * 100);
 
+  // A gated/premium course opened without access comes back with no sessions — show a friendly
+  // locked notice instead of crashing the player.
+  if (course.locked || sessions.length === 0) {
+    return (
+      <section className="originals">
+        <button className="back" onClick={onExit}>← Back</button>
+        <div className="o-overview">
+          <span className="o-badge">🔒 Premium course</span>
+          <h1>{course.title}</h1>
+          {course.subtitle && <p className="o-subtitle">{course.subtitle}</p>}
+          <p className="lib-sub">This is a premium EFIKO course. Buy it in the Marketplace to unlock all {course.sessionCount || ''} sessions and earn the certificate.</p>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="originals">
       <button className="back" onClick={onExit}>← All Originals</button>
@@ -262,7 +278,7 @@ function CoursePlayer({ course, onExit, onAsk, signedIn, onSignIn, onOpen }) {
   );
 }
 
-export default function Originals({ onAsk, signedIn, onSignIn }) {
+export default function Originals({ onAsk, signedIn, onSignIn, openId, onOpened }) {
   const [courses, setCourses] = useState([]);
   const [pathways, setPathways] = useState([]);
   const [pwProgress, setPwProgress] = useState({}); // id -> { earned, total, complete, hasCert }
@@ -285,6 +301,9 @@ export default function Originals({ onAsk, signedIn, onSignIn }) {
     catch (e) { setPwErr(e.message); }
   }
   async function open(id) { const c = await getOriginal(id); if (c) { setActive(c); window.scrollTo(0, 0); } }
+
+  // Auto-open a course when asked (e.g. after buying it in the marketplace).
+  useEffect(() => { if (openId) { open(openId).finally(() => onOpened?.()); } }, [openId]); // eslint-disable-line
 
   if (active) return <CoursePlayer course={active} onExit={() => { setActive(null); loadProgress(); }} onOpen={open} onAsk={onAsk} signedIn={signedIn} onSignIn={onSignIn} />;
 

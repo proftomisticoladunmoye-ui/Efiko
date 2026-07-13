@@ -132,7 +132,7 @@ function loadFlutterwave() {
   });
 }
 
-export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
+export default function Marketplace({ signedIn, onSignIn, onGoSection, onOpenOriginal, user }) {
   const [listings, setListings] = useState([]);
   const [ownedIds, setOwnedIds] = useState(new Set());
   const [purchases, setPurchases] = useState([]);
@@ -231,7 +231,7 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
       <div className="career-list">
         {listings.map((l) => {
           const owned = ownedIds.has(l.id);
-          const by = l.ownerType === 'creator' ? `by ${l.creatorName || 'a creator'}` : (l.ownerType === 'org' ? 'Institution' : null);
+          const by = l.ownerId === 'efiko' ? '⭐ EFIKO Premium' : (l.ownerType === 'creator' ? `by ${l.creatorName || 'a creator'}` : (l.ownerType === 'org' ? 'Institution' : null));
           const deliverable = owned && purchases.find((p) => p.listingId === l.id)?.deliverableUrl;
           return (
             <article key={l.id} className="opp-card">
@@ -245,7 +245,7 @@ export default function Marketplace({ signedIn, onSignIn, onGoSection, user }) {
               <div className="opp-actions">
                 {owned
                   ? (l.courseId
-                      ? <button className="course-open" onClick={() => onGoSection?.('courses')}>Open course →</button>
+                      ? <button className="course-open" onClick={() => (onOpenOriginal ? onOpenOriginal(l.courseId) : onGoSection?.('courses'))}>Open course →</button>
                       : (deliverable
                           ? <a className="course-open" href={deliverable} target="_blank" rel="noreferrer">Access →</a>
                           : <span className="course-open" aria-disabled="true" style={{ opacity: .7 }}>Purchased</span>))

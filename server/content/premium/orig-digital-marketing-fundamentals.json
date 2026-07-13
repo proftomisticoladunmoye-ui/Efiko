@@ -1,0 +1,591 @@
+{
+  "courseId": "orig-digital-marketing-fundamentals",
+  "owner": "EFIKO Premium",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Digital Marketing Fundamentals",
+  "subtitle": "Build, grow and measure a brand online with tools you already have",
+  "category": "Marketing & Entrepreneurship",
+  "level": "Beginner",
+  "audience": "African university students, entrepreneurs and job-seekers",
+  "estimatedHours": 4,
+  "description": "A practical, mobile-friendly introduction to digital marketing for African learners. You will learn how to define an audience, craft a simple marketing strategy, create engaging content, run affordable social media and search campaigns, and measure results using free tools. Every session is short, offline-downloadable and built around low-data, real-world examples relevant to African markets.",
+  "outcomes": [
+    "Explain the core concepts, channels and buyer journey of digital marketing.",
+    "Define a target audience and value proposition using a simple customer profile.",
+    "Create a basic content and social media plan for a brand or product.",
+    "Apply low-budget advertising and search visibility techniques suited to African markets.",
+    "Measure campaign performance using free analytics and key metrics.",
+    "Assemble a one-page digital marketing plan for a real product or service."
+  ],
+  "competencies": [
+    "Defining a target audience and value proposition",
+    "Planning content and social media for a brand",
+    "Applying low-budget advertising and search visibility techniques",
+    "Measuring marketing performance with free analytics tools",
+    "Building a practical one-page digital marketing plan"
+  ],
+  "nextCourse": "Social Media Marketing & Content Creation",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What does 'digital marketing' mainly involve?",
+        "options": [
+          "Only printing flyers and posters",
+          "Promoting products and services using online channels",
+          "Selling only in physical shops",
+          "Designing company logos exclusively"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these is a social media platform commonly used for marketing?",
+        "options": [
+          "Microsoft Excel",
+          "Instagram",
+          "Adobe Reader",
+          "Google Docs"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is a 'target audience'?",
+        "options": [
+          "Anyone in the world",
+          "The specific group of people a business wants to reach",
+          "Only the business owner's family",
+          "Competitor companies"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Which stage comes first in the typical customer journey?",
+        "options": [
+          "Loyalty",
+          "Purchase",
+          "Awareness",
+          "Consideration"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "A customer persona is best described as:",
+        "options": [
+          "A random list of all people online",
+          "A detailed profile representing your ideal customer",
+          "A company's financial report",
+          "A type of paid advertisement"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What does SEO help you do?",
+        "options": [
+          "Increase your visibility in search engine results",
+          "Print better brochures",
+          "Design a company logo",
+          "Hire more staff"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "Which metric shows how many people saw your content?",
+        "options": [
+          "Conversion",
+          "Reach",
+          "Budget",
+          "Bounce rate only"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Why is measuring your campaign important?",
+        "options": [
+          "It is not important",
+          "To know what works and improve future efforts",
+          "Only to impress competitors",
+          "To increase data costs"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-what-is-digital-marketing",
+      "order": 1,
+      "title": "What Is Digital Marketing?",
+      "objectives": [
+        "Define digital marketing and its main channels.",
+        "Describe the customer journey from awareness to loyalty.",
+        "Identify which channels suit different business goals."
+      ],
+      "text": "Digital marketing means promoting products, services or ideas using digital channels like search engines, social media, email, websites and messaging apps. Unlike a roadside billboard, digital marketing lets you reach specific people, measure results instantly, and adjust quickly.\n\nThe main channels are: Search engine optimisation (SEO) - getting found on Google for free; Paid ads - Google or Meta ads you pay for; Social media - Instagram, TikTok, Facebook, X, LinkedIn; Email marketing - newsletters and offers; Content marketing - blogs, videos, guides; Messaging - WhatsApp Business.\n\nCustomers move through a journey: Awareness (they discover you) - Consideration (they compare options) - Conversion (they buy) - Loyalty (they return and refer others). Different channels serve different stages. Social media and SEO build awareness; email and reviews aid consideration; a clear website or WhatsApp closes the sale; loyalty programmes and email keep them coming back.\n\nHow-to: Suppose you sell handmade sandals. Post styling videos on TikTok (awareness), share customer reviews on Instagram (consideration), take orders via WhatsApp Business catalog (conversion), then send a thank-you message with a repeat-buyer discount (loyalty). Match each goal - reach, sales, or retention - to the right channel instead of doing everything at once.",
+      "voiceScript": "Welcome to your first session on digital marketing. Simply put, digital marketing is promoting what you offer using online tools like Google, social media, email and WhatsApp. What makes it powerful is that you can reach exactly the right people, see your results in real time, and adjust as you go. Think of your customer as taking a journey. First they become aware of you, then they consider whether to buy, then they actually purchase, and finally, if you treat them well, they stay loyal and tell their friends. The trick is matching each channel to each stage. Social media and search build awareness, reviews help people decide, and WhatsApp or a simple website closes the sale. Start small, and grow with purpose.",
+      "keyPoints": [
+        "Digital marketing promotes offers online and lets you target and measure precisely.",
+        "Main channels: SEO, paid ads, social media, email, content, and messaging.",
+        "Customers move through awareness, consideration, conversion, then loyalty.",
+        "Match each channel to the goal and journey stage instead of doing everything at once."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-size=\"16\" fill=\"#0f766e\" font-family=\"sans-serif\">The Customer Journey</text><circle cx=\"70\" cy=\"90\" r=\"30\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"45\" y=\"94\" font-size=\"11\" fill=\"#334155\">Aware</text><circle cx=\"180\" cy=\"90\" r=\"30\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"148\" y=\"94\" font-size=\"11\" fill=\"#334155\">Consider</text><circle cx=\"290\" cy=\"90\" r=\"30\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"262\" y=\"94\" font-size=\"11\" fill=\"#334155\">Convert</text><circle cx=\"400\" cy=\"90\" r=\"30\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"378\" y=\"94\" font-size=\"11\" fill=\"#334155\">Loyal</text><line x1=\"100\" y1=\"90\" x2=\"150\" y2=\"90\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"210\" y1=\"90\" x2=\"260\" y2=\"90\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"320\" y1=\"90\" x2=\"370\" y2=\"90\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"40\" y=\"160\" font-size=\"10\" fill=\"#0f766e\">Social/SEO</text><text x=\"150\" y=\"160\" font-size=\"10\" fill=\"#15803d\">Reviews/Email</text><text x=\"262\" y=\"160\" font-size=\"10\" fill=\"#b45309\">Website/WhatsApp</text><text x=\"375\" y=\"160\" font-size=\"10\" fill=\"#0f766e\">Loyalty/Email</text><line x1=\"20\" y1=\"185\" x2=\"460\" y2=\"185\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"20\" y=\"210\" font-size=\"11\" fill=\"#334155\">Match each channel to the right stage</text></svg>",
+      "whiteboardCaption": "A four-stage customer journey showing which digital channels fit each stage from awareness to loyalty.",
+      "example": "A Lagos student sells handmade sandals: she posts styling clips on TikTok to build awareness, shares happy customer reviews on Instagram to aid consideration, takes orders through a WhatsApp Business catalog to convert, then messages buyers a repeat-customer discount to build loyalty.",
+      "quiz": [
+        {
+          "q": "What best defines digital marketing?",
+          "options": [
+            "Promoting offers using online channels with measurable, targeted results",
+            "Only running paid advertisements on television",
+            "Printing flyers and billboards for local streets",
+            "Cold-calling customers on the telephone"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which stage of the customer journey comes right after awareness?",
+          "options": [
+            "Loyalty",
+            "Consideration",
+            "Conversion",
+            "Retirement"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which channel is best suited to closing a sale (conversion) for a small vendor?",
+          "options": [
+            "A TikTok dance trend",
+            "A WhatsApp Business catalog for orders",
+            "A billboard on the highway",
+            "A radio jingle"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is digital marketing?",
+          "back": "Promoting products, services or ideas using digital channels like search, social media, email and messaging, with targeting and measurable results."
+        },
+        {
+          "front": "Name the main digital marketing channels.",
+          "back": "SEO, paid ads, social media, email marketing, content marketing, and messaging (e.g. WhatsApp Business)."
+        },
+        {
+          "front": "What are the four customer journey stages?",
+          "back": "Awareness, consideration, conversion, and loyalty."
+        },
+        {
+          "front": "Which channels build awareness?",
+          "back": "Social media and search engine optimisation (SEO) help new people discover you."
+        }
+      ],
+      "reflection": "Think of a business you know or want to start: which single channel would best move customers from awareness to a first purchase, and why?",
+      "summary": "Digital marketing uses online channels to reach and measure audiences, guiding customers through awareness, consideration, conversion and loyalty - with each channel matched to the right stage and goal.",
+      "discussionPrompt": "Help me map a specific small business idea to the customer journey and recommend which two channels to start with on a tight budget.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-know-your-audience-value-proposition",
+      "order": 2,
+      "title": "Know Your Audience & Value Proposition",
+      "objectives": [
+        "Build a simple customer persona.",
+        "Craft a clear value proposition.",
+        "Choose channels that match your audience's habits."
+      ],
+      "text": "Before you post anything, know exactly who you serve. A customer persona is a one-page sketch of your ideal customer: their age, location, job, budget, goals, and biggest frustration (their \"pain point\"). Instead of guessing, gather real data: chat with 5 potential customers, read comments on similar pages, and check WhatsApp or Instagram polls.\n\nHow to build one in 4 steps:\n1. Name and describe: \"Amaka, 24, Lagos, final-year student selling thrift clothes.\"\n2. Goal: what she wants (grow orders without spending on ads).\n3. Pain: what blocks her (posts get few views).\n4. Habits: where she spends time online (Instagram, TikTok, WhatsApp Status).\n\nNext, craft a value proposition, one sentence that answers: why choose you over others? Use this formula: \"We help [audience] achieve [benefit] through [how], unlike [alternative].\"\n\nWorked example: \"We help busy Lagos students look stylish affordably through curated thrift bundles, unlike overpriced boutiques.\" Clear, specific, believable.\n\nFinally, choose channels that match habits. If your persona lives on WhatsApp Status and TikTok, start there, not LinkedIn. Match the message to where attention already is. Do this and every future post becomes sharper, cheaper, and more effective.",
+      "voiceScript": "Welcome back! Today I want you to picture one real person, not a crowd. Before you write a single post, ask yourself: who exactly am I serving? Give that person a name, an age, a place, a goal, and a frustration. When I did this for a thrift-clothes seller, everything suddenly got easier, because I was speaking to Amaka, not to everyone. Then I craft one honest sentence that explains why someone should choose me instead of the next option. I keep it specific and believable. And finally, I meet my audience where they already spend time, whether that's WhatsApp Status, TikTok, or Instagram. Know the person, promise real value, show up in the right place.",
+      "keyPoints": [
+        "A persona is a one-page sketch of your ideal customer's goals, pains, and habits.",
+        "Value proposition formula: help [audience] achieve [benefit] through [how], unlike [alternative].",
+        "Choose channels where your persona already spends attention.",
+        "Research with real conversations and comments, not guesses."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><circle cx=\"80\" cy=\"70\" r=\"26\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><line x1=\"80\" y1=\"96\" x2=\"80\" y2=\"140\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"50\" y=\"165\" fill=\"#334155\" font-size=\"13\">Persona: Amaka</text><rect x=\"170\" y=\"40\" width=\"140\" height=\"60\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"185\" y=\"66\" fill=\"#15803d\" font-size=\"12\">Goal + Pain</text><text x=\"183\" y=\"86\" fill=\"#334155\" font-size=\"11\">Habits online</text><rect x=\"340\" y=\"40\" width=\"110\" height=\"60\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"352\" y=\"66\" fill=\"#b45309\" font-size=\"12\">Value Prop</text><text x=\"352\" y=\"86\" fill=\"#334155\" font-size=\"11\">Why you?</text><line x1=\"106\" y1=\"70\" x2=\"170\" y2=\"70\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"310\" y1=\"70\" x2=\"340\" y2=\"70\" stroke=\"#334155\" stroke-width=\"2\"/><path d=\"M60 200 h360\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"60\" y=\"225\" fill=\"#334155\" font-size=\"12\">Channels: TikTok - WhatsApp - Instagram</text></svg>",
+      "whiteboardCaption": "A flow from customer persona to value proposition to matching channels.",
+      "example": "A university student in Nairobi selling handmade beaded jewelry builds a persona named 'Wanjiku, 22, campus student, loves affordable trendy accessories, active on TikTok and WhatsApp Status.' Her value proposition becomes: 'We help Nairobi students accessorize any outfit affordably through handmade beaded sets, unlike costly mall brands.' She focuses her posts on TikTok and WhatsApp Status, where Wanjiku already scrolls daily.",
+      "quiz": [
+        {
+          "q": "What is the main purpose of a customer persona?",
+          "options": [
+            "To list all possible customers",
+            "To sketch your ideal customer's goals, pains and habits",
+            "To set your product price",
+            "To design a company logo"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the best value proposition?",
+          "options": [
+            "We sell good products for everyone",
+            "Buy now, limited offer!",
+            "We help busy students look stylish affordably through thrift bundles, unlike overpriced boutiques",
+            "Follow us for updates"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "How should you choose marketing channels?",
+          "options": [
+            "Use every platform equally",
+            "Pick where your persona already spends time",
+            "Only use the newest app",
+            "Choose whatever is cheapest to sign up"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Customer persona",
+          "back": "A one-page profile of your ideal customer: age, location, goals, pain points, and online habits."
+        },
+        {
+          "front": "Pain point",
+          "back": "The main frustration or problem your customer wants solved."
+        },
+        {
+          "front": "Value proposition formula",
+          "back": "We help [audience] achieve [benefit] through [how], unlike [alternative]."
+        },
+        {
+          "front": "Channel selection rule",
+          "back": "Show up where your target audience already spends its attention."
+        }
+      ],
+      "reflection": "Think of one product or service you could sell. Who is your one ideal customer, and where do they spend time online?",
+      "summary": "Define one ideal customer with a persona, craft a clear value proposition explaining why you, and market on the channels your audience already uses.",
+      "discussionPrompt": "Help me refine a customer persona and value proposition for my business idea, and suggest which channels I should start with.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s3-content-social-media-basics",
+      "order": 3,
+      "title": "Content & Social Media Basics",
+      "objectives": [
+        "Plan content around audience needs and goals.",
+        "Create engaging posts for platforms popular in Africa.",
+        "Build a simple weekly posting schedule."
+      ],
+      "text": "Great content solves a problem, entertains, or inspires your specific audience. Start by defining ONE goal (awareness, engagement, or sales) and ONE audience (for example, Lagos university students who buy affordable snacks). Then match content to platforms popular in Africa.\n\nFour content types to rotate:\n1. Educational (a tip or how-to).\n2. Storytelling (your journey, a customer's win).\n3. Promotional (product, price, call-to-action).\n4. Social proof (reviews, before/after, testimonials).\n\nUse the simple hook-value-action formula for every post. HOOK: a bold first line that stops the scroll (\"I saved 5,000 naira weekly with one habit\"). VALUE: the useful body. ACTION: tell people exactly what to do (\"Comment YES\" or \"DM us to order\").\n\nMatch to platform: WhatsApp Status for loyal customers and quick orders; TikTok and Instagram Reels for short vertical videos (7-30 seconds); Facebook for community groups and older audiences. Post native vertical video (film with your phone upright), add captions, and use 3-5 relevant hashtags.\n\nBuild a weekly plan: pick 3 realistic posting days (e.g., Monday, Wednesday, Friday), assign one content type to each, batch-create on Sunday, and reuse one video across all platforms. Consistency beats perfection.",
+      "voiceScript": "Welcome back. Today I want you to stop guessing and start planning your content around one clear goal and one real audience. Think about a person you actually serve, like a fellow student who wants affordable snacks, and speak directly to their needs. For every post, I use a simple rhythm: a hook that stops the scroll, real value in the middle, and a clear action at the end telling people what to do next. Rotate four flavours: teach something, tell a story, promote a product, and show proof that others love you. Film your videos upright on your phone, keep them short, and reuse one video across WhatsApp, TikTok, Instagram and Facebook. Then choose three posting days and stay consistent. Consistency truly beats perfection.",
+      "keyPoints": [
+        "Define one goal and one audience before creating any content.",
+        "Use the Hook-Value-Action formula in every post.",
+        "Rotate educational, storytelling, promotional and social-proof content.",
+        "Batch-create and reuse one vertical video across WhatsApp, TikTok, Instagram and Facebook."
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' font-family='sans-serif' font-size='17' fill='#0f766e'>Hook - Value - Action</text><rect x='20' y='45' width='130' height='45' rx='6' fill='none' stroke='#b45309' stroke-width='2'/><text x='30' y='72' font-family='sans-serif' font-size='13' fill='#b45309'>HOOK</text><rect x='170' y='45' width='130' height='45' rx='6' fill='none' stroke='#15803d' stroke-width='2'/><text x='185' y='72' font-family='sans-serif' font-size='13' fill='#15803d'>VALUE</text><rect x='320' y='45' width='130' height='45' rx='6' fill='none' stroke='#0f766e' stroke-width='2'/><text x='335' y='72' font-family='sans-serif' font-size='13' fill='#0f766e'>ACTION</text><line x1='150' y1='68' x2='170' y2='68' stroke='#334155' stroke-width='2'/><line x1='300' y1='68' x2='320' y2='68' stroke='#334155' stroke-width='2'/><text x='20' y='125' font-family='sans-serif' font-size='15' fill='#334155'>Weekly Plan</text><rect x='20' y='140' width='120' height='40' rx='5' fill='none' stroke='#0f766e' stroke-width='2'/><text x='38' y='158' font-family='sans-serif' font-size='12' fill='#334155'>MON</text><text x='30' y='173' font-family='sans-serif' font-size='11' fill='#15803d'>Educate</text><rect x='180' y='140' width='120' height='40' rx='5' fill='none' stroke='#0f766e' stroke-width='2'/><text x='198' y='158' font-family='sans-serif' font-size='12' fill='#334155'>WED</text><text x='192' y='173' font-family='sans-serif' font-size='11' fill='#15803d'>Story</text><rect x='340' y='140' width='120' height='40' rx='5' fill='none' stroke='#0f766e' stroke-width='2'/><text x='358' y='158' font-family='sans-serif' font-size='12' fill='#334155'>FRI</text><text x='350' y='173' font-family='sans-serif' font-size='11' fill='#15803d'>Promote</text><text x='20' y='215' font-family='sans-serif' font-size='13' fill='#b45309'>1 video - reuse everywhere:</text><text x='20' y='238' font-family='sans-serif' font-size='12' fill='#334155'>WhatsApp - TikTok - Instagram - Facebook</text></svg>",
+      "whiteboardCaption": "A diagram showing the hook-value-action post formula above a simple three-day weekly posting plan reusing one video across platforms.",
+      "example": "Amara sells jollof rice near her campus in Accra. On Monday she posts a Reel teaching \"3 ways to store rice\" (educate), Wednesday she shares her startup story (story), and Friday she posts a customer eating and smiling with \"DM to order, GHS20\" (promote). She films one upright phone video on Sunday and shares it on WhatsApp Status, TikTok and Facebook, saving time while staying consistent.",
+      "quiz": [
+        {
+          "q": "What are the three parts of the recommended post formula?",
+          "options": [
+            "Hook, Value, Action",
+            "Title, Photo, Price",
+            "Intro, Middle, End",
+            "Like, Share, Comment"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which is the best first step before creating content?",
+          "options": [
+            "Buy expensive equipment",
+            "Define one clear goal and one audience",
+            "Post on every platform daily",
+            "Copy a competitor exactly"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why film video with your phone held upright (vertical)?",
+          "options": [
+            "It uses less battery",
+            "It matches Reels, TikTok and Status formats",
+            "It improves audio only",
+            "It is required by law"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does 'batch-create' mean in a weekly plan?",
+          "options": [
+            "Post only once a month",
+            "Make several posts in one sitting to reuse later",
+            "Delete old posts weekly",
+            "Pay someone to post"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Hook-Value-Action",
+          "back": "A post structure: grab attention, deliver useful content, then give a clear call-to-action."
+        },
+        {
+          "front": "Social proof content",
+          "back": "Posts showing reviews, testimonials or before/after results to build trust."
+        },
+        {
+          "front": "Batch-creating",
+          "back": "Making multiple posts at once (e.g., on Sunday) so you stay consistent all week."
+        },
+        {
+          "front": "Native vertical video",
+          "back": "A phone-shot upright video ideal for Reels, TikTok and WhatsApp Status."
+        }
+      ],
+      "reflection": "Who is the ONE person you want to reach, and which single goal will your content serve this week?",
+      "summary": "Plan content around one audience and goal, use the Hook-Value-Action formula across four content types, and stay consistent with a simple three-day schedule reusing one video everywhere.",
+      "discussionPrompt": "Help me draft a one-week content calendar with three posts for my small business, including a hook, value and call-to-action for each.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-getting-found-search-ads-email",
+      "order": 4,
+      "title": "Getting Found: Search, Ads & Email",
+      "objectives": [
+        "Explain the basics of SEO and search visibility.",
+        "Set up a small, low-budget paid ad.",
+        "Use email or messaging lists to nurture customers."
+      ],
+      "text": "Today you learn three ways customers find and stay with you: search, ads and direct messaging.\n\nSEO (Search Engine Optimisation) means shaping your content so search engines like Google rank it higher. Do keyword research: type what a customer would search, such as \"affordable ankara dresses Lagos\", and note the suggestions Google shows. Put those words naturally in your page title, headings and product descriptions. Add a clear location, fast-loading images, and get listed free on Google Business Profile so you appear on maps.\n\nPaid ads let you pay to appear instantly. Start small: on Meta Ads Manager, set a budget of 2,000 naira (about 3 dollars), choose ONE goal (messages or link clicks), pick a narrow audience (age, city, interest), and run it 3 days. Track cost-per-result and keep only what works.\n\nEmail and messaging lists let you reach people who already like you. Collect phone numbers or emails with permission, group them, and send one helpful, non-spammy message weekly \\a discount, tip, or restock alert. WhatsApp Broadcast Lists work well and are free.\n\nHow-to now: write one keyword-rich product title, then draft one 40-word WhatsApp broadcast inviting past buyers to a weekend offer.",
+      "voiceScript": "Let me walk you through how customers actually find you online. First, search. When someone types a question into Google, search optimisation is simply making sure your words match theirs, so use the exact phrases your customers would search, and place them in your titles and descriptions. Second, paid ads. You don't need a big budget; even three dollars, one goal, and a narrow local audience can teach you what works. Watch your cost per result and keep only the winners. Third, stay close to people who already trust you through email or a free WhatsApp broadcast list, sending one genuinely useful message each week. Try it today, and you'll start getting found.",
+      "keyPoints": [
+        "SEO = use your customers' exact search words in titles, descriptions and a free Google Business Profile.",
+        "Start paid ads tiny: one goal, narrow local audience, small budget, track cost-per-result.",
+        "Nurture existing customers with permission-based email or free WhatsApp broadcast lists.",
+        "Send helpful, non-spammy messages\\one useful update per week."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><circle cx=\"90\" cy=\"70\" r=\"26\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><line x1=\"108\" y1=\"88\" x2=\"128\" y2=\"108\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"60\" y=\"130\" fill=\"#0f766e\" font-size=\"14\">SEO / Search</text><rect x=\"200\" y=\"48\" width=\"80\" height=\"44\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"212\" y=\"75\" fill=\"#b45309\" font-size=\"13\">Paid Ad</text><text x=\"205\" y=\"130\" fill=\"#b45309\" font-size=\"12\">small budget</text><path d=\"M360 50 h60 v40 h-60 z\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><path d=\"M360 50 l30 24 l30 -24\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"345\" y=\"130\" fill=\"#15803d\" font-size=\"12\">Email / WhatsApp</text><circle cx=\"240\" cy=\"200\" r=\"22\" fill=\"none\" stroke=\"#334155\" stroke-width=\"3\"/><text x=\"215\" y=\"245\" fill=\"#334155\" font-size=\"13\">Customer</text><line x1=\"100\" y1=\"120\" x2=\"225\" y2=\"185\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"240\" y1=\"140\" x2=\"240\" y2=\"178\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"385\" y1=\"120\" x2=\"258\" y2=\"185\" stroke=\"#334155\" stroke-width=\"2\"/></svg>",
+      "whiteboardCaption": "Three channels\\search search, paid ads and email/WhatsApp\\all funnelling toward one customer.",
+      "example": "A student in Nairobi selling handmade sandals lists her shop free on Google Business Profile, runs a 3-day 500-shilling Instagram ad targeting \"Nairobi, age 18-30, fashion\", then sends a weekly WhatsApp broadcast to past buyers announcing new colours.",
+      "quiz": [
+        {
+          "q": "What is the main purpose of SEO?",
+          "options": [
+            "To pay for instant top placement",
+            "To help search engines rank your content so customers find you",
+            "To collect phone numbers",
+            "To design a logo"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "When starting a first paid ad on a small budget, you should:",
+          "options": [
+            "Target everyone worldwide",
+            "Set many goals at once",
+            "Pick one goal and a narrow local audience, then track cost-per-result",
+            "Spend your whole budget in one hour"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "A good practice for messaging/email lists is:",
+          "options": [
+            "Send several sales messages daily",
+            "Add people without permission",
+            "Send one helpful message weekly to people who opted in",
+            "Only message strangers"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "SEO",
+          "back": "Search Engine Optimisation\\shaping content with relevant keywords so it ranks higher in search results."
+        },
+        {
+          "front": "Keyword research",
+          "back": "Finding the exact words customers type into search and using them in your titles and descriptions."
+        },
+        {
+          "front": "Cost-per-result",
+          "back": "The ad money spent divided by outcomes (clicks/messages); used to judge if an ad is worth keeping."
+        },
+        {
+          "front": "WhatsApp Broadcast List",
+          "back": "A free way to send one message to many opted-in contacts individually to nurture customers."
+        }
+      ],
+      "reflection": "Which channel\\search, paid ads or messaging\\best fits your product and budget right now, and why?",
+      "summary": "Customers find you through search visibility (SEO), small targeted paid ads, and stay through permission-based email or WhatsApp messaging\\combine all three to reach and retain buyers.",
+      "discussionPrompt": "Help me write three keyword-rich product titles and a 40-word WhatsApp broadcast for my small business.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-measuring-improving-your-marketing",
+      "order": 5,
+      "title": "Measuring & Improving Your Marketing",
+      "objectives": [
+        "Identify key metrics like reach, engagement and conversion.",
+        "Read basic reports from free analytics tools.",
+        "Adjust a campaign based on results."
+      ],
+      "text": "Marketing without measurement is guessing. Three core metrics tell you if your work pays off. Reach is how many unique people saw your content. Engagement is how many reacted, commented, shared or clicked, showing interest. Conversion is how many took the action you wanted, like buying, signing up, or messaging you. A high reach with low conversion means people see you but aren't convinced.\n\nFree tools make tracking easy. Meta Business Suite (Facebook and Instagram Insights) shows reach and engagement. Google Analytics 4 shows website visits and conversions. A URL shortener like Bitly counts link clicks.\n\nWork out your conversion rate: divide conversions by reach, times 100. Example: 1,000 people saw your post, 20 messaged to buy. That's 20 divided by 1,000 = 0.02, times 100 = 2% conversion.\n\nHow to improve, step by step: (1) Pick one metric to fix. (2) Change ONE thing, such as the caption, image, posting time, or call-to-action. (3) Run it for a week. (4) Compare the new number to the old. (5) Keep what works, drop what doesn't. This is called A/B testing.\n\nAlways check numbers weekly and let data, not feelings, guide your next post.",
+      "voiceScript": "Let's talk about knowing whether your marketing actually works. There are three numbers I want you to remember: reach, which is how many people saw you; engagement, how many reacted or clicked; and conversion, how many actually did what you wanted, like buying or signing up. Free tools like Meta Business Suite and Google Analytics show you all of this for zero cost. Here's a simple habit: each week, look at one number you want to improve, change just one thing, maybe your caption or your posting time, then compare next week's result. Keep what works and drop what doesn't. Let the data guide you, not your feelings.",
+      "keyPoints": [
+        "Reach = who saw you; Engagement = who reacted; Conversion = who acted.",
+        "Use free tools: Meta Business Suite, Google Analytics 4, Bitly.",
+        "Conversion rate = conversions divided by reach, times 100.",
+        "Improve by changing ONE thing, testing a week, then comparing."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"30\" font-size=\"16\" fill=\"#334155\">Marketing Funnel</text><path d=\"M60 60 L420 60 L360 110 L120 110 Z\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><path d=\"M120 110 L360 110 L300 160 L180 160 Z\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><path d=\"M180 160 L300 160 L260 210 L220 210 Z\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"200\" y=\"88\" font-size=\"13\" fill=\"#0f766e\">REACH 1000</text><text x=\"195\" y=\"138\" font-size=\"13\" fill=\"#15803d\">ENGAGE 150</text><text x=\"210\" y=\"192\" font-size=\"12\" fill=\"#b45309\">BUY 20</text><line x1=\"60\" y1=\"235\" x2=\"420\" y2=\"235\" stroke=\"#334155\" stroke-width=\"1\"/><text x=\"120\" y=\"252\" font-size=\"12\" fill=\"#334155\">Conversion = 20/1000 = 2%</text></svg>",
+      "whiteboardCaption": "A funnel showing reach narrowing to engagement then conversions, with a 2% conversion calculation.",
+      "example": "Ada sells handmade soaps in Lagos. Her Instagram post reached 2,000 people but only 10 messaged to order. That's a 0.5% conversion. She changes one thing, adding a clear call-to-action \"DM 'SOAP' to order\", and reruns similar posts for a week. Reach stays similar but orders rise to 40, a 2% conversion. The data confirmed the fix.",
+      "quiz": [
+        {
+          "q": "Which metric counts people who actually completed the action you wanted (like buying)?",
+          "options": [
+            "Reach",
+            "Engagement",
+            "Conversion",
+            "Impressions"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "If 500 people saw a post and 25 signed up, what is the conversion rate?",
+          "options": [
+            "2.5%",
+            "5%",
+            "25%",
+            "0.5%"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is the best practice when improving a campaign?",
+          "options": [
+            "Change everything at once",
+            "Change one thing and compare results",
+            "Only trust your gut feeling",
+            "Never look at the numbers"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Reach",
+          "back": "The number of unique people who saw your content."
+        },
+        {
+          "front": "Engagement",
+          "back": "Reactions, comments, shares or clicks showing people are interested."
+        },
+        {
+          "front": "Conversion rate formula",
+          "back": "Conversions divided by reach, multiplied by 100."
+        },
+        {
+          "front": "A/B testing",
+          "back": "Changing one element, running it, and comparing results to see what works better."
+        }
+      ],
+      "reflection": "Which single metric matters most for your current goal, and what one change could you test this week to improve it?",
+      "summary": "Track reach, engagement and conversion with free tools, then improve campaigns by testing one change at a time and letting data guide your decisions.",
+      "discussionPrompt": "Ask the EFIKO tutor: I run a small business page with high reach but low conversions. Walk me through a step-by-step weekly testing plan to fix this.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s6-your-one-page-marketing-plan",
+      "order": 6,
+      "title": "Your One-Page Marketing Plan",
+      "objectives": [
+        "Combine audience, content and channels into one clear plan",
+        "Set realistic goals and a small starting budget",
+        "Prepare to launch your first campaign"
+      ],
+      "text": "Welcome to your capstone. A one-page marketing plan turns everything you've learned into action. Keep it to a single page so it stays simple and usable.\n\nFill in seven boxes:\n\n1. Goal (SMART): Specific, Measurable, Achievable, Relevant, Time-bound. Example: \"Get 50 WhatsApp orders in 30 days.\"\n2. Audience: Who buys? Describe one persona, for example \"final-year students needing affordable printing near campus.\"\n3. Offer & message: What you sell and the one benefit that matters most.\n4. Channels: Pick two you can sustain, such as Instagram plus WhatsApp Business.\n5. Content plan: Decide post types and frequency, for example three posts weekly (tip, testimonial, offer).\n6. Budget: Start small. A boosted post at 2,000 Naira or 30 Cedis for seven days is enough to test.\n7. Metrics: Track reach, clicks, and orders in a simple notebook or spreadsheet.\n\nHow-to: Open one page. Write your SMART goal at the top. Below it, add the six other boxes. Spend 20 minutes filling each honestly. Then choose ONE small action to launch this week, like posting your offer and boosting it for three days.\n\nReview weekly. If a channel underperforms, adjust content, not everything at once. A plan you actually follow beats a perfect plan you ignore.",
+      "voiceScript": "Congratulations, you've reached the final session, and today we bring it all together. Think of your one-page marketing plan as a map that fits on a single sheet. At the top, write one clear goal, something measurable like getting fifty orders in thirty days. Then describe who you're selling to, the one benefit they care about, and the two channels you can realistically keep up, maybe Instagram and WhatsApp. Add a small content plan, a tiny test budget, and a simple way to track your results. Don't wait for perfect. This week, launch just one small action, watch the numbers, and adjust gently. You've got everything you need now, so go build it.",
+      "keyPoints": [
+        "Fit your whole plan on one page: goal, audience, offer, channels, content, budget, metrics",
+        "Set a SMART goal and pick only two channels you can sustain",
+        "Start with a small test budget and track reach, clicks and orders",
+        "Launch one small action this week and adjust weekly"
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='white'/><text x='140' y='24' font-family='sans-serif' font-size='16' fill='#0f766e'>One-Page Marketing Plan</text><rect x='150' y='34' width='180' height='30' fill='none' stroke='#b45309' stroke-width='2'/><text x='170' y='54' font-family='sans-serif' font-size='13' fill='#b45309'>SMART Goal</text><rect x='20' y='80' width='130' height='40' fill='none' stroke='#15803d' stroke-width='2'/><text x='35' y='104' font-family='sans-serif' font-size='12' fill='#15803d'>Audience</text><rect x='175' y='80' width='130' height='40' fill='none' stroke='#15803d' stroke-width='2'/><text x='195' y='104' font-family='sans-serif' font-size='12' fill='#15803d'>Offer/Message</text><rect x='330' y='80' width='130' height='40' fill='none' stroke='#15803d' stroke-width='2'/><text x='350' y='104' font-family='sans-serif' font-size='12' fill='#15803d'>Channels</text><rect x='20' y='140' width='130' height='40' fill='none' stroke='#334155' stroke-width='2'/><text x='40' y='164' font-family='sans-serif' font-size='12' fill='#334155'>Content</text><rect x='175' y='140' width='130' height='40' fill='none' stroke='#334155' stroke-width='2'/><text x='205' y='164' font-family='sans-serif' font-size='12' fill='#334155'>Budget</text><rect x='330' y='140' width='130' height='40' fill='none' stroke='#334155' stroke-width='2'/><text x='355' y='164' font-family='sans-serif' font-size='12' fill='#334155'>Metrics</text><rect x='120' y='210' width='240' height='34' fill='none' stroke='#0f766e' stroke-width='2'/><text x='150' y='232' font-family='sans-serif' font-size='13' fill='#0f766e'>Launch ONE action</text></svg>",
+      "whiteboardCaption": "A single-page layout showing seven boxes from goal to metrics, ending in one launch action.",
+      "example": "Amara sells handmade soaps in Lagos. Her plan: Goal, 50 WhatsApp orders in 30 days; Audience, students wanting affordable natural skincare; Channels, Instagram and WhatsApp Business; Content, three posts weekly; Budget, 3,000 Naira boosting one post for five days; Metrics, tracked in a notebook. She launches by posting a bundle offer and boosting it.",
+      "quiz": [
+        {
+          "q": "What makes a goal 'SMART'?",
+          "options": [
+            "Smart, Modern, Advanced, Ready, Tech",
+            "Specific, Measurable, Achievable, Relevant, Time-bound",
+            "Social, Mobile, Automated, Rapid, Trending",
+            "Simple, Manual, Affordable, Regional, Timed"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why should beginners pick only two channels?",
+          "options": [
+            "Platforms charge fees for more",
+            "Two is the legal maximum",
+            "So they can sustain quality and consistency",
+            "More channels are always spam"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "What is the best first step after writing the plan?",
+          "options": [
+            "Wait until it is perfect",
+            "Launch one small action and track results",
+            "Spend the entire budget at once",
+            "Copy a competitor exactly"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "One-page marketing plan",
+          "back": "A single sheet combining goal, audience, offer, channels, content, budget and metrics into an actionable map."
+        },
+        {
+          "front": "SMART goal",
+          "back": "Specific, Measurable, Achievable, Relevant, Time-bound, e.g. '50 orders in 30 days.'"
+        },
+        {
+          "front": "Test budget",
+          "back": "A small amount spent to test a channel, like boosting one post for a few days."
+        },
+        {
+          "front": "Key metrics to track",
+          "back": "Reach, clicks and orders, recorded in a simple notebook or spreadsheet."
+        }
+      ],
+      "reflection": "Which single channel and small action will you commit to launching this week, and how will you measure success?",
+      "summary": "A one-page plan combines your goal, audience, offer, channels, content, budget and metrics so you can launch and improve a real campaign.",
+      "discussionPrompt": "Share your draft one-page plan and ask the tutor to critique your SMART goal and suggest which channel to prioritise first.",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "Digital Marketing Fundamentals",
+    "audience": "African university students, entrepreneurs and job-seekers",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": null,
+  "createdAt": 1783963470334,
+  "updatedAt": 1783963470334,
+  "premium": true
+}
