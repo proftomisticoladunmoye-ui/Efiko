@@ -1,0 +1,586 @@
+{
+  "courseId": "orig-digital-mental-health-protecting-your-wellbeing-in-a-connect",
+  "owner": "EFIKO Premium",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Digital Mental Health: Protecting Your Wellbeing in a Connected World",
+  "subtitle": "Practical skills to stay mentally healthy while living, learning, and working online",
+  "category": "Health & Wellbeing",
+  "level": "Beginner",
+  "audience": "African university students and young adults",
+  "estimatedHours": 4,
+  "description": "Screens, social media, and constant connectivity shape how we feel, think, and relate to one another. This beginner-friendly course helps African university students and young professionals understand how digital life affects mental wellbeing and gives them practical, culturally grounded tools to protect it. Through short, mobile-friendly sessions, you will learn to recognise warning signs, build healthier digital habits, manage online stress and comparison, respond to cyberbullying, and find trusted support. The course is designed to be completed offline in short bursts, with realistic examples relevant to student and early-career life. Important: this course is for education and self-help only and is not a substitute for professional diagnosis or treatment. If you are struggling or having thoughts of self-harm, please contact a qualified mental-health professional, your campus counselling service, or a local crisis helpline right away.",
+  "outcomes": [
+    "Explain how digital technology and social media use can affect mental wellbeing, both positively and negatively.",
+    "Identify personal warning signs of digital stress, burnout, and unhealthy online habits.",
+    "Apply practical strategies to set healthy boundaries with screens, notifications, and social media.",
+    "Manage online stressors such as social comparison, cyberbullying, and information overload.",
+    "Demonstrate basic coping and self-care techniques for maintaining emotional balance in a connected world.",
+    "Locate and access trustworthy mental health support and digital safety resources."
+  ],
+  "competencies": [
+    "Recognising the impact of digital and social media use on personal mental wellbeing",
+    "Applying practical strategies to set healthy screen and social media boundaries",
+    "Using basic coping and self-care techniques to manage online stress",
+    "Responding safely to cyberbullying and protecting digital privacy",
+    "Identifying and accessing trustworthy mental health support resources"
+  ],
+  "nextCourse": "Stress and Resilience: Building Emotional Strength for Student and Work Life",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "Which of the following best describes mental wellbeing?",
+        "options": [
+          "Never feeling sad or stressed at all",
+          "Being able to cope with life's normal stresses and function well day to day",
+          "Only something needed by people with a diagnosed illness",
+          "Having a fast internet connection and many online friends"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which is a common sign that social media use may be affecting your wellbeing?",
+        "options": [
+          "Feeling more rested after using your phone at night",
+          "Comparing yourself to others and feeling worse about your life",
+          "Having better concentration the more you scroll",
+          "Sleeping longer because of late-night notifications"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is a healthy first step if you feel overwhelmed by online stress?",
+        "options": [
+          "Ignore the feelings and keep scrolling",
+          "Take a break and use a simple coping technique like deep breathing",
+          "Post angry messages to release the stress",
+          "Stay online longer to distract yourself"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Which statement about technology and mental health is most accurate?",
+        "options": [
+          "Technology only harms mental health",
+          "Technology only helps mental health",
+          "Technology can both support and harm wellbeing depending on how it is used",
+          "Technology has no effect on mental health"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "Which of these is an early warning sign of digital burnout?",
+        "options": [
+          "Feeling refreshed and focused throughout the day",
+          "Trouble sleeping, irritability, and difficulty concentrating linked to screen use",
+          "Reduced interest in your phone and social media",
+          "Improved mood after long scrolling sessions"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "A practical way to build a healthier digital habit is to:",
+        "options": [
+          "Keep all notifications on at all times",
+          "Turn off non-essential notifications and set screen-free times",
+          "Check every app the moment you wake up",
+          "Use your phone in bed until you fall asleep"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is a healthy response to cyberbullying?",
+        "options": [
+          "Reply with insults to defend yourself",
+          "Blame yourself and stay silent",
+          "Document it, block the person, and seek support from a trusted adult or platform tools",
+          "Delete all your accounts immediately without telling anyone"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "Which is the best example of seeking trustworthy mental health support?",
+        "options": [
+          "Following anonymous advice from a random online post",
+          "Contacting a qualified counsellor, campus health service, or verified helpline",
+          "Self-diagnosing using unverified websites",
+          "Ignoring symptoms until they become severe"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-understanding-digital-mental-health",
+      "order": 1,
+      "title": "Understanding Digital Mental Health",
+      "objectives": [
+        "Define mental wellbeing and describe how it relates to daily digital life.",
+        "Explain both the benefits and risks of technology and social media for mental health.",
+        "Recognise common myths and stigma around mental health in African contexts."
+      ],
+      "text": "Mental wellbeing means feeling able to cope with everyday stress, maintain relationships, work productively, and enjoy life. It is not the absence of problems, but your capacity to handle them. In a connected world, your phone shapes wellbeing every day: what you scroll, who you chat with, and how late screens keep you awake.\n\nTechnology helps and harms. Benefits: instant access to health information, online study groups, mental-health apps, and staying close to family far away. Risks: comparison with polished online lives, cyberbullying, doomscrolling distressing news, sleep loss, and constant notifications that raise anxiety.\n\nTry this 3-step self-check right now. First, name your feeling ('I feel drained after Instagram'). Second, notice the trigger (comparing yourself to influencers). Third, take one small action (unfollow accounts that lower your mood, or set a 30-minute screen break before bed).\n\nMyths and stigma are common. 'Mental illness is a curse or weakness' is false; conditions like depression and anxiety are health issues, treatable like malaria or a broken arm. 'Strong Africans don't need help' silences suffering. Seeking support from a counsellor, campus clinic, or trusted elder is a sign of strength, not shame.",
+      "voiceScript": "Let's start simply. Mental wellbeing isn't about having zero problems; it's your ability to cope, connect with others, study or work, and still enjoy life. And here's the thing, your phone touches all of that every single day. Technology can be wonderful, helping you learn, stay close to family, and find good information. But it can also drain you through endless scrolling, comparison, and lost sleep. So try a quick check: name what you feel, notice what triggered it, and take one small action. Remember, mental health struggles aren't a curse or weakness. They're health issues, and reaching out for help is genuinely a sign of strength.",
+      "keyPoints": [
+        "Mental wellbeing is your capacity to cope, connect, and enjoy life, not the absence of problems.",
+        "Technology both helps (learning, connection) and harms (comparison, sleep loss, cyberbullying).",
+        "Use the 3-step self-check: name the feeling, find the trigger, take one small action.",
+        "Mental health struggles are treatable health issues; seeking help is strength, not weakness."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><circle cx=\"240\" cy=\"70\" r=\"34\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><line x1=\"240\" y1=\"36\" x2=\"240\" y2=\"104\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"240\" y=\"66\" font-size=\"12\" text-anchor=\"middle\" fill=\"#334155\">Digital</text><text x=\"240\" y=\"82\" font-size=\"12\" text-anchor=\"middle\" fill=\"#334155\">Life</text><line x1=\"206\" y1=\"70\" x2=\"110\" y2=\"70\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"274\" y1=\"70\" x2=\"370\" y2=\"70\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"20\" y=\"48\" width=\"90\" height=\"46\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"65\" y=\"70\" font-size=\"11\" text-anchor=\"middle\" fill=\"#15803d\">Benefits:</text><text x=\"65\" y=\"85\" font-size=\"10\" text-anchor=\"middle\" fill=\"#15803d\">learn, connect</text><rect x=\"370\" y=\"48\" width=\"90\" height=\"46\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"415\" y=\"70\" font-size=\"11\" text-anchor=\"middle\" fill=\"#b45309\">Risks:</text><text x=\"415\" y=\"85\" font-size=\"10\" text-anchor=\"middle\" fill=\"#b45309\">compare, lose sleep</text><text x=\"240\" y=\"150\" font-size=\"13\" text-anchor=\"middle\" fill=\"#0f766e\">3-Step Self-Check</text><rect x=\"40\" y=\"168\" width=\"120\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"100\" y=\"192\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">1. Name feeling</text><rect x=\"180\" y=\"168\" width=\"120\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"240\" y=\"192\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">2. Find trigger</text><rect x=\"320\" y=\"168\" width=\"120\" height=\"40\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"380\" y=\"192\" font-size=\"11\" text-anchor=\"middle\" fill=\"#334155\">3. Take action</text><text x=\"240\" y=\"238\" font-size=\"11\" text-anchor=\"middle\" fill=\"#15803d\">Seeking help = strength, not shame</text></svg>",
+      "whiteboardCaption": "A diagram showing how digital life carries both benefits and risks, plus a simple three-step wellbeing self-check.",
+      "example": "Amara, a first-year student in Lagos, feels low after each late-night scroll through classmates' 'perfect' exam-results posts. Using the self-check, she names the feeling (inadequacy), spots the trigger (comparison), and acts by muting those accounts and setting her phone to greyscale after 10pm. Within a week she sleeps better and studies with less anxiety.",
+      "quiz": [
+        {
+          "q": "Which best defines mental wellbeing?",
+          "options": [
+            "Never feeling any stress or sadness",
+            "The capacity to cope, connect, work, and enjoy life",
+            "Having a lot of money and success",
+            "Always being active on social media"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is a risk of social media for mental health?",
+          "options": [
+            "Access to study groups",
+            "Staying in touch with distant family",
+            "Comparison with others' polished lives",
+            "Finding reliable health information"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "Which statement is a harmful myth about mental health?",
+          "options": [
+            "Depression is a treatable health condition",
+            "Counselling can support wellbeing",
+            "Mental illness is a curse or sign of weakness",
+            "Sleep affects mood and anxiety"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is mental wellbeing?",
+          "back": "The capacity to cope with stress, maintain relationships, work, and enjoy life, not the absence of problems."
+        },
+        {
+          "front": "Name the 3-step self-check.",
+          "back": "1) Name your feeling, 2) find the trigger, 3) take one small action."
+        },
+        {
+          "front": "Give one benefit and one risk of technology for mental health.",
+          "back": "Benefit: connection and learning. Risk: comparison, doomscrolling, or sleep loss."
+        },
+        {
+          "front": "Is seeking mental health help a weakness?",
+          "back": "No. It is a sign of strength; conditions like depression are treatable health issues."
+        }
+      ],
+      "reflection": "Think about the last time your phone left you feeling drained. What was the trigger, and what one small action could you take next time?",
+      "summary": "Mental wellbeing is your ability to cope and thrive, and digital life shapes it daily; technology can help or harm, so noticing triggers and rejecting stigma helps you protect your mind.",
+      "discussionPrompt": "Ask the EFIKO tutor: What are practical ways to reduce social-media comparison while still using my phone for study and staying connected to family?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s2-spotting-the-warning-signs",
+      "order": 2,
+      "title": "Spotting the Warning Signs",
+      "objectives": [
+        "Identify signs of digital stress, burnout, and problematic technology use.",
+        "Describe how sleep, mood, and focus can be affected by screen habits.",
+        "Reflect on your own digital patterns using a simple self-check."
+      ],
+      "text": "Your body and mind send signals when technology use tips from helpful into harmful. Learning to read these early warning signs lets you act before burnout hits.\n\nWatch for three categories. First, physical signs: tired eyes, headaches, neck pain, and disrupted sleep from late-night scrolling. Screens emit blue light that suppresses melatonin, the hormone that makes you sleepy, so bedtime phone use delays rest. Second, emotional signs: anxiety when you can't check your phone, low mood after comparing yourself online, or irritability when interrupted. Third, behavioural signs: reaching for your phone automatically, missing deadlines, or scrolling far longer than you intended.\n\nProblematic use means technology starts controlling you, not the reverse. Burnout is exhaustion from constant digital demands, leaving you drained and unfocused.\n\nTry this 60-second self-check now. Ask yourself four questions: Did I sleep well last night, or did screens keep me up? Do I feel calmer or worse after social media? Can I focus for 25 minutes without checking my phone? Do I use my phone to avoid uncomfortable feelings? Score one point for each concerning answer. A score of two or more is a nudge to adjust your habits. Notice patterns without judgement, then choose one small change, like charging your phone outside the bedroom tonight.",
+      "voiceScript": "Today I want you to become a detective of your own habits. Your body whispers before it shouts, so let's learn to listen. When technology starts hurting you, you'll notice it in three ways. Physically, you might have tired eyes, headaches, or trouble sleeping because late-night screens block the sleep hormone melatonin. Emotionally, you may feel anxious without your phone or low after scrolling. And in your behaviour, you reach for the phone without thinking. So try a quick self-check tonight: how did you sleep, how do you feel after social media, and can you focus without checking? Notice the patterns gently, then pick one small change. You've got this.",
+      "keyPoints": [
+        "Warning signs appear physically, emotionally, and behaviourally.",
+        "Blue light and late-night screens disrupt sleep by blocking melatonin.",
+        "A quick 4-question self-check reveals concerning patterns.",
+        "Notice patterns without judgement, then make one small change."
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='white'/><text x='240' y='28' font-size='18' text-anchor='middle' fill='#0f766e'>Warning Signs Self-Check</text><circle cx='90' cy='90' r='34' fill='none' stroke='#b45309' stroke-width='3'/><text x='90' y='95' font-size='12' text-anchor='middle' fill='#b45309'>Physical</text><circle cx='240' cy='90' r='34' fill='none' stroke='#15803d' stroke-width='3'/><text x='240' y='95' font-size='12' text-anchor='middle' fill='#15803d'>Emotional</text><circle cx='390' cy='90' r='34' fill='none' stroke='#334155' stroke-width='3'/><text x='390' y='95' font-size='12' text-anchor='middle' fill='#334155'>Behaviour</text><line x1='90' y1='124' x2='90' y2='150' stroke='#b45309' stroke-width='2'/><line x1='240' y1='124' x2='240' y2='150' stroke='#15803d' stroke-width='2'/><line x1='390' y1='124' x2='390' y2='150' stroke='#334155' stroke-width='2'/><text x='90' y='168' font-size='9' text-anchor='middle' fill='#334155'>tired eyes,</text><text x='90' y='180' font-size='9' text-anchor='middle' fill='#334155'>poor sleep</text><text x='240' y='168' font-size='9' text-anchor='middle' fill='#334155'>anxiety,</text><text x='240' y='180' font-size='9' text-anchor='middle' fill='#334155'>low mood</text><text x='390' y='168' font-size='9' text-anchor='middle' fill='#334155'>auto-scroll,</text><text x='390' y='180' font-size='9' text-anchor='middle' fill='#334155'>missed tasks</text><rect x='70' y='202' width='340' height='40' rx='8' fill='none' stroke='#0f766e' stroke-width='2'/><text x='240' y='227' font-size='12' text-anchor='middle' fill='#0f766e'>Score 2+ = time for one small change</text></svg>",
+      "whiteboardCaption": "Three categories of digital warning signs feeding into a simple self-check score.",
+      "example": "Amara, a student in Lagos, kept scrolling TikTok until 2am, then felt foggy in lectures and snapped at friends. Running the self-check, she scored three. She started charging her phone in the kitchen at night and within a week slept better and focused longer in class.",
+      "quiz": [
+        {
+          "q": "Which is an EMOTIONAL warning sign of problematic tech use?",
+          "options": [
+            "Neck pain from looking down",
+            "Anxiety when you cannot check your phone",
+            "Reaching for the phone automatically",
+            "Tired, dry eyes"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why does late-night screen use harm sleep?",
+          "options": [
+            "Phones are too heavy to hold",
+            "Blue light suppresses melatonin, the sleep hormone",
+            "Screens make the room too cold",
+            "Data usage increases at night"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does a self-check score of two or more suggest?",
+          "options": [
+            "Your habits are perfectly healthy",
+            "You should quit all technology immediately",
+            "It is a nudge to adjust your digital habits",
+            "You need medication"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is digital burnout?",
+          "back": "Exhaustion caused by constant digital demands, leaving you drained and unfocused."
+        },
+        {
+          "front": "Name the three categories of warning signs.",
+          "back": "Physical, emotional, and behavioural."
+        },
+        {
+          "front": "How does blue light affect sleep?",
+          "back": "It suppresses melatonin, the hormone that makes you feel sleepy, delaying rest."
+        },
+        {
+          "front": "What defines problematic tech use?",
+          "back": "When technology controls you rather than you controlling it."
+        },
+        {
+          "front": "",
+          "back": ""
+        }
+      ],
+      "reflection": "Which warning sign do you notice most often in your own daily technology use, and when does it usually appear?",
+      "summary": "Digital stress shows up physically, emotionally, and behaviourally; a quick self-check helps you spot concerning patterns early and choose one small change to protect your wellbeing.",
+      "discussionPrompt": "Ask the EFIKO tutor: I scored high on the self-check, especially around sleep and focus. Help me build a realistic evening routine to reduce late-night screen use.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-building-healthy-digital-habits",
+      "order": 3,
+      "title": "Building Healthy Digital Habits",
+      "objectives": [
+        "Apply strategies to manage screen time, notifications, and app use.",
+        "Create realistic personal boundaries for study, rest, and connection.",
+        "Design a simple daily routine that supports focus and balance."
+      ],
+      "text": "Your phone is designed to keep you scrolling. Building healthy digital habits means shifting from reacting to your screen to deciding when and how you use it. Start by auditing your usage: most phones show weekly screen-time reports. Look for surprises\the two three apps that eat most of your day.\n\nNext, tame notifications. A 'notification' is any alert that pulls your attention. Turn off non-essential ones (games, social likes) and keep only true priorities (calls, messages from family). Fewer interruptions means deeper focus.\n\nTry these practical techniques:\n1. The 20-minute rule: study in focused 20-minute blocks, then take a short break. Put your phone in another room or face-down during blocks.\n2. Tech-free zones: no phones at meals or in bed. Charge your phone outside the bedroom.\n3. App limits: set a daily timer (e.g., 30 minutes) on your heaviest app.\n4. Batch checking: check messages at set times (morning, midday, evening) instead of constantly.\n\nBoundaries must be realistic. Don't ban all social media overnight\that fails. Instead pick one small, achievable change this week. Design a simple routine: morning focus time, study blocks with breaks, connection time with friends, and a screen-off wind-down before sleep. Small consistent habits beat dramatic rules you can't keep.",
+      "voiceScript": "Let's be honest\tyour phone was built to grab your attention, and that's not your fault. But you can take back control. Start this week by checking your screen-time report\tyou might be shocked which apps eat your hours. Then quiet the noise: switch off notifications you don't really need, and keep only the ones that matter. When you study, try working in short focused blocks with your phone in another room, then reward yourself with a break. Keep meals and your bed phone-free, and charge your phone outside the bedroom so you sleep better. Remember, pick one small change you can actually keep. Small, steady habits will always beat dramatic rules you abandon by Friday.",
+      "keyPoints": [
+        "Audit your screen time and mute non-essential notifications.",
+        "Use focus blocks, app limits, and tech-free zones like meals and bed.",
+        "Set realistic boundaries\tone small, achievable change at a time.",
+        "Design a daily routine balancing focus, rest, and connection."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-size=\"16\" fill=\"#0f766e\" font-family=\"sans-serif\">Healthy Digital Day</text><rect x=\"20\" y=\"45\" width=\"120\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"32\" y=\"70\" font-size=\"12\" fill=\"#334155\" font-family=\"sans-serif\">Morning</text><text x=\"32\" y=\"88\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">focus time</text><rect x=\"180\" y=\"45\" width=\"120\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"192\" y=\"70\" font-size=\"12\" fill=\"#334155\" font-family=\"sans-serif\">Study blocks</text><text x=\"192\" y=\"88\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">20 min + break</text><rect x=\"340\" y=\"45\" width=\"120\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"352\" y=\"70\" font-size=\"12\" fill=\"#334155\" font-family=\"sans-serif\">Connect</text><text x=\"352\" y=\"88\" font-size=\"11\" fill=\"#334155\" font-family=\"sans-serif\">friends/family</text><line x1=\"140\" y1=\"72\" x2=\"180\" y2=\"72\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"300\" y1=\"72\" x2=\"340\" y2=\"72\" stroke=\"#334155\" stroke-width=\"2\"/><circle cx=\"70\" cy=\"160\" r=\"30\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"55\" y=\"165\" font-size=\"11\" fill=\"#b45309\" font-family=\"sans-serif\">mute</text><text x=\"110\" y=\"160\" font-size=\"12\" fill=\"#334155\" font-family=\"sans-serif\">Silence non-essential</text><text x=\"110\" y=\"176\" font-size=\"12\" fill=\"#334155\" font-family=\"sans-serif\">notifications</text><rect x=\"40\" y=\"210\" width=\"400\" height=\"36\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"60\" y=\"233\" font-size=\"12\" fill=\"#15803d\" font-family=\"sans-serif\">Wind-down: screens off before sleep</text></svg>",
+      "whiteboardCaption": "A simple daily flow from morning focus to study blocks to connection, with muted notifications and a screen-off wind-down.",
+      "example": "Amina, a Nairobi university student, noticed she spent three hours daily on Instagram. She set a 40-minute app timer, moved her charger to the living room, and studied in 20-minute blocks before exams. Within two weeks she slept earlier and finished assignments faster\twithout quitting social media entirely.",
+      "quiz": [
+        {
+          "q": "What is the first practical step to taking control of your screen use?",
+          "options": [
+            "Delete all social media apps",
+            "Audit your weekly screen-time report",
+            "Buy a new phone",
+            "Turn off your phone all day"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why is muting non-essential notifications helpful?",
+          "options": [
+            "It saves phone battery only",
+            "It reduces interruptions and supports deeper focus",
+            "It makes your phone faster",
+            "It blocks all contacts"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which approach to boundaries is most likely to succeed?",
+          "options": [
+            "Banning all social media overnight",
+            "Picking one small, achievable change",
+            "Never using your phone again",
+            "Only using apps at midnight"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Notification",
+          "back": "Any alert (sound, banner, badge) that pulls your attention to your device."
+        },
+        {
+          "front": "20-minute rule",
+          "back": "Study in focused 20-minute blocks with your phone away, then take a short break."
+        },
+        {
+          "front": "Tech-free zone",
+          "back": "A place or time where phones aren't allowed, such as meals or the bedroom."
+        },
+        {
+          "front": "Batch checking",
+          "back": "Checking messages at set times instead of constantly throughout the day."
+        }
+      ],
+      "reflection": "Which single digital habit costs you the most time or peace right now, and what is one small change you could realistically start this week?",
+      "summary": "Healthy digital habits come from small, consistent choices\tauditing usage, muting notifications, using focus blocks and tech-free zones, and building a realistic daily routine that balances focus, rest, and connection.",
+      "discussionPrompt": "Help me design a realistic daily phone routine around my class schedule, including focus blocks and a wind-down before sleep.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-handling-online-stress-and-comparison",
+      "order": 4,
+      "title": "Handling Online Stress and Comparison",
+      "objectives": [
+        "Explain how social comparison and curated content affect self-esteem.",
+        "Apply techniques to reduce anxiety from information overload and FOMO.",
+        "Respond safely and confidently to cyberbullying and online conflict."
+      ],
+      "text": "Every scroll shows a highlight reel, not real life. People post their best moments, edited photos, and success stories, hiding the struggles behind them. When you compare your ordinary day to someone's polished post, your self-esteem dips. Psychologists call this social comparison, and it fuels FOMO, the fear of missing out.\n\nTry this three-step reset. First, name it: when you feel that pang of envy, say silently, \"This is a curated highlight, not the whole story.\" Second, curate your feed: mute or unfollow accounts that consistently make you feel worse, and follow ones that inform or uplift you. Third, set a limit: pick a daily scroll window (say 30 minutes) and use your phone's screen-time tool to enforce it.\n\nFor information overload, batch your checking. Instead of refreshing constantly, check messages at two or three set times daily. This calms the nervous system.\n\nIf you face cyberbullying: don't reply in anger. Take a screenshot as evidence, block the person, and report the content using the platform's report button. Tell someone you trust. Remember, silence protects the bully, not you. Reaching out is strength, not weakness. These small, repeatable habits protect your wellbeing without leaving you disconnected.",
+      "voiceScript": "Let's talk about something we all feel but rarely admit. When you scroll and suddenly feel less than everyone else, remember you're seeing their highlight reel, not their real, messy life. That pang you feel has a name, social comparison, and it feeds the fear of missing out. So try a simple reset with me. When envy hits, quietly say, this is curated, not the whole story. Then clean up your feed, mute what drains you and follow what lifts you. And pick a daily scroll limit you actually keep. If someone bullies you online, don't fight back. Screenshot it, block them, report it, and tell someone you trust. Reaching out is strength.",
+      "keyPoints": [
+        "Social media shows curated highlights, not full reality, which distorts self-comparison.",
+        "Reduce FOMO by naming it, curating your feed, and setting daily time limits.",
+        "Batch-check messages at set times to ease information overload.",
+        "For cyberbullying: don't retaliate, screenshot, block, report, and tell someone you trust."
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' font-family='sans-serif' font-size='16' fill='#0f766e'>Handling Online Stress</text><rect x='30' y='55' width='120' height='70' rx='8' fill='none' stroke='#b45309' stroke-width='2'/><text x='42' y='82' font-family='sans-serif' font-size='11' fill='#334155'>Highlight reel</text><text x='42' y='102' font-family='sans-serif' font-size='11' fill='#334155'>(their best)</text><line x1='160' y1='90' x2='210' y2='90' stroke='#334155' stroke-width='2'/><text x='165' y='82' font-family='sans-serif' font-size='11' fill='#b45309'>vs</text><rect x='215' y='55' width='120' height='70' rx='8' fill='none' stroke='#15803d' stroke-width='2'/><text x='227' y='82' font-family='sans-serif' font-size='11' fill='#334155'>Your real day</text><text x='227' y='102' font-family='sans-serif' font-size='11' fill='#334155'>(ups+downs)</text><text x='30' y='160' font-family='sans-serif' font-size='13' fill='#0f766e'>3-step reset:</text><circle cx='40' cy='185' r='5' fill='#15803d'/><text x='55' y='189' font-family='sans-serif' font-size='12' fill='#334155'>Name it: curated, not whole story</text><circle cx='40' cy='210' r='5' fill='#15803d'/><text x='55' y='214' font-family='sans-serif' font-size='12' fill='#334155'>Curate feed: mute / follow uplift</text><circle cx='40' cy='235' r='5' fill='#15803d'/><text x='55' y='239' font-family='sans-serif' font-size='12' fill='#334155'>Limit: set daily scroll window</text></svg>",
+      "whiteboardCaption": "A comparison of someone's polished highlight reel versus your real life, with a three-step reset to protect self-esteem.",
+      "example": "Amina, a first-year student in Lagos, feels worthless seeing classmates post about internships and parties. She realizes these are curated highlights, mutes three accounts that drain her, sets a 30-minute daily Instagram limit, and starts following study-tip pages instead. Within weeks she feels calmer and more focused on her own goals.",
+      "quiz": [
+        {
+          "q": "Why does comparing yourself to social media posts often lower self-esteem?",
+          "options": [
+            "Posts show curated highlights, not everyday reality",
+            "Your phone screen is too bright",
+            "Everyone online is genuinely happier",
+            "Comparison improves motivation always"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which is the best first response to being cyberbullied?",
+          "options": [
+            "Reply angrily to defend yourself",
+            "Screenshot as evidence, then block and report",
+            "Delete all your accounts immediately",
+            "Ignore it and tell no one"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What technique helps reduce anxiety from information overload?",
+          "options": [
+            "Refresh feeds constantly for updates",
+            "Check messages at a few set times daily",
+            "Follow more news accounts",
+            "Turn off all notifications forever without a plan"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Social comparison",
+          "back": "Judging your worth by measuring yourself against others, often against their curated online highlights."
+        },
+        {
+          "front": "FOMO",
+          "back": "Fear of missing out; anxiety that others are having better experiences, worsened by constant scrolling."
+        },
+        {
+          "front": "Feed curation",
+          "back": "Muting or unfollowing accounts that drain you and following ones that inform or uplift you."
+        },
+        {
+          "front": "Cyberbullying response",
+          "back": "Don't retaliate; screenshot evidence, block, report, and tell someone you trust."
+        }
+      ],
+      "reflection": "Which accounts or habits on your feed leave you feeling worse, and what is one change you can make this week?",
+      "summary": "Social media shows curated highlights that fuel comparison and FOMO; naming it, curating your feed, setting time limits, and responding calmly to conflict protect your wellbeing.",
+      "discussionPrompt": "Help me build a personalized weekly plan to curate my social media feed and set healthy scroll limits that fit my study schedule.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s5-coping-skills-and-self-care",
+      "order": 5,
+      "title": "Coping Skills and Self-Care",
+      "objectives": [
+        "Practise simple techniques such as breathing, grounding, and journaling.",
+        "Build a personal self-care toolkit for stressful moments.",
+        "Explain the role of sleep, movement, and social connection in wellbeing."
+      ],
+      "text": "Coping skills are small, repeatable actions that calm your body and clear your mind when stress hits. They are free, portable, and work anywhere, from a crowded lecture hall to a quiet hostel room.\n\nTry box breathing right now: breathe in for 4 counts, hold for 4, breathe out for 4, hold for 4. Repeat four times. This signals your nervous system to relax.\n\nUse the 5-4-3-2-1 grounding technique when anxious: name 5 things you see, 4 you can touch, 3 you hear, 2 you smell, 1 you taste. This pulls your attention out of racing thoughts into the present moment.\n\nJournaling clears mental clutter. Spend three minutes writing one worry, one thing you are grateful for, and one small next step.\n\nBuild your self-care toolkit: list 5 things that reliably steady you (a friend to call, a playlist, a walk, prayer, tea) so you do not have to think when overwhelmed.\n\nThree pillars protect wellbeing daily. Sleep (aim for 7-9 hours) restores your brain. Movement (even a 20-minute walk) releases mood-lifting chemicals. Social connection reminds you that you are not alone. Guard these three, and you build resilience before crisis arrives.",
+      "voiceScript": "Let me walk you through some tools you can carry everywhere, because coping doesn't need money or a quiet room. Right now, breathe in slowly for four counts, hold for four, out for four, and hold again. Feel that? Your body is already settling. When your thoughts start racing, try naming five things you can see, four you can touch, three you can hear. It gently anchors you back to the present. I also love journaling for just three minutes, one worry, one gratitude, one small step forward. And please, protect your sleep, move your body a little each day, and stay connected to people who care. These small habits quietly build your strength.",
+      "keyPoints": [
+        "Box breathing (4-4-4-4) and 5-4-3-2-1 grounding quickly calm your body anywhere.",
+        "Three minutes of journaling clears mental clutter and finds a next step.",
+        "Prepare a self-care toolkit in advance so you act instead of freeze.",
+        "Sleep, movement, and social connection are daily pillars of resilience."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' font-size='17' fill='#0f766e' font-family='sans-serif'>Self-Care Toolkit</text><rect x='30' y='55' width='120' height='60' rx='8' fill='none' stroke='#0f766e' stroke-width='2'/><text x='45' y='80' font-size='12' fill='#334155' font-family='sans-serif'>Box Breathing</text><text x='45' y='100' font-size='11' fill='#b45309' font-family='sans-serif'>4-4-4-4</text><rect x='180' y='55' width='120' height='60' rx='8' fill='none' stroke='#15803d' stroke-width='2'/><text x='195' y='80' font-size='12' fill='#334155' font-family='sans-serif'>Grounding</text><text x='195' y='100' font-size='11' fill='#b45309' font-family='sans-serif'>5-4-3-2-1</text><rect x='330' y='55' width='120' height='60' rx='8' fill='none' stroke='#b45309' stroke-width='2'/><text x='345' y='80' font-size='12' fill='#334155' font-family='sans-serif'>Journaling</text><text x='345' y='100' font-size='11' fill='#b45309' font-family='sans-serif'>3 minutes</text><text x='20' y='155' font-size='15' fill='#0f766e' font-family='sans-serif'>Three Daily Pillars</text><circle cx='90' cy='200' r='30' fill='none' stroke='#0f766e' stroke-width='2'/><text x='72' y='204' font-size='11' fill='#334155' font-family='sans-serif'>Sleep</text><circle cx='230' cy='200' r='30' fill='none' stroke='#15803d' stroke-width='2'/><text x='205' y='204' font-size='11' fill='#334155' font-family='sans-serif'>Movement</text><circle cx='370' cy='200' r='30' fill='none' stroke='#b45309' stroke-width='2'/><text x='352' y='204' font-size='11' fill='#334155' font-family='sans-serif'>Connect</text></svg>",
+      "whiteboardCaption": "Three quick coping techniques plus the three daily pillars that build lasting wellbeing.",
+      "example": "Before a stressful exam at the University of Lagos, Amara feels her heart racing outside the hall. She does four rounds of box breathing, then names five things she can see. Her panic eases, and she remembers to text a classmate to walk in together, using her toolkit instead of freezing.",
+      "quiz": [
+        {
+          "q": "What is the correct pattern for box breathing?",
+          "options": [
+            "In 4, hold 4, out 4, hold 4",
+            "In 2, out 8, repeat once",
+            "Hold breath as long as possible",
+            "In 10, out 10 continuously"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "The 5-4-3-2-1 technique is mainly used to:",
+          "options": [
+            "Fall asleep faster",
+            "Ground yourself in the present when anxious",
+            "Improve your memory for exams",
+            "Count calories eaten"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is one of the three daily pillars of wellbeing described?",
+          "options": [
+            "Skipping meals",
+            "Constant social media use",
+            "Adequate sleep",
+            "Avoiding all people"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Box breathing",
+          "back": "Breathe in 4, hold 4, out 4, hold 4; repeat to calm the nervous system."
+        },
+        {
+          "front": "5-4-3-2-1 grounding",
+          "back": "Name 5 things you see, 4 touch, 3 hear, 2 smell, 1 taste to return to the present."
+        },
+        {
+          "front": "Self-care toolkit",
+          "back": "A prepared list of 5 reliable calming actions you can use when overwhelmed."
+        },
+        {
+          "front": "Three wellbeing pillars",
+          "back": "Sleep (7-9 hrs), movement (daily), and social connection."
+        }
+      ],
+      "reflection": "Which one coping tool from this session will you commit to trying the next time you feel stressed, and what will remind you to use it?",
+      "summary": "Simple, free tools like breathing, grounding, and journaling calm you in the moment, while sleep, movement, and connection build daily resilience.",
+      "discussionPrompt": "Help me design a personal self-care toolkit for busy university weeks, including realistic sleep and movement goals for a low-budget student.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s6-finding-support-and-staying-safe",
+      "order": 6,
+      "title": "Finding Support and Staying Safe",
+      "objectives": [
+        "Identify trustworthy sources of mental health support online and offline.",
+        "Explain when and how to reach out for professional help.",
+        "Apply basic digital safety and privacy practices to protect wellbeing."
+      ],
+      "text": "In this final session, you learn where to find real help and how to stay safe while doing it. Not everything online is trustworthy. A reliable source names its qualifications, cites evidence, avoids miracle promises, and never charges before offering help. Trustworthy options include your university counselling centre, a licensed clinician, verified helplines, and apps recommended by health bodies.\n\nKnow the warning signs that mean reach out now: sleep or appetite changes lasting over two weeks, losing interest in everything, panic that stops daily life, or any thoughts of self-harm. These are signals to contact a professional, not weakness.\n\nHow-to: Build a personal Support Map. Write four contacts: (1) a trusted person you can call today, (2) your campus clinic or counsellor number, (3) a local crisis or emergency line, (4) one reliable website. Save them in your phone under \"SUPPORT\" so they are ready before a crisis.\n\nProtect your privacy: use strong, unique passwords, turn on two-factor authentication, check app permissions, and avoid sharing your location or trauma details in public groups. Before joining any online support space, read who can see your posts. Report and block harassment. Protecting your data protects your peace of mind.",
+      "voiceScript": "Congratulations on reaching the final session. I want you to leave knowing that asking for help is a strength, not a failure. When you look for support online, slow down and check the source. Does it name its qualifications? Does it avoid wild promises? Real help doesn't shame you. I'd love you to build a small support map today, just four contacts saved in your phone: someone you trust, your campus counsellor, a crisis line, and one reliable website. And please guard your privacy with strong passwords and two-factor authentication, because your data and your peace of mind are worth protecting. You've got this, and you are not alone.",
+      "keyPoints": [
+        "Trustworthy help names qualifications, cites evidence, and never shames you.",
+        "Persistent changes over two weeks or any self-harm thoughts mean reach out to a professional now.",
+        "Build a Support Map: trusted person, campus clinic, crisis line, reliable website.",
+        "Protect wellbeing with strong passwords, two-factor authentication, and privacy checks."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"140\" y=\"28\" font-family=\"sans-serif\" font-size=\"17\" fill=\"#0f766e\">Your Support Map</text><circle cx=\"240\" cy=\"135\" r=\"30\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"222\" y=\"140\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#0f766e\">YOU</text><line x1=\"240\" y1=\"105\" x2=\"110\" y2=\"60\" stroke=\"#334155\" stroke-width=\"1.5\"/><line x1=\"240\" y1=\"105\" x2=\"370\" y2=\"60\" stroke=\"#334155\" stroke-width=\"1.5\"/><line x1=\"240\" y1=\"165\" x2=\"110\" y2=\"210\" stroke=\"#334155\" stroke-width=\"1.5\"/><line x1=\"240\" y1=\"165\" x2=\"370\" y2=\"210\" stroke=\"#334155\" stroke-width=\"1.5\"/><rect x=\"30\" y=\"42\" width=\"120\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"40\" y=\"63\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#15803d\">Trusted person</text><rect x=\"330\" y=\"42\" width=\"120\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"340\" y=\"63\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#15803d\">Campus clinic</text><rect x=\"30\" y=\"196\" width=\"120\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"42\" y=\"217\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">Crisis line</text><rect x=\"330\" y=\"196\" width=\"120\" height=\"34\" rx=\"5\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"338\" y=\"217\" font-family=\"sans-serif\" font-size=\"11\" fill=\"#b45309\">Reliable website</text></svg>",
+      "whiteboardCaption": "A support map placing you at the centre, linked to four ready contacts: a trusted person, campus clinic, crisis line, and reliable website.",
+      "example": "Amara, a second-year student in Lagos, notices she has felt hopeless and unable to sleep for three weeks. She opens her phone contacts saved under \"SUPPORT\", calls her cousin first, then books an appointment with her university counselling centre the next morning instead of relying on anonymous advice from a stranger in a WhatsApp group.",
+      "quiz": [
+        {
+          "q": "Which is a sign of a trustworthy online mental health source?",
+          "options": [
+            "It promises to cure anxiety in one day",
+            "It names its qualifications and cites evidence",
+            "It requires payment before offering any information",
+            "It pressures you to share private trauma publicly"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "When should you reach out for professional help?",
+          "options": [
+            "Only after problems last for years",
+            "When sleep or mood changes persist over two weeks or you have self-harm thoughts",
+            "Never, since it shows weakness",
+            "Only if friends tell you to"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which practice best protects your digital privacy?",
+          "options": [
+            "Reusing one easy password everywhere",
+            "Sharing your location in public groups",
+            "Enabling two-factor authentication and checking app permissions",
+            "Accepting all follower requests"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is a Support Map?",
+          "back": "Four ready contacts saved in your phone: a trusted person, campus clinic, crisis line, and a reliable website."
+        },
+        {
+          "front": "Red flag of an untrustworthy source",
+          "back": "Miracle cures, no stated qualifications, shaming you, or charging before helping."
+        },
+        {
+          "front": "Two-factor authentication",
+          "back": "A second verification step (like a code) that protects your accounts even if a password leaks."
+        },
+        {
+          "front": "When to seek professional help",
+          "back": "Persistent symptoms over two weeks, panic that stops daily life, or any thoughts of self-harm."
+        }
+      ],
+      "reflection": "Who are the four people or resources you would put on your own Support Map, and what stops you from saving them today?",
+      "summary": "Reliable help is qualified, honest, and never shaming; build a Support Map of trusted contacts and protect it with strong digital privacy habits.",
+      "discussionPrompt": "Help me evaluate whether a specific mental health app or website is trustworthy, and suggest questions I should ask before sharing my information.",
+      "sizeKB": 4
+    }
+  ],
+  "spec": {
+    "topic": "Digital Mental Health: Protecting Your Wellbeing in a Connected World",
+    "audience": "African university students and young adults",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": null,
+  "createdAt": 1783966902188,
+  "updatedAt": 1783966902188,
+  "premium": true,
+  "disclaimer": "Educational and self-help content only — not a substitute for professional care. In crisis, contact a professional or local helpline."
+}

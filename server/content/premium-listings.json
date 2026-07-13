@@ -22,5 +22,13 @@
     "courseId": "orig-personal-financial-literacy-money-skills-for-everyday-life",
     "price": 15000,
     "currency": "UGX"
+  },
+  {
+    "id": "lp-digital-mental-health",
+    "title": "Digital Mental Health — Premium Certificate",
+    "description": "Screens, social media and constant connectivity shape how we feel and think. This beginner-friendly 6-session course gives African students and young professionals practical, culturally-grounded tools to protect their mental wellbeing online: understanding digital mental health, spotting warning signs, building healthier digital habits, handling online stress and comparison, coping skills and self-care, and finding trusted support safely. Includes examples, quizzes, flashcards and Teach-Back checks, plus a verifiable EFIKO Premium certificate. Note: this is educational self-help content, not a substitute for professional care — if you are struggling, please reach out to a qualified professional or a local helpline.",
+    "courseId": "orig-digital-mental-health-protecting-your-wellbeing-in-a-connect",
+    "price": 15000,
+    "currency": "UGX"
   }
 ]
