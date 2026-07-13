@@ -1,0 +1,589 @@
+{
+  "courseId": "orig-transport-psychology-understanding-the-human-behind-the-whee",
+  "owner": "EFIKO Premium",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "Transport Psychology: Understanding the Human Behind the Wheel",
+  "subtitle": "How mind, behaviour, and environment shape road safety",
+  "category": "Psychology & Road Safety",
+  "level": "Beginner",
+  "audience": "University students, road-safety practitioners, and professional drivers",
+  "estimatedHours": 4,
+  "description": "This beginner course introduces transport psychology, the study of how human perception, decision-making, emotion, and behaviour influence road use and safety. Designed for African contexts, it blends evidence-based theory with practical, mobile-friendly lessons you can complete offline. You will learn why crashes happen, how human factors interact with vehicles and roads, and how psychological principles can reduce risk and save lives. Whether you drive professionally, study behaviour, or work in road safety, you will finish with tools to understand and improve road-user behaviour.",
+  "outcomes": [
+    "Explain the scope of transport psychology and its role in road safety.",
+    "Identify key human factors such as perception, attention, and reaction time that affect driving.",
+    "Describe how emotions, fatigue, and impairment influence driving behaviour and risk.",
+    "Apply behaviour-change principles to promote safer road use.",
+    "Analyse a road incident using a human-factors framework to identify contributing causes."
+  ],
+  "competencies": [
+    "Understanding of core human factors affecting road safety",
+    "Ability to identify psychological and physical risks in driving",
+    "Application of behaviour-change principles to promote safer road use",
+    "Analysis of road incidents using a human-factors framework"
+  ],
+  "nextCourse": "Road Safety Management: Systems and Intervention Design",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What does transport psychology mainly study?",
+        "options": [
+          "The mechanical design of engines",
+          "How human behaviour affects road use and safety",
+          "The economics of public transport",
+          "The chemistry of vehicle fuels"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these most increases crash risk?",
+        "options": [
+          "Driving while fatigued",
+          "Checking mirrors regularly",
+          "Maintaining a safe following distance",
+          "Obeying speed limits"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "What is 'reaction time' in driving?",
+        "options": [
+          "The time a car takes to reach top speed",
+          "The delay between perceiving a hazard and responding",
+          "The time spent parking",
+          "The time to refuel a vehicle"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Transport psychology views road safety as an interaction between which elements?",
+        "options": [
+          "Only the driver's skill",
+          "Road users, vehicles, and the environment",
+          "Only vehicle technology",
+          "Only traffic laws"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which factor most directly reduces a driver's available attention?",
+        "options": [
+          "Using a phone while driving",
+          "Adjusting seat before starting",
+          "Wearing a seatbelt",
+          "Slowing for a school zone"
+        ],
+        "answer": 0
+      },
+      {
+        "q": "How does fatigue typically affect driving?",
+        "options": [
+          "It improves reaction time",
+          "It slows reactions and impairs judgement",
+          "It has no measurable effect",
+          "It only affects new drivers"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "In human-error terms, deliberately running a red light is best described as a:",
+        "options": [
+          "Slip",
+          "Lapse",
+          "Violation",
+          "Perception error"
+        ],
+        "answer": 2
+      },
+      {
+        "q": "An effective behaviour-change approach to road safety usually combines:",
+        "options": [
+          "Only harsher punishment",
+          "Education, enforcement, and road/environment design",
+          "Ignoring driver attitudes",
+          "Removing all speed limits"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-what-is-transport-psychology",
+      "order": 1,
+      "title": "What Is Transport Psychology?",
+      "objectives": [
+        "Define transport psychology and its main areas of study.",
+        "Explain why human behaviour is central to road safety.",
+        "Recognise the interaction between road users, vehicles, and environment."
+      ],
+      "text": "Transport psychology is the scientific study of how people behave when they use roads and transport systems. It explains why a driver speeds, why a pedestrian crosses on a red light, and why a fatigued minibus operator misjudges a gap. As a beginner, think of it as psychology applied to movement.\n\nMain areas of study include: perception (how we notice hazards), attention (what distracts us), decision-making (risk-taking and habits), emotion (stress, anger, or 'road rage'), and skill (how driving is learned and automated).\n\nWhy does behaviour matter? Globally, over 90% of road crashes involve human error, not just bad roads or faulty vehicles. So changing behaviour saves lives.\n\nUse the Haddon Matrix idea: safety depends on three interacting factors \\u2014 the human (road user), the vehicle, and the environment (road, weather, traffic laws). A crash usually results from a breakdown across all three.\n\nHow-to apply it today: next journey, pause and label one risk in each factor. Human: 'I'm tired.' Vehicle: 'My tyres are worn.' Environment: 'This road is unlit.' Naming risks turns invisible danger into a checklist you can act on \\u2014 rest, replace tyres, slow down. That simple habit is transport psychology in practice.",
+      "voiceScript": "Welcome to transport psychology, the study of the human behind the wheel. I want you to picture your last journey. Whether you were driving, riding, or walking, your brain was constantly perceiving hazards, making decisions, and reacting to other people. That is exactly what we study here. It matters enormously, because most crashes on our roads are not caused by broken machines or bad tarmac alone, but by human choices and errors. When I think about safety, I hold three things in mind together: the person, the vehicle, and the environment around them. Each one shapes the others. So on your next trip, name one risk in each. That small habit is where safer roads begin.",
+      "keyPoints": [
+        "Transport psychology studies human behaviour in road and transport systems.",
+        "Over 90% of crashes involve human error, so behaviour is central to safety.",
+        "Safety emerges from the interaction of human, vehicle, and environment.",
+        "Naming one risk in each factor turns danger into an actionable checklist."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><circle cx=\"120\" cy=\"90\" r=\"42\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><circle cx=\"240\" cy=\"90\" r=\"42\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><circle cx=\"360\" cy=\"90\" r=\"42\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"120\" y=\"95\" font-size=\"13\" fill=\"#334155\" text-anchor=\"middle\">HUMAN</text><text x=\"240\" y=\"95\" font-size=\"13\" fill=\"#334155\" text-anchor=\"middle\">VEHICLE</text><text x=\"360\" y=\"88\" font-size=\"12\" fill=\"#334155\" text-anchor=\"middle\">ENVIRON-</text><text x=\"360\" y=\"102\" font-size=\"12\" fill=\"#334155\" text-anchor=\"middle\">MENT</text><line x1=\"162\" y1=\"90\" x2=\"198\" y2=\"90\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"282\" y1=\"90\" x2=\"318\" y2=\"90\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"240\" y=\"175\" font-size=\"14\" fill=\"#0f766e\" text-anchor=\"middle\">SAFE JOURNEY = balance of all three</text><rect x=\"90\" y=\"200\" width=\"300\" height=\"36\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"240\" y=\"223\" font-size=\"12\" fill=\"#334155\" text-anchor=\"middle\">90%+ of crashes involve human error</text></svg>",
+      "whiteboardCaption": "Three interacting factors \\\\\\\\u2014 human, vehicle, and environment \\u2014 combine to shape every journey's safety.",
+      "example": "A Lagos danfo driver rushes to make one more trip before dark. He is tired (human), his brakes are worn (vehicle), and the road is potholed and unlit (environment). Transport psychology shows the crash risk builds across all three factors, not just from 'bad driving'.",
+      "quiz": [
+        {
+          "q": "What does transport psychology primarily study?",
+          "options": [
+            "Engine mechanics and fuel efficiency",
+            "How people behave when using roads and transport",
+            "Road construction materials",
+            "Traffic fine collection systems"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Roughly what share of road crashes involve human error?",
+          "options": [
+            "Around 10%",
+            "Around 40%",
+            "Over 90%",
+            "Exactly 50%"
+          ],
+          "answer": 2
+        },
+        {
+          "q": "The three interacting factors in road safety are:",
+          "options": [
+            "Human, vehicle, environment",
+            "Speed, fuel, distance",
+            "Police, drivers, pedestrians",
+            "Day, night, weather"
+          ],
+          "answer": 0
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Transport psychology",
+          "back": "The scientific study of how people behave when using roads and transport systems."
+        },
+        {
+          "front": "Why is behaviour central to safety?",
+          "back": "Because over 90% of crashes involve human error rather than machines or roads alone."
+        },
+        {
+          "front": "Three safety factors",
+          "back": "Human (road user), vehicle, and environment \\u2014 they interact to shape crash risk."
+        },
+        {
+          "front": "Main study areas",
+          "back": "Perception, attention, decision-making, emotion, and driving skill."
+        }
+      ],
+      "reflection": "Think of a recent risky journey \\u2014 which of the three factors (human, vehicle, environment) contributed most, and why?",
+      "summary": "Transport psychology studies human behaviour on the roads; since most crashes stem from human error, safety depends on managing the interaction between road users, vehicles, and the environment.",
+      "discussionPrompt": "Ask the EFIKO tutor: How can transport psychology insights be used to reduce minibus and motorcycle crashes in African cities?",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-perception-attention-and-reaction",
+      "order": 2,
+      "title": "Perception, Attention and Reaction",
+      "objectives": [
+        "Describe how drivers perceive and process road information.",
+        "Explain how attention and distraction affect driving performance.",
+        "Estimate the effect of reaction time on stopping distance."
+      ],
+      "text": "Driving looks automatic, but your brain runs a fast loop: perceive, decide, act. First you PERCEIVE - your eyes scan the road, mirrors and signs, gathering information. Because you cannot process everything, your brain uses ATTENTION to select what matters, like a spotlight. Then you DECIDE and RESPOND, moving your foot or hands.\n\nKey terms: Perception is turning raw sights and sounds into meaning (\"that child may cross\"). Attention is limited - focusing on your phone steals it from the road. Reaction time is the gap between spotting a hazard and starting to brake, typically about 1.5 seconds.\n\nWhy reaction time matters: stopping distance = thinking distance + braking distance. Thinking distance is how far you travel before braking begins. At 100 km/h you cover about 28 metres every second. So a 1.5-second reaction means roughly 42 metres travelled before the brakes even bite - almost the length of three buses.\n\nHow-to you can apply today: practise the \"two-second rule\". Pick a fixed marker ahead, like a signpost. When the car in front passes it, count \"one-thousand-one, one-thousand-two\". If you reach the marker before finishing, you are too close. Add a second in rain, at night, or when tired, when reaction time stretches.",
+      "voiceScript": "Let me walk you through what really happens when you drive. Your brain runs a quick loop: you perceive the road, you decide what to do, and then you act. Perception is not just seeing - it is making meaning, like realising that a child near the kerb might suddenly step out. But your attention is limited, a bit like a spotlight, so when you glance at your phone, you steal that light from the road ahead. And here is the part that surprises people: reaction time. At a hundred kilometres an hour you travel almost twenty-eight metres every single second, so a one-and-a-half-second reaction means over forty metres before your brakes even bite. That is why I want you to practise the two-second rule, and to stretch it in rain or when you are tired.",
+      "keyPoints": [
+        "Driving is a loop: perceive, decide, react - each step takes time.",
+        "Attention is limited; distraction steals it from the road.",
+        "Stopping distance = thinking distance + braking distance.",
+        "Use the two-second rule, and add more in rain, dark or fatigue."
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='30' font-family='sans-serif' font-size='16' fill='#334155'>Perceive - Decide - React</text><circle cx='60' cy='90' r='26' fill='none' stroke='#0f766e' stroke-width='3'/><text x='42' y='95' font-family='sans-serif' font-size='11' fill='#0f766e'>PERCEIVE</text><line x1='88' y1='90' x2='134' y2='90' stroke='#334155' stroke-width='2'/><circle cx='160' cy='90' r='26' fill='none' stroke='#b45309' stroke-width='3'/><text x='146' y='95' font-family='sans-serif' font-size='11' fill='#b45309'>DECIDE</text><line x1='188' y1='90' x2='234' y2='90' stroke='#334155' stroke-width='2'/><circle cx='260' cy='90' r='26' fill='none' stroke='#15803d' stroke-width='3'/><text x='248' y='95' font-family='sans-serif' font-size='11' fill='#15803d'>REACT</text><text x='20' y='160' font-family='sans-serif' font-size='13' fill='#334155'>Stopping distance:</text><rect x='20' y='175' width='120' height='24' fill='none' stroke='#b45309' stroke-width='2'/><text x='30' y='191' font-family='sans-serif' font-size='11' fill='#b45309'>thinking dist</text><rect x='140' y='175' width='180' height='24' fill='none' stroke='#15803d' stroke-width='2'/><text x='170' y='191' font-family='sans-serif' font-size='11' fill='#15803d'>braking distance</text><text x='20' y='230' font-family='sans-serif' font-size='12' fill='#0f766e'>100 km/h = ~28 m per second</text></svg>",
+      "whiteboardCaption": "The perceive-decide-react loop above the two parts of stopping distance: thinking plus braking.",
+      "example": "A taxi driver on the Lagos-Ibadan expressway glances at a WhatsApp message for two seconds while doing 100 km/h. In that glance the taxi travels about 56 metres blind - more than half a football pitch - before he even looks up to react to slowing traffic ahead.",
+      "quiz": [
+        {
+          "q": "What does 'perception' mean in driving?",
+          "options": [
+            "Turning raw sights and sounds into meaning about the road",
+            "Only the speed of your car",
+            "Pressing the brake pedal",
+            "The distance your tyres travel while braking"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Stopping distance is made up of:",
+          "options": [
+            "Braking distance only",
+            "Thinking distance plus braking distance",
+            "Reaction time minus speed",
+            "Attention plus perception"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why does using a phone reduce driving safety?",
+          "options": [
+            "It makes the car heavier",
+            "It improves reaction time",
+            "Attention is limited, so it is drawn away from the road",
+            "It shortens braking distance"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Perception (driving)",
+          "back": "Turning raw sensory input into meaning, e.g. judging a pedestrian may cross."
+        },
+        {
+          "front": "Reaction time",
+          "back": "The gap between spotting a hazard and starting to brake, often about 1.5 seconds."
+        },
+        {
+          "front": "Stopping distance formula",
+          "back": "Thinking distance + braking distance."
+        },
+        {
+          "front": "Two-second rule",
+          "back": "Keep at least two seconds behind the car ahead; add more in rain, dark or fatigue."
+        }
+      ],
+      "reflection": "Think of a recent time your attention drifted while travelling - what pulled it away, and how could you reduce that distraction next time?",
+      "summary": "Drivers perceive, decide and react in a fast loop, but attention is limited and distraction plus reaction time greatly increase stopping distance.",
+      "discussionPrompt": "Ask the EFIKO tutor to calculate how thinking distance changes across 60, 80 and 120 km/h, and what that means for safe following gaps.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s3-emotions-fatigue-and-impairment",
+      "order": 3,
+      "title": "Emotions, Fatigue and Impairment",
+      "objectives": [
+        "Explain how stress, anger, and mood influence driving.",
+        "Identify the effects of fatigue, alcohol, and substances on driving ability.",
+        "Recognise warning signs of impaired or aggressive driving."
+      ],
+      "text": "Your emotional and physical state changes how you drive long before you touch the pedals. When you are angry or stressed, your body releases adrenaline: your heart races, your attention narrows, and you take more risks like tailgating or speeding. This is called an aroused state, and it shrinks your ability to notice hazards.\n\nFatigue is just as dangerous. A tired brain has slower reaction times and can suffer a 'microsleep' - a 2-4 second lapse where your eyes are open but your brain is offline. At 100 km/h, four seconds means over 100 metres travelled blind.\n\nAlcohol and drugs impair judgement, coordination, and reaction time. Even one drink raises crash risk; sedatives and cannabis slow processing too.\n\nHow to protect yourself, step by step:\n1. Before driving, do a quick self-check: 'Am I calm, alert, and sober?' If no to any, delay the trip.\n2. If angry, wait 10 minutes and breathe slowly (inhale 4 counts, exhale 6) before starting.\n3. On long trips, rest every two hours; if you yawn or drift, pull over and nap 15-20 minutes.\n4. Never mix any alcohol with driving - arrange a taxi or designated driver.\n\nWarning signs in others: swerving, inconsistent speed, tailgating, aggressive gestures. Give them space.",
+      "voiceScript": "Let me share something that surprised me when I first learned it: how you feel behind the wheel matters just as much as how you steer. When you are angry or stressed, your body floods with adrenaline, your attention narrows, and suddenly you are taking risks you would never take calm. Fatigue is sneakier still. A tired brain can slip into a microsleep, just a few seconds where your eyes are open but nobody is home, and at highway speed that is more than a football field travelled blind. And alcohol, even a little, slows your judgement and reactions. So before every trip, ask yourself honestly: am I calm, alert, and sober? If not, wait, breathe, rest, or call a ride. That simple pause protects lives.",
+      "keyPoints": [
+        "Anger and stress trigger adrenaline that narrows attention and increases risk-taking.",
+        "Fatigue causes microsleeps; a few seconds' lapse can mean driving 100m blind.",
+        "Even small amounts of alcohol or drugs impair judgement, coordination and reaction time.",
+        "Run a Calm-Alert-Sober self-check before every trip; delay if the answer is no."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"20\" y=\"28\" font-family=\"Arial\" font-size=\"16\" fill=\"#334155\">Impairment shrinks safe driving</text><circle cx=\"110\" cy=\"110\" r=\"55\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"78\" y=\"115\" font-family=\"Arial\" font-size=\"13\" fill=\"#15803d\">Calm</text><text x=\"70\" y=\"133\" font-family=\"Arial\" font-size=\"11\" fill=\"#334155\">wide focus</text><circle cx=\"300\" cy=\"110\" r=\"28\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"3\"/><text x=\"272\" y=\"115\" font-family=\"Arial\" font-size=\"12\" fill=\"#b45309\">Impaired</text><text x=\"268\" y=\"165\" font-family=\"Arial\" font-size=\"11\" fill=\"#334155\">narrow focus</text><line x1=\"175\" y1=\"110\" x2=\"265\" y2=\"110\" stroke=\"#334155\" stroke-width=\"2\" stroke-dasharray=\"5 4\"/><text x=\"180\" y=\"100\" font-family=\"Arial\" font-size=\"10\" fill=\"#334155\">stress/tired/alcohol</text><rect x=\"360\" y=\"60\" width=\"100\" height=\"120\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"370\" y=\"82\" font-family=\"Arial\" font-size=\"11\" fill=\"#0f766e\">Self-check:</text><text x=\"370\" y=\"104\" font-family=\"Arial\" font-size=\"11\" fill=\"#334155\">Calm?</text><text x=\"370\" y=\"126\" font-family=\"Arial\" font-size=\"11\" fill=\"#334155\">Alert?</text><text x=\"370\" y=\"148\" font-family=\"Arial\" font-size=\"11\" fill=\"#334155\">Sober?</text><text x=\"370\" y=\"170\" font-family=\"Arial\" font-size=\"10\" fill=\"#b45309\">No = wait</text><text x=\"20\" y=\"235\" font-family=\"Arial\" font-size=\"12\" fill=\"#334155\">Microsleep at 100km/h = 100m+ driven blind</text></svg>",
+      "whiteboardCaption": "A calm driver has a wide field of attention while stress, fatigue and alcohol shrink it, so run a Calm-Alert-Sober self-check.",
+      "example": "A commercial minibus driver in Lagos starts a route after arguing with a customer and only three hours of sleep. Angry and tired, he tailgates and misses a pedestrian stepping out. Had he paused for the 10-minute breathing calm-down and a short nap before departing, his reaction time and focus would have stayed sharp - protecting his passengers.",
+      "quiz": [
+        {
+          "q": "What is a 'microsleep' while driving?",
+          "options": [
+            "A planned short rest stop",
+            "A brief 2-4 second lapse where the brain goes offline with eyes open",
+            "Feeling slightly bored on a long trip",
+            "A dream during proper sleep"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "How does anger typically affect driving behaviour?",
+          "options": [
+            "It improves concentration and caution",
+            "It releases adrenaline, narrows attention and increases risk-taking",
+            "It has no measurable effect",
+            "It slows the vehicle automatically"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the best self-check before driving?",
+          "options": [
+            "Do I have enough fuel?",
+            "Am I calm, alert, and sober?",
+            "Is my phone charged?",
+            "Are the windows clean?"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What does adrenaline from stress/anger do to a driver?",
+          "back": "Raises heart rate and narrows attention, increasing risky behaviour like speeding and tailgating."
+        },
+        {
+          "front": "Microsleep",
+          "back": "A 2-4 second involuntary lapse of consciousness with eyes open; extremely dangerous at speed."
+        },
+        {
+          "front": "Fatigue countermeasure on long trips",
+          "back": "Rest every 2 hours; if drifting or yawning, pull over and nap 15-20 minutes."
+        },
+        {
+          "front": "Warning signs of impaired/aggressive drivers",
+          "back": "Swerving, inconsistent speed, tailgating, aggressive gestures - give them space."
+        }
+      ],
+      "reflection": "Think of a recent time you drove or rode while the driver was angry, tired, or rushed. What warning signs appeared, and what could have been done differently?",
+      "summary": "Emotional states like anger and stress, plus physical impairment from fatigue, alcohol or drugs, sharply raise crash risk by narrowing attention and slowing reactions; a simple Calm-Alert-Sober self-check helps manage them.",
+      "discussionPrompt": "How could a transport company design a practical fatigue-management policy for professional drivers on long routes, and what obstacles might make it hard to enforce?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-risk-decision-making-and-human-error",
+      "order": 4,
+      "title": "Risk, Decision-Making and Human Error",
+      "objectives": [
+        "Explain how drivers perceive and take risks on the road.",
+        "Distinguish between slips, lapses, mistakes, and violations.",
+        "Describe how habits and social norms shape driving choices."
+      ],
+      "text": "Most crashes are not caused by faulty engines but by the human behind the wheel. Understanding why helps us prevent harm.\n\nRisk perception is how a driver judges danger. Problems arise when perceived risk (what feels dangerous) is lower than actual risk. A confident driver who overtakes on a blind curve 'feels' safe but is objectively in danger. Experience, mood, fatigue and overconfidence all distort this judgement.\n\nJames Reason's model separates errors into four types. A SLIP is an action-execution error: you flick the wipers instead of the indicator. A LAPSE is a memory failure: you forget to check a mirror. A MISTAKE is a planning error: you choose a wrong, unsafe strategy, like assuming a gap is large enough. A VIOLATION is a deliberate breaking of a known rule, like speeding or skipping a seatbelt.\n\nHabits and social norms shape choices powerfully. If everyone around you speeds, speeding feels 'normal'; if friends buckle up, you will too.\n\nHow-to: Before your next trip, do a 30-second self-check. Ask: Am I tired, rushed, or emotional? Rate your risk 1-10. Naming your state lowers impulsive violations and sharpens your perception of real hazards.",
+      "voiceScript": "Let's talk about why good people still crash. Most road crashes trace back not to the machine, but to the person driving it. A big reason is that what feels dangerous and what actually is dangerous often don't match. When you're confident, tired, or in a hurry, your brain quietly underestimates real risk. I find it helpful to remember four kinds of human error: slips, when your hands do the wrong thing; lapses, when you forget a step; mistakes, when your plan itself is flawed; and violations, when you knowingly break a rule. And remember, we drive the way people around us drive. So before your next journey, pause for thirty seconds and honestly ask, how safe is my mind right now?",
+      "keyPoints": [
+        "Crashes often stem from a gap between perceived risk and actual risk.",
+        "Slips and lapses are unintended; mistakes are flawed plans; violations are deliberate.",
+        "Habits and social norms make risky driving feel 'normal'.",
+        "A quick pre-trip self-check reduces impulsive errors."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='28' font-family='sans-serif' font-size='16' fill='#334155'>Human Error Types (Reason)</text><rect x='20' y='45' width='100' height='55' rx='6' fill='none' stroke='#0f766e' stroke-width='2'/><text x='30' y='68' font-family='sans-serif' font-size='13' fill='#0f766e'>SLIP</text><text x='30' y='88' font-family='sans-serif' font-size='9' fill='#334155'>wrong action</text><rect x='135' y='45' width='100' height='55' rx='6' fill='none' stroke='#15803d' stroke-width='2'/><text x='145' y='68' font-family='sans-serif' font-size='13' fill='#15803d'>LAPSE</text><text x='145' y='88' font-family='sans-serif' font-size='9' fill='#334155'>forgot step</text><rect x='250' y='45' width='100' height='55' rx='6' fill='none' stroke='#b45309' stroke-width='2'/><text x='260' y='68' font-family='sans-serif' font-size='13' fill='#b45309'>MISTAKE</text><text x='260' y='88' font-family='sans-serif' font-size='9' fill='#334155'>bad plan</text><rect x='365' y='45' width='100' height='55' rx='6' fill='none' stroke='#334155' stroke-width='2'/><text x='375' y='68' font-family='sans-serif' font-size='13' fill='#334155'>VIOLATION</text><text x='375' y='88' font-family='sans-serif' font-size='9' fill='#334155'>rule broken</text><line x1='60' y1='140' x2='420' y2='140' stroke='#334155' stroke-width='2'/><text x='30' y='135' font-family='sans-serif' font-size='11' fill='#334155'>Low</text><text x='400' y='135' font-family='sans-serif' font-size='11' fill='#334155'>High</text><text x='150' y='160' font-family='sans-serif' font-size='11' fill='#15803d'>Perceived risk</text><circle cx='150' cy='140' r='6' fill='#15803d'/><text x='300' y='185' font-family='sans-serif' font-size='11' fill='#b45309'>Actual risk</text><circle cx='340' cy='140' r='6' fill='#b45309'/><text x='60' y='215' font-family='sans-serif' font-size='12' fill='#334155'>Gap = danger the driver cannot feel</text><path d='M156 140 L334 140' stroke='#b45309' stroke-width='1.5' stroke-dasharray='4 3'/></svg>",
+      "whiteboardCaption": "A chart of the four error types above a scale showing the dangerous gap between perceived and actual risk.",
+      "example": "A commercial minibus (danfo) driver in Lagos is running late. He knows overtaking on the bridge shoulder is illegal (a violation), but 'everyone does it', so it feels normal. Rushing, he forgets to signal (a lapse) and misjudges the closing speed of an oncoming truck (a mistake). A 30-second self-check at the park could have flagged his rushed, stressed state.",
+      "quiz": [
+        {
+          "q": "A driver forgets to check the mirror before changing lanes. This is best classified as a:",
+          "options": [
+            "Lapse",
+            "Violation",
+            "Mistake",
+            "Slip"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What defines a 'violation' in Reason's error model?",
+          "options": [
+            "An accidental wrong movement",
+            "Deliberately breaking a known rule",
+            "A memory failure",
+            "A flawed but well-intentioned plan"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Why is a gap between perceived and actual risk dangerous?",
+          "options": [
+            "It improves reaction time",
+            "It makes drivers overly cautious",
+            "The driver feels safe while objectively in danger",
+            "It only affects new drivers"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Risk perception",
+          "back": "How a driver judges danger; crashes rise when it falls below actual risk."
+        },
+        {
+          "front": "Slip vs Lapse",
+          "back": "Slip = wrong action executed; Lapse = a forgotten/missed step (memory)."
+        },
+        {
+          "front": "Mistake",
+          "back": "A planning error: choosing an unsafe strategy while intending to be safe."
+        },
+        {
+          "front": "Violation",
+          "back": "Deliberately breaking a known rule, e.g. speeding or skipping a seatbelt."
+        }
+      ],
+      "reflection": "Think of a recent trip: was any risky choice you made shaped by habit or by what others around you were doing?",
+      "summary": "Most crashes reflect human factors: a mismatch between perceived and actual risk, four types of error (slips, lapses, mistakes, violations), and the pull of habits and social norms.",
+      "discussionPrompt": "Ask the EFIKO tutor: How can road-safety campaigns change social norms to reduce deliberate violations like speeding?",
+      "sizeKB": 5
+    },
+    {
+      "id": "s5-changing-behaviour-for-safer-roads",
+      "order": 5,
+      "title": "Changing Behaviour for Safer Roads",
+      "objectives": [
+        "Describe evidence-based approaches to changing road-user behaviour.",
+        "Apply behaviour-change principles to a personal or professional driving habit.",
+        "Explain the roles of enforcement, education, and design in safety."
+      ],
+      "text": "Changing driving behaviour is not about telling people to \"be careful.\" Lasting change happens when we adjust motivation, feedback, and the environment. Three tools work together, often called the three E's:\n\nEnforcement: laws, police checks, and cameras raise the perceived certainty of being caught. Research shows visible, consistent enforcement changes behaviour more than harsh but rare penalties.\n\nEducation: builds knowledge and skill, but information alone rarely changes habits. It works best paired with motivation and reminders.\n\nEngineering/Design: shaping the road so the safe choice is the easy choice. Speed bumps, rumble strips, and roundabouts reduce crashes without relying on willpower.\n\nA practical model is COM-B: behaviour needs Capability (can I do it?), Opportunity (does my environment allow it?), and Motivation (do I want to?). \n\nWorked example: to stop checking your phone while driving. Capability: know how to enable \"Do Not Disturb.\" Opportunity: put the phone in the glovebox before starting. Motivation: track phone-free trips and reward a week's streak. Add feedback, tell a passenger to flag any glances. Small, specific, self-monitored changes beat vague willpower. Design your environment so the safe action requires no decision at all.",
+      "voiceScript": "Let's talk about how driving behaviour actually changes, because simply telling someone to be careful almost never works. Real change comes from three things working together: motivation, feedback, and the environment around us. Think of the three E's, enforcement, education, and design. Enforcement works when people believe they'll genuinely be caught. Education builds skill, but knowledge alone rarely shifts habits. And design, the clever part, makes the safe choice the easy choice, like a speed bump that slows you without any willpower. When I want to change my own habit, I ask three questions from the COM-B model. Am I capable? Does my environment allow it? Do I truly want to? Start small, make it specific, and track your progress.",
+      "keyPoints": [
+        "Behaviour changes through motivation, feedback, and environment, not just information.",
+        "The three E's, enforcement, education, and design, work best together.",
+        "Use COM-B: address Capability, Opportunity, and Motivation.",
+        "Make the safe choice the easy, automatic choice."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='white'/><text x='140' y='28' font-family='sans-serif' font-size='17' fill='#0f766e'>Changing Behaviour</text><circle cx='120' cy='90' r='42' fill='none' stroke='#0f766e' stroke-width='2.5'/><circle cx='230' cy='90' r='42' fill='none' stroke='#15803d' stroke-width='2.5'/><circle cx='340' cy='90' r='42' fill='none' stroke='#b45309' stroke-width='2.5'/><text x='95' y='95' font-family='sans-serif' font-size='12' fill='#0f766e'>Enforce</text><text x='205' y='95' font-family='sans-serif' font-size='12' fill='#15803d'>Educate</text><text x='318' y='95' font-family='sans-serif' font-size='12' fill='#b45309'>Design</text><text x='150' y='160' font-family='sans-serif' font-size='14' fill='#334155'>COM-B model:</text><rect x='60' y='175' width='110' height='40' fill='none' stroke='#0f766e' stroke-width='2'/><text x='75' y='200' font-family='sans-serif' font-size='12' fill='#334155'>Capability</text><rect x='185' y='175' width='110' height='40' fill='none' stroke='#15803d' stroke-width='2'/><text x='198' y='200' font-family='sans-serif' font-size='12' fill='#334155'>Opportunity</text><rect x='310' y='175' width='110' height='40' fill='none' stroke='#b45309' stroke-width='2'/><text x='330' y='200' font-family='sans-serif' font-size='12' fill='#334155'>Motivation</text><line x1='115' y1='230' x2='365' y2='230' stroke='#334155' stroke-width='2'/><text x='150' y='250' font-family='sans-serif' font-size='12' fill='#334155'>= Safer Behaviour</text></svg>",
+      "whiteboardCaption": "The three E's (enforcement, education, design) combine with the COM-B model to produce safer driving behaviour.",
+      "example": "A minibus (danfo) company in Lagos wants drivers to stop speeding. Instead of only warning them, they install a simple speed-tracking app (feedback), reward drivers with the best weekly scores (motivation), and set clear company speed rules with spot checks (enforcement). Speeding drops because the safe choice is now noticed and valued.",
+      "quiz": [
+        {
+          "q": "According to the session, which single approach is LEAST effective at changing habits when used alone?",
+          "options": [
+            "Education/information",
+            "Environmental design",
+            "Consistent enforcement",
+            "Feedback with rewards"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "In the COM-B model, putting your phone in the glovebox before driving mainly changes which component?",
+          "options": [
+            "Capability",
+            "Opportunity",
+            "Motivation",
+            "Enforcement"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Research suggests enforcement changes behaviour most when penalties are:",
+          "options": [
+            "Extremely harsh but rarely applied",
+            "Visible and consistently applied",
+            "Kept secret from drivers",
+            "Only applied at night"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does 'making the safe choice the easy choice' refer to?",
+          "options": [
+            "Increasing fines",
+            "Environmental/engineering design",
+            "More driver lectures",
+            "Publishing crash statistics"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "The three E's of road safety",
+          "back": "Enforcement, Education, and Engineering/Design working together."
+        },
+        {
+          "front": "COM-B model",
+          "back": "Behaviour needs Capability, Opportunity, and Motivation."
+        },
+        {
+          "front": "Why does information alone rarely change habits?",
+          "back": "Knowing is not enough; people also need motivation, opportunity, and feedback."
+        },
+        {
+          "front": "Best kind of enforcement",
+          "back": "Visible and consistent, raising the perceived certainty of being caught."
+        }
+      ],
+      "reflection": "Think of one risky driving habit you or a colleague has. Which COM-B element (Capability, Opportunity, or Motivation) is the biggest barrier to changing it, and why?",
+      "summary": "Safer driving comes from combining enforcement, education, and design while addressing capability, opportunity, and motivation, making the safe choice the easy, rewarding one.",
+      "discussionPrompt": "Help me design a two-week behaviour-change plan using COM-B to stop me from speeding on my daily commute, with specific feedback and reward steps.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s6-applying-human-factors-to-incidents",
+      "order": 6,
+      "title": "Applying Human Factors to Incidents",
+      "objectives": [
+        "Use a human-factors framework to analyse a road incident.",
+        "Identify multiple contributing causes beyond simple driver blame.",
+        "Recommend realistic interventions to prevent recurrence."
+      ],
+      "text": "Welcome to our capstone. When a crash happens, the easy answer is \"driver error\"—but that stops us from preventing the next one. Human-factors analysis asks why the error made sense to the driver at that moment. We use a simple framework with four layers, sometimes called SHELL: Software (rules, training, habits), Hardware (vehicle, road design), Environment (weather, light, traffic), and Liveware (the person: fatigue, attention, emotion, skill).\n\nHere is a how-to you can apply now. Step 1: Describe the incident factually, no blame. Step 2: List contributing factors under each SHELL layer. Step 3: Ask \"why\" five times to reach root causes, not surface ones. Step 4: Propose one realistic intervention per layer. Step 5: Check each intervention is affordable, enforceable, and durable.\n\nWorked example: A minibus rear-ends a car at dusk. Liveware: driver worked 14 hours, fatigued. Hardware: worn brakes, dim taillights ahead. Environment: low light, glare. Software: no rest-break policy, pressure to complete trips. Blaming only the driver misses the fatigue system and the vehicle. Interventions: enforce shift limits, monthly brake checks, reflective tape on vehicles, and reduce trip quotas. Notice how prevention becomes shared responsibility, not punishment. Good analysis turns one crash into many lessons.",
+      "voiceScript": "Let me leave you with the most useful habit in road safety: never stop at \"the driver made a mistake.\" That answer feels satisfying, but it prevents nothing. Instead, I want you to ask why the error made sense to that person in that moment. Were they tired? Was the road badly lit? Were the brakes worn? Was there pressure to finish the trip? When you spread your attention across the person, the vehicle, the environment, and the rules, you start seeing systems, not villains. And systems can be fixed. So take one real incident you know, walk through each layer, ask why five times, and suggest one practical change for each layer. That is how a single crash becomes a lesson that protects many people. Well done finishing this course.",
+      "keyPoints": [
+        "Move from \"driver error\" to why the error made sense.",
+        "Analyse across four layers: Software, Hardware, Environment, Liveware.",
+        "Ask \"why\" repeatedly to reach root causes.",
+        "Recommend affordable, enforceable, durable interventions per layer."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><circle cx=\"240\" cy=\"130\" r=\"34\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"240\" y=\"128\" font-size=\"12\" text-anchor=\"middle\" fill=\"#334155\">INCIDENT</text><text x=\"240\" y=\"144\" font-size=\"10\" text-anchor=\"middle\" fill=\"#334155\">root causes</text><rect x=\"30\" y=\"30\" width=\"120\" height=\"40\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"90\" y=\"55\" font-size=\"12\" text-anchor=\"middle\" fill=\"#0f766e\">Software: rules</text><rect x=\"330\" y=\"30\" width=\"120\" height=\"40\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"390\" y=\"55\" font-size=\"12\" text-anchor=\"middle\" fill=\"#15803d\">Hardware: vehicle</text><rect x=\"30\" y=\"190\" width=\"120\" height=\"40\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"90\" y=\"215\" font-size=\"12\" text-anchor=\"middle\" fill=\"#b45309\">Environment</text><rect x=\"330\" y=\"190\" width=\"120\" height=\"40\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"390\" y=\"215\" font-size=\"12\" text-anchor=\"middle\" fill=\"#334155\">Liveware: person</text><line x1=\"150\" y1=\"55\" x2=\"212\" y2=\"115\" stroke=\"#0f766e\" stroke-width=\"2\"/><line x1=\"330\" y1=\"55\" x2=\"268\" y2=\"115\" stroke=\"#15803d\" stroke-width=\"2\"/><line x1=\"150\" y1=\"205\" x2=\"212\" y2=\"148\" stroke=\"#b45309\" stroke-width=\"2\"/><line x1=\"330\" y1=\"205\" x2=\"268\" y2=\"148\" stroke=\"#334155\" stroke-width=\"2\"/></svg>",
+      "whiteboardCaption": "The SHELL framework: an incident traced back to four interacting layers of contributing causes.",
+      "example": "A boda-boda (motorcycle taxi) in Kampala slides on a wet road at night and hits a pedestrian. Beyond blaming the rider, analysis reveals bald tyres (hardware), no street lighting (environment), earning pressure encouraging speed (software), and rider fatigue after a 12-hour day (liveware)—each pointing to a fixable intervention.",
+      "quiz": [
+        {
+          "q": "What is the main limitation of blaming only the driver after a crash?",
+          "options": [
+            "It is too expensive to investigate",
+            "It ignores systemic causes and prevents effective prevention",
+            "It always breaks traffic law",
+            "It requires special software"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "In the SHELL framework, worn brakes and dim taillights fall under which layer?",
+          "options": [
+            "Software",
+            "Hardware",
+            "Environment",
+            "Liveware"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A good human-factors intervention should be:",
+          "options": [
+            "Punitive and immediate",
+            "Affordable, enforceable, and durable",
+            "Focused solely on the driver",
+            "Kept secret from staff"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What does the SHELL framework stand for?",
+          "back": "Software (rules/training), Hardware (vehicle/road), Environment (weather/light), Liveware (the person)."
+        },
+        {
+          "front": "Why ask 'why' five times?",
+          "back": "To move past surface symptoms and reach the root causes of an incident."
+        },
+        {
+          "front": "What is 'Liveware'?",
+          "back": "The human element: fatigue, attention, emotion, skill and health of the driver."
+        },
+        {
+          "front": "Three tests for a good intervention?",
+          "back": "Affordable, enforceable, and durable over time."
+        }
+      ],
+      "reflection": "Think of a road incident you have witnessed or heard about—what contributing factors beyond the driver can you now identify across all four SHELL layers?",
+      "summary": "Effective incident analysis replaces driver-blame with a systems view, tracing causes across Software, Hardware, Environment, and Liveware to design realistic, lasting interventions.",
+      "discussionPrompt": "Walk me through a real crash scenario using the SHELL framework and help me draft one practical intervention for each layer.",
+      "sizeKB": 4
+    }
+  ],
+  "spec": {
+    "topic": "Transport Psychology",
+    "audience": "university students, road-safety practitioners and professional drivers",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": null,
+  "createdAt": 1783968276935,
+  "updatedAt": 1783968276935,
+  "premium": true
+}

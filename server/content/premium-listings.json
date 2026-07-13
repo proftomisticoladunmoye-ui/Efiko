@@ -30,5 +30,21 @@
     "courseId": "orig-digital-mental-health-protecting-your-wellbeing-in-a-connect",
     "price": 15000,
     "currency": "UGX"
+  },
+  {
+    "id": "lp-ai-automation",
+    "title": "AI & Automation Integration — Premium Certificate",
+    "description": "Turn AI and automation into a real productivity edge — the most in-demand skill of the moment. This practical 6-session course shows African students, professionals and entrepreneurs how to understand AI and automation, spot high-value opportunities in your work or business, write effective prompts, choose the right everyday tools (writing, images, data) for low-bandwidth realities, automate repetitive tasks, and use it all responsibly with a personal action plan. Includes real tool examples, quizzes, flashcards and Teach-Back checkpoints, plus a verifiable EFIKO Premium certificate. Perfect for anyone who wants to work smarter and grow their ideas with AI.",
+    "courseId": "orig-ai-and-automation-integration-for-work-and-business",
+    "price": 20000,
+    "currency": "UGX"
+  },
+  {
+    "id": "lp-transport-psychology",
+    "title": "Transport Psychology — Premium Certificate",
+    "description": "Why do most road crashes come down to the human behind the wheel? This rigorous yet accessible 6-session course explores how mind, behaviour and environment shape road safety: perception, attention and reaction; emotions, fatigue and impairment; risk, decision-making and human error; behaviour change for safer roads; and applying human-factors thinking to real incidents. Grounded in established models and African road realities, with examples, quizzes, flashcards and Teach-Back checks, plus a verifiable EFIKO Premium certificate. Ideal for students of psychology and transport, road-safety practitioners, fleet managers and professional drivers.",
+    "courseId": "orig-transport-psychology-understanding-the-human-behind-the-whee",
+    "price": 20000,
+    "currency": "UGX"
   }
 ]

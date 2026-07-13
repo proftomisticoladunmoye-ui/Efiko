@@ -1,0 +1,581 @@
+{
+  "courseId": "orig-ai-and-automation-integration-for-work-and-business",
+  "owner": "EFIKO Premium",
+  "origin": "efiko-original",
+  "status": "published",
+  "title": "AI and Automation Integration for Work and Business",
+  "subtitle": "Practical AI tools and automation to boost productivity, streamline tasks, and grow your ideas",
+  "category": "Technology & Digital Skills",
+  "level": "Beginner",
+  "audience": "African university students, professionals, and entrepreneurs who want to apply AI and automation in their studies, jobs, and businesses",
+  "estimatedHours": 4,
+  "description": "This hands-on beginner course demystifies artificial intelligence and automation and shows you how to use them right away in real work and business settings. You will learn what AI can and cannot do, how to write effective prompts, how to choose everyday AI tools, and how to connect apps to automate repetitive tasks. Designed for low-bandwidth and mobile learning, each short session includes practical examples relevant to African contexts, plus guidance on using these tools responsibly, ethically, and affordably.",
+  "outcomes": [
+    "Explain the core concepts of artificial intelligence and automation and how they differ.",
+    "Identify practical opportunities to apply AI and automation in study, work, and business tasks.",
+    "Apply prompt-writing techniques to get useful, accurate results from AI tools.",
+    "Build a simple automation that connects two apps to reduce a repetitive task.",
+    "Evaluate AI outputs for accuracy, bias, cost, and data privacy risks.",
+    "Create a personal or business AI and automation action plan."
+  ],
+  "competencies": [
+    "Applies AI tools such as chatbots and writing assistants to real work and study tasks",
+    "Writes effective prompts to obtain accurate and useful AI outputs",
+    "Builds simple no-code automations that connect apps to save time",
+    "Evaluates AI outputs for accuracy, bias, cost, and data privacy",
+    "Develops a practical action plan for integrating AI and automation responsibly"
+  ],
+  "nextCourse": "Building AI-Powered Workflows: Intermediate Automation for Business",
+  "preAssessment": {
+    "questions": [
+      {
+        "q": "What best describes artificial intelligence?",
+        "options": [
+          "A physical robot that replaces all human workers",
+          "Computer systems that perform tasks that normally require human intelligence",
+          "A type of internet connection",
+          "A social media application"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What is the main purpose of automation?",
+        "options": [
+          "To make devices more expensive",
+          "To handle repetitive tasks with little manual effort",
+          "To slow down business processes",
+          "To disconnect apps from each other"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which of these is a good practice when using AI-generated information?",
+        "options": [
+          "Trust every answer without checking",
+          "Verify important facts from reliable sources",
+          "Never use AI for any task",
+          "Share all your private data with the tool"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "finalAssessment": {
+    "passMark": 70,
+    "questions": [
+      {
+        "q": "Which statement about AI is most accurate?",
+        "options": [
+          "AI always produces perfectly correct answers",
+          "AI can make mistakes and should be reviewed by a human",
+          "AI works only without the internet",
+          "AI cannot be used on mobile phones"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "When identifying tasks to automate, which type is usually the best candidate?",
+        "options": [
+          "One-time creative decisions",
+          "Repetitive and time-consuming tasks",
+          "Tasks requiring deep personal judgement",
+          "Tasks you only do once a year"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "What makes a prompt more effective?",
+        "options": [
+          "Keeping it as vague as possible",
+          "Providing clear context, role, and a specific goal",
+          "Using only single words",
+          "Never revising it"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "In a simple automation, a 'trigger' is:",
+        "options": [
+          "The final result of the workflow",
+          "The event that starts the automation",
+          "A tool for editing images",
+          "A type of password"
+        ],
+        "answer": 1
+      },
+      {
+        "q": "Which is an important responsible-use practice with AI?",
+        "options": [
+          "Ignoring data privacy",
+          "Checking outputs for bias and accuracy before relying on them",
+          "Entering sensitive personal data into any tool",
+          "Assuming AI is never wrong"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "sessions": [
+    {
+      "id": "s1-understanding-ai-and-automation-basics",
+      "order": 1,
+      "title": "Understanding AI and Automation Basics",
+      "objectives": [
+        "Define artificial intelligence, machine learning, and automation in plain terms.",
+        "Distinguish between what AI can and cannot reliably do.",
+        "Recognise everyday examples of AI and automation in African contexts."
+      ],
+      "text": "Let's build a shared vocabulary. Artificial intelligence (AI) is software that performs tasks we usually associate with human thinking, like understanding language, recognising images, or making predictions. Machine learning (ML) is one way to build AI: instead of a programmer writing every rule, the system learns patterns from many examples. Automation is simply making a task run by itself, with or without AI, for example a rule that auto-replies to every WhatsApp order.\n\nThink of it this way: automation follows fixed instructions; AI makes judgements from data.\n\nWhat AI does well: drafting text, summarising, translating, spotting patterns, answering common questions, sorting data. What it does poorly or unreliably: guaranteeing facts (it can \"hallucinate\" false answers), understanding deep context, moral judgement, and anything needing up-to-date or private information it was never given. Always verify important outputs.\n\nTry this now: open a free AI chat tool and type, \"Summarise this in 3 bullet points,\" then paste a paragraph from your notes. You just used AI for studying. Next, imagine automating a repetitive task you do weekly, list it. Naming the task is the first step to automating it.\n\nAI is a tool that amplifies your effort, it does not replace your judgement.",
+      "voiceScript": "Welcome! Let's start simple. Artificial intelligence is just software that does things we think of as thinking, like understanding language or spotting patterns. Machine learning is how we build a lot of that, by letting the system learn from many examples instead of following hand-written rules. And automation? That's making a task run by itself, like an auto-reply to every order you receive. Here's the key difference: automation follows fixed steps, while AI makes judgements from data. AI is wonderful for drafting, summarising, and translating, but it can confidently invent wrong answers, so always check anything important. Today, try asking an AI to summarise your study notes. You'll feel how it amplifies your effort.",
+      "keyPoints": [
+        "AI makes judgements from data; automation follows fixed rules.",
+        "Machine learning builds AI by learning patterns from examples.",
+        "AI is strong at drafting and summarising but can invent false facts, so verify.",
+        "You already meet AI in translation, recommendations, and mobile-money fraud checks."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect x='0' y='0' width='480' height='260' fill='#ffffff'/><rect x='30' y='40' width='180' height='60' rx='8' fill='none' stroke='#0f766e' stroke-width='3'/><text x='120' y='68' font-size='15' text-anchor='middle' fill='#0f766e'>AI</text><text x='120' y='88' font-size='10' text-anchor='middle' fill='#334155'>thinks from data</text><rect x='70' y='120' width='120' height='45' rx='8' fill='none' stroke='#15803d' stroke-width='3'/><text x='130' y='147' font-size='12' text-anchor='middle' fill='#15803d'>Machine Learning</text><line x1='120' y1='100' x2='130' y2='120' stroke='#334155' stroke-width='2'/><rect x='270' y='40' width='180' height='60' rx='8' fill='none' stroke='#b45309' stroke-width='3'/><text x='360' y='68' font-size='15' text-anchor='middle' fill='#b45309'>Automation</text><text x='360' y='88' font-size='10' text-anchor='middle' fill='#334155'>follows fixed rules</text><line x1='210' y1='70' x2='270' y2='70' stroke='#334155' stroke-width='2' stroke-dasharray='4'/><text x='240' y='62' font-size='9' text-anchor='middle' fill='#334155'>combine</text><rect x='90' y='195' width='300' height='45' rx='8' fill='none' stroke='#334155' stroke-width='2'/><text x='240' y='215' font-size='11' text-anchor='middle' fill='#15803d'>Great: draft, summarise, translate</text><text x='240' y='232' font-size='11' text-anchor='middle' fill='#b45309'>Weak: guarantee facts, deep context</text></svg>",
+      "whiteboardCaption": "A map showing AI (with machine learning inside) and automation combining, plus what AI does well versus poorly.",
+      "example": "A Lagos boutique uses an automation rule to auto-reply to WhatsApp messages with prices, and an AI chatbot to draft polite responses to customer complaints, which the owner reviews before sending.",
+      "quiz": [
+        {
+          "q": "What best describes the difference between AI and automation?",
+          "options": [
+            "They are exactly the same thing",
+            "Automation follows fixed rules; AI makes judgements from data",
+            "AI is only used by big companies",
+            "Automation requires machine learning to work"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is machine learning?",
+          "options": [
+            "A way to build AI by learning patterns from examples",
+            "A physical robot",
+            "A type of spreadsheet",
+            "A rule written by a programmer for every case"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which is a known weakness of AI you must watch for?",
+          "options": [
+            "It can draft text quickly",
+            "It can confidently produce false or invented facts",
+            "It can translate languages",
+            "It can summarise notes"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Artificial intelligence (AI)",
+          "back": "Software that performs tasks needing human-like thinking, such as language, recognition, or prediction."
+        },
+        {
+          "front": "Machine learning (ML)",
+          "back": "An approach to building AI where the system learns patterns from many examples instead of hand-coded rules."
+        },
+        {
+          "front": "Automation",
+          "back": "Making a task run by itself following set instructions, with or without AI."
+        },
+        {
+          "front": "AI hallucination",
+          "back": "When AI confidently gives false or made-up information, so outputs must be verified."
+        }
+      ],
+      "reflection": "Which repetitive task in your study or work life could you realistically automate or assist with AI this week?",
+      "summary": "AI makes judgements from data, machine learning builds it from examples, and automation runs tasks by fixed rules; used wisely and verified, they amplify your everyday work.",
+      "discussionPrompt": "Ask the EFIKO tutor: 'Here is a weekly task I do by hand [describe it]. Which parts could AI handle, which need automation, and where must I still use my own judgement?'",
+      "sizeKB": 4
+    },
+    {
+      "id": "s2-mapping-opportunities-in-your-work-and-business",
+      "order": 2,
+      "title": "Mapping Opportunities in Your Work and Business",
+      "objectives": [
+        "Identify repetitive, time-consuming, or data-heavy tasks in your context.",
+        "Match common tasks to suitable AI or automation solutions.",
+        "Prioritise which tasks give the best return on time and cost."
+      ],
+      "text": "Automation pays off most when it targets the right tasks. Start by keeping a simple task log for three days: write down every recurring activity, how long it takes, and how often you do it. Look for three signals: tasks that are repetitive (same steps each time), time-consuming (eat hours weekly), or data-heavy (lots of copying, sorting, or summarising).\n\nNext, match each task to a tool type. Repetitive typing or replies suit AI text tools like ChatGPT. Moving data between apps (a form filling a spreadsheet) suits automation connectors like Zapier or Make. Sorting customer messages suits chatbots. Turning receipts into records suits OCR tools. Summarising long documents suits AI assistants.\n\nFinally, prioritise using a quick score. For each task, estimate: hours saved per week, and effort to set up (low, medium, high). Divide value by effort. High-time-saving, low-effort tasks win first.\n\nWorked example: A campus printing business spends 5 hours weekly answering the same WhatsApp price questions. Effort to set up an auto-reply is low. Score is high, so automate it first. Meanwhile, designing custom flyers stays human. Pick your top two tasks and plan them this week.",
+      "voiceScript": "Let me show you how to find the best places to use AI in your own work. For the next three days, jot down every task you repeat, how long it takes, and how often. Then watch for three signals: is it repetitive, is it eating your hours, or is it full of data you keep copying and sorting? Those are your gold mines. Once you spot them, match each one to a tool, maybe a chatbot for customer questions, or a connector that moves data for you automatically. Finally, pick winners by dividing time saved by effort to set up. Start with the easy, high-impact ones, and you'll feel the difference this week.",
+      "keyPoints": [
+        "Log tasks for a few days to spot repetitive, time-heavy, or data-heavy work.",
+        "Match each task type to a fitting AI or automation tool.",
+        "Prioritise with a score: hours saved divided by setup effort.",
+        "Start with high-impact, low-effort quick wins."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"18\" y=\"28\" fill=\"#0f766e\" font-size=\"16\" font-family=\"sans-serif\">Map &amp; Prioritise Tasks</text><rect x=\"18\" y=\"45\" width=\"130\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"30\" y=\"70\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">Repetitive</text><text x=\"30\" y=\"90\" fill=\"#334155\" font-size=\"12\" font-family=\"sans-serif\">Time / Data heavy</text><line x1=\"148\" y1=\"72\" x2=\"195\" y2=\"72\" stroke=\"#b45309\" stroke-width=\"2\"/><rect x=\"195\" y=\"45\" width=\"130\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"207\" y=\"70\" fill=\"#15803d\" font-size=\"12\" font-family=\"sans-serif\">Match to tool</text><text x=\"207\" y=\"90\" fill=\"#15803d\" font-size=\"12\" font-family=\"sans-serif\">AI / connector</text><line x1=\"325\" y1=\"72\" x2=\"372\" y2=\"72\" stroke=\"#b45309\" stroke-width=\"2\"/><rect x=\"372\" y=\"45\" width=\"90\" height=\"55\" rx=\"6\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"384\" y=\"77\" fill=\"#0f766e\" font-size=\"12\" font-family=\"sans-serif\">Prioritise</text><text x=\"18\" y=\"140\" fill=\"#334155\" font-size=\"13\" font-family=\"sans-serif\">Score = Hours saved / Effort</text><line x1=\"40\" y1=\"160\" x2=\"40\" y2=\"235\" stroke=\"#334155\" stroke-width=\"2\"/><line x1=\"40\" y1=\"235\" x2=\"440\" y2=\"235\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"12\" y=\"165\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">value</text><text x=\"400\" y=\"250\" fill=\"#334155\" font-size=\"10\" font-family=\"sans-serif\">effort</text><circle cx=\"90\" cy=\"180\" r=\"9\" fill=\"#15803d\"/><text x=\"102\" y=\"184\" fill=\"#15803d\" font-size=\"10\" font-family=\"sans-serif\">do first</text><circle cx=\"340\" cy=\"215\" r=\"9\" fill=\"#b45309\"/><text x=\"352\" y=\"219\" fill=\"#b45309\" font-size=\"10\" font-family=\"sans-serif\">later</text></svg>",
+      "whiteboardCaption": "A flow from spotting tasks to matching tools to prioritising by value-over-effort, with quick wins plotted high-value and low-effort.",
+      "example": "A Lagos tailoring business logs its week and finds 6 hours spent replying to identical WhatsApp questions about prices and delivery. They set up a simple auto-reply with an AI FAQ bot in an afternoon, freeing those hours for actual sewing and marketing.",
+      "quiz": [
+        {
+          "q": "Which task is the strongest candidate for automation?",
+          "options": [
+            "A rare, creative decision made once a year",
+            "A repetitive weekly task that takes many hours",
+            "A sensitive negotiation needing human judgement",
+            "A one-off custom design"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What does the prioritisation score compare?",
+          "options": [
+            "Cost of tool versus brand popularity",
+            "Hours saved versus effort to set up",
+            "Number of staff versus office size",
+            "Age of business versus revenue"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which tool best fits automatically moving data from a form into a spreadsheet?",
+          "options": [
+            "An OCR receipt scanner",
+            "A connector like Zapier or Make",
+            "A photo editor",
+            "A video call app"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Three signals a task is worth automating",
+          "back": "It is repetitive, time-consuming, or data-heavy."
+        },
+        {
+          "front": "Prioritisation score formula",
+          "back": "Value (hours saved per week) divided by setup effort."
+        },
+        {
+          "front": "Tool for repetitive customer questions",
+          "back": "A chatbot or AI FAQ auto-reply."
+        },
+        {
+          "front": "First step before choosing tools",
+          "back": "Keep a task log of what you repeat, how long, and how often."
+        }
+      ],
+      "reflection": "Which single recurring task in your week costs you the most hours, and how would you feel if it were automated?",
+      "summary": "Spot repetitive, time-heavy, or data-heavy tasks, match them to fitting AI or automation tools, and prioritise the high-value, low-effort quick wins first.",
+      "discussionPrompt": "Help me analyse my daily tasks: I'll describe my work, and you suggest which tasks to automate first and which tools fit best.",
+      "sizeKB": 5
+    },
+    {
+      "id": "s3-talking-to-ai-effective-prompting",
+      "order": 3,
+      "title": "Talking to AI: Effective Prompting",
+      "objectives": [
+        "Write clear, specific prompts using role, context, and goal.",
+        "Refine and iterate prompts to improve AI responses.",
+        "Use AI safely for drafting, summarising, and brainstorming."
+      ],
+      "text": "A prompt is simply the instruction you give an AI tool like ChatGPT or Gemini. Vague prompts get vague answers, so use the RCG formula: Role, Context, Goal.\n\nRole: tell the AI who to be. \"Act as a small-business marketing advisor.\"\nContext: give background and constraints. \"I sell handmade soap in Lagos, budget is small, my customers are aged 20-35.\"\nGoal: state exactly what you want and the format. \"Suggest 5 low-cost social media ideas, listed as bullet points.\"\n\nPut together: \"Act as a marketing advisor. I sell handmade soap in Lagos to young adults with a small budget. Suggest 5 low-cost social media ideas as bullets.\" That beats \"help me market soap.\"\n\nThen iterate. If the answer is too generic, refine: \"Make idea 3 more specific and add sample captions in Nigerian Pidgin.\" Treat it as a conversation, not one shot.\n\nSafety habits: never paste passwords, exam answers, or private client data. AI can \"hallucinate\" (state false things confidently), so verify facts, numbers, and quotes before using them. Use AI to draft, summarise, and brainstorm, but keep your own judgement as the final editor. Always disclose AI use where your school or employer requires it.",
+      "voiceScript": "Think of talking to AI like briefing a talented but new intern. If you're vague, you get vague work; if you're specific, you get gold. My favourite trick is the R-C-G formula. First, give the AI a role, like a marketing advisor or a study coach. Next, share context, the background and any limits, such as your budget or who your customers are. Finally, state your goal clearly, including the format you want. Then keep the conversation going, refining until the answer fits. And please, stay safe. Never share passwords or private data, and always double-check facts, because AI can sound confident while being completely wrong. You stay the final editor.",
+      "keyPoints": [
+        "Use RCG: Role, Context, Goal for clear prompts.",
+        "Iterate—refine your prompt like a conversation.",
+        "Verify facts; AI can hallucinate confidently.",
+        "Never share passwords or private data with AI."
+      ],
+      "whiteboardSvg": "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 480 260'><rect width='480' height='260' fill='#ffffff'/><text x='140' y='30' font-family='sans-serif' font-size='18' fill='#0f766e'>The RCG Prompt Formula</text><rect x='30' y='55' width='120' height='45' rx='6' fill='none' stroke='#0f766e' stroke-width='2'/><text x='55' y='83' font-family='sans-serif' font-size='16' fill='#0f766e'>ROLE</text><rect x='180' y='55' width='120' height='45' rx='6' fill='none' stroke='#15803d' stroke-width='2'/><text x='205' y='83' font-family='sans-serif' font-size='15' fill='#15803d'>CONTEXT</text><rect x='330' y='55' width='120' height='45' rx='6' fill='none' stroke='#b45309' stroke-width='2'/><text x='368' y='83' font-family='sans-serif' font-size='16' fill='#b45309'>GOAL</text><line x1='150' y1='77' x2='180' y2='77' stroke='#334155' stroke-width='2'/><line x1='300' y1='77' x2='330' y2='77' stroke='#334155' stroke-width='2'/><text x='40' y='135' font-family='sans-serif' font-size='11' fill='#334155'>who AI acts as</text><text x='185' y='135' font-family='sans-serif' font-size='11' fill='#334155'>background+limits</text><text x='345' y='135' font-family='sans-serif' font-size='11' fill='#334155'>want+format</text><path d='M60 160 h360' stroke='#334155' stroke-width='1' stroke-dasharray='4 4'/><text x='60' y='185' font-family='sans-serif' font-size='13' fill='#0f766e'>Iterate: refine ask</text><path d='M200 178 q40 20 80 0' stroke='#15803d' stroke-width='2' fill='none'/><path d='M275 172 l8 6 -8 6' stroke='#15803d' stroke-width='2' fill='none'/><text x='300' y='185' font-family='sans-serif' font-size='13' fill='#b45309'>better output</text><text x='60' y='225' font-family='sans-serif' font-size='12' fill='#334155'>Safety: verify facts, no private data</text></svg>",
+      "whiteboardCaption": "A diagram showing the Role-Context-Goal prompt formula flowing into iteration and a safety reminder.",
+      "example": "A University of Ghana student preparing a group presentation types: \"Act as a public-speaking coach. My team of 4 has 10 minutes to present on renewable energy in Ghana to non-expert classmates. Give us a slide-by-slide outline with speaker notes.\" When the notes feel too formal, she adds: \"Make the tone friendly and add one local example per slide,\" then verifies the energy statistics before presenting.",
+      "quiz": [
+        {
+          "q": "What does the 'C' in the RCG prompting formula stand for?",
+          "options": [
+            "Command",
+            "Context",
+            "Category",
+            "Conclusion"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "An AI 'hallucination' means the tool:",
+          "options": [
+            "Runs out of memory",
+            "States false information confidently",
+            "Refuses to answer",
+            "Works too slowly"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the safest practice when using AI at work?",
+          "options": [
+            "Paste client passwords for convenience",
+            "Trust all numbers without checking",
+            "Verify facts and avoid sharing private data",
+            "Never disclose AI use even when required"
+          ],
+          "answer": 2
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "What is a prompt?",
+          "back": "The instruction or question you give an AI tool to get a response."
+        },
+        {
+          "front": "RCG formula",
+          "back": "Role, Context, Goal—structure a prompt by who AI acts as, background/limits, and what you want plus format."
+        },
+        {
+          "front": "Why iterate prompts?",
+          "back": "Refining like a conversation turns generic answers into specific, useful ones."
+        },
+        {
+          "front": "AI hallucination",
+          "back": "When AI confidently produces false or made-up information; always verify."
+        }
+      ],
+      "reflection": "Think of a task you do weekly—how could an RCG prompt help you do it faster, and what facts would you still need to verify yourself?",
+      "summary": "Effective prompting uses Role, Context, and Goal, plus iteration, to get useful AI outputs—while you verify facts and protect private data.",
+      "discussionPrompt": "Ask the EFIKO tutor: 'Help me build and refine an RCG prompt for a real task in my studies or business, then critique my draft.'",
+      "sizeKB": 5
+    },
+    {
+      "id": "s4-choosing-and-using-everyday-ai-tools",
+      "order": 4,
+      "title": "Choosing and Using Everyday AI Tools",
+      "objectives": [
+        "Compare free and low-cost AI tools for writing, images, and data.",
+        "Select tools that work well on mobile and low bandwidth.",
+        "Complete a simple task end-to-end using an AI tool."
+      ],
+      "text": "AI tools now handle three common jobs: writing, images, and data. Knowing which to pick saves money and bandwidth. For writing, tools like ChatGPT, Google Gemini, and Claude draft emails, summaries, and study notes. For images, Canva's Magic Studio, Bing Image Creator, and Leonardo generate visuals. For data, Google Sheets with built-in AI, plus tools like Julius, clean and analyze numbers.\n\nHow to choose on low bandwidth: prefer text-based chat tools (they use little data), use the mobile app or lightweight web version, and turn off image generation unless needed. Check the free tier limits before committing.\n\nWorked example: complete a task end-to-end. Suppose you must write a product description for your small shop.\n1. Open a free chat AI on your phone.\n2. Give a clear prompt: \"Write a 40-word WhatsApp product description for handmade leather sandals, price 5000 Naira, friendly tone.\"\n3. Read the draft, then refine: \"Make it shorter and add a call to action.\"\n4. Copy the final text into WhatsApp Business.\n\nAlways verify facts and numbers the AI produces. Save prompts that work well so you can reuse them. Start with one free tool, master it, then expand.",
+      "voiceScript": "Let me help you pick the right AI tool without wasting data or money. Think of three everyday jobs: writing, making images, and working with data. For writing, chat tools like ChatGPT, Gemini, or Claude are your friends, and the good news is they use very little bandwidth because they're mostly text. When you're on mobile, stick to these light chat tools, use the app, and only turn on image generation when you really need it. Here's something you can try today: open a free chat AI and ask it to write a short product description for something you sell. Read it, refine it, then paste it into WhatsApp. Just remember to check any facts yourself. Start small, master one tool, then grow.",
+      "keyPoints": [
+        "Match the tool to the job: writing, images, or data.",
+        "Text chat tools use the least data and work best on mobile.",
+        "Check free-tier limits before relying on a tool.",
+        "Work in steps: prompt, refine, verify, then use."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"140\" y=\"28\" font-size=\"16\" fill=\"#334155\">Pick the Right AI Tool</text><rect x=\"20\" y=\"50\" width=\"130\" height=\"70\" rx=\"8\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"2\"/><text x=\"55\" y=\"80\" font-size=\"13\" fill=\"#0f766e\">Writing</text><text x=\"30\" y=\"102\" font-size=\"10\" fill=\"#334155\">ChatGPT/Gemini</text><rect x=\"175\" y=\"50\" width=\"130\" height=\"70\" rx=\"8\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"2\"/><text x=\"212\" y=\"80\" font-size=\"13\" fill=\"#15803d\">Images</text><text x=\"185\" y=\"102\" font-size=\"10\" fill=\"#334155\">Canva/Bing</text><rect x=\"330\" y=\"50\" width=\"130\" height=\"70\" rx=\"8\" fill=\"none\" stroke=\"#b45309\" stroke-width=\"2\"/><text x=\"375\" y=\"80\" font-size=\"13\" fill=\"#b45309\">Data</text><text x=\"340\" y=\"102\" font-size=\"10\" fill=\"#334155\">Sheets/Julius</text><line x1=\"240\" y1=\"130\" x2=\"240\" y2=\"160\" stroke=\"#334155\" stroke-width=\"2\"/><rect x=\"120\" y=\"160\" width=\"240\" height=\"40\" rx=\"8\" fill=\"none\" stroke=\"#334155\" stroke-width=\"2\"/><text x=\"135\" y=\"185\" font-size=\"12\" fill=\"#334155\">Low bandwidth? Use text chat</text><text x=\"120\" y=\"235\" font-size=\"12\" fill=\"#0f766e\">Prompt -&gt; Refine -&gt; Verify -&gt; Use</text></svg>",
+      "whiteboardCaption": "A map of AI tools by task (writing, images, data) leading to a low-bandwidth workflow.",
+      "example": "An entrepreneur in Lagos uses a free chat AI on her phone to draft WhatsApp product descriptions for her sandal business, refining the text in seconds instead of struggling for words.",
+      "quiz": [
+        {
+          "q": "Which type of AI tool generally uses the LEAST bandwidth?",
+          "options": [
+            "Text-based chat tools",
+            "High-resolution image generators",
+            "Video generation tools",
+            "3D modelling tools"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What should you always do with numbers or facts an AI produces?",
+          "options": [
+            "Publish them immediately",
+            "Verify them yourself",
+            "Assume they are correct",
+            "Delete them"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "What is a smart first step when starting with AI tools on a budget?",
+          "options": [
+            "Pay for every premium tool",
+            "Master one free tool, then expand",
+            "Use only paid image tools",
+            "Avoid AI entirely"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Name a good AI tool category for writing tasks.",
+          "back": "Chat tools like ChatGPT, Gemini, or Claude for drafting emails, notes, and summaries."
+        },
+        {
+          "front": "Why prefer chat tools on low bandwidth?",
+          "back": "They are mostly text, so they use very little data compared to image or video tools."
+        },
+        {
+          "front": "What is the end-to-end task workflow?",
+          "back": "Prompt, refine, verify, then use the result."
+        },
+        {
+          "front": "What to check before relying on a free AI tool?",
+          "back": "Its free-tier limits (how much you can use before paying)."
+        }
+      ],
+      "reflection": "Which single AI tool could you start using this week, and what recurring task in your studies or business would it help with?",
+      "summary": "Choose AI tools by task, favor lightweight text chat tools on mobile, and complete real work through a simple prompt-refine-verify-use workflow.",
+      "discussionPrompt": "Ask the EFIKO tutor to help you design three reusable prompts for a specific task in your studies or business.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s5-automating-repetitive-tasks",
+      "order": 5,
+      "title": "Automating Repetitive Tasks",
+      "objectives": [
+        "Explain how triggers and actions connect apps in an automation.",
+        "Design a simple workflow to automate one recurring task.",
+        "Test and troubleshoot a basic automation."
+      ],
+      "text": "Automation means letting software do a repetitive task for you, so you save time and avoid mistakes. Every automation has two parts. A trigger is the event that starts it (\"when this happens\"). An action is what the tool does in response (\"do that\"). No-code platforms like Zapier, Make, or Power Automate connect your apps without programming.\n\nWorked example: automate saving email attachments. Trigger: a new email arrives in Gmail with an attachment. Action: save the attachment to Google Drive, then send yourself a notification. You build it by choosing the trigger app, connecting your account, picking the trigger event, then adding the action app and mapping the fields (which data goes where).\n\nHow to design your own in five steps: 1) Name the recurring task. 2) Identify the trigger event. 3) Identify the action(s). 4) Map the data between apps. 5) Turn it on.\n\nAlways test before trusting it. Run a test with sample data and check the result actually appears. If it fails, troubleshoot: confirm accounts are connected, check the trigger really fired, and read the error message. Start with one simple \"if-this-then-that\" flow, confirm it works, then add steps gradually.",
+      "voiceScript": "Think about a task you do the same way every week, like copying data or sending a reminder. Automation lets software handle it for you. The idea is simple: every automation has a trigger, the event that starts it, and an action, what happens next. When a new email arrives, save the attachment. When a form is submitted, add a row to your spreadsheet. Tools like Zapier and Make let you connect your apps without writing code. My advice is to start small. Build one trigger and one action, then run a test with real sample data to be sure it works. Once you trust it, add more steps. You'll be amazed how much time you win back.",
+      "keyPoints": [
+        "A trigger starts an automation; an action is what it does in response.",
+        "No-code tools like Zapier and Make connect apps without programming.",
+        "Design flows in steps: task, trigger, action, data mapping, activate.",
+        "Always test with sample data and troubleshoot before trusting it."
+      ],
+      "whiteboardSvg": "<svg viewBox=\"0 0 480 260\" xmlns=\"http://www.w3.org/2000/svg\"><rect width=\"480\" height=\"260\" fill=\"#ffffff\"/><text x=\"140\" y=\"30\" font-size=\"16\" fill=\"#334155\">Trigger -&gt; Action Flow</text><rect x=\"30\" y=\"70\" width=\"110\" height=\"60\" rx=\"8\" fill=\"none\" stroke=\"#0f766e\" stroke-width=\"3\"/><text x=\"50\" y=\"95\" font-size=\"13\" fill=\"#0f766e\">TRIGGER</text><text x=\"42\" y=\"115\" font-size=\"11\" fill=\"#334155\">new email</text><line x1=\"140\" y1=\"100\" x2=\"200\" y2=\"100\" stroke=\"#b45309\" stroke-width=\"3\"/><path d=\"M200 100 l-12 -6 l0 12 z\" fill=\"#b45309\"/><rect x=\"200\" y=\"70\" width=\"110\" height=\"60\" rx=\"8\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"222\" y=\"95\" font-size=\"13\" fill=\"#15803d\">ACTION</text><text x=\"212\" y=\"115\" font-size=\"11\" fill=\"#334155\">save file</text><line x1=\"310\" y1=\"100\" x2=\"370\" y2=\"100\" stroke=\"#b45309\" stroke-width=\"3\"/><path d=\"M370 100 l-12 -6 l0 12 z\" fill=\"#b45309\"/><rect x=\"370\" y=\"70\" width=\"90\" height=\"60\" rx=\"8\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"382\" y=\"95\" font-size=\"12\" fill=\"#15803d\">NOTIFY</text><text x=\"382\" y=\"115\" font-size=\"11\" fill=\"#334155\">alert me</text><text x=\"30\" y=\"175\" font-size=\"13\" fill=\"#334155\">Test with sample data</text><path d=\"M30 190 l10 12 l20 -26\" fill=\"none\" stroke=\"#15803d\" stroke-width=\"3\"/><text x=\"70\" y=\"205\" font-size=\"12\" fill=\"#334155\">check result appears, then turn on</text></svg>",
+      "whiteboardCaption": "A basic automation flow where a trigger event fires two connected actions across apps.",
+      "example": "A campus event organizer uses Google Forms for registrations. She builds an automation: trigger is a new form response; action one adds the attendee to a Google Sheet; action two sends them a WhatsApp or email confirmation automatically. She no longer copies names by hand for 300 registrants.",
+      "quiz": [
+        {
+          "q": "In an automation, what is a 'trigger'?",
+          "options": [
+            "The event that starts the automation",
+            "The person who built it",
+            "The final report produced",
+            "The app's monthly fee"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Which is the best first step when designing an automation?",
+          "options": [
+            "Add as many actions as possible",
+            "Name the recurring task you want to automate",
+            "Buy the most expensive plan",
+            "Write custom code"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "An automation isn't working. What is a sensible troubleshooting step?",
+          "options": [
+            "Delete all your apps",
+            "Confirm accounts are connected and read the error message",
+            "Restart your phone repeatedly",
+            "Assume it will fix itself"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "Trigger",
+          "back": "The event that starts an automation, e.g. 'a new email arrives'."
+        },
+        {
+          "front": "Action",
+          "back": "What the automation does in response, e.g. 'save the file to Drive'."
+        },
+        {
+          "front": "No-code automation tool",
+          "back": "Software like Zapier or Make that links apps without programming."
+        },
+        {
+          "front": "Data mapping",
+          "back": "Telling the automation which data from the trigger goes into the action's fields."
+        }
+      ],
+      "reflection": "Which repetitive task in your studies or work eats the most time, and how could a trigger-and-action flow remove it?",
+      "summary": "Automations connect apps using a trigger and one or more actions; design them step-by-step and always test with sample data before relying on them.",
+      "discussionPrompt": "Help me design a step-by-step Zapier automation for a recurring task in my small business, including the trigger, actions, and how to test it.",
+      "sizeKB": 4
+    },
+    {
+      "id": "s6-responsible-use-and-your-action-plan",
+      "order": 6,
+      "title": "Responsible Use and Your Action Plan",
+      "objectives": [
+        "Evaluate AI outputs for accuracy, bias, and misinformation.",
+        "Apply basic data privacy and ethical practices when using AI.",
+        "Create a personal action plan for integrating AI and automation."
+      ],
+      "text": "Welcome to your final session. AI is powerful, but it can be wrong, biased, or leak private data. Responsible use protects you and the people you serve.\n\nFirst, check accuracy. AI can \"hallucinate\" — confidently invent facts, names, or citations. Use the CRAAP quick-check: is the claim Current, Relevant, and from an Authoritative source? Verify any number, quote, or legal or medical claim against a trusted second source before you act.\n\nSecond, watch for bias. AI learns from internet data that may under-represent African contexts, languages, or women. Ask: \"Whose perspective is missing?\" Rewrite prompts to add local context, and cross-check recommendations that affect people (hiring, loans, grades).\n\nThird, protect data. Never paste customer names, ID numbers, passwords, or confidential business data into public AI tools. Anonymise first — replace \"Amina, +234...\" with \"Customer A\". Read the tool's privacy settings; disable chat history/training where possible.\n\nHow-to: Build your action plan. Write down one task you do weekly (e.g., drafting reports). Pick one AI tool for it. Define a verification step. Set a 2-week trial. Note the time saved. Example plan line: \"Use AI to draft weekly sales summary; I fact-check figures against my spreadsheet; review Friday.\" Start small, measure, then expand.",
+      "voiceScript": "Congratulations on reaching your final session. By now you can see how much AI can do, but I want you to leave with something just as important: the wisdom to use it responsibly. Remember that AI sometimes invents facts with total confidence, so always verify numbers, quotes, and anything sensitive against a trusted source. Watch for bias, and ask whose perspective might be missing, especially for our African contexts. Guard people's data fiercely; never paste private names or ID numbers into public tools, anonymise first. Then make it real: choose one weekly task, one tool, one verification step, and trial it for two weeks. Start small, measure your results, and grow from there. You've got this.",
+      "keyPoints": [
+        "AI can hallucinate — verify facts, figures, quotes against a trusted source.",
+        "Watch for bias and ask whose perspective is missing, especially local contexts.",
+        "Never paste private or confidential data into public AI tools; anonymise first.",
+        "Build an action plan: one task, one tool, one verification step, a 2-week trial."
+      ],
+      "whiteboardSvg": "<svg viewBox='0 0 480 260' xmlns='http://www.w3.org/2000/svg'><rect width='480' height='260' fill='#ffffff'/><text x='20' y='28' font-size='16' fill='#0f766e' font-family='sans-serif'>Responsible AI = Check + Protect + Plan</text><rect x='20' y='45' width='130' height='70' fill='none' stroke='#15803d' stroke-width='2'/><text x='30' y='68' font-size='12' fill='#15803d' font-family='sans-serif'>1. ACCURACY</text><text x='30' y='88' font-size='10' fill='#334155' font-family='sans-serif'>Verify facts</text><text x='30' y='104' font-size='10' fill='#334155' font-family='sans-serif'>Avoid hallucinations</text><rect x='175' y='45' width='130' height='70' fill='none' stroke='#b45309' stroke-width='2'/><text x='185' y='68' font-size='12' fill='#b45309' font-family='sans-serif'>2. BIAS</text><text x='185' y='88' font-size='10' fill='#334155' font-family='sans-serif'>Whose view is</text><text x='185' y='104' font-size='10' fill='#334155' font-family='sans-serif'>missing?</text><rect x='330' y='45' width='130' height='70' fill='none' stroke='#0f766e' stroke-width='2'/><text x='340' y='68' font-size='12' fill='#0f766e' font-family='sans-serif'>3. PRIVACY</text><text x='340' y='88' font-size='10' fill='#334155' font-family='sans-serif'>Anonymise data</text><text x='340' y='104' font-size='10' fill='#334155' font-family='sans-serif'>Check settings</text><line x1='240' y1='130' x2='240' y2='150' stroke='#334155' stroke-width='2'/><rect x='90' y='150' width='300' height='40' fill='none' stroke='#334155' stroke-width='2'/><text x='110' y='168' font-size='12' fill='#0f766e' font-family='sans-serif'>ACTION PLAN</text><text x='110' y='184' font-size='10' fill='#334155' font-family='sans-serif'>Task + Tool + Verify + 2-week trial</text><circle cx='60' cy='220' r='6' fill='#15803d'/><text x='75' y='224' font-size='11' fill='#334155' font-family='sans-serif'>Start small, measure, then expand</text></svg>",
+      "whiteboardCaption": "Three pillars of responsible AI use feeding into a simple personal action plan.",
+      "example": "A Lagos entrepreneur uses AI to draft customer WhatsApp replies. She replaces real names with 'Customer A' before pasting, and double-checks any price or delivery date the AI suggests against her own records before sending.",
+      "quiz": [
+        {
+          "q": "What does it mean when an AI 'hallucinates'?",
+          "options": [
+            "It slows down",
+            "It confidently states false or invented information",
+            "It refuses to answer",
+            "It uses too much data"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "Which is the safest practice before pasting client details into a public AI tool?",
+          "options": [
+            "Paste everything for accuracy",
+            "Anonymise the data first",
+            "Add more personal details",
+            "Turn off your internet"
+          ],
+          "answer": 1
+        },
+        {
+          "q": "A good starting action plan should include:",
+          "options": [
+            "Ten tools at once with no review",
+            "One task, one tool, a verification step, and a trial period",
+            "Only tasks you never do",
+            "AI replacing all your judgement"
+          ],
+          "answer": 1
+        }
+      ],
+      "flashcards": [
+        {
+          "front": "AI hallucination",
+          "back": "When AI confidently produces false or made-up information; always verify."
+        },
+        {
+          "front": "Checking for bias",
+          "back": "Ask 'Whose perspective is missing?' and add local context to prompts."
+        },
+        {
+          "front": "Data privacy rule",
+          "back": "Never paste confidential info into public AI tools; anonymise and check settings."
+        },
+        {
+          "front": "Action plan formula",
+          "back": "One task + one tool + one verification step + a 2-week trial, then measure."
+        }
+      ],
+      "reflection": "Which weekly task will you trial with AI first, and how will you verify its output responsibly?",
+      "summary": "Responsible AI use means verifying accuracy, guarding against bias, protecting private data, and adopting tools through a small, measurable action plan.",
+      "discussionPrompt": "Help me design a 2-week AI action plan for a specific task in my studies or business, including a verification and data-privacy step.",
+      "sizeKB": 5
+    }
+  ],
+  "spec": {
+    "topic": "AI and Automation Integration",
+    "audience": "African university students, professionals and entrepreneurs who want to use AI and automation in their work and businesses",
+    "hours": 4,
+    "level": "Beginner"
+  },
+  "generatedBy": "ai",
+  "reviewedBy": null,
+  "createdAt": 1783968047762,
+  "updatedAt": 1783968047762,
+  "premium": true
+}
