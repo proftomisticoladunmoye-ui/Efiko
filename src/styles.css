@@ -620,6 +620,13 @@ button.set-link:hover { border-color: var(--brand-2); }
 .set-ver { font-size: 12px; color: var(--muted); }
 .signin-prompt { text-align: center; padding: 30px; }
 
+/* App footer (About / Privacy) */
+.app-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; justify-content: center; padding: 18px 16px 26px; border-top: 1px solid var(--border); margin-top: 8px; font-size: 13px; }
+.app-footer a { color: var(--muted); text-decoration: none; }
+.app-footer a:hover { color: var(--text); text-decoration: underline; }
+.app-footer-dot { color: var(--muted); }
+.app-footer-copy { color: var(--muted); flex-basis: 100%; text-align: center; font-size: 12px; }
+
 /* v4 mobile-money checkout modal */
 .v4co { position: relative; background: var(--card, #131722); border: 1px solid var(--border); border-radius: 16px; padding: 22px; max-width: 380px; width: 92%; }
 .v4co h3 { margin: 0 0 2px; }

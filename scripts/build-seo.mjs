@@ -15,6 +15,7 @@ import { ACADEMY } from '../seo/guides.mjs';
 import { renderAcademyItem, academyRoutes, academyIndexHtml } from '../seo/renderAcademy.mjs';
 import { loadOriginals, renderOriginal, originalRoutes, originalsIndexHtml, originalPath } from '../seo/originals.mjs';
 import { courseOgSvg, svgToPng } from '../seo/ogimage.mjs';
+import { renderAbout, renderPrivacy, aboutPath, privacyPath } from '../seo/legal.mjs';
 
 const dist = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const writePage = (route, html) => {
@@ -91,6 +92,10 @@ for (const c of originals) {
 const injected = { '/courses': originalsIndexHtml(originals) + courseListHtml, '/academy': academyIndexHtml() };
 for (const page of PAGES) writePage(page.slug, renderPage(page, injected[page.slug] || ''));
 
+// About + Privacy Policy (crawlable static pages, linked from the app footer).
+writePage(aboutPath, renderAbout());
+writePage(privacyPath, renderPrivacy());
+
 // Academy content pages (guides + definitions).
 for (const item of ACADEMY) writePage(`/academy/${item.slug}`, renderAcademyItem(item));
 let topicCount = 0;
@@ -111,7 +116,7 @@ if (idx.includes('<div id="root"></div>')) {
 }
 
 // Sitemap (products + course content + academy + Originals) + robots.
-writeFileSync(join(dist, 'sitemap.xml'), renderSitemap([...contentRoutes(courses), ...academyRoutes(), ...originalRoutes(originals)]), 'utf8');
+writeFileSync(join(dist, 'sitemap.xml'), renderSitemap([...contentRoutes(courses), ...academyRoutes(), ...originalRoutes(originals), aboutPath, privacyPath]), 'utf8');
 writeFileSync(join(dist, 'robots.txt'), renderRobots(), 'utf8');
 
 console.log(`SEO prerender: ${PAGES.length} product pages, ${courses.length} course hubs, ${topicCount} topic pages, ${ACADEMY.length} academy pages, ${originals.length} Original course pages (${ogCount} OG images) + sitemap.xml + robots.txt → dist/`);

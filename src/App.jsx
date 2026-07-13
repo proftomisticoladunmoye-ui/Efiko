@@ -574,6 +574,12 @@ export default function App() {
         </main>
         <ThinkSpace open={tsOpen} onClose={() => setTsOpen(false)} user={user} onNeedAuth={() => { setTsOpen(false); setAuthOpen(true); }} />
       </div>
+      <footer className="app-footer">
+        <a href="/about/">About</a>
+        <span className="app-footer-dot" aria-hidden="true">·</span>
+        <a href="/privacy/">Privacy Policy</a>
+        <span className="app-footer-copy">© {new Date().getFullYear()} Efiko · Psychtrix Initiative Ltd</span>
+      </footer>
     </div>
   );
 }

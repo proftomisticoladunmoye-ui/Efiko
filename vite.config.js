@@ -35,7 +35,7 @@ export default defineConfig({
         navigateFallback: '/index.html',
         // Public SEO landing pages are real static documents, not the SPA shell — let the
         // browser load them from the network instead of the app-shell fallback.
-        navigateFallbackDenylist: [/^\/(ai|thinkspace|courses|whiteboard|assessments|certificates|marketplace|community|jobs|research|academy)(\/|$)/]
+        navigateFallbackDenylist: [/^\/(ai|thinkspace|courses|whiteboard|assessments|certificates|marketplace|community|jobs|research|academy|about|privacy)(\/|$)/]
       },
       devOptions: { enabled: true }
     })
