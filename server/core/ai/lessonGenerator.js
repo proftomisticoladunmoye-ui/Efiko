@@ -5,7 +5,13 @@
 // by construction (the data-minimisation ethos drives the prompt).
 import { z } from 'zod';
 import { betaZodOutputFormat } from '@anthropic-ai/sdk/helpers/beta/zod';
-import { getClient, isConfigured, AUTHOR_MODEL } from './client.js';
+import { getClient, isConfigured, FAST_MODEL } from './client.js';
+
+// The interactive "Ask EFIKO AI" favours SPEED — a fast reply matters more than a perfect one
+// for a 3–5 min micro-lesson, especially on 2G. Default to the fast model with no extended
+// "thinking" phase. Override with EFIKO_ASK_MODEL (e.g. the author model) for maximum quality.
+const ASK_MODEL = process.env.EFIKO_ASK_MODEL || FAST_MODEL;
+const ASK_THINKS = /opus|sonnet/i.test(ASK_MODEL); // only the bigger models support adaptive thinking
 
 const SYSTEM = `You are Efiko, an expert university tutor for African students who learn on very low bandwidth (often 2G, often via WhatsApp).
 
@@ -94,9 +100,9 @@ async function author(userContent, meta) {
   if (!isConfigured()) return null;
   const client = getClient();
   const res = await client.beta.messages.parse({
-    model: AUTHOR_MODEL,
-    max_tokens: 8000,
-    thinking: { type: 'adaptive' },
+    model: ASK_MODEL,
+    max_tokens: 4000,
+    ...(ASK_THINKS ? { thinking: { type: 'adaptive' } } : {}),
     system: SYSTEM,
     messages: [{ role: 'user', content: userContent }],
     output_format: betaZodOutputFormat(CapsuleSchema)

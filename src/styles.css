@@ -665,6 +665,8 @@ button.set-link:hover { border-color: var(--brand-2); }
 .o-card-share { position: absolute; top: 10px; right: 10px; }
 .o-card-share .course-share-btn { padding: 5px 9px; font-size: 12px; }
 .o-course-card { position: relative; }
+/* Don't let the badge stretch to full card width (flex item) and slide under the Share button. */
+.o-course-card .o-badge { align-self: flex-start; max-width: calc(100% - 70px); }
 
 /* Operator console (platform owner) */
 .op-console { max-width: 860px; }
@@ -998,12 +1000,13 @@ button.set-link:hover { border-color: var(--brand-2); }
   .app.shell .app-main { padding: 16px; }
 }
 
-/* Phones: smallest logo + tighter topbar so the brand, Ask box and account all fit. */
+/* Phones: brand + account share the top row; the Ask box drops to its own full-width row
+   below (never cramming everything into one line, which caused elements to overlap). */
 @media (max-width: 560px) {
-  .topbar { gap: 8px; padding: 8px 12px; }
+  .topbar { gap: 8px; padding: 8px 12px; flex-wrap: wrap; row-gap: 8px; }
   .topbar-logo { height: 30px; }
-  .topbar-ask { min-width: 0; }              /* let the Ask box shrink instead of overflowing */
-  .topbar-account { gap: 6px; }
+  .topbar-account { gap: 6px; margin-left: auto; } /* push account to the right of row 1 */
+  .topbar-ask { order: 5; flex-basis: 100%; min-width: 0; max-width: none; margin: 0; } /* full-width row 2 */
   .account-name { display: none; }           /* name hidden on phones; Sign out stays */
   .account-btn { padding: 6px 10px; white-space: nowrap; }
 }
