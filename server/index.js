@@ -1339,6 +1339,26 @@ In 3-4 short sentences, give feedback: first what they got right, then the most 
     }
   }
 
+  // Instant answer: stream a plain-text explanation token-by-token so the learner sees a reply
+  // in ~1–2s (the full lesson — whiteboard/quiz/flashcards — is generated on demand afterwards).
+  if (req.method === 'POST' && url.pathname === '/ask/stream') {
+    if (!aiConfigured()) return json(res, 503, { error: 'AI not configured' });
+    { const ch = await chargeAI(req, 'assist'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
+    const { topic } = await readBody(req);
+    if (!topic || !String(topic).trim()) return json(res, 400, { error: 'topic is required' });
+    res.writeHead(200, { 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-cache, no-transform', 'X-Accel-Buffering': 'no' });
+    try {
+      const client = getClient();
+      const system = 'You are Efiko, a warm, expert university tutor for African students, often on low bandwidth. Answer the question with a clear, accurate, step-by-step-where-helpful explanation in plain conversational prose. Do NOT use Markdown headings (#), bold (**) or bullet symbols. Define any jargon. Keep it focused — about 120–180 words. Use one concrete, relatable example where it helps.';
+      const stream = client.messages.stream({ model: FAST_MODEL, max_tokens: 600, system, messages: [{ role: 'user', content: String(topic).slice(0, 500) }] });
+      stream.on('text', (t) => { try { res.write(t); } catch { /* client gone */ } });
+      await stream.finalMessage();
+    } catch (e) {
+      try { res.write(`\n\n(Sorry — the tutor could not finish: ${e.message})`); } catch { /* ignore */ }
+    }
+    return res.end();
+  }
+
   // Snap & Learn (Stage 7): a photo (base64) → Claude vision → capsule.
   if (req.method === 'POST' && url.pathname === '/lessons/snap') {
     if (!aiConfigured()) return json(res, 503, { error: 'AI not configured (set ANTHROPIC_API_KEY)' });

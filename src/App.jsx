@@ -30,6 +30,7 @@ import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
 import { storeRef } from './referral.js';
+import AskAnswer from './components/AskAnswer.jsx';
 import { aiHeaders, notifyAiUsed, fetchCredits } from './aiClient.js';
 import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 import { enrolProgramme } from './programmes.js';
@@ -81,6 +82,7 @@ function SignInPrompt({ onSignIn, what }) {
 export default function App() {
   const [view, setView] = useState('library'); // 'library' (shell) | 'capsule' | 'studio' | 'admin'
   const [openOriginalId, setOpenOriginalId] = useState(null); // course to auto-open in Originals
+  const [answer, setAnswer] = useState(null); // streamed Ask answer { topic, text, streaming, err }
   const [section, setSection] = useState('home'); // sidebar section within the shell
   const [navOpen, setNavOpen] = useState(false);   // mobile sidebar drawer
   const [tsOpen, setTsOpen] = useState(false);     // ThinkSpace right panel
@@ -237,25 +239,46 @@ export default function App() {
   }, [catalog, refresh]);
 
   // Ask Efiko AI to author a lesson for any topic (Stage 5 — server-side generation).
+  // Ask: stream a plain-text answer immediately (fast), then let the learner expand it into a
+  // full lesson on demand.
   const handleAsk = useCallback(async (topic) => {
-    setAsking(true);
     setError(null);
+    setAnswer({ topic, text: '', streaming: true, err: null });
+    setView('ask');
+    try {
+      const res = await fetch(`${GATEWAY}/ask/stream`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', ...aiHeaders() }, body: JSON.stringify({ topic })
+      });
+      if (!res.ok || !res.body) { const b = await res.json().catch(() => ({})); throw new Error(b.error || `gateway returned ${res.status}`); }
+      const reader = res.body.getReader(); const dec = new TextDecoder();
+      for (;;) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        const chunk = dec.decode(value, { stream: true });
+        setAnswer((a) => (a ? { ...a, text: a.text + chunk } : a));
+      }
+      setAnswer((a) => (a ? { ...a, streaming: false } : a));
+    } catch (e) {
+      setAnswer((a) => (a ? { ...a, streaming: false, err: e.message } : { topic, text: '', streaming: false, err: e.message }));
+    } finally {
+      notifyAiUsed();
+    }
+  }, []);
+
+  // Expand the streamed answer into a full offline lesson (whiteboard, quiz, flashcards).
+  const makeLesson = useCallback(async (topic) => {
+    setAsking(true); setError(null);
     try {
       const res = await fetch(`${GATEWAY}/lessons/generate`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', ...aiHeaders() },
-        body: JSON.stringify({ topic })
+        method: 'POST', headers: { 'Content-Type': 'application/json', ...aiHeaders() }, body: JSON.stringify({ topic })
       });
-      if (!res.ok) {
-        const body = await res.json().catch(() => ({}));
-        throw new Error(body.error || `gateway returned ${res.status}`);
-      }
+      if (!res.ok) { const body = await res.json().catch(() => ({})); throw new Error(body.error || `gateway returned ${res.status}`); }
       const { capsule } = await res.json();
-      await saveCapsule(capsule, { pinned: true }); // keep it offline too
+      await saveCapsule(capsule, { pinned: true });
       setActive(capsule);
       setView('capsule');
     } catch (e) {
-      setError(`Efiko AI couldn’t generate that lesson (${e.message}).`);
+      setError(`Efiko AI couldn’t build that lesson (${e.message}).`);
     } finally {
       setAsking(false);
       notifyAiUsed();
@@ -562,7 +585,9 @@ export default function App() {
         {navOpen && <div className="nav-scrim" onClick={() => setNavOpen(false)} />}
         <main className="app-main">
           {error && <p className="error">{error}</p>}
-          {view === 'capsule' && active ? (
+          {view === 'ask' ? (
+            <AskAnswer answer={answer} busy={asking} onFullLesson={makeLesson} onBack={() => { setView('library'); setAnswer(null); }} />
+          ) : view === 'capsule' && active ? (
             <>
               <button className="back" onClick={() => { setView('library'); setActive(null); if (catalog) computeReadiness(catalog).then(setReadiness); }}>← Back</button>
               <CapsuleView capsule={active} />

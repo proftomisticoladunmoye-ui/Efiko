@@ -620,6 +620,15 @@ button.set-link:hover { border-color: var(--brand-2); }
 .set-ver { font-size: 12px; color: var(--muted); }
 .signin-prompt { text-align: center; padding: 30px; }
 
+/* Instant streamed Ask answer */
+.ask-answer { max-width: 680px; }
+.ask-answer-q { font-size: 20px; margin: 8px 0 14px; }
+.ask-answer-body p { font-size: 15px; line-height: 1.65; margin: 0 0 12px; color: var(--text); }
+.ask-answer-thinking { color: var(--muted); }
+.ask-answer-cursor { display: inline-block; width: 7px; height: 1.05em; margin-left: 2px; vertical-align: text-bottom; background: var(--brand); animation: askblink 1s steps(2) infinite; }
+@keyframes askblink { 50% { opacity: 0; } }
+.ask-answer-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+
 /* Social-proof learners counter (home) */
 .home-social { margin: 4px 0 14px; font-size: 14px; color: var(--muted); }
 .home-social strong { color: var(--text); }
