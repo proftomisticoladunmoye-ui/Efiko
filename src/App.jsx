@@ -29,6 +29,7 @@ import Settings from './components/Settings.jsx';
 import VerifyCertificate from './components/VerifyCertificate.jsx';
 import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
+import { can, homeSectionFor } from './rbac.js';
 import { storeRef } from './referral.js';
 import AskAnswer from './components/AskAnswer.jsx';
 import Landing from './components/Landing.jsx';
@@ -550,20 +551,27 @@ export default function App() {
         </>);
       case 'settings':
         return <Settings user={user} onSignOut={() => { authLogout(); setUser(null); }} onSignIn={() => setAuthOpen(true)} onGoSection={goSection} />;
-      case 'teach':
+      case 'teach': {
+        const org = can(user, 'manage_institution');
         return (<div className="teach-page">
-          <SectionHead title="Teach & Institution" sub="Author lessons, run classes and programmes, and manage your institution." />
+          <SectionHead
+            title={org ? 'Institution' : 'Teach & create'}
+            sub={org ? 'Author lessons, run classes and programmes, and manage your institution.' : 'Author lessons, build adaptive whiteboards and sell your work.'}
+          />
           <div className="teach-grid">
+            {/* Authoring & selling — everyone who can teach */}
             <button className="teach-card" onClick={openStudio}>📝 Lecturer Studio<span>Generate & publish lessons</span></button>
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?alwe-studio`; }}>🎨 Whiteboard Studio<span>Author adaptive lessons</span></button>
-            <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?classes`; }}>👥 Classes<span>Rosters & class progress</span></button>
-            <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?programmes`; }}>🧭 Programmes<span>Group courses into tracks</span></button>
-            <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?opportunities`; }}>🚀 Opportunities<span>Post jobs & scholarships</span></button>
-            <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?marketplace`; }}>🛒 Marketplace<span>Sell courses & packs</span></button>
-            <button className="teach-card" onClick={() => goSection('market')}>💼 Sell on EFIKO<span>Creators: sell your own resources</span></button>
-            <button className="teach-card" onClick={() => setView('admin')}>🏛️ Institution Admin<span>Branding & account</span></button>
+            <button className="teach-card" onClick={() => goSection('market')}>💼 Sell on EFIKO<span>Sell your own resources</span></button>
+            {/* Institution-scoped tools — organizations only */}
+            {org && <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?classes`; }}>👥 Classes<span>Rosters & class progress</span></button>}
+            {org && <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?programmes`; }}>🧭 Programmes<span>Group courses into tracks</span></button>}
+            {org && <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?opportunities`; }}>🚀 Opportunities<span>Post jobs & scholarships</span></button>}
+            {org && <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?marketplace`; }}>🛒 Marketplace<span>Sell courses & packs</span></button>}
+            {org && <button className="teach-card" onClick={() => setView('admin')}>🏛️ Institution Admin<span>Branding & account</span></button>}
           </div>
         </div>);
+      }
       case 'home':
       default:
         return (
@@ -595,7 +603,7 @@ export default function App() {
         {authOpen && (
           <AuthPanel
             initialMode={authMode}
-            onAuthed={(u) => { setUser(u); setAuthOpen(false); setShowLanding(false); setView('library'); setSection('home'); }}
+            onAuthed={(u) => { setUser(u); setAuthOpen(false); setShowLanding(false); setView('library'); setSection(homeSectionFor(u)); }}
             onClose={() => setAuthOpen(false)}
           />
         )}
@@ -622,12 +630,12 @@ export default function App() {
       {authOpen && (
         <AuthPanel
           initialMode={authMode}
-          onAuthed={(u) => { setUser(u); setAuthOpen(false); setShowLanding(false); setView('library'); setSection('home'); }}
+          onAuthed={(u) => { setUser(u); setAuthOpen(false); setShowLanding(false); setView('library'); setSection(homeSectionFor(u)); }}
           onClose={() => setAuthOpen(false)}
         />
       )}
       <div className="shell-body">
-        <Sidebar active={tsOpen ? 'thinkspace' : (view === 'library' ? section : null)} onSelect={(id) => { setNavOpen(false); if (id === 'thinkspace') setTsOpen((o) => !o); else goSection(id); }} onTeach={() => goSection('teach')} />
+        <Sidebar user={user} active={tsOpen ? 'thinkspace' : (view === 'library' ? section : null)} onSelect={(id) => { setNavOpen(false); if (id === 'thinkspace') setTsOpen((o) => !o); else goSection(id); }} onTeach={() => goSection('teach')} />
         {navOpen && <div className="nav-scrim" onClick={() => setNavOpen(false)} />}
         <main className="app-main">
           {error && <p className="error">{error}</p>}

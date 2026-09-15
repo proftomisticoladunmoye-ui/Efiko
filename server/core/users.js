@@ -7,6 +7,7 @@ import { randomBytes } from 'node:crypto';
 import { hashPassword, verifyPassword } from './auth.js';
 import { kvGet, kvPut, kvAll } from './kv.js';
 import { deriveFromSegment } from './segments.js';
+import { abilitiesFor } from './rbac.js';
 
 const COLL = 'users';
 const ROLES = new Set(['student', 'lecturer']); // institution_admin/operator live in their own flows
@@ -14,10 +15,12 @@ const ROLES = new Set(['student', 'lecturer']); // institution_admin/operator li
 const normEmail = (e) => String(e || '').toLowerCase().trim();
 // Never leak the password hash. Segment + accountType are safe to expose so the client can
 // tailor the experience; minorLikely is an internal protection flag and stays server-side.
-export const publicUser = (u) => ({
-  userId: u.userId, name: u.name, email: u.email, role: u.role,
-  segment: u.segment || null, accountType: u.accountType || 'learner'
-});
+// abilities is the server-vouched capability list the app renders navigation from.
+export const publicUser = (u) => {
+  const view = { userId: u.userId, name: u.name, email: u.email, role: u.role,
+    segment: u.segment || null, accountType: u.accountType || 'learner' };
+  return { ...view, abilities: abilitiesFor(view) };
+};
 
 export async function findByEmail(email) {
   const e = normEmail(email);

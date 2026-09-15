@@ -1,5 +1,8 @@
 // EFIKO 2.0 — left navigation rail (R1: App Shell & IA). Learner-facing sections; the
-// teacher/institution tools live behind "Teach". See docs/EFIKO-V2-REORGANIZATION.md.
+// teacher/institution tools live behind "Teach", shown only to accounts that can teach
+// (creators, institutions, lecturers). See docs/EFIKO-V2-REORGANIZATION.md.
+import { can } from '../rbac.js';
+
 const NAV = [
   { id: 'home', label: 'Home', icon: '🏠' },
   { id: 'learn', label: 'Learn', icon: '✦' },
@@ -16,7 +19,9 @@ const NAV = [
   { id: 'library', label: 'Library', icon: '📥' }
 ];
 
-export default function Sidebar({ active, onSelect, onTeach }) {
+export default function Sidebar({ active, onSelect, onTeach, user }) {
+  const canTeach = can(user, 'teach');
+  const teachLabel = can(user, 'manage_institution') ? 'Institution' : 'Teach';
   return (
     <nav className="sidebar" aria-label="Main navigation">
       <ul className="sidebar-nav">
@@ -30,9 +35,11 @@ export default function Sidebar({ active, onSelect, onTeach }) {
         ))}
       </ul>
       <div className="sidebar-foot">
-        <button className="nav-item" onClick={onTeach}>
-          <span className="nav-icon" aria-hidden="true">🧑‍🏫</span><span className="nav-label">Teach</span>
-        </button>
+        {canTeach && (
+          <button className={`nav-item ${active === 'teach' ? 'on' : ''}`} onClick={onTeach}>
+            <span className="nav-icon" aria-hidden="true">🧑‍🏫</span><span className="nav-label">{teachLabel}</span>
+          </button>
+        )}
         <button className={`nav-item ${active === 'settings' ? 'on' : ''}`} onClick={() => onSelect('settings')}>
           <span className="nav-icon" aria-hidden="true">⚙️</span><span className="nav-label">Settings</span>
         </button>
