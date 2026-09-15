@@ -9,6 +9,14 @@
   --warn: #b45309;
   --good: #15803d;
   --bad: #b91c1c;
+  /* Aliases used by the 2.0 shell and later components. Kept in sync with the
+     base palette above so text, borders and cards render consistently
+     everywhere (these were referenced before being defined). */
+  --text: #e2e8f0;   /* primary text (= --ink) */
+  --border: #1e293b; /* hairlines (= --line) */
+  --card: #131722;   /* elevated surface */
+  --card-2: #1c2230; /* hover / nested surface */
+  --radius: 12px;    /* default corner radius */
 }
 
 * { box-sizing: border-box; }
@@ -19,24 +27,43 @@ body {
   background: var(--bg);
   color: var(--ink);
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Global interaction + accessibility (applies app-wide).
+   - Keyboard users get a clear focus ring everywhere (previously only inside
+     the ALWE player); mouse clicks stay ring-free via :focus-visible.
+   - Interactive surfaces get a subtle, consistent transition.
+   - All motion is disabled for users who ask the OS for reduced motion. */
+button, a, input, select, textarea, [tabindex] {
+  outline-color: var(--brand-2);
+}
+:focus-visible {
+  outline: 2px solid var(--brand-2);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+button, .dash-card, .quick-card, .teach-card, .set-card, .nav-item, .dash-row {
+  transition: border-color .15s ease, background-color .15s ease, transform .12s ease, box-shadow .15s ease;
+}
+/* A gentle lift on the card family gives the interface a more premium feel. */
+.dash-card:hover, .quick-card:hover, .teach-card:hover, .dash-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .28);
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 .app { max-width: 720px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; }
 
-/* Brand bar */
-.brandbar { display: flex; align-items: center; justify-content: center; padding: 14px 16px 6px; }
-.brandbar { flex-direction: column; gap: 4px; }
-.brandbar-logo { width: 180px; max-width: 64%; height: auto; }
-.brandbar-inst { font-size: 12px; color: var(--brand-2); font-weight: 600; }
 .app-main { padding: 16px; flex: 1; }
-.app-footer { padding: 14px 16px; color: var(--muted); font-size: 12px; text-align: center; border-top: 1px solid var(--line); }
-
-/* Status bar */
-.statusbar { display: flex; align-items: center; gap: 8px; padding: 8px 16px; font-size: 13px; border-bottom: 1px solid var(--line); }
-.statusbar .dot { width: 9px; height: 9px; border-radius: 50%; }
-.statusbar.is-online .dot { background: var(--brand-2); }
-.statusbar.is-offline .dot { background: var(--warn); }
-.statusbar .source { color: var(--muted); }
 
 /* Capsule */
 .capsule-header { padding: 8px 0 12px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
@@ -537,7 +564,6 @@ body {
 }
 
 /* Account control + auth (V1.5) */
-.brandbar-account { margin-left: auto; display: inline-flex; align-items: center; gap: 8px; }
 .account-name { font-size: 13px; color: var(--muted); }
 .account-btn { background: transparent; border: 1px solid var(--brand); color: var(--brand-2); border-radius: 999px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
 .efiko-greeting { margin-bottom: 12px; }
