@@ -18,9 +18,13 @@ async function post(path, body) {
   return d;
 }
 
-export async function signup(name, email, password) {
+export async function signup(name, email, password, segment) {
   const ref = consumeRef();
-  const d = await post('/auth/signup', { name, email, password, ...(ref ? { ref } : {}) });
+  const d = await post('/auth/signup', {
+    name, email, password,
+    ...(segment ? { segment } : {}),
+    ...(ref ? { ref } : {})
+  });
   setToken(d.token);
   clearRef(); // one-time: don't attribute later signups on this device
   return d.user;

@@ -7,15 +7,7 @@
 // weak connection — the same low-bandwidth ethos as Efiko Lite.
 import { useEffect, useState } from 'react';
 import { fetchPublicStats, niceCount } from '../stats.js';
-
-const SEGMENTS = [
-  { id: 'university',   icon: '🎓', title: 'University students', line: 'Ace courses with an AI tutor that explains, quizzes and revises with you.' },
-  { id: 'school',       icon: '📚', title: 'Secondary & primary', line: 'Clear, patient lessons that meet each learner at their level.' },
-  { id: 'professional', icon: '💼', title: 'Professionals',        line: 'Upskill on your schedule and earn certificates that verify.' },
-  { id: 'creator',      icon: '✍️', title: 'Course creators',      line: 'Build visual lessons and sell them to learners across Africa.' },
-  { id: 'institution',  icon: '🏫', title: 'Schools & universities', line: 'Run cohorts, track outcomes and brand Efiko as your own.' },
-  { id: 'corporate',    icon: '🏢', title: 'Corporate teams',      line: 'Train teams with measurable progress and completion reporting.' }
-];
+import { SEGMENTS } from '../segments.js';
 
 const FEATURES = [
   { icon: '🎙️', title: 'A whiteboard that teaches out loud', line: 'Efiko narrates each step while it draws — like a tutor at the board, not a static slide.' },

@@ -1,12 +1,18 @@
 // EFIKO — sign up / sign in panel (V1.5). Email + password; toggles between modes.
+// Signup captures the learner's segment (pre-filled from the landing choice), which the
+// server turns into an account type + role — the foundation for segment-aware experiences.
 import { useState } from 'react';
 import { signup, login } from '../auth.js';
+import { SEGMENTS } from '../segments.js';
+
+const readSeg = () => { try { return localStorage.getItem('efiko-segment') || ''; } catch { return ''; } };
 
 export default function AuthPanel({ onAuthed, onClose, initialMode = 'signup' }) {
   const [mode, setMode] = useState(initialMode);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [segment, setSegment] = useState(readSeg);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState(null);
 
@@ -14,7 +20,10 @@ export default function AuthPanel({ onAuthed, onClose, initialMode = 'signup' })
     e.preventDefault();
     setBusy(true); setErr(null);
     try {
-      const user = mode === 'signup' ? await signup(name, email, password) : await login(email, password);
+      const user = mode === 'signup'
+        ? await signup(name, email, password, segment || undefined)
+        : await login(email, password);
+      try { localStorage.removeItem('efiko-segment'); } catch { /* ignore */ }
       onAuthed(user);
     } catch (e2) {
       setErr(e2.message);
@@ -32,6 +41,24 @@ export default function AuthPanel({ onAuthed, onClose, initialMode = 'signup' })
         <h2>{mode === 'signup' ? 'Create your EFIKO account' : 'Welcome back'}</h2>
         <p className="auth-sub">{mode === 'signup' ? 'Save your progress and unlock your EFIKO AI tutor.' : 'Sign in to continue learning.'}</p>
         <form onSubmit={submit}>
+          {mode === 'signup' && (
+            <fieldset className="auth-seg" disabled={busy}>
+              <legend className="auth-seg-label">I'm a…</legend>
+              <div className="auth-seg-chips">
+                {SEGMENTS.map((s) => (
+                  <button
+                    type="button"
+                    key={s.id}
+                    className={`auth-seg-chip${segment === s.id ? ' on' : ''}`}
+                    aria-pressed={segment === s.id}
+                    onClick={() => setSegment((cur) => (cur === s.id ? '' : s.id))}
+                  >
+                    <span aria-hidden="true">{s.icon}</span> {s.short}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          )}
           {mode === 'signup' && (
             <input className="ask-input" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} disabled={busy} />
           )}

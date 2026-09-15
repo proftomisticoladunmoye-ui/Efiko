@@ -6,13 +6,18 @@
 import { randomBytes } from 'node:crypto';
 import { hashPassword, verifyPassword } from './auth.js';
 import { kvGet, kvPut, kvAll } from './kv.js';
+import { deriveFromSegment } from './segments.js';
 
 const COLL = 'users';
 const ROLES = new Set(['student', 'lecturer']); // institution_admin/operator live in their own flows
 
 const normEmail = (e) => String(e || '').toLowerCase().trim();
-// Never leak the password hash.
-export const publicUser = (u) => ({ userId: u.userId, name: u.name, email: u.email, role: u.role });
+// Never leak the password hash. Segment + accountType are safe to expose so the client can
+// tailor the experience; minorLikely is an internal protection flag and stays server-side.
+export const publicUser = (u) => ({
+  userId: u.userId, name: u.name, email: u.email, role: u.role,
+  segment: u.segment || null, accountType: u.accountType || 'learner'
+});
 
 export async function findByEmail(email) {
   const e = normEmail(email);
@@ -32,17 +37,23 @@ export async function countUsers() {
 // Short, unambiguous, shareable referral code (8 hex chars, uppercase).
 const newRefCode = () => randomBytes(4).toString('hex').toUpperCase();
 
-export async function createUser({ name, email, password, role = 'student' }) {
+export async function createUser({ name, email, password, role = 'student', segment = null }) {
   email = normEmail(email);
   if (!email || !password) throw new Error('email and password are required');
   if (String(password).length < 6) throw new Error('password must be at least 6 characters');
   if (await findByEmail(email)) throw new Error('an account with this email already exists');
+  // A chosen segment decides the account shape (accountType + base role); an explicit role
+  // argument only applies when no segment was picked (keeps older callers working).
+  const seg = deriveFromSegment(segment);
   const rec = {
     userId: `u_${randomBytes(8).toString('hex')}`,
     name: String(name || email.split('@')[0]).trim(),
     email,
     passwordHash: hashPassword(password),
-    role: ROLES.has(role) ? role : 'student',
+    role: seg.segment ? seg.role : (ROLES.has(role) ? role : 'student'),
+    segment: seg.segment,
+    accountType: seg.accountType,
+    ...(seg.minorLikely ? { minorLikely: true } : {}),
     refCode: newRefCode(),
     createdAt: Date.now()
   };

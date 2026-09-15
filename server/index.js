@@ -1030,9 +1030,9 @@ const server = createServer(async (req, res) => {
 
   // --- User accounts (V1.5): student/lecturer signup + login ---
   if (req.method === 'POST' && url.pathname === '/auth/signup') {
-    const { name, email, password, ref } = await readBody(req);
+    const { name, email, password, ref, segment } = await readBody(req);
     try {
-      const u = await createUser({ name, email, password, role: 'student' });
+      const u = await createUser({ name, email, password, segment });
       // Referral attribution: credit the referrer (XP) when their invitee signs up.
       if (ref) {
         const referrer = await findByRefCode(ref);

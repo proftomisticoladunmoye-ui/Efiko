@@ -580,6 +580,14 @@ button, .dash-card, .quick-card, .teach-card, .set-card, .nav-item, .dash-row {
 .auth-close { position: absolute; top: 10px; right: 12px; background: transparent; border: 0; color: var(--muted); font-size: 22px; line-height: 1; cursor: pointer; }
 .auth-toggle { margin: 14px 0 0; font-size: 13px; color: var(--muted); text-align: center; }
 .auth-toggle button { background: transparent; border: 0; color: var(--brand-2); cursor: pointer; font-size: 13px; }
+/* Segment picker on signup (multi-segment signup) */
+.auth-seg { border: 0; padding: 0; margin: 0 0 2px; min-width: 0; }
+.auth-seg-label { padding: 0; font-size: 12px; color: var(--muted); }
+.auth-seg-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.auth-seg-chip { display: inline-flex; align-items: center; gap: 5px; background: #0b1424; border: 1px solid var(--line); color: var(--muted); border-radius: 999px; padding: 6px 11px; font-size: 12px; cursor: pointer; }
+.auth-seg-chip:hover { border-color: var(--brand-2); color: var(--text); }
+.auth-seg-chip.on { background: rgba(20,184,166,.14); border-color: var(--brand-2); color: var(--text); font-weight: 600; }
+.auth-seg:disabled .auth-seg-chip { opacity: .6; cursor: default; }
 
 /* Top-level error boundary fallback */
 .boundary { max-width: 420px; margin: 40px auto; text-align: center; background: rgba(13,21,38,.5); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
