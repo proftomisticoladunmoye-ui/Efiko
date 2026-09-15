@@ -71,9 +71,14 @@ export default function HomeDashboard({ user, readiness, enrolledIds = [], onOpe
           <strong>Ask EFIKO AI</strong>
           <em>Any topic, instantly</em>
         </button>
+        <button className="dash-card" onClick={() => onGoSection('courses')}>
+          <span className="dash-kicker">📚 Explore</span>
+          <strong>Browse courses</strong>
+          <em>Adaptive lessons &amp; certificates</em>
+        </button>
         <button className="dash-card" onClick={() => (onOpenThinkSpace ? onOpenThinkSpace() : onGoSection('thinkspace'))}>
           <span className="dash-kicker">🧠 ThinkSpace</span>
-          <strong>Resume a discussion</strong>
+          <strong>{user ? 'Resume a discussion' : 'Try ThinkSpace'}</strong>
           <em>Your AI workspace that remembers</em>
         </button>
       </div>
