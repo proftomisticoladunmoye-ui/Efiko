@@ -31,6 +31,7 @@ import Programmes from './components/Programmes.jsx';
 import { me as fetchMe, logout as authLogout } from './auth.js';
 import { storeRef } from './referral.js';
 import AskAnswer from './components/AskAnswer.jsx';
+import Landing from './components/Landing.jsx';
 import { aiHeaders, notifyAiUsed, fetchCredits } from './aiClient.js';
 import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 import { enrolProgramme } from './programmes.js';
@@ -102,6 +103,21 @@ export default function App() {
   const [online, setOnline] = useState(navigator.onLine);
   const [user, setUser] = useState(null);          // signed-in account (null = visitor)
   const [authOpen, setAuthOpen] = useState(false);  // sign-in/up panel
+  const [authMode, setAuthMode] = useState('signup'); // AuthPanel starts in signup or login
+  // Visitors meet the marketing landing first; returning users (token present) skip it to
+  // avoid a flash, and anyone who enters the app or signs in stays in the shell.
+  const [showLanding, setShowLanding] = useState(() => {
+    try { return !localStorage.getItem('efiko-user-token'); } catch { return true; }
+  });
+
+  const openAuth = useCallback((mode = 'signup') => { setAuthMode(mode); setAuthOpen(true); }, []);
+  const enterApp = useCallback(() => setShowLanding(false), []);
+  // Remember the segment a visitor picked on the landing so the (upcoming) multi-segment
+  // signup can pre-select it; for now it opens the account panel.
+  const chooseSegment = useCallback((id) => {
+    try { localStorage.setItem('efiko-segment', id); } catch { /* ignore */ }
+    setAuthMode('signup'); setAuthOpen(true);
+  }, []);
 
   const [enrolledIds, setEnrolledIds] = useState([]);
   const [credits, setCredits] = useState(null);
@@ -564,19 +580,49 @@ export default function App() {
     }
   }
 
+  // Visitor front door: the marketing landing, shown until the visitor signs in or
+  // steps into the app (try the tutor, explore courses). Its own header + footer, no shell.
+  if (!user && showLanding) {
+    return (
+      <div className="app landing-page">
+        <Landing
+          onGetStarted={() => openAuth('signup')}
+          onSignIn={() => openAuth('login')}
+          onSelectSegment={chooseSegment}
+          onAsk={(topic) => { enterApp(); handleAsk(topic); }}
+          onExplore={(sec) => { enterApp(); goSection(sec); }}
+        />
+        {authOpen && (
+          <AuthPanel
+            initialMode={authMode}
+            onAuthed={(u) => { setUser(u); setAuthOpen(false); setShowLanding(false); setView('library'); setSection('home'); }}
+            onClose={() => setAuthOpen(false)}
+          />
+        )}
+        <footer className="app-footer">
+          <a href="/about/">About</a>
+          <span className="app-footer-dot" aria-hidden="true">·</span>
+          <a href="/privacy/">Privacy Policy</a>
+          <span className="app-footer-copy">© {new Date().getFullYear()} Efiko · Psychtrix Initiative Ltd</span>
+        </footer>
+      </div>
+    );
+  }
+
   return (
     <div className={`app shell ${navOpen ? 'nav-open' : ''}`}>
       <TopBar
         logo={tenant?.logo} name={tenant?.name} institution={tenant?.institution}
         user={user} online={online} asking={asking} credits={credits}
         onAsk={handleAsk}
-        onSignIn={() => setAuthOpen(true)}
+        onSignIn={() => openAuth('login')}
         onSignOut={() => { authLogout(); setUser(null); }}
         onMenu={() => setNavOpen((o) => !o)}
       />
       {authOpen && (
         <AuthPanel
-          onAuthed={(u) => { setUser(u); setAuthOpen(false); setView('library'); setSection('home'); }}
+          initialMode={authMode}
+          onAuthed={(u) => { setUser(u); setAuthOpen(false); setShowLanding(false); setView('library'); setSection('home'); }}
           onClose={() => setAuthOpen(false)}
         />
       )}

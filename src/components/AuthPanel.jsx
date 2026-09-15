@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import { signup, login } from '../auth.js';
 
-export default function AuthPanel({ onAuthed, onClose }) {
-  const [mode, setMode] = useState('signup');
+export default function AuthPanel({ onAuthed, onClose, initialMode = 'signup' }) {
+  const [mode, setMode] = useState(initialMode);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
