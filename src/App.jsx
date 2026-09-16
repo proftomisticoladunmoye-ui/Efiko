@@ -33,6 +33,7 @@ import { can, homeSectionFor } from './rbac.js';
 import { storeRef } from './referral.js';
 import AskAnswer from './components/AskAnswer.jsx';
 import Landing from './components/Landing.jsx';
+import LiteSuggest from './components/LiteSuggest.jsx';
 import { aiHeaders, notifyAiUsed, fetchCredits } from './aiClient.js';
 import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 import { enrolProgramme } from './programmes.js';
@@ -638,6 +639,7 @@ export default function App() {
         <Sidebar user={user} active={tsOpen ? 'thinkspace' : (view === 'library' ? section : null)} onSelect={(id) => { setNavOpen(false); if (id === 'thinkspace') setTsOpen((o) => !o); else goSection(id); }} onTeach={() => goSection('teach')} />
         {navOpen && <div className="nav-scrim" onClick={() => setNavOpen(false)} />}
         <main className="app-main">
+          <LiteSuggest />
           {error && <p className="error">{error}</p>}
           {view === 'ask' ? (
             <AskAnswer answer={answer} busy={asking} onFullLesson={makeLesson} onBack={() => { setView('library'); setAnswer(null); }} />

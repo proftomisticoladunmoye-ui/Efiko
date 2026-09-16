@@ -8,6 +8,7 @@
 import { useEffect, useState } from 'react';
 import { fetchPublicStats, niceCount } from '../stats.js';
 import { SEGMENTS } from '../segments.js';
+import { usePerfMode } from '../perfMode.js';
 
 const FEATURES = [
   { icon: '🎙️', title: 'A whiteboard that teaches out loud', line: 'Efiko narrates each step while it draws — like a tutor at the board, not a static slide.' },
@@ -29,6 +30,8 @@ const LOOP = [
 export default function Landing({ onGetStarted, onSignIn, onAsk, onExplore, onSelectSegment }) {
   const [stats, setStats] = useState(null);
   const [q, setQ] = useState('');
+  const { effective } = usePerfMode();
+  const lite = effective === 'lite'; // Lite: skip decorative media entirely, don't just hide it.
 
   useEffect(() => { fetchPublicStats().then(setStats); }, []);
 
@@ -86,7 +89,7 @@ export default function Landing({ onGetStarted, onSignIn, onAsk, onExplore, onSe
             </p>
           )}
         </div>
-        <div className="lp-hero-art" aria-hidden="true"><WhiteboardArt /></div>
+        {!lite && <div className="lp-hero-art" aria-hidden="true"><WhiteboardArt /></div>}
       </section>
 
       {/* Learning loop */}

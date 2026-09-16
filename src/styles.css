@@ -1212,3 +1212,42 @@ button.set-link:hover { border-color: var(--brand-2); }
   .lp-section { padding-block: 40px; }
   .lp-loop-arrow { margin: 0 4px; }
 }
+
+/* ============ Data & Performance: Full / Smart / Lite (R7) ============ */
+/* Settings segmented control */
+.set-perf .perf-seg { display: flex; gap: 4px; background: #0b1424; border: 1px solid var(--line); border-radius: 10px; padding: 4px; margin: 4px 0 10px; }
+.perf-opt { flex: 1; background: transparent; border: 0; color: var(--muted); border-radius: 7px; padding: 8px 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.perf-opt:hover { color: var(--text); }
+.perf-opt.on { background: var(--brand); color: #04231f; }
+
+/* Auto-suggest Lite banner */
+.lite-suggest { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; background: rgba(180,83,9,.12); border: 1px solid var(--warn); border-radius: 10px; padding: 10px 14px; margin-bottom: 14px; font-size: 14px; }
+.lite-suggest-actions { display: flex; gap: 8px; }
+.lite-suggest-yes { background: var(--brand); color: #04231f; border: 0; border-radius: 8px; padding: 7px 14px; font-weight: 600; cursor: pointer; font-size: 13px; }
+.lite-suggest-no { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 8px; padding: 7px 12px; cursor: pointer; font-size: 13px; }
+
+/* ---- Efiko Lite: text-first, data-light. Trims animation, decorative media and depth. ---- */
+:root[data-mode="lite"] *,
+:root[data-mode="lite"] *::before,
+:root[data-mode="lite"] *::after {
+  animation-duration: .001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .001ms !important;
+  scroll-behavior: auto !important;
+}
+/* No hover lift or heavy shadows */
+:root[data-mode="lite"] .dash-card:hover,
+:root[data-mode="lite"] .quick-card:hover,
+:root[data-mode="lite"] .teach-card:hover,
+:root[data-mode="lite"] .dash-row:hover { transform: none !important; box-shadow: none !important; }
+:root[data-mode="lite"] .share-menu { box-shadow: none; }
+/* Flatten decorative gradients to solid surfaces (cheaper to paint, calmer on cheap screens) */
+:root[data-mode="lite"] .dash-continue,
+:root[data-mode="lite"] .cs-earnings,
+:root[data-mode="lite"] .set-invite,
+:root[data-mode="lite"] .lp-hero,
+:root[data-mode="lite"] .lp-offline,
+:root[data-mode="lite"] .lp-cta { background: var(--card) !important; }
+:root[data-mode="lite"] .set-avatar { background: var(--brand) !important; }
+/* Drop purely decorative art if any slips through the JS guard */
+:root[data-mode="lite"] .lp-hero-art { display: none !important; }

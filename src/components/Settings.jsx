@@ -7,6 +7,34 @@ import { fetchGamifyStats } from '../gamify.js';
 import { fetchMyCertificates } from '../certificates.js';
 import { fetchReferral, inviteLink } from '../referral.js';
 import ShareButton from './ShareButton.jsx';
+import { MODES, MODE_LABELS, usePerfMode } from '../perfMode.js';
+
+const PERF_DESC = {
+  full: 'Everything on — rich visuals, animation and media. Best on Wi-Fi or a fast connection.',
+  smart: 'Efiko adapts to your connection and device automatically.',
+  lite: 'Text-first and data-light — minimal animation and media. Best on slow or costly data.'
+};
+
+// Settings → Data & Performance. Device-level, so it works for guests too.
+function PerfModeCard() {
+  const { mode, effective, setMode, constrained } = usePerfMode();
+  return (
+    <section className="set-card set-perf">
+      <h3>📶 Data &amp; Performance</h3>
+      <div className="perf-seg" role="group" aria-label="Performance mode">
+        {MODES.map((m) => (
+          <button key={m} type="button" className={`perf-opt${mode === m ? ' on' : ''}`} aria-pressed={mode === m} onClick={() => setMode(m)}>
+            {MODE_LABELS[m]}
+          </button>
+        ))}
+      </div>
+      <p className="set-sub">
+        {PERF_DESC[mode]}
+        {mode === 'smart' && <> Right now: <strong>{MODE_LABELS[effective]}</strong>{constrained ? ' — saving data' : ''}.</>}
+      </p>
+    </section>
+  );
+}
 
 export default function Settings({ user, onSignOut, onSignIn, onGoSection }) {
   const [credits, setCredits] = useState(null);
@@ -31,6 +59,7 @@ export default function Settings({ user, onSignOut, onSignIn, onGoSection }) {
       <div className="settings-page">
         <h2 className="set-h">⚙️ Settings</h2>
         <p className="lib-sub">You're browsing as a guest. <button className="footer-link" onClick={onSignIn}>Sign in</button> to save your progress, credits and certificates across devices.</p>
+        <div className="set-grid"><PerfModeCard /></div>
       </div>
     );
   }
@@ -87,6 +116,8 @@ export default function Settings({ user, onSignOut, onSignIn, onGoSection }) {
           <h3>📥 Offline & downloads</h3>
           <p className="set-sub">Manage downloaded lessons for offline learning →</p>
         </button>
+
+        <PerfModeCard />
       </div>
 
       <div className="set-actions">
