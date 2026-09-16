@@ -35,6 +35,9 @@ import AskAnswer from './components/AskAnswer.jsx';
 import Landing from './components/Landing.jsx';
 import LiteSuggest from './components/LiteSuggest.jsx';
 import SyncStatus from './components/SyncStatus.jsx';
+import TeachingBoard from './components/TeachingBoard.jsx';
+import { fetchTeachingSequence } from './whiteboard.js';
+import { effectiveMode } from './perfMode.js';
 import { aiHeaders, notifyAiUsed, fetchCredits } from './aiClient.js';
 import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 import { enrolProgramme } from './programmes.js';
@@ -87,6 +90,8 @@ export default function App() {
   const [view, setView] = useState('library'); // 'library' (shell) | 'capsule' | 'studio' | 'admin'
   const [openOriginalId, setOpenOriginalId] = useState(null); // course to auto-open in Originals
   const [answer, setAnswer] = useState(null); // streamed Ask answer { topic, text, streaming, err }
+  const [board, setBoard] = useState(null);   // AI teaching-whiteboard sequence
+  const [boarding, setBoarding] = useState(false); // generating a teaching sequence
   const [section, setSection] = useState('home'); // sidebar section within the shell
   const [navOpen, setNavOpen] = useState(false);   // mobile sidebar drawer
   const [tsOpen, setTsOpen] = useState(false);     // ThinkSpace right panel
@@ -301,6 +306,21 @@ export default function App() {
     } finally {
       setAsking(false);
       notifyAiUsed();
+    }
+  }, []);
+
+  // AI Teaching Whiteboard: turn a topic into a narrated, step-by-step teaching sequence and
+  // open the board player. Requests the low-data fidelity when the effective mode is Lite.
+  const teachOnBoard = useCallback(async (topic) => {
+    setBoarding(true); setError(null);
+    try {
+      const sequence = await fetchTeachingSequence(topic, effectiveMode() === 'lite');
+      setBoard(sequence);
+      setView('board');
+    } catch (e) {
+      setError(`The whiteboard tutor couldn’t build that (${e.message}).`);
+    } finally {
+      setBoarding(false);
     }
   }, []);
 
@@ -644,7 +664,9 @@ export default function App() {
           <LiteSuggest />
           {error && <p className="error">{error}</p>}
           {view === 'ask' ? (
-            <AskAnswer answer={answer} busy={asking} onFullLesson={makeLesson} onBack={() => { setView('library'); setAnswer(null); }} />
+            <AskAnswer answer={answer} busy={asking} boarding={boarding} onFullLesson={makeLesson} onTeachBoard={teachOnBoard} onBack={() => { setView('library'); setAnswer(null); }} />
+          ) : view === 'board' && board ? (
+            <TeachingBoard sequence={board} topic={answer?.topic} onExit={() => { setView('ask'); setBoard(null); }} />
           ) : view === 'capsule' && active ? (
             <>
               <button className="back" onClick={() => { setView('library'); setActive(null); if (catalog) computeReadiness(catalog).then(setReadiness); }}>← Back</button>

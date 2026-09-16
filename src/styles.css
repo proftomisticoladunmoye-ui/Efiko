@@ -1263,3 +1263,45 @@ button.set-link:hover { border-color: var(--brand-2); }
 .sync-status.offline { border-color: var(--warn); background: rgba(180,83,9,.10); }
 .sync-status.offline .sync-status-text { color: var(--warn); }
 .sync-status-now { flex: none; background: var(--brand); color: #04231f; border: 0; border-radius: 7px; padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer; }
+
+/* ============ AI Teaching Whiteboard (R9) ============ */
+.tb { max-width: 680px; }
+.tb-top { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.tb-top .back { margin: 0; }
+.tb-title { flex: 1; min-width: 0; font-weight: 700; font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tb-mute { flex: none; background: transparent; border: 1px solid var(--line); border-radius: 999px; width: 34px; height: 34px; cursor: pointer; font-size: 15px; }
+.tb-progress { display: flex; gap: 6px; margin-bottom: 12px; }
+.tb-dot { flex: 1; height: 4px; border-radius: 999px; background: var(--line); }
+.tb-dot.done { background: var(--brand); }
+.tb-dot.on { background: var(--brand-2); }
+.tb-board { background: #fff; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.tb-board svg { display: block; width: 100%; height: auto; }
+.tb-board.draw-in { animation: tbIn .45s ease; }
+@keyframes tbIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.tb-say { margin: 12px 0; }
+.tb-step-title { display: inline-block; font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--brand-2); margin-bottom: 4px; }
+.tb-say p { margin: 2px 0 6px; font-size: 15px; line-height: 1.6; }
+.tb-replay { background: transparent; border: 0; color: var(--brand-2); cursor: pointer; font-size: 13px; padding: 0; }
+.tb-check { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin: 12px 0; }
+.tb-check-q { font-weight: 600; margin: 0 0 10px; }
+.tb-check-opts { display: grid; gap: 8px; }
+.tb-opt { text-align: left; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: #0d1526; color: var(--ink); cursor: pointer; font-size: 14px; }
+.tb-opt:hover:not(:disabled) { border-color: var(--brand-2); }
+.tb-opt.correct { border-color: var(--good); background: rgba(21,128,61,.18); }
+.tb-opt.wrong { border-color: var(--bad); background: rgba(185,28,28,.18); }
+.tb-check-fb { margin: 10px 0 0; font-size: 14px; color: var(--muted); }
+.tb-nav { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; }
+.tb-prev, .tb-next { border-radius: 8px; padding: 9px 14px; font-size: 14px; font-weight: 600; cursor: pointer; border: 1px solid var(--line); }
+.tb-prev { background: transparent; color: var(--muted); }
+.tb-prev:disabled { opacity: .4; cursor: default; }
+.tb-next { background: var(--brand); color: #04231f; border-color: var(--brand); }
+.tb-next:disabled { opacity: .5; cursor: default; }
+.tb-count { font-size: 12px; color: var(--muted); }
+.tb-teachback { margin-top: 4px; }
+.tb-tb-prompt { font-size: 16px; margin: 4px 0 10px; }
+.tb-tb-input { width: 100%; background: #0d1526; border: 1px solid var(--line); border-radius: 10px; padding: 12px; color: var(--ink); font-size: 15px; font-family: inherit; resize: vertical; }
+.tb-tb-input:focus { outline: none; border-color: var(--brand-2); }
+.tb-done { text-align: center; padding: 26px 16px; }
+.tb-done-badge { font-size: 44px; }
+.tb-done h3 { margin: 6px 0 8px; }
+.ask-answer-secondary { background: transparent !important; color: var(--brand-2) !important; border: 1px solid var(--line) !important; }

@@ -1,6 +1,6 @@
 // EFIKO — instant streamed answer. The tutor's explanation appears token-by-token in ~1–2s;
 // the full lesson (whiteboard, quiz, flashcards, offline save) is generated on demand.
-export default function AskAnswer({ answer, onFullLesson, onBack, busy }) {
+export default function AskAnswer({ answer, onFullLesson, onTeachBoard, onBack, busy, boarding }) {
   if (!answer) return null;
   const paras = (answer.text || '').split(/\n{2,}/).filter(Boolean);
   return (
@@ -16,8 +16,11 @@ export default function AskAnswer({ answer, onFullLesson, onBack, busy }) {
       {answer.err && <p className="error">Sorry — {answer.err}</p>}
       {!answer.streaming && !answer.err && (
         <div className="ask-answer-actions">
-          <button className="course-open" disabled={busy} onClick={() => onFullLesson(answer.topic)}>
-            {busy ? 'Building your lesson…' : '📚 Turn into a full lesson — whiteboard, quiz & flashcards'}
+          <button className="course-open" disabled={boarding} onClick={() => onTeachBoard(answer.topic)}>
+            {boarding ? 'Building your whiteboard…' : '🎨 Teach me on the whiteboard — step by step'}
+          </button>
+          <button className="course-open ask-answer-secondary" disabled={busy} onClick={() => onFullLesson(answer.topic)}>
+            {busy ? 'Building your lesson…' : '📚 Full lesson — quiz & flashcards'}
           </button>
           <button className="course-share-btn" onClick={onBack}>Ask something else</button>
         </div>

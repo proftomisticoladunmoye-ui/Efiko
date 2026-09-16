@@ -11,6 +11,7 @@ import { createSession, handle } from './core/engine.js';
 import { renderResult } from './channels/whatsapp/render.js';
 import { sendMessages, isLive } from './channels/whatsapp/transport.js';
 import { generateCapsule, generateFromImage, isConfigured as aiConfigured } from './core/ai/lessonGenerator.js';
+import { generateTeachingSequence } from './core/ai/teachingBoard.js';
 import { getClient, FAST_MODEL } from './core/ai/client.js';
 import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alwe/sceneGenerator.js';
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
@@ -1254,6 +1255,22 @@ const server = createServer(async (req, res) => {
       return res.end(audio.audio);
     } catch (e) {
       return json(res, 502, { error: 'tts failed', detail: e.message });
+    }
+  }
+
+  // AI Teaching Whiteboard (R9): turn a topic into a narrated, step-by-step teaching sequence.
+  // `lite` requests the low-data fidelity (fewer, smaller steps) for poor connections.
+  if (req.method === 'POST' && url.pathname === '/whiteboard/teach') {
+    if (!aiConfigured()) return json(res, 503, { error: 'AI not configured' });
+    { const ch = await chargeAI(req, 'gen'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
+    const { topic, lite } = await readBody(req);
+    if (!topic || !String(topic).trim()) return json(res, 400, { error: 'topic is required' });
+    try {
+      const sequence = await generateTeachingSequence({ topic, lite: !!lite });
+      if (!sequence) return json(res, 502, { error: 'The whiteboard tutor could not build that lesson. Try rephrasing.' });
+      return json(res, 200, { sequence });
+    } catch (e) {
+      return json(res, 502, { error: e.message });
     }
   }
 

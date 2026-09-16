@@ -44,8 +44,9 @@ const CapsuleSchema = z.object({
 });
 
 // Defence-in-depth: the SVG is rendered via innerHTML in the PWA, so strip anything
-// active even though it comes from our own model.
-function sanitizeSvg(svg) {
+// active even though it comes from our own model. Exported so the teaching-whiteboard
+// generator uses the exact same sanitiser.
+export function sanitizeSvg(svg) {
   if (typeof svg !== 'string') return '';
   return svg
     .replace(/<script[\s\S]*?<\/script>/gi, '')
