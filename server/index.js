@@ -925,6 +925,36 @@ const server = createServer(async (req, res) => {
     } catch { /* never block progress on gamification */ }
     return json(res, 200, { ok: true });
   }
+  // Offline Sync Engine (R8): apply a batch of queued learning activities that happened while
+  // the learner was offline. Each activity is applied by type and its client id returned in
+  // `applied`, so the client can clear exactly what the server accepted (anything omitted stays
+  // queued and is retried). Progress records merge (best quiz score is kept), which is the
+  // conflict policy for the same course touched from multiple devices — no learning is lost.
+  if (req.method === 'POST' && url.pathname === '/sync') {
+    const user = await authedUser(req);
+    if (!user) return json(res, 401, { error: 'unauthorized' });
+    const body = await readBody(req);
+    const activities = Array.isArray(body.activities) ? body.activities : [];
+    const applied = [];
+    for (const a of activities) {
+      try {
+        if (a.type === 'progress') {
+          const courseId = a.courseId || courseIdOf(a.university, a.course);
+          if (courseId) {
+            await recordProgress(user.userId, courseId, { event: a.event, score: a.score, total: a.total, cohortId: a.cohortId });
+            try {
+              if (a.event === 'completed') await gamifyAward(user.userId, 'course_complete');
+              else if (a.event === 'quiz' && a.total && (a.score / a.total) * 100 >= CERT_PASS_MARK) await gamifyAward(user.userId, 'quiz_pass');
+              else if (a.event === 'opened') await gamifyAward(user.userId, 'session');
+            } catch { /* never block sync on gamification */ }
+          }
+        }
+        // Future activity types (notes, bookmarks, whiteboard work) slot in here.
+        if (a.id !== undefined) applied.push(a.id);
+      } catch { /* leave unapplied → the client retries on the next flush */ }
+    }
+    return json(res, 200, { serverTime: Date.now(), applied });
+  }
   // Gamification stats for the current user (XP, level, streak, badges).
   if (req.method === 'GET' && url.pathname === '/gamify') {
     const user = await authedUser(req);

@@ -1251,3 +1251,15 @@ button.set-link:hover { border-color: var(--brand-2); }
 :root[data-mode="lite"] .set-avatar { background: var(--brand) !important; }
 /* Drop purely decorative art if any slips through the JS guard */
 :root[data-mode="lite"] .lp-hero-art { display: none !important; }
+
+/* ============ Offline sync status (R8) ============ */
+.sync-status { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; margin-bottom: 12px; font-size: 13px; background: var(--card); }
+.sync-status-ico { flex: none; }
+.sync-status-text { flex: 1; min-width: 0; color: var(--muted); }
+.sync-status.ok { border-color: rgba(21,128,61,.5); }
+.sync-status.ok .sync-status-text { color: var(--good); }
+.sync-status.pending { border-color: rgba(251,191,36,.5); background: rgba(251,191,36,.08); }
+.sync-status.pending .sync-status-text { color: #fbbf24; }
+.sync-status.offline { border-color: var(--warn); background: rgba(180,83,9,.10); }
+.sync-status.offline .sync-status-text { color: var(--warn); }
+.sync-status-now { flex: none; background: var(--brand); color: #04231f; border: 0; border-radius: 7px; padding: 6px 12px; font-size: 12px; font-weight: 600; cursor: pointer; }

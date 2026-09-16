@@ -1,18 +1,13 @@
-// EFIKO — client progress reporting (V2). Fire-and-forget: reports a learning event to the
-// gateway when the user is signed in; a silent no-op for visitors and when offline.
-const GATEWAY = import.meta.env.VITE_GATEWAY || 'http://localhost:4100';
-const token = () => localStorage.getItem('efiko-user-token') || '';
+// EFIKO — client progress reporting (V2 → R8). Reports a learning event when the user is
+// signed in. Now durable: instead of a fire-and-forget POST that vanished offline, the event is
+// queued in the offline outbox, which persists it and syncs when connectivity returns — so
+// progress, quiz attempts and completions are never lost on a weak connection.
+import { enqueue } from './sync/outbox.js';
+
+const token = () => { try { return localStorage.getItem('efiko-user-token') || ''; } catch { return ''; } };
 
 /** payload: { courseId? | university+course, event: 'opened'|'completed'|'quiz', score?, total?, cohortId? } */
 export function reportProgress(payload) {
-  const t = token();
-  if (!t) return; // visitors have no server progress
-  try {
-    fetch(`${GATEWAY}/progress`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${t}` },
-      body: JSON.stringify(payload),
-      keepalive: true
-    }).then(() => window.dispatchEvent(new Event('efiko-progress'))).catch(() => {});
-  } catch { /* offline */ }
+  if (!token()) return; // visitors have no server progress
+  enqueue('progress', payload).catch(() => {}); // queued offline, flushed on reconnect
 }

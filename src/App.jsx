@@ -34,6 +34,7 @@ import { storeRef } from './referral.js';
 import AskAnswer from './components/AskAnswer.jsx';
 import Landing from './components/Landing.jsx';
 import LiteSuggest from './components/LiteSuggest.jsx';
+import SyncStatus from './components/SyncStatus.jsx';
 import { aiHeaders, notifyAiUsed, fetchCredits } from './aiClient.js';
 import { enrolByCode, enrolCourse, fetchEnrolments } from './enrol.js';
 import { enrolProgramme } from './programmes.js';
@@ -545,6 +546,7 @@ export default function App() {
       case 'library':
         return (<>
           <SectionHead title="Library" sub="Your work and everything you've downloaded — available offline." />
+          <SyncStatus />
           <MyWork signedIn={!!user} />
           <CampusSync online={online} syncing={campusSyncing} progress={campusProgress} status={offlineStat} onSync={handleCampusSync} />
           <Packs packs={packs} online={online} busyPackId={busyPackId} progress={packProgress} onDownload={handleDownloadPack} onRemove={handleRemovePack} />
