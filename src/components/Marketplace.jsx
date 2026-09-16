@@ -132,11 +132,11 @@ function loadFlutterwave() {
   });
 }
 
-export default function Marketplace({ signedIn, onSignIn, onGoSection, onOpenOriginal, user }) {
+export default function Marketplace({ signedIn, onSignIn, onGoSection, onOpenOriginal, user, startInSell }) {
   const [listings, setListings] = useState([]);
   const [ownedIds, setOwnedIds] = useState(new Set());
   const [purchases, setPurchases] = useState([]);
-  const [sellMode, setSellMode] = useState(false);
+  const [sellMode, setSellMode] = useState(!!startInSell); // creators can arrive straight in their dashboard
   const [payments, setPayments] = useState({ provider: 'mock', live: false, publicKey: '' });
   const [checkout, setCheckout] = useState(null); // listing being purchased (demo modal)
   const [v4co, setV4co] = useState(null); // listing being purchased via v4 mobile money

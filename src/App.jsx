@@ -92,6 +92,7 @@ export default function App() {
   const [answer, setAnswer] = useState(null); // streamed Ask answer { topic, text, streaming, err }
   const [board, setBoard] = useState(null);   // AI teaching-whiteboard sequence
   const [boarding, setBoarding] = useState(false); // generating a teaching sequence
+  const [marketSell, setMarketSell] = useState(false); // one-shot: open the Marketplace in creator-dashboard mode
   const [section, setSection] = useState('home'); // sidebar section within the shell
   const [navOpen, setNavOpen] = useState(false);   // mobile sidebar drawer
   const [tsOpen, setTsOpen] = useState(false);     // ThinkSpace right panel
@@ -525,7 +526,9 @@ export default function App() {
   }
 
   // A section-change helper: return to the shell and show a section.
-  function goSection(id) { setView('library'); setSection(id); setNavOpen(false); setActive(null); }
+  function goSection(id) { setView('library'); setSection(id); setNavOpen(false); setActive(null); setMarketSell(false); }
+  // Creators: jump straight into their dashboard (Marketplace opened in sell mode).
+  function openCreatorDashboard() { setView('library'); setSection('market'); setNavOpen(false); setActive(null); setMarketSell(true); }
   // Open a specific EFIKO course in the Originals player (e.g. after buying it in the marketplace).
   function openOriginal(courseId) { setOpenOriginalId(courseId); goSection('originals'); }
 
@@ -560,7 +563,7 @@ export default function App() {
       case 'community':
         return <Community signedIn={!!user} user={user} onSignIn={() => setAuthOpen(true)} />;
       case 'market':
-        return <Marketplace signedIn={!!user} onSignIn={() => setAuthOpen(true)} onGoSection={goSection} onOpenOriginal={openOriginal} user={user} />;
+        return <Marketplace signedIn={!!user} onSignIn={() => setAuthOpen(true)} onGoSection={goSection} onOpenOriginal={openOriginal} user={user} startInSell={marketSell} />;
       case 'certificates':
         return user ? <Certificates /> : <SignInPrompt onSignIn={() => setAuthOpen(true)} what="see and claim your certificates" />;
       case 'library':
@@ -585,7 +588,7 @@ export default function App() {
             {/* Authoring & selling — everyone who can teach */}
             <button className="teach-card" onClick={openStudio}>📝 Lecturer Studio<span>Generate & publish lessons</span></button>
             <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?alwe-studio`; }}>🎨 Whiteboard Studio<span>Author adaptive lessons</span></button>
-            <button className="teach-card" onClick={() => goSection('market')}>💼 Sell on EFIKO<span>Sell your own resources</span></button>
+            <button className="teach-card" onClick={openCreatorDashboard}>💼 Creator dashboard<span>Sell resources & track earnings</span></button>
             {/* Institution-scoped tools — organizations only */}
             {org && <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?classes`; }}>👥 Classes<span>Rosters & class progress</span></button>}
             {org && <button className="teach-card" onClick={() => { window.location.href = `${window.location.pathname}?programmes`; }}>🧭 Programmes<span>Group courses into tracks</span></button>}

@@ -1325,3 +1325,24 @@ button.set-link:hover { border-color: var(--brand-2); }
 .tb-eval-good { color: var(--ink); }
 .tb-eval-gap { color: var(--ink); }
 .tb-eval-note { margin: 14px 0 4px; font-size: 15px; color: var(--brand-2); }
+
+/* ============ Creator dashboard (R11) ============ */
+.cs-kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 0 16px; }
+.cs-kpi { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 2px; }
+.cs-kpi-n { font-size: 24px; font-weight: 800; color: var(--brand-2); }
+.cs-kpi-l { font-size: 12px; color: var(--muted); }
+.cs-perf { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.cs-perf-head, .cs-perf-row { display: grid; grid-template-columns: 2fr 1fr 0.7fr 1fr 28px; align-items: center; gap: 8px; padding: 10px 12px; }
+.cs-perf-head { background: var(--card); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.cs-perf-row { border-top: 1px solid var(--line); font-size: 14px; }
+.cs-perf-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cs-perf-price { color: var(--muted); font-size: 13px; }
+.cs-perf-sales { font-weight: 700; }
+.cs-perf-net { color: var(--brand-2); font-weight: 600; }
+.cs-perf-head span:nth-child(3), .cs-perf-row .cs-perf-sales, .cs-perf-head span:nth-child(4), .cs-perf-row .cs-perf-net { text-align: right; }
+@media (max-width: 480px) {
+  .cs-kpis { grid-template-columns: 1fr 1fr; }
+  .cs-perf-head { display: none; }
+  .cs-perf-row { grid-template-columns: 1fr auto 28px; grid-template-areas: "title sales del" "price net del"; row-gap: 2px; }
+  .cs-perf-title { grid-area: title; } .cs-perf-price { grid-area: price; } .cs-perf-sales { grid-area: sales; } .cs-perf-net { grid-area: net; text-align: right; } .cs-perf-row .planner-del { grid-area: del; }
+}

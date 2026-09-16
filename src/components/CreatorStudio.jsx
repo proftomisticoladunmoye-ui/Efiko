@@ -90,12 +90,25 @@ export default function CreatorStudio({ onBack }) {
 
   const cur = earnings ? Object.entries(earnings.byCurrency) : [];
   const anyPending = cur.some(([, v]) => v.pending > 0);
+  const activeCount = listings.length;
+  const totalSales = earnings?.totalSales ?? 0;
+  // Per-product performance: every product, with its sales + net (0 for ones that haven't sold).
+  const byListing = earnings?.byListing || {};
+  const products = listings
+    .map((l) => ({ ...l, perf: byListing[l.id] || { sales: 0, net: 0 } }))
+    .sort((a, b) => b.perf.sales - a.perf.sales);
 
   return (
     <section className="market">
       <button className="back" onClick={onBack}>← Marketplace</button>
-      <h2>💼 Creator Studio</h2>
+      <h2>💼 Creator dashboard</h2>
       <p className="lib-sub">Sell your own courses, packs or resources. EFIKO takes a {earnings?.feePct ?? 20}% platform fee; you keep the rest.</p>
+
+      <div className="cs-kpis">
+        <div className="cs-kpi"><span className="cs-kpi-n">{totalSales}</span><span className="cs-kpi-l">total sale{totalSales !== 1 ? 's' : ''}</span></div>
+        <div className="cs-kpi"><span className="cs-kpi-n">{activeCount}</span><span className="cs-kpi-l">product{activeCount !== 1 ? 's' : ''} listed</span></div>
+        <div className="cs-kpi"><span className="cs-kpi-n">{cur.reduce((n, [, v]) => n + (v.pending > 0 ? 1 : 0), 0) > 0 ? '•' : '—'}</span><span className="cs-kpi-l">{anyPending ? 'payout ready' : 'no payout due'}</span></div>
+      </div>
 
       {cur.length > 0 && (
         <div className="cs-earnings">
@@ -184,13 +197,19 @@ export default function CreatorStudio({ onBack }) {
       {msg && <p className="studio-msg">{msg}</p>}
       {err && <p className="error">{err}</p>}
 
-      <h3 className="studio-pub-h">Your products</h3>
-      {listings.length === 0 ? <p className="studio-sub">None yet — list one above.</p> : (
-        <div className="studio-pub-list">
-          {listings.map((l) => (
-            <div key={l.id} className="pub-row">
-              <span className="pub-topic">{l.title} <em>({formatMoney(l.price, l.currency)})</em></span>
-              <button className="planner-del" onClick={() => remove(l.id)} aria-label="Delete">×</button>
+      <h3 className="studio-pub-h">Product performance</h3>
+      {products.length === 0 ? <p className="studio-sub">None yet — list one above.</p> : (
+        <div className="cs-perf">
+          <div className="cs-perf-head" aria-hidden="true">
+            <span>Product</span><span>Price</span><span>Sales</span><span>Earned</span><span />
+          </div>
+          {products.map((l) => (
+            <div key={l.id} className="cs-perf-row">
+              <span className="cs-perf-title">{l.title}</span>
+              <span className="cs-perf-price">{formatMoney(l.price, l.currency)}</span>
+              <span className="cs-perf-sales">{l.perf.sales}</span>
+              <span className="cs-perf-net">{l.perf.sales > 0 ? formatMoney(l.perf.net, l.currency) : '—'}</span>
+              <button className="planner-del" onClick={() => remove(l.id)} aria-label={`Delete ${l.title}`}>×</button>
             </div>
           ))}
         </div>

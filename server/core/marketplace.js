@@ -191,12 +191,15 @@ async function recordPurchase(user, listing, pay) {
 export async function getCreatorEarnings(userId) {
   const rows = (await kvAll(EARNINGS)).filter((e) => e.creatorId === userId);
   const byCurrency = {};
+  const byListing = {}; // per-product performance (all-time), for the creator dashboard
   for (const e of rows) {
     const c = (byCurrency[e.currency] ||= { gross: 0, net: 0, pending: 0, paid: 0, sales: 0 });
     c.gross = money2(c.gross + e.gross); c.net = money2(c.net + e.net); c.sales++;
     if (e.status === 'paid') c.paid = money2(c.paid + e.net); else c.pending = money2(c.pending + e.net);
+    const L = (byListing[e.listingId] ||= { listingId: e.listingId, title: e.listingTitle, currency: e.currency, sales: 0, net: 0, gross: 0 });
+    L.sales++; L.net = money2(L.net + e.net); L.gross = money2(L.gross + e.gross);
   }
-  return { feePct: FEE_PCT, byCurrency, sales: rows.sort((a, b) => b.createdAt - a.createdAt).slice(0, 25) };
+  return { feePct: FEE_PCT, byCurrency, byListing, totalSales: rows.length, sales: rows.sort((a, b) => b.createdAt - a.createdAt).slice(0, 25) };
 }
 
 // Request a payout — flags this creator's pending earnings as requested (actual disbursement
