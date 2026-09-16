@@ -1305,3 +1305,23 @@ button.set-link:hover { border-color: var(--brand-2); }
 .tb-done-badge { font-size: 44px; }
 .tb-done h3 { margin: 6px 0 8px; }
 .ask-answer-secondary { background: transparent !important; color: var(--brand-2) !important; border: 1px solid var(--line) !important; }
+
+/* ---- Teach-Back evaluation (R10) ---- */
+.tb-eval { text-align: left; max-width: 560px; margin: 0 auto; }
+.tb-eval-head { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--card); }
+.tb-eval-head > div { display: flex; flex-direction: column; }
+.tb-eval-head strong { font-size: 17px; }
+.tb-eval-emoji { font-size: 30px; }
+.tb-eval-head.mastered { border-color: var(--good); background: rgba(21,128,61,.12); }
+.tb-eval-head.almost { border-color: var(--brand-2); background: rgba(20,184,166,.10); }
+.tb-eval-head.developing { border-color: var(--warn); background: rgba(180,83,9,.12); }
+.tb-eval-score { font-size: 13px; color: var(--muted); }
+.tb-eval-bar { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; margin: 12px 0 4px; }
+.tb-eval-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--brand), var(--brand-2)); }
+.tb-eval-sec { margin-top: 14px; }
+.tb-eval-sec h4 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.tb-eval-sec ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.tb-eval-sec li { font-size: 14px; line-height: 1.5; }
+.tb-eval-good { color: var(--ink); }
+.tb-eval-gap { color: var(--ink); }
+.tb-eval-note { margin: 14px 0 4px; font-size: 15px; color: var(--brand-2); }

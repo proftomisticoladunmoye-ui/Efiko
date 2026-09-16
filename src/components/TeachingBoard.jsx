@@ -5,6 +5,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePerfMode } from '../perfMode.js';
 import { reportProgress } from '../progress.js';
+import { evaluateTeachBack } from '../teachback.js';
+
+const VERDICT = {
+  mastered:   { label: 'Mastered',   emoji: '🏆', cls: 'mastered' },
+  almost:     { label: 'Almost there', emoji: '🌱', cls: 'almost' },
+  developing: { label: 'Developing', emoji: '🧭', cls: 'developing' }
+};
 
 const canSpeak = typeof window !== 'undefined' && 'speechSynthesis' in window;
 
@@ -18,7 +25,10 @@ export default function TeachingBoard({ sequence, onExit, topic }) {
   const [phase, setPhase] = useState('steps');     // 'steps' | 'teachback' | 'done'
   const [muted, setMuted] = useState(lite);         // Lite is quiet by default (still tap-to-hear)
   const [tb, setTb] = useState('');
+  const [evaluating, setEvaluating] = useState(false);
+  const [evaluation, setEvaluation] = useState(null); // AI assessment of the teach-back
   const reportedRef = useRef(false);
+  const boardTopic = sequence.topic || topic || 'this concept';
 
   const step = steps[i];
   const last = i === steps.length - 1;
@@ -44,7 +54,8 @@ export default function TeachingBoard({ sequence, onExit, topic }) {
 
   // Record one 'opened' event when the board first plays (offline-durable via the outbox).
   useEffect(() => {
-    if (!reportedRef.current) { reportedRef.current = true; reportProgress({ university: 'Efiko', course: 'Whiteboard', event: 'opened' }); }
+    if (!reportedRef.current) { reportedRef.current = true; reportProgress({ university: 'Efiko', course: boardTopic, event: 'opened' }); }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!steps.length) {
@@ -60,9 +71,20 @@ export default function TeachingBoard({ sequence, onExit, topic }) {
   }
   function prev() { stopSpeaking(); setAnswered(null); if (i > 0) setI(i - 1); }
 
-  function finish() {
+  // Submit the teach-back: assess it when online (the payload is tiny), then record mastery.
+  // Offline or on failure, we still honour the effort — the explanation is never wasted.
+  async function finish() {
+    reportProgress({ university: 'Efiko', course: boardTopic, event: 'completed' });
+    if (typeof navigator !== 'undefined' && navigator.onLine) {
+      setEvaluating(true);
+      try {
+        const evalResult = await evaluateTeachBack(boardTopic, tb.trim());
+        setEvaluation(evalResult);
+        reportProgress({ university: 'Efiko', course: boardTopic, event: 'teachback', score: evalResult.score });
+      } catch { /* fall through to the warm, un-scored done screen */ }
+      finally { setEvaluating(false); }
+    }
     setPhase('done');
-    reportProgress({ university: 'Efiko', course: 'Whiteboard', event: 'completed' });
   }
 
   return (
@@ -124,18 +146,55 @@ export default function TeachingBoard({ sequence, onExit, topic }) {
           <p className="tb-tb-prompt">{sequence.teachBackPrompt}</p>
           <textarea className="tb-tb-input" rows={5} value={tb} onChange={(e) => setTb(e.target.value)} placeholder="Explain it in your own words…" />
           <div className="tb-nav">
-            <button className="tb-prev" onClick={() => { setPhase('steps'); setI(steps.length - 1); }}>← Back to board</button>
-            <button className="tb-next" onClick={finish} disabled={tb.trim().length < 12}>I've explained it →</button>
+            <button className="tb-prev" onClick={() => { setPhase('steps'); setI(steps.length - 1); }} disabled={evaluating}>← Back to board</button>
+            <button className="tb-next" onClick={finish} disabled={tb.trim().length < 12 || evaluating}>
+              {evaluating ? 'Reading your answer…' : "I've explained it →"}
+            </button>
           </div>
         </div>
       )}
 
       {phase === 'done' && (
         <div className="tb-done">
-          <div className="tb-done-badge">🎉</div>
-          <h3>Well taught.</h3>
-          <p className="lib-sub">Explaining an idea in your own words is how it sticks. You just did the hardest — and most valuable — part of learning.</p>
-          <button className="course-open" onClick={onExit}>Learn something else</button>
+          {evaluation ? (() => {
+            const v = VERDICT[evaluation.verdict] || VERDICT.almost;
+            return (
+              <div className="tb-eval">
+                <div className={`tb-eval-head ${v.cls}`}>
+                  <span className="tb-eval-emoji" aria-hidden="true">{v.emoji}</span>
+                  <div>
+                    <strong>{v.label}</strong>
+                    <span className="tb-eval-score">{evaluation.score}% understanding</span>
+                  </div>
+                </div>
+                <div className="tb-eval-bar" aria-hidden="true"><span style={{ width: `${evaluation.score}%` }} /></div>
+                {evaluation.strengths.length > 0 && (
+                  <div className="tb-eval-sec">
+                    <h4>What you nailed</h4>
+                    <ul>{evaluation.strengths.map((s, n) => <li key={n} className="tb-eval-good">✓ {s}</li>)}</ul>
+                  </div>
+                )}
+                {evaluation.gaps.length > 0 && (
+                  <div className="tb-eval-sec">
+                    <h4>Firm this up next</h4>
+                    <ul>{evaluation.gaps.map((s, n) => <li key={n} className="tb-eval-gap">→ {s}</li>)}</ul>
+                  </div>
+                )}
+                <p className="tb-eval-note">{evaluation.encouragement}</p>
+                <div className="tb-nav">
+                  <button className="tb-prev" onClick={() => { setEvaluation(null); setPhase('teachback'); }}>Try again</button>
+                  <button className="tb-next" onClick={onExit}>Learn something else →</button>
+                </div>
+              </div>
+            );
+          })() : (
+            <>
+              <div className="tb-done-badge">🎉</div>
+              <h3>Well taught.</h3>
+              <p className="lib-sub">Explaining an idea in your own words is how it sticks. You just did the hardest — and most valuable — part of learning.{typeof navigator !== 'undefined' && !navigator.onLine ? ' Reconnect to get Efiko’s feedback on your explanation.' : ''}</p>
+              <button className="course-open" onClick={onExit}>Learn something else</button>
+            </>
+          )}
         </div>
       )}
     </div>

@@ -22,6 +22,12 @@ export async function recordProgress(userId, courseId, { event, score, total, co
     rec.attempts = (rec.attempts || 0) + 1;
     rec.bestQuizPct = Math.max(rec.bestQuizPct ?? 0, pct);
   }
+  // Teach-back mastery: score is already a 0-100 percentage of understanding shown.
+  if (event === 'teachback' && typeof score === 'number') {
+    rec.started = true;
+    rec.teachBacks = (rec.teachBacks || 0) + 1;
+    rec.bestTeachBackPct = Math.max(rec.bestTeachBackPct ?? 0, Math.round(score));
+  }
   await kvPut(COLL, id, rec);
   return rec;
 }

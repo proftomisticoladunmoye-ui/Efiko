@@ -12,6 +12,7 @@ import { renderResult } from './channels/whatsapp/render.js';
 import { sendMessages, isLive } from './channels/whatsapp/transport.js';
 import { generateCapsule, generateFromImage, isConfigured as aiConfigured } from './core/ai/lessonGenerator.js';
 import { generateTeachingSequence } from './core/ai/teachingBoard.js';
+import { evaluateTeachBack as evaluateWhiteboardTeachBack } from './core/ai/teachBack.js';
 import { getClient, FAST_MODEL } from './core/ai/client.js';
 import { generateLesson, isConfigured as alweAuthorConfigured } from './core/alwe/sceneGenerator.js';
 import { addAlweLesson, getAlweLesson, listAlweLessons } from './core/alwe/lessons.js';
@@ -950,6 +951,10 @@ const server = createServer(async (req, res) => {
             } catch { /* never block sync on gamification */ }
           }
         }
+        if (a.type === 'teachback' && typeof a.score === 'number') {
+          const courseId = a.courseId || courseIdOf(a.university, a.course);
+          if (courseId) await recordProgress(user.userId, courseId, { event: 'teachback', score: a.score });
+        }
         // Future activity types (notes, bookmarks, whiteboard work) slot in here.
         if (a.id !== undefined) applied.push(a.id);
       } catch { /* leave unapplied → the client retries on the next flush */ }
@@ -1269,6 +1274,21 @@ const server = createServer(async (req, res) => {
       const sequence = await generateTeachingSequence({ topic, lite: !!lite });
       if (!sequence) return json(res, 502, { error: 'The whiteboard tutor could not build that lesson. Try rephrasing.' });
       return json(res, 200, { sequence });
+    } catch (e) {
+      return json(res, 502, { error: e.message });
+    }
+  }
+
+  // Teach-Back evaluation (R10): read the learner's own-words explanation and assess it.
+  if (req.method === 'POST' && url.pathname === '/teachback/evaluate') {
+    if (!aiConfigured()) return json(res, 503, { error: 'AI not configured' });
+    { const ch = await chargeAI(req, 'assist'); if (!ch.ok) return json(res, ch.status, { error: ch.error }); }
+    const { topic, explanation } = await readBody(req);
+    if (!explanation || String(explanation).trim().length < 10) return json(res, 400, { error: 'a fuller explanation is needed to give useful feedback' });
+    try {
+      const evaluation = await evaluateWhiteboardTeachBack({ topic, explanation });
+      if (!evaluation) return json(res, 502, { error: 'Could not evaluate that just now — your explanation was still saved.' });
+      return json(res, 200, { evaluation });
     } catch (e) {
       return json(res, 502, { error: e.message });
     }
